@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  # 监听 main 分支的 push 事件
+  push:
+    branches:
+      - main
+  # 允许手动触发部署
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整的提交历史，用于生成正确的更新时间
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # 使用稳定的 LTS 版本
+          cache: 'pnpm'  # 启用 pnpm 缓存
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10  # 匹配 package.json 中的 pnpm 版本
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建项目
+        run: pnpm docs:build  # 使用您 package.json 中的构建命令
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./src/.vuepress/dist  # 匹配您的构建输出目录
+          # 如果需要自定义域名，请取消下面的注释并设置您的域名
+          # cname: yourdomain.com  
