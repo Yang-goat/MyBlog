@@ -1,0 +1,58 @@
+{
+  "name": "@vuepress/plugin-markdown-stylize",
+  "version": "2.0.0-rc.108",
+  "description": "VuePress plugin - markdown stylize",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "stylize"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-stylize.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-stylize"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@mdit/plugin-align": "^0.21.0",
+    "@mdit/plugin-attrs": "^0.21.0",
+    "@mdit/plugin-mark": "^0.21.0",
+    "@mdit/plugin-spoiler": "^0.21.0",
+    "@mdit/plugin-stylize": "^0.21.0",
+    "@mdit/plugin-sub": "^0.21.0",
+    "@mdit/plugin-sup": "^0.21.0",
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/helper": "2.0.0-rc.108"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.23"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "784e7ede72095dc9d3dd47ed387e1f77d49c0cd7"
+}

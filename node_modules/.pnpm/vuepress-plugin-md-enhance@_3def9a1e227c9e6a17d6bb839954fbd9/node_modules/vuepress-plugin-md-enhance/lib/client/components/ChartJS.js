@@ -1,0 +1,7 @@
+import{useDarkMode as h,LoadingIcon as m,decodeData as S}from"@vuepress/helper/client";import{defineComponent as y,toRefs as v,shallowRef as d,ref as w,h as a,onMounted as j,watch as C,nextTick as R,onUnmounted as E}from"vue";import{onContentUpdated as U}from"vuepress/client";import"../styles/chartjs.scss";const k=(e,o)=>o==="json"?JSON.parse(e):new Function(`let config,__chart_js_config__;
+{
+${e}
+__chart_js_config__=config;
+}
+return __chart_js_config__;`)();var x=y({name:"ChartJS",props:{config:{type:String,required:!0},id:{type:String,required:!0},title:String,type:{type:String,default:"json"}},setup(e){const{config:o,id:f}=v(e),n=h(),u=d(),s=d(),r=w(!1);let i;const c=()=>{i?.destroy(),i=null},l=async()=>{if(__VUEPRESS_SSR__)return;const{default:t}=await import("chart.js/auto");t.defaults.borderColor=n.value?"#ccc":"#36A2EB",t.defaults.color=n.value?"#fff":"#000",t.defaults.maintainAspectRatio=!1;const _=S(e.config),p=k(_,e.type),g=s.value.getContext("2d");i=new t(g,p)};return U(async t=>{t==="mounted"&&(await l(),r.value=!0)}),j(()=>{C(__VUEPRESS_DEV__?[o,f,n]:n,async()=>{c(),await R(),await l()},{flush:"post"})}),E(c),()=>[e.title?a("div",{class:"chartjs-title"},decodeURIComponent(e.title)):null,r.value?null:a(m,{class:"chartjs-loading",height:192}),a("div",{ref:u,class:"chartjs-wrapper",id:e.id,style:{display:r.value?"block":"none"}},a("canvas",{ref:s,height:400}))]}});export{x as default};
+//# sourceMappingURL=ChartJS.js.map
