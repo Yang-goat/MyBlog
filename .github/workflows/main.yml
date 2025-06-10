@@ -22,11 +22,27 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: 安装 pnpm
-        run: npm install -g pnpm@10  # 显式全局安装 pnpm
+      - name: 调试：显示环境信息
+        run: |
+          echo "Node 版本:"
+          node --version
+          echo "npm 版本:"
+          npm --version
+          echo "PATH:"
+          echo $PATH
+          echo "当前目录内容:"
+          ls -la
 
-      - name: 验证 pnpm 安装
-        run: pnpm --version  # 确认 pnpm 可执行
+      - name: 使用 corepack 安装 pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.12.1 --activate
+          pnpm --version  # 验证安装
+
+      - name: 调试：检查 pnpm 路径
+        run: |
+          which pnpm
+          ls -la $(dirname $(which pnpm))
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
@@ -38,5 +54,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./src/.vuepress/dist
-    
+          publish_dir: ./src/.vuepress/dist  
