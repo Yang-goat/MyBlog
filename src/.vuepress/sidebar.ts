@@ -17,7 +17,19 @@ export default sidebar({
       link: "实用工具教程/",
       children: "structure",
     },
-    "intro",
+    {
+      text: "前端",
+      icon: "code",
+      prefix: "前端/",
+      link: "前端/",
+      children: "structure",
+    },
+    {
+      text: "V2 文档",
+      icon: "book",
+      link: "https://theme-hope.vuejs.press/zh/",
+    },
+    // "intro",
     // {
     //   text: "幻灯片",
     //   icon: "person-chalkboard",

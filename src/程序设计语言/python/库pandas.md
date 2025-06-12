@@ -53,7 +53,7 @@ df.dtypes		# 查看数据类型
 
 ## 数据结构 
 
-<img src="..\..\img\python\e92ca86fe93fefb8607c151f90726082.png" alt="e92ca86fe93fefb8607c151f90726082" style="zoom:38%;" />
+![](\img\e92ca86fe93fefb8607c151f90726082.png)
 
 ### Series
 

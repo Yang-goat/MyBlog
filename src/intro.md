@@ -1,6 +1,9 @@
 ---
 icon: circle-info
 cover: /assets/images/cover3.jpg
+index: false
+article: false
+sidebar: false
 ---
 
 # 博主简介

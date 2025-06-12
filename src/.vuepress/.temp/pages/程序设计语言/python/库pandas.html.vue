@@ -43,7 +43,7 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">df.values		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 获取数据，类型是numpy.ndarray</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">df.dtypes		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 查看数据类型</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="数据结构" tabindex="-1"><a class="header-anchor" href="#数据结构"><span>数据结构</span></a></h2>
-<img src="..\..\img\python\e92ca86fe93fefb8607c151f90726082.png" alt="e92ca86fe93fefb8607c151f90726082" style="zoom:38%;" />
+<figure><img src="@source/程序设计语言/python/img/e92ca86fe93fefb8607c151f90726082.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <h3 id="series" tabindex="-1"><a class="header-anchor" href="#series"><span>Series</span></a></h3>
 <p>类似于一维数组，由一组数据（可以是不同数据类型）以及一组与之相关的数据标签（即索引）组成。</p>
 <h4 id="生成" tabindex="-1"><a class="header-anchor" href="#生成"><span>生成</span></a></h4>

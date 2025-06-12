@@ -15,9 +15,14 @@ export default navbar([
   },
   {
     text: "实用工具教程",
-    icon: "tool",
+    icon: "book",
     link: "/实用工具教程/",
 
+  },
+  {
+    text: "前端",
+    icon: "code",
+    link: "/前端/",
   },
   {
     text: "V2 文档",
