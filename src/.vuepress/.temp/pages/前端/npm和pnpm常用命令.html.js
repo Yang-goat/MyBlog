@@ -1,0 +1,16 @@
+import comp from "D:/Project/Blog/my-blog_newtheme/src/.vuepress/.temp/pages/前端/npm和pnpm常用命令.html.vue"
+const data = JSON.parse("{\"path\":\"/%E5%89%8D%E7%AB%AF/npm%E5%92%8Cpnpm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html\",\"title\":\"npm 和 pnpm 常用命令开发文档\",\"lang\":\"zh-CN\",\"frontmatter\":{\"icon\":\"pen-to-square\",\"date\":\"2025-06-15T00:00:00.000Z\",\"order\":2,\"category\":[\"前端\"],\"tag\":[\"npm\",\"pnpm\"],\"description\":\"npm 和 pnpm 常用命令开发文档 一、概述 npm（Node Package Manager）和 pnpm（Performant npm）是 Node.js 生态系统中用于管理项目依赖、运行脚本的工具。本文档详细列出两者在不同开发场景下的常用命令，帮助开发者快速上手和切换使用。 二、项目初始化 三、依赖管理 3.1 安装依赖 3.2 卸载依赖 3...\"},\"readingTime\":{\"minutes\":3.43,\"words\":1030},\"filePathRelative\":\"前端/npm和pnpm常用命令.md\",\"excerpt\":\"\\n<h2>一、概述</h2>\\n<p>npm（Node Package Manager）和 pnpm（Performant npm）是 Node.js 生态系统中用于管理项目依赖、运行脚本的工具。本文档详细列出两者在不同开发场景下的常用命令，帮助开发者快速上手和切换使用。</p>\\n<h2>二、项目初始化</h2>\\n<table>\\n<thead>\\n<tr>\\n<th>操作</th>\\n<th>npm 命令</th>\\n<th>pnpm 命令</th>\\n<th>说明</th>\\n</tr>\\n</thead>\\n<tbody>\\n<tr>\\n<td>交互式初始化项目</td>\\n<td><code>npm init</code></td>\\n<td><code>pnpm init</code></td>\\n<td>生成 package.json 文件，配置项目元数据</td>\\n</tr>\\n<tr>\\n<td>快速初始化项目</td>\\n<td><code>npm init -y</code></td>\\n<td><code>pnpm init -y</code></td>\\n<td>使用默认配置，跳过交互步骤</td>\\n</tr>\\n</tbody>\\n</table>\",\"autoDesc\":true}")
+export { comp, data }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
