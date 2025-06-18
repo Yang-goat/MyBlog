@@ -16,10 +16,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v4
+
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 22
           cache: 'pnpm'
 
       - name: 调试：显示环境信息
@@ -32,12 +35,6 @@ jobs:
           echo $PATH
           echo "当前目录内容:"
           ls -la
-
-      - name: 使用 corepack 安装 pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@10.12.1 --activate
-          pnpm --version  # 验证安装
 
       - name: 调试：检查 pnpm 路径
         run: |
