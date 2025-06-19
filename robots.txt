@@ -1,4 +1,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://github.com/Yang-goat/MyBlog/MyBlog/sitemap.xml
+Sitemap: https://github.com/Yang-goat/MyBlog/sitemap.xml
