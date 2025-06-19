@@ -11,9 +11,11 @@ export default hopeTheme({
     url: "https://mister-hope.com",
   },
 
-  logo: "头像.jpg",
+  logo: "assets/icon/头像.jpg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "Yang-goat/MyBlog",
+  repoLabel: "GitHub",
+  repoDisplay: true,
 
   docsDir: "src",
 
@@ -24,7 +26,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "感谢访问",
   displayFooter: true,
 
   // 博客相关
@@ -61,7 +63,27 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  // hotReload: true,
+  hotReload: true,
+
+  // 打印按钮配置
+  print: true,
+
+  // 全屏按钮配置
+  fullscreen: false,
+
+  // 纯净模式
+  pure: false,
+
+  pageInfo: [
+    "Author",
+    // "Original",
+    "Date",
+    "Category",
+    "Tag",
+    "Word",
+    "ReadingTime",
+    // "PageView",
+  ],
 
   // 此处开启了很多功能用于演示，你应仅保留用到的功能。
   markdown: {
@@ -148,11 +170,27 @@ export default hopeTheme({
 
     components: {
       components: ["Badge", "VPCard"],
+      // 查看内置组件文档：https://theme-hope.vuejs.press/zh/guide/component/built-in.html
     },
 
     icon: {
       prefix: "fa6-solid:",
     },
+
+    notice: [ // 公告
+      {
+        path: "/",
+        showOnce: true,
+        key: "update-notice",
+        title: "更新通知",
+        content: "优化了导航栏、侧边栏、个人档案主页",
+        actions: [
+          { text: "已了解" },
+        ],
+        // fullscreen: true,
+        confirm: true,
+      },
+    ],
 
     // 如果你需要 PWA。安装 @vuepress/plugin-pwa 并取消下方注释
     // pwa: {

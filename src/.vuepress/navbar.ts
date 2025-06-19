@@ -5,29 +5,32 @@ export default navbar([
   {
     text: "笔记",
     icon: "book",
-    link: "/程序设计语言/",
-    // children: [
-    //   {
-    //     text: "程序设计语言",
-    //     link: "/程序设计语言/",
-    //   },
-    // ],
+    link: "/笔记/",
+  },
+  {
+    text: "算法",
+    icon: "code",
+    link: "/算法/",
+  },
+  {
+    text: "随笔",
+    icon: "pen-to-square",
+    link: "/随笔/",
   },
   {
     text: "实用工具教程",
-    icon: "book",
+    icon: "toolbox",
     link: "/实用工具教程/",
   },
   {
-    text: "前端",
-    icon: "code",
-    link: "/前端/",
-    // children: [
-    //   {
-    //     text: "包管理器",
-    //     link: "/前端/包管理器/",
-    //   },
-    // ],
+    text: "宝藏站点",
+    icon: "link",
+    link: "/link",
+  },
+  {
+    text: "关于我",
+    icon: "user",
+    link: "/intro",
   },
   // {
   //   text: "V2 文档",

@@ -1,39 +1,43 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-  "/": [
+  "/笔记/": [
     "",
     {
       text: "程序设计语言",
-      icon: "book",
+      icon: "code",
       prefix: "程序设计语言/",
       link: "程序设计语言/",
-      children: "structure",
-    },
-    {
-      text: "实用工具教程",
-      icon: "book",
-      prefix: "实用工具教程/",
-      link: "实用工具教程/",
-      children: "structure",
+      children: [
+        {
+          text: "Java",
+          icon: "code",
+          prefix: "java/",
+          link: "java/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "python",
+          icon: "code",
+          prefix: "python/",
+          link: "python/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        }
+      ],
     },
     {
       text: "前端",
-      icon: "code",
+      icon: "laptop-code",
       prefix: "前端/",
       link: "前端/",
       children: "structure",
     },
-    // {
-    //   text: "V2 文档",
-    //   icon: "book",
-    //   link: "https://theme-hope.vuejs.press/zh/",
-    // },
-    // "intro",
-    // {
-    //   text: "幻灯片",
-    //   icon: "person-chalkboard",
-    //   link: "https://ecosystem.vuejs.press/zh/plugins/markdown/revealjs/demo.html",
-    // },
   ],
+  "/算法/": "structure",
+  "/随笔/": "structure",
+  "/实用工具教程/": "structure",
 });

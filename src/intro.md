@@ -1,12 +1,13 @@
 ---
-icon: circle-info
-cover: /assets/images/cover3.jpg
-index: false
-article: false
-sidebar: false
+home: true
+portfolio: true
+
+# avatar: assets/icon/头像.jpg
+titles: ["信息与计算科学专业", "本科在读", "电音爱好者", "算竞铁牌选手"]
+content: portfolio
 ---
 
-# 博主简介
+## 介绍
 
 苏州科技大学信息与计算科学专业本科在读，预计 2026 年 6 月毕业。聚焦算法领域，深度学习上熟练运用 pytorch ，掌握 Python、C++、Java 等编程语言，具备扎实的数学建模基础。
 
