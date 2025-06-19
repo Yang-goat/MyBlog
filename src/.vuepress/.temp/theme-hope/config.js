@@ -1,17 +1,17 @@
-import { Layout, NotFound, injectDarkMode, setupDarkMode, setupSidebarItems, scrollPromise } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/exports/base.js";
+import { Layout, NotFound, injectDarkMode, setupDarkMode, setupSidebarItems, scrollPromise } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/exports/base.js";
 
-import { defineCatalogInfoGetter } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-catalog@2._ed218614e0ddc424c46a635d412f2f82/node_modules/@vuepress/plugin-catalog/lib/client/index.js"
+import { defineCatalogInfoGetter } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-catalog@2._a974a4fd694131e2d719ff430abfecad/node_modules/@vuepress/plugin-catalog/lib/client/index.js"
 import { h } from "vue"
 import { resolveComponent } from "vue"
-import { Blog, BloggerInfo, SocialMedias, setupBlog } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/exports/blog.js";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/styles/blog/bundle.scss";
-import { GlobalEncrypt, LocalEncrypt } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/exports/encrypt.js";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/styles/encrypt/bundle.scss"
+import { Blog, BloggerInfo, SocialMedias, setupBlog } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/exports/blog.js";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/styles/blog/bundle.scss";
+import { GlobalEncrypt, LocalEncrypt } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/exports/encrypt.js";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/styles/encrypt/bundle.scss"
 
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_901be1d079241beac9b19145aea85811/node_modules/@vuepress/helper/lib/client/styles/colors.css";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_901be1d079241beac9b19145aea85811/node_modules/@vuepress/helper/lib/client/styles/normalize.css";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_901be1d079241beac9b19145aea85811/node_modules/@vuepress/helper/lib/client/styles/sr-only.css";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_1431019857af64f83cf2683da117a047/node_modules/vuepress-theme-hope/lib/bundle/styles/bundle.scss";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_47789790c9bff09a01056a76b05eda50/node_modules/@vuepress/helper/lib/client/styles/colors.css";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_47789790c9bff09a01056a76b05eda50/node_modules/@vuepress/helper/lib/client/styles/normalize.css";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_47789790c9bff09a01056a76b05eda50/node_modules/@vuepress/helper/lib/client/styles/sr-only.css";
+import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/styles/bundle.scss";
 
 defineCatalogInfoGetter((meta) => {
   const title = meta.title;
