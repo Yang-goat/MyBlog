@@ -1,8 +1,9 @@
 import { defineClientConfig } from "vuepress/client";
-// import MyComponent from "./MyComponent.vue";
+import Blog from "./layouts/Blog.vue";
 
 export default defineClientConfig({
-  enhance: ({ app, router, siteData }) => {
-    // app.component("MyComponent", MyComponent);
+
+  layouts: {
+    Blog,
   },
 });
