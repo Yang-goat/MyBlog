@@ -2,7 +2,7 @@
 home: true
 portfolio: true
 
-# avatar: assets/icon/头像.jpg
+avatar: assets/images/形象.png
 titles: ["信息与计算科学专业", "本科在读", "电音爱好者", "算竞铁牌选手"]
 content: portfolio
 ---
