@@ -5,8 +5,6 @@ import { h } from "vue"
 import { resolveComponent } from "vue"
 import { Blog, BloggerInfo, SocialMedias, setupBlog } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/exports/blog.js";
 import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/styles/blog/bundle.scss";
-import { GlobalEncrypt, LocalEncrypt } from "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/exports/encrypt.js";
-import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/vuepress-theme-hope@2.0.0-r_cb4b0666ce8e6f18dc068fef957f6af5/node_modules/vuepress-theme-hope/lib/bundle/styles/encrypt/bundle.scss"
 
 import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_47789790c9bff09a01056a76b05eda50/node_modules/@vuepress/helper/lib/client/styles/colors.css";
 import "D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.1_47789790c9bff09a01056a76b05eda50/node_modules/@vuepress/helper/lib/client/styles/normalize.css";
@@ -41,8 +39,6 @@ export default {
 
     app.component("BloggerInfo", BloggerInfo);
     app.component("SocialMedias", SocialMedias);
-    app.component("GlobalEncrypt", GlobalEncrypt);
-    app.component("LocalEncrypt", LocalEncrypt);
   },
   setup: () => {
     setupDarkMode();
