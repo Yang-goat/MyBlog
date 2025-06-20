@@ -1,0 +1,162 @@
+.link-div{
+    width: 50vw;
+    /* margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%); */
+    
+    text-align: center;
+}
+
+.link-nav {
+  max-width: 1200px; /* 内容最大宽度，可根据需要调整 */
+  padding: 0 20px; /* 防止内容紧贴边缘 */
+  margin: 2rem auto;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+.link-nav h1 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #42b983;
+}
+
+.tabs {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tabs button {
+  background: #e8f5f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #42b983;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.tabs button.active,
+.tabs button:hover {
+  background: #42b983;
+  color: white;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #42b983;
+  border-radius: 25px;
+  margin-bottom: 1.5rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+  border-color: #2c974b;
+}
+
+.links-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 150px;
+}
+
+/* 网站方框 - 扁平化设计，带边框 */
+.link-card {
+  width: 200px;
+  height: 60px;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1.8px solid #42b983;
+  border-radius: 12px;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+}
+
+.card-content {
+  display: flex; /* 启用flex布局 */
+  height: 100%;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link-card:hover,
+.link-card:focus {
+  transform: translateY(-6px);
+  border-color: #2c974b;
+  box-shadow: 0 12px 20px rgba(66, 185, 131, 0.3);
+  outline: none;
+}
+
+.link-card a {
+  color: #2c974b;
+  font-weight: 600;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+}
+
+.link-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  border-radius: 8px;
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+.link-card:hover .link-icon,
+.link-card:focus .link-icon {
+  box-shadow: 0 0 8px rgba(66, 185, 131, 0.6);
+}
+
+.link-info {
+  flex-grow: 1; /* 占满剩余空间 */
+  min-width: 0; /* 允许内容收缩 */
+}
+
+.link-name {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.link-desc {
+  display: block;
+  color: #666;
+  font-size: 12px;
+  height: 36px; /* 固定高度 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  text-overflow: ellipsis; /* 显示省略号 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 限制显示2行 */
+  line-clamp: 2; /* 定义标准属性以实现兼容性 */
+  -webkit-box-orient: vertical;
+}
+
+.no-result {
+  font-style: italic;
+  color: #888;
+  width: 100%;
+  margin-top: 2rem;
+  user-select: none;
+}

@@ -1,3 +1,5 @@
+import "./chunk-BUSYA2B4.js";
+
 // node_modules/.pnpm/@vuepress+shared@2.0.0-rc.23/node_modules/@vuepress/shared/dist/index.js
 var isLinkWithProtocol = (link) => /^[a-z][a-z0-9+.-]*:/.test(link) || link.startsWith("//");
 var markdownLinkRegexp = /.md((\?|#).*)?$/;

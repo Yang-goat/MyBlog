@@ -40,4 +40,5 @@ export default sidebar({
   "/算法/": "structure",
   "/随笔/": "structure",
   "/实用工具教程/": "structure",
+  // "/宝藏站点/": "structure",
 });

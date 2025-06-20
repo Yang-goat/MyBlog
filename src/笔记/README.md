@@ -4,3 +4,5 @@ icon: book
 index: false
 article: false
 ---
+
+<Catalog />

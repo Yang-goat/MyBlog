@@ -25,16 +25,16 @@ export default navbar([
   {
     text: "宝藏站点",
     icon: "link",
-    link: "/link",
+    link: "/宝藏站点/",
   },
   {
     text: "关于我",
     icon: "user",
     link: "/intro",
   },
-  // {
-  //   text: "V2 文档",
-  //   icon: "book",
-  //   link: "https://theme-hope.vuejs.press/zh/",
-  // },
+  {
+    text: "V2 文档",
+    icon: "book",
+    link: "https://theme-hope.vuejs.press/zh/",
+  },
 ]);

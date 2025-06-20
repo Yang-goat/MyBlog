@@ -1,3 +1,3 @@
-<template><div></div></template>
+<template><div><Catalog /></div></template>
 
 

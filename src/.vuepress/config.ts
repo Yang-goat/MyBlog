@@ -1,6 +1,9 @@
 import { defineUserConfig } from "vuepress";
+import { getDirname, path } from "vuepress/utils";
 
 import theme from "./theme.js";
+
+const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
   base: "/",
@@ -13,4 +16,8 @@ export default defineUserConfig({
 
   // 和 PWA 一起启用
   // shouldPrefetch: false,
+
+  alias: {
+    "@LinkNavigator": path.resolve(__dirname, "components/LinkNavigator/LinkNavigator.vue"),
+  },
 });

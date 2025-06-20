@@ -2,7 +2,7 @@
 title: 随笔
 index: false
 article: false
-icon: laptop-code
+icon: pen-to-square
 ---
 
-<!-- <Catalog /> -->
+<Catalog />
