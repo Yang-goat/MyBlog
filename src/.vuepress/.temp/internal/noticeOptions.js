@@ -1,4 +1,4 @@
-export const NOTICE_OPTIONS = JSON.parse("[{\"content\":\"优化了导航栏、侧边栏、个人档案主页\",\"path\":\"/\",\"showOnce\":true,\"title\":\"更新通知\",\"actions\":[{\"text\":\"已了解\"}],\"confirm\":true,\"noticeKey\":\"update-notice\"}]")
+export const NOTICE_OPTIONS = JSON.parse("[{\"content\":\"发布了计算方法笔记，在随笔中。\",\"path\":\"/\",\"showOnce\":true,\"title\":\"更新通知\",\"actions\":[{\"text\":\"已了解\"}],\"confirm\":true,\"noticeKey\":\"计算方法笔记更新\"}]")
 
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()

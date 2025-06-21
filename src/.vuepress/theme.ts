@@ -63,7 +63,7 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  hotReload: true,
+  // hotReload: true,
 
   // 打印按钮配置
   print: true,
@@ -179,9 +179,9 @@ export default hopeTheme({
       {
         path: "/",
         showOnce: true,
-        key: "update-notice",
+        key: "计算方法笔记更新",
         title: "更新通知",
-        content: "优化了导航栏、侧边栏、个人档案主页",
+        content: "发布了计算方法笔记，在随笔中。",
         actions: [
           { text: "已了解" },
         ],
