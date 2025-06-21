@@ -51,6 +51,8 @@ export function useLinkNavigator() {
             || link.category === activeCategory.value
           return categoryMatch && link.name.toLowerCase().includes(keyword)
         })
+        // 按名称字典序排序
+        filteredLinks.sort((a, b) => a.name.localeCompare(b.name))
         renderLinks(filteredLinks)
     }
 
