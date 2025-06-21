@@ -38,7 +38,17 @@ export default sidebar({
     },
   ],
   "/算法/": "structure",
-  "/随笔/": "structure",
+  "/随笔/": [
+    {
+      text: "期末考试专题",
+      icon: "graduation-cap",
+      prefix: "期末考试专题/",
+      link: "期末考试专题/",
+      collapsible: true,
+      expanded: true,
+      children: "structure",
+    }
+  ],
   "/实用工具教程/": "structure",
   // "/宝藏站点/": "structure",
 });
