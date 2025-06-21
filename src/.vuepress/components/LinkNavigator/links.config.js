@@ -678,4 +678,11 @@ export default [
         category: "数据",
         description: "知乎上关于官方统计数据网站的干货文章"
     },
+    {
+        name: "Latex公式手册",
+        url: "https://www.cnblogs.com/1024th/p/11623258.html",
+        icon: "https://assets.cnblogs.com/favicon_v3_2.ico",
+        category: "文档",
+        description: "Latex公式手册"
+    },
 ];
