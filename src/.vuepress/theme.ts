@@ -48,14 +48,14 @@ export default hopeTheme({
   },
 
   // 加密配置
-  // encrypt: {
-  //   config: {
-  //     "/demo/encrypt.html": {
-  //       hint: "Password: 1234",
-  //       password: "1234",
-  //     },
-  //   },
-  // },
+  encrypt: {
+    config: {
+      "/随笔/期末考试专题/计算方法选择判断": {
+        hint: "保密文章，请联系站主",
+        password: "021355",
+      },
+    },
+  },
 
   // 多语言配置
   metaLocales: {
@@ -63,7 +63,7 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  // hotReload: true,
+  hotReload: true,
 
   // 打印按钮配置
   print: true,
