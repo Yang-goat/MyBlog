@@ -49,6 +49,14 @@ export default sidebar({
       children: "structure",
     }
   ],
-  "/实用工具教程/": "structure",
+  "/实用工具教程/": [
+    {
+      text: "Latex",
+      icon: "laptop-code",
+      prefix: "Latex/",
+      link: "Latex/",
+      children: "structure",
+    },
+  ],
   // "/宝藏站点/": "structure",
 });

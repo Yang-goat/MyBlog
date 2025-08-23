@@ -175,20 +175,21 @@ export default hopeTheme({
       prefix: "fa6-solid:",
     },
 
-    notice: [ // 公告
-      {
-        path: "/",
-        showOnce: true,
-        key: "计算方法笔记更新",
-        title: "更新通知",
-        content: "发布了计算方法笔记，在随笔中。",
-        actions: [
-          { text: "已了解" },
-        ],
-        // fullscreen: true,
-        confirm: true,
-      },
-    ],
+    // 公告
+    // notice: [ 
+    //   {
+    //     path: "/",
+    //     showOnce: true,
+    //     key: "计算方法笔记更新",
+    //     title: "更新通知",
+    //     content: "发布了计算方法笔记，在随笔中。",
+    //     actions: [
+    //       { text: "已了解" },
+    //     ],
+    //     // fullscreen: true,
+    //     confirm: true,
+    //   },
+    // ],
 
     // 如果你需要 PWA。安装 @vuepress/plugin-pwa 并取消下方注释
     // pwa: {

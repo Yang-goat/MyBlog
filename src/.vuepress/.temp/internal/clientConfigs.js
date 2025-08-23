@@ -16,10 +16,9 @@ import * as clientConfig14 from 'D:/Project/Blog/my-blog_newtheme/src/.vuepress/
 import * as clientConfig15 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-active-hea_39ed9d489a35c9f664cdcdda0d3b5af2/node_modules/@vuepress/plugin-active-header-links/lib/client/config.js'
 import * as clientConfig16 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-catalog@2._05964ff56740e2aae7f3893044531264/node_modules/@vuepress/plugin-catalog/lib/client/config.js'
 import * as clientConfig17 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-nprogress@_6066cdbe20e08f63403959762720c819/node_modules/@vuepress/plugin-nprogress/lib/client/config.js'
-import * as clientConfig18 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-notice@2.0_c84f291a16ed1f43cb1f8a663bd47fdf/node_modules/@vuepress/plugin-notice/lib/client/config.js'
-import * as clientConfig19 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-redirect@2_8c9cefd79b0a3416ef8727be7b04e2b8/node_modules/@vuepress/plugin-redirect/lib/client/config.js'
-import * as clientConfig20 from 'D:/Project/Blog/my-blog_newtheme/src/.vuepress/.temp/theme-hope/config.js'
-import * as clientConfig21 from 'D:/Project/Blog/my-blog_newtheme/src/.vuepress/client.ts'
+import * as clientConfig18 from 'D:/Project/Blog/my-blog_newtheme/node_modules/.pnpm/@vuepress+plugin-redirect@2_8c9cefd79b0a3416ef8727be7b04e2b8/node_modules/@vuepress/plugin-redirect/lib/client/config.js'
+import * as clientConfig19 from 'D:/Project/Blog/my-blog_newtheme/src/.vuepress/.temp/theme-hope/config.js'
+import * as clientConfig20 from 'D:/Project/Blog/my-blog_newtheme/src/.vuepress/client.ts'
 
 export const clientConfigs = [
   clientConfig0,
@@ -43,5 +42,4 @@ export const clientConfigs = [
   clientConfig18,
   clientConfig19,
   clientConfig20,
-  clientConfig21,
 ].map((m) => m.default).filter(Boolean)
