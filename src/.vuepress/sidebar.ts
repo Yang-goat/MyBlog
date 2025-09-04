@@ -45,6 +45,15 @@ export default sidebar({
       prefix: "期末考试专题/",
       link: "期末考试专题/",
       collapsible: true,
+      expanded: false,
+      children: "structure",
+    },
+    {
+      text: "数学建模专题",
+      icon: "graduation-cap",
+      prefix: "数学建模专题/",
+      link: "数学建模专题/",
+      collapsible: true,
       expanded: true,
       children: "structure",
     }
