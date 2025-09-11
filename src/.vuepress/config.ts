@@ -17,7 +17,9 @@ export default defineUserConfig({
   // 和 PWA 一起启用
   // shouldPrefetch: false,
 
-  alias: {
-    "@LinkNavigator": path.resolve(__dirname, "components/LinkNavigator/LinkNavigator.vue"),
+
+  alias: {  // 创建组件别名
+      "@Comment": path.resolve(__dirname, "components/Comment.vue"),
+
   },
 });

@@ -56,7 +56,17 @@ export default sidebar({
       collapsible: true,
       expanded: true,
       children: "structure",
-    }
+    },
+    {
+      text: "毕业实训专题",
+      icon: "graduation-cap",
+      prefix: "毕业实训专题/",
+      link: "毕业实训专题/",
+      collapsible: true,
+      expanded: true,
+      children: "structure",
+    },
+
   ],
   "/实用工具教程/": [
     {
