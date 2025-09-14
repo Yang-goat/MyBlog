@@ -32,6 +32,11 @@ export default navbar([
     icon: "user",
     link: "/intro",
   },
+  {
+    text: "功能测试",
+    icon: "link",
+    link: "/功能测试/",
+  },
   // {
   //   text: "V2 文档",
   //   icon: "book",

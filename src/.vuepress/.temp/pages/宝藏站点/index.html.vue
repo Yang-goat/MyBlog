@@ -2,6 +2,6 @@
 <!-- <script setup>
 import LinkNavigator from "@LinkNavigator";
 </script> -->
-<LinkNavigator /></div></template>
+</div></template>
 
 

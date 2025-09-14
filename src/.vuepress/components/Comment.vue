@@ -46,62 +46,95 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useDarkMode } from "vuepress-theme-hope/client"
+import { ref, onMounted } from "vue";
+import { useDarkMode } from "vuepress-theme-hope/client";
 
 // 当前主题状态（true 表示深色模式）
-const { isDarkMode } = useDarkMode()
+const { isDarkMode } = useDarkMode();
 
-const comments = ref([])
-const content = ref('')
-const currentUser = ref(null) // 模拟当前用户
+const comments = ref([]);
+const content = ref("");
+const currentUser = ref(null); // 当前登录用户
+const postId = ref(""); // 文章路径唯一标识
 
-// 当前文章标识（用路径作为 ID）
-const postId = window.location.pathname
-
-// 加载评论（从本地 JSON 模拟获取）
+// 加载评论（模拟，从本地 JSON）
 async function loadComments() {
-  const res = await fetch('/api/comments.json')
-  comments.value = (await res.json()).filter(c => c.postId === postId)
+  try {
+    const res = await fetch("/api/comments.json");
+    const data = await res.json();
+    comments.value = data.filter((c) => c.postId === postId.value);
+  } catch (err) {
+    console.error("加载评论失败", err);
+  }
 }
 
 // 提交评论
 function submitComment() {
-  if (!content.value.trim()) return
+  if (!content.value.trim()) return;
   comments.value.push({
     id: Date.now(),
-    postId,
-    author: currentUser.value.name,
+    postId: postId.value,
+    author: currentUser.value.username,
     avatar: currentUser.value.avatar,
     content: content.value,
     likes: 0,
     time: new Date().toLocaleString(),
-  })
-  content.value = ''
-  // 后续可改成调用后端 API 保存
+  });
+  content.value = "";
+  // TODO: 这里可以改成调用后端 API 保存评论
 }
 
 // 点赞
 function likeComment(id) {
-  const target = comments.value.find(c => c.id === id)
-  if (target) target.likes++
+  const target = comments.value.find((c) => c.id === id);
+  if (target) target.likes++;
 }
 
-// 模拟 GitHub 登录
+// GitHub OAuth 登录
 function loginWithGithub() {
-  // 后续用 OAuth 替换
-  currentUser.value = {
-    id: 1,
-    githubId: 9919,
-    login: 'alice',
-    name: 'Alice',
-    avatar: 'https://avatars.githubusercontent.com/u/9919?s=200&v=4',
+  console.log('1111s');
+  console.log(window.location.href);
+
+  setTimeout(()=>{},20000);
+  // 在新窗口打开授权页面
+  const authUrl = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${encodeURIComponent(window.location.href)}`;
+    
+  // 打开新窗口，_blank确保在新标签页打开
+  window.open(authUrl, '_blank');
+  // window.location.href = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${encodeURIComponent(window.location.href)}`;
+
+}
+
+// 获取当前用户
+async function fetchCurrentUser() {
+  try {
+    // 1. 发送GET请求到后端用户信息接口
+    const res = await fetch("http://localhost:8081/api/auth/me", {
+      // 让浏览器在请求中携带与当前域名相关的Cookie（包括Session ID对应的Cookie）
+      credentials: "include", 
+    });
+
+    // 2. 将响应体解析为JSON格式
+    const data = await res.json();
+
+    // 3. 根据接口返回结果更新当前用户状态
+    if (!data.error) {
+      console.log("2222");
+      currentUser.value = data;
+    } else {
+      currentUser.value = null;
+    }
+  } catch (err) {
+    console.error("获取用户失败", err);
+    currentUser.value = null;
   }
 }
 
 onMounted(() => {
-  loadComments()
-})
+  postId.value = window.location.pathname;
+  loadComments();
+  fetchCurrentUser();
+});
 </script>
 
 <style scoped>

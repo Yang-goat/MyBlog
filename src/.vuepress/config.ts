@@ -1,5 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
+import { viteBundler } from '@vuepress/bundler-vite'
 
 import theme from "./theme.js";
 
@@ -17,9 +18,10 @@ export default defineUserConfig({
   // 和 PWA 一起启用
   // shouldPrefetch: false,
 
+  // 指定打包工具
+  bundler: viteBundler(),
 
   alias: {  // 创建组件别名
       "@Comment": path.resolve(__dirname, "components/Comment.vue"),
-
   },
 });

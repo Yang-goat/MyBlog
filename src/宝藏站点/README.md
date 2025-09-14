@@ -12,5 +12,3 @@ index: false
 <!-- <script setup>
 import LinkNavigator from "@LinkNavigator";
 </script> -->
-
-<LinkNavigator />
