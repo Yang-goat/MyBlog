@@ -110,6 +110,11 @@ export default sidebar({
   ],
   "/随笔/": [
     {
+      text: "硕士复试C++",
+      link: "硕士复试C++.md",
+      icon: "lightbulb",
+    },
+    {
       text: "期末考试专题",
       icon: "graduation-cap",
       prefix: "期末考试专题/",

@@ -48,81 +48,160 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useDarkMode } from "vuepress-theme-hope/client";
+import { getPathAfterDomain } from "./utils/urlUtil.js";
+import { parseComments } from "./utils/commentParser.js";
 
 // 当前主题状态（true 表示深色模式）
 const { isDarkMode } = useDarkMode();
 
-const comments = ref([]);
+const comments = ref([]); // 存放评论数组
 const content = ref("");
 const currentUser = ref(null); // 当前登录用户
-const postId = ref(""); // 文章路径唯一标识
+const articlePath = getPathAfterDomain(); // 文章路径唯一标识
 
-// 加载评论（模拟，从本地 JSON）
+// 加载评论
 async function loadComments() {
   try {
-    const res = await fetch("/api/comments.json");
+    console.log("开始加载评论");
+    const url = `http://localhost:8081/api/comments/article/${articlePath}`;
+    const res = await fetch(url);
     const data = await res.json();
-    comments.value = data.filter((c) => c.postId === postId.value);
+    console.log(articlePath);
+    console.log("后端返回:", data);
+
+    comments.value = parseComments(data);
   } catch (err) {
     console.error("加载评论失败", err);
   }
 }
 
 // 提交评论
-function submitComment() {
-  if (!content.value.trim()) return;
-  comments.value.push({
-    id: Date.now(),
-    postId: postId.value,
-    author: currentUser.value.username,
-    avatar: currentUser.value.avatar,
-    content: content.value,
-    likes: 0,
-    time: new Date().toLocaleString(),
-  });
-  content.value = "";
-  // TODO: 这里可以改成调用后端 API 保存评论
+async function submitComment() {
+  if (!content.value.trim()) {
+    alert("评论内容不能为空！");
+    return;
+  }
+  if (!currentUser.value) {
+    alert("请先登录后再发表评论！");
+    return;
+  }
+
+  try {
+    const userId = currentUser.value.githubid; // 当前登录用户 ID
+    console.log("当前用户githubid", userId);
+
+    const res = await fetch("http://localhost:8081/api/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        userId: userId,
+        articlePath: articlePath,
+        content: content.value,
+      }),
+      credentials: "include", // 携带 cookie（如果有登录态）
+    });
+
+    const data = await res.json();
+    if (!data.error) {
+      console.log("提交评论返回:", data);
+      // 文本框内容清空
+      content.value = "";
+      loadComments();
+    } else {
+      alert(data.message || "点赞失败");
+    }
+  } catch (err) {
+    console.error("提交评论失败", err);
+    alert("网络错误，提交失败");
+  }
 }
 
 // 点赞
-function likeComment(id) {
-  const target = comments.value.find((c) => c.id === id);
-  if (target) target.likes++;
+async function likeComment(commentId) {
+  if (!currentUser.value) {
+    alert("请先登录后再点赞！");
+    return;
+  }
+
+  try {
+    const userId = currentUser.value.githubid; // 当前登录用户 ID
+    console.log("点赞：", userId, commentId);
+
+    const res = await fetch("http://localhost:8081/api/comment-likes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        userId: userId,
+        commentId: commentId,
+      }),
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    console.log("点赞返回:", data);
+
+    // 点赞成功后刷新评论列表（更新点赞数）
+    if (!data.error) {
+      loadComments();
+    } else {
+      alert(data.message || "点赞失败");
+    }
+  } catch (err) {
+    console.error("点赞失败", err);
+    alert("网络错误，点赞失败");
+  }
 }
 
 // GitHub OAuth 登录
 function loginWithGithub() {
-  console.log('1111s');
-  console.log(window.location.href);
+  console.log("发起登录的url: "+window.location.href);
 
   setTimeout(()=>{},20000);
   // 在新窗口打开授权页面
   const authUrl = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${encodeURIComponent(window.location.href)}`;
-    
+  
   // 打开新窗口，_blank确保在新标签页打开
-  window.open(authUrl, '_blank');
-  // window.location.href = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${encodeURIComponent(window.location.href)}`;
+  // window.open(authUrl, '_blank');
+  window.open(authUrl, '_self');
+}
 
+// 登录出错时获取 URL 参数
+function getUrlParams() {
+  console.log("开始检测url，是否为登录错误后返回");
+  // 获取当前 URL 的查询参数部分
+  const params = new URLSearchParams(window.location.search);
+  
+  // 提取错误信息
+  const error = params.get('error');
+  const message = params.get('message');
+  
+  // 输出到控制台
+  if (error) {
+    console.log('授权失败：', error);
+  }
 }
 
 // 获取当前用户
 async function fetchCurrentUser() {
   try {
-    // 1. 发送GET请求到后端用户信息接口
     const res = await fetch("http://localhost:8081/api/auth/me", {
-      // 让浏览器在请求中携带与当前域名相关的Cookie（包括Session ID对应的Cookie）
-      credentials: "include", 
+      credentials: "include"
     });
-
-    // 2. 将响应体解析为JSON格式
     const data = await res.json();
 
-    // 3. 根据接口返回结果更新当前用户状态
     if (!data.error) {
-      console.log("2222");
       currentUser.value = data;
+      console.log("当前用户信息：", data);
     } else {
+      // 如果未登录，可引导前端跳转 OAuth2 授权页面
       currentUser.value = null;
+      if (data.loginUrl) {
+        console.log("无用户登录");
+      }
     }
   } catch (err) {
     console.error("获取用户失败", err);
@@ -131,7 +210,7 @@ async function fetchCurrentUser() {
 }
 
 onMounted(() => {
-  postId.value = window.location.pathname;
+  getUrlParams();
   loadComments();
   fetchCurrentUser();
 });
