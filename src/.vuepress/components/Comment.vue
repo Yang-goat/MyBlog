@@ -106,11 +106,15 @@ async function submitComment() {
     const data = await res.json();
     if (!data.error) {
       console.log("提交评论返回:", data);
+      if (data.code !== 200) {
+        alert(data.message || "提交评论失败");
+        return;
+      }
       // 文本框内容清空
       content.value = "";
       loadComments();
     } else {
-      alert(data.message || "点赞失败");
+      alert(data.message || "提交评论失败");
     }
   } catch (err) {
     console.error("提交评论失败", err);
