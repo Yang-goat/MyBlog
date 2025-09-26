@@ -36,6 +36,13 @@ export default sidebar({
       link: "前端/",
       children: "structure",
     },
+    {
+      text: "深度学习",
+      icon: "code",
+      prefix: "深度学习/",
+      link: "深度学习/",
+      children: "structure",
+    },
   ],
   "/算法/": [
     {
@@ -110,11 +117,6 @@ export default sidebar({
   ],
   "/随笔/": [
     {
-      text: "硕士复试C++",
-      link: "硕士复试C++.md",
-      icon: "lightbulb",
-    },
-    {
       text: "期末考试专题",
       icon: "graduation-cap",
       prefix: "期末考试专题/",
@@ -132,16 +134,6 @@ export default sidebar({
       expanded: true,
       children: "structure",
     },
-    {
-      text: "毕业实训专题",
-      icon: "graduation-cap",
-      prefix: "毕业实训专题/",
-      link: "毕业实训专题/",
-      collapsible: true,
-      expanded: true,
-      children: "structure",
-    },
-
   ],
   "/实用工具教程/": [
     {
@@ -149,6 +141,13 @@ export default sidebar({
       icon: "laptop-code",
       prefix: "Latex/",
       link: "Latex/",
+      children: "structure",
+    },
+    {
+      text: "VSCode",
+      icon: "laptop-code",
+      prefix: "VSCode/",
+      link: "VSCode/",
       children: "structure",
     },
   ],

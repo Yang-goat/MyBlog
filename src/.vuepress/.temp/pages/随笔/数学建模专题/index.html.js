@@ -1,16 +1,3 @@
-import comp from "D:/Project/Blog/my-blog_newtheme/src/.vuepress/.temp/pages/随笔/数学建模专题/index.html.vue"
-const data = JSON.parse("{\"path\":\"/%E9%9A%8F%E7%AC%94/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%93%E9%A2%98/\",\"title\":\"数学建模专题\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"数学建模专题\",\"index\":false,\"article\":false,\"icon\":\"pen-to-square\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"数学建模专题\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/%E9%9A%8F%E7%AC%94/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%93%E9%A2%98/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"数学建模专题\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"readingTime\":{\"minutes\":0.06,\"words\":17},\"filePathRelative\":\"随笔/数学建模专题/README.md\",\"excerpt\":\"\"}")
+import comp from "D:/Project/Blog/myBlog/src/.vuepress/.temp/pages/随笔/数学建模专题/index.html.vue"
+const data = JSON.parse("{\"path\":\"/%E9%9A%8F%E7%AC%94/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%93%E9%A2%98/\",\"title\":\"数学建模专题\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"数学建模专题\",\"index\":false,\"article\":false,\"icon\":\"pen-to-square\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"数学建模专题\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/%E9%9A%8F%E7%AC%94/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%93%E9%A2%98/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"数学建模专题\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2025-09-04T01:58:57.000Z\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2025-09-04T01:58:57.000Z\"}]]},\"git\":{\"createdTime\":1749567106000,\"updatedTime\":1756951137000,\"contributors\":[{\"name\":\"Yang-goat\",\"username\":\"Yang-goat\",\"email\":\"1700425119@qq.com\",\"commits\":4,\"url\":\"https://github.com/Yang-goat\"}]},\"readingTime\":{\"minutes\":0.06,\"words\":17},\"filePathRelative\":\"随笔/数学建模专题/README.md\",\"excerpt\":\"\"}")
 export { comp, data }
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
-}

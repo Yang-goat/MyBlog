@@ -57,18 +57,17 @@ const { isDarkMode } = useDarkMode();
 const comments = ref([]); // 存放评论数组
 const content = ref("");
 const currentUser = ref(null); // 当前登录用户
-const articlePath = getPathAfterDomain(); // 文章路径唯一标识
+const articlePath = ref(""); // 延迟获取文章路径（SSR 阶段为空）
+
+// ====== 工具函数 ======
 
 // 加载评论
 async function loadComments() {
+  if (!articlePath.value) return;
   try {
-    console.log("开始加载评论");
-    const url = `http://localhost:8081/api/comments/article/${articlePath}`;
+    const url = `http://localhost:8081/api/comments/article/${articlePath.value}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(articlePath);
-    console.log("后端返回:", data);
-
     comments.value = parseComments(data);
   } catch (err) {
     console.error("加载评论失败", err);
@@ -88,29 +87,21 @@ async function submitComment() {
 
   try {
     const userId = currentUser.value.githubid; // 当前登录用户 ID
-    console.log("当前用户githubid", userId);
-
     const res = await fetch("http://localhost:8081/api/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        userId: userId,
-        articlePath: articlePath,
+        userId,
+        articlePath: articlePath.value,
         content: content.value,
       }),
-      credentials: "include", // 携带 cookie（如果有登录态）
+      credentials: "include",
     });
 
     const data = await res.json();
-    if (!data.error) {
-      console.log("提交评论返回:", data);
-      if (data.code !== 200) {
-        alert(data.message || "提交评论失败");
-        return;
-      }
-      // 文本框内容清空
+    if (data.code === 200) {
       content.value = "";
       loadComments();
     } else {
@@ -130,25 +121,17 @@ async function likeComment(commentId) {
   }
 
   try {
-    const userId = currentUser.value.githubid; // 当前登录用户 ID
-    console.log("点赞：", userId, commentId);
-
+    const userId = currentUser.value.githubid;
     const res = await fetch("http://localhost:8081/api/comment-likes", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams({
-        userId: userId,
-        commentId: commentId,
-      }),
+      body: new URLSearchParams({ userId, commentId }),
       credentials: "include",
     });
 
     const data = await res.json();
-    console.log("点赞返回:", data);
-
-    // 点赞成功后刷新评论列表（更新点赞数）
     if (!data.error) {
       loadComments();
     } else {
@@ -162,61 +145,42 @@ async function likeComment(commentId) {
 
 // GitHub OAuth 登录
 function loginWithGithub() {
-  console.log("发起登录的url: "+window.location.href);
-
-  setTimeout(()=>{},20000);
-  // 在新窗口打开授权页面
-  const authUrl = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${encodeURIComponent(window.location.href)}`;
-  
-  // 打开新窗口，_blank确保在新标签页打开
-  // window.open(authUrl, '_blank');
-  window.open(authUrl, '_self');
+  if (typeof window === "undefined") return;
+  const redirect = encodeURIComponent(window.location.href);
+  const authUrl = `http://localhost:8081/oauth2/authorization/github?redirect_uri=${redirect}`;
+  window.open(authUrl, "_self");
 }
 
 // 登录出错时获取 URL 参数
 function getUrlParams() {
-  console.log("开始检测url，是否为登录错误后返回");
-  // 获取当前 URL 的查询参数部分
+  if (typeof window === "undefined") return;
   const params = new URLSearchParams(window.location.search);
-  
-  // 提取错误信息
-  const error = params.get('error');
-  const message = params.get('message');
-  
-  // 输出到控制台
-  if (error) {
-    console.log('授权失败：', error);
-  }
+  const error = params.get("error");
+  if (error) console.log("授权失败：", error, params.get("message"));
 }
 
 // 获取当前用户
 async function fetchCurrentUser() {
   try {
     const res = await fetch("http://localhost:8081/api/auth/me", {
-      credentials: "include"
+      credentials: "include",
     });
     const data = await res.json();
-
-    if (!data.error) {
-      currentUser.value = data;
-      console.log("当前用户信息：", data);
-    } else {
-      // 如果未登录，可引导前端跳转 OAuth2 授权页面
-      currentUser.value = null;
-      if (data.loginUrl) {
-        console.log("无用户登录");
-      }
-    }
+    currentUser.value = !data.error ? data : null;
   } catch (err) {
     console.error("获取用户失败", err);
     currentUser.value = null;
   }
 }
 
+// ====== 生命周期 ======
 onMounted(() => {
-  getUrlParams();
-  loadComments();
-  fetchCurrentUser();
+  if (typeof window !== "undefined") {
+    articlePath.value = getPathAfterDomain(window.location.href);
+    getUrlParams();
+    loadComments();
+    fetchCurrentUser();
+  }
 });
 </script>
 

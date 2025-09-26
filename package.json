@@ -11,6 +11,9 @@
     "docs:update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.0.1",
+    "@fortawesome/free-regular-svg-icons": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@vuepress/bundler-vite": "2.0.0-rc.23",
     "jquery": "^3.7.1",
     "katex": "^0.16.22",
@@ -27,5 +30,8 @@
       "esbuild"
     ]
   },
-  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
+  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.1"
+  }
 }

@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: book-bookmark
 date: 2025-08-22
 category:
   - Latex

@@ -173,7 +173,8 @@ export default hopeTheme({
     },
 
     icon: {
-      prefix: "fa6-solid:",
+      assets: "fontawesome",
+      // prefix: "fa6-solid:",
     },
 
     // 公告
