@@ -152,10 +152,6 @@ Hello, world!
 - **行间距**：可以使用 `\linespread{factor}` 调整，如 `\linespread{1.5}` 实现1.5倍行距。
 - **段间距**：通过调整 `\parskip` 和 `\parindent` 控制段间距和段首缩进。
 
-
-
-
-
 ### 5.2 列表
 
 在 LaTeX 中，列表分为项目列表和枚举列表。

@@ -117,10 +117,10 @@ export default sidebar({
   ],
   "/随笔/": [
     {
-      text: "期末考试专题",
+      text: "专业课专题",
       icon: "graduation-cap",
-      prefix: "期末考试专题/",
-      link: "期末考试专题/",
+      prefix: "专业课专题/",
+      link: "专业课专题/",
       collapsible: true,
       expanded: false,
       children: "structure",
@@ -148,6 +148,13 @@ export default sidebar({
       icon: "laptop-code",
       prefix: "VSCode/",
       link: "VSCode/",
+      children: "structure",
+    },
+    {
+      text: "版本控制",
+      icon: "laptop-code",
+      prefix: "版本控制/",
+      link: "版本控制/",
       children: "structure",
     },
   ],

@@ -1,6 +1,7 @@
 ---
 date: 2025-09-26
 icon: toolbox
+article: false
 category:
   - 测试
 ---

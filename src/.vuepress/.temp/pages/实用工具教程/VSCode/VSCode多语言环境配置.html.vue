@@ -1,6 +1,8 @@
 <template><div><h1 id="vscode多语言环境配置" tabindex="-1"><a class="header-anchor" href="#vscode多语言环境配置"><span>VSCode多语言环境配置</span></a></h1>
 <h2 id="一、vscode安装" tabindex="-1"><a class="header-anchor" href="#一、vscode安装"><span>一、VSCode安装</span></a></h2>
 <p><a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener noreferrer">VSCode官网下载链接</a></p>
+<h3 id="中文插件的安装" tabindex="-1"><a class="header-anchor" href="#中文插件的安装"><span>中文插件的安装</span></a></h3>
+<figure><img src="@source/实用工具教程/VSCode/img/中文插件.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <h2 id="二、vscode多配置文件" tabindex="-1"><a class="header-anchor" href="#二、vscode多配置文件"><span>二、VSCode多配置文件</span></a></h2>
 <p>在日常开发中，我们可能会在不同的场景下使用 不同的语言、框架或插件。比如：</p>
 <ul>

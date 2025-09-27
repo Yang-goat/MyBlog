@@ -14,6 +14,10 @@ tag:
 
 [VSCode官网下载链接](https://code.visualstudio.com/Download)
 
+### 中文插件的安装
+
+![](\img\中文插件.png)
+
 ## 二、VSCode多配置文件
 
 在日常开发中，我们可能会在不同的场景下使用 不同的语言、框架或插件。比如：
