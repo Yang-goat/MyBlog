@@ -1,6 +1,6 @@
 ---
 title: python语言
-icon: python
+icon: file-code
 index: false
 article: false
 ---
