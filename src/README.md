@@ -16,15 +16,15 @@ projects:
     desc: 基于vuepress的个人博客网站
     link: https://github.com/Yang-goat/MyBlog
 
-  # - icon: link
-  #   name: 链接名称
-  #   desc: 链接详细描述
-  #   link: https://链接地址
+  - icon: book
+    name: USTSthesis
+    desc: 苏州科技大学本科生毕业论文Latex模板
+    link: https://github.com/Yang-goat/USTSthesis
 
-  # - icon: book
-  #   name: 书籍名称
-  #   desc: 书籍详细描述
-  #   link: https://你的书籍链接
+  - icon: comment
+    name: 评论管理系统
+    desc: 支持github登录的个人博客评论管理系统
+    link: https://github.com/Yang-goat/MyBlog_CMBackend
 
   # - icon: newspaper
   #   name: 文章名称

@@ -43,6 +43,13 @@ export default sidebar({
       link: "深度学习/",
       children: "structure",
     },
+    {
+      text: "智能优化算法",
+      icon: "code",
+      prefix: "智能优化算法/",
+      link: "智能优化算法/",
+      children: "structure",
+    },
   ],
   "/算法/": [
     {
@@ -156,6 +163,11 @@ export default sidebar({
       prefix: "版本控制/",
       link: "版本控制/",
       children: "structure",
+    },
+    { 
+      text: "Zotero",
+      icon: "book",
+      link: "Zotero.md",
     },
   ],
   "/功能测试/": "structure",

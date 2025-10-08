@@ -1,183 +1,413 @@
 ---
 icon: book-bookmark
 date: 2025-08-22
+order: 1
 category:
   - Latex
 tag:
   - 基础
+
 ---
 
-# Latex基础
+# LaTeX基础
 
 ## 一、LaTeX 简介
 
-LaTeX 是一种基于 TeX 的排版系统，广泛用于学术界，特别是数学、物理学和计算机科学等领域。它非常适合处理复杂的数学公式，并可以生成高质量的 PDF 文档。
+LaTeX 是一种基于 TeX 的排版系统，广泛用于学术界，尤其在数学、物理、工程与计算机科学中。它能精确控制排版细节，尤其擅长处理公式、图表与参考文献，输出的 PDF 文档质量极高。  
+与所见即所得的编辑器不同，LaTeX 更像一种“写程序来排版”的语言，通过源代码生成文档。
 
-
+---
 
 ## 二、基础文档结构
 
-一个基本的 LaTeX 文档由以下部分组成：
+一个最小可运行的 LaTeX 文件如下：
 
 ```latex
 \documentclass{article}
 
-% 导言区：进行配置，包括加载宏包、定义命令、设定文档的全局属性等
+% 导言区：进行配置，包括加载宏包、定义命令、设置页面等
 
 \begin{document}
 Hello, world!
 \end{document}
 ```
 
-- `\documentclass{article}`：指定文档类型，常见的有 `article`、`report`、`book`。
-- `\begin{document}` 和 `\end{document}`：文档的开始和结束。
+- `\documentclass{article}` 指定文档类型（或称“文档类”）。
+- `\begin{document}` 与 `\end{document}` 包围正文内容。
+- 导言区用于配置全局参数、加载宏包等。
 
+---
 
+## 三、常见文档类型
 
-## 三、设置文档类型
+通过 `\documentclass[选项]{文档类}` 指定文档结构，常见类型如下：
 
-文档类型（或称为文档类）决定了你的文档的基本结构和可用的命令。通过 `\documentclass` 命令来指定文档类，这个命令位于源文件的最顶部，是每个 LaTeX 文件的必备元素。
+| 类型                   | 说明         | 特点                       |
+| ---------------------- | ------------ | -------------------------- |
+| `article`              | 文章、短报告 | 从 `\section` 开始，无章节 |
+| `report`               | 报告、论文   | 支持 `\chapter`            |
+| `book`                 | 书籍         | 包含封面、部分、章节       |
+| `beamer`               | 演示文稿     | 制作幻灯片                 |
+| `letter`               | 信件         | 用于通信格式               |
+| `ctexart` / `ctexbook` | 中文文档版本 | 自动支持中文               |
 
-1. article
-   用途：适用于科学期刊文章、演示文稿、短报告、程序文档、邀请函等。
-   特点：没有章节（chapters），从节（sections）开始。
-
-2. report
-   用途：适用于较长的报告包含多个章节，小册子，学位论文等。
-   特点：包括章节，通常不需要部分（parts）。
-3. book
-   用途：适用于真正的书籍，包括小说和许多学术出版物。
-   特点：开始于部分和章节，提供了特别的章节如前言和索引。
-4. beamer
-   用途：用于制作演示文稿。
-   特点：提供了广泛的工具和模板，以制作视觉效果吸引人的幻灯片。
-5. letter
-   用途：用于编写信件。
-   特点：具有专门的命令用于处理信件格式，如地址、日期、开头和结尾等。
-
-`ctexbook`、`ctexart`和`ctexbeamer`，这些类型自带了对中文的支持
+示例：
 
 ```latex
-\documentclass[options]{class-name}
+\documentclass[12pt,a4paper]{ctexart}
 ```
 
-其中 `class` 是文档类名称，`options` 可以包括文档的一些全局设置，如字体大小（10pt、11pt、12pt）、纸张大小（a4paper、letterpaper等）、双面打印（twoside）等。
+常见选项：
+
+- 字号：`10pt`、`11pt`、`12pt`
+- 纸张：`a4paper`、`letterpaper`
+- 排版：`oneside`、`twoside`
+
+---
+
+## 四、导言区（理解模板的核心）
+
+导言区就是配置区，决定了整个文档的“规则”。
 
 ```latex
-\documentclass[12pt, a4paper]{article}
+\usepackage{geometry}    % 控制页面布局
+\usepackage{graphicx}    % 插入图片
+\usepackage{amsmath}     % 数学环境
+\usepackage{hyperref}    % 超链接
 ```
 
+### 常见宏包功能说明
 
+- `geometry`：控制页面边距，如 `\geometry{margin=2cm}`。
+- `graphicx`：用于插图，命令 `\includegraphics`。
+- `amsmath`, `amssymb`：支持高级数学符号。
+- `hyperref`：让目录与引用可点击跳转。
+- `xcolor`：控制颜色。
+- `caption`：修改图表标题样式。
 
-## 四、导言区
-
-### 4.1 加载宏包
+示例设置：
 
 ```latex
-\usepackage{graphicx}	% 插入图片
-\usepackage{hyperref}	% 创建超链接
-\usepackage{amsmath, amsthm, amssymb}	% 与数学公式与定理环境相关宏包
-
-% 加载宏包时设置基本参数
 \usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref}
 ```
 
-### 4.2 定义或重新定义命令
+你不需要记住所有宏包，只要能看懂别人模板中的配置即可。
 
-#### 定义新命令
+---
 
-```latex
-\newcommand{\新命令大小写字母}[命令参数个数，可省略][默认参数，可省略]{命令的定义，形参#1，#2···}
-```
-
-案例
-
-```latex
-\usepackage{xcolor} % 必须加载 color 或 xcolor 宏包
-\newcommand{\note}[2][blue]{\textcolor{#1}{#2}}
-
-\note{这是一个蓝色的注释}
-\note[red]{这是一个红色的注释}
-```
-
-#### 重新定义命令
-
-```latex
-\renewcommand		% 新定义的命令与已有命令重名,重新定义命令
-\providecommand		% 命令不存在则定义新的，若存在则使用已有的
-```
-
-案例
-
-```latex
-\renewcommand{\section}[1]{\textbf{\Large #1}}	% 修改默认的章节标题样式 使所有的节标题变为粗体和大字号
-\renewcommand{\abstractname}{摘要}	% 修改Abstract为摘要
-```
-
-### 4.3 页面布局
-
-```latex
-\usepackage{geometry}	% 设置页面尺寸和边距的宏包
-\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm}
-```
-
-### 4.4 标题、日期、作者
-
-```latex
-\title{我的第一个\LaTeX 文档}
-\author{Dylaaan}
-\date{\today}
-
-\begin{document}
-\maketitle	% 文档中显示标题
-```
-
-## 五、正文
+## 五、正文写作
 
 ### 5.1 文本排版
 
-- **加粗**：`\textbf{text}`
-- **斜体**：`\textit{text}`
-- **下划线**：`\underline{text}`
+- **加粗**：`\textbf{加粗}`
+- **斜体**：`\textit{斜体}`
+- **下划线**：`\underline{下划线}`
 
-#### 对齐方式
+**段落控制**
 
-- **左对齐**：`\begin{flushleft} ... \end{flushleft}`
-- **居中**：`\begin{center} ... \end{center}`
-- **右对齐**：`\begin{flushright} ... \end{flushright}`
+- 默认首行缩进
+- 禁止缩进：`\noindent`
+- 行距：`\linespread{1.5}`
+- 段间距：`\setlength{\parskip}{1em}`
 
-#### 段落控制
-
-- **缩进**：默认首行缩进，可以通过 `\noindent` 禁止当前段落缩进。
-- **行间距**：可以使用 `\linespread{factor}` 调整，如 `\linespread{1.5}` 实现1.5倍行距。
-- **段间距**：通过调整 `\parskip` 和 `\parindent` 控制段间距和段首缩进。
-
-### 5.2 列表
-
-在 LaTeX 中，列表分为项目列表和枚举列表。
-
-**项目列表**：无序列表
+**对齐环境**
 
 ```latex
-\begin{itemize}
-  \item First item
-  \item Second item
-\end{itemize}
+\begin{flushleft} 左对齐文本 \end{flushleft}
+\begin{center} 居中内容 \end{center}
+\begin{flushright} 右对齐文本 \end{flushright}
 ```
 
-**枚举列表**：有序列表
+---
+
+## 六、插图与表格
+
+### 6.1 插入图片
 
 ```latex
-\begin{enumerate}
-  \item First item
-  \item Second item
-\end{enumerate}
+\usepackage{graphicx} % 导言区引入
 ```
-
-### 5.3 数学模式
-
-使用 `$...$` 进入行内数学模式，使用 `\[...\]`或`$$...$$` 进入行间数学模式。见latex公式笔记。
 
 ```latex
-Einstein's famous equation $E=mc^2$ expresses the equivalence of mass and energy.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{example-image}
+  \caption{示例图片}
+  \label{fig:example}
+\end{figure}
 ```
+
+- `[htbp]` 控制图片浮动位置（here, top, bottom, page）。
+- `\caption` 为图片添加标题。
+- `\label` 用于交叉引用，可用 `\ref{fig:example}` 调用。
+
+### 6.2 制作表格
+
+```latex
+\begin{table}[htbp]
+  \centering
+  \caption{示例表格}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    姓名 & 年龄 & 城市 \\ \hline
+    张三 & 25 & 北京 \\ 
+    李四 & 30 & 上海 \\ \hline
+  \end{tabular}
+\end{table}
+```
+
+- `{|c|c|c|}` 表示三列居中并有竖线。
+- `\hline` 插入横线。
+
+更复杂的表格可使用宏包 `booktabs` 或 `multirow`，使表格更美观。
+
+---
+
+## 七、数学公式
+
+数学公式是 LaTeX 的灵魂。
+
+### 7.1 行内公式
+
+```latex
+爱因斯坦质能方程：$E = mc^2$
+```
+
+### 7.2 行间公式
+
+```latex
+\[
+E = mc^2
+\]
+```
+
+### 7.3 多行与对齐
+
+```latex
+\begin{align}
+a^2 + b^2 &= c^2 \\
+E &= mc^2
+\end{align}
+```
+
+### 7.4 常用符号
+
+| 表达 | 命令           | 效果             |
+| ---- | -------------- | ---------------- |
+| 上标 | `x^{2}`        | \(x^2\)          |
+| 下标 | `a_{ij}`       | \(a_{ij}\)       |
+| 分数 | `\frac{a}{b}`  | \(\frac{a}{b}\)  |
+| 根号 | `\sqrt{x}`     | \(\sqrt{x}\)     |
+| 求和 | `\sum_{i=1}^n` | \(\sum_{i=1}^n\) |
+
+---
+
+## 八、参考文献（核心部分）
+
+### 方法一：手动输入参考文献
+
+最简单的方式是在文档末尾使用 `thebibliography` 环境：
+
+```latex
+\begin{thebibliography}{99}
+  \bibitem{einstein1905} A. Einstein, “Zur Elektrodynamik bewegter Körper,” *Annalen der Physik*, 1905.
+  \bibitem{knuth1984} D. E. Knuth, *The TeXbook*, Addison-Wesley, 1984.
+\end{thebibliography}
+```
+
+正文中引用时使用：
+
+```latex
+爱因斯坦提出了相对论 \cite{einstein1905}。
+```
+
+这种方式优点是简单、直观；缺点是难以维护、格式易错。
+
+---
+
+### 方法二：使用 `.bib` 文献数据库（推荐）
+
+1. 创建一个 `refs.bib` 文件，内容如下：
+
+```bibtex
+@article{einstein1905,
+  author = {Einstein, Albert},
+  title = {Zur Elektrodynamik bewegter Körper},
+  journal = {Annalen der Physik},
+  year = {1905},
+  volume = {17},
+  pages = {891--921}
+}
+
+@book{knuth1984,
+  author = {Knuth, Donald E.},
+  title = {The TeXbook},
+  publisher = {Addison-Wesley},
+  year = {1984}
+}
+```
+
+2. 在主文件中添加：
+
+```latex
+\bibliographystyle{plain} % 参考文献格式
+\bibliography{refs}       % 加载 bib 文件
+```
+
+3. 在正文中引用：
+
+```latex
+如文献 \cite{einstein1905} 所述，质能等价公式...
+```
+
+**编译顺序**：
+
+```bash
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+或使用 VSCode、TexStudio 等工具自动运行。
+
+---
+
+## 九、LaTeX 编译流程与推荐工具
+
+### 常见编译方式
+
+| 编译器     | 特点                   |
+| ---------- | ---------------------- |
+| `pdflatex` | 生成 PDF，兼容性好     |
+| `xelatex`  | 支持中文与系统字体     |
+| `lualatex` | 现代化、速度快         |
+| `latexmk`  | 自动判断依赖，多轮编译 |
+
+推荐中文环境使用 `xelatex`，因为它对 UTF-8 字符支持良好。
+
+### 推荐编辑器
+
+- **TeX Live / MikTeX**：完整编译环境
+- **TeXstudio / Overleaf / VSCode + LaTeX Workshop 插件**
+
+---
+
+## 十、使用别人的模板（.cls 文件）
+
+在实际写作中，我们常使用学校或期刊提供的模板。模板的核心文件是 `.cls`，它定义了文档的排版样式。
+
+### 10.1 模板结构
+
+一个典型模板项目包含如下文件：
+
+```
+template/
+├── main.tex
+├── template.cls
+├── ref.bib
+├── figures/
+├── example.pdf
+```
+
+在主文件中：
+
+```latex
+\documentclass[12pt,a4paper]{template}
+```
+
+表示当前文档将使用 `template.cls` 作为文档类。
+
+### 10.2 `.cls` 文件的作用
+
+`.cls` 文件定义了：
+
+- 页面格式（边距、字号、页眉页脚）
+- 加载的宏包
+- 定义的新命令，如 `\advisor{}`、`\school{}`
+- 特殊环境，如封面、摘要、致谢
+
+示例：
+
+```latex
+\LoadClass[12pt]{report}
+\RequirePackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+\newcommand{\advisor}[1]{\def\@advisor{#1}}
+```
+
+### 10.3 使用模板的步骤
+
+1. **放在同目录下**
+
+   ```
+   project/
+     ├── main.tex
+     ├── mythesis.cls
+   ```
+
+   在 `main.tex` 顶部：
+
+   ```latex
+   \documentclass{mythesis}
+   ```
+
+2. **或放入系统路径**
+   Windows 用户：
+
+   ```
+   C:\Users\\<用户名>\\texmf\\tex\\latex\\
+   ```
+
+   放入后运行 `texhash` 更新索引。
+
+3. **使用模板定义的命令**
+   模板通常提供自定义命令：
+
+   ```latex
+   \title{硕士论文}
+   \author{李雷}
+   \advisor{韩梅梅教授}
+   \school{电子信息学院}
+   ```
+
+### 10.4 修改模板外观
+
+| 修改目标     | 方法                                               |
+| ------------ | -------------------------------------------------- |
+| 页边距       | 使用 `\geometry{}` 覆盖                            |
+| 行距         | `\linespread{1.5}`                                 |
+| 缩进         | `\setlength{\parindent}{2em}`                      |
+| 标题编号     | `\renewcommand{\thesection}{第\arabic{section}章}` |
+| 参考文献样式 | `\bibliographystyle{}` 更改样式                    |
+| 页眉页脚     | 使用 `fancyhdr` 宏包修改                           |
+
+如模板太复杂，可创建自定义覆盖文件：
+
+```latex
+\input{custom_settings.tex}
+```
+
+### 10.5 注意事项
+
+- 文件名需与 `\documentclass{}` 匹配。
+- 模板命令不可随意删除。
+- 出现 “Undefined control sequence” 多为缺少宏包。
+
+---
+
+## 十一、小结
+
+你现在应该已经掌握：
+
+- LaTeX 文档结构与模板含义；
+- 插入图、表、公式的写法；
+- 手动与 bib 数据库管理参考文献；
+- 如何使用 `.cls` 模板完成规范排版。
+
+LaTeX 的魅力在于可扩展与可控制。学会阅读模板，即学会了“理解文档的语言”。
+
+---
+
+> “LaTeX 是理性的诗，它让文字的秩序拥有美学。”  
+> —— Donald Knuth（TeX 之父）

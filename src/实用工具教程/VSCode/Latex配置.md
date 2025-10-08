@@ -59,93 +59,62 @@ tag:
         {
             "name": "xelatex",
             "command": "xelatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOCFILE%"
-            ]
+            "args": ["-synctex=1","-interaction=nonstopmode","-file-line-error","%DOCFILE%"]
         },
         {
             "name": "pdflatex",
             "command": "pdflatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOCFILE%"
-            ]
+            "args": ["-synctex=1","-interaction=nonstopmode","-file-line-error","%DOCFILE%"]
         },
         {
             "name": "latexmk",
             "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "-outdir=%OUTDIR%",
-                "%DOCFILE%"
-            ]
+            "args": ["-synctex=1","-interaction=nonstopmode","-file-line-error","-pdf","-outdir=%OUTDIR%","%DOCFILE%"]
         },
         {
             "name": "bibtex",
             "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
+            "args": ["%DOCFILE%"]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": ["%DOCFILE%"]
         }
     ],
     // 用于配置编译链
     "latex-workshop.latex.recipes": [
         {
-            "name": "XeLaTeX",
-            "tools": [
-                "xelatex"
-            ]
+            "name": "XeLaTeX（中文文档快速编译）",
+            "tools": ["xelatex"]
         },
         {
-            "name": "PDFLaTeX",
-            "tools": [
-                "pdflatex"
-            ]
+            "name": "PDFLaTeX（英文文档快速编译）",
+            "tools": ["pdflatex"]
         },
         {
-            "name": "BibTeX",
-            "tools": [
-                "bibtex"
-            ]
+            "name": "BibTeX（仅运行 BibTeX，用于调试引用）",
+            "tools": ["bibtex"]
         },
         {
-            "name": "LaTeXmk",
-            "tools": [
-                "latexmk"
-            ]
+            "name": "LaTeXmk（英文文档自动多次编译）",
+            "tools": ["latexmk"]
         },
         {
-            "name": "XeLaTeX*2",
-            "tools": [
-                "xelatex",
-                "xelatex"
-            ]
+            "name": "XeLaTeX×2（两次编译，生成目录与交叉引用）",
+            "tools": ["xelatex", "xelatex"]
         },
         {
-            "name": "xelatex -> bibtex -> xelatex*2",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
+            "name": "XeLaTeX→Biber→XeLaTeX×2（★推荐★ 中文论文 + biblatex + biber）",
+            "tools": ["xelatex", "biber", "xelatex", "xelatex"]
         },
         {
-            "name": "pdflatex -> bibtex -> pdflatex*2",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
+            "name": "XeLaTeX→BibTeX→XeLaTeX×2（旧模板 中文论文 + bibtex）",
+            "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+        },
+        {
+            "name": "PDFLaTeX→BibTeX→PDFLaTeX×2（英文论文）",
+            "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
         }
     ],
     //文件清理。此属性必须是字符串数组
@@ -176,6 +145,8 @@ tag:
     "latex-workshop.latex.recipe.default": "lastUsed",
     // 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    // 使用VSCode内置pdf查看器
+    "latex-workshop.view.pdf.viewer": "tab",
 }
 ```
 
@@ -187,7 +158,6 @@ tag:
 
 ```json
     //使用 SumatraPDF 预览编译好的PDF文件
-    // 设置VScode内部查看生成的pdf文件
     "latex-workshop.view.pdf.viewer": "external",
     // PDF查看器用于在\ref上的[View on PDF]链接
     "latex-workshop.view.pdf.ref.viewer":"auto",
@@ -209,13 +179,6 @@ tag:
         "\"F:/Microsoft VS Code/Code.exe\" \"F:/Microsoft VS Code/resources/app/out/cli.js\" -r -g \"%f:%l\"", // 注意修改路径
         "%PDF%"
     ],
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "latex": false
-    },
 ```
 
 **📌 配置文件重点说明**
@@ -257,13 +220,13 @@ tag:
 
 ### 3. 自动编译
 
-配置文件中已设置 onSave 模式，之后只需保存文件（Ctrl+S），就会自动触发编译，并在右侧显示 PDF。
+配置文件中已设置 onSave 模式，之后只需保存文件（Ctrl+S），就会自动触发编译，接着手动双击打开编译后的pdf文件，将其改成“左代码右pdf”的布局后就能实现实时编译查看结果了。
 
 ## 六、使用技巧
 
 ### 1. 代码 & PDF 分屏
 
-可以选择 左右分屏 或 上下分屏，一边写代码，一边预览 PDF，提升效率。
+可以选择**手动** 左右分屏 或 上下分屏，一边写代码，一边预览 PDF，提升效率。
 
 ### 2. 自动换行
 
@@ -275,12 +238,15 @@ tag:
 
 输出面板：在 VSCode 底部选择 输出 → LaTeX Compiler 查看编译过程与报错位置。
 
-### 4. 快捷键提升效率
+### 4. tex代码与pdf双向跳转
+
+- pdf跳tex：双击pdf要跳转的位置
+- tex跳pdf：将光标移至需要跳转的位置，按下 `Ctrl+Alt+J`，实现跳转到pdf指定位置
+
+<!-- ### 4. 快捷键提升效率
 
 `Ctrl+Alt+B`：手动编译
 
 `Ctrl+Alt+V`：切换 PDF 预览
 
-`Ctrl+Click`（或双击 PDF）：反向搜索 → 从 PDF 定位到源码对应行
-
-`Ctrl+Shift+P` → LaTeX Workshop: SyncTeX from cursor：正向搜索 → 从源码跳到 PDF 对应位置
+`Ctrl+Shift+P` → LaTeX Workshop: SyncTeX from cursor：正向搜索 → 从源码跳到 PDF 对应位置 -->
