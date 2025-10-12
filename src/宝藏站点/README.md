@@ -1,14 +1,11 @@
 ---
-containerClass: custom-width-page   # 自定义容器别名
-sidebar: false
-breadcrumb: false
-article: false
-pageInfo: false
-index: false
+title: 宝藏站点
+layout: TreasureSites   # 使用我们自定义的布局
+sidebar: false          # 不需要侧边栏
+pageInfo: false         # 不显示作者 / 时间等信息
+breadcrumb: false       # 关闭面包屑，保持干净
+navbar: true            # ✅ 保留导航
+footer: true            # ✅ 保留主题 Footer
+prev: false
+next: false
 ---
-
-## 此页面正在更新维护中
-
-<!-- <script setup>
-import LinkNavigator from "@LinkNavigator";
-</script> -->

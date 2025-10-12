@@ -17,3 +17,24 @@
   border-radius: 100%
 }
 
+/* ✅ 标题渐变文字增强 —— 让文字本身也拥有渐变质感 */
+.treasure-title {
+  background: linear-gradient(90deg, var(--vp-c-accent), var(--vp-c-accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ✅ 让此自定义页面真正脱离主题宽度限制，100% 全屏布局 */
+.page[data-path="/宝藏站点/"] .theme-hope-content {
+  max-width: 100vw !important;
+  width: 100vw !important;
+  padding: 0 !important;
+}
+
+/* ✅ Footer 不要紧贴内容，保持呼吸感 */
+.theme-hope-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+}
+
+

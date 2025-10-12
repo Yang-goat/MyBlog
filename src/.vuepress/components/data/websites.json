@@ -1,0 +1,1045 @@
+[
+  {
+    "name": "AKShare 官方文档",
+    "url": "https://akshare.akfamily.xyz/data/index.html",
+    "desc": "提供金融数据接口与数据分析功能的 AKShare 官方文档，包含 API 使用说明",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Albumentations 使用教程",
+    "url": "https://www.ponyma.io/blog/learn-python/albumentations",
+    "desc": "提供 Albumentations 图像增强库的实用教程与使用示例",
+    "tags": ["api文档"],
+    "icon": "https://ponyma.io/static/images/twitter-card.png"
+  },
+  {
+    "name": "Albumentations 官方文档",
+    "url": "https://albumentations.ai/docs",
+    "desc": "Albumentations 图像增强库的官方文档与 API 参考",
+    "tags": ["api文档"],
+    "icon": "https://albumentations.ai/assets/og-docs.png"
+  },
+  {
+    "name": "AutoGluon 官方文档",
+    "url": "https://auto.gluon.ai/stable/install.html",
+    "desc": "AutoGluon 自动机器学习框架的官方文档与安装指南",
+    "tags": ["api文档"],
+    "icon": "https://auto.gluon.ai/dev/_static/autogluon-logo.jpg"
+  },
+  {
+    "name": "Bootstrap 官方文档",
+    "url": "https://www.bootcss.com/",
+    "desc": "Bootstrap 前端 UI 框架的中文文档与组件 API 参考",
+    "tags": ["api文档"],
+    "icon": "https://www.bootcss.com/assets/brand/bootstrap-social.png"
+  },
+  {
+    "name": "C++中文 - API参考文档",
+    "url": "https://www.apiref.com/cpp-zh/index.html",
+    "desc": "C++ 标准库函数与类的中文 API 参考文档",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Docker 官方文档",
+    "url": "https://docs.docker.com/",
+    "desc": "容器化工具 Docker 的官方文档与命令 API 指南",
+    "tags": ["api文档"],
+    "icon": "https://docs.docker.com/images/thumbnail.webp"
+  },
+  {
+    "name": "Element Plus 官方文档",
+    "url": "https://element-plus.org/zh-CN",
+    "desc": "Vue 3 组件库 Element Plus 的官方中文文档与组件 API",
+    "tags": ["api文档"],
+    "icon": "https://element-plus.org/images/element-plus-og-image.png"
+  },
+  {
+    "name": "ggplot2 官方文档 | R",
+    "url": "https://ggplot2.tidyverse.org/index.html",
+    "desc": "R 语言可视化库 ggplot2 的官方 API 参考与绘图指南",
+    "tags": ["api文档"],
+    "icon": "https://ggplot2.tidyverse.org/logo.png"
+  },
+  {
+    "name": "JDK 17 官方文档",
+    "url": "https://docs.oracle.com/en/java/javase/17/docs/api",
+    "desc": "Java JDK 17 的官方 API 参考文档与类库说明",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "LaTeX公式 文档",
+    "url": "https://www.cnblogs.com/1024th/p/11623258.html",
+    "desc": "提供 LaTeX 数学公式语法与排版使用方法的文档",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Linux命令大全 文档",
+    "url": "https://www.linuxcool.com/",
+    "desc": "收录常用 Linux 命令及其参数说明的命令手册",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Maven Repository官方",
+    "url": "https://mvnrepository.com/",
+    "desc": "Java 依赖管理仓库 Maven Repository 的索引与组件文档",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "opencv 官方文档",
+    "url": "https://apachecn.github.io/opencv-doc-zh#/",
+    "desc": "OpenCV 计算机视觉库的中文文档和 API 说明",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "pandas 官方文档",
+    "url": "https://pandas.pydata.org/docs/reference/index.html",
+    "desc": "Python 数据分析库 pandas 的官方 API 文档",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Python 官方文档",
+    "url": "https://docs.python.org/zh-cn/3/c-api/intro.html",
+    "desc": "Python 语言 C API 的官方文档与扩展接口说明",
+    "tags": ["api文档"],
+    "icon": "https://docs.python.org/3.14/zh-cn/_images/social_previews/summary_c-api_intro_fc247e51.png"
+  },
+  {
+    "name": "scikit-learn中文社区",
+    "url": "https://scikit-learn.org.cn/",
+    "desc": "scikit-learn 机器学习库的中文社区文档与教程",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Spring 官方文档",
+    "url": "https://spring.io/projects",
+    "desc": "Spring 生态系统的官方项目文档与 API 列表",
+    "tags": ["api文档"],
+    "icon": "https://spring.io/img/og-spring.png"
+  },
+  {
+    "name": "VeighNa 官方文档",
+    "url": "https://www.vnpy.com/docs/cn/index.html",
+    "desc": "量化交易框架 VeighNa 的官方中文文档与接口说明",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Vue.js 官方文档",
+    "url": "https://cn.vuejs.org/guide/introduction.html",
+    "desc": "Vue.js 前端框架的官方中文文档与组件 API",
+    "tags": ["api文档"],
+    "icon": "https://vuejs.org/images/logo.png"
+  },
+  {
+    "name": "VuePress 官方文档",
+    "url": "https://v2.vuepress.vuejs.org/zh",
+    "desc": "VuePress 静态站点生成工具的官方中文文档与配置 API",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "vuepress-theme-hope 官方文档",
+    "url": "https://theme-hope.vuejs.press/zh/",
+    "desc": "VuePress Theme Hope 主题的官方配置文档与组件 API",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Zotero 中文社区",
+    "url": "https://zotero-chinese.com/",
+    "desc": "文献管理工具 Zotero 的中文社区与使用文档",
+    "tags": ["api文档"],
+    "icon": "https://zotero-chinese.com/logo.png"
+  },
+  {
+    "name": "微信开放文档",
+    "url": "https://developers.weixin.qq.com/doc/",
+    "desc": "微信开放平台提供的接口文档与开发 API 参考",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "整数数列大全",
+    "url": "https://oeis.org/?language=chineseS",
+    "desc": "整数数列 OEIS 的中文索引与数列查询功能",
+    "tags": ["api文档"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "DCloud系前端开发下载",
+    "url": "https://www.dcloud.io/",
+    "desc": "提供HBuilderX、uni-app等前端开发工具的官方下载入口",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Eclipse下载",
+    "url": "https://www.eclipse.org/downloads/packages",
+    "desc": "Eclipse Java及多语言开发IDE的官方下载页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "IntelliJ IDEA下载",
+    "url": "https://www.jetbrains.com/idea",
+    "desc": "JetBrains 提供的 IntelliJ IDEA 集成开发环境下载入口",
+    "tags": ["软件下载"],
+    "icon": "https://resources.jetbrains.com/storage/products/intellij-idea/img/meta/preview.png"
+  },
+  {
+    "name": "Java下载 | adoptium",
+    "url": "https://adoptium.net/zh-CN/temurin/releases?version=17",
+    "desc": "Adoptium 提供的 OpenJDK 发行版 Temurin 的下载页面",
+    "tags": ["软件下载"],
+    "icon": "https://adoptium.net/images/social-image.jpg"
+  },
+  {
+    "name": "Java下载 | Oracle",
+    "url": "https://www.oracle.com/java/technologies/downloads",
+    "desc": "Oracle 官方发布的 Java JDK 与 JRE 下载页面",
+    "tags": ["软件下载"],
+    "icon": "https://www.oracle.com/a/ocom/img/social-og-java-logo-1200x628.jpg"
+  },
+  {
+    "name": "jQuery Mobile下载",
+    "url": "https://jquerymobile.com/download",
+    "desc": "jQuery Mobile 移动端框架的资源下载入口",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "jQuery下载",
+    "url": "https://jquery.com/download",
+    "desc": "jQuery 前端库的官方版本下载页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "MySQL下载",
+    "url": "https://dev.mysql.com/downloads",
+    "desc": "MySQL 数据库服务端与客户端工具的官方下载入口",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Node.js下载",
+    "url": "https://nodejs.org/zh-cn/download",
+    "desc": "Node.js JavaScript 运行时的官方发行版下载页面",
+    "tags": ["软件下载"],
+    "icon": "https://nodejs.org/en/next-data/og/announcement/Node.js%20%E2%80%94%20Run%20JavaScript%20Everywhere"
+  },
+  {
+    "name": "PyCharm下载",
+    "url": "https://www.jetbrains.com.cn/en-us/pycharm",
+    "desc": "JetBrains 提供的 Python IDE PyCharm 的下载页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Python下载",
+    "url": "https://www.python.org/downloads/windows",
+    "desc": "Python 官方提供的 Windows 版本下载页面",
+    "tags": ["软件下载"],
+    "icon": "https://www.python.org/static/opengraph-icon-200x200.png"
+  },
+  {
+    "name": "Spring Initializr",
+    "url": "https://start.spring.io/;",
+    "desc": "Spring Boot 项目初始化与打包生成工具页面",
+    "tags": ["软件下载"],
+    "icon": "https://start.spring.io/images/initializr-card.jpg"
+  },
+  {
+    "name": "Tomcat下载",
+    "url": "https://tomcat.apache.org/",
+    "desc": "Apache Tomcat 服务器官方下载与镜像资源页",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Ubuntu下载",
+    "url": "https://cn.ubuntu.com/download/desktop",
+    "desc": "Ubuntu 官方桌面版 Linux 系统的下载页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Visual Studio Code下载",
+    "url": "https://code.visualstudio.com/",
+    "desc": "微软提供的轻量级代码编辑器 VS Code 的下载站点",
+    "tags": ["软件下载"],
+    "icon": "https://code.visualstudio.com/opengraphimg/opengraph-home.png"
+  },
+  {
+    "name": "Zotero下载",
+    "url": "https://www.zotero.org/",
+    "desc": "文献管理工具 Zotero 的官方下载页面",
+    "tags": ["软件下载"],
+    "icon": "https://rdl.ink/render/https%3A%2F%2Fwww.zotero.org%2F"
+  },
+  {
+    "name": "各类软件资源下载",
+    "url": "https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg3NTU2NTMwNw==&action=getalbum&album_id=3854794802835308550#wechat_redirect",
+    "desc": "整理分享各类常用软件资源与下载链接的合集页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "篡改猴·油猴 | 浏览器插件下载",
+    "url": "https://microsoftedge.microsoft.com/addons/detail/%E7%AF%A1%E6%94%B9%E7%8C%B4/iikmkjmpaadaobahmlepeloendndfphd",
+    "desc": "Tampermonkey 油猴脚本管理插件的浏览器商店下载页面",
+    "tags": ["软件下载"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "AtCoder Problems",
+    "url": "https://kenkoooo.com/atcoder#/table/",
+    "desc": "AtCoder 在线评测平台的题目数据统计与刷题进度跟踪工具",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Codeforces",
+    "url": "https://codeforces.com/",
+    "desc": "国际知名算法竞赛平台 Codeforces，提供实时比赛与在线评测系统",
+    "tags": ["算法刷题·OJ"],
+    "icon": "https://codeforces.org/s/81048/images/codeforces-sponsored-by-ton.png"
+  },
+  {
+    "name": "Codeforces (Unofficial mirror by Menci)",
+    "url": "https://codeforc.es/",
+    "desc": "由 Menci 提供的 Codeforces 非官方镜像站，方便国内访问与刷题",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "LeetCode中文官网",
+    "url": "https://leetcode.cn/",
+    "desc": "LeetCode 中文社区，提供算法练习题库与国内竞赛讨论区",
+    "tags": ["算法刷题·OJ"],
+    "icon": "https://leetcode.com/static/images/LeetCode_Sharing.png"
+  },
+  {
+    "name": "LeetCode英文官网",
+    "url": "https://leetcode.com/problemset/all",
+    "desc": "LeetCode 英文国际站，提供全球范围内的算法题与编程挑战",
+    "tags": ["算法刷题·OJ"],
+    "icon": "https://leetcode.com/static/images/LeetCode_Sharing.png"
+  },
+  {
+    "name": "OJ Analyzer",
+    "url": "https://ojhunt.com/",
+    "desc": "OJ Hunt 提供多平台刷题数据同步与解题记录统计功能",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "QOJ",
+    "url": "https://qoj.ac/",
+    "desc": "QOJ 在线评测系统，提供高性能算法题提交与评测服务",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "新手题单·牛客竞赛",
+    "url": "https://ac.nowcoder.com/discuss/817596",
+    "desc": "牛客竞赛平台提供的新手入门算法题单与刷题路线推荐",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "洛谷",
+    "url": "https://www.luogu.com.cn/",
+    "desc": "洛谷在线评测平台，汇集各大算法竞赛题目与讨论区",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "牛客网",
+    "url": "https://www.nowcoder.com/",
+    "desc": "牛客网提供算法题库、企业笔试OJ系统与竞赛刷题功能",
+    "tags": ["算法刷题·OJ"],
+    "icon": "https://static.nowcoder.com/fe/common/share-logo.png"
+  },
+  {
+    "name": "苏州科技大学OJ",
+    "url": "https://usts.fun/home",
+    "desc": "苏州科技大学提供的校园在线评测系统，用于算法训练与竞赛",
+    "tags": ["算法刷题·OJ"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "JSON在线解析及格式化验证",
+    "url": "https://www.json.cn/",
+    "desc": "提供JSON字符串在线格式化、解析与校验的工具平台",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "RGB颜色值与十六进制颜色码转换工具",
+    "url": "https://www.sioe.cn/yingyong/yanse-rgb-16",
+    "desc": "用于RGB颜色值与十六进制颜色代码转换的在线工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "UUID 生成器",
+    "url": "https://www.uuid.online/",
+    "desc": "提供在线UUID随机生成与格式展示的工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "万能命令 | 针对站点可用的工具",
+    "url": "https://wannengrun.com/",
+    "desc": "集合多种常用功能的在线工具合集平台",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "可视化代码执行 | Python, JavaScript, C, C++, and Java",
+    "url": "https://pythontutor.com/",
+    "desc": "提供代码执行过程可视化展示的编程学习工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "在线LaTeX编辑器 | Overleaf",
+    "url": "https://cn.overleaf.com/project",
+    "desc": "提供在线协作式LaTeX文档编写与编译环境",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "在线PDF工具 | iLovePDF",
+    "url": "https://www.ilovepdf.com/index.php",
+    "desc": "支持PDF合并、拆分、转换等功能的在线文档处理平台",
+    "tags": ["在线工具"],
+    "icon": "https://www.ilovepdf.com/img/ilovepdf/social/en-US/ilovepdf.png"
+  },
+  {
+    "name": "在线前端开发 | StackBlitz",
+    "url": "https://stackblitz.com/",
+    "desc": "基于浏览器的在线前端项目开发与运行环境",
+    "tags": ["在线工具"],
+    "icon": "https://stackblitz.com/_astro/social_general.jpg"
+  },
+  {
+    "name": "在线录音转文字-语音转文字-录音整理-语音翻译软件 | 讯飞听见",
+    "url": "https://www.iflyrec.com/home/",
+    "desc": "讯飞提供的在线语音转文字与翻译工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "在线编程工具 | 菜鸟工具",
+    "url": "https://c.runoob.com/compile/11",
+    "desc": "提供多语言编译与代码调试功能的在线编程工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "在线翻译 | Bing Microsoft Translator",
+    "url": "https://cn.bing.com/translator?from=en&ref=TThis&text=&to=zh-Hans",
+    "desc": "微软提供的在线翻译工具，支持多语言互译",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "在线转换文档，图像，视频，音频文件",
+    "url": "https://www.aconvert.com/cn",
+    "desc": "支持多种格式之间转换的在线文件转换平台",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "查询自己的IP地址",
+    "url": "http://ip111.cn/",
+    "desc": "用于查询本机公网IP地址及网络信息的在线工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "测网速网站 | 中国科学技术大学",
+    "url": "http://test.ustc.edu.cn/",
+    "desc": "由中国科学技术大学提供的在线网速测试工具",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "网易云NCM转MP3",
+    "url": "https://www.ncm2mp3.com/",
+    "desc": "支持NCM格式音乐在线转换为MP3的工具站点",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "腾讯文档",
+    "url": "https://docs.qq.com",
+    "desc": "腾讯提供的在线文档协作与多格式编辑平台",
+    "tags": ["在线工具"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "《动手学深度学习》官方文档",
+    "url": "https://zh.d2l.ai/index.html",
+    "desc": "提供深度学习基础与实战代码的交互式中文学习文档",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "C语言中文网",
+    "url": "http://c.biancheng.net/",
+    "desc": "面向初学者的C语言及相关编程技术中文学习站点",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/zh-CN",
+    "desc": "Mozilla 提供的Web开发技术文档，涵盖HTML、CSS和JavaScript等内容",
+    "tags": ["计算机学习站点"],
+    "icon": "https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png"
+  },
+  {
+    "name": "OI Wiki",
+    "url": "https://oi-wiki.org/",
+    "desc": "面向算法竞赛与数据结构学习的开源知识站点",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "SSM+Spring Boot+MyBatis-Plus 实战文档",
+    "url": "https://www.wolai.com/v5Kuct5ZtPeVBk4NBUGBWF",
+    "desc": "记录基于SSM与Spring Boot框架的实战开发文档与学习路径",
+    "tags": ["计算机学习站点"],
+    "icon": "https://secure2.wostatic.cn/cover/iZnUbXpVe215Bheg3SNYnm/head.jpg?auth_key=1760258851-c5o4nTvaUQ87QfVR4hwHo7-0-4769f1ee00af2ad9fd957cfd422a914e&image_process=resize,s_100"
+  },
+  {
+    "name": "数据结构可视化·图",
+    "url": "https://csacademy.com/app/graph_editor",
+    "desc": "提供图结构相关算法的可视化编辑与动态演示工具",
+    "tags": ["计算机学习站点"],
+    "icon": "https://csacademy.com/static/icon.png"
+  },
+  {
+    "name": "数据结构和算法动态可视化 | usfca",
+    "url": "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html",
+    "desc": "展示数据结构与算法执行过程的动态可视化学习站点",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "数据结构和算法动态可视化 | VisuAlgo",
+    "url": "https://visualgo.net/zh",
+    "desc": "VisuAlgo 在线平台，用于可视化学习各种数据结构和算法",
+    "tags": ["计算机学习站点"],
+    "icon": "https://visualgo.net/img/png.png"
+  },
+  {
+    "name": "绿叶学习网",
+    "url": "http://www.lvyestudy.com/",
+    "desc": "提供编程基础、软考课程与计算机理论知识学习资源的网站",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "菜鸟教程",
+    "url": "https://www.runoob.com/",
+    "desc": "面向零基础学习者的编程语言与开发技术中文教程站点",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "计算机科学与技术自学指南",
+    "url": "https://csdiy.wiki/",
+    "desc": "汇总计算机专业系统学习路线与课程资源的自学导航站",
+    "tags": ["计算机学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "ImGaoMj's Blog",
+    "url": "https://www.yuque.com/imgaomj/think",
+    "desc": "记录数学思维、统计学习和相关知识笔记的个人博客站点",
+    "tags": ["数学学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Yifei Xiong's Blog",
+    "url": "https://bookdown.org/yifei/book/",
+    "desc": "Yifei Xiong 编写的数学与机器学习学习笔记类文档站点",
+    "tags": ["数学学习站点"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "统计学习精要 电子书",
+    "url": "https://xishansnow.github.io/ElementsOfStatisticalLearning/intro.html",
+    "desc": "《统计学习精要》电子书版本，涵盖统计学习方法与公式推导",
+    "tags": ["数学学习站点"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "CSDN",
+    "url": "https://www.csdn.net/",
+    "desc": "国内知名的开发者技术社区，提供博客、问答与技术资源分享",
+    "tags": ["论坛 | 资源"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "FOFA网络空间测绘系统 | 网络安全",
+    "url": "https://fofa.info/",
+    "desc": "FOFA 网络空间测绘平台，用于网络安全资产搜索与信息情报收集",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://fofa.info/og-fofa.png"
+  },
+  {
+    "name": "Gitee",
+    "url": "https://gitee.com/",
+    "desc": "国产开源代码托管平台 Gitee，提供Git项目管理与协作",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://gitee.com/static/images/logo.svg"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/",
+    "desc": "全球最大的开源项目托管与协作平台，开发者社区交流与技术资源聚集地",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://images.ctfassets.net/8aevphvgewt8/4UxhHBs2XnuyZ4lYQ83juV/b61529b087aeb4a318bda311edf4c345/home24.jpg"
+  },
+  {
+    "name": "Goat_Yang个人博客",
+    "url": "https://goatyang.com/",
+    "desc": "收录开发笔记、资源导航与学习心得的个人技术博客站点",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://rdl.ink/render/https%3A%2F%2Fgoatyang.com%2F"
+  },
+  {
+    "name": "Stack Overflow中文网",
+    "url": "https://stackoverflow.org.cn/",
+    "desc": "Stack Overflow中文镜像站，提供编程问答与技术讨论社区",
+    "tags": ["论坛 | 资源"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "开发者搜索-Beta-让技术搜索更简单高效",
+    "url": "https://kaifa.baidu.com/",
+    "desc": "百度推出的开发者技术资源聚合搜索平台",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://kaifa.baidu.com/images/logo.png"
+  },
+  {
+    "name": "脚本之家_www.jb51.net",
+    "url": "https://www.jb51.net/",
+    "desc": "提供源码、脚本、开发技术文章与软件下载资源的平台",
+    "tags": ["论坛 | 资源"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "中国研究生招生信息网",
+    "url": "https://yz.chsi.com.cn/",
+    "desc": "官方研究生招生信息服务平台，提供考研报名、信息查询与政策发布",
+    "tags": ["研究生入学"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "研招网·推免系统",
+    "url": "https://yz.chsi.com.cn/tm/index",
+    "desc": "教育部指定的推免系统，用于推荐免试研究生报名与确认",
+    "tags": ["研究生入学"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "研途考研",
+    "url": "https://www.kaoyanvip.cn/",
+    "desc": "提供考研资讯、备考资料与院校信息查询的在线服务平台",
+    "tags": ["研究生入学"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Canva可画",
+    "url": "https://www.canva.cn/",
+    "desc": "提供在线海报、PPT、社交媒体设计模板的可视化设计平台",
+    "tags": ["素材设计"],
+    "icon": "https://content-management-files.canva.cn/9ecf4cbb-2da2-450c-8988-d14e795c2523/og-image-cn-1200x630.jpg"
+  },
+  {
+    "name": "iconfont-阿里巴巴矢量图标库",
+    "url": "https://www.iconfont.cn/",
+    "desc": "阿里巴巴出品的矢量图标库与在线图标管理平台",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Latex Templates | Overleaf",
+    "url": "https://www.overleaf.com/latex/templates",
+    "desc": "Overleaf提供的各类LaTeX排版模板资源库",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "PPT模板 | HiPPTER",
+    "url": "http://www.hippter.com/",
+    "desc": "HiPPTER 提供PPT模板与设计资源的在线站点",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "PPT模板 | 蓝山办公",
+    "url": "https://www.office.cn",
+    "desc": "蓝山办公提供PPT模板、简历模板与办公素材下载资源",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "图文素材 | 新晴网",
+    "url": "https://www.sioe.cn/",
+    "desc": "新晴网提供图文模板、海报素材和多类设计资源",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "多样文字生成工具",
+    "url": "https://www.sioe.cn/yingyong",
+    "desc": "提供多种排版风格的文字生成与特效字样制作工具",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "芊芊简历 | 免费简历",
+    "url": "https://app.qqjl.cn/dashboard/resumes",
+    "desc": "在线制作简历模板的平台，支持导出与样式自定义",
+    "tags": ["素材设计"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "问卷星",
+    "url": "https://www.wjx.cn/",
+    "desc": "在线问卷与信息收集表单制作平台，支持多种模板与数据导出",
+    "tags": ["素材设计"],
+    "icon": "https://image.wjx.cn/images/wlogo.png"
+  },
+  {
+    "name": "中国大学MOOC(慕课)",
+    "url": "https://www.icourse163.org/",
+    "desc": "提供高校课程与公开教学内容的在线学习平台",
+    "tags": ["网络学习"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "传智 | 高校学习平台",
+    "url": "https://stu.ityxb.com/",
+    "desc": "传智教育推出的高校课程在线学习与实训平台",
+    "tags": ["网络学习"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "国家高等教育智慧教育平台",
+    "url": "https://higher.smartedu.cn/",
+    "desc": "教育部推出的国家级高等教育学习与教学资源平台",
+    "tags": ["网络学习"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "批改网 | 在线英文写作平台",
+    "url": "https://www.pigai.org/",
+    "desc": "支持英文写作批改与评估的在线学习平台",
+    "tags": ["网络学习"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "超星学习通",
+    "url": "https://www.chaoxing.com/",
+    "desc": "用于高校线上课程学习与资源管理的学习通平台",
+    "tags": ["网络学习"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Bohrium | AI科学竞赛",
+    "url": "https://bohrium.dp.tech/competitions?bd_vid=11398490953478044581",
+    "desc": "提供AI科学竞赛与算法挑战活动的官方平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "CET | 全国大学英语四、六级考试官网",
+    "url": "https://cet-bm.neea.edu.cn/",
+    "desc": "全国大学英语四六级考试报名与信息查询官网",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "COMAP | 美赛官网",
+    "url": "https://www.contest.comap.com/undergraduate/contests",
+    "desc": "美国大学生数学建模竞赛COMAP官方信息发布网站",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "CUMCM | 全国大学生数学建模竞赛",
+    "url": "http://www.mcm.edu.cn/",
+    "desc": "全国大学生数学建模竞赛的官方报名与公告平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "GPLT | 团体程序设计天梯赛官网",
+    "url": "https://gplt.patest.cn/regulation",
+    "desc": "团体程序设计天梯赛官方竞赛平台与规则发布页",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://static.pintia.cn/gplt/icons/PTA-logo.svg"
+  },
+  {
+    "name": "ICPC | 全球官网",
+    "url": "https://icpc.global/",
+    "desc": "国际大学生程序设计竞赛 ICPC 全球官方网站",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://icpc.global/static/media/mainLogoMobile2025.eece84ae910d60256b54.png"
+  },
+  {
+    "name": "ICPC | 北京总部",
+    "url": "https://icpc.pku.edu.cn/index.htm",
+    "desc": "ICPC 亚洲区域赛北京总部官方信息发布平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Kaggle | 机器学习竞赛及社区",
+    "url": "https://www.kaggle.com/",
+    "desc": "全球知名机器学习竞赛平台与数据科学社区",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://www.kaggle.com/static/images/logos/kaggle-logo-opengraph.png"
+  },
+  {
+    "name": "NCRE | 全国计算机等级考试",
+    "url": "https://ncre.neea.edu.cn/",
+    "desc": "全国计算机等级考试（NCRE）官方信息查询平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "N中国教育考试网",
+    "url": "https://www.neea.edu.cn/",
+    "desc": "教育部考试中心官方门户，提供各类考试资讯与服务",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "PTA | 程序设计类实验辅助教学平台",
+    "url": "https://pintia.cn/problem-sets/dashboard",
+    "desc": "PTA 程序设计类课程实验与竞赛辅助教学系统",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://static.pintia.cn/sparkling-daydream/icons/PTA-logo.svg"
+  },
+  {
+    "name": "UEP报名管理系统 | PTA",
+    "url": "https://uep.pintia.cn/dashboard",
+    "desc": "PTA 竞赛报名与管理系统，用于赛事参赛登记",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://static.pintia.cn/assets/open-graph/PAT_v3.png"
+  },
+  {
+    "name": "XCPCIOBoard榜单",
+    "url": "https://board.xcpcio.com/",
+    "desc": "XCPC IO 提供的编程竞赛榜单与队伍成绩查询平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "https://xcpcio.com/og.png"
+  },
+  {
+    "name": "中国高校计算机大赛",
+    "url": "http://www.c4best.cn/",
+    "desc": "中国高校计算机系列竞赛与赛事官网信息发布平台",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "蓝桥杯大赛",
+    "url": "https://dasai.lanqiao.cn/",
+    "desc": "全国蓝桥杯大赛报名与赛程公告官方站点",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "软考 | 中国计算机技术职业资格网",
+    "url": "https://www.ruankao.org.cn/",
+    "desc": "软考官方门户，提供报名入口、考试资讯与政策通知",
+    "tags": ["考试及竞赛官网"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "Chatbox",
+    "url": "https://web.chatboxai.app/",
+    "desc": "轻量级桌面AI聊天工具，支持多模型对话与本地聊天记录管理",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "ChatGPT",
+    "url": "https://chatgpt.com/",
+    "desc": "OpenAI 提供的 ChatGPT 对话平台，支持自然语言交互与AI助手功能",
+    "tags": ["ai大模型"],
+    "icon": "https://cdn.oaistatic.com/assets/chatgpt-share-og-u7j5uyao.webp"
+  },
+  {
+    "name": "DeepSeek",
+    "url": "https://chat.deepseek.com/",
+    "desc": "DeepSeek 提供的AI大模型对话平台，支持代码生成与智能问答",
+    "tags": ["ai大模型"],
+    "icon": "https://cdn.deepseek.com/images/deepseek-chat-open-graph-image.jpeg"
+  },
+  {
+    "name": "iFlyCode",
+    "url": "https://iflycode.xfyun.cn/",
+    "desc": "讯飞推出的AI代码辅助写作与智能编程助手平台",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Kimi AI",
+    "url": "https://www.kimi.com/",
+    "desc": "Moonshot AI 推出的 Kimi 助手，支持长文本理解与对话增强",
+    "tags": ["ai大模型"],
+    "icon": "https://rdl.ink/render/https%3A%2F%2Fwww.kimi.com%2F"
+  },
+  {
+    "name": "SiliconCloud",
+    "url": "https://cloud.siliconflow.cn/models",
+    "desc": "SiliconFlow 模型云平台，提供多种开源大模型的在线调用与部署",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Sora",
+    "url": "https://sora.chatgpt.com/explore",
+    "desc": "OpenAI Sora 视频生成与AI媒体内容实验平台",
+    "tags": ["ai大模型"],
+    "icon": "https://cdn.openai.com/sora/images/og-cover-24.jpg"
+  },
+  {
+    "name": "TRAE",
+    "url": "https://www.trae.cn/",
+    "desc": "TRAE AI 模型平台，支持多模态对话与效率工具集成",
+    "tags": ["ai大模型"],
+    "icon": "https://rdl.ink/render/https%3A%2F%2Fwww.trae.cn%2F"
+  },
+  {
+    "name": "文心一言",
+    "url": "https://yiyan.baidu.com/",
+    "desc": "百度推出的文心大模型交互平台，支持AI写作与智能对话",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "腾讯元宝",
+    "url": "https://yuanbao.tencent.com/chat",
+    "desc": "腾讯推出的 AI 助手平台，支持知识问答与内容生成",
+    "tags": ["ai大模型"],
+    "icon": "https://yuanbao.tencent.com/logo-v2.png"
+  },
+  {
+    "name": "讯飞开放平台",
+    "url": "https://www.xfyun.cn/",
+    "desc": "科大讯飞提供的AI开发接口与多模态模型服务平台",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "讯飞星火认知大模型",
+    "url": "https://xinghuo.xfyun.cn/",
+    "desc": "讯飞推出的星火大模型对话平台，支持AI问答与代码辅助",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "豆包",
+    "url": "https://www.doubao.com/chat?channel=bing_sem&keywordid=15011&msclkid=2db1fa04d9ef12dfa9c79d8cada229a5&source=dbweb_bing_sem_xhs_pp_hexin_changwei_07",
+    "desc": "字节跳动豆包AI智能助手平台，支持多场景创作与对话",
+    "tags": ["ai大模型"],
+    "icon": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/logo_new.png"
+  },
+  {
+    "name": "通义千问",
+    "url": "https://www.tongyi.com/",
+    "desc": "阿里云推出的通义千问大模型平台，支持AI对话与知识应用",
+    "tags": ["ai大模型"],
+    "icon": "/websites/default.svg"
+  },
+    {
+    "name": "dblp: computer science bibliography",
+    "url": "https://dblp.org/",
+    "desc": "计算机科学领域文献检索与学术引用数据库",
+    "tags": ["文献"],
+    "icon": "https://dblp.org/img/logo.320x120.png"
+  },
+  {
+    "name": "Hugging Face | AI领域文献",
+    "url": "https://huggingface.co/papers/trending",
+    "desc": "Hugging Face 提供的AI热门论文与文献趋势追踪平台",
+    "tags": ["文献"],
+    "icon": "https://huggingface.co/front/thumbnails/trending-papers.png"
+  },
+  {
+    "name": "Zotero 插件商店 | Zotero 中文社区",
+    "url": "https://zotero-chinese.com/plugins",
+    "desc": "Zotero 文献管理工具插件资源库，支持增强引用与文献整理功能",
+    "tags": ["文献"],
+    "icon": "https://zotero-chinese.com/logo.png"
+  },
+  {
+    "name": "中国知网",
+    "url": "https://www.cnki.net/",
+    "desc": "中国知网学术文献数据库，提供论文检索与学术资源下载服务",
+    "tags": ["文献"],
+    "icon": "https://rdl.ink/render/https%3A%2F%2Fwww.cnki.net%2F"
+  },
+  {
+    "name": "文献下载平台 | 4243导航",
+    "url": "http://www.4243.net/",
+    "desc": "提供多学科学术论文下载入口的聚合导航平台",
+    "tags": ["文献"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "知网研学 | 数模国赛",
+    "url": "https://cumcm.cnki.net/cumcm/Login/LoginIndex#/AccountManage",
+    "desc": "知网研学平台，提供数模竞赛与论文资源支持服务",
+    "tags": ["文献"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "黄大年茶思屋 | 华为学术",
+    "url": "https://www.chaspark.com/#/home",
+    "desc": "华为学术平台，聚合科研资源与学术论文交流社区",
+    "tags": ["文献"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Statista - 市场数据、市场研究和市场研究的统计门户",
+    "url": "https://www.statista.com/",
+    "desc": "Statista 提供全球市场数据、行业分析与可视化统计报告的平台",
+    "tags": ["数据"],
+    "icon": "https://cdn.statcdn.com/static/img/openGraph/statista.png"
+  },
+  {
+    "name": "纯干货官方统计数据网站 - 知乎",
+    "url": "https://zhuanlan.zhihu.com/p/658203563",
+    "desc": "知乎内容整理的官方统计数据平台合集推荐页面",
+    "tags": ["数据"],
+    "icon": "/websites/default.svg"
+  },
+  {
+    "name": "Beatport | DJ & Electronic Dance Music, Tracks & Mixes",
+    "url": "https://www.beatport.com/",
+    "desc": "Beatport 提供DJ电子舞曲音轨下载与混音资源的专业音乐平台",
+    "tags": ["音乐"],
+    "icon": "https://www.beatport.com/images/beatport-social-image.png"
+  }
+]
