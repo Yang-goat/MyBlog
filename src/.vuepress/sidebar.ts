@@ -1,13 +1,39 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-  "/笔记/": [
+  "/ai-ml/": [
+    {
+      text: "学习类算法导论",
+      icon: "book",
+      link: "Introduction-to-Learning-Algorithms.md",
+    },
+    {
+      text: "深度学习",
+      icon: "code",
+      prefix: "deep-learning/",
+      link: "deep-learning/",
+      children: "structure",
+    },
+    {
+      text: "智能优化算法",
+      icon: "code",
+      prefix: "optimization/",
+      link: "optimization/",
+      children: "structure",
+    },
+    {
+      text: "多目标优化问题",
+      icon: "book",
+      link: "Multi-objective-optimization.md",
+    },
+  ],
+  "/dev/": [
     "",
     {
       text: "程序设计语言",
       icon: "code",
-      prefix: "程序设计语言/",
-      link: "程序设计语言/",
+      prefix: "language/",
+      link: "language/",
       children: [
         {
           text: "Java",
@@ -32,102 +58,17 @@ export default sidebar({
     {
       text: "前端",
       icon: "laptop-code",
-      prefix: "前端/",
-      link: "前端/",
-      children: "structure",
-    },
-    {
-      text: "深度学习",
-      icon: "code",
-      prefix: "深度学习/",
-      link: "深度学习/",
-      children: "structure",
-    },
-    {
-      text: "智能优化算法",
-      icon: "code",
-      prefix: "智能优化算法/",
-      link: "智能优化算法/",
+      prefix: "frontend/",
+      link: "frontend/",
       children: "structure",
     },
   ],
-  "/算法/": [
-    {
-      text: "竞赛板子",
-      link: "竞赛板子.md",
-      icon: "lightbulb",
-    },
-    {
-      text: "基础算法",
-      prefix: "基础算法/",
-      link: "基础算法/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "数据结构",
-      prefix: "数据结构/",
-      link: "数据结构/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "图论",
-      prefix: "图论/",
-      link: "图论/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "动态规划(DP)",
-      prefix: "动态规划(DP)/",
-      link: "动态规划(DP)/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "数学与数论",
-      prefix: "数学与数论/",
-      link: "数学与数论/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "字符串算法",
-      prefix: "字符串算法/",
-      link: "字符串算法/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "计算几何",
-      prefix: "计算几何/",
-      link: "计算几何/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
-      text: "杂项",
-      prefix: "杂项/",
-      link: "杂项/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-  ],
-  "/随笔/": [
+  "/notes/": [
     {
       text: "专业课专题",
       icon: "graduation-cap",
-      prefix: "专业课专题/",
-      link: "专业课专题/",
+      prefix: "major/",
+      link: "major/",
       collapsible: true,
       expanded: false,
       children: "structure",
@@ -135,14 +76,91 @@ export default sidebar({
     {
       text: "数学建模专题",
       icon: "graduation-cap",
-      prefix: "数学建模专题/",
-      link: "数学建模专题/",
+      prefix: "MCM/",
+      link: "MCM/",
       collapsible: true,
       expanded: true,
       children: "structure",
     },
+    {
+      text: "ACM算法专题",
+      icon: "code",
+      prefix: "ACMer/",
+      link: "ACMer/",
+      children: [
+        {
+          text: "竞赛板子",
+          link: "竞赛板子.md",
+          icon: "lightbulb",
+        },
+        {
+          text: "基础算法",
+          prefix: "基础算法/",
+          link: "基础算法/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "数据结构",
+          prefix: "数据结构/",
+          link: "数据结构/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "图论",
+          prefix: "图论/",
+          link: "图论/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "动态规划(DP)",
+          prefix: "动态规划(DP)/",
+          link: "动态规划(DP)/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "数学与数论",
+          prefix: "数学与数论/",
+          link: "数学与数论/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "字符串算法",
+          prefix: "字符串算法/",
+          link: "字符串算法/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "计算几何",
+          prefix: "计算几何/",
+          link: "计算几何/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+        {
+          text: "杂项",
+          prefix: "杂项/",
+          link: "杂项/",
+          collapsible: true,
+          expanded: false,
+          children: "structure",
+        },
+      ]
+    },
   ],
-  "/实用工具教程/": [
+  "/guides/": [
     {
       text: "Latex",
       icon: "laptop-code",
@@ -160,8 +178,8 @@ export default sidebar({
     {
       text: "版本控制",
       icon: "laptop-code",
-      prefix: "版本控制/",
-      link: "版本控制/",
+      prefix: "git/",
+      link: "git/",
       children: "structure",
     },
     { 
@@ -170,6 +188,6 @@ export default sidebar({
       link: "Zotero.md",
     },
   ],
-  "/功能测试/": "structure",
-  // "/宝藏站点/": "structure",
+  "/tests/": "structure",
+  // "/links/": "structure",
 });

@@ -9,7 +9,15 @@ const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
 
-  lang: "zh-CN",
+  locales: {
+    "/": {
+      lang: "zh-CN",
+    },
+    "/en/": {
+      lang: "en-US",
+    },
+  },
+
   title: "Goat_Yang",
   description: "Goat_Yang 的博客",
 

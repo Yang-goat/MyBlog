@@ -8,7 +8,7 @@ export default hopeTheme({
 
   author: {
     name: "Goat_Yang",
-    url: "https://mister-hope.com",
+    url: "../intro.html",
   },
 
   logo: "assets/icon/头像.jpg",
@@ -63,7 +63,7 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  // hotReload: true,
+  hotReload: true,
 
   // 打印按钮配置
   print: true,
@@ -143,7 +143,7 @@ export default hopeTheme({
     // flowchart: true,
 
     // 在启用之前安装 mermaid
-    // mermaid: true,
+    mermaid: true,
 
     // playground: {
     //   presets: ["ts", "vue"],

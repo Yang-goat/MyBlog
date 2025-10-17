@@ -1,0 +1,16 @@
+import comp from "D:/Project/Blog/myBlog/src/.vuepress/.temp/pages/zh/笔记/前端/工具链/构建与打包工具.html.vue"
+const data = JSON.parse("{\"path\":\"/zh/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E5%85%B7%E9%93%BE/%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7.html\",\"title\":\"构建与打包工具\",\"lang\":\"zh-CN\",\"frontmatter\":{\"icon\":\"pen-to-square\",\"date\":\"2025-06-17T00:00:00.000Z\",\"order\":1,\"category\":[\"前端\"],\"tag\":[\"构建与打包\",\"Webpack\",\"Vite\"],\"description\":\"构建与打包工具 一、核心概念 什么是前端构建与打包？ 构建（Build）：指将源代码经过转换、优化、合并等一系列处理，生成可运行代码的过程，包括语法转换（如 ES6→ES5）、资源处理（图片压缩、字体转换）、代码分割等。 打包（Packaging）：将多个分散的模块（如 JavaScript、CSS、图片等）整合为少量文件，减少浏览器请求次数，提升加载...\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"Article\\\",\\\"headline\\\":\\\"构建与打包工具\\\",\\\"image\\\":[\\\"\\\"],\\\"datePublished\\\":\\\"2025-06-17T00:00:00.000Z\\\",\\\"dateModified\\\":null,\\\"author\\\":[{\\\"@type\\\":\\\"Person\\\",\\\"name\\\":\\\"Goat_Yang\\\",\\\"url\\\":\\\"https://mister-hope.com\\\"}]}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/zh/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E5%85%B7%E9%93%BE/%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"构建与打包工具\"}],[\"meta\",{\"property\":\"og:description\",\"content\":\"构建与打包工具 一、核心概念 什么是前端构建与打包？ 构建（Build）：指将源代码经过转换、优化、合并等一系列处理，生成可运行代码的过程，包括语法转换（如 ES6→ES5）、资源处理（图片压缩、字体转换）、代码分割等。 打包（Packaging）：将多个分散的模块（如 JavaScript、CSS、图片等）整合为少量文件，减少浏览器请求次数，提升加载...\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"Vite\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"Webpack\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"构建与打包\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2025-06-17T00:00:00.000Z\"}]]},\"git\":{},\"readingTime\":{\"minutes\":4.57,\"words\":1372},\"filePathRelative\":\"zh/笔记/前端/工具链/构建与打包工具.md\",\"excerpt\":\"\\n<h2>一、核心概念</h2>\\n<ol>\\n<li>什么是前端构建与打包？\\n<ul>\\n<li><strong>构建（Build）</strong>：指将源代码经过转换、优化、合并等一系列处理，生成可运行代码的过程，包括语法转换（如 ES6→ES5）、资源处理（图片压缩、字体转换）、代码分割等。</li>\\n<li><strong>打包（Packaging）</strong>：将多个分散的模块（如 JavaScript、CSS、图片等）整合为少量文件，减少浏览器请求次数，提升加载性能。</li>\\n</ul>\\n</li>\\n<li>为什么需要构建与打包工具？\\n<ul>\\n<li><strong>解决技术栈复杂性</strong>：处理 ES6+、TypeScript、JSX/TSX、SASS/Less 等现代技术栈的兼容性问题。</li>\\n<li><strong>优化性能</strong>：压缩代码、Tree Shaking（移除未使用代码）、代码分割（按需加载）、资源缓存等。</li>\\n<li><strong>提升开发效率</strong>：自动化流程（如热更新、自动编译）、模块化管理、多环境部署（开发 / 测试 / 生产）。</li>\\n</ul>\\n</li>\\n</ol>\",\"autoDesc\":true}")
+export { comp, data }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

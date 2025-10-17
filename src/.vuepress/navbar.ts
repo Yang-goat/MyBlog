@@ -3,29 +3,29 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
-    text: "笔记",
+    text: "软件开发",
     icon: "book",
-    link: "/笔记/",
+    link: "/dev/",
   },
   {
-    text: "算法",
+    text: "人工智能算法",
     icon: "code",
-    link: "/算法/",
+    link: "/ai-ml/",
   },
   {
     text: "随笔",
     icon: "pen-to-square",
-    link: "/随笔/",
+    link: "/notes/",
   },
   {
-    text: "实用工具教程",
+    text: "软件工具指南",
     icon: "toolbox",
-    link: "/实用工具教程/",
+    link: "/guides/",
   },
   {
     text: "宝藏站点",
     icon: "link",
-    link: "/宝藏站点/",
+    link: "/links/",
   },
   {
     text: "关于我",
@@ -35,7 +35,7 @@ export default navbar([
   {
     text: "功能测试",
     icon: "link",
-    link: "/功能测试/",
+    link: "/tests/",
   },
   // {
   //   text: "V2 文档",

@@ -9,7 +9,7 @@
   "include": [
     "src/.vuepress/**/*.ts",
     "src/.vuepress/**/*.vue"
-  ],
+, "src/.vuepress/sidebar.ts"  ],
   "exclude": [
     "node_modules"
   ]
