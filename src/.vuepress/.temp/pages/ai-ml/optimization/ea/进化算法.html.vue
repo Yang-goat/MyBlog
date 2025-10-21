@@ -1,198 +1,4 @@
 <template><div><h1 id="进化算法-ea" tabindex="-1"><a class="header-anchor" href="#进化算法-ea"><span>进化算法（EA）</span></a></h1>
-<p>进化算法（Evolutionary Algorithm，EA） 是一类基于自然界生物进化机制的随机优化算法，属于智能优化算法的重要分支。它通过 <strong>“选择—重组—变异”</strong> 等操作，模拟自然进化过程，用来寻找复杂问题的最优或近优解。</p>
-<h2 id="一、目前典型算法" tabindex="-1"><a class="header-anchor" href="#一、目前典型算法"><span>一、目前典型算法</span></a></h2>
-<ul>
-<li>遗传算法（GA）</li>
-<li>进化策略（ES）</li>
-<li>进化规划（EP）</li>
-<li>遗传规划（GP）</li>
-</ul>
-<Mermaid id="mermaid-31" code="eJxLL0osyFDwCeJSAALH6Bf7Zz/tmfZ83fRnm6cquDrGKujq2ik4Rb9snP5kzwKosLtjLEQ1WNIZpmfttOdTlyq4BiNLukAlXyxvedoxScE1AFnSFWosVNIdKukMlnSLdvZ11IWZ5gQWc4/2C3Z31PX0hAi6gAU9oh1TEgtKMstS4ca7giU8o92LEnNzE4t0kxKLU1PA5gMAV7pTng=="></Mermaid><p>核心思想概览</p>
-<table>
-<thead>
-<tr>
-<th>算法</th>
-<th>主要优化对象</th>
-<th>代表特征</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>GA（遗传算法）</strong></td>
-<td>通用优化问题</td>
-<td>二进制编码 + 交叉为主</td>
-</tr>
-<tr>
-<td><strong>ES（进化策略）</strong></td>
-<td>连续优化问题</td>
-<td>实数编码 + 高斯变异 + 自适应步长</td>
-</tr>
-<tr>
-<td><strong>EP（进化规划）</strong></td>
-<td>状态机与连续优化</td>
-<td>无交叉 + 自适应变异 + 竞争选择</td>
-</tr>
-<tr>
-<td><strong>GP（遗传规划）</strong></td>
-<td>程序/表达式结构</td>
-<td>树结构编码 + 子树交叉 + 自动生成程序</td>
-</tr>
-</tbody>
-</table>
-<p>结构与操作机制对比</p>
-<table>
-<thead>
-<tr>
-<th>特征</th>
-<th>GA</th>
-<th>ES</th>
-<th>EP</th>
-<th>GP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>编码方式</strong></td>
-<td>二进制/实数向量</td>
-<td>实数向量</td>
-<td>实数向量</td>
-<td>树结构（表达式）</td>
-</tr>
-<tr>
-<td><strong>适用问题</strong></td>
-<td>离散/组合优化</td>
-<td>连续优化</td>
-<td>连续优化/噪声优化</td>
-<td>程序、表达式生成</td>
-</tr>
-<tr>
-<td><strong>种群规模</strong></td>
-<td>中</td>
-<td>小-中</td>
-<td>小</td>
-<td>中</td>
-</tr>
-<tr>
-<td><strong>主要算子</strong></td>
-<td>交叉 + 变异</td>
-<td>变异（高斯噪声）</td>
-<td>变异（高斯噪声）</td>
-<td>子树交叉 + 变异</td>
-</tr>
-<tr>
-<td><strong>交叉操作</strong></td>
-<td>关键操作</td>
-<td>可选</td>
-<td>无</td>
-<td>树级交叉（核心）</td>
-</tr>
-<tr>
-<td><strong>变异操作</strong></td>
-<td>位翻转 / 实数扰动</td>
-<td>高斯扰动（含自适应）</td>
-<td>高斯扰动（含自适应）</td>
-<td>子树替换</td>
-</tr>
-<tr>
-<td><strong>选择策略</strong></td>
-<td>轮盘赌 / 锦标赛</td>
-<td>(μ, λ) 或 (μ+λ)</td>
-<td>随机竞争</td>
-<td>轮盘赌 / 精英保留</td>
-</tr>
-<tr>
-<td><strong>参数自适应</strong></td>
-<td>弱（人工设定）</td>
-<td>强（全局 + 局部）</td>
-<td>强（个体自适应）</td>
-<td>无固定参数，可自动学习结构</td>
-</tr>
-<tr>
-<td><strong>编码层级</strong></td>
-<td>基因层</td>
-<td>参数层</td>
-<td>个体层</td>
-<td>结构层</td>
-</tr>
-</tbody>
-</table>
-<p>典型应用领域对比</p>
-<table>
-<thead>
-<tr>
-<th>特征</th>
-<th>GA</th>
-<th>ES</th>
-<th>EP</th>
-<th>GP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>编码方式</strong></td>
-<td>二进制/实数向量</td>
-<td>实数向量</td>
-<td>实数向量</td>
-<td>树结构（表达式）</td>
-</tr>
-<tr>
-<td><strong>适用问题</strong></td>
-<td>离散/组合优化</td>
-<td>连续优化</td>
-<td>连续优化/噪声优化</td>
-<td>程序、表达式生成</td>
-</tr>
-<tr>
-<td><strong>种群规模</strong></td>
-<td>中</td>
-<td>小-中</td>
-<td>小</td>
-<td>中</td>
-</tr>
-<tr>
-<td><strong>主要算子</strong></td>
-<td>交叉 + 变异</td>
-<td>变异（高斯噪声）</td>
-<td>变异（高斯噪声）</td>
-<td>子树交叉 + 变异</td>
-</tr>
-<tr>
-<td><strong>交叉操作</strong></td>
-<td>关键操作</td>
-<td>可选</td>
-<td>无</td>
-<td>树级交叉（核心）</td>
-</tr>
-<tr>
-<td><strong>变异操作</strong></td>
-<td>位翻转 / 实数扰动</td>
-<td>高斯扰动（含自适应）</td>
-<td>高斯扰动（含自适应）</td>
-<td>子树替换</td>
-</tr>
-<tr>
-<td><strong>选择策略</strong></td>
-<td>轮盘赌 / 锦标赛</td>
-<td>(μ, λ) 或 (μ+λ)</td>
-<td>随机竞争</td>
-<td>轮盘赌 / 精英保留</td>
-</tr>
-<tr>
-<td><strong>参数自适应</strong></td>
-<td>弱（人工设定）</td>
-<td>强（全局 + 局部）</td>
-<td>强（个体自适应）</td>
-<td>无固定参数，可自动学习结构</td>
-</tr>
-<tr>
-<td><strong>编码层级</strong></td>
-<td>基因层</td>
-<td>参数层</td>
-<td>个体层</td>
-<td>结构层</td>
-</tr>
-</tbody>
-</table>
 <h2 id="二、遗传算法-ga" tabindex="-1"><a class="header-anchor" href="#二、遗传算法-ga"><span>二、遗传算法（GA）</span></a></h2>
 <p>遗传算法（Genetic Algorithm, GA）是一种基于 <strong>达尔文进化论</strong> 和 <strong>遗传学原理</strong> 的随机优化方法。<br>
 它通过<strong>自然选择、交叉与变异</strong>等操作，在问题解空间中不断进化，最终获得最优或近似最优解。</p>
@@ -233,7 +39,7 @@
 </ol>
 <hr>
 <h3 id="_2-3-算法流程图" tabindex="-1"><a class="header-anchor" href="#_2-3-算法流程图"><span>2.3 算法流程图</span></a></h3>
-<Mermaid id="mermaid-516" code="eJxLy8kvT85ILCpRCHHhUgACx+inHXOfLu9+2jPt+fLe5/uWxCro6topOEW/WLfw+brpLxuanu6a8nTXsliwaiewpHP1sxnrn05Y9mz3whfbNj/f3fFs7aJncxc+2b3NvhaszBmoTAGoAKzaJfplQ+ez7pXPJvc+2TsHYo4LWMY1+smuJU/7O5FlXMEybtFP+2c83dOELOMGlnGPfj5l/rOOCc+mbYC6FyzpDnE1wnagC8FCHtEv9k1+2r7r2ZyGJ3tmvFi+OJYLAEgsdVc="></Mermaid><h3 id="_2-4-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_2-4-伪代码示例"><span>2.4 伪代码示例</span></a></h3>
+<Mermaid id="mermaid-65" code="eJxLy8kvT85ILCpRCHHhUgACx+inHXOfLu9+2jPt+fLe5/uWxCro6topOEW/WLfw+brpLxuanu6a8nTXsliwaiewpHP1sxnrn05Y9mz3whfbNj/f3fFs7aJncxc+2b3NvhaszBmoTAGoAKzaJfplQ+ez7pXPJvc+2TsHYo4LWMY1+smuJU/7O5FlXMEybtFP+2c83dOELOMGlnGPfj5l/rOOCc+mbYC6FyzpDnE1wnagC8FCHtEv9k1+2r7r2ZyGJ3tmvFi+OJYLAEgsdVc="></Mermaid><h3 id="_2-4-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_2-4-伪代码示例"><span>2.4 伪代码示例</span></a></h3>
 <div class="language-" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>Algorithm GeneticAlgorithm</span></span>
 <span class="line"><span>Input: 种群规模 N, 最大迭代次数 T, 交叉概率 Pc, 变异概率 Pm</span></span>
 <span class="line"><span>Output: 最优个体 best</span></span>
@@ -474,7 +280,7 @@
 </ul>
 <hr>
 <h3 id="_3-2-算法总体流程" tabindex="-1"><a class="header-anchor" href="#_3-2-算法总体流程"><span>3.2 算法总体流程</span></a></h3>
-<Mermaid id="mermaid-949" code="eJxdj8FKw0AQhu99itBTe+grKLZp6wN4W3IQQTwIgggeRAi9mFqDgdQYocXGaIOVpAUhajbt0+zMJqe+gstuodA5zv99wz+n5xfXJ2fHl1fakV7RxBzUCFhjiAbw4PHI5qt3o641GntakxRJwJNn9jtjS7c0e5ANIZsa0mpKpEVw8od2wmOPP32UZh8Hn9xKGQ0V1ZKUTqrw6EPeQ9dmy9E6t/CHwv2k/PLRm8PLDMLFOu9XlaNLp0348BUtB2JHXFMVVN6WeWdTDr3FTrOOzLs36M/BmSINivSbUwvjNxwHjKb7txLrCkwTgPpjuxKaXB3WSLFy4S7Dkclyv4hCo175B6VKm84="></Mermaid><h3 id="_3-3-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_3-3-伪代码示例"><span>3.3 伪代码示例</span></a></h3>
+<Mermaid id="mermaid-498" code="eJxdj8FKw0AQhu99itBTe+grKLZp6wN4W3IQQTwIgggeRAi9mFqDgdQYocXGaIOVpAUhajbt0+zMJqe+gstuodA5zv99wz+n5xfXJ2fHl1fakV7RxBzUCFhjiAbw4PHI5qt3o641GntakxRJwJNn9jtjS7c0e5ANIZsa0mpKpEVw8od2wmOPP32UZh8Hn9xKGQ0V1ZKUTqrw6EPeQ9dmy9E6t/CHwv2k/PLRm8PLDMLFOu9XlaNLp0348BUtB2JHXFMVVN6WeWdTDr3FTrOOzLs36M/BmSINivSbUwvjNxwHjKb7txLrCkwTgPpjuxKaXB3WSLFy4S7Dkclyv4hCo175B6VKm84="></Mermaid><h3 id="_3-3-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_3-3-伪代码示例"><span>3.3 伪代码示例</span></a></h3>
 <div class="language-" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>Algorithm EvolutionStrategy</span></span>
 <span class="line"><span>Input: 种群规模 μ, 子代数量 λ, 最大代数 T</span></span>
 <span class="line"><span>Output: 最优个体 best</span></span>
@@ -674,7 +480,7 @@
 </table>
 <hr>
 <h3 id="_4-2-算法流程图" tabindex="-1"><a class="header-anchor" href="#_4-2-算法流程图"><span>4.2 算法流程图</span></a></h3>
-<Mermaid id="mermaid-1312" code="eJxdj0FKw0AUhvc9RciqXfQKim3aegB3QxYiiAtBEMGFCKEITlprAyk1SKvGSqOWNoIQNUl7mnlvklWv4HSmUOgwq/d/3/t5x6dnl0cnh+cX2oFR0MTbKxKgQwjacNfnQYcv3sySVi7vaBWSzXw+e8Cwy34/V3/u8seb3GpC3IN4bEq9Itkq0aHrQdpEt8Pmg2VK8SeB1ks+8bAfov0FrfdlauvKqUrHILz3jNSBqcOSkdqvckPmtXW/yrdqaxKpE51Pnlhs55aN7Q9Ry2kkl90rC8I/pN6muS61xhV6IThjTPws+uYJxekrDn2WRLvXEmsITBOAum0zEpoc7RdJtnDhNsaBxVIvC0ZmqfAPOnCvgw=="></Mermaid><h3 id="_4-3-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_4-3-伪代码示例"><span>4.3 伪代码示例</span></a></h3>
+<Mermaid id="mermaid-861" code="eJxdj0FKw0AUhvc9RciqXfQKim3aegB3QxYiiAtBEMGFCKEITlprAyk1SKvGSqOWNoIQNUl7mnlvklWv4HSmUOgwq/d/3/t5x6dnl0cnh+cX2oFR0MTbKxKgQwjacNfnQYcv3sySVi7vaBWSzXw+e8Cwy34/V3/u8seb3GpC3IN4bEq9Itkq0aHrQdpEt8Pmg2VK8SeB1ks+8bAfov0FrfdlauvKqUrHILz3jNSBqcOSkdqvckPmtXW/yrdqaxKpE51Pnlhs55aN7Q9Ry2kkl90rC8I/pN6muS61xhV6IThjTPws+uYJxekrDn2WRLvXEmsITBOAum0zEpoc7RdJtnDhNsaBxVIvC0ZmqfAPOnCvgw=="></Mermaid><h3 id="_4-3-伪代码示例" tabindex="-1"><a class="header-anchor" href="#_4-3-伪代码示例"><span>4.3 伪代码示例</span></a></h3>
 <div class="language-" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>Algorithm EvolutionaryProgramming</span></span>
 <span class="line"><span>Input: 种群规模 N, 最大代数 T</span></span>
 <span class="line"><span>Output: 最优个体 best</span></span>

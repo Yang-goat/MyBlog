@@ -1,5 +1,5 @@
 ---
-title: 实用工具教程
+title: 软件工具指南
 index: false
 article: false
 icon: toolbox
