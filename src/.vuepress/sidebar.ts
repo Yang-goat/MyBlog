@@ -8,6 +8,13 @@ export default sidebar({
       link: "Introduction-to-Learning-Algorithms.md",
     },
     {
+      text: "机器学习",
+      icon: "code",
+      prefix: "machine-learning/",
+      link: "machine-learning/",
+      children: "structure",
+    },
+    {
       text: "深度学习",
       icon: "code",
       prefix: "deep-learning/",
@@ -24,6 +31,11 @@ export default sidebar({
           text: "优化理论",
           icon: "book",
           link: "OptimizationTheory.md",
+        },
+        {
+          text: "优化问题的分类",
+          icon: "layer-group",
+          link: "OptimizationProblem.md",
         },
         {
           text: "智能优化算法的分类",
@@ -64,6 +76,13 @@ export default sidebar({
       icon: "bars",
       prefix: "problems/",
       link: "problems/",
+      children: "structure",
+    },
+    {
+      text: "通识基础",
+      icon: "book",
+      prefix: "base/",
+      link: "base/",
       children: "structure",
     },
   ],

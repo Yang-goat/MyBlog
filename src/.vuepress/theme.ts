@@ -40,10 +40,6 @@ export default hopeTheme({
       GitHub: "https://github.com/Yang-goat",
       QQ: "https://qm.qq.com/cgi-bin/qm/qr?k=W9kVREFn34sQS_QB1aGDmqoJ2-W4Lst_",
       "163Music": "https://music.163.com/#/user/home?id=1499103686",
-      // VuePressThemeHope: {
-      //   icon: "https://theme-hope-assets.vuejs.press/logo.svg",
-      //   link: "https://theme-hope.vuejs.press",
-      // },
     },
   },
 
@@ -63,7 +59,7 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  hotReload: true,
+  // hotReload: true,
 
   // 打印按钮配置
   print: true,

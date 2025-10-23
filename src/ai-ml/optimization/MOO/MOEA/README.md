@@ -1,6 +1,8 @@
 ---
 icon: book
 date: 2025-10-18
+# index: false
+# article: false
 category:
   - 智能优化算法
 tag:
