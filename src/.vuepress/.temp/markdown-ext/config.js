@@ -1,2 +1,2 @@
-    import "D:/Project/Blog/myBlog/node_modules/.pnpm/@vuepress+plugin-markdown-e_726fde0ba72ce26c4834858c47a62e73/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/footnote.css"
-    import "D:/Project/Blog/myBlog/node_modules/.pnpm/@vuepress+plugin-markdown-e_726fde0ba72ce26c4834858c47a62e73/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/tasklist.css"
+    import "/media/goat/双系统共享/project/Blog/myBlog/node_modules/.pnpm/@vuepress+plugin-markdown-ext@2.0.0-rc.108_markdown-it@14.1.0_vuepress@2.0.0-rc.23_@vue_726fde0ba72ce26c4834858c47a62e73/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/footnote.css"
+    import "/media/goat/双系统共享/project/Blog/myBlog/node_modules/.pnpm/@vuepress+plugin-markdown-ext@2.0.0-rc.108_markdown-it@14.1.0_vuepress@2.0.0-rc.23_@vue_726fde0ba72ce26c4834858c47a62e73/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/tasklist.css"

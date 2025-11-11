@@ -8,7 +8,7 @@ export default navbar([
     link: "/dev/",
   },
   {
-    text: "人工智能算法",
+    text: "人工智能",
     icon: "code",
     link: "/ai-ml/",
   },
@@ -18,7 +18,7 @@ export default navbar([
     link: "/notes/",
   },
   {
-    text: "软件工具指南",
+    text: "软件工具",
     icon: "toolbox",
     link: "/guides/",
   },
@@ -32,11 +32,11 @@ export default navbar([
     icon: "user",
     link: "/intro",
   },
-  {
-    text: "功能测试",
-    icon: "link",
-    link: "/tests/",
-  },
+  // {
+  //   text: "功能测试",
+  //   icon: "link",
+  //   link: "/tests/",
+  // },
   // {
   //   text: "V2 文档",
   //   icon: "book",

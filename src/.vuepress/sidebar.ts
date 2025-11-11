@@ -220,6 +220,13 @@ export default sidebar({
   ],
   "/guides/": [
     {
+      text: "Linux",
+      icon: "l",
+      prefix: "linux/",
+      link: "linux/",
+      children: "structure",
+    },
+    {
       text: "Latex",
       icon: "laptop-code",
       prefix: "Latex/",
