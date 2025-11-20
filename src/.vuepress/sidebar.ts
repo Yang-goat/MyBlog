@@ -3,6 +3,13 @@ import { sidebar } from "vuepress-theme-hope";
 export default sidebar({
   "/ai-ml/": [
     {
+      text: "通识基础",
+      icon: "book",
+      prefix: "base/",
+      link: "base/",
+      children: "structure",
+    },
+    {
       text: "学习类算法导论",
       icon: "book",
       link: "Introduction-to-Learning-Algorithms.md",
@@ -43,6 +50,11 @@ export default sidebar({
           link: "Category.md",
         },
         {
+          text: "基于模型vs无模型优化方法",
+          icon: "book",
+          link: "ModelAndNon-Model.md",
+        },
+        {
           text: "进化算法（EA）",
           icon: "code",
           prefix: "EA/",
@@ -76,13 +88,6 @@ export default sidebar({
       icon: "bars",
       prefix: "problems/",
       link: "problems/",
-      children: "structure",
-    },
-    {
-      text: "通识基础",
-      icon: "book",
-      prefix: "base/",
-      link: "base/",
       children: "structure",
     },
   ],

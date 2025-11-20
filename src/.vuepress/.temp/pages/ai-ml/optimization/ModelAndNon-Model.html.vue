@@ -1,0 +1,113 @@
+<template><div><h1 id="元启发式算法中的基于模型与非基于模型方法详解" tabindex="-1"><a class="header-anchor" href="#元启发式算法中的基于模型与非基于模型方法详解"><span>元启发式算法中的基于模型与非基于模型方法详解</span></a></h1>
+<p>在智能优化算法的发展中，元启发式方法（Metaheuristics）因其通用性、可扩展性以及对复杂黑箱问题的强适应性而成为人工智能优化的重要组成部分。本文将系统整理元启发式算法在“是否基于模型（Model-Based vs. Model-Free）”这一维度下的分类及其特点，为从事智能优化研究或工程实践的读者提供清晰的知识结构。</p>
+<hr>
+<h2 id="_1-概述-为什么要关注-基于模型-vs-非基于模型" tabindex="-1"><a class="header-anchor" href="#_1-概述-为什么要关注-基于模型-vs-非基于模型"><span>1. 概述：为什么要关注“基于模型 vs. 非基于模型”？</span></a></h2>
+<p>传统的分类方式主要从灵感来源、解空间结构或种群规模等角度进行划分。然而，随着机器学习（ML）和优化技术的深度融合，基于模型的优化策略不断涌现，逐渐成为提升求解效率的关键技术路径。因此，“是否构建模型”成为智能优化领域一个越来越重要的视角。</p>
+<hr>
+<h2 id="_2-非基于模型的元启发式算法-model-free-metaheuristics" tabindex="-1"><a class="header-anchor" href="#_2-非基于模型的元启发式算法-model-free-metaheuristics"><span>2. 非基于模型的元启发式算法（Model-Free Metaheuristics）</span></a></h2>
+<p>非基于模型的方法是最传统、应用最广泛的元启发式算法类别。其核心特征是：</p>
+<ul>
+<li>不构建目标函数或搜索空间的显式模型</li>
+<li>完全依赖目标函数的评价值进行搜索</li>
+<li>典型的黑箱优化方法</li>
+<li>适应性强但搜索效率相对依赖随机性和启发规则</li>
+</ul>
+<h3 id="特点" tabindex="-1"><a class="header-anchor" href="#特点"><span>特点</span></a></h3>
+<ul>
+<li>适用于不可导、不连续、噪声大或难以建模的问题</li>
+<li>算法结构简单，易于实现</li>
+<li>搜索能力强，但可能需要大量的函数评估</li>
+</ul>
+<h3 id="典型算法" tabindex="-1"><a class="header-anchor" href="#典型算法"><span>典型算法</span></a></h3>
+<ul>
+<li>遗传算法（GA）</li>
+<li>粒子群优化（PSO）</li>
+<li>模拟退火（SA）</li>
+<li>差分进化（DE）</li>
+<li>蚁群算法（ACO）</li>
+<li>禁忌搜索（TS）</li>
+<li>进化策略（ES）</li>
+<li>人工蜂群算法（ABC）</li>
+</ul>
+<h3 id="使用场景" tabindex="-1"><a class="header-anchor" href="#使用场景"><span>使用场景</span></a></h3>
+<ul>
+<li>目标函数计算代价可接受</li>
+<li>问题结构未知或复杂</li>
+<li>希望快速获得可行解或近似最优解</li>
+</ul>
+<hr>
+<h2 id="_3-基于模型的元启发式算法-model-based-metaheuristics" tabindex="-1"><a class="header-anchor" href="#_3-基于模型的元启发式算法-model-based-metaheuristics"><span>3. 基于模型的元启发式算法（Model-Based Metaheuristics）</span></a></h2>
+<p>基于模型的元启发式方法会在迭代过程中构建目标函数或搜索空间的“代理模型（Surrogate Model）”或“概率模型”，利用模型预测来指导搜索，大幅提升求解效率。</p>
+<h3 id="特点-1" tabindex="-1"><a class="header-anchor" href="#特点-1"><span>特点</span></a></h3>
+<ul>
+<li>构建显式或隐式模型，如概率分布、统计模型、回归模型等</li>
+<li>通过模型推断更优区域，减少真实评价次数</li>
+<li>对计算代价昂贵的问题尤为有效</li>
+</ul>
+<h3 id="典型模型及算法类别" tabindex="-1"><a class="header-anchor" href="#典型模型及算法类别"><span>典型模型及算法类别</span></a></h3>
+<h4 id="_1-概率模型驱动技术-eda" tabindex="-1"><a class="header-anchor" href="#_1-概率模型驱动技术-eda"><span>1. 概率模型驱动技术（EDA）</span></a></h4>
+<ul>
+<li>UMDA</li>
+<li>PBIL</li>
+<li>BOA</li>
+<li>EBNA<br>
+该类方法通过学习优良解的概率分布来生成新解。</li>
+</ul>
+<h4 id="_2-代理模型辅助元启发式算法-surrogate-assisted-metaheuristics" tabindex="-1"><a class="header-anchor" href="#_2-代理模型辅助元启发式算法-surrogate-assisted-metaheuristics"><span>2. 代理模型辅助元启发式算法（Surrogate-Assisted Metaheuristics）</span></a></h4>
+<p>代理模型常包括：</p>
+<ul>
+<li>高斯过程（GP）</li>
+<li>随机森林（RF）</li>
+<li>神经网络（NN）</li>
+<li>径向基函数（RBF）</li>
+</ul>
+<p>典型方法：</p>
+<ul>
+<li>EGO（Efficient Global Optimization）</li>
+<li>SAEAs（Surrogate-Assisted Evolutionary Algorithms）</li>
+</ul>
+<h4 id="_3-贝叶斯优化-bayesian-optimization" tabindex="-1"><a class="header-anchor" href="#_3-贝叶斯优化-bayesian-optimization"><span>3. 贝叶斯优化（Bayesian Optimization）</span></a></h4>
+<p>利用采集函数（EI、PI、LCB 等）平衡探索与利用，是当前算法设计的重要方向之一。</p>
+<h3 id="使用场景-1" tabindex="-1"><a class="header-anchor" href="#使用场景-1"><span>使用场景</span></a></h3>
+<ul>
+<li>目标函数计算昂贵（如 CFD、有限元仿真）</li>
+<li>超参数优化</li>
+<li>神经架构搜索（NAS）</li>
+<li>有噪声、不可微且评估次数受限的优化任务</li>
+</ul>
+<hr>
+<h2 id="_4-两类方法对比总结" tabindex="-1"><a class="header-anchor" href="#_4-两类方法对比总结"><span>4. 两类方法对比总结</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>是否使用模型</th>
+<th>优点</th>
+<th>缺点</th>
+<th>典型算法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非基于模型</td>
+<td>否</td>
+<td>通用性强、结构简单、适用性广</td>
+<td>需要更多评估、搜索可能较盲目</td>
+<td>GA, PSO, DE, ACO, SA 等</td>
+</tr>
+<tr>
+<td>基于模型</td>
+<td>是</td>
+<td>搜索更高效、减少昂贵评估次数</td>
+<td>模型构建有成本、对问题结构敏感</td>
+<td>EDA、贝叶斯优化、代理辅助EA</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_5-结语" tabindex="-1"><a class="header-anchor" href="#_5-结语"><span>5. 结语</span></a></h2>
+<p>在智能优化领域，基于模型和非基于模型的元启发式算法各具优势，适用于不同场景。随着计算资源和机器学习技术的发展，基于模型的方法在高成本优化、复杂工程优化等领域的优势愈加明显，而非基于模型的算法依然在通用优化中保持主导地位。</p>
+<p>在实际工程应用中，常见的策略是将两者结合，形成混合元启发式算法，以获得更优的性能。</p>
+</div></template>
+
+
