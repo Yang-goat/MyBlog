@@ -51,7 +51,7 @@ export default sidebar({
         },
         {
           text: "基于模型vs无模型优化方法",
-          icon: "book",
+          icon: "v",
           link: "ModelAndNon-Model.md",
         },
         {
@@ -62,6 +62,11 @@ export default sidebar({
           collapsible: true,
           expanded: false,
           children: "structure",
+        },
+        {
+          text: "分布估计算法（EDAs）",
+          icon: "e",
+          link: "EDAs.md",
         },
         {
           text: "多目标优化问题（MOO）",
