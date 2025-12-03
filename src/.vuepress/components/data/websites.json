@@ -1041,5 +1041,12 @@
     "desc": "Beatport 提供DJ电子舞曲音轨下载与混音资源的专业音乐平台",
     "tags": ["音乐"],
     "icon": "https://www.beatport.com/images/beatport-social-image.png"
+  },
+  {
+    "name": "1001tracklists",
+    "url": "https://www.1001tracklists.com/",
+    "desc": "1001Tracklists 是一个收录全球 DJ 现场曲目单的数据库平台，让你轻松查到各大电音演出的完整播放列表。",
+    "tags": ["音乐"],
+    "icon": "https://cdn.1001tracklists.com/images/static/1001icon_s.png"
   }
 ]

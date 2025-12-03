@@ -24,7 +24,7 @@
 <p v-pre class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Learn distribution</mtext><mo>⇒</mo><mtext>Sample population</mtext><mo>⇒</mo><mtext>Evaluate</mtext><mo>⇒</mo><mtext>Select</mtext></mrow><annotation encoding="application/x-tex">\text{Learn distribution} \Rightarrow \text{Sample population} \Rightarrow \text{Evaluate} \Rightarrow \text{Select}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Learn distribution</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Sample population</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Evaluate</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Select</span></span></span></span></span></span></p>
 <p>伪代码：</p>
-<div class="language-pseudo line-numbers-mode" data-highlighter="shiki" data-ext="pseudo" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-pseudo"><span class="line"><span>初始化种群 P</span></span>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>初始化种群 P</span></span>
 <span class="line"><span>重复直到满足终止条件：</span></span>
 <span class="line"><span>    从 P 中选择优秀个体 S</span></span>
 <span class="line"><span>    基于 S 估计概率模型 M</span></span>
@@ -46,7 +46,7 @@
 </ul>
 <h4 id="_3-1-1-umda" tabindex="-1"><a class="header-anchor" href="#_3-1-1-umda"><span>3.1.1 UMDA</span></a></h4>
 <p>UMDA（Univariate Marginal Distribution Algorithm）单变量边缘分布算法：假设各维度独立，对每个维度估计边缘分布。</p>
-<div class="language-vbnet line-numbers-mode" data-highlighter="shiki" data-ext="vbnet" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-vbnet"><span class="line"><span>初始化种群规模 N、选择比例 τ</span></span>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>初始化种群规模 N、选择比例 τ</span></span>
 <span class="line"><span>随机初始化种群 P</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>循环直到满足终止条件：</span></span>
@@ -61,7 +61,7 @@
 <span class="line"><span>返回最优个体</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-1-2-pbil" tabindex="-1"><a class="header-anchor" href="#_3-1-2-pbil"><span>3.1.2 PBIL</span></a></h4>
 <p>PBIL（Population-Based Incremental Learning）基于增量学习的概率模型：维护一个概率向量，并以“学习率”向优秀样本更新。</p>
-<div class="language-vbnet line-numbers-mode" data-highlighter="shiki" data-ext="vbnet" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-vbnet"><span class="line"><span>初始化概率向量 p_i = 0.5</span></span>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>初始化概率向量 p_i = 0.5</span></span>
 <span class="line"><span>设定学习率 α、负学习率 β</span></span>
 <span class="line"><span>设定最佳样本选择规则</span></span>
 <span class="line"><span></span></span>

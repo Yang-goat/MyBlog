@@ -72,7 +72,7 @@ $$
 
 伪代码：
 
-```pseudo
+```
 初始化种群 P
 重复直到满足终止条件：
     从 P 中选择优秀个体 S
@@ -107,7 +107,7 @@ $$
 
 UMDA（Univariate Marginal Distribution Algorithm）单变量边缘分布算法：假设各维度独立，对每个维度估计边缘分布。
 
-```vbnet
+```
 初始化种群规模 N、选择比例 τ
 随机初始化种群 P
 
@@ -127,7 +127,7 @@ UMDA（Univariate Marginal Distribution Algorithm）单变量边缘分布算法�
 
 PBIL（Population-Based Incremental Learning）基于增量学习的概率模型：维护一个概率向量，并以“学习率”向优秀样本更新。
 
-```vbnet
+```
 初始化概率向量 p_i = 0.5
 设定学习率 α、负学习率 β
 设定最佳样本选择规则
