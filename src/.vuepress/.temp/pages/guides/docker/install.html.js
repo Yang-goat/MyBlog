@@ -1,0 +1,16 @@
+import comp from "/media/goat/data/project/Blog/myBlog/src/.vuepress/.temp/pages/guides/docker/install.html.vue"
+const data = JSON.parse("{\"path\":\"/guides/docker/install.html\",\"title\":\"Docker 的国内下载安装教程\",\"lang\":\"zh-CN\",\"frontmatter\":{\"icon\":\"book-bookmark\",\"date\":\"2025-12-14T00:00:00.000Z\",\"order\":1,\"category\":[\"docker\"],\"tag\":[\"安装下载\"],\"description\":\"Docker 的国内下载安装教程 Linux下安装 Docker 1. 下载 Docker Docker官方安装教程 安装 Docker CLI、Docker Engine 以及它们的依赖项的最新稳定版本： 下载脚本 提示 网络超时则需要科学上网 验证脚本内容 以 root 身份运行脚本，或使用 sudo 执行安装 2. 配置 Docker 镜像源 编...\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"Article\\\",\\\"headline\\\":\\\"Docker 的国内下载安装教程\\\",\\\"image\\\":[\\\"\\\"],\\\"datePublished\\\":\\\"2025-12-14T00:00:00.000Z\\\",\\\"dateModified\\\":null,\\\"author\\\":[{\\\"@type\\\":\\\"Person\\\",\\\"name\\\":\\\"Goat_Yang\\\",\\\"url\\\":\\\"../intro.html\\\"}]}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/guides/docker/install.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Docker 的国内下载安装教程\"}],[\"meta\",{\"property\":\"og:description\",\"content\":\"Docker 的国内下载安装教程 Linux下安装 Docker 1. 下载 Docker Docker官方安装教程 安装 Docker CLI、Docker Engine 以及它们的依赖项的最新稳定版本： 下载脚本 提示 网络超时则需要科学上网 验证脚本内容 以 root 身份运行脚本，或使用 sudo 执行安装 2. 配置 Docker 镜像源 编...\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"安装下载\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2025-12-14T00:00:00.000Z\"}]]},\"readingTime\":{\"minutes\":1.75,\"words\":524},\"filePathRelative\":\"guides/docker/install.md\",\"excerpt\":\"\\n<h2>Linux下安装 Docker</h2>\\n<h3>1. 下载 Docker</h3>\\n<p><a href=\\\"https://get.docker.com/\\\" target=\\\"_blank\\\" rel=\\\"noopener noreferrer\\\">Docker官方安装教程</a></p>\\n<p>安装 Docker CLI、Docker Engine 以及它们的依赖项的最新稳定版本：</p>\\n<ol>\\n<li>下载脚本</li>\\n</ol>\\n<div class=\\\"language-shell line-numbers-mode\\\" data-highlighter=\\\"shiki\\\" data-ext=\\\"shell\\\" style=\\\"--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34\\\"><pre class=\\\"shiki shiki-themes one-light one-dark-pro vp-code\\\"><code class=\\\"language-shell\\\"><span class=\\\"line\\\"><span style=\\\"--shiki-light:#4078F2;--shiki-dark:#61AFEF\\\">curl</span><span style=\\\"--shiki-light:#986801;--shiki-dark:#D19A66\\\"> -fsSL</span><span style=\\\"--shiki-light:#50A14F;--shiki-dark:#98C379\\\"> https://get.docker.com</span><span style=\\\"--shiki-light:#986801;--shiki-dark:#D19A66\\\"> -o</span><span style=\\\"--shiki-light:#50A14F;--shiki-dark:#98C379\\\"> install-docker.sh</span></span></code></pre>\\n<div class=\\\"line-numbers\\\" aria-hidden=\\\"true\\\" style=\\\"counter-reset:line-number 0\\\"><div class=\\\"line-number\\\"></div></div></div>\",\"autoDesc\":true}")
+export { comp, data }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

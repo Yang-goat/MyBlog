@@ -1,5 +1,8 @@
-<template><div><h1 id="ubuntu-常用指令速查笔记" tabindex="-1"><a class="header-anchor" href="#ubuntu-常用指令速查笔记"><span>Ubuntu 常用指令速查笔记</span></a></h1>
+<template><div><h1 id="ubuntu-常用指令" tabindex="-1"><a class="header-anchor" href="#ubuntu-常用指令"><span>Ubuntu 常用指令</span></a></h1>
 <p>整理常见、实用的 Ubuntu 命令，按场景分类速查。</p>
+<p>清空控制台</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">clear</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>或直接按快捷键：<code v-pre>Ctrl + L</code></p>
 <hr>
 <h2 id="📁-文件与目录操作" tabindex="-1"><a class="header-anchor" href="#📁-文件与目录操作"><span>📁 文件与目录操作</span></a></h2>
 <table>

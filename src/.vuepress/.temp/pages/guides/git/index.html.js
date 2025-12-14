@@ -1,4 +1,4 @@
-import comp from "/media/goat/双系统共享/project/Blog/myBlog/src/.vuepress/.temp/pages/guides/git/index.html.vue"
+import comp from "/media/goat/data/project/Blog/myBlog/src/.vuepress/.temp/pages/guides/git/index.html.vue"
 const data = JSON.parse("{\"path\":\"/guides/git/\",\"title\":\"Git\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Git\",\"article\":false,\"feed\":false,\"sitemap\":false,\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"Git\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/guides/git/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Git\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"readingTime\":{\"minutes\":0,\"words\":1},\"filePathRelative\":null,\"excerpt\":\"\"}")
 export { comp, data }
 

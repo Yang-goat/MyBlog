@@ -193,6 +193,13 @@ export default sidebar({
       children: "structure",
     },
     {
+      text: "Docker",
+      icon: "d",
+      prefix: "docker/",
+      link: "docker/",
+      children: "structure",
+    },
+    {
       text: "Latex",
       icon: "laptop-code",
       prefix: "Latex/",

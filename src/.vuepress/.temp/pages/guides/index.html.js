@@ -1,4 +1,4 @@
-import comp from "/media/goat/双系统共享/project/Blog/myBlog/src/.vuepress/.temp/pages/guides/index.html.vue"
+import comp from "/media/goat/data/project/Blog/myBlog/src/.vuepress/.temp/pages/guides/index.html.vue"
 const data = JSON.parse("{\"path\":\"/guides/\",\"title\":\"软件工具指南\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"软件工具指南\",\"index\":false,\"article\":false,\"icon\":\"toolbox\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"软件工具指南\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://github.com/Yang-goat/MyBlog/guides/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"Goat_Yang\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"软件工具指南\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"readingTime\":{\"minutes\":0.05,\"words\":15},\"filePathRelative\":\"guides/README.md\",\"excerpt\":\"\"}")
 export { comp, data }
 

@@ -1048,5 +1048,47 @@
     "desc": "1001Tracklists 是一个收录全球 DJ 现场曲目单的数据库平台，让你轻松查到各大电音演出的完整播放列表。",
     "tags": ["音乐"],
     "icon": "https://cdn.1001tracklists.com/images/static/1001icon_s.png"
+  },
+  {
+  "name": "Connected Papers",
+  "url": "https://www.connectedpapers.com/",
+  "desc": "Connected Papers 是一款基于论文引用关系的可视化工具，可帮助研究者快速发现某一论文领域中的核心文献、相关工作及研究脉络。",
+  "tags": ["文献"],
+  "icon": "https://www.connectedpapers.com/favicon.ico"
+  },
+  {
+    "name": "easyScholar",
+    "url": "https://www.easyscholar.cc/",
+    "desc": "easyScholar 是一个学术期刊信息辅助平台，支持查询期刊等级、SCI 分区、中科院分区及影响因子等关键信息。",
+    "tags": ["文献"],
+    "icon": "https://www.easyscholar.cc/favicon.ico"
+  },
+  {
+    "name": "Scopus Preview",
+    "url": "https://www.scopus.com/home.uri",
+    "desc": "Scopus Preview 是 Elsevier 提供的学术文献检索入口，可用于查找期刊、作者和论文的基本信息与引用概况。",
+    "tags": ["文献"],
+    "icon": "https://www.scopus.com/favicon.ico"
+  },
+  {
+    "name": "Open Knowledge Maps",
+    "url": "https://openknowledgemaps.org/",
+    "desc": "Open Knowledge Maps 提供基于语义分析的学术文献可视化地图，帮助用户快速理解研究领域结构并发现相关研究主题。",
+    "tags": ["文献"],
+    "icon": "https://openknowledgemaps.org/favicon.ico"
+  },
+  {
+    "name": "Academic Research Paper Organization Guide",
+    "url": "https://library.sacredheart.edu/c.php?g=29803&p=185901",
+    "desc": "该研究指南介绍了学术论文的组织结构与写作规范，适合初学者了解论文写作流程与学术研究方法。",
+    "tags": ["文献"],
+    "icon": "https://library.sacredheart.edu/favicon.ico"
+  },
+  {
+    "name": "Docker Hub",
+    "url": "https://hub.docker.com/",
+    "desc": "Docker Hub 是官方的容器镜像托管平台，提供大量公共与私有镜像资源，支持容器化应用的分发、管理与部署。",
+    "tags": ["论坛 | 资源"],
+    "icon": "https://hub.docker.com/favicon.ico"
   }
 ]

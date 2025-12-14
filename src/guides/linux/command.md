@@ -10,9 +10,16 @@ tag:
   - Shell
 ---
 
-# Ubuntu 常用指令速查笔记
+# Ubuntu 常用指令
 
 整理常见、实用的 Ubuntu 命令，按场景分类速查。
+
+清空控制台
+
+```bash
+clear
+```
+或直接按快捷键：`Ctrl + L`
 
 ---
 
