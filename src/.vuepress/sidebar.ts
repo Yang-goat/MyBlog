@@ -8,6 +8,8 @@ export default sidebar({
       prefix: "base/",
       link: "base/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "学习类算法导论",
@@ -29,6 +31,8 @@ export default sidebar({
       prefix: "machine-learning/",
       link: "machine-learning/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "深度学习",
@@ -36,12 +40,25 @@ export default sidebar({
       prefix: "deep-learning/",
       link: "deep-learning/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
+    },
+    {
+      text: "强化学习",
+      icon: "code",
+      prefix: "RL/",
+      link: "RL/",
+      children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "智能优化算法",
       icon: "code",
       prefix: "optimization/",
       link: "optimization/",
+      collapsible: true,
+      expanded: false,
       children: [
         {
           text: "优化基础理论知识",
@@ -97,6 +114,8 @@ export default sidebar({
       prefix: "problems/",
       link: "problems/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
   ],
   "/dev/": [
