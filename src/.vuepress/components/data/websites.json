@@ -1078,7 +1078,7 @@
     "icon": "https://openknowledgemaps.org/favicon.ico"
   },
   {
-    "name": "Academic Research Paper Organization Guide",
+    "name": "学术写作指南 | Academic Research Paper Organization Guide",
     "url": "https://library.sacredheart.edu/c.php?g=29803&p=185901",
     "desc": "该研究指南介绍了学术论文的组织结构与写作规范，适合初学者了解论文写作流程与学术研究方法。",
     "tags": ["文献"],
@@ -1090,5 +1090,19 @@
     "desc": "Docker Hub 是官方的容器镜像托管平台，提供大量公共与私有镜像资源，支持容器化应用的分发、管理与部署。",
     "tags": ["论坛 | 资源"],
     "icon": "https://hub.docker.com/favicon.ico"
+  },
+  {
+    "name": "学术预印本 | arxiv",
+    "url": "https://arxiv.org/",
+    "desc": "arXiv 是一个面向全球的开放获取学术预印本平台，研究者可以在正式发表前免费发布和分享论文成果。",
+    "tags": ["文献"],
+    "icon": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+  },
+  {
+    "name": "SCI | Web of Science",
+    "url": "http://www.webofknowledge.com",
+    "desc": "Web of Science 是一个权威的全球学术文献引文数据库，用于检索高质量科研论文并分析其引用关系与学术影响力。",
+    "tags": ["文献"],
+    "icon": "https://webofscience.clarivate.cn/wos/static/favicon.png"
   }
 ]

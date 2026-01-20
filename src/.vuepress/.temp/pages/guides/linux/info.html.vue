@@ -2,20 +2,20 @@
 <p>Linux 是一套稳定、安全、强大的开源操作系统，它支撑着世界上绝大多数服务器、云计算平台和开发环境。<br>
 本篇旨在帮助初学者建立对 Linux 的整体认识，理解它的思想、结构与使用方式。</p>
 <hr>
-<h2 id="🧭-一、linux-是什么" tabindex="-1"><a class="header-anchor" href="#🧭-一、linux-是什么"><span>🧭 一、Linux 是什么？</span></a></h2>
-<h3 id="_1️⃣-起源" tabindex="-1"><a class="header-anchor" href="#_1️⃣-起源"><span>1️⃣ 起源</span></a></h3>
+<h2 id="一、linux-是什么" tabindex="-1"><a class="header-anchor" href="#一、linux-是什么"><span>一、Linux 是什么？</span></a></h2>
+<h3 id="_1-起源" tabindex="-1"><a class="header-anchor" href="#_1-起源"><span>1 起源</span></a></h3>
 <ul>
 <li>Linux 起源于 1991 年，由芬兰程序员 <strong>Linus Torvalds</strong> 编写内核。</li>
 <li>它受 <strong>Unix</strong> 启发，完全开源，全球开发者共同维护。</li>
 </ul>
-<h3 id="_2️⃣-特点" tabindex="-1"><a class="header-anchor" href="#_2️⃣-特点"><span>2️⃣ 特点</span></a></h3>
+<h3 id="_2-特点" tabindex="-1"><a class="header-anchor" href="#_2-特点"><span>2 特点</span></a></h3>
 <ul>
 <li><strong>开源自由</strong>：任何人都可使用、修改和分发。</li>
 <li><strong>稳定可靠</strong>：广泛用于服务器、嵌入式、科研集群。</li>
 <li><strong>安全多用户</strong>：权限控制严格，用户隔离。</li>
 <li><strong>高度可定制</strong>：命令行驱动，可自由配置系统。</li>
 </ul>
-<h3 id="_3️⃣-与-windows-的区别" tabindex="-1"><a class="header-anchor" href="#_3️⃣-与-windows-的区别"><span>3️⃣ 与 Windows 的区别</span></a></h3>
+<h3 id="_3-与-windows-的区别" tabindex="-1"><a class="header-anchor" href="#_3-与-windows-的区别"><span>3 与 Windows 的区别</span></a></h3>
 <table>
 <thead>
 <tr>
@@ -58,7 +58,7 @@
 </tbody>
 </table>
 <hr>
-<h2 id="🧩-二、linux-的核心组成" tabindex="-1"><a class="header-anchor" href="#🧩-二、linux-的核心组成"><span>🧩 二、Linux 的核心组成</span></a></h2>
+<h2 id="二、linux-的核心组成" tabindex="-1"><a class="header-anchor" href="#二、linux-的核心组成"><span>二、Linux 的核心组成</span></a></h2>
 <p>Linux 并不是一个单独的程序，而是多个部分协同工作的系统：</p>
 <table>
 <thead>
@@ -90,12 +90,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="📊-结构示意图" tabindex="-1"><a class="header-anchor" href="#📊-结构示意图"><span>📊 结构示意图</span></a></h3>
-<Mermaid id="mermaid-200" code="eJxLL0osyFAIceFyjH6+cM2T3duebmyKVdDVtVNwivbJzCutUHja1vpswQ4F79SivNScWC4nsKRz9PPNu5/vnv9iQ/PzKSue9S192r84lssZLOcSHZyRmpOj8GRH39OJe5/sXvJiYc/T7Uuftm6P5XIBq3CNBmnq2P501xQg4/mK7qe7+mO5AJq+RKY="></Mermaid><h2 id="📁-三、文件系统与路径哲学" tabindex="-1"><a class="header-anchor" href="#📁-三、文件系统与路径哲学"><span>📁 三、文件系统与路径哲学</span></a></h2>
+<h3 id="结构示意图" tabindex="-1"><a class="header-anchor" href="#结构示意图"><span>结构示意图</span></a></h3>
+<Mermaid id="mermaid-200" code="eJxLL0osyFAIceFyjH6+cM2T3duebmyKVdDVtVNwivbJzCutUHja1vpswQ4F79SivNScWC4nsKRz9PPNu5/vnv9iQ/PzKSue9S192r84lssZLOcSHZyRmpOj8GRH39OJe5/sXvJiYc/T7Uuftm6P5XIBq3CNBmnq2P501xQg4/mK7qe7+mO5AJq+RKY="></Mermaid><h2 id="三、文件系统与路径哲学" tabindex="-1"><a class="header-anchor" href="#三、文件系统与路径哲学"><span>三、文件系统与路径哲学</span></a></h2>
 <p>Linux 的一大理念是：<strong>“一切皆文件”</strong>。<br>
 无论是硬盘、设备、进程、网络接口，甚至内存，都以文件的形式存在。</p>
 <hr>
-<h3 id="📂-目录层级结构" tabindex="-1"><a class="header-anchor" href="#📂-目录层级结构"><span>📂 目录层级结构</span></a></h3>
+<h3 id="目录层级结构" tabindex="-1"><a class="header-anchor" href="#目录层级结构"><span>目录层级结构</span></a></h3>
 <p>Linux 使用树状文件系统结构，根目录 <code v-pre>/</code> 是所有路径的起点。</p>
 <table>
 <thead>
@@ -151,13 +151,13 @@
 </tr>
 </tbody>
 </table>
-<p>📘 示例：</p>
+<p>示例：</p>
 <div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-"><span class="line"><span>/etc/ssh/sshd_config → SSH 服务配置文件</span></span>
 <span class="line"><span>/home/goatyang/ → 用户主目录</span></span>
 <span class="line"><span>/var/log/syslog → 系统日志</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
-<h2 id="🧠-四、linux-的核心思想" tabindex="-1"><a class="header-anchor" href="#🧠-四、linux-的核心思想"><span>🧠 四、Linux 的核心思想</span></a></h2>
-<h3 id="🧱-1-一切皆文件" tabindex="-1"><a class="header-anchor" href="#🧱-1-一切皆文件"><span>🧱 1. 一切皆文件</span></a></h3>
+<h2 id="四、linux-的核心思想" tabindex="-1"><a class="header-anchor" href="#四、linux-的核心思想"><span>四、Linux 的核心思想</span></a></h2>
+<h3 id="_1-一切皆文件" tabindex="-1"><a class="header-anchor" href="#_1-一切皆文件"><span>1. 一切皆文件</span></a></h3>
 <p>系统中的一切资源都抽象为文件：</p>
 <ul>
 <li>文件（普通文件）</li>
@@ -166,27 +166,27 @@
 <li>网络接口（如 <code v-pre>/proc/net/</code>）</li>
 <li>进程（如 <code v-pre>/proc/1234</code>）</li>
 </ul>
-<p>📘 示例：</p>
+<p>示例：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">cat</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /proc/cpuinfo</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">     # 以文件方式查看 CPU 信息</span></span>
 <span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">cat</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /proc/meminfo</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">     # 查看内存使用情况</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="🔧-2-小而精的工具哲学" tabindex="-1"><a class="header-anchor" href="#🔧-2-小而精的工具哲学"><span>🔧 2. 小而精的工具哲学</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-小而精的工具哲学" tabindex="-1"><a class="header-anchor" href="#_2-小而精的工具哲学"><span>2. 小而精的工具哲学</span></a></h3>
 <p>Linux 倡导“让每个程序只做一件事，并且做好”。<br>
 命令通过管道 <code v-pre>|</code> 串联，构成强大的操作流。</p>
-<p>📘 示例：</p>
+<p>示例：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ps</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> aux</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">grep</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nginx</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wc</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -l</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>→ 查找正在运行的 nginx 进程数量。</p>
-<h3 id="🔗-3-一切可组合" tabindex="-1"><a class="header-anchor" href="#🔗-3-一切可组合"><span>🔗 3. 一切可组合</span></a></h3>
+<h3 id="_3-一切可组合" tabindex="-1"><a class="header-anchor" href="#_3-一切可组合"><span>3. 一切可组合</span></a></h3>
 <p>简单命令可通过脚本或管道组合成复杂操作。<br>
 这使 Linux 拥有极高的灵活性和可扩展性。</p>
-<p>📘 示例：</p>
+<p>示例：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">cat</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> access.log</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">grep</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "404"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sort</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">uniq</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -c</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sort</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -nr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">head</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>→ 统计网站 404 错误最多的访问路径。</p>
 <hr>
-<h3 id="🧍-4-权限与安全至上" tabindex="-1"><a class="header-anchor" href="#🧍-4-权限与安全至上"><span>🧍 4. 权限与安全至上</span></a></h3>
+<h3 id="_4-权限与安全至上" tabindex="-1"><a class="header-anchor" href="#_4-权限与安全至上"><span>4. 权限与安全至上</span></a></h3>
 <p>Linux 是严格的多用户系统，每个文件、进程和端口都有访问控制。<br>
 普通用户与管理员（root）权限隔离，安全性远高于单用户系统。</p>
 <hr>
-<h2 id="👥-五、用户与角色体系" tabindex="-1"><a class="header-anchor" href="#👥-五、用户与角色体系"><span>👥 五、用户与角色体系</span></a></h2>
+<h2 id="五、用户与角色体系" tabindex="-1"><a class="header-anchor" href="#五、用户与角色体系"><span>五、用户与角色体系</span></a></h2>
 <p>Linux 系统区分不同用户类型，每类用户拥有不同权限。</p>
 <table>
 <thead>
@@ -214,17 +214,17 @@
 </tr>
 </tbody>
 </table>
-<h3 id="🔐-提权与切换" tabindex="-1"><a class="header-anchor" href="#🔐-提权与切换"><span>🔐 提权与切换</span></a></h3>
+<h3 id="提权与切换" tabindex="-1"><a class="header-anchor" href="#提权与切换"><span>提权与切换</span></a></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> command</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">     # 临时以管理员权限执行</span></span>
 <span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">su</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> root</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">          # 切换到 root 用户</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>💡 建议：</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>建议：</p>
 <ul>
 <li>不长期登录 root。</li>
 <li>使用 sudo 执行高权限命令更安全。</li>
 </ul>
 <hr>
-<h2 id="⚙️-六、shell-与命令行交互" tabindex="-1"><a class="header-anchor" href="#⚙️-六、shell-与命令行交互"><span>⚙️ 六、Shell 与命令行交互</span></a></h2>
-<h3 id="💬-什么是-shell" tabindex="-1"><a class="header-anchor" href="#💬-什么是-shell"><span>💬 什么是 Shell？</span></a></h3>
+<h2 id="六、shell-与命令行交互" tabindex="-1"><a class="header-anchor" href="#六、shell-与命令行交互"><span>六、Shell 与命令行交互</span></a></h2>
+<h3 id="什么是-shell" tabindex="-1"><a class="header-anchor" href="#什么是-shell"><span>什么是 Shell？</span></a></h3>
 <p>Shell 是用户与系统内核之间的交互层，负责解析命令、执行操作、输出结果。<br>
 常见类型：</p>
 <table>
@@ -250,22 +250,22 @@
 </tbody>
 </table>
 <hr>
-<h3 id="⚡-shell-的职责" tabindex="-1"><a class="header-anchor" href="#⚡-shell-的职责"><span>⚡ Shell 的职责</span></a></h3>
+<h3 id="shell-的职责" tabindex="-1"><a class="header-anchor" href="#shell-的职责"><span>Shell 的职责</span></a></h3>
 <ol>
 <li>接收命令输入</li>
 <li>调用系统接口执行操作</li>
 <li>将结果输出至终端</li>
 </ol>
 <hr>
-<h2 id="🔄-七、进程与系统运行" tabindex="-1"><a class="header-anchor" href="#🔄-七、进程与系统运行"><span>🔄 七、进程与系统运行</span></a></h2>
+<h2 id="七、进程与系统运行" tabindex="-1"><a class="header-anchor" href="#七、进程与系统运行"><span>七、进程与系统运行</span></a></h2>
 <p>在 Linux 中，<strong>一切运行的程序都是进程（Process）</strong>。<br>
 每个进程都有唯一的 <strong>PID（进程号）</strong> 来标识。</p>
-<h3 id="🧩-进程生命周期" tabindex="-1"><a class="header-anchor" href="#🧩-进程生命周期"><span>🧩 进程生命周期</span></a></h3>
-<Mermaid id="mermaid-549" code="eJxLL0osyFDwCeJyjH7aMfvp7l0KzkWpiSWpsQq6unYKTtFPN2x8vnuVQlBqYkplLJcTWNQ5+sX+CS8W9igEleblZealx3I5g8Vdop+v7Xy6r1UhPDGzBCboGv18d8eztYsUQlKLcjPzQEZzAQDpQC7+"></Mermaid><p>📘 示例：</p>
+<h3 id="进程生命周期" tabindex="-1"><a class="header-anchor" href="#进程生命周期"><span>进程生命周期</span></a></h3>
+<Mermaid id="mermaid-549" code="eJxLL0osyFDwCeJyjH7aMfvp7l0KzkWpiSWpsQq6unYKTtFPN2x8vnuVQlBqYkplLJcTWNQ5+sX+CS8W9igEleblZealx3I5g8Vdop+v7Xy6r1UhPDGzBCboGv18d8eztYsUQlKLcjPzQEZzAQDpQC7+"></Mermaid><p>示例：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-bash"><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ps</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -ef</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">grep</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nginx</span></span>
 <span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">kill</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -9</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1234</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>→ 查看并终止进程。</p>
-<h3 id="🧠-守护进程-daemon" tabindex="-1"><a class="header-anchor" href="#🧠-守护进程-daemon"><span>🧠 守护进程（Daemon）</span></a></h3>
+<h3 id="守护进程-daemon" tabindex="-1"><a class="header-anchor" href="#守护进程-daemon"><span>守护进程（Daemon）</span></a></h3>
 <p>后台持续运行、提供系统服务的进程。<br>
 命名惯例常以 <code v-pre>d</code> 结尾：</p>
 <table>
@@ -290,15 +290,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="🧰-八、软件与包管理体系" tabindex="-1"><a class="header-anchor" href="#🧰-八、软件与包管理体系"><span>🧰 八、软件与包管理体系</span></a></h2>
+<h2 id="八、软件与包管理体系" tabindex="-1"><a class="header-anchor" href="#八、软件与包管理体系"><span>八、软件与包管理体系</span></a></h2>
 <p>Linux 的软件安装与更新并非通过 <code v-pre>.exe</code> 安装程序完成，而是依靠 <strong>包管理系统（Package Manager）</strong>。<br>
 包管理器负责统一安装、升级、卸载与依赖管理，让系统软件始终保持一致性与可控性。</p>
 <hr>
-<h3 id="📦-1-软件包的概念" tabindex="-1"><a class="header-anchor" href="#📦-1-软件包的概念"><span>📦 1. 软件包的概念</span></a></h3>
+<h3 id="_1-软件包的概念" tabindex="-1"><a class="header-anchor" href="#_1-软件包的概念"><span>1. 软件包的概念</span></a></h3>
 <p>软件包（Package）是一个包含程序、配置、依赖描述和安装脚本的归档文件。<br>
 包管理系统通过这些信息完成自动安装与配置，而无需手动操作文件。</p>
 <hr>
-<h3 id="🧩-2-常见的包管理体系" tabindex="-1"><a class="header-anchor" href="#🧩-2-常见的包管理体系"><span>🧩 2. 常见的包管理体系</span></a></h3>
+<h3 id="_2-常见的包管理体系" tabindex="-1"><a class="header-anchor" href="#_2-常见的包管理体系"><span>2. 常见的包管理体系</span></a></h3>
 <p>不同 Linux 发行版使用不同的包管理工具与格式：</p>
 <table>
 <thead>
@@ -333,12 +333,12 @@
 </table>
 <p>这些包管理器都能通过命令行或图形界面执行安装、更新与删除操作。</p>
 <hr>
-<h3 id="⚙️-3-软件源-repository" tabindex="-1"><a class="header-anchor" href="#⚙️-3-软件源-repository"><span>⚙️ 3. 软件源（Repository）</span></a></h3>
+<h3 id="_3-软件源-repository" tabindex="-1"><a class="header-anchor" href="#_3-软件源-repository"><span>3. 软件源（Repository）</span></a></h3>
 <p>包管理器依赖软件仓库（Repository）来获取和验证软件包。<br>
 软件源相当于一个集中分发的服务器，包含经过签名的程序集合。<br>
 用户可切换镜像源以提升下载速度，或添加第三方源以安装非官方软件。</p>
 <hr>
-<h3 id="🔧-4-依赖管理机制" tabindex="-1"><a class="header-anchor" href="#🔧-4-依赖管理机制"><span>🔧 4. 依赖管理机制</span></a></h3>
+<h3 id="_4-依赖管理机制" tabindex="-1"><a class="header-anchor" href="#_4-依赖管理机制"><span>4. 依赖管理机制</span></a></h3>
 <p>Linux 软件往往依赖多个库文件。<br>
 包管理器能：</p>
 <ul>
@@ -348,7 +348,7 @@
 </ul>
 <p>这种依赖树式的机制，是 Linux 系统稳定运行的关键。</p>
 <hr>
-<h3 id="💡-5-包管理的意义" tabindex="-1"><a class="header-anchor" href="#💡-5-包管理的意义"><span>💡 5. 包管理的意义</span></a></h3>
+<h3 id="_5-包管理的意义" tabindex="-1"><a class="header-anchor" href="#_5-包管理的意义"><span>5. 包管理的意义</span></a></h3>
 <p>包管理系统让 Linux：</p>
 <ul>
 <li>保持一致性与可追踪性</li>
@@ -358,11 +358,11 @@
 </ul>
 <p>在现代 Linux 中，包管理系统是系统维护的中枢组件。</p>
 <hr>
-<h2 id="🌐-九、远程与网络操作" tabindex="-1"><a class="header-anchor" href="#🌐-九、远程与网络操作"><span>🌐 九、远程与网络操作</span></a></h2>
+<h2 id="九、远程与网络操作" tabindex="-1"><a class="header-anchor" href="#九、远程与网络操作"><span>九、远程与网络操作</span></a></h2>
 <p>Linux 从设计之初就面向网络环境，具备强大的远程控制与网络通信能力。<br>
 服务器、云计算与集群管理的基础都是建立在这些机制之上。</p>
 <hr>
-<h3 id="🌍-1-网络体系基础" tabindex="-1"><a class="header-anchor" href="#🌍-1-网络体系基础"><span>🌍 1. 网络体系基础</span></a></h3>
+<h3 id="_1-网络体系基础" tabindex="-1"><a class="header-anchor" href="#_1-网络体系基础"><span>1. 网络体系基础</span></a></h3>
 <p>Linux 将网络接口、设备与连接统一抽象为文件或虚拟节点。<br>
 系统通过内核网络栈（Network Stack）处理数据包，实现 IP、端口、协议等多层通信。</p>
 <ul>
@@ -371,7 +371,7 @@
 <li>内核维护路由表与防火墙规则，以控制通信流向。</li>
 </ul>
 <hr>
-<h3 id="🔐-2-远程访问与控制-ssh" tabindex="-1"><a class="header-anchor" href="#🔐-2-远程访问与控制-ssh"><span>🔐 2. 远程访问与控制（SSH）</span></a></h3>
+<h3 id="_2-远程访问与控制-ssh" tabindex="-1"><a class="header-anchor" href="#_2-远程访问与控制-ssh"><span>2. 远程访问与控制（SSH）</span></a></h3>
 <p>SSH（Secure Shell）是 Linux 最常用的远程连接协议。<br>
 它支持加密通信、密钥认证与端口转发，是运维与开发环境的核心工具。</p>
 <ul>
@@ -381,7 +381,7 @@
 </ul>
 <p>SSH 不仅用于登录服务器，也可实现安全的文件传输与代理功能。</p>
 <hr>
-<h3 id="📦-3-文件传输机制" tabindex="-1"><a class="header-anchor" href="#📦-3-文件传输机制"><span>📦 3. 文件传输机制</span></a></h3>
+<h3 id="_3-文件传输机制" tabindex="-1"><a class="header-anchor" href="#_3-文件传输机制"><span>3. 文件传输机制</span></a></h3>
 <p>Linux 提供多种基于加密的文件传输方式：</p>
 <ul>
 <li><strong>SCP（Secure Copy）</strong>：使用 SSH 协议进行安全文件复制</li>
@@ -390,7 +390,7 @@
 </ul>
 <p>这些工具广泛用于数据迁移、备份与远程部署。</p>
 <hr>
-<h3 id="🧩-4-端口与网络服务" tabindex="-1"><a class="header-anchor" href="#🧩-4-端口与网络服务"><span>🧩 4. 端口与网络服务</span></a></h3>
+<h3 id="_4-端口与网络服务" tabindex="-1"><a class="header-anchor" href="#_4-端口与网络服务"><span>4. 端口与网络服务</span></a></h3>
 <p>在 Linux 中，几乎所有网络通信都基于端口进行。<br>
 常见端口示例：</p>
 <ul>
@@ -401,7 +401,7 @@
 </ul>
 <p>系统通过守护进程（Daemon）监听端口提供服务，管理员可通过防火墙规则控制访问范围。</p>
 <hr>
-<h3 id="🚪-5-防火墙与网络安全" tabindex="-1"><a class="header-anchor" href="#🚪-5-防火墙与网络安全"><span>🚪 5. 防火墙与网络安全</span></a></h3>
+<h3 id="_5-防火墙与网络安全" tabindex="-1"><a class="header-anchor" href="#_5-防火墙与网络安全"><span>5. 防火墙与网络安全</span></a></h3>
 <p>Linux 的防火墙框架（如 <strong>iptables</strong>、<strong>nftables</strong>、<strong>ufw</strong>）允许管理员：</p>
 <ul>
 <li>允许或拒绝指定端口访问</li>
@@ -410,7 +410,7 @@
 </ul>
 <p>安全性是 Linux 网络管理的核心目标，因此防火墙通常默认启用。</p>
 <hr>
-<h3 id="💼-6-网络调试与监控" tabindex="-1"><a class="header-anchor" href="#💼-6-网络调试与监控"><span>💼 6. 网络调试与监控</span></a></h3>
+<h3 id="_6-网络调试与监控" tabindex="-1"><a class="header-anchor" href="#_6-网络调试与监控"><span>6. 网络调试与监控</span></a></h3>
 <p>Linux 内置强大的网络诊断与监控工具，可用于：</p>
 <ul>
 <li>检查网络连通性与路由</li>
@@ -420,7 +420,7 @@
 </ul>
 <p>这些工具是排查网络异常、优化连接性能的重要手段。</p>
 <hr>
-<h3 id="💡-7-网络理念与优势" tabindex="-1"><a class="header-anchor" href="#💡-7-网络理念与优势"><span>💡 7. 网络理念与优势</span></a></h3>
+<h3 id="_7-网络理念与优势" tabindex="-1"><a class="header-anchor" href="#_7-网络理念与优势"><span>7. 网络理念与优势</span></a></h3>
 <p>Linux 在网络管理上的优势体现为：</p>
 <ul>
 <li>全命令行可控，无需图形界面</li>

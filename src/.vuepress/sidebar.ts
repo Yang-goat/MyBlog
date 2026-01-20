@@ -124,6 +124,8 @@ export default sidebar({
       icon: "code",
       prefix: "language/",
       link: "language/",
+      collapsible: true,
+      expanded: false,
       children: [
         {
           text: "Java",
@@ -151,6 +153,8 @@ export default sidebar({
       prefix: "frontend/",
       link: "frontend/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
   ],
   "/notes/": [
@@ -178,7 +182,7 @@ export default sidebar({
       prefix: "MCM/",
       link: "MCM/",
       collapsible: true,
-      expanded: true,
+      expanded: false,
       children: "structure",
     },
     {
@@ -186,6 +190,8 @@ export default sidebar({
       icon: "code",
       prefix: "ACMer/",
       link: "ACMer/",
+      collapsible: true,
+      expanded: false,
       children: [
         {
           text: "竞赛板子",
@@ -205,11 +211,13 @@ export default sidebar({
   ],
   "/guides/": [
     {
-      text: "Linux",
-      icon: "l",
-      prefix: "linux/",
-      link: "linux/",
+      text: "版本控制",
+      icon: "b",
+      prefix: "git/",
+      link: "git/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "Docker",
@@ -217,31 +225,40 @@ export default sidebar({
       prefix: "docker/",
       link: "docker/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
+    },
+    {
+      text: "Linux",
+      icon: "l",
+      prefix: "linux/",
+      link: "linux/",
+      children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "Latex",
-      icon: "laptop-code",
+      icon: "l",
       prefix: "Latex/",
       link: "Latex/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
     {
       text: "VSCode",
-      icon: "laptop-code",
+      icon: "v",
       prefix: "VSCode/",
       link: "VSCode/",
       children: "structure",
+      collapsible: true,
+      expanded: false,
     },
-    {
-      text: "版本控制",
-      icon: "laptop-code",
-      prefix: "git/",
-      link: "git/",
-      children: "structure",
-    },
+
     { 
       text: "Zotero",
-      icon: "book",
+      icon: "z",
       link: "Zotero.md",
     },
   ],
