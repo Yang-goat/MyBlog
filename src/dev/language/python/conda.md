@@ -1,6 +1,7 @@
 ---
 icon: pen-to-square
 date: 2025-09-27
+order: 3
 category:
   - Python
 tag:

@@ -2,9 +2,9 @@
 icon: pen-to-square
 title: dataclass 用法
 date: 2026-01-22
-#order: 1
-#category:
-# - 
+order: 6
+category:
+    - python 
 #tag:
 #  - 
 ---
