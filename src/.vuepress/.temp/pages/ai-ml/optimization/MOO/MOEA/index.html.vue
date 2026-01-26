@@ -36,37 +36,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="性能评价指标" tabindex="-1"><a class="header-anchor" href="#性能评价指标"><span>性能评价指标</span></a></h2>
-<table>
-<thead>
-<tr>
-<th>指标</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>GD (Generational Distance)</strong></td>
-<td>衡量解集到真实帕累托前沿的距离（收敛性）</td>
-</tr>
-<tr>
-<td><strong>SP (Spacing)</strong></td>
-<td>解的分布均匀程度</td>
-</tr>
-<tr>
-<td><strong>HV (Hypervolume)</strong></td>
-<td>解集覆盖体积，综合考虑收敛性与多样性</td>
-</tr>
-<tr>
-<td><strong>IGD (Inverted GD)</strong></td>
-<td>从真实前沿到算法前沿的距离，综合指标</td>
-</tr>
-<tr>
-<td><strong>Spread (Δ)</strong></td>
-<td>衡量帕累托前沿的均匀性</td>
-</tr>
-</tbody>
-</table>
 </div></template>
 
 

@@ -89,7 +89,7 @@ export default sidebar({
           link: "VNS.md",
         },
         {
-          text: "多目标优化问题（MOO）",
+          text: "多目标优化（MOO）",
           icon: "m",
           prefix: "MOO/",
           link: "MOO/",
