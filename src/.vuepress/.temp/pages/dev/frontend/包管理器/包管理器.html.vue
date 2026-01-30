@@ -1,4 +1,4 @@
-<template><div><h1 id="概述" tabindex="-1"><a class="header-anchor" href="#概述"><span>概述</span></a></h1>
+<template><div><h1 id="前端包管理" tabindex="-1"><a class="header-anchor" href="#前端包管理"><span>前端包管理</span></a></h1>
 <p>包管理器（Package Manager）是前端开发中非常重要的工具，它帮助开发者管理项目中的依赖包、库和工具。通过包管理器，开发者可以轻松地下载、安装、更新和管理项目所需要的各种包，使得开发过程更加高效和便捷。这里将为你介绍前端中常用的包管理器，及其基本概念和使用方法。</p>
 <h2 id="一、什么是包管理器" tabindex="-1"><a class="header-anchor" href="#一、什么是包管理器"><span>一、什么是包管理器？</span></a></h2>
 <p>包管理器是一个用于自动化处理项目依赖、版本管理、包安装和更新的工具。对于前端开发者来说，包管理器的主要作用是：</p>

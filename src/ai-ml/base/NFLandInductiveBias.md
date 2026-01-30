@@ -2,10 +2,9 @@
 icon: book
 date: 2025-11-20
 # order: 1
+star: true
 category:
-  - 通识基础
-# tag:
-#   - 多目标优化
+  - 通识
 ---
 
 

@@ -5,8 +5,9 @@ index: false
 article: false
 category:
   - 智能优化算法
+  - 多目标进化算法
 tag:
-  - 多目标优化算法
+  - 多目标优化
   - 导论
 ---
 

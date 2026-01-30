@@ -2,8 +2,8 @@
 icon: book
 date: 2025-10-11
 order: 1
-category:
-  - 学习算法
+# category:
+#   - 学习算法
 tag:
   - 导论
 ---

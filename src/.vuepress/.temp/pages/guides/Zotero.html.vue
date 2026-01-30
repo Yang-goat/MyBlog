@@ -1,4 +1,4 @@
-<template><div><h1 id="zotero教程" tabindex="-1"><a class="header-anchor" href="#zotero教程"><span>Zotero教程</span></a></h1>
+<template><div><h1 id="zotero-教程" tabindex="-1"><a class="header-anchor" href="#zotero-教程"><span>Zotero 教程</span></a></h1>
 <p>Zotero 是一款免费开源的文献管理工具，能帮研究者高效收集、组织、注释和引用研究资料。它可通过浏览器插件一键抓取网页、数据库中的文献信息与 PDF 全文，也能自动识别本地 PDF 的元数据。</p>
 <p>写作时，它能与 Word、 Latex 等深度集成，一键插入引用并按 APA、MLA 等上万种格式自动生成参考文献列表。同时支持跨设备同步、团队协作共享，还可通过丰富插件拓展功能，且由非营利组织开发保障数据安全。</p>
 <div class="hint-container info">

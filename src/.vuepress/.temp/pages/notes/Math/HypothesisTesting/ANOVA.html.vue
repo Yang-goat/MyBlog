@@ -1,4 +1,4 @@
-<template><div><h1 id="方差分析-anova" tabindex="-1"><a class="header-anchor" href="#方差分析-anova"><span>方差分析（ANOVA）</span></a></h1>
+<template><div><h1 id="方差分析" tabindex="-1"><a class="header-anchor" href="#方差分析"><span>方差分析</span></a></h1>
 <h2 id="一、什么是方差分析" tabindex="-1"><a class="header-anchor" href="#一、什么是方差分析"><span>一、什么是方差分析？</span></a></h2>
 <p>方差分析（Analysis of Variance, <strong>ANOVA</strong>）用于检验多个总体均值是否相等。</p>
 <p>其核心思想是比较：</p>

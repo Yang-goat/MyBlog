@@ -1,10 +1,11 @@
 ---
-icon: pen-to-square
+icon: book
 date: 2025-09-27
 category:
   - Java
 tag:
-  - maven
+  - 包管理
+  - 教程
 ---
 
 # maven安装教程

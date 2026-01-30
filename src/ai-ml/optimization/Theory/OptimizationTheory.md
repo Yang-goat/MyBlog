@@ -1,6 +1,7 @@
 ---
 icon: book
 date: 2025-10-19
+order: 1
 category:
   - 智能优化算法
 tag:

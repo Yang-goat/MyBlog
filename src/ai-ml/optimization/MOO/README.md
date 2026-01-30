@@ -4,9 +4,9 @@ date: 2025-10-15
 index: false
 # order: 1
 category:
-  - 优化问题
-# tag:
-#   - GA
+  - 多目标优化
+tag:
+  - 导论
 ---
 
 # 多目标优化问题

@@ -1,12 +1,13 @@
 ---
-icon: pen-to-square
+icon: code
 date: 2025-09-27
 order: 3
 category:
   - Python
+
 tag:
-  - conda
-  - 指令大全
+  - 包管理
+  - 指令速查
 ---
 
 # conda 指令速查表

@@ -1,4 +1,4 @@
-<template><div><h1 id="packet-json-与-pnpm-lock-yaml-开发文档" tabindex="-1"><a class="header-anchor" href="#packet-json-与-pnpm-lock-yaml-开发文档"><span>packet.json 与 pnpm-lock.yaml 开发文档</span></a></h1>
+<template><div><h1 id="packet-json-与-pnpm-lock-yaml-文件详解" tabindex="-1"><a class="header-anchor" href="#packet-json-与-pnpm-lock-yaml-文件详解"><span>packet.json 与 pnpm-lock.yaml 文件详解</span></a></h1>
 <h2 id="packet-json" tabindex="-1"><a class="header-anchor" href="#packet-json"><span>packet.json</span></a></h2>
 <h3 id="一、文件样例" tabindex="-1"><a class="header-anchor" href="#一、文件样例"><span>一、文件样例</span></a></h3>
 <div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-json"><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>

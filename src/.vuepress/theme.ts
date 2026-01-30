@@ -31,7 +31,7 @@ export default hopeTheme({
 
   // 博客相关
   blog: {
-    description: "立志考研的程序员 爱好电音 信计本科在读",
+    description: "信息与计算科学专业 电音raver",
     intro: "/intro.html",
     medias: {
       BiliBili: "https://space.bilibili.com/415221098",
@@ -59,7 +59,7 @@ export default hopeTheme({
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  // hotReload: true,  
+  hotReload: true,  
 
   // 打印按钮配置
   print: true,

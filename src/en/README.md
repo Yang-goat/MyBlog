@@ -5,4 +5,6 @@ index: false
 article: false
 ---
 
+## The multilingual blog · English version is under development
+
 ## [点击跳转至中文主页](../)

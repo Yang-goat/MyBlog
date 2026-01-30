@@ -1,6 +1,6 @@
-<template><div><h1 id="一致估计量-consistent-estimator" tabindex="-1"><a class="header-anchor" href="#一致估计量-consistent-estimator"><span>一致估计量（Consistent Estimator）</span></a></h1>
+<template><div><h1 id="一致估计量" tabindex="-1"><a class="header-anchor" href="#一致估计量"><span>一致估计量</span></a></h1>
 <h2 id="_1-直观理解" tabindex="-1"><a class="header-anchor" href="#_1-直观理解"><span>1. 直观理解</span></a></h2>
-<p>一致估计量指的是：<br>
+<p>一致估计量（Consistent Estimator）指的是：<br>
 <strong>当样本量不断增大时，估计量会越来越接近真实参数值。</strong></p>
 <p>换句话说：</p>
 <blockquote>

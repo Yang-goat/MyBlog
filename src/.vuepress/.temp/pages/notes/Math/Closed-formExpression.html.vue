@@ -1,4 +1,4 @@
-<template><div><h1 id="封闭形式表达式与非封闭形式表达式" tabindex="-1"><a class="header-anchor" href="#封闭形式表达式与非封闭形式表达式"><span>封闭形式表达式与非封闭形式表达式</span></a></h1>
+<template><div><h1 id="封闭形式表达式-vs-非封闭形式表达式" tabindex="-1"><a class="header-anchor" href="#封闭形式表达式-vs-非封闭形式表达式"><span>封闭形式表达式 VS 非封闭形式表达式</span></a></h1>
 <h2 id="_1-什么是封闭形式表达式-closed-form-expression" tabindex="-1"><a class="header-anchor" href="#_1-什么是封闭形式表达式-closed-form-expression"><span>1. 什么是封闭形式表达式（Closed-form Expression）</span></a></h2>
 <p><strong>封闭形式表达式</strong>指的是一个数学量可以用<strong>有限个</strong>常见的数学运算和函数直接表示出来的表达式。</p>
 <p>一般允许使用的元素包括：</p>

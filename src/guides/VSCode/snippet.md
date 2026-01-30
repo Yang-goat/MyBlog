@@ -3,10 +3,11 @@ icon: book
 title: 创建文件模板
 date: 2026-01-22
 #order: 1
-#category:
-# - 
-#tag:
-#  - 
+category:
+- VSCode 
+- 软件教程
+tag:
+ - 教程
 ---
 
 # 创建文件模板

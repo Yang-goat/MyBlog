@@ -4,10 +4,8 @@ date: 2025-12-14
 # order: 2
 category:
   - docker
-#   - Ubuntu
 tag:
-  - 命令行
-  - Shell
+  - 指令速查
 ---
 
 # Docker 常用指令

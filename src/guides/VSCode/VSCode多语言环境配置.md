@@ -3,7 +3,8 @@ icon: book
 date: 2025-09-26
 order: 1
 category:
-  - 软件
+  - VSCode
+  - 软件教程
 tag:
   - 教程
 ---

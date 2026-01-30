@@ -3,9 +3,9 @@ icon: code
 date: 2025-12-03
 # order: 2
 category:
-  - 参数设置
-tag:
-  - 田口方法
+  - 参数设置分析
+# tag:
+#   - 田口方法
 ---
 
 # 田口方法（Taguchi Method）

@@ -53,6 +53,15 @@ export default sidebar({
       expanded: false,
     },
     {
+      text: "非学习类算法",
+      icon: "code",
+      prefix: "other/",
+      link: "other/",
+      children: "structure",
+      collapsible: true,
+      expanded: false,
+    },
+    {
       text: "智能优化算法",
       icon: "code",
       prefix: "optimization/",
@@ -137,7 +146,7 @@ export default sidebar({
           children: "structure",
         },
         {
-          text: "python",
+          text: "Python",
           icon: "code",
           prefix: "python/",
           link: "python/",
@@ -168,15 +177,6 @@ export default sidebar({
       children: "structure",
     },
     {
-      text: "专业课专题",
-      icon: "graduation-cap",
-      prefix: "major/",
-      link: "major/",
-      collapsible: true,
-      expanded: false,
-      children: "structure",
-    },
-    {
       text: "数学建模专题",
       icon: "graduation-cap",
       prefix: "MCM/",
@@ -186,27 +186,13 @@ export default sidebar({
       children: "structure",
     },
     {
-      text: "ACM算法专题",
+      text: "算法竞赛专题",
       icon: "code",
       prefix: "ACMer/",
       link: "ACMer/",
       collapsible: true,
       expanded: false,
-      children: [
-        {
-          text: "竞赛板子",
-          link: "竞赛板子.md",
-          icon: "lightbulb",
-        },
-        {
-          text: "基础算法",
-          prefix: "基础算法/",
-          link: "基础算法/",
-          collapsible: true,
-          expanded: false,
-          children: "structure",
-        },
-      ]
+      children: "structure",
     },
   ],
   "/guides/": [

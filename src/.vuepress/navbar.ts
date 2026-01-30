@@ -3,7 +3,7 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
-    text: "软件开发",
+    text: "编程开发",
     icon: "book",
     link: "/dev/",
   },

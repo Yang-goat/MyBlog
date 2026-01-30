@@ -6,8 +6,7 @@ category:
   - Linux
   - Ubuntu
 tag:
-  - 命令行
-  - Shell
+  - 指令速查
 ---
 
 # Ubuntu 常用指令

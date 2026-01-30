@@ -5,8 +5,8 @@ order: 2
 category:
   - 前端
 tag:
-  - npm
-  - pnpm
+  - 包管理
+  - 指令速查
 ---
 
 # npm 和 pnpm 常用命令开发文档

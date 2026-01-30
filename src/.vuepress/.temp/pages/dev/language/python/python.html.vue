@@ -1,4 +1,4 @@
-<template><div><h1 id="python-基础" tabindex="-1"><a class="header-anchor" href="#python-基础"><span>Python 基础</span></a></h1>
+<template><div><h1 id="python-基础语法" tabindex="-1"><a class="header-anchor" href="#python-基础语法"><span>Python 基础语法</span></a></h1>
 <h2 id="一、初识python" tabindex="-1"><a class="header-anchor" href="#一、初识python"><span>一、初识python</span></a></h2>
 <h3 id="_1、输入输出" tabindex="-1"><a class="header-anchor" href="#_1、输入输出"><span>1、输入输出</span></a></h3>
 <div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code class="language-python"><span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>

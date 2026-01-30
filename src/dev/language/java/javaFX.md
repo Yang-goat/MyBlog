@@ -1,14 +1,13 @@
 ---
-icon: pen-to-square
-date: 2024-01-01
+icon: book
+date: 2025-06-08
 category:
-  - JavaFX
+  - Java
 tag:
   - 框架
-  - GUI
 ---
 
-# JavaFX
+# GUI框架 JavaFX
 
 ## 零、项目创建
 

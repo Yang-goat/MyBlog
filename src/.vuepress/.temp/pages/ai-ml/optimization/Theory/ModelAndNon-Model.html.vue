@@ -1,4 +1,4 @@
-<template><div><h1 id="元启发式算法中的基于模型与非基于模型方法详解" tabindex="-1"><a class="header-anchor" href="#元启发式算法中的基于模型与非基于模型方法详解"><span>元启发式算法中的基于模型与非基于模型方法详解</span></a></h1>
+<template><div><h1 id="基于模型方法-vs-非基于模型方法" tabindex="-1"><a class="header-anchor" href="#基于模型方法-vs-非基于模型方法"><span>基于模型方法 VS 非基于模型方法</span></a></h1>
 <p>在智能优化算法的发展中，元启发式方法（Metaheuristics）因其通用性、可扩展性以及对复杂黑箱问题的强适应性而成为人工智能优化的重要组成部分。本文将系统整理元启发式算法在“是否基于模型（Model-Based vs. Model-Free）”这一维度下的分类及其特点，为从事智能优化研究或工程实践的读者提供清晰的知识结构。</p>
 <hr>
 <h2 id="_1-概述-为什么要关注-基于模型-vs-非基于模型" tabindex="-1"><a class="header-anchor" href="#_1-概述-为什么要关注-基于模型-vs-非基于模型"><span>1. 概述：为什么要关注“基于模型 vs. 非基于模型”？</span></a></h2>

@@ -1,4 +1,4 @@
-<template><div><h1 id="java-i-o" tabindex="-1"><a class="header-anchor" href="#java-i-o"><span>Java I/O</span></a></h1>
+<template><div><h1 id="输入输出" tabindex="-1"><a class="header-anchor" href="#输入输出"><span>输入输出</span></a></h1>
 <p>Java 的 I/O（输入/输出）主要用于处理文件、网络、控制台输入输出等操作，核心是 <code v-pre>java.io</code> 和 <code v-pre>java.nio</code>（非阻塞IO 适用于高并发场景） 两个包。以下结合常见的实用场景，详细讲解 Java IO 的。</p>
 <h2 id="_1-文件操作-读取和写入文件" tabindex="-1"><a class="header-anchor" href="#_1-文件操作-读取和写入文件"><span>1. <strong>文件操作：读取和写入文件</strong></span></a></h2>
 <p>Java IO 中最常见的操作是文件的读取和写入，这里使用字符流，一次读取/写入一个字符。</p>

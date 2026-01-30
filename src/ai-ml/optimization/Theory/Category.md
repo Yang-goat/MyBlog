@@ -1,10 +1,10 @@
 ---
 icon: layer-group
 date: 2025-10-19
+order: 2
 category:
   - 智能优化算法
 tag:
-  - 分类
   - 导论
 ---
 

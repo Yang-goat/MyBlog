@@ -1,4 +1,4 @@
-<template><div><h1 id="latex环境配置" tabindex="-1"><a class="header-anchor" href="#latex环境配置"><span>Latex环境配置</span></a></h1>
+<template><div><h1 id="vscode-中-latex-环境配置" tabindex="-1"><a class="header-anchor" href="#vscode-中-latex-环境配置"><span>VSCode 中 Latex 环境配置</span></a></h1>
 <h2 id="一、tex-live-下载与安装" tabindex="-1"><a class="header-anchor" href="#一、tex-live-下载与安装"><span>一、TeX Live 下载与安装</span></a></h2>
 <ul>
 <li>途径1

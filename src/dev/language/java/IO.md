@@ -1,14 +1,12 @@
 ---
-icon: pen-to-square
-date: 2022-01-01
-order: 2
+icon: code
+date: 2025-06-08
+order: 1
 category:
   - Java
-tag:
-  - 基础
 ---
 
-# Java I/O
+# 输入输出
 
 Java 的 I/O（输入/输出）主要用于处理文件、网络、控制台输入输出等操作，核心是 `java.io` 和 `java.nio`（非阻塞IO 适用于高并发场景） 两个包。以下结合常见的实用场景，详细讲解 Java IO 的。
 

@@ -4,9 +4,9 @@ date: 2026-01-20
 order: 2
 category:
   - Linux
-  - Ubuntu
 tag:
-  - apt
+  - 包管理
+  - 指令速查
 ---
 
 # Ubuntu / Debian 软件管理

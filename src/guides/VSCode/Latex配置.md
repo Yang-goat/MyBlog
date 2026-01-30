@@ -2,12 +2,14 @@
 icon: book
 date: 2025-09-26
 category:
-  - 软件
-tag:
+  - 软件教程
+  - VSCode
   - Latex
+tag:
+  - 教程
 ---
 
-# Latex环境配置
+# VSCode 中 Latex 环境配置
 
 ## 一、TeX Live 下载与安装
 

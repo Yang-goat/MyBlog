@@ -1,16 +1,16 @@
 ---
-icon: pen-to-square
+icon: toolbox
 date: 2022-01-01
 order: 2
 category:
   - Python
 tag:
-  - 工具使用
+  - 库
+
 ---
 
 
 # Jupyter notebook
-
 
 ## 一，认识jupyter notebook
 

@@ -5,7 +5,7 @@ order: 2
 category:
   - git
 tag:
-  - 指令大全
+  - 指令速查
 ---
 
 # Git 常用指令

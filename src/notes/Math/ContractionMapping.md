@@ -8,7 +8,9 @@ tag:
   - 随笔
 ---
 
-# 压缩映射定理（Contraction mapping theorem）
+# 压缩映射定理
+
+压缩映射定理（Contraction mapping theorem）
 
 ## 概念
 

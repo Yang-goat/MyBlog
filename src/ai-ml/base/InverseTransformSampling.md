@@ -3,9 +3,9 @@ icon: book
 date: 2025-10-23
 # order: 1
 category:
-  - 通识基础
-# tag:
-#   - 多目标优化
+  - 通识
+tag:
+  - 算法
 ---
 
 # 逆变换采样

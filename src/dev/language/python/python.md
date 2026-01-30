@@ -1,15 +1,15 @@
 ---
-icon: pen-to-square
+icon: code
 date: 2022-01-01
 order: 1
 category:
   - Python
-tag:
-  - 基础
+# tag:
+#   - 基础
 ---
 
 
-# Python 基础
+# Python 基础语法
 
 ## 一、初识python
 

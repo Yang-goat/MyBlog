@@ -1,4 +1,5 @@
-<template><div><h1 id="压缩映射定理-contraction-mapping-theorem" tabindex="-1"><a class="header-anchor" href="#压缩映射定理-contraction-mapping-theorem"><span>压缩映射定理（Contraction mapping theorem）</span></a></h1>
+<template><div><h1 id="压缩映射定理" tabindex="-1"><a class="header-anchor" href="#压缩映射定理"><span>压缩映射定理</span></a></h1>
+<p>压缩映射定理（Contraction mapping theorem）</p>
 <h2 id="概念" tabindex="-1"><a class="header-anchor" href="#概念"><span>概念</span></a></h2>
 <h3 id="不动点-fixed-point" tabindex="-1"><a class="header-anchor" href="#不动点-fixed-point"><span>不动点（Fixed point）</span></a></h3>
 <p>若 <span v-pre class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x \in X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 满足</p>

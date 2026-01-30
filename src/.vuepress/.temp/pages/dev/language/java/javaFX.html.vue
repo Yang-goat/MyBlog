@@ -1,4 +1,4 @@
-<template><div><h1 id="javafx" tabindex="-1"><a class="header-anchor" href="#javafx"><span>JavaFX</span></a></h1>
+<template><div><h1 id="gui框架-javafx" tabindex="-1"><a class="header-anchor" href="#gui框架-javafx"><span>GUI框架 JavaFX</span></a></h1>
 <h2 id="零、项目创建" tabindex="-1"><a class="header-anchor" href="#零、项目创建"><span>零、项目创建</span></a></h2>
 <p>两种方式构建项目：</p>
 <ol>

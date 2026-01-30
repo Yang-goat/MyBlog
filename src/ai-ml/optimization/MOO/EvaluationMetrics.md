@@ -4,8 +4,8 @@ date: 2025-10-22
 order: 1
 category:
   - 智能优化算法
+  - 多目标优化
 tag:
-  - MOEA
   - 评价指标
 ---
 

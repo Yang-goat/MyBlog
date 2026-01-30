@@ -5,11 +5,10 @@ order: 2
 category:
   - 前端
 tag:
-  - packet.json
-  - pnpm-lock.yaml
+  - 包管理
 ---
 
-# packet.json 与 pnpm-lock.yaml 开发文档
+# packet.json 与 pnpm-lock.yaml 文件详解
 
 ## packet.json
 

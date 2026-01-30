@@ -1,4 +1,4 @@
-<template><div><h1 id="java-多线程" tabindex="-1"><a class="header-anchor" href="#java-多线程"><span>Java 多线程</span></a></h1>
+<template><div><h1 id="多线程" tabindex="-1"><a class="header-anchor" href="#多线程"><span>多线程</span></a></h1>
 <p>Java多线程是指在同一程序中同时执行多个任务的能力。每个任务在程序中被称为一个线程（Thread）。在Java中，多线程可以帮助我们更高效地利用计算机的多核处理能力，提升程序的并发性和响应性。</p>
 <hr>
 <h2 id="_1-线程的基本概念" tabindex="-1"><a class="header-anchor" href="#_1-线程的基本概念"><span>1. 线程的基本概念</span></a></h2>

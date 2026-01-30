@@ -1,4 +1,4 @@
-<template><div><h1 id="java-网络" tabindex="-1"><a class="header-anchor" href="#java-网络"><span>Java 网络</span></a></h1>
+<template><div><h1 id="网络编程" tabindex="-1"><a class="header-anchor" href="#网络编程"><span>网络编程</span></a></h1>
 <p>Java 网络编程主要涉及通过网络通信在不同设备或应用之间传输数据。Java 提供了丰富的类库来实现网络通信，通常使用 <code v-pre>java.net</code> 包。以下是 Java 网络编程的一些关键概念和常用类：</p>
 <h2 id="_1-基础概念" tabindex="-1"><a class="header-anchor" href="#_1-基础概念"><span>1. <strong>基础概念</strong></span></a></h2>
 <ul>

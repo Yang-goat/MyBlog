@@ -5,7 +5,7 @@ order: 4
 category:
   - Python
 tag:
-  - 第三方库
+  - 库
 ---
 
 # Pandas
