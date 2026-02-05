@@ -1,6 +1,6 @@
 <template><div><h1 id="田口方法-taguchi-method" tabindex="-1"><a class="header-anchor" href="#田口方法-taguchi-method"><span>田口方法（Taguchi Method）</span></a></h1>
 <h2 id="_1-概述" tabindex="-1"><a class="header-anchor" href="#_1-概述"><span>1. 概述</span></a></h2>
-<p>田口方法是日本工程师田口玄一提出的质量工程方法，旨在通过较少的实验次数找到**最稳健（Robust）**的参数组合，使系统对噪声因素不敏感，从而提高质量、降低成本。</p>
+<p>田口方法是日本工程师田口玄一提出的质量工程方法，旨在通过较少的实验次数找到<strong>最稳健（Robust）</strong> 的参数组合，使系统对噪声因素不敏感，从而提高质量、降低成本。</p>
 <p>核心理念：</p>
 <ul>
 <li>在设计阶段把质量“设计进去”（Quality by Design）</li>

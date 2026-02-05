@@ -135,9 +135,9 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 </li>
 </ul>
 <h3 id="td算法的推导" tabindex="-1"><a class="header-anchor" href="#td算法的推导"><span>TD算法的推导</span></a></h3>
-<p>首先，这是一个**无模型（model-free）**的算法，用于求解给定策略 <span v-pre class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> 的 Bellman 方程。</p>
+<p>首先，这是一个<strong>无模型（model-free）</strong> 的算法，用于求解给定策略 <span v-pre class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> 的 Bellman 方程。</p>
 <ul>
-<li>第二章中介绍了**有模型（model-based）**的方法求解 Bellman 方程：解析解 + 迭代算法。</li>
+<li>第二章中介绍了<strong>有模型（model-based）</strong> 的方法求解 Bellman 方程：解析解 + 迭代算法。</li>
 </ul>
 <p><strong>第一步，Bellman方程的新表达式</strong></p>
 <p>策略 <span v-pre class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> 的状态值定义为：</p>

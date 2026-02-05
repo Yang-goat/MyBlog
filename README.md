@@ -32,7 +32,7 @@ myBlog 是一个简洁高效的博客系统，支持 Markdown 语法，便于快
 3. 启动项目：
 
     ```bash
-    npm start
+    npm run docs:dev
     ```
 
 4. 访问本地服务：
