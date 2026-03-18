@@ -1104,5 +1104,26 @@
     "desc": "Web of Science 是一个权威的全球学术文献引文数据库，用于检索高质量科研论文并分析其引用关系与学术影响力。",
     "tags": ["文献"],
     "icon": "https://webofscience.clarivate.cn/wos/static/favicon.png"
+  },
+  {
+    "name": "Algorithm Afternoon | 智能优化算法英文文档",
+    "url": "https://algorithmafternoon.com/",
+    "desc": "面向算法学习与实现的英文资源站，聚焦遗传算法、粒子群、模拟退火等优化与智能算法，适合查阅原理、代码思路和进阶阅读。",
+    "tags": ["计算机学习站点"],
+    "icon": "https://algorithmafternoon.com/favicon.ico"
+  },
+  {
+    "name": "Mermaid 中文网教程",
+    "url": "https://mermaid.nodejs.cn/ecosystem/tutorials.html",
+    "desc": "Mermaid 图表工具的中文教程导航页，汇总 Live Editor、HTML 集成和社区示例，适合快速入门文本化绘图与流程图编写。",
+    "tags": ["api文档"],
+    "icon": "https://mermaid.nodejs.cn/favicon.ico"
+  },
+  {
+    "name": "论文编写ai辅助工具",
+    "url": "https://lw.superxie.com/duplicate/",
+    "desc": "面向论文写作场景的重复内容辅助处理工具页，主要用于论文降重与文本重复问题的辅助整理。",
+    "tags": ["文献"],
+    "icon": "https://lw.superxie.com/favicon.ico"
   }
 ]
