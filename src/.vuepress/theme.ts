@@ -8,7 +8,7 @@ export default hopeTheme({
 
   author: {
     name: "Goat_Yang",
-    url: "../intro.html",
+    url: "/intro.html",
   },
 
   logo: "assets/icon/头像.jpg",
