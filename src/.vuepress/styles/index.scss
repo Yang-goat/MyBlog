@@ -21,3 +21,22 @@
   margin-top: 3rem;
   padding-top: 1.5rem;
 }
+
+.transparent-navbar {
+  .vp-navbar {
+    text-shadow: 0 1px 12px rgb(15 23 42 / 35%);
+  }
+}
+
+.vp-blog-hero {
+  .vp-blog-hero-title,
+  .hitokoto,
+  .hitokoto-author {
+    text-shadow: 0 4px 20px rgb(15 23 42 / 45%);
+  }
+
+  .hitokoto {
+    max-width: 48rem;
+    padding: 0 1.5rem;
+  }
+}

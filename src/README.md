@@ -41,5 +41,5 @@ projects:
   #   desc: 自定义详细介绍
   #   link: https://你的自定义链接
 
-footer: 感谢访问
+# footer: 希望能给您提供帮助
 ---
