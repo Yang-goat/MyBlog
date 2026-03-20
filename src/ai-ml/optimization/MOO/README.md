@@ -2,6 +2,10 @@
 icon: circle-question
 date: 2025-10-15
 index: false
+article: false
+dir:
+  link: true
+  expanded: true
 # order: 1
 category:
   - 多目标优化
@@ -10,6 +14,8 @@ tag:
 ---
 
 # 多目标优化问题
+
+<Catalog />
 
 ## 一、问题的定义
 

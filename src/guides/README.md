@@ -1,20 +1,175 @@
 ---
-title: 软件工具指南
-index: false
+home: true
+title: 软件工具
 article: false
 icon: toolbox
+sidebar: false
+pageInfo: false
+heroText: 软件工具
+tagline: 这里放的是开发和写作过程中最常用的工具指南，从 Git、Docker、Linux 到 LaTeX、VSCode 与 Zotero，便于重装环境和快速回查。
+heroStyle:
+  min-height: 620px
+bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg
+bgImageDark: https://theme-hope-assets.vuejs.press/bg/6-dark.svg
+bgImageStyle:
+  background-attachment: fixed
+actions:
+  - text: Git
+    link: /guides/git/
+    icon: code-branch
+    type: primary
+
+  - text: Docker
+    link: /guides/docker/
+    icon: box
+    type: default
+
+  - text: Linux
+    link: /guides/linux/
+    icon: terminal
+    type: default
+
+  - text: LaTeX
+    link: /guides/Latex/
+    icon: file-lines
+    type: default
+
+  - text: VSCode
+    link: /guides/VSCode/
+    icon: code
+    type: default
+
+  - text: Zotero
+    link: /guides/Zotero.html
+    icon: book-bookmark
+    type: default
+
+highlights:
+  - header: Git
+    description: Git 负责版本控制与协作流程，是最常回查命令和工作流的一类工具笔记。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/3-dark.svg
+    highlights:
+      - title: Git 命令速查表
+        icon: terminal
+        details: 适合在提交、回滚、分支与同步操作时快速翻看
+        link: /guides/git/Git%20命令速查表.html
+
+      - title: Git 教程
+        icon: code-branch
+        details: 从基础概念到常见工作流的一篇完整教程
+        link: /guides/git/Git%20教程.html
+
+      - title: Git 目录主页
+        icon: arrow-up-right-from-square
+        details: 从目录页进入，直接展开当前版本控制专题
+        link: /guides/git/
+
+  - header: Docker
+    description: Docker 主要整理容器安装、命令和环境搭建流程，适合配环境时快速定位。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/2-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/2-dark.svg
+    bgImageStyle:
+      background-repeat: repeat
+      background-size: initial
+    features:
+      - title: 安装
+        icon: box
+        details: 先完成 Docker 环境安装，再进入后续容器使用
+        link: /guides/docker/install.html
+
+      - title: 命令
+        icon: terminal
+        details: 常用容器与镜像命令速查，适合日常操作时回看
+        link: /guides/docker/command.html
+
+      - title: Docker 目录主页
+        icon: arrow-up-right-from-square
+        details: 从目录页继续查看安装与命令两类内容
+        link: /guides/docker/
+
+  - header: Linux
+    description: Linux 负责日常开发环境里的命令、软件源与系统操作，是偏运维性质的常用备忘。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
+    highlights:
+      - title: 系统信息
+        icon: circle-info
+        details: 查看系统版本、硬件与环境信息时最常用的内容
+        link: /guides/linux/info.html
+
+      - title: 常用命令
+        icon: terminal
+        details: 日常 shell 操作里高频出现的 Linux 命令整理
+        link: /guides/linux/command.html
+
+      - title: apt
+        icon: download
+        details: Ubuntu 下安装软件和管理源时最常用的一组命令
+        link: /guides/linux/apt.html
+
+      - title: 编辑器
+        icon: pen
+        details: 在服务器和本地环境里处理文本时常用的编辑工具
+        link: /guides/linux/editor.html
+
+  - header: LaTeX
+    description: LaTeX 主要集中论文排版、模板与公式文档相关内容，适合写报告和论文时直接进入。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/9-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/9-dark.svg
+    features:
+      - title: LaTeX 基础
+        icon: file-lines
+        details: 先熟悉常用语法和排版组织方式，再进入模板类内容
+        link: /guides/Latex/Latex基础.html
+
+      - title: 数学建模论文模板
+        icon: scroll
+        details: 偏向竞赛和模型报告场景的论文模板入口
+        link: /guides/Latex/数学建模论文模板.html
+
+      - title: 本科毕业论文模板
+        icon: graduation-cap
+        details: 适合学校论文写作时直接套用和修改
+        link: /guides/Latex/苏州科技大学本科生毕业论文模板.html
+
+      - title: LaTeX 目录主页
+        icon: arrow-up-right-from-square
+        details: 从目录页进入后，可按基础或模板继续浏览
+        link: /guides/Latex/
+
+  - header: VSCode
+    description: VSCode 部分围绕编辑器配置、插件和多语言环境展开，适合迁移配置或重装开发机时回看。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/1-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/1-dark.svg
+    highlights:
+      - title: 多语言环境配置
+        icon: code
+        details: 把 VSCode 配成多语言开发环境时需要的关键步骤
+        link: /guides/VSCode/VSCode多语言环境配置.html
+
+      - title: LaTeX 配置
+        icon: square-root-variable
+        details: 在 VSCode 中配置 LaTeX 写作环境时可以直接参考
+        link: /guides/VSCode/Latex配置.html
+
+      - title: Snippet
+        icon: wand-magic-sparkles
+        details: 用代码片段提高编辑效率，是高频但容易忘的细节配置
+        link: /guides/VSCode/snippet.html
+
+      - title: VSCode 目录主页
+        icon: arrow-up-right-from-square
+        details: 从目录页进入，继续查看当前编辑器相关内容
+        link: /guides/VSCode/
+
+  - header: Zotero
+    description: Zotero 是文献管理和引用工具，适合科研写作时快速进入同步、插件和导出相关操作。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
+    features:
+      - title: Zotero 教程
+        icon: arrow-up-right-from-square
+        details: 单篇完整教程，直接覆盖安装、同步、插件和引用导出等核心操作
+        link: /guides/Zotero.html
 ---
-
-本指南汇总了常用的开发与写作工具，涵盖环境管理、版本控制、系统使用、文档排版与开发编辑器等多个方面，帮助你快速上手并高效工作。
-
-| 软件名称 | 介绍 |
-|--------|------|
-| Docker | Docker 是一种容器化平台，可以将应用及其运行环境打包成独立的容器，实现“一次构建，到处运行”。它非常适合用于环境隔离、快速部署和微服务架构。 |
-| Git | Git 是最流行的分布式版本控制系统，用于管理代码和文档的变更历史。它支持多人协作、分支管理和版本回退，是现代软件开发的必备工具。 |
-| LaTeX | LaTeX 是一套专业的排版系统，广泛用于论文、技术文档和数学公式排版。它特别适合对格式要求严格、包含大量公式的文档。 |
-| Linux | Linux 是一个开源操作系统，广泛用于服务器、开发环境和嵌入式系统。本部分将介绍常用命令、系统管理技巧和开发相关配置。 |
-| VS Code | Visual Studio Code 是一款轻量但功能强大的代码编辑器，支持多语言、高度可扩展、拥有丰富的插件生态，非常适合日常开发和写作。 |
-| Zotero | Zotero 是一款开源的文献管理工具，能够帮助你收集、整理、引用和生成参考文献。它支持网页一键保存、PDF 管理、笔记标注，并可与 Word、LaTeX 等写作工具无缝集成，非常适合科研和技术写作场景。 |
-
-
-<Catalog />

@@ -3,6 +3,7 @@ icon: book
 date: 2025-10-02
 star: 1
 sticky: 100
+sidebar: false
 category:
   - 软件教程
 tag:

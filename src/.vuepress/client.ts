@@ -13,10 +13,10 @@ export default defineClientConfig({
 
   setup() {
     setupTransparentNavbar({
-      type: "blog-homepage",
+      type: "homepage",
       threshold: 80,
       light: "#3c3c43",
-      dark: "#ebebf5db`",
+      dark: "#ebebf5db",
     });
 
     setupRunningTimeFooter(

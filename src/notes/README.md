@@ -1,8 +1,90 @@
 ---
+home: true
 title: 随笔
-index: false
 article: false
 icon: pen-to-square
----
+sidebar: false
+pageInfo: false
+heroText: 随笔
+tagline: 这里收纳学习过程中的碎片化笔记，既有数学推导和统计方法，也有建模题记录与算法竞赛备忘，适合按主题快速回看。
+heroStyle:
+  min-height: 600px
+bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
+bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
+bgImageStyle:
+  background-attachment: fixed
+actions:
+  - text: 数学随记
+    link: /notes/Math/
+    icon: square-root-variable
+    type: primary
 
-<Catalog />
+  - text: 数学建模专题
+    link: /notes/MCM/
+    icon: graduation-cap
+    type: default
+
+  - text: 算法竞赛专题
+    link: /notes/ACMer/
+    icon: trophy
+    type: default
+
+highlights:
+  - header: 数学随记
+    description: 数学随记主要记录定义、定理、统计检验和计算方法，是日常学习里最常翻看的基础笔记。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/2-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/2-dark.svg
+    bgImageStyle:
+      background-repeat: repeat
+      background-size: initial
+    highlights:
+      - title: 假设检验
+        icon: vials
+        details: 参数检验与非参数检验会继续在目录中展开，适合做统计分析时回查
+        link: /notes/Math/HypothesisTesting/
+
+      - title: Kendall Tau
+        icon: arrows-up-down-left-right
+        details: 处理排序一致性和相关性时很常见的一类指标
+        link: /notes/Math/KendallTau.html
+
+      - title: 一致估计
+        icon: chart-simple
+        details: 统计推断里常见的估计量性质，适合和其他概念一起回看
+        link: /notes/Math/ConsistentEstimator.html
+
+      - title: 计算方法随记
+        icon: calculator
+        details: 偏实践的数值方法与课堂学习记录
+        link: /notes/Math/计算方法随记%201.html
+
+  - header: 数学建模专题
+    description: 数学建模专题更偏向题目分析、论文写作与竞赛思路，适合做比赛或专题练习时直接参考。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/9-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/9-dark.svg
+    features:
+      - title: 国赛 A 题指导
+        icon: graduation-cap
+        details: 从题目理解、建模思路到写作组织的单篇专题入口
+        link: /notes/MCM/国赛A题指导.html
+
+      - title: 进入建模目录
+        icon: compass
+        details: 从目录页进入后，可以继续补充更多建模类专题笔记
+        link: /notes/MCM/
+
+  - header: 算法竞赛专题
+    description: 算法竞赛专题收纳板子和实战备忘，内容偏向能立刻拿来用的比赛材料。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
+    features:
+      - title: 竞赛板子
+        icon: trophy
+        details: 把赛前最常翻看的模板和备忘整理成一篇直达文章
+        link: /notes/ACMer/竞赛板子.html
+
+      - title: 进入竞赛目录
+        icon: arrow-up-right-from-square
+        details: 从目录页继续扩展更多竞赛类材料，适合做长期积累
+        link: /notes/ACMer/
+---

@@ -3,6 +3,9 @@ icon: book
 date: 2025-10-18
 index: false
 article: false
+dir:
+  link: true
+  expanded: true
 category:
   - 智能优化算法
   - 多目标进化算法
@@ -12,6 +15,10 @@ tag:
 ---
 
 # 多目标进化算法（MOEA）
+
+多目标进化算法目录放置典型 MOEA 方法，适合在多目标优化学习路径中继续下钻到具体算法。
+
+<Catalog />
 
 ## 代表性算法
 

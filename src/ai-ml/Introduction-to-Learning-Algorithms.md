@@ -2,6 +2,7 @@
 icon: book
 date: 2025-10-11
 order: 1
+sidebar: false
 # category:
 #   - 学习算法
 tag:

@@ -2,7 +2,10 @@
 icon: book
 date: 2025-10-18
 index: false
-# article: false
+article: false
+dir:
+  link: true
+  expanded: true
 category:
   - 智能优化算法
 tag:
@@ -12,9 +15,9 @@ tag:
 
 # 进化算法导论（EA）
 
-<Catalog />
-
 进化算法（Evolutionary Algorithm，EA） 是一类基于自然界生物进化机制的随机优化算法，属于智能优化算法的重要分支。它通过 **“选择—重组—变异”** 等操作，模拟自然进化过程，用来寻找复杂问题的最优或近优解。
+
+<Catalog />
 
 ## 一、目前典型算法
 

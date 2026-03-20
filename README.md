@@ -1,68 +1,60 @@
 # myBlog
 
-一个基于 Markdown 的个人博客项目。
+一个基于 VuePress 2 和 `vuepress-theme-hope` 的个人博客项目，主要用于整理 AI/ML、开发、数学笔记和软件教程。
 
-## 项目简介
+## 技术栈
 
-myBlog 是一个简洁高效的博客系统，支持 Markdown 语法，便于快速发布和管理文章。
+- VuePress 2
+- Vue 3
+- Vite
+- vuepress-theme-hope
+- pnpm
 
-## 功能特性
+## 本地开发
 
-- 支持 Markdown 编辑与渲染
-- 文章分类与标签管理
-- 文章搜索
-- 响应式设计，适配多端
-- 简单易用的界面
+```bash
+git clone https://github.com/Yang-goat/MyBlog
+cd myBlog
+pnpm install
+pnpm docs:dev
+```
 
-## 安装与使用
+默认访问地址：`http://localhost:8080`
 
-1. 克隆项目代码：
+## 常用命令
 
-    ```bash
-    git clone https://github.com/Yang-goat/MyBlog
-    cd myBlog
-    ```
-
-2. 安装依赖：
-
-    ```bash
-    npm install
-    ```
-
-3. 启动项目：
-
-    ```bash
-    npm run docs:dev
-    ```
-
-4. 访问本地服务：
-
-    ```
-    http://localhost:8080
-    ```
+```bash
+pnpm docs:dev
+pnpm docs:clean-dev
+pnpm docs:build
+pnpm docs:update-package
+```
 
 ## 目录结构
 
-```
+```text
 myBlog/
-├── public/
-├── src/
-│   ├── .vuepress/
-│   ├── README.md/
-│   └── ...
+├── .github/workflows/      # GitHub Pages 部署工作流
+├── scripts/                # 辅助脚本
+├── src/                    # 博客内容
+│   ├── .vuepress/          # 站点配置、主题、组件与静态资源
+│   ├── ai-ml/              # AI / ML 笔记
+│   ├── dev/                # 开发相关内容
+│   ├── guides/             # 软件教程
+│   ├── links/              # 收藏站点
+│   └── notes/              # 数学与竞赛笔记
 ├── package.json
 └── README.md
 ```
 
-## 贡献
+## 部署
 
-欢迎提交 issue 和 pull request 改进本项目。
+仓库通过 GitHub Actions 自动构建，并发布到 GitHub Pages。
 
-## 许可证
+## License
 
-MIT License
+MIT
 
 ## Acknowledgements
 
-This project is built upon [vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope),
-which is licensed under the MIT License.
+Built on [vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope).
