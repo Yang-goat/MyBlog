@@ -6,7 +6,7 @@ icon: toolbox
 sidebar: false
 pageInfo: false
 heroText: 软件工具
-tagline: 这里放的是开发和写作过程中最常用的工具指南，从 Git、Docker、Linux 到 LaTeX、VSCode 与 Zotero，便于重装环境和快速回查。
+tagline: 这里放的是开发和写作过程中最常用的工具指南，从 Git、Docker、Linux 到 LaTeX、VSCode 与 Zotero。
 heroStyle:
   min-height: 620px
 bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg

@@ -6,7 +6,7 @@ article: false
 sidebar: false
 pageInfo: false
 heroText: 编程开发
-tagline: 这里整理写代码时最常回看的内容，包括程序设计语言、页面开发基础和前端工程化专题，适合先定位方向，再进入具体文章。
+tagline: 这里整理写代码时最常回看的内容，包括程序设计语言、页面开发基础和前端工程化专题。
 heroStyle:
   min-height: 600px
 bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg

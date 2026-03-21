@@ -6,7 +6,7 @@ article: false
 sidebar: false
 pageInfo: false
 heroText: 人工智能
-tagline: 这里整理算法学习中的主干知识，从基础概念到深度学习、强化学习与优化方法，再到具体案例，适合按路线学习，也适合查缺补漏。
+tagline: 这里整理算法学习中的主干知识，从基础概念到深度学习、强化学习与优化方法，再到具体案例。
 heroStyle:
   min-height: 640px
 bgImage: https://theme-hope-assets.vuejs.press/bg/1-light.svg
