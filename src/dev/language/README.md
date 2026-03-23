@@ -8,6 +8,6 @@ dir:
   expanded: true
 ---
 
-程序设计语言部分按语言分线整理，先区分 Java 与 Python，再各自展开到语法、标准库与常见工程实践。
+这里会持续更新 Java、Python、MATLAB 等程序设计语言相关的语法、标准库和工程实践文章。
 
 <Catalog />

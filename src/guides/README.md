@@ -6,7 +6,7 @@ icon: toolbox
 sidebar: false
 pageInfo: false
 heroText: 软件工具
-tagline: 这里放的是开发和写作过程中最常用的工具指南，从 Git、Docker、Linux 到 LaTeX、VSCode 与 Zotero。
+tagline: 这里放的是开发和写作过程中最常用的工具指南，从 Git、Docker、Linux、SSH 到 LaTeX、VSCode 与 Zotero。
 heroStyle:
   min-height: 620px
 bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg
@@ -27,6 +27,11 @@ actions:
   - text: Linux
     link: /guides/linux/
     icon: terminal
+    type: default
+
+  - text: SSH
+    link: /guides/ssh.html
+    icon: key
     type: default
 
   - text: LaTeX
@@ -53,12 +58,12 @@ highlights:
       - title: Git 命令速查表
         icon: terminal
         details: 适合在提交、回滚、分支与同步操作时快速翻看
-        link: /guides/git/Git%20命令速查表.html
+        link: "/guides/git/Git 命令速查表.html"
 
       - title: Git 教程
         icon: code-branch
         details: 从基础概念到常见工作流的一篇完整教程
-        link: /guides/git/Git%20教程.html
+        link: "/guides/git/Git 教程.html"
 
       - title: Git 目录主页
         icon: arrow-up-right-from-square
@@ -112,6 +117,16 @@ highlights:
         icon: pen
         details: 在服务器和本地环境里处理文本时常用的编辑工具
         link: /guides/linux/editor.html
+
+  - header: SSH
+    description: SSH 负责远程连接、密钥认证和文件传输，是服务器管理与 Git 平台免密认证之间的通用入口。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
+    features:
+      - title: SSH 简介
+        icon: key
+        details: 先理解 SSH 的用途、常见命令、密钥机制以及 Windows 与 Linux 的基本差异
+        link: /guides/ssh.html
 
   - header: LaTeX
     description: LaTeX 主要集中论文排版、模板与公式文档相关内容，适合写报告和论文时直接进入。

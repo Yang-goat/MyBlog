@@ -6,7 +6,7 @@ article: false
 sidebar: false
 pageInfo: false
 heroText: 编程开发
-tagline: 这里整理写代码时最常回看的内容，包括程序设计语言、页面开发基础和前端工程化专题。
+tagline: 这里整理写代码时最常回看的内容，包括程序设计语言、页面开发基础、脚本工具与前端工程化专题。
 heroStyle:
   min-height: 600px
 bgImage: https://theme-hope-assets.vuejs.press/bg/6-light.svg
@@ -26,7 +26,7 @@ actions:
 
 highlights:
   - header: 程序设计语言
-    description: 程序设计语言部分以 Java 和 Python 为主，整理语法、标准库和常见工程能力，是日常开发里最基础也最常回看的笔记区。
+    description: 程序设计语言部分按语言拆分，后续会持续更新 Java、Python、MATLAB 等语言基础与工程实践文章。
     bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg
     bgImageDark: https://theme-hope-assets.vuejs.press/bg/3-dark.svg
     highlights:
@@ -40,9 +40,14 @@ highlights:
         details: 基础语法、Jupyter、类型提示、Pandas 与日常开发高频内容
         link: /dev/language/python/
 
+      - title: MATLAB语言
+        icon: square-root-variable
+        details: 会持续更新数值计算、矩阵操作和并行计算相关内容
+        link: /dev/language/matlab/
+
       - title: 语言目录主页
         icon: arrow-up-right-from-square
-        details: 先看语言总览，再从侧边栏直接进入 Java 与 Python 的细分内容
+        details: 先看语言总览，再从目录页进入 Java、Python 和 MATLAB 等细分主题
         link: /dev/language/
 
   - header: 前端

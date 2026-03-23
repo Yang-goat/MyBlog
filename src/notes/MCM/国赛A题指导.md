@@ -598,7 +598,7 @@ A 题最怕“数值出来了，但没解释”。
 - 原型验证
 
 ::: info
-MATLAB在数值计算与仿真上面执行速度比Python快，在当前赛题趋势上看，赛题计算量在逐年上升，更推荐掌握MATLAB
+MATLAB在数值计算与仿真上面执行速度比Python快，且使用[并行计算](/dev/language/matlab/parallel.html)比Python方便，在当前赛题趋势上看，赛题计算量在逐年上升，更推荐掌握MATLAB
 :::
 
 ### Python

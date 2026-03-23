@@ -6,7 +6,7 @@ icon: pen-to-square
 sidebar: false
 pageInfo: false
 heroText: 随笔
-tagline: 这里收纳学习过程中的碎片化笔记，既有数学推导和统计方法，也有建模题记录与算法竞赛备忘。
+tagline: 这里会持续更新学习过程中的碎片化笔记，涵盖数学推导、建模题记录、算法竞赛备忘与计算机日常问题。
 heroStyle:
   min-height: 600px
 bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
@@ -29,9 +29,14 @@ actions:
     icon: trophy
     type: default
 
+  - text: 计算机随记
+    link: /notes/computer/
+    icon: computer
+    type: default
+
 highlights:
   - header: 数学建模专题
-    description: 数学建模专题更偏向题目分析、论文写作与竞赛思路，适合做比赛或专题练习时直接参考。
+    description: 数学建模专题会持续更新题目分析、论文写作与竞赛思路相关内容。
     bgImage: https://theme-hope-assets.vuejs.press/bg/9-light.svg
     bgImageDark: https://theme-hope-assets.vuejs.press/bg/9-dark.svg
     features:
@@ -54,7 +59,7 @@ highlights:
     highlights:
       - title: 假设检验
         icon: vials
-        details: 参数检验与非参数检验会继续在目录中展开，适合做统计分析时回查
+        details: 这里会持续更新参数检验与非参数检验相关内容
         link: /notes/Math/HypothesisTesting/
 
       - title: Kendall Tau
@@ -70,10 +75,10 @@ highlights:
       - title: 计算方法随记
         icon: calculator
         details: 偏实践的数值方法与课堂学习记录
-        link: /notes/Math/计算方法随记%201.html
+        link: "/notes/Math/计算方法随记 1.html"
 
   - header: 算法竞赛专题
-    description: 算法竞赛专题收纳算法板子和实战备忘。！！！内容待完善！！！
+    description: 算法竞赛专题会持续更新算法板子、实战备忘和竞赛环境相关内容。
     bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
     bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
     features:
@@ -85,4 +90,18 @@ highlights:
       - title: 进入专题目录
         icon: arrow-up-right-from-square
         link: /notes/ACMer/
+
+  - header: 计算机随记
+    description: 计算机随记会持续更新操作系统、终端工具、命令行差异和日常使用问题相关内容。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/1-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/1-dark.svg
+    features:
+      - title: CMD 与 PowerShell
+        icon: laptop-code
+        details: 从 Windows 终端工具的定位、对象模型和脚本能力差异切入命令行基础
+        link: /notes/computer/cmdvspowershell.html
+
+      - title: 进入专题目录
+        icon: arrow-up-right-from-square
+        link: /notes/computer/
 ---

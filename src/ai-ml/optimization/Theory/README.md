@@ -5,9 +5,10 @@ index: false
 article: false
 dir:
   link: true
-  expanded: true
+  expanded: false
+  order: 1
 ---
 
-优化理论目录用来统一问题定义、分类与理论基础，适合作为进入 EA 与 MOO 之前的铺垫页面。
+这里会持续更新优化问题定义、算法分类、建模元素和共同术语等理论基础文章。
 
 <Catalog />

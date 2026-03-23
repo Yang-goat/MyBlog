@@ -8,6 +8,6 @@ dir:
   expanded: true
 ---
 
-VSCode 部分整理编辑器配置、插件与多语言环境设置，适合在重装环境或迁移配置时快速回查。
+这里会持续更新编辑器配置、插件、Snippet 和多语言开发环境等 VSCode 方向文章。
 
 <Catalog />

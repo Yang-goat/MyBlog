@@ -195,7 +195,7 @@ highlights:
     bgImageStyle:
       background-repeat: repeat
       background-size: initial
-    features:
+    highlights:
       - title: TOPSIS
         icon: scale-balanced
         details: 从距离理想解的角度做排序，是常见的多指标评价方法
@@ -207,35 +207,100 @@ highlights:
         link: /ai-ml/other/
 
   - header: 智能优化算法
-    description: 智能优化算法部分覆盖理论、进化算法和多目标优化，是建模和算法设计里很常用的一条方法线。
+    description: 智能优化算法部分已经按理论基础、算法家族和搜索机制拆成多级目录，后续会持续更新进化计算、群体智能和随机优化方向文章。
     bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
     bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
-    highlights:
+    features:
       - title: Theory
         icon: book
-        details: 先看基础理论，再理解优化算法的共同结构与术语
+        details: 先看优化问题、算法分类和理论基础，再进入后续具体方法
         link: /ai-ml/optimization/Theory/
 
-      - title: EA
+      - title: 进化算法
         icon: dna
-        details: 进化算法分支，关注群体搜索、算子设计与经典框架
-        link: /ai-ml/optimization/EA/
+        details: 进入演化计算的基础框架与代表性方法分支
+        link: /ai-ml/optimization/evolutionary-algorithms/
 
-      - title: MOO
-        icon: bullseye
-        details: 多目标优化专题，适合继续进入 MOEA 等细分内容
-        link: /ai-ml/optimization/MOO/
+      - title: 进化策略
+        icon: chart-line
+        details: 查看 ES、NES、CMA-ES 等参数自适应搜索方法
+        link: /ai-ml/optimization/evolution-strategies/
 
-      - title: EDA / VNS
-        icon: diagram-project
-        details: 分布估计与可变领域搜索两类常用优化思路
-        link: /ai-ml/optimization/
+      - title: 遗传算法
+        icon: users-viewfinder
+        details: 从编码方式、群体演化流程和典型 GA 变体进入主线
+        link: /ai-ml/optimization/genetic-algorithms/
+
+      - title: 遗传算法算子
+        icon: shuffle
+        details: 继续查看选择、交叉、变异等核心算子专题
+        link: /ai-ml/optimization/genetic-algorithm-operator/
+
+      - title: 小生境遗传算法
+        icon: mountain-sun
+        details: 进入多样性保持、多峰优化和种群分化机制专题
+        link: /ai-ml/optimization/niching-genetic-algorithms/
+
+      - title: 遗传规划
+        icon: code-branch
+        details: 查看程序表示、树结构操作与表达式演化方法
+        link: /ai-ml/optimization/genetic-programming/
+
+      - title: 差分进化
+        icon: arrows-spin
+        details: 继续查看标准策略、自适应机制与外部档案方法
+        link: /ai-ml/optimization/differential-evolution/
+
+      - title: 分布估计算法
+        icon: chart-area
+        details: 进入概率建模、采样更新与结构学习方法专题
+        link: /ai-ml/optimization/estimation-of-distribution-algorithms/
+
+      - title: 粒子群优化
+        icon: arrows-to-circle
+        details: 查看拓扑结构、参数控制与离散化扩展
+        link: /ai-ml/optimization/particle-swarm-optimization/
+
+      - title: 群智能算法
+        icon: people-group
+        details: 进入蜂群、蝙蝠、萤火虫、狼群等集群协同方法
+        link: /ai-ml/optimization/swarm-intelligence-algorithms/
+
+      - title: 蚁群优化
+        icon: bug
+        details: 查看信息素机制、路径构造与多种蚁群系统变体
+        link: /ai-ml/optimization/ant-colony-optimization/
+
+      - title: 人工免疫系统
+        icon: shield-virus
+        details: 继续查看克隆选择、免疫记忆与异常检测方法
+        link: /ai-ml/optimization/artificial-immune-systems/
+
+      - title: 新颖性搜索
+        icon: compass
+        details: 进入行为差异驱动搜索与质量多样性专题
+        link: /ai-ml/optimization/novelty-search-algorithms/
+
+      - title: 随机优化
+        icon: dice
+        details: 查看随机搜索、局部搜索、禁忌搜索与邻域扰动
+        link: /ai-ml/optimization/stochastic-optimization-algorithms/
+
+      - title: 物理启发优化
+        icon: atom
+        details: 继续查看模拟退火、和声搜索、文化算法等方法
+        link: /ai-ml/optimization/physical-optimization-algorithms/
+
+      - title: 其他优化技巧
+        icon: screwdriver-wrench
+        details: 进入采样、初始化和辅助策略等补充内容
+        link: /ai-ml/optimization/other/
 
   - header: 具体问题 / 案例
-    description: 具体问题 / 案例部分把算法放回真实任务场景中，方便从应用问题反推方法选择。
+    description: 具体问题 / 案例部分会把算法放回真实任务场景中，后续会持续更新案例分析与多目标优化等问题方向文章。
     bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg
     bgImageDark: https://theme-hope-assets.vuejs.press/bg/3-dark.svg
-    features:
+    highlights:
       - title: DHFS
         icon: flask-vial
         details: 从具体案例出发理解问题建模与算法应用的结合方式
@@ -245,4 +310,9 @@ highlights:
         icon: arrow-up-right-from-square
         details: 从目录页继续查看案例型笔记，适合按问题背景快速定位
         link: /ai-ml/problems/
+
+      - title: 多目标优化
+        icon: bullseye
+        details: 从问题定义、评价指标到 MOEA 算法，逐层进入多目标优化专题
+        link: /ai-ml/problems/MOO/
 ---
