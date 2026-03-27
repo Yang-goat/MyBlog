@@ -121,32 +121,15 @@ tag:
     ],
     //文件清理。此属性必须是字符串数组
     "latex-workshop.latex.clean.fileTypes": [
-        "*.aux",
-        "*.bbl",
-        "*.blg",
-        "*.idx",
-        "*.ind",
-        "*.lof",
-        "*.lot",
-        "*.out",
-        "*.toc",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo",
-        "*.gls",
-        "*.ist",
-        "*.fls",
-        "*.log",
-        "*.fdb_latexmk"
+        "*.aux","*.bbl","*.blg","*.idx","*.ind","*.lof","*.lot","*.out","*.toc","*.acn","*.acr","*.alg","*.glg","*.glo","*.gls","*.ist","*.fls","*.fdb_latexmk","*.nav","*.snm","*.vrb","*.xdv"
     ],
-    //设置为onFaild 在构建失败后清除辅助文件
-    "latex-workshop.latex.autoClean.run": "never",
+    //设置为onBuilt 在构建结束后就清理生成的辅助文件
+    "latex-workshop.latex.autoClean.run": "onBuilt",
     // 使用上次的recipe编译组合
     "latex-workshop.latex.recipe.default": "lastUsed",
     // 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    
     // 使用VSCode内置pdf查看器
     "latex-workshop.view.pdf.viewer": "tab",
 }
@@ -156,7 +139,7 @@ tag:
 
 如果你不喜欢 VSCode 内置的 PDF 预览器，可以改用 SumatraPDF 等外部工具。
 
-只需要在配置中添加如下内容（注意修改路径）：
+只需要在配置中添加如下内容（注意修改路径），并替换`"latex-workshop.view.pdf.viewer": "tab",`：
 
 ```json
     //使用 SumatraPDF 预览编译好的PDF文件

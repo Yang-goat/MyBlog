@@ -1,5 +1,4 @@
 ---
-icon: code
 date: 2025-10-22
 order: 2
 category:
