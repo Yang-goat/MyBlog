@@ -9,8 +9,22 @@ export default sidebar({
   "/ai-ml/other/": "structure",
   "/ai-ml/optimization/": "structure",
   "/ai-ml/problems/": "structure",
-  "/dev/language/": "structure",
-  "/dev/frontend/": "structure",
+  "/ai-practice/": [
+    {
+      text: "AI应用实践",
+      icon: "robot",
+      link: "/ai-practice/",
+    },
+  ],
+  "/notes/language/": "structure",
+  "/notes/frontend/": "structure",
+  "/notes/music/": [
+    {
+      text: "音乐",
+      icon: "music",
+      link: "/notes/music/",
+    },
+  ],
   "/notes/Math/": "structure",
   "/notes/MCM/": "structure",
   "/notes/ACMer/": "structure",

@@ -1,11 +1,11 @@
 ---
 home: true
-title: 人工智能
+title: 人工智能·算法
 icon: book
 article: false
 sidebar: false
 pageInfo: false
-heroText: 人工智能
+heroText: 人工智能·算法
 tagline: 这里整理算法学习中的主干知识，从基础概念到深度学习、强化学习与优化方法，再到具体案例。
 heroStyle:
   min-height: 640px

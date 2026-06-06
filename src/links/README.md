@@ -1,6 +1,6 @@
 ---
 home: true
-title: 宝藏站点
+title: 网站导航
 layout: TreasureSites
 containerClass: treasure-sites-layout
 sidebar: false

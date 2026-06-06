@@ -72,7 +72,7 @@ const resetFilters = (): void => {
       <header class="treasure-hero">
         <div class="treasure-hero__copy">
           <p class="treasure-hero__eyebrow">Resource Atlas</p>
-          <h1 class="treasure-hero__title">宝藏站点</h1>
+          <h1 class="treasure-hero__title">网站导航</h1>
           <p class="treasure-hero__desc">
             把常用的开发、学习、工具和资料站点收成一张稳定的导航页，便于快速检索和回访。
           </p>

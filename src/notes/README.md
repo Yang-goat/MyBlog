@@ -6,7 +6,7 @@ icon: pen-to-square
 sidebar: false
 pageInfo: false
 heroText: 随笔
-tagline: 这里会持续更新学习过程中的碎片化笔记，涵盖数学推导、建模题记录、算法竞赛备忘与计算机日常问题。
+tagline: 这里会持续更新程序设计、前端开发、音乐、数学建模、算法竞赛与计算机日常问题相关的随笔。
 heroStyle:
   min-height: 600px
 bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
@@ -14,10 +14,25 @@ bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
 bgImageStyle:
   background-attachment: fixed
 actions:
+  - text: 程序设计语言随笔
+    link: /notes/language/
+    icon: code
+    type: primary
+
+  - text: 前端随笔
+    link: /notes/frontend/
+    icon: laptop-code
+    type: default
+
+  - text: 音乐
+    link: /notes/music/
+    icon: music
+    type: default
+
   - text: 数学建模专题
     link: /notes/MCM/
     icon: graduation-cap
-    type: primary
+    type: default
 
   - text: 数学随记
     link: /notes/Math/
@@ -35,6 +50,69 @@ actions:
     type: default
 
 highlights:
+  - header: 程序设计语言随笔
+    description: 按语言整理语法、标准库与工程实践内容，便于集中回看常用知识。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/3-dark.svg
+    highlights:
+      - title: Java语言
+        icon: file-code
+        details: IO、多线程、网络编程、泛型与 Maven 等常见进阶主题
+        link: /notes/language/java/
+
+      - title: Python语言
+        icon: file-code
+        details: 基础语法、Jupyter、类型提示、Pandas 与日常开发高频内容
+        link: /notes/language/python/
+
+      - title: MATLAB语言
+        icon: square-root-variable
+        details: 数值计算、矩阵操作和并行计算相关内容
+        link: /notes/language/matlab/
+
+      - title: 进入语言目录
+        icon: arrow-up-right-from-square
+        link: /notes/language/
+
+  - header: 前端随笔
+    description: 覆盖页面基础、脚本语言、Node.js 与前端工程化专题。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/9-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/9-dark.svg
+    features:
+      - title: 基础语法
+        icon: code
+        details: HTML、CSS、JavaScript、TypeScript 与 Node.js 基础文章
+        link: /notes/frontend/
+
+      - title: 包管理器
+        icon: box-open
+        details: npm、pnpm 等依赖管理工具的使用与理解
+        link: /notes/frontend/包管理器/
+
+      - title: 工具链
+        icon: screwdriver-wrench
+        details: 构建、打包和开发流程中的前端工具体系
+        link: /notes/frontend/工具链/
+
+      - title: 框架
+        icon: cubes
+        details: Vue 等前端框架相关主题
+        link: /notes/frontend/框架/
+
+      - title: 模块化
+        icon: puzzle-piece
+        details: 模块系统、依赖组织与工程目录拆分
+        link: /notes/frontend/模块化/
+
+  - header: 音乐
+    description: 用于整理音乐相关的学习记录与随笔，当前目录暂为空。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
+    features:
+      - title: 进入音乐目录
+        icon: music
+        link: /notes/music/
+
   - header: 数学建模专题
     description: 数学建模专题会持续更新题目分析、论文写作与竞赛思路相关内容。
     bgImage: https://theme-hope-assets.vuejs.press/bg/9-light.svg
