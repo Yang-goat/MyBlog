@@ -105,11 +105,11 @@ ssh-add ~/.ssh/id_ed25519
 
 2. 登录 GitHub → `Settings` → `SSH and GPG keys` → `New SSH key`。
 
-![](\img\1.png)
+![](./img/1.png)
 
 3. Title 随便填（比如 "My Windows PC"），Key 里粘贴刚才复制的内容 → **保存**。
 
-![](\img\2.png)
+![](./img/2.png)
 
 ------
 
@@ -166,7 +166,7 @@ git clone 仓库地址
 
 仓库地址从github对应仓库页面的code处复制粘贴，可以选择https和ssh：
 
-![](\img\仓库地址.png)
+![](./img/仓库地址.png)
 
 由于第三点已配置ssh，这里优先使用ssh连接，因为ssh连接比https连接更稳定
 

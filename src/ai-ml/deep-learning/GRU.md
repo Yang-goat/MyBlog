@@ -48,7 +48,7 @@ GRU 仅维护一个状态：
 - 更新门（Update Gate）
 - 重置门（Reset Gate）
 
-![](img/6WZ7AXEC.png)
+![](./img/6WZ7AXEC.png)
 
 ---
 

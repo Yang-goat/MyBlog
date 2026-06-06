@@ -25,7 +25,7 @@ tag:
 
 ## 三、下载必备插件
 
-![](img/latex必备插件.png)
+![](./img/latex必备插件.png)
 
 ## 四、编辑Latex环境设置
 
@@ -38,7 +38,7 @@ tag:
 
 如下图所示：
 
-![](img/修改latex配置.png)
+![](./img/修改latex配置.png)
 
 ### 2. 粘贴配置内容
 
@@ -195,13 +195,13 @@ tag:
 
 在项目文件夹中新建一个以 .tex 为后缀的文件，VSCode 会自动激活 LaTeX Workshop 插件：
 
-![](\img\tex插件激活.png)
+![](./img/tex插件激活.png)
 
 ### 2. 选择编译配方
 
 首次编译时，点击右上角或使用快捷键 Ctrl+Alt+B（Mac：Cmd+Alt+B），选择所需的 编译配方（Recipe），如 XeLaTeX 或 xelatex → bibtex → xelatex*2。
 
-![](\img\tex配方.png)
+![](./img/tex配方.png)
 
 ### 3. 自动编译
 

@@ -78,7 +78,7 @@ $$
 p(\delta) = \frac{\eta_m + 1}{2} (1 - |\delta|)^{\eta_m}, \quad \delta \in [-1,1]
 $$
 
-![ =400x](img/PM.png)
+![ =400x](./img/PM.png)
 
 ---
 
@@ -144,7 +144,7 @@ $$
 }
 $$
 
-![ =400x](img/PM2.png)
+![ =400x](./img/PM2.png)
 
 ---
 

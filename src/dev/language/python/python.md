@@ -1249,7 +1249,7 @@ action(d)
 
 > Python的运算符实际上是通过调用对象的特殊方法实现的
 
-![](\img\e2250a0c01414b755ae58991e91bb710.png)
+![](./img/e2250a0c01414b755ae58991e91bb710.png)
 
 ##### \__new__()方法
 
@@ -1286,8 +1286,8 @@ del 类名	# 调用__del__方法
 
 #### 运算符对应的方法
 
-![](\img\a785000174d7fc0efbbfba7fd27e290a.png)
-![](\img\02684676250200c0ea05417c531a41ae.png)
+![](./img/a785000174d7fc0efbbfba7fd27e290a.png)
+![](./img/02684676250200c0ea05417c531a41ae.png)
 
 运算符重载案例
 
@@ -1304,7 +1304,7 @@ classPerson:
 
 #### 特殊属性
 
-![](\img\5b67b21ab289d2dbe24834499104ee6f.png)
+![](./img/5b67b21ab289d2dbe24834499104ee6f.png)
 
 常用
 
@@ -1438,10 +1438,10 @@ print(s1 == s2)  # 输出: True
 
 ### 1. 常见内置异常
 
-![](\img\63024d87b92575ac331564951ae52af0.png)
-![](\img\874f9019061f41bfb8d16e565bb86d7c.png)
-![](\img\9da21c9c9b2ef9bfa6f632a580e74a18.png)
-![](\img\6010967d1de332a65d4f3ef53adcee73.png)
+![](./img/63024d87b92575ac331564951ae52af0.png)
+![](./img/874f9019061f41bfb8d16e565bb86d7c.png)
+![](./img/9da21c9c9b2ef9bfa6f632a580e74a18.png)
+![](./img/6010967d1de332a65d4f3ef53adcee73.png)
 
 ### 2. 自定义异常
 
@@ -1525,7 +1525,7 @@ with context_expr [ as var]：
 
 文件操作相关模块
 
-![](\img\20e7ce665d204c02d1a4fe8776185093.png)
+![](./img/20e7ce665d204c02d1a4fe8776185093.png)
 
 文件编码：常用`utf-8`，`gbk`
 

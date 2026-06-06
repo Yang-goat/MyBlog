@@ -44,7 +44,7 @@ LSTM：
   - 输入门（Input Gate）
   - 输出门（Output Gate）
 
-![](img/TNQFSTI9.png)
+![](./img/TNQFSTI9.png)
 
 :::info
 - Sigmoid 输出范围：$[0,1]$

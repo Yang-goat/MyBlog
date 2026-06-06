@@ -18,13 +18,13 @@ tag:
 
 下载官网中两者选其一，下载后解压到你想放的位置上，安装就成功了：
 
-![](\img\maven下载.png)
+![](./img/maven下载.png)
 
 ### 2. 环境变量配置
 
 先在系统环境变量中配置`MAVEN_HOME`变量，值为解压后的文件夹路径：
 
-![](img/mavenhome.png)
+![](./img/mavenhome.png)
 
 然后配置path变量:
 
@@ -32,7 +32,7 @@ tag:
 %MAVEN_HOME%\bin
 ```
 
-![](img/mavenbin.png)
+![](./img/mavenbin.png)
 
 ## 二、设置 Maven 默认本地仓库位置
 
