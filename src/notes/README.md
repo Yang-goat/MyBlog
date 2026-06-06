@@ -6,7 +6,7 @@ icon: pen-to-square
 sidebar: false
 pageInfo: false
 heroText: 随笔
-tagline: 这里会持续更新程序设计、前端开发、音乐、数学建模、算法竞赛与计算机日常问题相关的随笔。
+tagline: 这里会持续更新程序设计、前端开发、音乐、数学建模、数学与计算机日常问题相关的随笔。
 heroStyle:
   min-height: 600px
 bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
@@ -37,11 +37,6 @@ actions:
   - text: 数学随记
     link: /notes/Math/
     icon: square-root-variable
-    type: default
-
-  - text: 算法竞赛专题
-    link: /notes/ACMer/
-    icon: trophy
     type: default
 
   - text: 计算机随记
@@ -154,20 +149,6 @@ highlights:
         icon: calculator
         details: 偏实践的数值方法与课堂学习记录
         link: "/notes/Math/计算方法随记 1.html"
-
-  - header: 算法竞赛专题
-    description: 算法竞赛专题会持续更新算法板子、实战备忘和竞赛环境相关内容。
-    bgImage: https://theme-hope-assets.vuejs.press/bg/4-light.svg
-    bgImageDark: https://theme-hope-assets.vuejs.press/bg/4-dark.svg
-    features:
-      - title: 竞赛板子
-        icon: trophy
-        details: 把赛前最常翻看的模板和备忘整理成一篇直达文章
-        link: /notes/ACMer/竞赛板子.html
-
-      - title: 进入专题目录
-        icon: arrow-up-right-from-square
-        link: /notes/ACMer/
 
   - header: 计算机随记
     description: 计算机随记会持续更新操作系统、终端工具、命令行差异和日常使用问题相关内容。

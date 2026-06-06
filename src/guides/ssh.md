@@ -3,6 +3,7 @@ icon: code
 title: SSH 简介
 date: 2026-03-23
 star: false
+sidebar: false
 category:
   - 开发基础
 tag:

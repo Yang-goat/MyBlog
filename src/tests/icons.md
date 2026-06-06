@@ -364,10 +364,3 @@ category:
 | <VPIcon icon="won-sign" /> `won-sign` | <VPIcon icon="worm" /> `worm` | <VPIcon icon="wrench" /> `wrench` | <VPIcon icon="x" /> `x` |
 | <VPIcon icon="x-ray" /> `x-ray` | <VPIcon icon="xmark" /> `xmark` | <VPIcon icon="xmarks-lines" /> `xmarks-lines` | <VPIcon icon="y" /> `y` |
 | <VPIcon icon="yen-sign" /> `yen-sign` | <VPIcon icon="yin-yang" /> `yin-yang` | <VPIcon icon="z" /> `z` | <VPIcon icon="undefined" /> `undefined` |
-
-
-<Comment />
-
-<script setup>
-import Comment from "@Comment";
-</script>

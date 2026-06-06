@@ -1125,5 +1125,12 @@
     "desc": "面向论文写作场景的重复内容辅助处理工具页，主要用于论文降重与文本重复问题的辅助整理。",
     "tags": ["文献"],
     "icon": "https://lw.superxie.com/favicon.ico"
+  },
+  {
+  "name": "16Personalities人格测试",
+  "url": "https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95",
+  "desc": "面向个人性格分析场景的人格测试工具页，可通过问卷测试了解人格类型、性格特征及相关分析结果。",
+  "tags": ["其他"],
+  "icon": "https://www.16personalities.com/favicon.ico"
   }
 ]

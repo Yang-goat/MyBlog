@@ -7,7 +7,7 @@ export default navbar([
     link: "/",
   },
   {
-    text: "人工智能·算法",
+    text: "人工智能 · 算法",
     icon: "code",
     children: [
       {
@@ -60,12 +60,38 @@ export default navbar([
   {
     text: "AI应用实践",
     icon: "robot",
-    link: "/ai-practice/",
+    children: [
+      {
+        text: "智能体",
+        icon: "robot",
+        link: "/ai-practice/agents/",
+      },
+      {
+        text: "提示词",
+        icon: "comment",
+        link: "/ai-practice/prompts/",
+      },
+    ],
   },
   {
     text: "随笔",
     icon: "pen-to-square",
     children: [
+      {
+        text: "数学建模专题",
+        icon: "graduation-cap",
+        link: "/notes/MCM/",
+      },
+      {
+        text: "数学随记",
+        icon: "square-root-variable",
+        link: "/notes/Math/",
+      },
+      {
+        text: "计算机随记",
+        icon: "computer",
+        link: "/notes/computer/",
+      },
       {
         text: "程序设计语言随笔",
         icon: "code",
@@ -81,26 +107,6 @@ export default navbar([
         icon: "music",
         link: "/notes/music/",
       },
-      {
-        text: "数学建模专题",
-        icon: "graduation-cap",
-        link: "/notes/MCM/",
-      },
-      {
-        text: "数学随记",
-        icon: "square-root-variable",
-        link: "/notes/Math/",
-      },
-      {
-        text: "算法竞赛专题",
-        icon: "trophy",
-        link: "/notes/ACMer/",
-      },
-      {
-        text: "计算机随记",
-        icon: "computer",
-        link: "/notes/computer/",
-      },
     ],
   },
   {
@@ -108,14 +114,19 @@ export default navbar([
     icon: "toolbox",
     children: [
       {
+        text: "Docker",
+        icon: "box",
+        link: "/guides/docker/",
+      },
+      {
         text: "Git",
         icon: "code-branch",
         link: "/guides/git/",
       },
       {
-        text: "Docker",
-        icon: "box",
-        link: "/guides/docker/",
+        text: "LaTeX",
+        icon: "file-lines",
+        link: "/guides/Latex/",
       },
       {
         text: "Linux",
@@ -126,11 +137,6 @@ export default navbar([
         text: "SSH",
         icon: "key",
         link: "/guides/ssh.html",
-      },
-      {
-        text: "LaTeX",
-        icon: "file-lines",
-        link: "/guides/Latex/",
       },
       {
         text: "VSCode",

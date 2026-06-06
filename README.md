@@ -42,7 +42,7 @@ myBlog/
 │   ├── dev/                # 开发相关内容
 │   ├── guides/             # 软件教程
 │   ├── links/              # 收藏站点
-│   └── notes/              # 数学与竞赛笔记
+│   └── notes/              # 数学与日常随笔
 ├── package.json
 └── README.md
 ```
