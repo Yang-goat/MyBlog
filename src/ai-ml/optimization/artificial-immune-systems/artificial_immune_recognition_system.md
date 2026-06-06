@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "人工免疫系统"
+  - 人工免疫系统
+icon: shield-virus
 ---
 
 # 人工免疫识别系统（AIRS）

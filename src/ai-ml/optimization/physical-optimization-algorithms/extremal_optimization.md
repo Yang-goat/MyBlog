@@ -5,7 +5,8 @@ order: 2
 category:
   - 智能优化算法
 tag:
-  - "物理启发优化"
+  - 物理启发优化
+icon: atom
 ---
 
 # 极值优化（EO）

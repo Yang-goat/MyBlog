@@ -1,7 +1,7 @@
 ---
 title: 数学随记
 article: false
-icon: m
+icon: square-root-variable
 index: false
 dir:
   link: true

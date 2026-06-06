@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: chart-line
 date: 2025-12-03
 # order: 1
 category:

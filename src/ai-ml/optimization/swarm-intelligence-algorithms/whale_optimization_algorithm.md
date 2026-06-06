@@ -5,7 +5,8 @@ order: 8
 category:
   - 智能优化算法
 tag:
-  - "群智能"
+  - 群智能
+icon: circle-nodes
 ---
 
 # 鲸鱼优化算法（WOA）

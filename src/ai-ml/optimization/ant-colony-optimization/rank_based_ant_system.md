@@ -5,7 +5,8 @@ order: 3
 category:
   - 智能优化算法
 tag:
-  - "蚁群优化"
+  - 蚁群优化
+icon: route
 ---
 
 # 基于排序的蚁群系统（RBAS）

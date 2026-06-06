@@ -1,6 +1,6 @@
 ---
 title: 深度学习指南
-icon: book
+icon: network-wired
 index: false
 article: false
 dir:

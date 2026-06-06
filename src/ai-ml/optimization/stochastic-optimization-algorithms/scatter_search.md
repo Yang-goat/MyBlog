@@ -5,7 +5,8 @@ order: 11
 category:
   - 智能优化算法
 tag:
-  - "随机优化"
+  - 随机优化
+icon: dice
 ---
 
 # 分散搜索（SS）

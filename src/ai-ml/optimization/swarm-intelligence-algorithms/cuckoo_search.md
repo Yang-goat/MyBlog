@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "群智能"
+  - 群智能
+icon: circle-nodes
 ---
 
 # 布谷鸟搜索算法（CS）

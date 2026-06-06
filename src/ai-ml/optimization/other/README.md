@@ -8,6 +8,7 @@ dir:
   order: -1
 category:
   - 智能优化算法
+icon: shapes
 ---
 
 这里会持续更新采样、初始化和辅助策略等其他优化技巧相关文章。

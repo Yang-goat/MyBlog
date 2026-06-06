@@ -5,7 +5,8 @@ order: 1
 category:
   - 智能优化算法
 tag:
-  - "新颖性搜索"
+  - 新颖性搜索
+icon: lightbulb
 ---
 
 # 新颖性搜索算法（NS）

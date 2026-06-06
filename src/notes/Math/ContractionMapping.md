@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: arrows-to-dot
 date: 2026-01-19
 # order: 1
 category:

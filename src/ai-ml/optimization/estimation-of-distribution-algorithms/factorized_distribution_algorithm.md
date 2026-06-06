@@ -5,7 +5,8 @@ order: 7
 category:
   - 智能优化算法
 tag:
-  - "分布估计算法"
+  - 分布估计算法
+icon: chart-area
 ---
 
 # 因子分解分布算法（FDA）

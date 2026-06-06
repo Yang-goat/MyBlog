@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 岛屿遗传算法（IGA）

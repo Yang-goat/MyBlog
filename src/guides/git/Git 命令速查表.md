@@ -1,9 +1,9 @@
 ---
-icon: book-bookmark
+icon: brands:git-alt
 date: 2025-09-27
 order: 3
 category:
-  - git
+  - Git
 tag:
   - 指令速查
 ---

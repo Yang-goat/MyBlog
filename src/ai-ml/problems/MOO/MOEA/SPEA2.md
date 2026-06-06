@@ -7,6 +7,7 @@ category:
 tag:
   - 多目标优化
   - 算法
+icon: chart-line
 ---
 
 # 强化帕累托进化算法二代（SPEA2）

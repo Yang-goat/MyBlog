@@ -1,6 +1,6 @@
 ---
 title: 多目标优化问题
-icon: circle-question
+icon: bullseye
 date: 2025-10-15
 index: false
 article: false

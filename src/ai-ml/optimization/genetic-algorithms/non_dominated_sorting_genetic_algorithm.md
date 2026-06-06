@@ -5,7 +5,8 @@ order: 12
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 非支配排序遗传算法（NSGA）

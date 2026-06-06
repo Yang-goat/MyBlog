@@ -7,6 +7,7 @@ tag:
   - 分布式车间调度
   - 综述
   - 领域梳理
+icon: calendar-days
 ---
 
 # 分布式车间调度

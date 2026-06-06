@@ -1,6 +1,6 @@
 ---
 title: CMD 与 PowerShell 的区别
-icon: laptop-code
+icon: terminal
 date: 2026-03-23
 category:
   - Windows
@@ -8,7 +8,6 @@ tag:
   - CMD
   - PowerShell
   - 命令行
-
 ---
 
 # CMD 与 PowerShell 的区别

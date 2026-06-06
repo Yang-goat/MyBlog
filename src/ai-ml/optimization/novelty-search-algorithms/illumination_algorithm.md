@@ -5,7 +5,8 @@ order: 6
 category:
   - 智能优化算法
 tag:
-  - "新颖性搜索"
+  - 新颖性搜索
+icon: lightbulb
 ---
 
 # 照明算法（IA）

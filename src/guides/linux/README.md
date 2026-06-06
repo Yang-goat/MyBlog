@@ -1,6 +1,6 @@
 ---
 title: Linux
-icon: terminal
+icon: brands:linux
 index: false
 article: false
 dir:

@@ -115,12 +115,12 @@ export default navbar([
     children: [
       {
         text: "Docker",
-        icon: "box",
+        icon: "brands:docker",
         link: "/guides/docker/",
       },
       {
         text: "Git",
-        icon: "code-branch",
+        icon: "brands:git-alt",
         link: "/guides/git/",
       },
       {
@@ -130,7 +130,7 @@ export default navbar([
       },
       {
         text: "Linux",
-        icon: "terminal",
+        icon: "brands:linux",
         link: "/guides/linux/",
       },
       {

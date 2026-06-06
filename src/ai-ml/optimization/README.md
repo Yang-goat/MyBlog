@@ -1,6 +1,6 @@
 ---
 title: 智能优化算法指南
-icon: book
+icon: diagram-project
 index: false
 article: false
 dir:

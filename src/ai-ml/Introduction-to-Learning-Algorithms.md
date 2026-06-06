@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: lightbulb
 date: 2025-10-11
 order: 1
 sidebar: false
@@ -7,6 +7,8 @@ sidebar: false
 #   - 学习算法
 tag:
   - 导论
+category:
+  - 通识
 ---
 
 # 学习类算法导论

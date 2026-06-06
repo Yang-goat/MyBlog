@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: chalkboard-user
 title: 国赛A题指导
 date: 2025-09-04
 order: 3

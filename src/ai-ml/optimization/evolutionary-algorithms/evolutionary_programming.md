@@ -5,7 +5,8 @@ order: 1
 category:
   - 智能优化算法
 tag:
-  - "进化算法"
+  - 进化算法
+icon: dna
 ---
 
 # 进化规划（EP）

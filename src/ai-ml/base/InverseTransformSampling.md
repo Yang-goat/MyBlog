@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: dice
 date: 2025-10-23
 # order: 1
 category:

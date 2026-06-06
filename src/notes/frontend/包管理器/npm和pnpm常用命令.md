@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: brands:npm
 date: 2025-06-15
 order: 2
 category:

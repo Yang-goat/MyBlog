@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: code
 date: 2025-09-26
 order: 1
 category:

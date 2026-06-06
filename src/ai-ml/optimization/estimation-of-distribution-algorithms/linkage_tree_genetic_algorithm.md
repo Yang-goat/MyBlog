@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "分布估计算法"
+  - 分布估计算法
+icon: chart-area
 ---
 
 # 链接树遗传算法（LTGA）

@@ -1,14 +1,17 @@
 ---
-icon: code
+icon: arrows-split-up-and-left
 title: 并行计算编程
 date: 2026-03-23
 #order: 1
 star: false
 category:
- - MATLAB 
-# tag:
-#  - 
+  - MATLAB
+tag:
+  - MATLAB
+  - 并行计算
 
+# tag:
+#  -
 ---
 
 # 并行计算编程

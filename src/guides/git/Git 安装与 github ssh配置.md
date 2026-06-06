@@ -1,10 +1,10 @@
 ---
-icon: book-bookmark
+icon: brands:git-alt
 date: 2025-09-27
 order: 1
 category:
   - 软件教程
-  - git
+  - Git
 tag:
   - 教程
 ---

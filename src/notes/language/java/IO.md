@@ -1,9 +1,12 @@
 ---
-icon: code
+icon: right-left
 date: 2025-06-08
 order: 1
 category:
   - Java
+tag:
+  - Java
+  - IO
 ---
 
 # 输入输出

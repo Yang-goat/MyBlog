@@ -1,9 +1,11 @@
 ---
-icon: book
+icon: code
 date: 2025-06-17
 order: 5
 category:
   - 前端
+tag:
+  - TypeScript
 ---
 
 # TypeScript 介绍

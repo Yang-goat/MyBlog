@@ -5,7 +5,8 @@ order: 2
 category:
   - 智能优化算法
 tag:
-  - "粒子群优化"
+  - 粒子群优化
+icon: circle-nodes
 ---
 
 # 全局最优粒子群优化（GBPSO）

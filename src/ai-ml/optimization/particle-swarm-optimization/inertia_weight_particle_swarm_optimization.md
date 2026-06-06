@@ -5,7 +5,8 @@ order: 4
 category:
   - 智能优化算法
 tag:
-  - "粒子群优化"
+  - 粒子群优化
+icon: circle-nodes
 ---
 
 # 惯性权重粒子群优化（IWPSO）

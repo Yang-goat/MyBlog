@@ -5,7 +5,8 @@ order: 6
 category:
   - 智能优化算法
 tag:
-  - "随机优化"
+  - 随机优化
+icon: dice
 ---
 
 # 反应式禁忌搜索（RTS）

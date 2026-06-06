@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 精英遗传算法（EGA）

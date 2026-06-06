@@ -5,7 +5,8 @@ order: 1
 category:
   - 智能优化算法
 tag:
-  - "分布估计算法"
+  - 分布估计算法
+icon: chart-area
 ---
 
 # 单变量边缘分布算法（UMDA）

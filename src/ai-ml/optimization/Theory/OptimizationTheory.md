@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: book-open
 date: 2025-10-19
 order: 1
 category:

@@ -1,6 +1,6 @@
 ---
 title: Java语言
-icon: file-code
+icon: brands:java
 index: false
 article: false
 dir:

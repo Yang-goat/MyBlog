@@ -1,6 +1,6 @@
 ---
 title: Docker
-icon: box
+icon: brands:docker
 index: false
 article: false
 dir:

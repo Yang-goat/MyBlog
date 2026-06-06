@@ -5,7 +5,8 @@ order: 7
 category:
   - 智能优化算法
 tag:
-  - "进化策略"
+  - 进化策略
+icon: dna
 ---
 
 # 自适应进化策略（SA-ES）

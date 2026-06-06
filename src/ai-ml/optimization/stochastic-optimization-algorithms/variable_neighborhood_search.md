@@ -5,7 +5,8 @@ order: 8
 category:
   - 智能优化算法
 tag:
-  - "随机优化"
+  - 随机优化
+icon: dice
 ---
 
 # 变邻域搜索（VNS）

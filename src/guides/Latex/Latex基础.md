@@ -3,10 +3,10 @@ icon: book-bookmark
 date: 2025-08-22
 order: 1
 category:
-  - Latex
-# tag:
-  # - 基础
-
+  - LaTeX
+tag:
+  - LaTeX
+  - 排版
 ---
 
 # LaTeX基础

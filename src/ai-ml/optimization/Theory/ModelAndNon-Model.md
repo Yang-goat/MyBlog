@@ -1,5 +1,5 @@
 ---
-icon: v
+icon: scale-balanced
 date: 2025-11-20
 order: 4
 category:

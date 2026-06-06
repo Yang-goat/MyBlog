@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "小生境遗传算法"
+  - 小生境遗传算法
+icon: bullseye
 ---
 
 # 适应度共享（FS）

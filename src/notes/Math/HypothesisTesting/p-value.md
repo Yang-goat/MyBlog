@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: percent
 date: 2025-12-04
 # order: 1
 category:

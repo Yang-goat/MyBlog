@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "随机优化"
+  - 随机优化
+icon: dice
 ---
 
 # 引导式局部搜索（GLS）

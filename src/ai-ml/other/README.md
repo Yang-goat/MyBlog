@@ -1,6 +1,6 @@
 ---
 title: 非学习类算法
-icon: book
+icon: compass-drafting
 index: false
 article: false
 dir:

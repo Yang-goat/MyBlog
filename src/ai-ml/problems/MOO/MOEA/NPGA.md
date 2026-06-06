@@ -7,6 +7,7 @@ category:
 tag:
   - 多目标优化
   - 算法
+icon: chart-line
 ---
 
 # 小生境帕累托遗传算法（NPGA）

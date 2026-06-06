@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "蚁群优化"
+  - 蚁群优化
+icon: route
 ---
 
 # 最优-最劣蚁群系统（BWAS）

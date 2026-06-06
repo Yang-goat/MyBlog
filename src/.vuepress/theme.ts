@@ -169,7 +169,7 @@ export default hopeTheme({
     },
 
     icon: {
-      assets: "fontawesome",
+      assets: "fontawesome-with-brands",
       // prefix: "fa6-solid:",
     },
 

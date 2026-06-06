@@ -5,7 +5,8 @@ order: 2
 category:
   - 智能优化算法
 tag:
-  - "差分进化"
+  - 差分进化
+icon: arrows-left-right
 ---
 
 # DE/rand/1/exp

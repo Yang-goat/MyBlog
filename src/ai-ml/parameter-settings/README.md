@@ -1,6 +1,6 @@
 ---
 title: 参数设置分析方法
-icon: code
+icon: sliders
 index: false
 article: false
 dir:

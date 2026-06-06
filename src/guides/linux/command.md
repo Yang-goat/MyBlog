@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: brands:linux
 date: 2025-11-11
 order: 2
 category:

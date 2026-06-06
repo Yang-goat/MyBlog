@@ -5,7 +5,8 @@ order: 10
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 杂乱遗传算法（Messy GA）

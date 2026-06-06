@@ -5,7 +5,8 @@ order: 2
 category:
   - 智能优化算法
 tag:
-  - "群体智能"
+  - 群智能
+icon: circle-nodes
 ---
 
 # 人工蜂群算法（ABC）

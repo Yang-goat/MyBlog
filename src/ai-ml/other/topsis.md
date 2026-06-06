@@ -1,13 +1,13 @@
 ---
-icon: pen-to-square
+icon: ranking-star
 title: TOPSIS 逼近理想解排序法
 date: 2026-01-30
 #order: 1
 category:
   - 非学习类算法
 tag:
- - 算法
- - 排序算法
+  - 算法
+  - 排序算法
 ---
 
 # 逼近理想解排序法 TOPSIS

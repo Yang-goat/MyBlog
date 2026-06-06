@@ -6,6 +6,7 @@ category:
   - 智能优化算法
 tag:
   - 蚁群优化
+icon: route
 ---
 
 # 蚁群系统（ACS）

@@ -5,7 +5,8 @@ order: 1
 category:
   - 智能优化算法
 tag:
-  - "蚂蚁优化"
+  - 蚁群优化
+icon: route
 ---
 
 # 蚂蚁系统（AS）

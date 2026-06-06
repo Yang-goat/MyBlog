@@ -1,9 +1,11 @@
 ---
-icon: code
+icon: brands:html5
 date: 2025-10-20
 order: 1
 category:
   - 前端
+tag:
+  - HTML
 ---
 
 # HTML

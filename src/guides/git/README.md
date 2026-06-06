@@ -1,6 +1,6 @@
 ---
 title: Git
-icon: code-branch
+icon: brands:git-alt
 index: false
 article: false
 dir:

@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "群智能"
+  - 群智能
+icon: circle-nodes
 ---
 
 # 飞蛾扑火优化算法（MFO）

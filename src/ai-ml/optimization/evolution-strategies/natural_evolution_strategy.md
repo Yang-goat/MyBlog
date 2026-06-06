@@ -5,7 +5,8 @@ order: 8
 category:
   - 智能优化算法
 tag:
-  - "进化策略"
+  - 进化策略
+icon: dna
 ---
 
 # 自然进化策略（NES）

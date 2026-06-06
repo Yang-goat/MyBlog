@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: ranking-star
 date: 2025-12-04
 # order: 1
 category:

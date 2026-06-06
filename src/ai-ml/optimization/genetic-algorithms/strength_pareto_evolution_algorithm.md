@@ -5,7 +5,8 @@ order: 13
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 强度 Pareto 演化算法（SPEA）

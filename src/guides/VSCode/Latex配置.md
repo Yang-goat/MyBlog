@@ -1,10 +1,10 @@
 ---
-icon: book
+icon: code
 date: 2025-09-26
 category:
   - 软件教程
   - VSCode
-  - Latex
+  - LaTeX
 tag:
   - 教程
 ---

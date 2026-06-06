@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "遗传规划"
+  - 遗传规划
+icon: code-branch
 ---
 
 # 基因表达式编程（GEP）

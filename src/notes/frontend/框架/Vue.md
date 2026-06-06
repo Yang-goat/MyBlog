@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: brands:vuejs
 date: 2025-09-11
 order: 1
 category:

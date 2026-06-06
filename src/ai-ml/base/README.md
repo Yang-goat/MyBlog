@@ -1,6 +1,6 @@
 ---
 title: 通识基础
-icon: book
+icon: book-open
 index: false
 article: false
 dir:

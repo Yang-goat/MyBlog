@@ -1,9 +1,13 @@
 ---
-icon: code
+icon: brands:python
 date: 2022-01-01
 order: 1
 category:
   - Python
+tag:
+  - Python
+  - 基础语法
+
 # tag:
 #   - 基础
 ---

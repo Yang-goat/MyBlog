@@ -5,7 +5,8 @@ order: 6
 category:
   - 智能优化算法
 tag:
-  - "分布估计算法"
+  - 分布估计算法
+icon: chart-area
 ---
 
 # 互信息最大化输入聚类算法（MIMIC）

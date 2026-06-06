@@ -5,7 +5,8 @@ order: 7
 category:
   - 智能优化算法
 tag:
-  - "蚁群优化"
+  - 蚁群优化
+icon: route
 ---
 
 # 快速蚁群系统（FANT）

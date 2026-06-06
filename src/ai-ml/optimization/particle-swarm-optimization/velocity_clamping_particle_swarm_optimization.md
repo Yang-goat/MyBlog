@@ -5,7 +5,8 @@ order: 6
 category:
   - 智能优化算法
 tag:
-  - "粒子群优化"
+  - 粒子群优化
+icon: circle-nodes
 ---
 
 # 速度限制粒子群优化（VCPSO）

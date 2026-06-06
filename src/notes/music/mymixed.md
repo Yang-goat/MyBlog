@@ -1,13 +1,19 @@
 ---
-icon: pen-to-square
+icon: headphones
 title: 站主的电音混音作品
 date: 2026-06-06
 #order: 1
 star: false
+category:
+  - 音乐
+tag:
+  - 电子音乐
+  - 混音
+
 #category:
 # - 
 #tag:
-#  - 
+#  -
 ---
 
 # 站主的电音混音作品

@@ -1,13 +1,19 @@
 ---
-icon: book
+icon: flask
 title: 消融实验
 date: 2026-02-01
 #order: 1
 star: false
+category:
+  - 机器学习
+tag:
+  - 消融实验
+  - 机器学习
+
 #category:
 # - 
 #tag:
-#  - 
+#  -
 ---
 
 # 消融实验

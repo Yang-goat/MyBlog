@@ -5,7 +5,8 @@ order: 2
 category:
   - 智能优化算法
 tag:
-  - "分布估计算法"
+  - 分布估计算法
+icon: chart-area
 ---
 
 # 基于种群的增量学习（PBIL）

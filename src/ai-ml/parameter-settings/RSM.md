@@ -1,13 +1,19 @@
 ---
-icon: code
+icon: chart-line
 title: 响应面方法（RSM）
 date: 2026-02-05
 #order: 1
 star: false
+category:
+  - 参数设置分析
+tag:
+  - 响应面法
+  - 参数设置
+
 #category:
 # - 
 #tag:
-#  - 
+#  -
 ---
 
 # 响应面方法 —— 算法/超参数优化中应用

@@ -1,15 +1,14 @@
 ---
-icon: pen-to-square
+icon: brands:git-alt
 title: Git 常见场景应用
 date: 2026-03-27
 order: 2
 star: false
 category:
   - 软件教程
-  - git
+  - Git
 tag:
   - 教程
-
 ---
 
 # Git 常见场景应用

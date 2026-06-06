@@ -1,6 +1,6 @@
 ---
 title: "多项式变异（PM）"
-icon: pen-to-square
+icon: shuffle
 date: 2025-10-23
 order: 2
 category:

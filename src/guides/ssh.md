@@ -1,5 +1,5 @@
 ---
-icon: code
+icon: key
 title: SSH 简介
 date: 2026-03-23
 star: false
@@ -10,7 +10,6 @@ tag:
   - SSH
   - Linux
   - Windows
-
 ---
 
 # SSH 简介

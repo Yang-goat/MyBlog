@@ -1,6 +1,6 @@
 ---
 title: "模拟二进制交叉算子（SBX）"
-icon: pen-to-square
+icon: arrows-left-right
 date: 2025-10-23
 order: 1
 category:

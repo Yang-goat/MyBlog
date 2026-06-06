@@ -5,7 +5,8 @@ order: 4
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 稳态遗传算法（SSGA）

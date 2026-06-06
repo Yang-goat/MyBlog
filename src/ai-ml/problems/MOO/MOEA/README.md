@@ -1,6 +1,6 @@
 ---
 title: 多目标进化算法（MOEA）
-icon: book
+icon: chart-line
 date: 2025-10-18
 index: false
 article: false

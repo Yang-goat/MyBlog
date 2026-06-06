@@ -1,10 +1,14 @@
 ---
-icon: pen-to-square
+icon: code-branch
 date: 2025-06-17
 order: 2
 category:
   - 前端
   - 模块化
+tag:
+  - ES Modules
+  - JavaScript
+
 # tag:
 #   - ES6
 ---

@@ -5,7 +5,8 @@ order: 3
 category:
   - 智能优化算法
 tag:
-  - "人工免疫系统"
+  - 人工免疫系统
+icon: shield-virus
 ---
 
 # 动态克隆选择（DCS）

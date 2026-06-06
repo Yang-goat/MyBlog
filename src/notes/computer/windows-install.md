@@ -1,6 +1,6 @@
 ---
 title: Windows 11 安装与重装教程
-icon: fa-brands fa-windows
+icon: brands:windows
 date: 2026-06-06
 order: 1
 category:

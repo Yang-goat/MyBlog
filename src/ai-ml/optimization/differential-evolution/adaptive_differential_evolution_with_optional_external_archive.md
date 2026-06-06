@@ -5,7 +5,8 @@ order: 8
 category:
   - 智能优化算法
 tag:
-  - "差分进化"
+  - 差分进化
+icon: arrows-left-right
 ---
 
 # 具有可选外部档案的自适应差分进化（JADE）

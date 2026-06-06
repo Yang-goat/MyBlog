@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "粒子群优化"
+  - 粒子群优化
+icon: circle-nodes
 ---
 
 # 二进制粒子群优化（BPSO）

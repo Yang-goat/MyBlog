@@ -1,10 +1,10 @@
 ---
-icon: pen-to-square
+icon: table-list
 title: dataclass 用法
 date: 2026-01-22
 order: 6
 category:
-    - python 
+  - Python
 tag:
   - 库
 ---

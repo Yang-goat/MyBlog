@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: window-maximize
 date: 2025-06-08
 category:
   - Java

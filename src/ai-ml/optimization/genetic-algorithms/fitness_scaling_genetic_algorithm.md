@@ -5,7 +5,8 @@ order: 3
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 适应度缩放遗传算法（FSGA）

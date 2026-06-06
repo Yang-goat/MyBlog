@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "随机优化"
+  - 随机优化
+icon: dice
 ---
 
 # 禁忌搜索（TS）

@@ -1,6 +1,6 @@
 ---
 title: 具体问题/案例
-icon: bars
+icon: flask-vial
 index: false
 article: false
 dir:

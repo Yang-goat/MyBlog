@@ -1,6 +1,6 @@
 ---
 title: 假设检验
-icon: h
+icon: flask
 index: false
 article: false
 dir:

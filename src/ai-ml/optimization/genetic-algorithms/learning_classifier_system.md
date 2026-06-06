@@ -5,7 +5,8 @@ order: 11
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 学习分类器系统（LCS）

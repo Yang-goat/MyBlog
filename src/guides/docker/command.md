@@ -1,9 +1,9 @@
 ---
-icon: book
+icon: brands:docker
 date: 2025-12-14
 # order: 2
 category:
-  - docker
+  - Docker
 tag:
   - 指令速查
 ---

@@ -1,9 +1,11 @@
 ---
-icon: code
+icon: brands:js
 date: 2025-10-20
 order: 3
 category:
   - 前端
+tag:
+  - JavaScript
 ---
 
 # JavaScript

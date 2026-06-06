@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: book-open
 date: 2025-10-02
 star: 1
 sticky: 100

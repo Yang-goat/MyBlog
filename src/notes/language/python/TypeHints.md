@@ -1,12 +1,12 @@
 ---
-icon: pen-to-square
+icon: spell-check
 title: 类型提示
 date: 2026-01-23
 order: 5
 category:
-    - python 
+  - Python
 tag:
- - 库
+  - 库
 ---
 
 # 类型提示

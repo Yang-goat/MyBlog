@@ -5,7 +5,8 @@ order: 7
 category:
   - 智能优化算法
 tag:
-  - "差分进化"
+  - 差分进化
+icon: arrows-left-right
 ---
 
 # 自适应差分进化（参数自适应，SaDE）

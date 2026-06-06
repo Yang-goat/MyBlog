@@ -1,6 +1,6 @@
 ---
 title: Ubuntu Desktop 安装与重装教程
-icon: fa-brands fa-ubuntu
+icon: brands:ubuntu
 date: 2026-06-06
 order: 2
 category:

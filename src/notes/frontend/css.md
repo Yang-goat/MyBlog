@@ -1,9 +1,11 @@
 ---
-icon: code
+icon: brands:css3-alt
 date: 2025-10-20
 order: 2
 category:
   - 前端
+tag:
+  - CSS
 ---
 
 # CSS

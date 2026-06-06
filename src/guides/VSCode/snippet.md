@@ -1,13 +1,13 @@
 ---
-icon: book
+icon: code
 title: 创建文件模板
 date: 2026-01-22
 #order: 1
 category:
-- VSCode 
-- 软件教程
+  - VSCode
+  - 软件教程
 tag:
- - 教程
+  - 教程
 ---
 
 # 创建文件模板

@@ -5,7 +5,8 @@ order: 8
 category:
   - 智能优化算法
 tag:
-  - "遗传规划"
+  - 遗传规划
+icon: code-branch
 ---
 
 # 笛卡尔遗传规划（CGP）

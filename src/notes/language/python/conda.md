@@ -1,5 +1,5 @@
 ---
-icon: code
+icon: boxes-stacked
 date: 2025-09-27
 order: 3
 category:

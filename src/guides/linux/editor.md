@@ -1,9 +1,14 @@
 ---
-icon: book
+icon: brands:linux
 date: 2025-12-14
 order: 1
 category:
   - Linux
+tag:
+  - Vim
+  - Nano
+  - 编辑器
+
 # tag:
 ---
 

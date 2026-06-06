@@ -5,7 +5,8 @@ order: 10
 category:
   - 智能优化算法
 tag:
-  - "小生境遗传算法"
+  - 小生境遗传算法
+icon: bullseye
 ---
 
 # 小生境半径自适应（NRA）

@@ -1,6 +1,6 @@
 ---
 title: 智能体必装工具
-icon: terminal
+icon: screwdriver-wrench
 index: false
 article: false
 dir:

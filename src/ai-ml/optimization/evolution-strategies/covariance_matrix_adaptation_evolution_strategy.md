@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "进化策略"
+  - 进化策略
+icon: dna
 ---
 
 # 协方差矩阵自适应进化策略（CMA-ES）

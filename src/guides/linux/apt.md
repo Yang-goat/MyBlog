@@ -1,5 +1,5 @@
 ---
-icon: book
+icon: brands:linux
 date: 2026-01-20
 order: 2
 category:

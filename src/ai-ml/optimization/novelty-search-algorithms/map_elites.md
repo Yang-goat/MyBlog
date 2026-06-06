@@ -5,7 +5,8 @@ order: 5
 category:
   - 智能优化算法
 tag:
-  - "新颖性搜索"
+  - 新颖性搜索
+icon: lightbulb
 ---
 
 # 表型精英多维档案（MAP-Elites）

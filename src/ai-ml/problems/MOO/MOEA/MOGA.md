@@ -7,6 +7,7 @@ category:
 tag:
   - 多目标优化
   - 算法
+icon: chart-line
 ---
 
 # 多目标遗传算法（MOGA）

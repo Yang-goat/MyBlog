@@ -2,9 +2,10 @@
 title: "LHS 采样"
 date: 2026-03-23
 category:
-  - "智能优化算法"
+  - 智能优化算法
 tag:
-  - "采样方法"
+  - 采样方法
+icon: table-cells
 ---
 
 # LHS 采样

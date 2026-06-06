@@ -7,6 +7,7 @@ category:
 tag:
   - 多目标优化
   - 算法
+icon: chart-line
 ---
 
 # 非支配遗传算法二代（NSGA Ⅱ）

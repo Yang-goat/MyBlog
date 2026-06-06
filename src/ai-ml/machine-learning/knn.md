@@ -1,5 +1,5 @@
 ---
-icon: code
+icon: circle-nodes
 date: 2025-10-23
 # order: 2
 category:

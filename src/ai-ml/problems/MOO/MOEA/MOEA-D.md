@@ -7,6 +7,7 @@ category:
 tag:
   - 多目标优化
   - 算法
+icon: chart-line
 ---
 
 # 基于分解的多目标进化算法（MOEA/D）

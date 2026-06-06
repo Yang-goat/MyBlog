@@ -5,7 +5,8 @@ order: 1
 category:
   - 智能优化算法
 tag:
-  - "小生境遗传算法"
+  - 小生境遗传算法
+icon: bullseye
 ---
 
 # 拥挤因子法（CF）

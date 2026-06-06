@@ -5,7 +5,8 @@ order: 7
 category:
   - 智能优化算法
 tag:
-  - "群智能"
+  - 群智能
+icon: circle-nodes
 ---
 
 # 灰狼优化算法（GWO）

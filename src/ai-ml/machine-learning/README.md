@@ -1,6 +1,6 @@
 ---
 title: 机器学习
-icon: code
+icon: brain
 index: false
 article: false
 dir:

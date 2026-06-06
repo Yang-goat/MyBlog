@@ -5,7 +5,8 @@ order: 9
 category:
   - 智能优化算法
 tag:
-  - "差分进化"
+  - 差分进化
+icon: arrows-left-right
 ---
 
 # 复合差分进化（CoDE）

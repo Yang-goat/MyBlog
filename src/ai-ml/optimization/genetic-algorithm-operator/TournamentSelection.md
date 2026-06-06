@@ -1,5 +1,5 @@
 ---
-icon: pen-to-square
+icon: trophy
 title: 锦标赛选择
 date: 2026-03-23
 #order: 1

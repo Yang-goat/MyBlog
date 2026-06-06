@@ -1,10 +1,13 @@
 ---
-icon: book
+icon: brain
 date: 2025-11-20
 # order: 1
 star: true
 category:
   - 通识
+tag:
+  - 机器学习
+  - 归纳偏置
 ---
 
 

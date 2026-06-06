@@ -5,7 +5,8 @@ order: 6
 category:
   - 智能优化算法
 tag:
-  - "遗传算法"
+  - 遗传算法
+icon: dna
 ---
 
 # 实数编码遗传算法（RCGA）

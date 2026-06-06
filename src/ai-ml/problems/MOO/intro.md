@@ -1,13 +1,19 @@
 ---
-icon: pen-to-square
+icon: bullseye
 title: 多目标优化问题介绍
 date: 2026-03-23
 order: 1
 star: false
+category:
+  - 多目标优化
+tag:
+  - 多目标优化
+  - 导论
+
 #category:
 # - 
 #tag:
-#  - 
+#  -
 ---
 
 # 多目标优化问题介绍
