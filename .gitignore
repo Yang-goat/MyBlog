@@ -1,5 +1,4 @@
 node_modules/
-.env.local
 src/.vuepress/dist/
 src/.vuepress/.cache/
 src/.vuepress/.temp/

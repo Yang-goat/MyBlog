@@ -3,10 +3,6 @@ import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
-const giscusRepoId = process.env.GISCUS_REPO_ID;
-const giscusCategoryId = process.env.GISCUS_CATEGORY_ID;
-const giscusCategory = process.env.GISCUS_CATEGORY ?? "Announcements";
-
 export default hopeTheme({
   hostname: "https://goatyang.com",
 
@@ -160,24 +156,20 @@ export default hopeTheme({
   plugins: {
     blog: true,
 
-    // Giscus 的 ID 通过环境变量注入；未配置时保持关闭，避免本地构建失败。
-    comment:
-      giscusRepoId && giscusCategoryId
-        ? {
-            provider: "Giscus",
-            repo: "Yang-goat/MyBlog",
-            repoId: giscusRepoId,
-            category: giscusCategory,
-            categoryId: giscusCategoryId,
-            mapping: "pathname",
-            strict: true,
-            reactionsEnabled: true,
-            inputPosition: "top",
-            lazyLoading: true,
-            lightTheme: "light",
-            darkTheme: "dark",
-          }
-        : false,
+    comment: {
+      provider: "Giscus",
+      repo: "Yang-goat/MyBlog",
+      repoId: "R_kgDOO5Tm4w",
+      category: "Announcements",
+      categoryId: "DIC_kwDOO5Tm484C-qqQ",
+      mapping: "pathname",
+      strict: true,
+      reactionsEnabled: true,
+      inputPosition: "top",
+      lazyLoading: true,
+      lightTheme: "light",
+      darkTheme: "dark",
+    },
 
     components: {
       components: ["Badge", "VPCard"],
