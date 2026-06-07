@@ -13,7 +13,7 @@
 1. 直接执行 `pnpm` 会调用 `pnpm.ps1`，可能被 PowerShell 执行策略阻止。统一使用 `pnpm.cmd`。
 2. 使用 `Start-Process` 启动开发服务器时，当前环境可能因同时存在 `Path` 和 `PATH` 而报“字典关键字重复”；即使通过其他后台方式启动，子进程也可能在命令结束后退出。
 3. 指定端口被占用时，VuePress/Vite 会自动尝试后续端口。浏览器如果仍访问原端口，会得到连接失败或访问到其他服务。本版本 VuePress CLI 不支持 `--strictPort`。
-4. Codex Browser 插件曾连续报错：`windows sandbox failed: spawn setup refresh`。出现该错误时只重试一次，不要反复重置。
+4. Codex Browser/`node_repl` 若报 `windows sandbox failed: spawn setup refresh`，先检查最新的 `~/.codex/.sandbox/sandbox*.log`。若包含 `failed to spawn ... codex-windows-sandbox-setup.exe`、`os error 740` 或“请求的操作需要提升”，这是 Codex elevated Windows sandbox 的已知问题，不是网站或 Browser 插件故障。将 `~/.codex/config.toml` 中的 `[windows] sandbox` 改为 `"unelevated"`，完全退出并重新打开 Codex Desktop，再用最小 `node_repl` 调用和 Browser 初始化验证。不要改成无沙箱，不要删除插件缓存、重装 Browser、修改 WindowsApps ACL，也不要反复重置；这些操作无法解决该错误。若日志不是 740，则保留原配置并根据日志中的实际 Win32 错误继续排查。
 5. 独立 Playwright MCP 与 shell 启动的 localhost 可能不在同一网络环境中，因此 Playwright 可能无法访问一个已经正常启动的本地服务。不要把这种连接失败误判为站点构建失败。
 6. 空目录配置为 `"structure"` 时没有子项可生成，主题会隐藏侧边栏。需要空目录也显示侧边栏时，应配置显式的单项侧边栏，并在生成 HTML 中验证。
 7. 构建时会出现 `@vueuse/core` 的 `INVALID_ANNOTATION` 警告，以及 category/tag 页面缺少 sidebar 配置的提示。这些是当前依赖和项目已有警告；只要构建最终显示成功，不应当作本次修改失败。
@@ -151,7 +151,30 @@ pnpm.cmd docs:dev --host 127.0.0.1 --port 4173
    - 一级下拉按钮可打开；
    - 二级链接可进入正确页面；
    - 桌面端和窄屏各检查一次。
-5. Browser 插件若出现上述 Windows sandbox 错误，只重试一次。仍失败时明确记录“浏览器交互测试受运行环境阻断”，然后完成构建产物静态检查，不要把插件失败描述成项目失败。
+5. Browser 插件若出现 `windows sandbox failed: spawn setup refresh`：
+   - 先执行最小 `node_repl` 调用，确认错误发生在 Browser 初始化之前。
+   - 检查最新沙箱日志：
+
+```powershell
+$sandboxLog = Get-ChildItem "$env:USERPROFILE\.codex\.sandbox\sandbox*.log" |
+  Sort-Object LastWriteTime -Descending |
+  Select-Object -First 1
+
+Select-String -Path $sandboxLog.FullName `
+  -Pattern 'failed to spawn|os error 740|请求的操作需要提升' `
+  -Context 2,4
+```
+
+   - 若命中 `os error 740`，确认 `~/.codex/config.toml` 包含：
+
+```toml
+[windows]
+sandbox = "unelevated"
+```
+
+   - 修改配置后必须完全退出并重新打开 Codex Desktop；只重置 `node_repl` 不会重新加载 MCP 启动环境。
+   - 重启后先验证最小 `node_repl` 调用，再初始化 Browser 并打开目标页面。
+   - 若日志不是 740，或切换为 `unelevated` 并重启后仍失败，记录日志中的具体 Win32 错误，完成构建产物静态检查，并明确说明浏览器交互测试受哪个工具错误阻断。不要把工具错误描述成项目失败。
 6. 不要使用 `Start-Process` 临时后台启动服务器，也不要默认使用独立 Playwright MCP 连接 shell 的 localhost。
 
 ### 8. 测试结束检查

@@ -3,7 +3,7 @@ home: true
 layout: Blog
 icon: house
 title: 主页
-heroImage: assets/icon/头像.jpg
+# heroImage: assets/icon/头像.jpg
 heroImageStyle:
   border-radius: 100%
   height: 200px
@@ -20,11 +20,6 @@ projects:
     name: USTSthesis
     desc: 苏州科技大学数学科学学院本科生毕业论文（设计）Latex模板
     link: https://github.com/Yang-goat/USTSthesis
-
-  # - icon: comment
-  #   name: 评论管理系统
-  #   desc: 支持github登录的个人博客评论管理系统
-  #   link: https://github.com/Yang-goat/MyBlog_CMBackend
 
   # - icon: newspaper
   #   name: 文章名称

@@ -156,3 +156,9 @@ html.optimization-mindmap-fullscreen .optimization-mindmap-controls {
     }
   }
 }
+
+
+// 导航栏左侧只显示 Logo，不显示站点名称
+.vp-brand .vp-site-name {
+  display: none;
+}
