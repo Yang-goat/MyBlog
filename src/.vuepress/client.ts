@@ -1,8 +1,21 @@
 import { defineClientConfig } from "vuepress/client";
+import { defineSearchConfig } from "@vuepress/plugin-slimsearch/client";
 import Blog from "./layouts/Main.vue";
 import TreasureSites from "./layouts/TreasureSites.vue";
 import { setupRunningTimeFooter } from "vuepress-theme-hope/presets/footerRunningTime.js";
 import { setupTransparentNavbar } from "vuepress-theme-hope/presets/transparentNavbar.js";
+
+defineSearchConfig({
+  boost: {
+    h: 10,
+    t: 1,
+    c: 0.5,
+  },
+  prefix: true,
+  fuzzy: (term) => (term.length >= 4 ? 1 : false),
+  maxFuzzy: 1,
+  combineWith: "AND",
+});
 
 // 思维导图页的固定路径与全屏相关样式类。
 const MINDMAP_PATH = "/ai-ml/optimization/MindMap.html";

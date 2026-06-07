@@ -154,6 +154,15 @@ export default hopeTheme({
 
   // 在这里配置主题提供的插件
   plugins: {
+    slimsearch: {
+      indexContent: true,
+      filter: (page) =>
+        page.lang === "zh-CN" &&
+        page.filePathRelative !== null &&
+        page.frontmatter.home !== true &&
+        page.frontmatter.article !== false,
+    },
+
     blog: true,
 
     comment: {
