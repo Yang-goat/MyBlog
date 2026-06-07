@@ -161,7 +161,7 @@ export default hopeTheme({
       repo: "Yang-goat/MyBlog",
       repoId: "R_kgDOO5Tm4w",
       category: "Announcements",
-      categoryId: "DIC_kwDOO5Tm484C-qqQ",
+      categoryId: "DIC_kwDOO5Tm484C-qgQ",
       mapping: "pathname",
       strict: true,
       reactionsEnabled: true,
