@@ -3,6 +3,8 @@ import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
+const searchWorkerVersion = process.env.GITHUB_SHA?.slice(0, 8) ?? "local";
+
 export default hopeTheme({
   hostname: "https://goatyang.com",
 
@@ -156,6 +158,7 @@ export default hopeTheme({
   plugins: {
     slimsearch: {
       indexContent: true,
+      worker: `slimsearch.worker.${searchWorkerVersion}.js`,
       filter: (page) =>
         page.lang === "zh-CN" &&
         page.filePathRelative !== null &&

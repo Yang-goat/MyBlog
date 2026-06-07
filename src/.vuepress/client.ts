@@ -12,7 +12,7 @@ defineSearchConfig({
     c: 0.5,
   },
   prefix: true,
-  fuzzy: (term) => (term.length >= 4 ? 1 : false),
+  fuzzy: 0.15,
   maxFuzzy: 1,
   combineWith: "AND",
 });
