@@ -3,6 +3,10 @@ import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
+const giscusRepoId = process.env.GISCUS_REPO_ID;
+const giscusCategoryId = process.env.GISCUS_CATEGORY_ID;
+const giscusCategory = process.env.GISCUS_CATEGORY ?? "Announcements";
+
 export default hopeTheme({
   hostname: "https://goatyang.com",
 
@@ -156,12 +160,24 @@ export default hopeTheme({
   plugins: {
     blog: true,
 
-    // 启用之前需安装 @waline/client
-    // 警告: 这是一个仅供演示的测试服务，在生产环境中请自行部署并使用自己的服务！
-    // comment: {
-    //   provider: "Waline",
-    //   serverURL: "https://waline-comment.vuejs.press",
-    // },
+    // Giscus 的 ID 通过环境变量注入；未配置时保持关闭，避免本地构建失败。
+    comment:
+      giscusRepoId && giscusCategoryId
+        ? {
+            provider: "Giscus",
+            repo: "Yang-goat/MyBlog",
+            repoId: giscusRepoId,
+            category: giscusCategory,
+            categoryId: giscusCategoryId,
+            mapping: "pathname",
+            strict: true,
+            reactionsEnabled: true,
+            inputPosition: "top",
+            lazyLoading: true,
+            lightTheme: "light",
+            darkTheme: "dark",
+          }
+        : false,
 
     components: {
       components: ["Badge", "VPCard"],

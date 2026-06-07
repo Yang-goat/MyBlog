@@ -28,8 +28,4 @@ export default defineUserConfig({
 
   // 指定打包工具
   bundler: viteBundler(),
-
-  alias: {  // 创建组件别名
-      "@Comment": path.resolve(__dirname, "components/Comment.vue"),
-  },
 });
