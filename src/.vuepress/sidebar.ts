@@ -1,4 +1,4 @@
-import { sidebar } from "vuepress-theme-hope";
+﻿import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
   "/ai-ml/base/": "structure",
@@ -24,4 +24,5 @@ export default sidebar({
   "/guides/Latex/": "structure",
   "/guides/VSCode/": "structure",
   "/tests/": "structure",
+  "/": [],
 });

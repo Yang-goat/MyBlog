@@ -2,7 +2,7 @@
 title: ripgrep（rg）下载与安装教程
 icon: magnifying-glass
 date: 2026-06-06
-order: 1
+order: 2
 category:
   - AI 应用实践
 tag:

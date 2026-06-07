@@ -1,0 +1,4 @@
+interface:
+  display_name: "博客文章写作"
+  short_description: "按本站规范撰写和维护 VuePress Theme Hope 博客文章"
+  default_prompt: "Use $write-blog-article to draft or revise a concise, sourced article for this blog."

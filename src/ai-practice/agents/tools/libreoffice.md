@@ -2,7 +2,7 @@
 title: LibreOffice 下载与安装教程
 icon: file-word
 date: 2026-06-06
-order: 2
+order: 3
 category:
   - AI 应用实践
 tag:

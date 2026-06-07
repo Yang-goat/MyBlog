@@ -27,5 +27,24 @@ export default defineUserConfig({
   // shouldPrefetch: false,
 
   // 指定打包工具
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      build: {
+        rolldownOptions: {
+          onLog(level, log, defaultHandler) {
+            if (
+              log.code === "INVALID_ANNOTATION" &&
+              log.id?.includes("@vueuse/core/dist/index.js")
+            )
+              return;
+
+            defaultHandler(level, log);
+          },
+          checks: {
+            pluginTimings: false,
+          },
+        },
+      },
+    },
+  }),
 });
