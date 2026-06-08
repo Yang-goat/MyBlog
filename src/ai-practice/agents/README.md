@@ -1,5 +1,5 @@
 ---
-title: 智能体
+title: Agent 端
 icon: robot
 index: false
 article: false
@@ -9,6 +9,6 @@ dir:
   order: 1
 ---
 
-这里整理智能体平台、开发工具与实际应用相关的实践内容。
+这里整理各类 Agent 客户端的下载、安装、配置与使用教程。
 
 <Catalog />

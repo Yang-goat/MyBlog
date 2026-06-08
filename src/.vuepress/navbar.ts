@@ -62,14 +62,24 @@ export default navbar([
     icon: "robot",
     children: [
       {
-        text: "智能体",
+        text: "AI 应用话题",
+        icon: "lightbulb",
+        link: "/ai-practice/topics/",
+      },
+      {
+        text: "Agent",
         icon: "robot",
         link: "/ai-practice/agents/",
       },
       {
-        text: "提示词",
+        text: "提示词工程",
         icon: "comment",
         link: "/ai-practice/prompts/",
+      },
+      {
+        text: "Skills&MCP&插件",
+        icon: "puzzle-piece",
+        link: "/ai-practice/skills-mcp/",
       },
     ],
   },
@@ -122,6 +132,11 @@ export default navbar([
         text: "Git",
         icon: "brands:git-alt",
         link: "/guides/git/",
+      },
+      {
+        text: "开源项目推荐",
+        icon: "brands:github",
+        link: "/guides/github-projects/",
       },
       {
         text: "LaTeX",
