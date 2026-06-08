@@ -8,7 +8,7 @@
 - Vue 3
 - Vite
 - vuepress-theme-hope
-- pnpm
+- pnpm 11
 
 ## 本地开发
 
@@ -44,6 +44,7 @@ myBlog/
 │   ├── links/              # 收藏站点
 │   └── notes/              # 数学与日常随笔
 ├── package.json
+├── pnpm-workspace.yaml     # pnpm 11 项目配置
 └── README.md
 ```
 

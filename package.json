@@ -27,21 +27,7 @@
     "vuepress": "2.0.0-rc.30",
     "vuepress-theme-hope": "2.0.0-rc.107"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ],
-    "overrides": {
-      "cheerio@1.0.0>undici": "6.24.0",
-      "dagre-d3-es>lodash-es": "4.18.1",
-      "gray-matter>js-yaml": "3.14.2",
-      "hast-util-to-html>mdast-util-to-hast": "13.2.1",
-      "markmap-lib>markdown-it": "14.2.0",
-      "markmap-lib>yaml": "2.9.0",
-      "mermaid>uuid": "14.0.0"
-    }
-  },
-  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac",
+  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0"
   }
