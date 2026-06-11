@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed, ref } from "vue";
 
 import rawSites from "../data/websites.json";
@@ -73,9 +73,6 @@ const resetFilters = (): void => {
         <div class="treasure-hero__copy">
           <p class="treasure-hero__eyebrow">Resource Atlas</p>
           <h1 class="treasure-hero__title">网站导航</h1>
-          <p class="treasure-hero__desc">
-            把常用的开发、学习、工具和资料站点收成一张稳定的导航页，便于快速检索和回访。
-          </p>
         </div>
 
         <div class="treasure-hero__stats" aria-label="站点统计">
@@ -243,74 +240,75 @@ html[data-theme="dark"] .treasure-page {
 <style scoped>
 .treasure-shell {
   width: min(1180px, 100%);
+  padding: 1.4rem;
   margin: 0 auto;
   display: grid;
-  gap: 1.5rem;
+  gap: 0.6rem;
 }
 
 .treasure-hero {
-  display: grid;
-  gap: 1.5rem;
-  padding: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  padding: clamp(0.7rem, 0.55rem + 0.7vw, 1rem);
   border: 1px solid var(--treasure-panel-border);
-  border-radius: 1.6rem;
+  border-radius: 1.2rem;
   background: var(--treasure-hero-bg);
   box-shadow: var(--treasure-panel-shadow);
 }
 
 .treasure-hero__copy {
-  display: grid;
-  gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .treasure-hero__eyebrow {
   margin: 0;
   color: var(--treasure-accent-strong);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .treasure-hero__title {
   margin: 0;
   color: var(--treasure-text-strong);
-  font-size: clamp(2.1rem, 1.7rem + 2vw, 3.2rem);
-  line-height: 1.08;
-}
-
-.treasure-hero__desc {
-  max-width: 48rem;
-  margin: 0;
-  color: var(--treasure-text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+  line-height: 1.15;
 }
 
 .treasure-hero__stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.5rem;
+  flex: 0 0 auto;
 }
 
 .treasure-stat {
   display: grid;
-  gap: 0.3rem;
-  padding: 0.95rem 1rem;
+  gap: 0.18rem;
+  padding: 0.4rem 0.7rem;
   border: 1px solid var(--treasure-panel-border);
-  border-radius: 1.15rem;
+  border-radius: 0.8rem;
   background: var(--treasure-card-bg);
 }
 
 .treasure-stat strong {
   color: var(--treasure-text-strong);
-  font-size: 1.35rem;
+  font-size: 1rem;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .treasure-stat span {
   color: var(--treasure-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .treasure-sections {
@@ -339,7 +337,7 @@ html[data-theme="dark"] .treasure-page {
 .treasure-section__count {
   margin: 0.35rem 0 0;
   color: var(--treasure-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .treasure-grid {
@@ -352,7 +350,7 @@ html[data-theme="dark"] .treasure-page {
 .treasure-empty {
   display: grid;
   justify-items: center;
-  gap: 0.8rem;
+  gap: 0.4rem;
   padding: 3rem 1.5rem;
   border: 1px dashed var(--treasure-panel-border);
   border-radius: 1.5rem;
@@ -402,12 +400,15 @@ html[data-theme="dark"] .treasure-page {
   }
 
   .treasure-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
     padding: 1.2rem;
     border-radius: 1.2rem;
   }
 
   .treasure-hero__stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .treasure-grid {

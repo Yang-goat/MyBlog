@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed, ref } from "vue";
 
 interface TagOption {
@@ -21,7 +21,7 @@ const emit = defineEmits<{
   reset: [];
 }>();
 
-const isMobileFiltersOpen = ref(false);
+const isPanelOpen = ref(false);
 
 const hasFilters = computed(
   () => props.query.trim().length > 0 || props.selectedTag !== "全部",
@@ -31,17 +31,18 @@ const updateQuery = (event: Event): void => {
   emit("update:query", (event.target as HTMLInputElement).value);
 };
 
-const toggleMobileFilters = (): void => {
-  isMobileFiltersOpen.value = !isMobileFiltersOpen.value;
+const togglePanel = (): void => {
+  isPanelOpen.value = !isPanelOpen.value;
 };
 
 const selectTag = (tag: string): void => {
   emit("update:selectedTag", tag);
+  isPanelOpen.value = false;
 };
 
 const resetFilters = (): void => {
   emit("reset");
-  isMobileFiltersOpen.value = false;
+  isPanelOpen.value = false;
 };
 </script>
 
@@ -66,13 +67,16 @@ const resetFilters = (): void => {
       </p>
 
       <div class="treasure-toolbar__actions">
+        <span v-if="!isPanelOpen" class="treasure-toolbar__active-tag">
+          {{ selectedTag }}
+        </span>
         <button
           type="button"
           class="treasure-toolbar__toggle"
-          :aria-expanded="isMobileFiltersOpen"
-          @click="toggleMobileFilters"
+          :aria-expanded="isPanelOpen"
+          @click="togglePanel"
         >
-          {{ isMobileFiltersOpen ? "收起筛选" : "筛选分类" }}
+          {{ isPanelOpen ? "收起分类" : "展开分类" }}
         </button>
 
         <button
@@ -89,7 +93,7 @@ const resetFilters = (): void => {
     <div
       :class="[
         'treasure-toolbar__panel',
-        isMobileFiltersOpen && 'is-mobile-open',
+        isPanelOpen && 'is-open',
       ]"
     >
       <div class="treasure-toolbar__tags">
@@ -123,7 +127,7 @@ const resetFilters = (): void => {
 <style scoped>
 .treasure-toolbar {
   position: sticky;
-  top: calc(var(--navbar-height, 3.75rem) + 0.9rem);
+  top: calc(var(--navbar-height, 3.75rem) + 1.8rem);
   z-index: 10;
   display: grid;
   gap: 1rem;
@@ -202,8 +206,20 @@ const resetFilters = (): void => {
     color 0.2s ease;
 }
 
+.treasure-toolbar__active-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--treasure-accent-border);
+  border-radius: 999px;
+  background: var(--treasure-tag-bg-active);
+  color: var(--treasure-accent-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .treasure-toolbar__toggle {
-  display: none;
   background: var(--treasure-toggle-bg);
   color: var(--treasure-text-strong);
 }
@@ -223,8 +239,12 @@ const resetFilters = (): void => {
 }
 
 .treasure-toolbar__panel {
-  display: grid;
+  display: none;
   gap: 0.9rem;
+}
+
+.treasure-toolbar__panel.is-open {
+  display: grid;
 }
 
 .treasure-toolbar__tags {
@@ -300,28 +320,23 @@ const resetFilters = (): void => {
     justify-content: flex-start;
   }
 
-  .treasure-toolbar__toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .treasure-toolbar__clear--desktop {
     display: none;
   }
 
   .treasure-toolbar__panel {
-    display: none;
     border-top: 1px solid var(--treasure-panel-divider);
     padding-top: 0.8rem;
   }
 
-  .treasure-toolbar__panel.is-mobile-open {
-    display: grid;
-  }
-
   .treasure-toolbar__clear--mobile {
     display: inline-flex;
+  }
+
+
+  .treasure-toolbar__active-tag {
+    font-size: 0.82rem;
+    padding: 0.35rem 0.75rem;
   }
 
   .treasure-toolbar__tag {
