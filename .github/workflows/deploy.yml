@@ -6,9 +6,21 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout 代码
@@ -25,31 +37,22 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
-      - name: 调试：显示环境信息
-        run: |
-          echo "Node 版本:"
-          node --version
-          echo "npm 版本:"
-          npm --version
-          echo "PATH:"
-          echo $PATH
-          echo "当前目录内容:"
-          ls -la
-
-      - name: 调试：检查 pnpm 路径
-        run: |
-          which pnpm
-          ls -la $(dirname $(which pnpm))
-
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
 
       - name: 构建项目
         run: pnpm docs:build
 
-      - name: 部署到 GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传 GitHub Pages 产物
+        uses: actions/upload-pages-artifact@v3
         with:
-          publish_dir: ./src/.vuepress/dist
-          publish_branch: gh-pages  # 明确部署目标分支
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./src/.vuepress/dist
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
