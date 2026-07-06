@@ -139,6 +139,11 @@ export default navbar([
         link: "/guides/github-projects/",
       },
       {
+        text: "论文管理与知识库构建",
+        icon: "book-bookmark",
+        link: "/guides/paper-knowledge/",
+      },
+      {
         text: "LaTeX",
         icon: "file-lines",
         link: "/guides/Latex/",
@@ -159,9 +164,9 @@ export default navbar([
         link: "/guides/VSCode/",
       },
       {
-        text: "Zotero",
-        icon: "book-bookmark",
-        link: "/guides/Zotero.html",
+        text: "免费远程控制电脑",
+        icon: "desktop",
+        link: "/guides/RemoteControl.html",
       },
     ],
   },
