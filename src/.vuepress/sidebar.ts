@@ -11,9 +11,8 @@ export default sidebar({
   "/ai-ml/problems/": "structure",
   "/ai-practice/agents/": [
     {
-      text: "Agent 端",
+      text: "Agents",
       icon: "robot",
-      expanded: true,
       children: "structure",
     },
     {

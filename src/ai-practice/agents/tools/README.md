@@ -1,6 +1,5 @@
 ---
 title: 必装工具
-icon: screwdriver-wrench
 index: false
 article: false
 dir:

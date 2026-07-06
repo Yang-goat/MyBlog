@@ -1,6 +1,5 @@
 ---
 title: ChatGPT-Codex
-icon: terminal
 index: false
 article: false
 dir:
