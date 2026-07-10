@@ -16,23 +16,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout 代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: 设置 pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v4.4.0
 
       - name: 设置 Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: 'pnpm'
@@ -40,19 +37,25 @@ jobs:
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
 
-      - name: 构建项目
-        run: pnpm docs:build
-
       - name: 配置 GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: 构建项目
+        run: pnpm docs:build
+
       - name: 上传 GitHub Pages 产物
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./src/.vuepress/dist
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}

@@ -124,49 +124,73 @@ export default navbar([
     icon: "toolbox",
     children: [
       {
-        text: "Docker",
-        icon: "brands:docker",
-        link: "/guides/docker/",
+        text: "版本控制",
+        icon: "code-branch",
+        children: [
+          {
+            text: "Git",
+            icon: "brands:git-alt",
+            link: "/guides/git/",
+          },
+        ],
       },
       {
-        text: "Git",
-        icon: "brands:git-alt",
-        link: "/guides/git/",
+        text: "系统与容器",
+        icon: "server",
+        children: [
+          {
+            text: "Linux",
+            icon: "brands:linux",
+            link: "/guides/linux/",
+          },
+          {
+            text: "Docker",
+            icon: "brands:docker",
+            link: "/guides/docker/",
+          },
+        ],
+      },
+      {
+        text: "开发与远程工具",
+        icon: "screwdriver-wrench",
+        children: [
+          {
+            text: "VSCode",
+            icon: "code",
+            link: "/guides/VSCode/",
+          },
+          {
+            text: "SSH",
+            icon: "key",
+            link: "/guides/ssh.html",
+          },
+          {
+            text: "免费远程控制电脑",
+            icon: "desktop",
+            link: "/guides/RemoteControl.html",
+          },
+        ],
+      },
+      {
+        text: "文档与知识管理",
+        icon: "book-open",
+        children: [
+          {
+            text: "论文管理与知识库构建",
+            icon: "book-bookmark",
+            link: "/guides/paper-knowledge/",
+          },
+          {
+            text: "LaTeX",
+            icon: "file-lines",
+            link: "/guides/Latex/",
+          },
+        ],
       },
       {
         text: "开源项目推荐",
         icon: "brands:github",
         link: "/guides/github-projects/",
-      },
-      {
-        text: "论文管理与知识库构建",
-        icon: "book-bookmark",
-        link: "/guides/paper-knowledge/",
-      },
-      {
-        text: "LaTeX",
-        icon: "file-lines",
-        link: "/guides/Latex/",
-      },
-      {
-        text: "Linux",
-        icon: "brands:linux",
-        link: "/guides/linux/",
-      },
-      {
-        text: "SSH",
-        icon: "key",
-        link: "/guides/ssh.html",
-      },
-      {
-        text: "VSCode",
-        icon: "code",
-        link: "/guides/VSCode/",
-      },
-      {
-        text: "免费远程控制电脑",
-        icon: "desktop",
-        link: "/guides/RemoteControl.html",
       },
     ],
   },
