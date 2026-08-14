@@ -88,6 +88,11 @@ export default navbar([
     icon: "pen-to-square",
     children: [
       {
+        text: "海克斯麻将",
+        icon: "dice",
+        link: "/notes/hex-mahjong/",
+      },
+      {
         text: "数学建模专题",
         icon: "graduation-cap",
         link: "/notes/MCM/",

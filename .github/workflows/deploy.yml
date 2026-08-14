@@ -40,8 +40,14 @@ jobs:
       - name: 配置 GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: 校验海克斯麻将数据
+        run: pnpm hex:validate
+
+      - name: 测试海克斯麻将
+        run: pnpm hex:test
+
       - name: 构建项目
-        run: pnpm docs:build
+        run: pnpm site:build
 
       - name: 上传 GitHub Pages 产物
         uses: actions/upload-pages-artifact@v4

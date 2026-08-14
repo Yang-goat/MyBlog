@@ -1,0 +1,28 @@
+:root {
+  color-scheme: dark;
+  --ink-950: #020910;
+  --ink-900: #04101b;
+  --ink-850: #061726;
+  --ink-800: #082033;
+  --ink-700: #0d2b42;
+  --gold-100: #fff0c0;
+  --gold-200: #e9cf8c;
+  --gold-300: #d5ac54;
+  --gold-400: #a87525;
+  --gold-500: #76501e;
+  --cyan-100: #c8f7ff;
+  --cyan-300: #63def3;
+  --cyan-400: #1db8df;
+  --cyan-600: #08779a;
+  --violet-300: #c589ff;
+  --violet-500: #7d42c4;
+  --success: #39cb89;
+  --warning: #e4af48;
+  --danger: #e86e7d;
+  --text: #f1e9d5;
+  --muted: #9bb1ba;
+  --font-display: "STKaiti", "KaiTi", "FZKai-Z03", serif;
+  --font-ui: "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  --panel-border: color-mix(in srgb, var(--gold-300) 62%, transparent);
+  --panel-surface: linear-gradient(145deg, rgb(7 28 44 / 96%), rgb(3 14 24 / 98%));
+}

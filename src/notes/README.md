@@ -14,6 +14,11 @@ bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
 bgImageStyle:
   background-attachment: fixed
 actions:
+  - text: 海克斯麻将
+    link: /notes/hex-mahjong/
+    icon: dice
+    type: primary
+
   - text: 程序设计语言随笔
     link: /notes/language/
     icon: code
@@ -45,6 +50,21 @@ actions:
     type: default
 
 highlights:
+  - header: 海克斯麻将
+    description: 配合实体四人麻将使用的电子卡牌主持台，包含快速开始、完整规则与 192 张卡牌资料。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/8-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/8-dark.svg
+    features:
+      - title: 打开主持台
+        icon: gamepad
+        details: 横放平板，管理电子卡牌、八局进度、状态与手动净分
+        link: https://goatyang.com/hex-mahjong/
+
+      - title: 查看规则与牌库
+        icon: book-open
+        details: 阅读网站主持台版规则、完整卡牌文字与三种模式组池
+        link: /notes/hex-mahjong/
+
   - header: 程序设计语言随笔
     description: 按语言整理语法、标准库与工程实践内容，便于集中回看常用知识。
     bgImage: https://theme-hope-assets.vuejs.press/bg/3-light.svg

@@ -1,0 +1,29 @@
+{
+  "name": "@goatyang/hex-mahjong",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4174",
+    "test": "vitest run",
+    "typecheck": "vue-tsc --noEmit",
+    "generate:data": "node scripts/generate-cards.mjs",
+    "validate:data": "node scripts/validate-cards.mjs"
+  },
+  "dependencies": {
+    "vue": "^3.5.35",
+    "workbox-window": "^7.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.1",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "fake-indexeddb": "^6.2.5",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.16",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^4.0.18",
+    "vue-tsc": "^3.2.5"
+  }
+}

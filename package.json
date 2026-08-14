@@ -8,7 +8,13 @@
     "docs:build": "vuepress-vite build src",
     "docs:clean-dev": "vuepress-vite dev src --clean-cache",
     "docs:dev": "vuepress-vite dev src",
-    "docs:update-package": "pnpm dlx vp-update"
+    "docs:update-package": "pnpm dlx vp-update",
+    "hex:dev": "pnpm --dir apps/hex-mahjong dev",
+    "hex:validate": "pnpm --dir apps/hex-mahjong validate:data",
+    "hex:test": "pnpm --dir apps/hex-mahjong test",
+    "hex:typecheck": "pnpm --dir apps/hex-mahjong typecheck",
+    "hex:build": "pnpm --dir apps/hex-mahjong build",
+    "site:build": "pnpm docs:build && pnpm hex:build"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
