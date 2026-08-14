@@ -16,6 +16,11 @@ projects:
     desc: 基于vuepress的个人博客网站
     link: https://github.com/Yang-goat/MyBlog
 
+  - icon: dice
+    name: 海克斯麻将主持台
+    desc: 配合实体四人麻将使用的电子卡牌主持台
+    link: https://goatyang.com/hex-mahjong/
+
   - icon: book
     name: USTSthesis
     desc: 苏州科技大学数学科学学院本科生毕业论文（设计）Latex模板

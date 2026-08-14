@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  name: "bolt" | "cards" | "check" | "close" | "gear" | "undo" | "book" | "play" | "score" | "spark" | "plus";
+  name: "bolt" | "cards" | "check" | "close" | "gear" | "undo" | "book" | "play" | "score" | "spark" | "plus" | "fullscreen";
   size?: number;
 }>();
 </script>
@@ -27,6 +27,7 @@ defineProps<{
     <path v-else-if="name === 'play'" d="m8 5 11 7-11 7V5Z" />
     <path v-else-if="name === 'score'" d="M5 3h14v18H5V3Zm3 4h8M8 11h2m4 0h2m-8 4h2m4 0h2" />
     <path v-else-if="name === 'spark'" d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2Zm7 14 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z" />
+    <path v-else-if="name === 'fullscreen'" d="M8 3H3v5m13-5h5v5M8 21H3v-5m13 5h5v-5" />
     <path v-else d="M12 5v14M5 12h14" />
   </svg>
 </template>

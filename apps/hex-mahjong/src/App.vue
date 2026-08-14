@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useRegisterSW } from "virtual:pwa-register/vue";
 import AbandonWindow from "./components/AbandonWindow.vue";
 import CardView, { type CardDisplay } from "./components/CardView.vue";
@@ -56,6 +56,18 @@ const selectedCard = ref<CardDisplay | null>(null);
 const confirmNewMatch = ref(false);
 const appNotice = ref<string | null>(null);
 const pendingWarningDismissed = ref(false);
+const fullscreenActive = ref(false);
+
+type WebkitFullscreenDocument = Document & {
+  webkitExitFullscreen?: () => Promise<void> | void;
+  webkitFullscreenElement?: Element | null;
+};
+
+type WebkitFullscreenElement = HTMLElement & {
+  webkitRequestFullscreen?: () => Promise<void> | void;
+};
+
+let fullscreenTransitioning = false;
 
 const tablePlayers = computed(() => match.value?.players.map((player) => playerDisplay(match.value!, player)) ?? []);
 const currentRound = computed(() => match.value?.currentRound ?? null);
@@ -171,6 +183,69 @@ function showNotice(message: string) {
   }, 4200);
 }
 
+function getFullscreenElement() {
+  const fullscreenDocument = document as WebkitFullscreenDocument;
+  return document.fullscreenElement ?? fullscreenDocument.webkitFullscreenElement ?? null;
+}
+
+function syncFullscreenState() {
+  fullscreenActive.value = Boolean(getFullscreenElement());
+}
+
+async function toggleFullscreen() {
+  if (fullscreenTransitioning) return;
+  fullscreenTransitioning = true;
+
+  try {
+    const fullscreenDocument = document as WebkitFullscreenDocument;
+    const root = document.documentElement as WebkitFullscreenElement;
+
+    if (getFullscreenElement()) {
+      const exitFullscreen = document.exitFullscreen?.bind(document)
+        ?? fullscreenDocument.webkitExitFullscreen?.bind(fullscreenDocument);
+      if (!exitFullscreen) throw new Error("Fullscreen exit is unavailable");
+      await Promise.resolve(exitFullscreen());
+    } else {
+      const requestFullscreen = root.requestFullscreen?.bind(root)
+        ?? root.webkitRequestFullscreen?.bind(root);
+      if (!requestFullscreen) {
+        showNotice("当前浏览器不支持网页全屏，请将主持台添加到主屏幕获得沉浸式体验。");
+        return;
+      }
+      await Promise.resolve(requestFullscreen());
+    }
+  } catch (error) {
+    console.warn("Fullscreen request failed", error);
+    showNotice("无法切换全屏，请检查浏览器权限，或将主持台添加到主屏幕。");
+  } finally {
+    fullscreenTransitioning = false;
+    syncFullscreenState();
+  }
+}
+
+function handleFullscreenShortcut(event: KeyboardEvent) {
+  const target = event.target;
+  const isEditing = target instanceof HTMLElement
+    && (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
+
+  if (event.key.toLowerCase() !== "f" || event.ctrlKey || event.metaKey || event.altKey || isEditing) return;
+  event.preventDefault();
+  void toggleFullscreen();
+}
+
+onMounted(() => {
+  document.addEventListener("fullscreenchange", syncFullscreenState);
+  document.addEventListener("webkitfullscreenchange", syncFullscreenState);
+  window.addEventListener("keydown", handleFullscreenShortcut);
+  syncFullscreenState();
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("fullscreenchange", syncFullscreenState);
+  document.removeEventListener("webkitfullscreenchange", syncFullscreenState);
+  window.removeEventListener("keydown", handleFullscreenShortcut);
+});
+
 function showContractCard(playerId: string) {
   const contract = match.value?.players.find((player) => player.id === playerId)?.contract;
   if (contract) selectedCard.value = cardByInstance(contract);
@@ -235,10 +310,12 @@ async function startFreshMatch() {
       :can-abandon="match.phase === 'playing'"
       :can-settle="match.phase === 'playing'"
       :save-state="saveState"
+      :fullscreen-active="fullscreenActive"
       @draw="requestDraw"
       @settle="requestSettlement"
       @abandon="requestAbandonWindow"
       @undo="undo"
+      @fullscreen="toggleFullscreen"
       @settings="settingsOpen = true"
       @player="selectedPlayerId = $event"
       @card="selectedCard = $event"

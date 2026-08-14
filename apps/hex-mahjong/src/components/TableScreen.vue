@@ -25,6 +25,7 @@ const props = defineProps<{
   canAbandon?: boolean;
   canSettle?: boolean;
   saveState?: "saved" | "saving" | "error";
+  fullscreenActive?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -32,6 +33,7 @@ const emit = defineEmits<{
   settle: [];
   abandon: [];
   undo: [];
+  fullscreen: [];
   settings: [];
   player: [playerId: string];
   card: [card: CardDisplay];
@@ -166,6 +168,7 @@ function playerAt(seat: PlayerRailData["seat"]) {
         <UiButton :label="abandonOpened ? '弃约已确认' : '弃约窗口'" icon="cards" variant="quiet" :disabled="abandonOpened || canAbandon === false" @click="emit('abandon')" />
         <UiButton label="本局结算" icon="score" variant="gold" :disabled="canSettle === false" @click="emit('settle')" />
         <UiButton label="撤销" icon="undo" variant="quiet" :disabled="!canUndo" @click="emit('undo')" />
+        <UiButton :label="fullscreenActive ? '退出全屏' : '全屏'" icon="fullscreen" variant="quiet" @click="emit('fullscreen')" />
         <UiButton label="设置" icon="gear" variant="quiet" @click="emit('settings')" />
       </div>
     </footer>
@@ -173,7 +176,7 @@ function playerAt(seat: PlayerRailData["seat"]) {
 </template>
 
 <style scoped>
-.table-screen { position: relative; width: 100%; height: 100%; min-height: 600px; overflow: hidden; isolation: isolate; }
+.table-screen { position: relative; width: 100%; height: 100%; min-height: 0; overflow: hidden; isolation: isolate; }
 .table-surface { position: absolute; z-index: -3; inset: 0; background: linear-gradient(rgb(2 10 17 / 48%), rgb(2 8 14 / 76%)), url("/art/table-surface.webp") center / cover, radial-gradient(circle at center, #0b4562, #020910 74%); }
 .table-rings { position: absolute; z-index: -2; inset: 8% 13%; border: 1px solid rgb(213 172 84 / 20%); border-radius: 50%; box-shadow: 0 0 0 1px rgb(29 184 223 / 7%), inset 0 0 70px rgb(3 13 21 / 74%); pointer-events: none; }
 .table-rings i { position: absolute; inset: 8%; border: 1px solid rgb(213 172 84 / 13%); border-radius: 50%; }
@@ -226,7 +229,7 @@ function playerAt(seat: PlayerRailData["seat"]) {
 .pending-empty { margin: 0; padding: 0.8rem; color: var(--muted); font-size: 0.7rem; text-align: center; }
 
 .control-dock { position: absolute; z-index: 12; display: flex; right: 20%; bottom: 8px; left: 20%; min-height: 58px; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.38rem 0.55rem 0.38rem 0.85rem; }
-.control-dock__actions { display: flex; gap: 0.55rem; }
+.control-dock__actions { display: flex; min-width: 0; flex: 1; justify-content: flex-end; gap: 0.55rem; }
 .control-dock :deep(.ui-button) { min-height: 48px; padding: 0.68rem 0.95rem; font-size: 0.82rem; }
 .save-indicator { display: flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.65rem; }
 .save-indicator > span { width: 7px; aspect-ratio: 1; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px var(--success); }
@@ -244,5 +247,49 @@ function playerAt(seat: PlayerRailData["seat"]) {
   .public-cards { gap: 1.1rem; padding-top: 0.35rem; }
   .deck-action, .current-public-card { width: clamp(82px, 9.5vw, 116px); }
   .pending-list { max-height: 112px; }
+}
+
+@media (max-width: 1000px), (max-height: 620px) {
+  .control-dock { right: 12%; left: 12%; gap: 0.5rem; padding-left: 0.55rem; }
+  .save-indicator { flex: none; gap: 0; font-size: 0; }
+  .control-dock__actions { gap: 0.35rem; }
+  .control-dock :deep(.ui-button) { flex: 1; padding: 0.58rem 0.62rem; font-size: 0.74rem; white-space: nowrap; }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .rail :deep(.player-rail) { height: 48px; min-height: 48px; grid-template-columns: minmax(110px, 1fr) minmax(82px, 0.72fr) auto 62px; gap: 0.35rem; padding: 0.2rem 0.45rem; }
+  .rail :deep(.player-wind) { width: 30px; font-size: 1.05rem; }
+  .rail :deep(.player-identity) { gap: 0.42rem; }
+  .rail :deep(.player-name-row strong) { font-size: 0.78rem; }
+  .rail :deep(.player-score) { margin-top: 0.1rem; font-size: 0.78rem; }
+  .rail :deep(.player-contract) { gap: 0; padding-left: 0.48rem; }
+  .rail :deep(.player-contract span) { font-size: 0.52rem; }
+  .rail :deep(.player-contract strong) { font-size: 0.62rem; }
+  .rail :deep(.augment-strip) { gap: 0.28rem; }
+  .rail :deep(.augment-gem) { width: 27px; }
+  .rail :deep(.pending-indicator) { min-width: 56px; font-size: 0.56rem; }
+  .rail :deep(.pending-indicator strong) { font-size: 0.78rem; }
+  .rail--top { top: 3px; }
+  .rail--bottom { bottom: 58px; }
+  .rail--left, .rail--right { width: min(620px, calc(100vh - 180px)); }
+  .rail--left { left: 27px; }
+  .rail--right { right: 27px; }
+
+  .center-stage { inset: 54px 65px 106px; }
+  .table-title p { display: none; }
+  .table-title h1 { font-size: 1.05rem; }
+  .table-title > span { min-width: 106px; margin-top: 0.16rem; padding: 0.12rem 0.5rem; font-size: 0.62rem; }
+  .table-title strong { font-size: 0.88rem; }
+  .public-cards { gap: 0.65rem; padding: 0.2rem 0; }
+  .deck-action, .current-public-card { width: clamp(58px, 8vw, 70px); gap: 0.2rem; }
+  .deck-action > span, .current-public-card > span { font-size: 0.58rem; }
+  .deck-action :deep(.ui-button) { display: none; }
+  .pending-queue > header { padding: 0.28rem 0.48rem; }
+  .pending-queue h2 { font-size: 0.68rem; }
+  .pending-list { max-height: 56px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pending-empty { padding: 0.34rem; font-size: 0.58rem; }
+
+  .control-dock { right: 12%; bottom: 4px; left: 12%; min-height: 50px; padding-block: 0.2rem; }
+  .control-dock :deep(.ui-button) { min-height: 48px; padding: 0.46rem 0.5rem; font-size: 0.68rem; }
 }
 </style>
