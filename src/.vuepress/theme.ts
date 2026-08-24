@@ -33,7 +33,7 @@ export default hopeTheme({
 
   // 博客相关
   blog: {
-    description: "信息与计算科学专业 raver",
+    description: "计算机科学与技术硕士 raver",
     intro: "/intro.html",
     medias: {
       BiliBili: "https://space.bilibili.com/415221098",
