@@ -1,7 +1,7 @@
 ---
 title: MATLAB Agentic Toolkit：让 AI Agent 直接操作 MATLAB
 icon: robot
-date: 2026-06-11
+date: 2026-09-11
 category:
   - MATLAB
 tag:
@@ -19,7 +19,7 @@ MATLAB Agentic Toolkit 是 MathWorks 推出的开源工具包，用于将 Codex�
 安装后，AI Agent 不再只是根据训练数据“猜测”MATLAB 代码，而是可以调用本机 MATLAB，运行代码、检查报错、执行测试，并根据真实结果继续修改程序。
 
 ::: info 文章版本说明
-本文初稿编写于 **2026 年 6 月 8 日**，并根据 **2026 年 6 月 11 日** 的实际安装流程重新整理。内容主要基于 MATLAB Agentic Toolkit 仓库的 **2026.06.04** 发行版，以及实际安装时下载的 MATLAB MCP Server **v0.10.1**。
+本文初稿编写于 **2026 年 6 月 8 日**，并于 **2026 年 9 月 11 日** 按 Windows 上的实际安装结果重写。本文的可复现环境为 MATLAB R2026a、MATLAB Agentic Toolkit **2026.09** 和 MATLAB MCP Server **v0.13.0**。
 
 该项目仍在持续开发。安装方式、最低 MATLAB 版本、支持的 AI Agent、Skill Groups、MCP Server 名称和配置文件格式都可能变化。实际安装时，请优先参考项目的 [官方 README](https://github.com/matlab/matlab-agentic-toolkit) 和 [GitHub Releases](https://github.com/matlab/matlab-agentic-toolkit/releases)。
 :::
@@ -90,8 +90,8 @@ MATLAB MCP Server 是 Agent 和 MATLAB 之间的连接层。安装完成后，Ag
 
 Agent 可以在修改文件后调用 MATLAB 验证结果，而不是将未经测试的代码直接交给用户。
 
-::: warning MCP Server 名称变化
-本文实际安装时使用的是 MATLAB MCP Server v0.10.1，二进制文件名仍然类似 `matlab-mcp-core-server.exe`。官方 Release 已提示，2026 年 6 月 18 日的 v0.11.0 起，MATLAB MCP Core Server 会更名为 MATLAB MCP Server，后续二进制文件名和配置项可能变化。实际使用时以官方 Release 说明为准。
+::: tip MCP Server 已完成更名
+旧项目名和二进制名中的 `core` 已弃用。当前应使用 [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server)，Windows 二进制文件为 `matlab-mcp-server.exe`。旧仓库链接会重定向到新仓库；排查配置或网络问题时不要再把旧名称当作当前安装目标。
 :::
 
 ### 2. Agent Skills 提供什么能力
@@ -189,21 +189,21 @@ MCP Server 允许 Agent 启动 MATLAB、运行代码和访问项目文件。对�
 
 - [MATLAB Agentic Toolkit README](https://github.com/matlab/matlab-agentic-toolkit)
 - [Configuration and Troubleshooting](https://github.com/matlab/matlab-agentic-toolkit/blob/main/Configuration_and_Troubleshooting.md)
-- [MATLAB MCP Core Server](https://github.com/matlab/matlab-mcp-core-server)
+- [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server)
 - [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)
 
 ## 五、使用 Agentic Toolkit Installer 安装
 
-下面以 **Windows + MATLAB R2024b + Codex** 为例，整理一次实际安装流程。
+下面以 **Windows + MATLAB R2026a + Codex** 为例，整理一次实际安装流程。
 
 本文实际测试环境如下：
 
 | 项目                   | 实际环境       |
 | ---------------------- | -------------- |
 | 系统                   | Windows x86_64 |
-| MATLAB                 | R2024b         |
-| MATLAB Agentic Toolkit | 2026.06.04     |
-| MATLAB MCP Server      | v0.10.1        |
+| MATLAB                 | R2026a         |
+| MATLAB Agentic Toolkit | 2026.09        |
+| MATLAB MCP Server      | v0.13.0        |
 | AI Agent               | Codex          |
 | 配置方式               | 全局配置       |
 
@@ -237,7 +237,7 @@ MathWorks Agentic Toolkit Setup — Install
 
 Detected:
   Platform:     Windows x86_64
-  MATLAB:       R2024b (D:\Program Files\MATLAB\R2024b)
+  MATLAB:       R2026a (D:\Program Files\MATLAB\R2026a)
 ```
 
 如果启动时看到类似下面的提示：
@@ -273,7 +273,7 @@ Enter selection:
 ```text
 Plan:
   - Download and install the MATLAB MCP Server
-  - Install the MATLAB MCP Core Server Toolbox (enables agents to connect to a running MATLAB session)
+  - Install the MATLAB MCP Server Toolbox (enables agents to connect to a running MATLAB session)
   - Download the MATLAB Agentic Toolkit
 
 Proceed? [Y/n]:
@@ -288,7 +288,7 @@ y
 这一步会做三件事：
 
 1. 下载适合当前系统的 MATLAB MCP Server 二进制文件；
-2. 运行 `--setup-matlab`，安装 MATLAB MCP Core Server Toolbox；
+2. 安装 MATLAB MCP Server Toolbox；
 3. 下载 MATLAB Agentic Toolkit 的 Skills 和相关文件。
 
 ### 4. 等待 MCP Server 和 Toolkit 下载
@@ -297,18 +297,18 @@ y
 
 ```text
 Checking for latest MCP server version...
-Downloading MATLAB MCP Server v0.10.1 for Windows x86_64...
-MCP server binary installed to: C:\Users\<用户名>\.matlab\agentic-toolkits\bin\matlab-mcp-core-server.exe
-Running --setup-matlab...
-MATLAB MCP Core Server Toolbox installed.
+Downloading MATLAB MCP Server v0.13.0 for Windows x86_64...
+MCP server binary installed to: C:\Users\<用户名>\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe
+Installing MATLAB MCP Server Toolbox v0.13.0...
+MATLAB MCP Server Toolbox installed.
 ```
 
 随后继续下载 MATLAB Agentic Toolkit：
 
 ```text
-Downloading MATLAB Agentic Toolkit 2026.06.04...
+Downloading MATLAB Agentic Toolkit 2026.09...
 MATLAB Agentic Toolkit installed to: C:\Users\<用户名>\.matlab\agentic-toolkits\matlab
-Merged marketplace.json written (18 plugins).
+Merged marketplace.json written (25 plugins).
 
 Artifacts installed.
 ```
@@ -322,8 +322,8 @@ Artifacts installed.
 常见错误之一是连接被重置：
 
 ```text
-Failed to reach github.com for matlab/matlab-mcp-core-server:
-连接到 https://github.com/matlab/matlab-mcp-core-server/releases/latest 时出错: Recv failure: Connection was reset
+Failed to reach github.com for matlab/matlab-mcp-server:
+连接到 https://github.com/matlab/matlab-mcp-server/releases/latest 时出错: Recv failure: Connection was reset
 ```
 
 也可能是连接超时：
@@ -359,14 +359,14 @@ setenv("all_proxy", "http://127.0.0.1:7897")
 可以先测试 MATLAB 是否能访问 GitHub API：
 
 ```matlab
-webread("https://api.github.com/repos/matlab/matlab-mcp-core-server/releases/latest")
+webread("https://api.github.com/repos/matlab/matlab-mcp-server/releases/latest")
 ```
 
 如果 GitHub 页面访问较慢，可以临时提高 `webread` 的超时时间：
 
 ```matlab
 opts = weboptions("Timeout", 60);
-webread("https://github.com/matlab/matlab-mcp-core-server/releases/latest", opts)
+webread("https://github.com/matlab/matlab-mcp-server/releases/latest", opts)
 ```
 
 ::: tip 失败后可以直接重试
@@ -379,8 +379,8 @@ setupAgenticToolkit("install")
 安装器会识别已经完成的部分。例如 MCP Server 已经安装成功时，再次运行会显示：
 
 ```text
-MCP server binary already at v0.10.1, skipping download.
-MATLAB MCP Core Server Toolbox already installed (skipping).
+MCP server binary already at v0.13.0, skipping download.
+MATLAB MCP Server Toolbox already installed (skipping).
 ```
 
 也就是说，它具有一定的断点续装能力，不需要一失败就手动删除目录。
@@ -406,7 +406,7 @@ y
 MathWorks Agentic Toolkit Setup — Configure
 ——————————————————————————————————————————
 
-Installed:    MATLAB Agentic Toolkit 2026.06.04
+Installed:    MATLAB Agentic Toolkit 2026.09
 
 Select agent platforms to configure:
   1. Claude Code
@@ -476,22 +476,30 @@ C:\Users\<用户名>\.codex\config.toml
 Select which MATLAB Agentic Toolkit skill groups you'd like to enable:
   (always included) matlab-core
 
-  1. ai-and-statistics
-  2. automotive
-  3. computational-biology
-  4. image-processing-and-computer-vision
-  5. matlab-app-building
-  6. matlab-data-import-and-analysis
-  7. matlab-programming
-  8. matlab-software-development
-  9. parallel-computing
-  10. radar
-  11. reporting-and-database-access
-  12. rf-and-mixed-signal
-  13. robotics-and-autonomous-systems
-  14. signal-processing
-  15. test-and-measurement
-  16. wireless-communications
+  1. aerospace
+  2. ai-and-statistics
+  3. automotive
+  4. cloud-solutions
+  5. code-generation
+  6. computational-biology
+  7. computational-finance
+  8. control-systems
+  9. image-processing-and-computer-vision
+  10. math-and-optimization
+  11. matlab-app-building
+  12. matlab-data-import-and-analysis
+  13. matlab-environment-and-settings
+  14. matlab-external-language-interfaces
+  15. matlab-programming
+  16. matlab-software-development
+  17. parallel-computing
+  18. radar
+  19. reporting-and-database-access
+  20. rf-and-mixed-signal
+  21. robotics-and-autonomous-systems
+  22. signal-processing
+  23. test-and-measurement
+  24. wireless-communications
 
 Enter selection (e.g., 1,3,5, "all", or "none") [none]:
 ```
@@ -499,23 +507,27 @@ Enter selection (e.g., 1,3,5, "all", or "none") [none]:
 本文面向一般科研、算法实验和 MATLAB 项目开发，因此输入：
 
 ```text
-1,6,7,8,9
+2,10,12,15,16,17,18,22,24
 ```
 
 对应启用：
 
 | 编号 | Skill Group                       | 适合场景                             |
 | ---- | --------------------------------- | ------------------------------------ |
-| 1    | `ai-and-statistics`               | 深度学习、统计建模、AI 相关实验      |
-| 6    | `matlab-data-import-and-analysis` | 表格、时间序列、数据导入与分析       |
-| 7    | `matlab-programming`              | MATLAB 函数编写、输入参数验证        |
-| 8    | `matlab-software-development`     | 项目管理、测试、性能优化、工具箱打包 |
-| 9    | `parallel-computing`              | GPU、并行池、集群计算                |
+| 2    | `ai-and-statistics`               | 深度学习、统计建模、AI 相关实验      |
+| 10   | `math-and-optimization`           | 优化、符号计算和 PDE 相关任务        |
+| 12   | `matlab-data-import-and-analysis` | 表格、时间序列、数据导入与分析       |
+| 15   | `matlab-programming`              | MATLAB 函数编写、输入参数验证        |
+| 16   | `matlab-software-development`     | 项目管理、测试、性能优化、工具箱打包 |
+| 17   | `parallel-computing`              | GPU、并行池、集群计算                |
+| 18   | `radar`                           | 雷达、声呐和传感器融合工作流         |
+| 22   | `signal-processing`               | 信号处理和 DSP 相关任务              |
+| 24   | `wireless-communications`         | 5G、WLAN、蓝牙和卫星通信等           |
 
 确认后会显示：
 
 ```text
-Enabled: ai-and-statistics, matlab-data-import-and-analysis, matlab-programming, matlab-software-development, parallel-computing
+Enabled: ai-and-statistics, math-and-optimization, matlab-data-import-and-analysis, matlab-programming, matlab-software-development, parallel-computing, radar, signal-processing, wireless-communications
 ```
 
 同时安装器会显示当前 Session mode：
@@ -531,7 +543,7 @@ Session mode: auto (connects to running MATLAB, or launches new)
 ```text
 Plan:
   - Configure Codex to use the MATLAB MCP Server, for all projects (global)
-  - Enable MATLAB Agentic Toolkit skill groups: ai-and-statistics, matlab-core, matlab-data-import-and-analysis, matlab-programming, matlab-software-development, parallel-computing
+  - Enable MATLAB Agentic Toolkit skill groups: ai-and-statistics, math-and-optimization, matlab-core, matlab-data-import-and-analysis, matlab-programming, matlab-software-development, parallel-computing, radar, signal-processing, wireless-communications
 
 Proceed? [Y/n]:
 ```
@@ -549,7 +561,7 @@ Writing MCP config:
   Codex: C:\Users\<用户名>\.codex\config.toml
 
 Registering skills:
-Skills registered (26 skills).
+Skills registered (62 skills).
 
 Configure complete!
 ```
@@ -580,7 +592,7 @@ y
 shareMATLABSession
 ```
 
-这样 Codex 调用 MATLAB 时可以复用当前 MATLAB 会话，而不是每次重新启动一个 MATLAB 实例。
+这样 Codex 调用 MATLAB 时可以复用当前 MATLAB 会话，而不是每次重新启动一个 MATLAB 实例。官方说明指出：如果同时共享了多个 MATLAB 会话，Agent 会连接到最近一次运行该命令的会话。
 
 如果你经常使用 Codex 操作 MATLAB，可以把它加入 `startup.m`：
 
@@ -595,7 +607,7 @@ shareMATLABSession
 ```
 
 ::: tip 建议
-如果 MATLAB 启动本身比较慢，建议使用 `shareMATLABSession`。这样 Agent 第一次调用 MATLAB 时通常会更快。
+如果 MATLAB 启动本身比较慢，建议使用 `shareMATLABSession()`。这样 Agent 第一次调用 MATLAB 时通常会更快。
 :::
 
 ### 10. 关于 P-code 警告
@@ -606,9 +618,9 @@ shareMATLABSession
 P-code file setupAgenticToolkit.p is older than source code file setupAgenticToolkit.m
 ```
 
-这表示 `.p` 文件比对应的 `.m` 源文件旧。本文实际安装中，该警告没有阻止安装流程。
+这表示 `.p` 文件比对应的 `.m` 源文件旧，MATLAB 提醒该 P-code 可能已过期。本文的 R2026a 安装中，该警告没有阻止后续下载、配置或共享会话；不能仅凭这一条警告断言安装失败。
 
-如果安装器仍然能进入 `MathWorks Agentic Toolkit Setup — Install` 界面，并且后续流程正常，可以先继续安装。
+如果安装器仍然能进入 `MathWorks Agentic Toolkit Setup — Install` 界面，并且后续流程正常，可以先继续安装；若流程中断或功能异常，再更新 `agenticToolkitInstaller.mltbx` Add-On 后重试。
 
 如果后续出现异常，建议重新下载最新的 `agenticToolkitInstaller.mltbx` 并重新安装 Add-On。
 
@@ -788,7 +800,7 @@ help setupAgenticToolkit
 
 ## 七、验证是否安装成功
 
-安装完成后，需要重新启动 Codex，让它读取新的 MCP 配置和 Skills。
+安装完成后，需要重新启动 Codex，让它读取新的 MCP 配置和 Skills。若安装器已显示 **“Codex is connected to MATLAB via the MATLAB MCP server.”**，说明连接已建立；仍建议做一次只读能力检查，确认实际会话和工具箱可见。
 
 可以在 Codex 中提问：
 
@@ -871,6 +883,6 @@ tool_timeout_sec = 600
 - [MATLAB Agentic Toolkit README](https://github.com/matlab/matlab-agentic-toolkit/blob/main/README.md)
 - [MATLAB Agentic Toolkit Releases](https://github.com/matlab/matlab-agentic-toolkit/releases)
 - [Configuration and Troubleshooting](https://github.com/matlab/matlab-agentic-toolkit/blob/main/Configuration_and_Troubleshooting.md)
-- [MATLAB MCP Core Server](https://github.com/matlab/matlab-mcp-core-server)
-- [MATLAB MCP Core Server Releases](https://github.com/matlab/matlab-mcp-core-server/releases)
+- [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server)
+- [MATLAB MCP Server Releases](https://github.com/matlab/matlab-mcp-server/releases)
 - [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)
