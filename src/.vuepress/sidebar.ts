@@ -29,6 +29,7 @@ export default sidebar({
   "/notes/music/": "structure",
   "/notes/hex-mahjong/": "structure",
   "/notes/Math/": "structure",
+  "/notes/signal-processing/": "structure",
   "/notes/MCM/": "structure",
   "/notes/computer/": "structure",
   "/notes/major/": "structure",

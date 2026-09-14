@@ -44,6 +44,11 @@ actions:
     icon: square-root-variable
     type: default
 
+  - text: 信号处理
+    link: /notes/signal-processing/
+    icon: wave-square
+    type: default
+
   - text: 计算机随记
     link: /notes/computer/
     icon: computer
@@ -183,4 +188,15 @@ highlights:
       - title: 进入专题目录
         icon: arrow-up-right-from-square
         link: /notes/computer/
+
+  - header: 信号处理
+    description: 记录信号分析、时频方法与工程中的基础概念和实践。
+    bgImage: https://theme-hope-assets.vuejs.press/bg/5-light.svg
+    bgImageDark: https://theme-hope-assets.vuejs.press/bg/5-dark.svg
+    features:
+      - title: 小波分析基础
+        icon: wave-square
+        details: 从傅里叶变换、STFT 到连续与离散小波变换的基本思路
+        link: /notes/signal-processing/小波分析基础.html
+
 ---

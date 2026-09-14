@@ -88,11 +88,6 @@ export default navbar([
     icon: "pen-to-square",
     children: [
       {
-        text: "海克斯麻将",
-        icon: "dice",
-        link: "/notes/hex-mahjong/",
-      },
-      {
         text: "数学建模专题",
         icon: "graduation-cap",
         link: "/notes/MCM/",
@@ -101,6 +96,11 @@ export default navbar([
         text: "数学随记",
         icon: "square-root-variable",
         link: "/notes/Math/",
+      },
+      {
+        text: "信号处理",
+        icon: "wave-square",
+        link: "/notes/signal-processing/",
       },
       {
         text: "计算机随记",
@@ -116,6 +116,11 @@ export default navbar([
         text: "前端随笔",
         icon: "laptop-code",
         link: "/notes/frontend/",
+      },
+      {
+        text: "海克斯麻将",
+        icon: "dice",
+        link: "/notes/hex-mahjong/",
       },
       {
         text: "音乐",
