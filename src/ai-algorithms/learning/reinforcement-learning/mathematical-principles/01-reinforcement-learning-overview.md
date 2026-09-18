@@ -1,0 +1,306 @@
+---
+redirectFrom:
+  - "/ai-ml/RL/01强化学习概述.html"
+icon: "0"
+date: 2026-01-19
+order: 1
+title: 强化学习概述
+category:
+  - 强化学习
+tag:
+  - 导论
+---
+
+# 强化学习概述
+
+强化学习（Reinforcement Learning, RL）研究的是智能体（agent）如何通过与环境（environment）的交互，在不断试错（trial-and-error）的过程中学习一个策略（policy），以最大化长期累积回报（expected cumulative return）。
+
+强化学习是机器学习的**第三范式**，与监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）并列。
+
+---
+
+## 发展简史
+
+强化学习的发展融合了多个研究方向：
+
+1. **试错学习（Trial-and-Error Learning）**  
+   通过经验反馈不断改进行为。
+
+2. **最优控制（Optimal Control）**  
+   研究如何控制动态系统，使其性能指标达到最优。
+
+3. **时序差分学习（Temporal-Difference, TD Learning）**  
+   通过相邻时间步预测误差进行学习。
+
+4. **深度强化学习（Deep Reinforcement Learning, DRL）**  
+   将深度神经网络与强化学习相结合，解决高维状态空间问题。
+
+---
+
+## 强化学习问题的数学抽象：MDP
+
+强化学习问题通常被建模为**马尔可夫决策过程（Markov Decision Process, MDP）**。
+
+一个 MDP 由以下元素构成：
+
+---
+
+### 1. 集合（Sets）
+
+- 状态集合（State space）：
+
+$$
+\mathcal{S} = \{ s_1, s_2, \dots, s_n \}
+$$
+
+- 动作集合（Action space）：
+
+对于每个状态 $s \in \mathcal{S}$，有可选动作集合
+
+$$
+\mathcal{A}(s) = \{ a_1, a_2, \dots, a_m \}
+$$
+
+- 奖励集合（Reward space）：
+
+$$
+\mathcal{R}
+$$
+
+---
+
+### 2. 概率分布（Probability Distributions）
+
+- 状态转移概率：
+
+$$
+p(s' \mid s, a)
+$$
+
+- 奖励分布：
+
+$$
+p(r \mid s, a)
+$$
+
+---
+
+### 3. 策略（Policy）
+
+策略定义了智能体在某个状态下选择各个动作的概率：
+
+$$
+\pi(a \mid s) = P(A_t = a \mid S_t = s)
+$$
+
+例如：
+
+$$
+\pi(a_1 \mid s_1) = 0, \quad
+\pi(a_2 \mid s_1) = 0.5, \quad
+\pi(a_3 \mid s_1) = 0.5
+$$
+
+---
+
+### 4. 马尔可夫性质（Markov Property）
+
+MDP 满足**无记忆性（memoryless）**：
+
+$$
+p(s_{t+1} \mid s_t, a_t, \dots, s_0, a_0)
+= p(s_{t+1} \mid s_t, a_t)
+$$
+
+$$
+p(r_{t+1} \mid s_t, a_t, \dots, s_0, a_0)
+= p(r_{t+1} \mid s_t, a_t)
+$$
+
+当策略 $\pi$ 固定时，MDP 退化为一个**马尔可夫过程（Markov Process）**。
+
+---
+
+## 基础概念
+
+### 1. 状态（State）
+
+状态描述环境在某一时刻的情况：
+
+$$
+s \in \mathcal{S}
+$$
+
+---
+
+### 2. 动作（Action）
+
+动作是智能体在某个状态下可采取的行为：
+
+$$
+a \in \mathcal{A}(s)
+$$
+
+---
+
+### 3. 状态转移（State Transition）
+
+$$
+s_t \xrightarrow{a_t} s_{t+1}
+$$
+
+若转移是确定的：
+
+$$
+p(s_{t+1} \mid s_t, a_t) = 1
+$$
+
+---
+
+### 4. 奖励（Reward）
+
+奖励是一个实数，用于评价某个动作的好坏：
+
+$$
+r_t \in \mathbb{R}
+$$
+
+奖励通常是随机的：
+
+$$
+p(r \mid s, a)
+$$
+
+---
+
+### 5. 轨迹（Trajectory）
+
+轨迹是智能体与环境交互产生的状态、动作、奖励序列：
+
+$$
+s_0, a_0, r_1, s_1, a_1, r_2, \dots
+$$
+
+例如：
+
+$$
+s_1 \xrightarrow[\;r=0\;]{a_2}
+s_2 \xrightarrow[\;r=0\;]{a_3}
+s_5 \xrightarrow[\;r=0\;]{a_3}
+s_8 \xrightarrow[\;r=1\;]{a_2}
+s_9
+$$
+
+---
+
+### 6. 回报（Return）
+
+回报是未来奖励的累积和：
+
+$$
+G_t = r_{t+1} + r_{t+2} + \cdots
+$$
+
+---
+
+### 7. 折扣回报（Discounted Return）
+
+引入折扣因子 $\gamma \in [0,1)$：
+
+$$
+G_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \cdots
+$$
+
+几何级数形式：
+
+$$
+G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k+1}
+$$
+
+性质：
+
+- $\gamma$ 越小：越短视  
+- $\gamma$ 越大：越远视  
+
+---
+
+### 8. 回合（Episode）
+
+一个 episode 从初始状态开始，到终止状态结束。
+
+---
+
+## Episodic Tasks vs Continuing Tasks
+
+### Episodic Tasks
+
+- 有明确终止状态
+- 例如：下棋、迷宫
+
+---
+
+### Continuing Tasks
+
+- 没有终止状态
+- 例如：股票交易、自动驾驶
+
+---
+
+### 转换方式
+
+1. 将终止状态视为吸收状态（absorbing state）
+2. 进入终止状态时给予正奖励
+
+---
+
+## 强化学习算法分类
+
+### 1. 按是否有环境模型
+
+#### Model-based
+
+- 动态规划（DP）
+
+#### Model-free
+
+- Monte Carlo
+- Temporal Difference
+- Q-learning
+- Policy Gradient
+- Deep RL
+
+---
+
+### 2. 按表示方式
+
+#### Tabular 方法
+
+- DP
+- Monte Carlo
+- TD
+- Q-learning
+
+#### Approximate 方法
+
+- 值函数近似
+- 策略梯度
+- 深度强化学习
+
+---
+
+## 总结
+
+强化学习研究的是如何通过交互学习一个最优策略，其核心包括：
+
+- MDP 建模
+- 回报最大化
+- 策略学习
+- 价值评估
+
+后续内容将围绕以下问题展开：
+
+1. 如何评估一个策略？
+2. 如何改进一个策略？
+3. 如何在未知环境中学习？
+
+---

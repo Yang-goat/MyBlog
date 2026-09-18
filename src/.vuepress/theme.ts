@@ -10,7 +10,7 @@ export default hopeTheme({
 
   author: {
     name: "Goat_Yang",
-    url: "/intro.html",
+    url: "/about.html",
   },
 
   logo: "assets/icon/头像.jpg",
@@ -34,7 +34,7 @@ export default hopeTheme({
   // 博客相关
   blog: {
     description: "计算机科学与技术硕士在读 raver",
-    intro: "/intro.html",
+    intro: "/about.html",
     medias: {
       BiliBili: "https://space.bilibili.com/415221098",
       // Wechat: "https://u.wechat.com/MKk5IZZiRVAPXwZ0ZJk43V4",

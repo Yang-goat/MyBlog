@@ -9,10 +9,18 @@ Create concise, sourced Chinese articles that match the surrounding section and 
 
 ## Gather Context
 
-1. Read the target directory's `README.md`, nearby articles, and relevant entries in `src/.vuepress/sidebar.ts` and `navbar.ts`.
+1. Read [content structure](../../../docs/content-structure.md), the target directory's `README.md`, nearby articles, and relevant entries in `src/.vuepress/sidebar.ts` and `navbar.ts`.
 2. Read `src/.vuepress/theme.ts` before using Markdown enhancements or built-in components.
 3. Preserve unrelated user edits. When revising an existing article, change only the requested content unless a factual correction requires coordinated updates.
-4. Identify the article type before drafting: tutorial, theory note, quick reference, or experience post.
+4. Identify the article type before drafting: tutorial, theory note, quick reference, experience post, paper note, or directory landing page.
+
+## Place Content in the Site
+
+- Match the actual folder hierarchy to the navbar section, dropdown group, board, and sidebar subgroup. Use lowercase English kebab-case for folders, article files, and images; keep `README.md` for directory pages.
+- Keep `sidebar.ts` explicit and hand-editable. List direct articles as links; create a collapsible group only for a real subdirectory with child articles. Do not replace this configuration with scanning or helper functions.
+- Keep each article in one board. Reference other boards in article text, not by inserting their articles into the current sidebar or adding categories solely to create cross-links.
+- Use `paper-notes/weekly/` for weekly reading records. Put developed explanations under the relevant topic; link the records and topic articles instead of duplicating content.
+- Read [project maintenance](../../../docs/maintenance.md) for build, cleanup, and preview procedures. When moving content, preserve existing aliases, update local links and assets, and verify redirects. The migration map is persistent validation data, not a temporary file.
 
 ## Research Before Writing
 
@@ -74,6 +82,10 @@ Define symbols on first use and keep them consistent. Do not skip a decisive der
 
 Allow a personal voice while separating facts from opinions. Apply the same verification and citation rules to technical claims.
 
+### Paper Note
+
+Record the paper title, authors, year, and a stable source link or DOI. Explain the research question, method, experimental setting, evidence, limitations, and questions for later reading as relevant. Separate the paper's claims from personal interpretation and reproduction results. Weekly records may cover multiple papers; do not force them into a textbook chapter. Cite official competition results for rankings and awards instead of inferring them from a paper's comparison table.
+
 ## Apply Frontmatter
 
 Use the surrounding directory's established categories and tags. A normal article should usually include:
@@ -114,12 +126,12 @@ dir:
   order: 1
 ---
 
-一句话说明本目录收录什么内容。
+一句话解释栏目标题中的概念、研究对象或领域含义。
 
 <Catalog />
 ```
 
-Do not manually duplicate the list produced by `<Catalog />`.
+Do not start with “这里整理……” or manually duplicate the list produced by `<Catalog />`. Preserve the directory's existing `dir` ordering and expansion choices; do not add an empty collapsible sidebar group merely because a directory exists.
 
 ## Write Commands and Code
 
@@ -135,7 +147,7 @@ Do not manually duplicate the list produced by `<Catalog />`.
 
 ## Handle Images and Diagrams
 
-- Store images in the local `img/` or `assets/` convention and use relative paths.
+- Store article images in the local `assets/` directory with lowercase kebab-case filenames and use relative paths. Keep shared site assets in `.vuepress/public/`.
 - Write meaningful alt text.
 - Crop irrelevant UI and redact accounts, paths, keys, and private data.
 - Use screenshots for visual location or results, not as a substitute for copyable text.
@@ -162,7 +174,7 @@ Use enhancements to improve information hierarchy, not decoration. Do not use a 
 
 1. Check Frontmatter, heading hierarchy, code languages, image paths, internal links, and references.
 2. Run `pnpm.cmd docs:build`.
-3. Confirm generated HTML for each changed route exists and contains the expected title.
+3. Run `node scripts/validate-content-structure.mjs` after the build. Confirm generated HTML for each changed route exists and contains the expected title; the structure checker does not verify link fragments or visual rendering.
 4. Inspect formulas, diagrams, tabs, images, and components; use browser testing when visual or responsive behavior matters.
 5. Run `git diff --check` and `git status --short`.
 6. Report the build result, generated page count, project warnings, and any tool-level blocker separately.

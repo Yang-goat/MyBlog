@@ -7,11 +7,12 @@
 ```text
 src/
 ├── .vuepress/       # 站点、主题、导航、侧边栏、组件和样式
-├── ai-ml/           # AI、机器学习、强化学习和优化算法
-├── ai-practice/     # 智能体、提示词和 AI 工具实践
-├── guides/          # 软件安装、配置和使用教程
+├── ai-algorithms/   # AI 与算法：基础与方法、学习、智能优化
+├── ai-applications/ # AI 应用：知识检索、智能体系统、工具实践
+├── software-tools/  # 软件工具：版本控制、系统、开发、文档与知识管理
 ├── notes/           # 数学、建模、计算机、语言、前端和音乐随笔
-├── links/           # 网站导航
+├── paper-notes/     # 论文随笔与每周阅读总结
+├── external-links/  # 外站
 └── README.md        # 首页
 ```
 
@@ -32,6 +33,13 @@ src/
 
 该技能负责文章文风、结构、Frontmatter、引用、代码、图片以及 Theme Hope 样式。仅修改站点配置或非文章代码时不需要加载。
 
+## 内容目录与命名
+
+- 文件树按顶部栏目、下拉分组、板块、侧边栏子栏目逐级组织，详见 `docs/content-structure.md`。
+- 目录与文件使用英文小写连字符命名；目录首页使用 `README.md`，随文资源统一放 `assets/`。
+- 导航和侧边栏保留显式配置；侧边栏分组使用对应目录的 `prefix`，文章使用相对文件名。
+- 迁移需同步内部引用与 `redirectFrom`，禁止让同级独立板块互相嵌套。
+
 ## 修改约束
 
 - 修改前执行 `git status --short`，记录已有修改。
@@ -45,78 +53,18 @@ src/
 - `git ls-tree` 默认转义中文路径；不要直接把其输出当作 PowerShell 路径。
 - `core.autocrlf=true` 时工作区哈希可能不同于 Git blob，不用简单哈希判断内容迁移是否一致。
 
-## 常用命令
+## 验证与运行
 
-PowerShell 执行策略可能阻止 `pnpm.ps1`，统一使用 `pnpm.cmd`。
+具体命令、产物、预览和清理方法统一维护在 [项目维护文档](docs/maintenance.md)，不要在多处复制完整流程。
 
-```powershell
-pnpm.cmd docs:dev
-pnpm.cmd docs:clean-dev
-pnpm.cmd docs:build
-```
-
-完整构建成功标准：
-
-- 命令退出码为 `0`。
-- 输出包含 `VuePress build completed`。
-- 页面渲染、SEO、sitemap 和 redirect 阶段完成。
-- 当前正常构建不应出现 sidebar、`INVALID_ANNOTATION` 或 `PLUGIN_TIMINGS` 警告。
-
-构建产物位于 `src/.vuepress/dist/`，已被 Git 忽略。
-
-## 验证要求
-
-所有内容或配置修改都必须执行：
-
-```powershell
-pnpm.cmd docs:build
-git diff --check
-git status --short
-```
-
-按变更范围补充验证：
-
-- 文章或路由：确认对应 HTML 存在并包含预期标题。
-- 导航：检查 `.temp/internal/themeData.js` 和生成 HTML 中的链接、文字与下拉结构。
-- 侧边栏：确认结构化栏目仍显示侧边栏，聚合页按配置保持无侧边栏。
-- 空目录：同时验证 `vp-empty-catalog` 和预期侧边栏；空目录使用 `"structure"` 时主题可能隐藏侧边栏。
-- Markdown 增强：验证公式、Mermaid、Markmap、tabs、图片和组件已正确渲染。
-- 旧名称或路径：使用 `rg` 排除 `.git`、`node_modules`、`.temp`、`.cache` 和 `dist` 后逐条检查。
-
-只有涉及点击、下拉菜单、响应式布局或视觉效果时才启动开发服务器并进行浏览器测试。
-
-## 浏览器测试
-
-1. 先用 `netstat -ano` 检查计划端口。
-2. 在可持续运行的独立终端执行：
-
-```powershell
-pnpm.cmd docs:dev --host 127.0.0.1 --port 4173
-```
-
-3. 以终端实际 URL 为准；端口占用时 VuePress 会自动尝试后续端口。
-4. 优先使用 Codex Browser 检查标题、URL、空白页、Vite 错误、控制台、导航交互和窄屏布局。
-5. 测试结束后停止服务器并确认端口不再监听。
-
-不要使用 `Start-Process` 临时后台启动服务器。独立 Playwright MCP 与 shell localhost 可能不在同一网络环境中，连接失败不能直接判定为项目失败。
-
-## 已知工具问题
-
-Codex Browser 或 `node_repl` 若报 `windows sandbox failed: spawn setup refresh`：
-
-1. 检查最新的 `~/.codex/.sandbox/sandbox*.log`。
-2. 若日志包含 `codex-windows-sandbox-setup.exe`、`os error 740` 或“请求的操作需要提升”，将 `~/.codex/config.toml` 设置为：
-
-```toml
-[windows]
-sandbox = "unelevated"
-```
-
-3. 完全退出并重新打开 Codex Desktop，然后先验证最小 `node_repl` 调用。
-
-不要改成无沙箱，不要删除插件缓存、重装 Browser 或修改 WindowsApps ACL。若不是错误 740，按日志中的实际 Win32 错误排查。
-
-沙箱内执行构建若因 esbuild `spawn EPERM` 失败，可申请在沙箱外运行相同的 `pnpm.cmd docs:build`；这是工具限制，不是项目构建失败。
+- 内容或配置修改后执行 `pnpm.cmd docs:build`、`node scripts/validate-content-structure.mjs`、`git diff --check` 和 `git status --short`。
+- 记录构建退出码、生成页面数及警告。检查受影响页面的标题、侧边栏、链接和 Markdown 组件；脚本检查不能替代视觉或实际交互验证。
+- 导航分组变化时同步结构校验脚本的 `groups` 映射；旧路径排查需区分兼容重定向、迁移记录和外部 URL。
+- 文档或技能修改检查本地引用；技能修改额外执行可用的 `quick_validate.py`。
+- 不同时运行改写 VuePress `.temp/` 的构建与开发进程。完整部署需 `site:build`，单独 `docs:build` 不含海克斯麻将应用。
+- 只在涉及交互或视觉时启动浏览器测试。用户选择自行检查时不擅自操作浏览器；仍供用户使用的预览服务可以保留并报告地址。
+- 清理只针对已确认的临时文件与生成目录，先核对绝对路径和进程。迁移映射、源素材和交接包不是临时文件。
+- 工具报错按当前日志核实，不依据旧修复经验自动修改全局沙箱设置。
 
 ## 完成标准
 

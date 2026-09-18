@@ -18,7 +18,7 @@ defineSearchConfig({
 });
 
 // 思维导图页的固定路径与全屏相关样式类。
-const MINDMAP_PATH = "/ai-ml/optimization/MindMap.html";
+const MINDMAP_PATH = "/ai-algorithms/optimization/fundamentals/algorithm-family-map.html";
 const MINDMAP_FULLSCREEN_CLASS = "optimization-mindmap-fullscreen";
 const MINDMAP_CONTROLS_CLASS = "optimization-mindmap-controls";
 let syncTimer = 0;

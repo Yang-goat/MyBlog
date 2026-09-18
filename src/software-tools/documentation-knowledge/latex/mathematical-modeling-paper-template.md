@@ -1,0 +1,719 @@
+---
+redirectFrom:
+  - "/guides/Latex/数学建模论文模板.html"
+icon: book
+date: 2025-08-23
+order: 2
+star: 1
+sticky: 50
+category:
+  - LaTeX
+tag:
+  - 模板
+---
+
+# 数学建模论文模板
+
+## 一、国赛模板
+
+模板请使用XeLatex编译，编译引用或修改表格列宽时要编译两次才能实装效果。
+
+为了正常使用，==请勿轻易修改导言区== 。
+
+::: code-tabs#shell
+
+@tab:active 生产版
+
+```latex
+\documentclass[12pt,UTF8,AutoFakeBold=3.17,openany,fontset=windows,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{ctex,amsmath,booktabs,array,graphicx,subcaption,enumitem,caption,titlesec,color,bm,multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{placeins,xpatch,float,listings,makecell,longtable,hyperref}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\SetAlgoNlRelativeSize{-1}
+\SetNlSty{}{}{}
+\captionsetup{font=footnotesize}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
+\setmainfont{Times New Roman}
+\definecolor{background}{rgb}{0.95,0.95,0.92}
+\definecolor{keyword}{rgb}{0,0,0}
+\definecolor{comment}{rgb}{0.0,0.5,0.0}
+\definecolor{string}{rgb}{0.6,0.1,0.7}
+\definecolor{line_numbers}{rgb}{0.25,0.25,0.25}
+\lstset{language=Matlab,backgroundcolor=\color{yellow!10},basicstyle=\ttfamily\footnotesize,breakatwhitespace=false,breaklines=true,captionpos=t,commentstyle=\color{comment}\itshape,extendedchars=true,frame=single,keepspaces=true,keywordstyle=\color{blue}\bfseries,numbers=left,numbersep=10pt,numberstyle=\color{line_numbers},rulecolor=\color{black},showspaces=false,showstringspaces=false,showtabs=false,stringstyle=\color{string},tabsize=4,title=\lstname}
+\newcommand{\jiacu}[1]{\textbf{\bfseries\heiti #1}}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\xpatchcmd{\thebibliography}{\section*}{\section}{}{}
+\titleformat*{\section}{\centering\fontsize{14pt}{0}\bfseries\heiti}
+\titleformat*{\subsection}{\fontsize{12pt}{0}\bfseries\heiti}
+\titleformat*{\subsubsection}{\fontsize{12pt}{0}\bfseries\heiti}
+\renewcommand\thesection{\chinese{section}}
+\renewcommand\thesubsection{\bfseries\heiti\arabic{section}.\bfseries\heiti\arabic{subsection}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
+\allowdisplaybreaks
+
+\begin{document}
+
+\begin{center}%题目
+	\fontsize{15.75pt}{0}\jiacu{标题}
+\end{center}
+\begin{center}%摘要
+	\zihao{4}\jiacu{摘要}
+\end{center}
+
+这是摘要。
+
+\bigskip
+\noindent \jiacu{关键词：}
+关键词1、关键词2
+\newpage
+
+
+\section{问题重述}
+\subsection{问题背景}
+\subsection{问题提出}
+\jiacu{问题一：}
+
+
+\section{问题分析}
+\subsection{问题一分析}
+
+
+\section{模型假设}
+
+\noindent 1、
+
+\noindent 2、
+
+\section{符号说明}
+% 在这里设置表格
+{\small
+\setlength{\tabcolsep}{43pt} %这里修改表宽度（需要编译两次）
+\begin{longtable}{ccc} % 表格列格式
+    % \caption{}\label{}
+    \toprule
+    符号          & 意义               & 单位  \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}%
+    {{\tablename\ \thetable{} 续页}}       \\
+    \toprule
+    符号          & 意义               & 单位  \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{3}{r}{{续下页}}            \\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    % 表格内容开始
+    
+\end{longtable}
+} % 结束 \small 的作用范围
+
+\section{模型的建立与求解}
+\subsection{问题一模型的建立与求解}
+\subsubsection{模型准备与模型建立}
+
+\jiacu{（1）xxxxx}
+
+\jiacu{（2）xxxxx}
+
+\subsubsection{模型求解与结果分析}
+
+\subsection{问题二模型的建立与求解}
+\subsubsection{问题二模型的建立}
+
+\subsubsection{模型求解与结果分析}
+
+\subsection{问题三模型的建立与求解}
+\subsubsection{问题三模型的建立}
+
+\subsubsection{问题三模型的求解}
+
+\section{模型的评价}
+\subsection{模型的优点}
+\begin{enumerate}
+	\item 
+\end{enumerate}
+\subsection{模型的缺点}
+\begin{enumerate}
+	\item 
+\end{enumerate}
+\subsection{模型的改进与推广}
+
+%参考文献
+\begin{thebibliography}{9}%宽度9
+	% 引用代码 \upcite{label}
+	\bibitem{label} 文献条目1
+\end{thebibliography}
+\newpage
+
+\section*{附录 \quad 程序代码}
+\begin{lstlisting}[caption={问题一代码}]
+    这是代码
+\end{lstlisting}
+
+\end{document}
+```
+
+@tab 注释版
+
+```latex
+\documentclass[
+    12pt,                % 文档主字体大小为12磅
+    UTF8,                % 编码格式为UTF-8（支持中文输入）
+    AutoFakeBold = {3.17},% 自动伪加粗强度设置（数值越大加粗效果越明显）
+    fontset=windows,     % 使用Windows系统默认字体（适配中文字体显示）
+    a4paper              % 纸张尺寸为A4（210mm×297mm）
+]{article}
+
+% ==============================================
+% 1. 页面基础设置（页边距、字体编码等）
+% ==============================================
+\usepackage[margin=1in]{geometry}  % 统一设置页边距为1英寸（约2.54cm），兼容国际排版习惯
+\usepackage{ctex}                  % 中文支持核心宏包（处理中文排版、字体、断行等）
+\setmainfont{Times New Roman}      % 全局英文字体设置为Times New Roman（学术文档常用字体）
+
+% ==============================================
+% 2. 数学公式相关宏包（公式排版、符号、换行）
+% ==============================================
+\usepackage{amsmath}       % 数学公式排版核心宏包（支持矩阵、分式、积分等复杂公式）
+\allowdisplaybreaks        % 允许长公式环境（如align、equation）自动跨页，避免公式溢出
+\usepackage{bm}            % 数学符号加粗宏包（如\bm{\alpha}生成加粗的α）
+
+% ==============================================
+% 3. 表格相关宏包（表格样式、跨页、合并单元格）
+% ==============================================
+\usepackage{booktabs}      % 三线表专用宏包（提供\toprule/\midrule/\bottomrule，避免竖线）
+\usepackage{array}         % 增强表格列样式控制（支持自定义列格式、固定列宽等）
+\usepackage{multirow}      % 表格单元格跨行合并（如\multirow{2}{*}{内容}）
+\usepackage{longtable}     % 支持跨页长表格（解决普通table无法跨页的问题）
+\usepackage{makecell}      % 表格单元格内换行/对齐（如\makecell{第一行\\第二行}）
+
+% ==============================================
+% 4. 图片与浮动体相关宏包（图片插入、子图、位置控制）
+% ==============================================
+\usepackage{graphicx}      % 图片插入核心宏包（支持\includegraphics[选项]{图片路径}）
+\usepackage{subcaption}    % 子图排版宏包（支持多个子图共用一个总标题，如subfigure环境）
+\usepackage{caption}       % 浮动体标题样式控制（统一图、表标题格式）
+\usepackage{float}         % 增强浮动体位置控制（支持[H]选项强制图片/表格在当前位置）
+\usepackage{placeins}      % 浮动体位置锁定（提供\FloatBarrier命令，防止浮动体跨章节乱序）
+
+% ==============================================
+% 5. 文本格式与结构控制（列表、标题、颜色）
+% ==============================================
+\usepackage{enumitem}      % 列表环境增强宏包（自定义列表缩进、编号样式等）
+\usepackage{titlesec}      % 标题格式控制宏包（自定义section/subsection等标题样式）
+\usepackage{color}         % 基础颜色宏包（支持简单颜色设置，如\textcolor{red}{内容}）
+\usepackage[dvipsnames]{xcolor}  % 扩展色系宏包（提供更多预定义颜色，如RoyalBlue、ForestGreen）
+
+% ==============================================
+% 6. 代码块相关宏包（MATLAB代码高亮、格式）
+% ==============================================
+\usepackage{listings}      % 代码块排版宏包（支持多种编程语言语法高亮）
+
+% ==============================================
+% 7. 超链接与引用相关宏包（交叉引用、URL链接）
+% ==============================================
+\usepackage{hyperref}      % 超链接核心宏包（支持目录、图表引用、URL链接）
+\usepackage{xpatch}        % 代码补丁宏包（用于修改已有命令，如下方修改参考文献标题）
+
+% ==============================================
+% 8. 宏包参数与样式配置（统一格式、自定义命令）
+% ==============================================
+% 浮动体标题字体大小（图、表标题统一为footnotesize，即小五号字）
+\captionsetup{font=footnotesize}
+
+% 超链接样式配置（避免默认彩色链接，统一为黑色，符合学术文档简洁风格）
+\hypersetup{
+    colorlinks=true,    % 激活链接颜色（替代默认的边框链接）
+    linkcolor=black,    % 文档内部引用颜色（如章节、图表引用）
+    citecolor=black,    % 文献引用颜色（如\cite{}生成的链接）
+    filecolor=black,    % 文件链接颜色（如本地文件路径链接）
+    urlcolor=black      % 外部URL链接颜色（如网页链接）
+}
+
+% 代码块（MATLAB）样式配置
+\lstset{
+    language=Matlab,               % 指定代码语言为MATLAB（语法高亮适配MATLAB关键词）
+    backgroundcolor=\color{yellow!10},  % 代码块背景色（浅黄色，透明度10%，避免刺眼）
+    basicstyle=\ttfamily\footnotesize,  % 代码基础字体（等宽字体+小五号字，符合代码阅读习惯）
+    breakatwhitespace=false,       % 允许在非空格处断行（避免长代码因无空格导致溢出）
+    breaklines=true,               % 自动断行（长代码行自动折行，不超出页面宽度）
+    captionpos=t,                  % 代码块标题位置（t=顶部，b=底部）
+    commentstyle=\color{comment}\itshape,  % 注释样式（绿色+斜体）
+    extendedchars=true,            % 支持扩展ASCII字符（避免特殊符号显示异常）
+    frame=single,                  % 代码块边框样式（single=单边框，none=无边框）
+    keepspaces=true,               % 保留代码中的空格（确保代码格式与原文件一致）
+    keywordstyle=\color{blue}\bfseries,  % 关键词样式（蓝色+加粗，如if、for、function）
+    numbers=left,                  % 行号位置（left=左侧，right=右侧）
+    numbersep=10pt,                % 行号与代码的间距（10磅，避免拥挤）
+    numberstyle=\color{line_numbers},  % 行号颜色（深灰色，不喧宾夺主）
+    rulecolor=\color{black},       % 代码块边框颜色（黑色，与文档整体风格统一）
+    showspaces=false,              % 不显示代码中的空格标记（避免干扰阅读）
+    showstringspaces=false,        % 不显示字符串中的空格标记
+    showtabs=false,                % 不显示制表符标记
+    stringstyle=\color{string},    % 字符串样式（紫色，如MATLAB中的引号内容）
+    tabsize=4,                     % 制表符宽度（4个字符，符合MATLAB默认设置）
+    title=\lstname                 % 代码块标题为文件名（\lstinputlisting引入文件时显示文件名）
+}
+
+% 自定义颜色（供代码块、文本颜色调用）
+\definecolor{background}{rgb}{0.95, 0.95, 0.92}  % 浅灰色（未在代码块中使用，预留）
+\definecolor{keyword}{rgb}{0, 0, 0}              % 黑色（未在代码块中使用，预留）
+\definecolor{comment}{rgb}{0.0, 0.5, 0.0}        % 深绿色（代码注释颜色）
+\definecolor{string}{rgb}{0.6, 0.1, 0.7}         % 紫色（代码字符串颜色）
+\definecolor{line_numbers}{rgb}{0.25, 0.25, 0.25}% 深灰色（代码行号颜色）
+
+% 自定义命令（简化重复操作）
+% \jiacu{内容}：将文本设置为“黑体+加粗”（中文常用强调样式）
+\newcommand{\jiacu}[1]{\textbf{\bfseries\heiti #1}}
+% \upcite{引用标签}：生成双层上标引用（如文献引用标记^[1]）
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+% 参考文献标题修改（将默认的“参考文献”（section*无编号）改为“第X章 参考文献”（带编号section））
+\xpatchcmd{\thebibliography}{\section*}{\section}{}{}
+
+% 标题格式配置（统一章节标题字体、大小、对齐方式）
+\titleformat*{\section}{\centering\fontsize{14pt}{0}\bfseries\heiti}  % 一级标题：居中+14磅+黑体+加粗
+\titleformat*{\subsection}{\fontsize{12pt}{0}\bfseries\heiti}         % 二级标题：12磅+黑体+加粗
+\titleformat*{\subsubsection}{\fontsize{12pt}{0}\bfseries\heiti}      % 三级标题：12磅+黑体+加粗
+
+% 编号格式配置（图、表、公式编号与章节关联，如“1-1”表示第1章第1个图/表/公式）
+\renewcommand\thesection{\chinese{section}}  % 一级章节编号为中文（如“一、”“二、”）
+% 二级章节编号为“1.1”“1.2”（阿拉伯数字，黑体加粗）
+\renewcommand \thesubsection {\bfseries\heiti\arabic{section}.\bfseries\heiti\arabic{subsection}}
+% 表格编号：章节号-表格序号（如第1章第2个表为“1-2”）
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+% 图片编号：章节号-图片序号（如第1章第2个图为“1-2”）
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+% 公式编号：章节号-公式序号（如第1章第2个公式为“1-2”）
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
+
+\begin{document}
+
+\begin{center}%题目
+	\fontsize{15.75pt}{0}\jiacu{标题}
+\end{center}
+\begin{center}%摘要
+	\zihao{4}\jiacu{摘要}
+\end{center}
+
+这是摘要。
+
+\bigskip
+\noindent \jiacu{关键词：}
+关键词1、关键词2
+\newpage
+
+
+\section{问题重述}
+\subsection{问题背景}
+\subsection{问题提出}
+\jiacu{问题一：}
+
+\jiacu{问题二：}
+
+\jiacu{问题三：}
+
+\jiacu{问题四：}
+
+\jiacu{问题五：}
+
+\section{问题分析}
+\subsection{问题一分析}
+
+\subsection{问题二分析}
+
+\subsection{问题三分析}
+
+\subsection{问题四分析}
+
+\subsection{问题五分析}
+
+\section{模型假设}
+
+\noindent 1、模型假设1
+
+\noindent 2、模型假设2
+
+\section{符号说明}
+% 在这里设置表格
+{\small
+\setlength{\tabcolsep}{43pt} %这里修改表宽度（需要编译两次）
+\begin{longtable}{ccc} % 表格列格式
+    % \caption{}\label{}
+    \toprule
+    符号          & 意义               & 单位  \\
+    \midrule
+    \endfirsthead
+    \multicolumn{3}{c}%
+    {{\tablename\ \thetable{} 续页}}       \\
+    \toprule
+    符号          & 意义               & 单位  \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{3}{r}{{续下页}}            \\
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    % 表格内容开始
+    
+\end{longtable}
+} % 结束 \small 的作用范围
+
+\section{模型的建立与求解}
+\subsection{问题一模型的建立与求解}
+\subsubsection{模型准备与模型建立}
+
+\jiacu{（1）xxxxx}
+
+这里引用文献\upcite{label}。
+
+\jiacu{（2）xxxxx}
+
+\subsubsection{模型求解与结果分析}
+
+\subsection{问题二模型的建立与求解}
+\subsubsection{问题二模型的建立}
+
+\subsubsection{模型求解与结果分析}
+
+\subsection{问题三模型的建立与求解}
+\subsubsection{问题三模型的建立}
+
+\subsubsection{问题三模型的求解}
+
+\subsection{问题四模型的建立与求解}
+\subsubsection{问题四模型的建立}
+
+\subsubsection{问题四模型的求解}
+
+\subsection{问题五模型的建立与求解}
+\subsubsection{问题五模型的建立}
+
+\subsubsection{问题五模型的求解}
+
+\section{模型的评价}
+\subsection{模型的优点}
+\begin{enumerate}
+	\item 优点1
+\end{enumerate}
+\subsection{模型的缺点}
+\begin{enumerate}
+	\item 缺点1
+\end{enumerate}
+\subsection{模型的改进与推广}
+
+%参考文献
+\begin{thebibliography}{9}%宽度9
+	% 引用代码 \cite{}
+	\bibitem{label} 文献条目1
+\end{thebibliography}
+\newpage
+
+\section*{附录 \quad 程序代码}
+\begin{lstlisting}[caption={问题一代码}]
+    这是代码
+\end{lstlisting}
+
+\end{document}
+```
+
+:::
+
+## 二、插入图片
+
+强制图片位置
+
+```latex
+\FloatBarrier % 强制在此处插入上方代码的图形
+```
+
+### 单个图片
+
+```latex
+\begin{figure}[!htb]
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[scale=0.2]{img/}}
+	\caption{}
+	\label{fig:}
+\end{figure}
+```
+
+### 多图同行
+
+不同图
+
+```latex
+\begin{figure}[!htb]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/jubu.png}
+        \caption{图标题}
+        \label{fig:图标签}
+    \end{minipage}
+    \hspace{0.1\textwidth} % 调整两张图片之间的间距
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/jubu.png}
+        \caption{图标题}
+        \label{fig:图标签}
+    \end{minipage}
+\end{figure}
+```
+
+一张子母图
+
+```latex
+\begin{figure}[!htb]
+    \centering
+    % 第一行两个子图
+    \begin{subfigure}[b]{0.45\textwidth}  % 子图宽度设为页面的45%
+        \centering
+        \includegraphics[scale=0.25]{img/jubu.png}
+        \caption{子图1说明}
+    \end{subfigure}
+    \hfill  % 用\hfill自动填充两图之间的空间，替代固定间距
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{img/jubu.png}
+        \caption{子图2说明}
+    \end{subfigure}
+    % 手动换行，确保第二行另起一行
+    \vspace{10pt}  % 两行之间的垂直间距
+    % 第二行两个子图
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{img/jubu.png}
+        \caption{子图3说明}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{img/jubu.png}
+        \caption{子图4说明}
+    \end{subfigure}
+    
+    \caption{图总标题}
+    \label{fig:p1_2}
+\end{figure}
+```
+
+## 三、公式
+
+### 公式编号
+
+> 论文公式默认需要有编号
+
+有编号公式
+
+```latex
+\begin{equation}
+    \text{有编号公式}
+    \label{eq:公式标签} % 用于公式引用
+\end{equation}
+```
+
+无编号公式
+
+```latex
+\[
+    \text{无编号公式}
+\]
+```
+
+### 公式对齐
+
+公式居中对齐（无花括号）:使用 `aligned`
+
+```latex
+\begin{equation}
+\begin{aligned} % 无花括号
+g(x) = \sin(2x) + \cos(x) - e^x\\
+h(x) = \frac{1}{x^2 + 1} + \ln(x + 1)
+\end{aligned}
+\end{equation}
+```
+
+公式按等号对齐：使用 `&`
+
+```latex
+\begin{equation}
+\begin{aligned} % 无花括号
+g(x) &= \sin(2x) + \cos(x) - e^x\\
+h(x) &= \frac{1}{x^2 + 1} + \ln(x + 1)
+\end{aligned}
+\end{equation}
+```
+
+公式联立（有花括号）；使用`case`
+ 
+```latex
+\begin{equation}
+    \begin{cases}
+        4(F-h)(z+300.4-h)=x^2+y^2,\,\,\,\,\,-0.6\leq h\leq 0.6 \\ 
+        \frac{x - x_i}{x_i^d - x_i^u} = \frac{y - y_i}{y_i^d - y_i^u} = \frac{z - z_i}{z_i^d - z_i^u}
+    \end{cases}
+\end{equation}
+```
+
+### 公式美化
+
+避免公式拥挤
+
+```latex
+\displaystyle   % 写在行前
+\vspace{0.2cm}
+```
+
+加粗
+
+```latex
+\mathbf{v}
+```
+
+对于常见函数如cin，cos等需用正体，用 `\text{}` 包裹。
+
+### 常见模型公式
+
+优化模型公式
+
+```latex
+    $$\min \sum \Delta L_i $$
+    \[
+    \text{s.t.}
+    \begin{cases}
+        z=a(x^2+y^2)-0.534R-\frac{1}{4a}\\
+        \frac{x - x_i}{x_{top_i} - x_{bottom_i}} = \frac{y - y_i}{y_{top_i} - y_{bottom_i}} = \frac{z - z_i}{z_{top_i} - z_{bottom_i}}\\
+        \Delta L_i = \sqrt{(x_i - x_i')^2 + (y_i - y_i')^2 + (z_i - z_i')^2}\\
+        d_{ij} = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2}\\
+        d'_{ij} = \sqrt{(x'_i - x'_j)^2 + (y'_i - y'_j)^2 + (z'_i - z'_j)^2}\\
+        R-0.6 \leq 0.534R+\frac{1}{4a} \leq R+0.6\\
+        \Delta L_i\leq 0.6\\
+        \frac{| L_{ij} - L'_{ij} |}{L_{ij}}\times 100\% < 0.07\%
+    \end{cases}
+    \]
+```
+
+矩阵
+
+```latex
+\begin{equation}
+        R_x(\theta_x) = 
+        \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \cos \theta_x & \sin \theta_x & 0 \\
+        0 & -\sin \theta_x & \cos \theta_x & 0 \\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+    \end{equation}
+```
+
+## 四、表格
+
+文中普通表格
+
+```latex
+\begin{table}[H]
+	\renewcommand{\arraystretch}{0.7} %这里修改表格行距
+	\small
+    \setlength{\tabcolsep}{50pt}    %这里修改表宽度（需要编译两次）
+	\centering %表格居中		
+	\caption{表名}
+	\begin{tabular}{cc} % 表格列格式
+		\toprule
+		列名1          & 列名2   \\
+		\midrule
+		数据1          & 数据2   \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+```
+
+符号说明表格见总模板
+
+列名写多行
+
+```latex
+\makecell{平均光学\\效率}
+```
+
+## 五、无序列表
+
+```latex
+\begin{itemize}
+    \item 列表项1
+\end{itemize}
+```
+
+## 六、伪代码块
+
+```latex
+\begin{minipage}{0.8\textwidth}  % 设置算法块宽度为页面宽度的80%
+    \centering
+    \begin{algorithm}[H]
+        \caption{生成蜂窝布局算法}
+        \Begin{
+            初始化 $data$ 矩阵并设置 $n \gets 0$\;
+            计算 $d_h$, $n_{y+}$, $n_{y-}$, 和 $n_{\text{矩形}}$\;
+            \For{$i \gets 0$ 到 $n_{y+}$}{
+                $y \gets i \times \sqrt{3}/2 \times d_h$\;
+                $j \gets d_h/2 \times (i \mod 2)$\;
+                \While{$j \leq 350$}{
+                    \If{超过上半圆弧}{
+                        \textbf{break}\;
+                    }
+                    将 $[j; y]$ 添加到 $data$\;
+                    $j \gets j + d_h$\;
+                }
+                处理 $j \leq -350$ 的情况\;
+            }
+            \For{$i \gets 1$ 到 $n_{y-}$}{
+                处理负向y轴网格的过程\;
+            }
+            过滤 $data$ 以仅包括在指定边界内的点\;
+            更新 $data$ 以包含有效点\;
+        }
+    \end{algorithm}
+\end{minipage}
+```
+
+## 七、小标题
+
+~~已抛弃~~ ，建议使用 `\jiacu{}` 命令加粗。
+
+```latex
+\begin{enumerate}[label=\arabic{enumi}]
+    \item 第一项内容
+    \item 第二项内容
+\end{enumerate}
+```
+
+## 八、tex转word
+
+windows终端中输
+
+```shell
+pandoc -s articale.tex -o output.docx
+```
+
+## 九、tex转高品质图片
+
+终端中，先裁剪白边
+
+```shell
+pdfcrop articale.pdf output.pdf
+```
+
+后输出指定dpi图片
+
+```shell
+pdftoppm input.pdf output -png -r 300
+```
