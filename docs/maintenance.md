@@ -19,6 +19,7 @@
 ```powershell
 pnpm.cmd docs:build
 node scripts/validate-content-structure.mjs
+node scripts/check-search.mjs
 git diff --check
 git status --short
 ```
@@ -28,6 +29,8 @@ git status --short
 结构脚本读取本次构建的 `.temp/internal/themeData.js` 和 `dist/`，因此必须在构建后运行，且不要与开发服务同时改写这些目录。它检查命名、迁移映射、旧地址跳转、导航与侧边栏边界，以及生成 HTML 的本地链接、图片和导航高亮。新增顶部或下拉分组时，同步检查脚本中的 `groups` 映射。
 
 脚本不覆盖实际点击、响应式效果、公式图形视觉、锚点存在性或独立应用内部行为；本地构建成功也不代表线上已更新。页面变化还应检查对应 HTML 的标题和组件。空目录需要核对 `vp-empty-catalog` 与侧边栏，不能只看构建成功。
+
+搜索回归脚本 `check-search.mjs` 使用构建出的真实索引和 Worker，检查中英文查询、前缀、容错、正文命中、建议及空结果。安装依赖时需保留 pnpm 补丁配置，原理和升级注意事项见[搜索补丁说明](../patches/README.md)。搜索结果的实际显示与点击跳转仍需浏览器验证。
 
 独立应用和完整发布按需执行：
 
