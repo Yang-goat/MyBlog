@@ -13,3 +13,6 @@ overrides:
   markmap-lib>markdown-it: 14.2.0
   markmap-lib>yaml: 2.9.0
   mermaid>uuid: 14.0.0
+
+patchedDependencies:
+  '@vuepress/plugin-slimsearch@2.0.0-rc.130': patches/@vuepress__plugin-slimsearch@2.0.0-rc.130.patch

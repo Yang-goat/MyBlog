@@ -1,11 +1,13 @@
 import { defineClientConfig } from "vuepress/client";
+import { markRaw } from "vue";
 import { defineSearchConfig } from "@vuepress/plugin-slimsearch/client";
 import Blog from "./layouts/Main.vue";
 import TreasureSites from "./layouts/TreasureSites.vue";
 import { setupRunningTimeFooter } from "vuepress-theme-hope/presets/footerRunningTime.js";
 import { setupTransparentNavbar } from "vuepress-theme-hope/presets/transparentNavbar.js";
 
-defineSearchConfig({
+// 搜索选项会发送给 Worker；避免嵌套 boost 被转换为不可克隆的 Vue Proxy。
+defineSearchConfig(markRaw({
   boost: {
     h: 10,
     t: 1,
@@ -15,7 +17,7 @@ defineSearchConfig({
   fuzzy: 0.15,
   maxFuzzy: 1,
   combineWith: "AND",
-});
+}));
 
 // 思维导图页的固定路径与全屏相关样式类。
 const MINDMAP_PATH = "/ai-ml/optimization/MindMap.html";
