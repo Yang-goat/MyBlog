@@ -158,6 +158,17 @@ export default hopeTheme({
   plugins: {
     slimsearch: {
       indexContent: true,
+      // 显式提供字符串模板，避免主题默认 locale formatter 生成对象而导致结果渲染失败。
+      customFields: [
+        {
+          getter: (page) => page.frontmatter.category,
+          formatter: "分类：$content",
+        },
+        {
+          getter: (page) => page.frontmatter.tag,
+          formatter: "标签：$content",
+        },
+      ],
       worker: `slimsearch.worker.${searchWorkerVersion}.js`,
       filter: (page) =>
         page.lang === "zh-CN" &&
