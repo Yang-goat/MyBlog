@@ -69,7 +69,9 @@ export default sidebar({
   ],
 
   // 迁移学习
-  "/ai-algorithms/learning/transfer-learning/": [],
+  "/ai-algorithms/learning/transfer-learning/": [
+    "transfer-learning-basics.html"
+  ],
 
   // 强化学习
   "/ai-algorithms/learning/reinforcement-learning/": [
@@ -408,7 +410,27 @@ export default sidebar({
 
   // 前沿算法与框架
   "/ai-algorithms/optimization/frontier-algorithms/": [
-    "research-directions.html"
+    "research-directions.html",
+    {
+      text: "DE 系列",
+      icon: "arrows-left-right",
+      prefix: "/ai-algorithms/optimization/frontier-algorithms/de-series/",
+      link: "/ai-algorithms/optimization/frontier-algorithms/de-series/",
+      collapsible: true,
+      children: [
+        "de.html",
+        "jade.html",
+        "shade.html",
+        "l-shade.html",
+        "jso.html",
+        "lshade-rsp.html",
+        "nl-shade-rsp.html",
+        "l-srtde.html",
+        "rde.html",
+        "rdex.html",
+        "learning-driven-de.html"
+      ]
+    }
   ],
 
   // 基准测试与竞赛

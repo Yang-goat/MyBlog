@@ -26,6 +26,7 @@ src/
 │       │   ├── genetic-operators/         # 遗传算法的算子
 │       │   └── …                          # 其余算法家族
 │       ├── frontier-algorithms/           # 前沿算法与框架
+│       │   ├── de-series/                 # DE 系列发展脉络与算法文章
 │       │   └── research-directions.md     # 研究方向导图，普通文章
 │       └── benchmarks/                    # 基准测试与竞赛
 ├── ai-applications/                       # AI 应用

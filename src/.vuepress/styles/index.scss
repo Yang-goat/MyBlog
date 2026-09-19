@@ -162,3 +162,34 @@ html.optimization-mindmap-fullscreen .optimization-mindmap-controls {
 .vp-brand .vp-site-name {
   display: none;
 }
+
+// DE 系列文章使用阅读顺序编号，分组和正文图标保持原样。
+.vp-sidebar .vp-sidebar-link[href^="/ai-algorithms/optimization/frontier-algorithms/de-series/"] > .vp-icon {
+  display: none;
+}
+
+.vp-sidebar-group:has(> .vp-sidebar-header > a[href="/ai-algorithms/optimization/frontier-algorithms/de-series/"]) > .vp-sidebar-links {
+  counter-reset: de-article;
+
+  > li > .vp-sidebar-link {
+    counter-increment: de-article;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+
+    &::before {
+      content: counter(de-article);
+      display: inline-flex;
+      flex: 0 0 1.4rem;
+      align-items: center;
+      justify-content: center;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: color-mix(in srgb, currentColor 8%, transparent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+  }
+}
