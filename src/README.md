@@ -12,9 +12,9 @@ heroFullScreen: true
 tagline: 个人博客·知识库
 projects:
   - icon: folder-open
-    name: 个人博客
-    desc: 基于vuepress的个人博客网站
-    link: https://github.com/Yang-goat/MyBlog
+    name: GoatYang Academic
+    desc: 中文学术汇报 Beamer 模板，适用于组会、论文精读与实验展示
+    link: https://github.com/Yang-goat/goatyang-academic-beamer
 
   - icon: book
     name: USTSthesis
