@@ -1,6 +1,6 @@
 ---
 name: write-blog-article
-description: Write, revise, review, or reorganize Markdown articles for this VuePress Theme Hope personal blog. Use when creating or editing article content under src/, including tutorials, theory notes, quick references, experience posts, Frontmatter, citations, code examples, images, and Theme Hope Markdown components. Do not use for site-configuration-only changes or unrelated source code.
+description: Write, revise, review, or reorganize Chinese articles for this VuePress Theme Hope blog, including paper sharing, close reading, weekly reading notes, tutorials, theory notes, quick references, and experience posts. Covers article structure, Frontmatter, sources, examples, and Markdown components. Do not use for site-configuration-only changes or unrelated source code.
 ---
 
 # Write Blog Article
@@ -12,7 +12,7 @@ Create concise, sourced Chinese articles that match the surrounding section and 
 1. Read [content structure](../../../docs/content-structure.md), the target directory's `README.md`, nearby articles, and relevant entries in `src/.vuepress/sidebar.ts` and `navbar.ts`.
 2. Read `src/.vuepress/theme.ts` before using Markdown enhancements or built-in components.
 3. Preserve unrelated user edits. When revising an existing article, change only the requested content unless a factual correction requires coordinated updates.
-4. Identify the article type before drafting: tutorial, theory note, quick reference, experience post, paper note, or directory landing page.
+4. Identify the reader, central question, and article type before drafting. Infer reasonable defaults from the request and neighboring content; ask only when missing sources or a key choice prevents accurate writing. Existing articles show local context, not an obligation to repeat their defects.
 
 ## Place Content in the Site
 
@@ -38,53 +38,26 @@ Create concise, sourced Chinese articles that match the surrounding section and 
 - Use a direct, restrained, technical-note tone.
 - Avoid filler, repeated conclusions, marketing language, title bait, and claims such as “非常简单”, “保姆级”, or “史上最全”.
 - Start with the problem, audience, prerequisites, or outcome. A short reference article may enter the content directly.
-- Keep paragraphs focused on one idea. Prefer short sections, ordered steps, comparison tables, and focused examples.
-- Explain the conditions under which a conclusion applies. Label personal judgment as personal experience.
+- Keep paragraphs focused on one idea. Use prose for reasoning, lists for parallel items or steps, and tables for comparable fields.
+- Explain the conditions under which a conclusion applies. Distinguish personal interpretation from reported evidence and actual experience; never invent the author's experiences.
 - Use bold text only for key terms, risks, and final conclusions.
 - Do not add a mechanical summary to a short article.
 
 ## Choose an Article Structure
 
-### Tutorial
+先确定读者读完要理解的问题或完成的任务，再选择结构；不将模式当成固定标题或字数配额。
 
-Use this order when applicable:
+- **论文分享、精读、多篇阅读周记**：读取 [论文随笔写作](references/paper-notes.md)。默认把“分享这篇论文”写成单篇解读；只有用户要求周记时才按周组织。
+- **教程、原理与算法、速查、排障、经验与工具介绍、系列文章**：读取 [其他文章的结构与阅读体验](references/article-patterns.md)，只应用相关模式。
+- **目录页**：沿用下方目录页规范，不套正文模板。
 
-1. Purpose and suitable scenarios.
-2. Environment, version, and prerequisites.
-3. Ordered operations.
-4. Verification.
-5. Common failures and risk warnings.
-6. References.
+## Shape the Reading Experience
 
-For each important step, explain what to run, why it is needed, and how success is recognized. Installation tutorials must include a version or functional verification.
-
-### Theory Note
-
-Use this order when applicable:
-
-1. Motivation or problem background.
-2. Definitions, notation, and prerequisites.
-3. Core principle or derivation.
-4. Intuition, example, or diagram.
-5. Applications, limitations, and common misconceptions.
-6. Summary and references.
-
-Define symbols on first use and keep them consistent. Do not skip a decisive derivation step without stating what was omitted and citing a source.
-
-### Quick Reference
-
-- State the scope and default environment.
-- Group related commands by task.
-- Prefer a table for repeated fields such as command, purpose, and caution.
-- Separate destructive commands from ordinary examples with a warning.
-
-### Experience Post
-
-Allow a personal voice while separating facts from opinions. Apply the same verification and citation rules to technical claims.
-
-### Paper Note
-
-Record the paper title, authors, year, and a stable source link or DOI. Explain the research question, method, experimental setting, evidence, limitations, and questions for later reading as relevant. Separate the paper's claims from personal interpretation and reproduction results. Weekly records may cover multiple papers; do not force them into a textbook chapter. Cite official competition results for rankings and awards instead of inferring them from a paper's comparison table.
+- 开头用一两个短段落交代具体问题、读者能获得的理解或结果，以及必要的前置知识。不要从泛泛的行业背景铺起，也不要展示内部写作检查表。
+- 正文围绕一条主线展开，小标题写清解释的机制或解决的问题，段落之间说明因果与承接关系。
+- 先给直觉或最小例子，再引入必要的公式与实现细节。基础知识可链接站内文章，关键推理不能只用链接代替。
+- 公式首次出现时解释符号、条件及其作用；行内使用 `$...$`，行间使用各自独占一行的 `$$`。示例数值与实测结果明确区分。
+- 保留有内容的个人判断与疑问，不给每节强配提示框、表格或总结。长文结尾收束主张、边界或下一步。
 
 ## Apply Frontmatter
 
@@ -167,7 +140,7 @@ Use enhancements to improve information hierarchy, not decoration. Do not use a 
 - Include only sources actually read and used.
 - Use descriptive link text, not “参考链接 1”.
 - Link a source near the relevant claim when that improves traceability.
-- Prefer 2 to 8 strong sources for a substantial article; a short article may use fewer.
+- Let the claims determine the sources; one fully read primary paper can support a single-paper note. Add background or comparison sources only when used, not to meet a quota.
 - Paraphrase in original wording. Keep unavoidable quotations short and clearly attributed.
 
 ## Verify the Article

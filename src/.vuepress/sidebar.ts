@@ -498,7 +498,10 @@ export default sidebar({
     {
       text: "每周阅读总结",
       icon: "calendar",
-      link: "/paper-notes/weekly/"
+      link: "/paper-notes/weekly/",
+      prefix: "/paper-notes/weekly/",
+      collapsible: true,
+      children: ["2026-09-14-rde-lio.html"]
     },
     "reading-workflow.html"
   ],
