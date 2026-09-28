@@ -32,12 +32,14 @@ export default sidebar({
       collapsible: true,
       expanded: true,
       children: [
+        "intro.html",
+        "evaluation-metrics.html",
         {
           text: "多目标进化算法（MOEA）",
           icon: "chart-line",
           link: "/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/",
           collapsible: true,
-          expanded: true,
+          expanded: false,
           children: [
             "moea-d.html",
             "npga.html",
@@ -47,11 +49,29 @@ export default sidebar({
             "moga.html"
           ],
           prefix: "/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/"
-        },
-        "evaluation-metrics.html",
-        "intro.html"
+        }
       ],
       prefix: "/ai-algorithms/foundations/problem-cases/multi-objective-optimization/"
+    },
+    {
+      text: "昂贵优化",
+      icon: "hourglass-half",
+      link: "/ai-algorithms/foundations/problem-cases/expensive-optimization/",
+      collapsible: true,
+      expanded: true,
+      children: [
+        "intro.html",
+        {
+          text: "代理模型",
+          icon: "chart-area",
+          link: "/ai-algorithms/foundations/problem-cases/expensive-optimization/surrogate-models/",
+          collapsible: true,
+          expanded: true,
+          children: ["rbf.html", "kriging.html"],
+          prefix: "/ai-algorithms/foundations/problem-cases/expensive-optimization/surrogate-models/"
+        }
+      ],
+      prefix: "/ai-algorithms/foundations/problem-cases/expensive-optimization/"
     }
   ],
 
@@ -106,6 +126,21 @@ export default sidebar({
   // 优化基础与算法
   "/ai-algorithms/optimization/fundamentals/": [
     {
+      text: "优化基础理论知识",
+      icon: "user-graduate",
+      link: "/ai-algorithms/optimization/fundamentals/theory/",
+      collapsible: true,
+      expanded: false,
+      children: [
+        "optimization-theory.html",
+        "optimization-categories.html",
+        "optimization-problem.html",
+        "model-based-and-model-free.html"
+      ],
+      prefix: "/ai-algorithms/optimization/fundamentals/theory/"
+    },
+    "algorithm-family-map.html",
+    {
       text: "遗传规划",
       icon: "code-branch",
       link: "/ai-algorithms/optimization/fundamentals/genetic-programming/",
@@ -137,17 +172,6 @@ export default sidebar({
         "evolutionary-programming.html"
       ],
       prefix: "/ai-algorithms/optimization/fundamentals/evolutionary-algorithms/"
-    },
-    {
-      text: "其他优化技巧",
-      icon: "shapes",
-      link: "/ai-algorithms/optimization/fundamentals/supporting-strategies/",
-      collapsible: true,
-      expanded: false,
-      children: [
-        "latin-hypercube-sampling.html"
-      ],
-      prefix: "/ai-algorithms/optimization/fundamentals/supporting-strategies/"
     },
     {
       text: "蚁群优化算法",
@@ -274,21 +298,6 @@ export default sidebar({
       prefix: "/ai-algorithms/optimization/fundamentals/swarm-intelligence-algorithms/"
     },
     {
-      text: "优化基础理论知识",
-      icon: "user-graduate",
-      link: "/ai-algorithms/optimization/fundamentals/theory/",
-      collapsible: true,
-      expanded: false,
-      children: [
-        "optimization-theory.html",
-        "optimization-categories.html",
-        "optimization-problem.html",
-        "model-based-and-model-free.html"
-      ],
-      prefix: "/ai-algorithms/optimization/fundamentals/theory/"
-    },
-    "algorithm-family-map.html",
-    {
       text: "随机优化算法",
       icon: "dice",
       link: "/ai-algorithms/optimization/fundamentals/stochastic-optimization-algorithms/",
@@ -405,6 +414,17 @@ export default sidebar({
         "hierarchical-bayesian-optimization-algorithm.html"
       ],
       prefix: "/ai-algorithms/optimization/fundamentals/estimation-of-distribution-algorithms/"
+    },
+    {
+      text: "其他优化技巧",
+      icon: "shapes",
+      link: "/ai-algorithms/optimization/fundamentals/supporting-strategies/",
+      collapsible: true,
+      expanded: false,
+      children: [
+        "latin-hypercube-sampling.html"
+      ],
+      prefix: "/ai-algorithms/optimization/fundamentals/supporting-strategies/"
     }
   ],
 
@@ -539,6 +559,7 @@ export default sidebar({
       prefix: "/notes/mathematics/hypothesis-testing/"
     },
     "kendall-tau.html",
+    "kkt-conditions.html",
     "numerical-methods-notes-2.html",
     "numerical-methods-notes-1.html"
   ],

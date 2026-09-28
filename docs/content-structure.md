@@ -72,6 +72,8 @@ src/
 
 `.vuepress/` 是站点实现，`en/` 是语言入口，`tests/` 是演示页；它们不属于中文内容导航树。随文资源使用各文章目录下的 `assets/`，公共静态资源保留在 `.vuepress/public/`。
 
+“基础与方法 → 具体问题与案例”下的专题目录包括 `multi-objective-optimization/`（多目标优化问题）和 `expensive-optimization/`（昂贵优化）；后者的 `surrogate-models/` 收录代理模型文章。
+
 ## 命名与新增内容
 
 - 目录、文章和随文图片使用英文小写连字符命名，例如 `hypothesis-testing`、`bellman-equations.md`。缩写统一小写，例如 `rag`、`lstm.md`。
