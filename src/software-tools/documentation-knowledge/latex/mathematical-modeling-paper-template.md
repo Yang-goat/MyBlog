@@ -10,6 +10,8 @@ category:
   - LaTeX
 tag:
   - 模板
+  - LaTeX
+  - 数学建模
 ---
 
 # 数学建模论文模板

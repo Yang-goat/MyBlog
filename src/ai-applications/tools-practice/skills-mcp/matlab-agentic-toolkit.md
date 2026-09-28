@@ -16,7 +16,7 @@ tag:
 
 # MATLAB Agentic Toolkit：让 AI Agent 直接操作 MATLAB
 
-MATLAB Agentic Toolkit 是 MathWorks 推出的开源工具包，用于将 Codex、Claude Code、GitHub Copilot、Gemini CLI 等 AI 编程 Agent 连接到本地 MATLAB。
+MATLAB Agentic Toolkit 是 MathWorks 推出的开源工具包，用于将 [Codex](../agent-clients/chatgpt-codex/codex-advanced-usage.md)、Claude Code、GitHub Copilot、Gemini CLI 等 AI 编程 Agent 连接到本地 MATLAB。
 
 安装后，AI Agent 不再只是根据训练数据“猜测”MATLAB 代码，而是可以调用本机 MATLAB，运行代码、检查报错、执行测试，并根据真实结果继续修改程序。
 

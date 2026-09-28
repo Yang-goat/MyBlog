@@ -9,6 +9,7 @@ category:
   - 软件教程
 tag:
   - 教程
+  - VS Code
 ---
 
 # VSCode多语言环境配置
@@ -25,7 +26,7 @@ tag:
 
 在日常开发中，我们可能会在不同的场景下使用 不同的语言、框架或插件。比如：
 
-- 写论文时需要 LaTeX 插件和编译环境
+- 写论文时需要 [LaTeX](./latex-setup.md) 插件和编译环境
 - 写程序时需要 Python 或 C++ 的工具链
 - 前端开发时需要 Node.js、Vue/React 插件
 

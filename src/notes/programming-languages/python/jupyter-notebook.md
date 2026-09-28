@@ -8,6 +8,8 @@ category:
   - Python
 tag:
   - 库
+  - Python
+  - Jupyter Notebook
 ---
 
 
@@ -29,7 +31,7 @@ tag:
 
 ### 二，安装使用
 
-安装Jupyter Notebook的前提是需要安装了Python环境（3.3版本及以上，或2.7版本）
+安装Jupyter Notebook的前提是需要安装了[Python](./python.md)环境（3.3版本及以上，或2.7版本）
 
 1，通过pip管理工具直接下载 输入指令 **pip install  jupyter notebook**
 

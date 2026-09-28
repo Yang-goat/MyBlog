@@ -9,6 +9,9 @@ category:
   - Git
 tag:
   - 教程
+  - Git
+  - GitHub
+  - SSH
 ---
 
 # Git 安装与 github ssh配置

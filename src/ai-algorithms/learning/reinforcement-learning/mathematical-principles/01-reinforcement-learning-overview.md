@@ -9,13 +9,15 @@ category:
   - 强化学习
 tag:
   - 导论
+  - 强化学习
+  - 机器学习
 ---
 
 # 强化学习概述
 
 强化学习（Reinforcement Learning, RL）研究的是智能体（agent）如何通过与环境（environment）的交互，在不断试错（trial-and-error）的过程中学习一个策略（policy），以最大化长期累积回报（expected cumulative return）。
 
-强化学习是机器学习的**第三范式**，与监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）并列。
+强化学习是[机器学习](../../../foundations/general/learning-algorithms-introduction.md)的**第三范式**，与监督学习（Supervised Learning）和无监督学习（Unsupervised Learning）并列。
 
 ---
 

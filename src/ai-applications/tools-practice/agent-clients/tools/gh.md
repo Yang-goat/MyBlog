@@ -9,14 +9,13 @@ category:
 tag:
   - GitHub
   - GitHub CLI
-  - gh
   - AI Agent
   - 命令行工具
 ---
 
 # GitHub CLI（gh）：AI Agent 使用 GitHub 的命令行入口
 
-在使用 Codex、Claude Code、OpenHands 这类 AI Agent 工具时，Agent 经常需要和 GitHub 打交道，例如：
+在使用 [Codex](../chatgpt-codex/codex-advanced-usage.md)、Claude Code、OpenHands 这类 AI Agent 工具时，Agent 经常需要和 GitHub 打交道，例如：
 
 - 克隆一个开源仓库；
 - 查看项目的 Issue、Pull Request；

@@ -8,6 +8,7 @@ category:
   - 数学
 tag:
   - 随笔
+  - 排序聚合
 ---
 
 # 共识排列
@@ -27,7 +28,7 @@ $$
 R^\*=\arg\min_R\sum_{i=1}^{m}d(R,R^{(i)})
 $$
 
-常用距离：Kendall tau 距离（交换次数）。
+常用距离：[Kendall tau 距离](./kendall-tau.md)（交换次数）。
 
 ---
 

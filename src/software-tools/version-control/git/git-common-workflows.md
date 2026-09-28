@@ -11,6 +11,7 @@ category:
   - Git
 tag:
   - 教程
+  - Git
 ---
 
 # Git 常见场景应用

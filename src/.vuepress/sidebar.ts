@@ -440,7 +440,9 @@ export default sidebar({
   ],
 
   // 知识图谱
-  "/ai-applications/knowledge-retrieval/knowledge-graphs/": [],
+  "/ai-applications/knowledge-retrieval/knowledge-graphs/": [
+    "site-knowledge-graph.html",
+  ],
 
   // 检索增强生成（RAG）
   "/ai-applications/knowledge-retrieval/rag/": [],

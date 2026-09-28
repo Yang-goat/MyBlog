@@ -9,13 +9,15 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 动态规划
 ---
 
 # 值迭代与策略迭代（Value Iteration and Policy Iteration）
 
 ##  值迭代
 
-即对贝尔曼最优公式进行迭代求解
+即对[贝尔曼最优公式](./03-bellman-optimality-equations.md)进行迭代求解
 
 ### 算法步骤
 
@@ -84,7 +86,7 @@ $$
 ​	注意，$v_{\pi_k}$ 是一个状态价值函数。
 
 :::info
-通过迭代法或矩阵计算法求贝尔曼公式
+通过迭代法或矩阵计算法求[贝尔曼公式](./02-bellman-equations.md)
 :::
 
 - 第二步：策略改进（Policy Improvement, PI）

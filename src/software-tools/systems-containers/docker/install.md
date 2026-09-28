@@ -9,6 +9,7 @@ category:
   - Docker
 tag:
   - 教程
+  - Docker
 ---
 
 # Docker 的国内下载安装教程

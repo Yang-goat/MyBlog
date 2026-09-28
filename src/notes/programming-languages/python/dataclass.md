@@ -9,6 +9,8 @@ category:
   - Python
 tag:
   - 库
+  - Python
+  - dataclass
 ---
 
 # dataclass 用法

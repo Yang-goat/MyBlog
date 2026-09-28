@@ -8,7 +8,7 @@ order: 2
 category:
   - AI 应用实践
 tag:
-  - 智能体
+  - AI Agent
   - ripgrep
   - 命令行工具
 ---

@@ -9,13 +9,16 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 策略梯度
+  - Actor-Critic
 ---
 
 # 演员-评论家方法（Actor-Critic Methods）
 
-**Actor-critic 方法仍然属于策略梯度方法。**
+**Actor-critic 方法仍然属于[策略梯度方法](./09-policy-gradient-methods.md)。**
 
-- 它们强调将策略梯度方法与价值函数方法相结合的结构。
+- 它们强调将策略梯度方法与[价值函数方法](./08-value-function-methods.md)相结合的结构。
 
 **什么是“actor”和“critic”？**
 

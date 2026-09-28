@@ -9,6 +9,8 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 随机近似
 ---
 
 # 随机近似算法（Stochastic Approximation, SA）

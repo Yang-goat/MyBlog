@@ -9,6 +9,8 @@ category:
 tag:
   - 模板
   - Python
+  - 深度学习
+  - PyTorch
 ---
 
 # 必备代码

@@ -10,6 +10,7 @@ category:
   - 软件教程
 tag:
   - 教程
+  - VS Code
 ---
 
 # 创建文件模板

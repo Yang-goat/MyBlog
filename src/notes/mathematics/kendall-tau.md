@@ -8,6 +8,7 @@ category:
   - 数学
 tag:
   - 随笔
+  - 排序距离
 ---
 
 # Kendall Tau 距离

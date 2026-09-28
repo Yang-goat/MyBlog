@@ -9,6 +9,8 @@ category:
 tag:
   - 包管理
   - 指令速查
+  - Linux
+  - APT
 ---
 
 # Ubuntu / Debian 软件管理

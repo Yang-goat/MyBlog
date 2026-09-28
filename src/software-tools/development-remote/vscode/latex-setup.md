@@ -9,6 +9,8 @@ category:
   - LaTeX
 tag:
   - 教程
+  - VS Code
+  - LaTeX
 ---
 
 # VSCode 中 Latex 环境配置

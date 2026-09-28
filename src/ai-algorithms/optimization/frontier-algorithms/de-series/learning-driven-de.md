@@ -34,7 +34,7 @@ Sharma、Komninos、López-Ibáñez 与 Kazakov 的 DE-DDQN 将双重深度 Q �
 
 ## LDE：学习参数控制策略
 
-Sun、Liu、Bäck 与 Xu 的 LDE 把参数控制建模为有限时域决策过程，通过策略梯度从一组优化问题的经验中训练控制器。作者实现提供训练与测试流程，并报告 CEC2013 / CEC2017 上的实验。
+Sun、Liu、Bäck 与 Xu 的 LDE 把参数控制建模为有限时域决策过程，通过[策略梯度](../../../learning/reinforcement-learning/mathematical-principles/09-policy-gradient-methods.md)从一组优化问题的经验中训练控制器。作者实现提供训练与测试流程，并报告 CEC2013 / CEC2017 上的实验。
 
 可以用下面的概念式理解控制回路：
 

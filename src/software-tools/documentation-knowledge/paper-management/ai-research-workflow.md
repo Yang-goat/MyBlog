@@ -17,7 +17,7 @@ tag:
 
 # Obsidian + Zotero + Codex：AI 辅助科研工作流
 
-Zotero、Obsidian 和 Codex 分别解决三个不同问题：Zotero 管论文和引用，Obsidian 管自己的理解和知识网络，Codex 帮你在本地文件基础上做整理、检查、改写和研究辅助。
+[Zotero](./zotero.md)、[Obsidian](./obsidian.md) 和 [Codex](../../../ai-applications/tools-practice/agent-clients/chatgpt-codex/codex-advanced-usage.md) 分别解决三个不同问题：Zotero 管论文和引用，Obsidian 管自己的理解和知识网络，Codex 帮你在本地文件基础上做整理、检查、改写和研究辅助。
 
 这套流程的关键不是把所有资料都丢给 AI，而是先把资料整理成可追溯的本地文本，再让 Codex 在明确范围内处理这些内容。这样既能利用 AI 的归纳和重组能力，也能保留论文来源、批注和人工判断。
 

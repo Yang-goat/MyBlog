@@ -1,12 +1,23 @@
-import { hopeTheme } from "vuepress-theme-hope";
+import { hopeTheme, type EncryptOptions } from "vuepress-theme-hope";
 
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 const searchWorkerVersion = process.env.GITHUB_SHA?.slice(0, 8) ?? "local";
 
+export const siteHostname = "https://goatyang.com";
+// 与构建期图谱共用访问规则，受保护的文章不会进入公开图谱数据。
+export const siteEncryption: EncryptOptions = {
+  config: {
+    // "/随笔/期末考试专题/计算方法选择判断": {
+    //   hint: "保密文章，请联系站主",
+    //   password: "021355",
+    // },
+  },
+};
+
 export default hopeTheme({
-  hostname: "https://goatyang.com",
+  hostname: siteHostname,
 
   author: {
     name: "Goat_Yang",
@@ -46,14 +57,7 @@ export default hopeTheme({
   },
 
   // 加密配置
-  encrypt: {
-    config: {
-      // "/随笔/期末考试专题/计算方法选择判断": {
-      //   hint: "保密文章，请联系站主",
-      //   password: "021355",
-      // },
-    },
-  },
+  encrypt: siteEncryption,
 
   // 多语言配置
   metaLocales: {

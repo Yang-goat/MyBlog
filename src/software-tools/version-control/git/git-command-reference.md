@@ -8,6 +8,7 @@ category:
   - Git
 tag:
   - 指令速查
+  - Git
 ---
 
 # Git 常用指令

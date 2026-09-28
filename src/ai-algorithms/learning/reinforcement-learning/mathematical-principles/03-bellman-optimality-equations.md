@@ -10,6 +10,7 @@ category:
 tag:
   - 贝尔曼方程
   - 最优控制
+  - 强化学习
 ---
 
 # 贝尔曼最优公式（Bellman Optimality Equation）

@@ -9,6 +9,8 @@ category:
   - Ubuntu
 tag:
   - 指令速查
+  - Linux
+  - Ubuntu
 ---
 
 # Ubuntu 常用指令

@@ -7,6 +7,8 @@ category:
   - Java
 tag:
   - 框架
+  - Java
+  - JavaFX
 ---
 
 # GUI框架 JavaFX
@@ -16,7 +18,7 @@ tag:
 两种方式构建项目：
 
 1. 使用javafxSDK+IDE
-2. 使用maven
+2. 使用[maven](./maven.md)
 
 ### module-info.java
 

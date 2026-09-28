@@ -8,6 +8,8 @@ category:
 tag:
   - 包管理
   - 教程
+  - Java
+  - Maven
 ---
 
 # maven安装教程

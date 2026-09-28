@@ -8,11 +8,13 @@ category:
   - Python
 tag:
   - 库
+  - Python
+  - pandas
 ---
 
 # Pandas
 
-Pandas 是 Python 的第三方库，为 Python 提供了高性能且易用的数据结构与数据分析工具。其核心数据结构 DataFrame 与 Series，能够高效处理各类结构化数据，广泛应用于数据清洗、分析、可视化等数据科学领域。
+Pandas 是 [Python](./python.md) 的第三方库，为 Python 提供了高性能且易用的数据结构与数据分析工具。其核心数据结构 DataFrame 与 Series，能够高效处理各类结构化数据，广泛应用于数据清洗、分析、可视化等数据科学领域。
 
 ```py
 import pandas as pd

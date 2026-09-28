@@ -33,12 +33,36 @@ importers:
       '@fortawesome/free-solid-svg-icons':
         specifier: ^7.2.0
         version: 7.2.0
+      '@types/d3-drag':
+        specifier: 3.0.7
+        version: 3.0.7
+      '@types/d3-force':
+        specifier: 3.0.10
+        version: 3.0.10
+      '@types/d3-selection':
+        specifier: 3.0.11
+        version: 3.0.11
+      '@types/d3-zoom':
+        specifier: 3.0.8
+        version: 3.0.8
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.30
         version: 2.0.0-rc.30(@types/node@24.13.1)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.50.0)(typescript@5.9.3)(yaml@2.9.0)
       '@vuepress/plugin-slimsearch':
         specifier: 2.0.0-rc.130
         version: 2.0.0-rc.130(patch_hash=dfd9a4dd549393ad1b49109365e28c53f2adcbf364f4ddbcaaabdc20ad2a1a14)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@24.13.1)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.50.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vuepress@2.0.0-rc.30(@vue/compiler-sfc@3.5.35)(@vuepress/bundler-vite@2.0.0-rc.30(@types/node@24.13.1)(@vue/compiler-sfc@3.5.35)(esbuild@0.28.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.50.0)(typescript@5.9.3)(yaml@2.9.0))(typescript@5.9.3)(vite@8.0.16(@types/node@24.13.1)(esbuild@0.28.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.35(typescript@5.9.3)))
+      d3-drag:
+        specifier: 3.0.0
+        version: 3.0.0
+      d3-force:
+        specifier: 3.0.0
+        version: 3.0.0
+      d3-selection:
+        specifier: 3.0.0
+        version: 3.0.0
+      d3-zoom:
+        specifier: 3.0.0
+        version: 3.0.0
       jquery:
         specifier: ^4.0.0
         version: 4.0.0

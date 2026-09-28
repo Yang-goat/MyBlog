@@ -9,6 +9,8 @@ category:
   - 模块化
 tag:
   - 导论
+  - JavaScript
+  - ES Modules
 ---
 
 # 概述
@@ -69,7 +71,7 @@ const Module = (function() {
 
 #### CommonJS (CJS)（服务器端）
 
-- 特点：同步加载，适用于 Node.js。
+- 特点：同步加载，适用于 [Node.js](../nodejs.md)。
 - 语法：require() 和 module.exports。
 
 ```javascript
@@ -123,5 +125,5 @@ console.log(add(1, 2));
 ## 三、模块化工具
 
 - Webpack：打包工具，支持各种模块规范，处理资源依赖。
-- Babel：将 ES Modules 转换为兼容旧浏览器的代码。
+- Babel：将 [ES Modules](./esm-specification.md) 转换为兼容旧浏览器的代码。
 - Vite：基于 ES Modules 的快速构建工具，开发阶段无需打包。

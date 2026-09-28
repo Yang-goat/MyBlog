@@ -8,6 +8,7 @@ category:
   - LaTeX
 tag:
   - 模板
+  - LaTeX
 ---
 
 # USTS本科生毕业论文模板

@@ -9,6 +9,8 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 值函数逼近
 ---
 
 # 值函数方法（Value Function Methods）
@@ -167,7 +169,7 @@ $$
 :::info
 - 平稳分布也称为**稳态分布（steady-state distribution）**或**极限分布（limiting distribution）**
 - 它是理解**值函数方法（value function method）**的关键；
-- 它对下一讲中的**策略梯度方法（policy gradient method）**也非常重要。
+- 它对下一讲中的**[策略梯度方法](./09-policy-gradient-methods.md)（policy gradient method）**也非常重要。
 :::
 
 **平稳分布的估计方法示例**
@@ -428,7 +430,7 @@ $$
 
 ### 基于值函数的Sarsa
 
-使用值函数逼近的 **Sarsa 算法**（SARSA with function approximation）如下：
+使用值函数逼近的 **[Sarsa 算法](./07-temporal-difference-methods.md)**（SARSA with function approximation）如下：
 
 $$
 w_{t+1} = w_t + \alpha_t \left[ r_{t+1} + \gamma \hat{q}(s_{t+1}, a_{t+1}, w_t) - \hat{q}(s_t, a_t, w_t) \right] \nabla_w \hat{q}(s_t, a_t, w_t)

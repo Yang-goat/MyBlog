@@ -9,13 +9,15 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 策略梯度
 ---
 
 # 策略梯度算法（Policy Gradient Methods）
 
 在本文中，我们将从
 - 基于价值的方法转向基于策略的方法
-- 基于价值函数的方法转向策略函数方法（或称为策略梯度方法）
+- [基于价值函数的方法](./08-value-function-methods.md)转向策略函数方法（或称为策略梯度方法）
 
 ## 策略表示：从表格到函数
 
@@ -357,7 +359,7 @@ $$
 \theta_{t+1} = \theta_t + \alpha \nabla_\theta \ln \pi(a_t | s_t, \theta_t) \underbrace{q_t(s_t, a_t)}_{\textcolor{blue}{\text{估计值}}}
 $$
 
-- 如果 $q_\pi(s_t, a_t)$ 由**蒙特卡洛估计**获得，该算法有一个专属名字：**REINFORCE**
+- 如果 $q_\pi(s_t, a_t)$ 由[**蒙特卡洛估计**](./05-monte-carlo-methods.md)获得，该算法有一个专属名字：**REINFORCE**
 - REINFORCE 是最早且最简单的策略梯度算法之一。
 - 很多其他策略梯度方法（如 actor-critic 方法）都可以视作对 REINFORCE 的扩展。
 

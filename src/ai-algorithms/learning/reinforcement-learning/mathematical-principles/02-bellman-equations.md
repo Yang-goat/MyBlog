@@ -10,6 +10,7 @@ category:
 tag:
   - 贝尔曼方程
   - 理论
+  - 强化学习
 ---
 
 # 贝尔曼公式（Bellman Equation）

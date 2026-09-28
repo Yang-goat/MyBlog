@@ -9,6 +9,8 @@ category:
   - Python
 tag:
   - 库
+  - Python
+  - 类型提示
 ---
 
 # 类型提示

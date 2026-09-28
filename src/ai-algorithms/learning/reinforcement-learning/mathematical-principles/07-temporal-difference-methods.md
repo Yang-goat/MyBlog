@@ -9,11 +9,13 @@ category:
   - 强化学习
 tag:
   - 算法
+  - 强化学习
+  - 时序差分
 ---
 
 # 时序差分方法（temporal-difference（TD）learning）
 
-TD算法与MC算法最大的不同在于它是增量式的。
+TD算法与[MC算法](./05-monte-carlo-methods.md)最大的不同在于它是增量式的。
 
 TD算法指一大类强化学习算法，也指一个特殊的进行状态值估计的算法 
 
@@ -49,7 +51,7 @@ $$
 - 在时间 $t$，仅更新访问到的状态 $s_t$ 的价值，而未访问状态 $s \ne s_t$ 的值保持不变。
 - 式 $(2)$ 的更新将在上下文清晰时省略。
 
-**相当于在没有模型的情况下求解贝尔曼公式**
+**相当于在没有模型的情况下求解[贝尔曼公式](./02-bellman-equations.md)**
 
 ### 算法性质
 
@@ -279,7 +281,7 @@ $$
   
 - **Sarsa 算法在数学上是做什么的？** 
   
-  Sarsa 表示它是一个随机近似算法，用于求解如下方程：
+  Sarsa 表示它是一个[随机近似算法](./06-stochastic-approximation.md)，用于求解如下方程：
   $$
   q_\pi(s, a) = \mathbb{E} \left[ R + \gamma q_\pi(S', A') \mid s, a \right], \quad \forall s, a
   $$

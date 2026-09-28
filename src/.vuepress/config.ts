@@ -2,7 +2,8 @@ import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import { viteBundler } from '@vuepress/bundler-vite'
 
-import theme from "./theme.js";
+import theme, { siteHostname, siteEncryption } from "./theme.js";
+import knowledgeGraphPlugin from "./knowledge-graph/plugin.js";
 
 const __dirname = getDirname(import.meta.url);
 
@@ -22,6 +23,11 @@ export default defineUserConfig({
   description: "Goat_Yang 的博客",
 
   theme,
+  plugins: [knowledgeGraphPlugin({
+    hostname: siteHostname,
+    encryptedPaths: Object.keys(siteEncryption.config ?? {}),
+    globallyEncrypted: siteEncryption.global === true,
+  })],
 
   // 和 PWA 一起启用
   // shouldPrefetch: false,

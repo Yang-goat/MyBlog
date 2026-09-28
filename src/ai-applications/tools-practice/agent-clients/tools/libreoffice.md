@@ -8,7 +8,7 @@ order: 3
 category:
   - AI 应用实践
 tag:
-  - 智能体
+  - AI Agent
   - LibreOffice
   - 文档处理
 ---
