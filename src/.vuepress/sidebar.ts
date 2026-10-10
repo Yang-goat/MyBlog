@@ -745,7 +745,9 @@ export default sidebar({
   // 开源项目推荐
   "/software-tools/open-source-projects/": [
     "bulk-crap-uninstaller.html",
-    "markitdown.html"
+    "markitdown.html",
+    "humanizer.html",
+    "artcraft.html"
   ],
 
   // 外站
