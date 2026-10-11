@@ -742,12 +742,13 @@ export default sidebar({
     "usts-undergraduate-thesis-template.html"
   ],
 
-  // 开源项目推荐
+  // 开源项目推荐：按项目标题字典序排列，与目录页一致。
   "/software-tools/open-source-projects/": [
+    "artcraft.html",
     "bulk-crap-uninstaller.html",
-    "markitdown.html",
     "humanizer.html",
-    "artcraft.html"
+    "markitdown.html",
+    "scientific-agent-skills.html"
   ],
 
   // 外站
