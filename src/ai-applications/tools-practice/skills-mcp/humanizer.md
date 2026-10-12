@@ -1,9 +1,11 @@
 ---
+redirectFrom:
+  - "/software-tools/open-source-projects/humanizer.html"
 title: Humanizer：辅助 AI 论文写作的文风校对技能
 icon: pen-to-square
 date: 2026-10-10
 category:
-  - github项目
+  - AI 实践
 tag:
   - GitHub
   - Agent Skills

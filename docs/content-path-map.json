@@ -1,6 +1,8 @@
 {
   "description": "2026-09-18 内容目录迁移；src 相对路径，旧页面通过 redirectFrom 跳转。",
   "files": {
+    "software-tools/open-source-projects/humanizer.md": "ai-applications/tools-practice/skills-mcp/humanizer.md",
+    "software-tools/open-source-projects/scientific-agent-skills.md": "ai-applications/tools-practice/skills-mcp/scientific-agent-skills.md",
     "ai-ml/base/Ablation.md": "ai-algorithms/foundations/general/ablation-study.md",
     "ai-ml/base/Introduction-to-Learning-Algorithms.md": "ai-algorithms/foundations/general/learning-algorithms-introduction.md",
     "ai-ml/base/InverseTransformSampling.md": "ai-algorithms/foundations/general/inverse-transform-sampling.md",

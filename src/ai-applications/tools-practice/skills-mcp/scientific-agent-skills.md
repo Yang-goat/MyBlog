@@ -1,9 +1,11 @@
 ---
+redirectFrom:
+  - "/software-tools/open-source-projects/scientific-agent-skills.html"
 title: Scientific Agent Skills：覆盖科研全流程的 AI 技能库
 icon: flask
 date: 2026-10-11
 category:
-  - github项目
+  - AI 实践
 tag:
   - GitHub
   - Agent Skills

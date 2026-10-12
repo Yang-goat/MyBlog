@@ -507,7 +507,9 @@ export default sidebar({
   // Skills、MCP 与插件
   "/ai-applications/tools-practice/skills-mcp/": [
     "matlab-agentic-toolkit.html",
-    "research-reproduction-workflow.html"
+    "research-reproduction-workflow.html",
+    "humanizer.html",
+    "scientific-agent-skills.html"
   ],
 
   // AI 应用话题
@@ -746,9 +748,7 @@ export default sidebar({
   "/software-tools/open-source-projects/": [
     "artcraft.html",
     "bulk-crap-uninstaller.html",
-    "humanizer.html",
-    "markitdown.html",
-    "scientific-agent-skills.html"
+    "markitdown.html"
   ],
 
   // 外站
