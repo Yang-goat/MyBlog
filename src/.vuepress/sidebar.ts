@@ -85,7 +85,8 @@ export default sidebar({
     "addnorm.html",
     "essential-code.html",
     "lstm.html",
-    "gru.html"
+    "gru.html",
+    "pinn.html"
   ],
 
   // 迁移学习
