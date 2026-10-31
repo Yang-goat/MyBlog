@@ -26,10 +26,15 @@ projects:
     desc: 面向 Coding Agent 的论文复现与独立审计工作流
     link: https://github.com/Yang-goat/research-reproduction-skills
 
-  - icon: dice
-    name: 海克斯麻将主持台
-    desc: 配合实体四人麻将使用的电子卡牌主持台
-    link: https://goatyang.com/hex-mahjong/
+  - icon: chart-line
+    name: Codex 用量监控
+    desc: Codex 与 ChatGPT Work 的 Token、上下文和账号额度监控
+    link: https://github.com/Yang-goat/codex-usage-monitor
+
+  # - icon: dice
+  #   name: 海克斯麻将主持台
+  #   desc: 配合实体四人麻将使用的电子卡牌主持台
+  #   link: https://goatyang.com/hex-mahjong/
 
   # - icon: newspaper
   #   name: 文章名称
