@@ -31,10 +31,11 @@ projects:
     desc: Codex 与 ChatGPT Work 的 Token、上下文和账号额度监控
     link: https://github.com/Yang-goat/codex-usage-monitor
 
-  - icon: screwdriver-wrench
-    name: 赛博杂货铺
-    desc: 在赛博朋克街区经营小店，交易旧货、修复设备与收藏生活记忆
-    link: /notes/cyber-shop/
+  # 测试版本暂不展示
+  # - icon: screwdriver-wrench
+  #   name: 赛博杂货铺
+  #   desc: 在赛博朋克街区经营小店，交易旧货、修复设备与收藏生活记忆
+  #   link: /notes/cyber-shop/
 
   # - icon: dice
   #   name: 海克斯麻将主持台
