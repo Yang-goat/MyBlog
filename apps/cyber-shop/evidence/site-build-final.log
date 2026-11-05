@@ -49,7 +49,7 @@ computing gzip size...
 ../../src/.vuepress/dist/cyber-shop/assets/phaser-BHVmS0Eu.js            1,198.79 kB │ gzip: 319.33 kB
 
 ✓ built in 614ms
-[plugin builtin:vite-reporter] 
+[plugin builtin:vite-reporter]
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
