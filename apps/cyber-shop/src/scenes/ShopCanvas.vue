@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref, watch } from 'vue';
 import Phaser from 'phaser';
 import { CHARACTERS, ITEMS } from '../content';
 import { state, modal, selectedItem, selectedOrder, dispatch, listen, reducedMotion } from '../ui/store';
-const props = defineProps<{ blocked: boolean }>();
+const props = defineProps<{ blocked: boolean; sceneryOnly?: boolean }>();
 const host = ref<HTMLDivElement>(); const loading = ref(0); const ready = ref(false); const failed = ref<string[]>([]);
 let game: Phaser.Game | undefined; let scene: ShopScene | undefined;
 let stopWatch: (() => void) | undefined; let stopListen: (() => void) | undefined;
@@ -28,8 +28,12 @@ class ShopScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor('#122b30');
     if (this.textures.exists('scene-shop')) {
       const image = this.add.image(720, 450, 'scene-shop');
-      image.setScale(Math.max(1440 / image.width, 900 / image.height));
+      if (props.sceneryOnly) {
+        const fit = () => image.setPosition(this.scale.width / 2, this.scale.height / 2).setDisplaySize(this.scale.width, this.scale.height);
+        fit(); this.scale.on('resize', fit);
+      } else image.setScale(Math.max(1440 / image.width, 900 / image.height));
     }
+    if (props.sceneryOnly) { this.renderState(); return; }
     this.add.rectangle(720, 825, 1440, 150, 0x061217, 0.22);
     this.lamp = this.add.ellipse(1030, 300, 270, 170, 0xe8a666, 0.055).setBlendMode(Phaser.BlendModes.ADD);
     this.tweens.add({ targets: this.lamp, alpha: { from: 0.04, to: 0.12 }, duration: 2400, yoyo: true, repeat: -1 });
@@ -56,6 +60,7 @@ class ShopScene extends Phaser.Scene {
   renderState() {
     if (!this.sys.isActive()) return;
     this.input.enabled = !props.blocked;
+    if (props.sceneryOnly) return;
     const visitor = state.value.visitors[state.value.visitorIndex];
     const person = CHARACTERS.find(c => c.id === visitor?.characterId);
     const key = visitor && !visitor.resolved ? visitor.id : 'empty';
@@ -91,7 +96,7 @@ class ShopScene extends Phaser.Scene {
     });
   }
   effect(kind: string) {
-    if (reducedMotion.value) return;
+    if (reducedMotion.value || props.sceneryOnly) return;
     const color = kind === 'repair' ? 0xffc88c : 0x9fffe5;
     for (let n = 0; n < 9; n++) {
       const particle = this.add.circle(1040, 660, 2 + (n % 3), color).setDepth(30);
@@ -104,7 +109,7 @@ class ShopScene extends Phaser.Scene {
 
 onMounted(() => {
   game = new Phaser.Game({ type: Phaser.AUTO, parent: host.value, width: 1440, height: 900, backgroundColor: '#0b242b', transparent: false,
-    scale: { mode: Phaser.Scale.ENVELOP, autoCenter: Phaser.Scale.CENTER_BOTH }, scene: ShopScene,
+    scale: { mode: props.sceneryOnly ? Phaser.Scale.RESIZE : Phaser.Scale.ENVELOP, autoCenter: Phaser.Scale.CENTER_BOTH }, scene: ShopScene,
     render: { antialias: true, roundPixels: false, preserveDrawingBuffer: true }, audio: { noAudio: true }, banner: false });
   window.advanceTime = async (ms: number) => { if (!game || !Number.isFinite(ms) || ms < 0) return; game.loop.stop(); const steps = Math.min(600, Math.max(1, Math.ceil(ms / (1000 / 60)))); const delta = Math.min(ms, 10000) / steps; for (let i = 0; i < steps; i++) game.step(performance.now() + i * delta, delta); };
   stopWatch = watch([state, () => props.blocked], () => scene?.renderState());

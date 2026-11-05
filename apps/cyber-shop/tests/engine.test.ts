@@ -1,9 +1,11 @@
+import { createReadyGame as createGame } from './helpers';
 import { describe, expect, it } from 'vitest';
-import { applyAction, createGame, visibleState, itemValue, stockUsage, capacity, attraction, tradeQuote } from '../src/game/engine';
+import { applyAction, visibleState, itemValue, stockUsage, capacity, attraction, tradeQuote } from '../src/game/engine';
 import { BALANCE } from '../src/game/balance';
 import { CATEGORIES, CHARACTERS, FAULTS, ITEMS, SKILLS } from '../src/content';
 import { act, repairActive, playToWin, normalDay, starterItem } from './helpers';
 import { exportSave, importSave, validateState } from '../src/persistence/storage';
+import { warehouseLayout } from '../src/game/warehouse';
 
 describe('authority, deterministic trade and boundaries', () => {
   it('keeps the input immutable and fixed seeds reproducible without exposing hidden facts', () => {
@@ -31,10 +33,16 @@ describe('authority, deterministic trade and boundaries', () => {
     let s = createGame(2); s.cash = 50000; // Isolate trade coverage; no progression/victory flag is modified.
     const seen = new Set<string>();
     for (let day = 0; day < 8; day++) {
-      if (s.phase === 'closed') s = act(s, { type: 'openDay' });
+      if (s.phase === 'closed') { s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); }
       for (let n = 0; n < 7; n++) {
         const v = s.visitors[s.visitorIndex]!;
-        if (v.kind === 'seller' && v.item && stockUsage(s) + ITEMS.find(d => d.id === v.item!.definitionId)!.size <= capacity(s)) s = act(s, { type: 'acceptTrade', visitorId: v.id });
+        if (v.kind === 'seller' && v.item && stockUsage(s) + ITEMS.find(d => d.id === v.item!.definitionId)!.size <= capacity(s)) {
+          s = act(s, { type: 'acceptTrade', visitorId: v.id });
+          const bought = s.items.find(i => i.id === v.item!.id)!;
+          expect(bought.location).toBe('counter');
+          const at = warehouseLayout(s.items.map(i => i.id === bought.id ? { ...i, location: 'stock' } : i), capacity(s)).positions[bought.id]!;
+          s = act(s, { type: 'moveStock', itemId: bought.id, ...at });
+        }
         else if (v.kind === 'buyer') {
           const item = s.items.find(i => i.location === 'stock' && ITEMS.find(d => d.id === i.definitionId)!.category === v.category);
           if (item) { const quote = tradeQuote(s, v, item); const before = s.cash; s = act(s, { type: 'acceptTrade', visitorId: v.id, itemId: item.id }); expect(s.cash - before).toBe(quote); seen.add(v.category); expect(applyAction(s, { type: 'acceptTrade', visitorId: v.id, itemId: item.id }).ok).toBe(false); }
@@ -98,7 +106,7 @@ describe('repair, collections and progression', () => {
   });
   it('has an explicit failure after the grace period and no mainline rent after ownership', () => {
     let s = createGame(4); s.cash = 0; s.items = [];
-    for (let n = 0; n <= BALANCE.graceDays; n++) { if (s.phase === 'closed') s = act(s, { type: 'openDay' }); s = act(s, { type: 'closeDay' }); }
+    for (let n = 0; n <= BALANCE.graceDays; n++) { if (s.phase === 'closed') { s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); } s = act(s, { type: 'closeDay' }); }
     expect(s.phase).toBe('failed'); expect(applyAction(s, { type: 'openDay' }).ok).toBe(false);
     let endless = act(playToWin('precision', 6), { type: 'continueEndless' }); endless = act(endless, { type: 'openDay' }); const before = endless.cash; endless = act(endless, { type: 'closeDay' }); expect(before - endless.cash).toBe(BALANCE.maintenance);
   });

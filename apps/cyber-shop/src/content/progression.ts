@@ -28,7 +28,7 @@ const branches: { id: string; tree: 'general' | 'repair'; name: string; nodes: S
     ['定向采购', 'targetSupply', 1, '预约目标品类，让下一营业日的货源更贴合经营方向。'],
   ] },
   { id: 'business', tree: 'general', name: '经营', nodes: [
-    ['库存规划', 'stockCapacity', 6, '库存增加 6 容量；重配失去加成时保留已有物品。'],
+    ['库存规划', 'stockCapacity', 6, '库存增加 24 格；重配失去加成时保留已有物品。'],
     ['保存效率', 'preservation', 2, '保鲜处理多延长 2 个营业日，减少临期损耗。'],
     ['快捷整理与补货', 'restock', .15, '解锁高效整理，购买耗材享有 15% 补货优惠。'],
   ] },
@@ -76,7 +76,7 @@ const equipmentRows: EquipmentRow[] = [
   ['neural-supplies', '神经检测耗材', 'material', 55, 'neuralSupply', 1, '神经接口清洁与精密校准使用的专用耗材。'],
   ['preserve-pack', '保鲜包', 'material', 22, 'preserveSupply', 1, '延长一件食品的有效保存时间；过期食品不能重新变鲜。'],
   ['workbench', '工作台', 'facility', 300, 'bench', 1, '升级工位与夹持空间，提高维修作业效率。'],
-  ['stock-rack', '库存架', 'facility', 260, 'storage', 8, '增加 8 格库存容量；自有物品与客户工单分开管理。'],
+  ['stock-rack', '库存架', 'facility', 260, 'storage', 8, '增加 32 格库存容量；自有物品与客户工单分开管理。'],
   ['cold-storage', '冷藏柜', 'facility', 380, 'cold', 2, '为食品提供稳定冷藏，延长日结时的保存期限。'],
   ['display-case', '收藏展示柜', 'facility', 450, 'showcase', 3, '展示位从 3 格扩展到 6 格，展品退出普通售卖。'],
 ];

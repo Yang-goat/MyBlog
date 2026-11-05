@@ -1,5 +1,6 @@
+import { createReadyGame as createGame } from './helpers';
 import { describe, expect, it, vi } from 'vitest';
-import { createGame, applyAction } from '../src/game/engine';
+import { applyAction } from '../src/game/engine';
 import { exportSave, importSave, loadSave, saveGame, replaceSave, saveDayBackup, replaceDayBackup, restoreDayBackup, SAVE_KEY, DAY_BACKUP_KEY, type StorageLike } from '../src/persistence/storage';
 import { act, repairActive } from './helpers';
 

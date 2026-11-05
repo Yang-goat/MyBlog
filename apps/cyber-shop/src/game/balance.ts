@@ -1,7 +1,7 @@
 /** Playtest values: all money is integer credits, all work is discrete half-hours. */
 export const BALANCE = {
   version: 'demo-2', initialCash: 1200, shopPrice: 12000, hours: 12, visitors: 7,
-  stock: 18, showcase: 3, maxShowcase: 6, workstations: 2,
+  stock: 36, showcase: 3, maxShowcase: 6, workstations: 2,
   rent: 65, maintenance: 20, graceDays: 3, xpPerLevel: 180, initialPoints: 0,
   tradeXp: 8, repairXp: 24, examXp: 45, dayXp: 5, inspectionHours: .5,
   diagnosisHours: 1, verificationHours: 1, minimumOperationHours: .5,

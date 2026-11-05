@@ -2,6 +2,8 @@ import { applyAction, createGame, isMaster, questProgress } from '../src/game/en
 import { CERTIFICATES, FAULTS, ITEMS, QUESTS, SKILLS } from '../src/content';
 import type { Action, GameState } from '../src/game/types';
 
+export function createReadyGame(seed=42){return applyAction(createGame(seed),{type:'callVisitor'}).state;}
+
 export function act(s: GameState, action: Action) {
   const result = applyAction(s, action);
   if (!result.ok) throw new Error(`${action.type}: ${result.events.map(e => e.text).join(' ')} [day ${s.day}, hours ${s.hours}]`);
@@ -31,6 +33,7 @@ export const buildPath = (branch: string) => {
 export function normalDay(s: GameState, branch: string, learnAll = false) {
   if (s.phase === 'closed') s = act(s, { type: 'openDay' });
   if (s.phase !== 'open') return s;
+  if(s.visitorArrived===false)s=act(s,{type:'callVisitor'});
   const chooseSkills = () => {
     const ids = learnAll ? [...buildPath(branch), ...SKILLS.map(n => n.id)] : buildPath(branch);
     for (const skillId of ids) { const r = applyAction(s, { type: 'learn', skillId }); if (r.ok) s = r.state; }

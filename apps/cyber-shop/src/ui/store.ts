@@ -46,7 +46,7 @@ export function dispatch(action: Action) {
 }
 export function inspectSave() { const saved = loadSave(); hasSave.value = !!saved.state; saveError.value = saved.error ?? ''; }
 export function begin(seed = 20261105) {
-  state.value = createGame(seed); const result = replaceSave(state.value); saveError.value = result.error ?? '';
+  state.value = { ...createGame(seed), tutorial: { step: 0, skipped: false }, conversations: {} }; const result = replaceSave(state.value); saveError.value = result.error ?? '';
   backupError.value = replaceDayBackup(state.value).error ?? ''; saveError.value = [result.error, backupError.value].filter(Boolean).join('；'); hasSave.value = result.ok; started.value = true; modal.value = ''; unlockAudio();
 }
 export function resume() { const saved = loadSave(); if (saved.state) { state.value = saved.state; started.value = true; modal.value = ''; unlockAudio(); } else notify(saved.error ?? '还没有存档。'); }

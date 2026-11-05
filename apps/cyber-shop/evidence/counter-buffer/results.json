@@ -1,0 +1,9 @@
+{
+  "bufferWithoutGuest": true,
+  "warehouseCellReused": true,
+  "outsideDropRejected": true,
+  "persistsAfterReload": true,
+  "closeBlockedUntilStored": true,
+  "noFeesWhileBlocked": true,
+  "errors": []
+}

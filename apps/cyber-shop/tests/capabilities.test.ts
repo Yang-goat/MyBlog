@@ -1,5 +1,6 @@
+import { createReadyGame as createGame } from './helpers';
 import { describe, expect, it } from 'vitest';
-import { applyAction, createGame, attraction, capacity, estimateValue, itemValue, tradeQuote, visibleState } from '../src/game/engine';
+import { applyAction, attraction, capacity, estimateValue, itemValue, tradeQuote, visibleState } from '../src/game/engine';
 import { FAULTS, ITEMS, THEMES } from '../src/content';
 import type { GameState } from '../src/game/types';
 import { act, repairActive, starterItem, playToWin } from './helpers';
@@ -28,7 +29,7 @@ describe('all skill capabilities change an actionable outcome', () => {
   });
   it('all supply skills expose tomorrow planning, batch information and targeted stock', () => {
     let s = createGame(12); expect(visibleState(s).upcoming).toBeUndefined(); s.skills = ['supply-1', 'supply-2', 'supply-3']; expect(visibleState(s).upcoming!.length).toBe(6);
-    s = act(s, { type: 'appoint', category: 'energy' }); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); expect(s.visitors[1]!.category).toBe('energy'); expect(s.visitors[1]!.item!.known).toContain('batch');
+    s = act(s, { type: 'appoint', category: 'energy' }); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); expect(s.visitors[1]!.category).toBe('energy'); expect(s.visitors[1]!.item!.known).toContain('batch');
   });
   it('all business skills change capacity, preservation and priced replenishment', () => {
     let s = createGame(10); const base = capacity(s); s.skills = ['business-1', 'business-2', 'business-3']; expect(capacity(s)).toBe(base + 6);
@@ -36,7 +37,7 @@ describe('all skill capabilities change an actionable outcome', () => {
     const cash = s.cash; s = act(s, { type: 'buyEquipment', equipmentId: 'electronic-parts', count: 2 }); expect(cash - s.cash).toBe(Math.round(64 * .85)); const hours = s.hours; s = act(s, { type: 'sort' }); expect(s.hours).toBe(hours);
   });
   it('all collection skills change display quality, themes and the actual visiting buyer', () => {
-    let s = displayTheme(createGame(31)); const normal = attraction(s); s.skills = ['collection-1']; const catalog = attraction(s); expect(catalog).toBeGreaterThan(normal); s.skills.push('collection-2'); expect(attraction(s)).toBeGreaterThan(catalog); s.skills.push('collection-3'); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); expect(s.visitors[5]!.kind).toBe('buyer'); expect(s.visitors[5]!.category).toBe('antique');
+    let s = displayTheme(createGame(31)); const normal = attraction(s); s.skills = ['collection-1']; const catalog = attraction(s); expect(catalog).toBeGreaterThan(normal); s.skills.push('collection-2'); expect(attraction(s)).toBeGreaterThan(catalog); s.skills.push('collection-3'); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); expect(s.visitors[5]!.kind).toBe('buyer'); expect(s.visitors[5]!.category).toBe('antique');
   });
   it('precision skills save diagnosis/retest work, widen calibration tolerance and raise service rewards', () => {
     const basic = withFault('clock-drift'); const skilled = withFault('clock-drift', ['precision-1', 'precision-2', 'precision-3', 'precision-4']);
@@ -83,7 +84,7 @@ describe('late-game and material accounting', () => {
     let receivedRegulated = false;
     for (let seed = 1; seed <= 16 && !receivedRegulated; seed++) {
       let s = createGame(seed); s.chapter = 3; s.certificates.push('industrial', 'neural'); s.trained.push('industrial', 'neural'); s.day = 2;
-      s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' });
+      s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' });
       const repair = s.visitors[3]!; if (!repair.item || !ITEMS.find(i => i.id === repair.item!.definitionId)?.regulated) continue;
       receivedRegulated = true; expect(s.licenses).toEqual([]); expect(repair.kind).toBe('repair');
       while (s.visitorIndex < 3) { s = act(s, { type: 'reject', visitorId: s.visitors[s.visitorIndex]!.id }); s = act(s, { type: 'nextVisitor' }); }
@@ -99,13 +100,13 @@ describe('late-game and material accounting', () => {
     const quote = tradeQuote(s, buyer, item); expect(quote).toBeLessThanOrEqual(Math.round(itemValue(s, item) * limit / 10000)); const before = s.cash; s = act(s, { type: 'acceptTrade', visitorId: buyer.id, itemId: item.id }); expect(s.cash - before).toBe(quote); expect(s.visitors[s.visitorIndex]!.limit).toBe(limit);
   });
   it('counts only the matching challenge activity and expires without confiscating property', () => {
-    let s = act(playToWin('precision', 32), { type: 'continueEndless' }); s = act(s, { type: 'openDay' }); const before = s.cash; s = act(s, { type: 'challenge', id: 'rare-trade' }); expect(s.cash).toBe(before - 150); s = act(s, { type: 'acceptRepair' }); s = repairActive(s); expect(s.challenge!.progress).toBe(0);
+    let s = act(playToWin('precision', 32), { type: 'continueEndless' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); const before = s.cash; s = act(s, { type: 'challenge', id: 'rare-trade' }); expect(s.cash).toBe(before - 150); s = act(s, { type: 'acceptRepair' }); s = repairActive(s); expect(s.challenge!.progress).toBe(0);
     const displayIds = s.items.filter(i => i.location === 'display').map(i => i.id);
-    for (let i = 0; i < 6; i++) { s = act(s, { type: 'closeDay' }); if (i < 5) s = act(s, { type: 'openDay' }); }
+    for (let i = 0; i < 6; i++) { s = act(s, { type: 'closeDay' }); if (i < 5) { s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); } }
     expect(s.challenge).toBeNull(); expect(s.victory).toBe(true); expect(s.items.filter(i => i.location === 'display').map(i => i.id)).toEqual(displayIds);
   });
   it('settles a rare-trade order exactly once after two actual rare buyer transactions', () => {
-    let s = act(playToWin('precision', 22), { type: 'continueEndless' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'challenge', id: 'rare-trade' });
+    let s = act(playToWin('precision', 22), { type: 'continueEndless' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); s = act(s, { type: 'challenge', id: 'rare-trade' });
     const template = structuredClone(s.items[0]!);
     for (let n = 0; n < 2; n++) {
       const item = { ...structuredClone(template), id: `rare-fixture-${n}`, definitionId: 'catalyst-core', owner: 'player' as const, location: 'stock' as const, authentic: true, faults: [] }; s.items.push(item);

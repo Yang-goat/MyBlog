@@ -70,11 +70,21 @@ const rows: Record<CategoryId, ItemRow[]> = {
   ],
 };
 
+// Footprints reflect the packaged object, not its price or rarity. One legacy capacity unit = four cells.
+const footprints: Record<string, [number, number]> = {
+  'pocket-com': [1,2], 'portable-terminal': [3,2], 'sweeper-drone': [3,3], 'servo-arm': [3,5], 'industrial-sensor': [2,2], 'air-circulator': [2,4],
+  'battery-pack': [2,2], 'capacitor-array': [3,2], 'power-module': [3,3], 'alloy-plate': [5,2], 'insulation-roll': [2,3], 'catalyst-core': [1,2],
+  'purified-water': [1,3], 'synth-coffee': [1,2], 'algae-ration': [2,2], 'culture-starter': [2,2], 'nutrient-fluid': [2,3], 'bio-gel': [1,2],
+  'haptic-module': [2,2], 'optical-eye': [1,1], 'neural-bridge': [3,1], 'memory-buffer': [2,1], 'diagnostic-unit': [3,3], 'infusion-pump': [2,4],
+  'data-chip': [1,1], 'encrypted-box': [3,2], 'holo-film': [2,1], 'music-tape': [2,1], 'game-cartridge': [2,2], 'memory-crystal': [1,1],
+  'mechanical-watch': [2,2], 'early-core': [3,3], 'film-camera': [3,2], 'spectrum-jewel': [1,2], 'old-city-badge': [1,1], 'bionic-toy': [3,4],
+};
 export const ITEMS: ItemDefinition[] = (Object.keys(rows) as CategoryId[]).flatMap(category => rows[category].map(row => {
   const [id, name, price, size, chapter, rarity, description, certificate, regulated, shelfLife] = row;
   const valueMetric = category === 'energy' ? (['battery-pack', 'capacitor-array', 'power-module'].includes(id) ? 'capacity' as const : 'purity' as const) : undefined;
   const actions = ['inspect', 'trade', 'display'];
   if (certificate) actions.push('repair');
   if (category === 'food') actions.push('preserve');
-  return { id, name, category, price, size, chapter, rarity, description, certificate, regulated, shelfLife, valueMetric, states: states[category], actions, preferences: preferences[category], image: `${id}.webp` };
+  const [width, height] = footprints[id]!;
+  return { id, name, category, price, size: width * height / 4, footprint: { width, height }, chapter, rarity, description, certificate, regulated, shelfLife, valueMetric, states: states[category], actions, preferences: preferences[category], image: `${id}.webp` };
 }));

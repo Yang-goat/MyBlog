@@ -3,13 +3,16 @@ export type CertificateId = 'civil' | 'industrial' | 'neural' | 'antique';
 export type Operation = 'clean' | 'replace' | 'calibrate';
 export interface CategoryDefinition { id: CategoryId; name: string; description: string; tradeRule: string }
 export interface ItemDefinition {
+  footprint: { width: number; height: number };
   id: string; name: string; category: CategoryId; price: number; size: number; chapter: number;
   certificate?: CertificateId; regulated?: boolean; shelfLife?: number; rarity: number; valueMetric?: 'capacity' | 'purity';
   description: string; states: string[]; actions: string[]; preferences: string[]; image: string;
 }
 export interface FaultDefinition { id: string; name: string; symptom: string; operation: Operation; module: string; target: number; material: string; hours: number; certificate: CertificateId }
 export interface ItemInstance {
-  id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop';
+  id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
+  grid?: { x: number; y: number; rotated: boolean };
+  counterGrid?: { x: number; y: number; rotated: boolean };
   condition: number; integrity: number; capacity: number; purity: number; authentic: boolean; originality: number;
   provenance: string; compatibility: string; expiresDay: number | null; faults: string[]; known: string[];
   cost: number; acquiredDay: number; preservedUntil: number;
@@ -24,10 +27,14 @@ export interface QuestDefinition { id: string; name: string; character: string; 
 export interface CollectionTheme { id: string; name: string; description: string; items: string[]; bonus: number }
 export interface ProfessionDefinition { id: string; name: string; implemented: boolean; masterySkills: string[]; finalMilestone: string; description: string }
 export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
-export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
+export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean }
 export interface LedgerEntry { id: number; day: number; kind: string; amount: number; itemId?: string; note: string }
 export interface GameState {
+  visitorArrived?: boolean;
+  storageUpgrades?: { backpack: number; crate: number };
+  tutorial?: { step: number; skipped: boolean };
+  conversations?: Record<string, number>;
   version: number; contentVersion: string; balanceVersion: string; seed: number; rng: number; serial: number;
   day: number; chapter: number; phase: 'open' | 'closed' | 'won' | 'ended' | 'failed'; cash: number; hours: number; debt: number; grace: number;
   xp: number; level: number; points: number; skills: string[]; certificates: CertificateId[]; trained: CertificateId[]; licenses: string[];
@@ -38,6 +45,13 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type: 'callVisitor' }
+ | { type: 'buyStorage'; kind: 'backpack' | 'crate' }
+ | { type: 'tradeBatch'; visitorId: string; itemIds: string[]; amount?: number; placements?: Record<string, {x:number;y:number;rotated:boolean}> }
+ | { type: 'moveCounter'; itemId: string; x: number; y: number; rotated: boolean }
+ | { type: 'moveStock'; itemId: string; x: number; y: number; rotated: boolean }
+ | { type: 'talk'; visitorId: string }
+ | { type: 'tutorial'; step: number; skipped?: boolean }
  | { type: 'inspect'; itemId?: string; visitorId?: string; method?: 'basic' | 'scan' | 'serial' }
  | { type: 'offer'; visitorId: string; amount: number; itemId?: string }
  | { type: 'acceptTrade'; visitorId: string; itemId?: string }

@@ -1,0 +1,11 @@
+{
+  "manualPlacement": true,
+  "unownedRejected": true,
+  "purchaseThenStore": true,
+  "reload": true,
+  "saleFromWarehouse": true,
+  "dayLoop": true,
+  "clickRotatePlace": true,
+  "storageExpansion": true,
+  "consoleErrors": []
+}

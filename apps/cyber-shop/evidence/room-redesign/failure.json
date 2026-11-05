@@ -1,0 +1,236 @@
+{
+  "message": "Expected values to be strictly equal:\n\n6 !== 7\n",
+  "errors": [
+    "Failed to execute 'structuredClone' on 'Window': #<Object> could not be cloned."
+  ],
+  "state": {
+    "coordinates": "Phaser 场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+    "day": 1,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 1349,
+    "hours": 8.5,
+    "debt": 0,
+    "grace": 0,
+    "xp": 32,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "stockUsage": 3.5,
+    "capacity": 36,
+    "displayCapacity": 3,
+    "attraction": 0,
+    "items": [
+      {
+        "id": "item-1",
+        "definitionId": "purified-water",
+        "name": "净化饮水",
+        "category": "food",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 83,
+        "estimate": [
+          37,
+          85
+        ],
+        "cost": 28,
+        "expiresDay": 6
+      },
+      {
+        "id": "item-2",
+        "definitionId": "data-chip",
+        "name": "通用数据芯片",
+        "category": "data",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 59,
+        "estimate": [
+          64,
+          148
+        ],
+        "cost": 60
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "name": "机械计时器",
+        "category": "antique",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 61,
+        "estimate": [
+          225,
+          525
+        ],
+        "cost": 208
+      },
+      {
+        "id": "item-6",
+        "definitionId": "portable-terminal",
+        "name": "随身终端",
+        "category": "electronics",
+        "owner": "player",
+        "location": "counter",
+        "known": [
+          "basic"
+        ],
+        "condition": 51,
+        "estimate": [
+          149,
+          347
+        ],
+        "cost": 161
+      }
+    ],
+    "warehouse": {
+      "positions": {
+        "item-1": {
+          "x": 8,
+          "y": 3,
+          "rotated": false
+        },
+        "item-2": {
+          "x": 1,
+          "y": 0,
+          "rotated": false
+        },
+        "item-3": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      "overflow": []
+    },
+    "tutorial": {
+      "step": 6,
+      "skipped": false
+    },
+    "conversations": {
+      "visitor-5": 2,
+      "visitor-10": 2
+    },
+    "visitor": {
+      "id": "visitor-10",
+      "characterId": "qi-lan",
+      "kind": "seller",
+      "category": "electronics",
+      "quote": 161,
+      "rounds": 0,
+      "patience": 2,
+      "resolved": false,
+      "request": "这件随身终端想转给用得上的人。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+      "goods": [
+        {
+          "id": "item-7",
+          "definitionId": "portable-terminal",
+          "name": "随身终端",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "cost": 0
+        },
+        {
+          "id": "item-8",
+          "definitionId": "portable-terminal",
+          "name": "随身终端",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "cost": 0
+        },
+        {
+          "id": "item-9",
+          "definitionId": "portable-terminal",
+          "name": "随身终端",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "cost": 0
+        }
+      ],
+      "item": {
+        "id": "item-7",
+        "definitionId": "portable-terminal",
+        "name": "随身终端",
+        "category": "electronics",
+        "owner": "player",
+        "location": "stock",
+        "known": [],
+        "cost": 0
+      }
+    },
+    "visitorIndex": 1,
+    "visitorCount": 7,
+    "orders": [],
+    "eventId": "rain-grid",
+    "eventResolved": false,
+    "questStages": {},
+    "reputation": 3,
+    "relations": {
+      "union": 1
+    },
+    "records": {
+      "trades": 1,
+      "repairs": 1,
+      "revenue": 310,
+      "repairIncome": 310,
+      "days": 0,
+      "faults": {
+        "oxidized-contact": 1
+      }
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "professions": [
+      {
+        "professionId": "restorer",
+        "implemented": true,
+        "mastered": false,
+        "milestone": "relay-restored",
+        "completed": false,
+        "ready": false
+      }
+    ],
+    "victory": false,
+    "endless": false,
+    "challenge": null,
+    "messages": [
+      "复检通过，可以交付。",
+      "交付完成，收到 310 信用点。剩余材料预付款归还客户。",
+      "祁岚进店。货路有很多条。你要什么，我可以找；但每条路都有自己的价。",
+      "随身终端：成色 51%；外观及基础功能可用；参考价 149–347。",
+      "购入 1 件，共 ₡161。已购货物留在谈判台，继续选货或先入库。"
+    ]
+  }
+}

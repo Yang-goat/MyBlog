@@ -1,0 +1,182 @@
+{
+  "coordinates": "Phaser 场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+  "day": 2,
+  "chapter": 1,
+  "phase": "open",
+  "cash": 754,
+  "hours": 12,
+  "debt": 0,
+  "grace": 0,
+  "xp": 45,
+  "level": 1,
+  "points": 0,
+  "skills": [],
+  "certificates": [
+    "civil"
+  ],
+  "trained": [
+    "civil"
+  ],
+  "licenses": [],
+  "equipment": {
+    "cleaner": 4,
+    "electronic-parts": 4,
+    "mechanical-parts": 4,
+    "insulation": 4,
+    "neural-supplies": 4,
+    "preserve-pack": 2,
+    "micro-solder": 1,
+    "workbench": 1
+  },
+  "stockUsage": 3.25,
+  "capacity": 54,
+  "displayCapacity": 3,
+  "attraction": 0,
+  "items": [
+    {
+      "id": "item-1",
+      "definitionId": "purified-water",
+      "name": "净化饮水",
+      "category": "food",
+      "owner": "player",
+      "location": "stock",
+      "known": [
+        "basic"
+      ],
+      "condition": 83,
+      "estimate": [
+        37,
+        85
+      ],
+      "cost": 28,
+      "expiresDay": 6
+    },
+    {
+      "id": "item-3",
+      "definitionId": "mechanical-watch",
+      "name": "机械计时器",
+      "category": "antique",
+      "owner": "player",
+      "location": "stock",
+      "known": [
+        "basic"
+      ],
+      "condition": 61,
+      "estimate": [
+        225,
+        525
+      ],
+      "cost": 208
+    },
+    {
+      "id": "item-6",
+      "definitionId": "portable-terminal",
+      "name": "随身终端",
+      "category": "electronics",
+      "owner": "player",
+      "location": "stock",
+      "known": [
+        "basic"
+      ],
+      "condition": 51,
+      "estimate": [
+        149,
+        347
+      ],
+      "cost": 161
+    }
+  ],
+  "visitorArrived": false,
+  "warehouse": {
+    "positions": {
+      "item-1": {
+        "x": 6,
+        "y": 2,
+        "rotated": true
+      },
+      "item-3": {
+        "x": 2,
+        "y": 0,
+        "rotated": false
+      },
+      "item-6": {
+        "x": 0,
+        "y": 3,
+        "rotated": false
+      }
+    },
+    "overflow": []
+  },
+  "tutorial": {
+    "step": 9,
+    "skipped": false
+  },
+  "conversations": {
+    "visitor-5": 2,
+    "visitor-10": 2,
+    "visitor-11": 2
+  },
+  "visitor": {
+    "id": "visitor-28",
+    "characterId": "lin-qiao",
+    "kind": "repair",
+    "category": "electronics",
+    "quote": 279,
+    "rounds": 0,
+    "patience": 4,
+    "resolved": false,
+    "request": "随身终端：输入侧有电，供电板输出始终为零。请先检测。",
+    "item": {
+      "id": "item-27",
+      "definitionId": "portable-terminal",
+      "name": "随身终端",
+      "category": "electronics",
+      "owner": "customer",
+      "location": "workshop",
+      "known": []
+    }
+  },
+  "visitorIndex": 0,
+  "visitorCount": 7,
+  "orders": [],
+  "eventId": "night-meal",
+  "eventResolved": false,
+  "questStages": {},
+  "reputation": 4,
+  "relations": {
+    "union": 1
+  },
+  "records": {
+    "trades": 2,
+    "repairs": 1,
+    "revenue": 400,
+    "repairIncome": 310,
+    "days": 1,
+    "faults": {
+      "oxidized-contact": 1
+    }
+  },
+  "finalStage": 0,
+  "finalComplete": false,
+  "professionMilestones": [],
+  "professions": [
+    {
+      "professionId": "restorer",
+      "implemented": true,
+      "mastered": false,
+      "milestone": "relay-restored",
+      "completed": false,
+      "ready": false
+    }
+  ],
+  "victory": false,
+  "endless": false,
+  "challenge": null,
+  "messages": [
+    "第 1 日结算，支出 85。明天继续。",
+    "第 2 日开门，12 工时、7 位预约访客。",
+    "净化饮水已放入仓库。",
+    "已安装旧式收纳背包，新增 24 个可摆放格子。向下滚动仓库查看。",
+    "已安装堆叠储藏箱，新增 48 个可摆放格子。向下滚动仓库查看。"
+  ]
+}

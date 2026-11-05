@@ -1,6 +1,7 @@
+import { createReadyGame as createGame } from './helpers';
 import { describe, expect, it } from 'vitest';
 import { PROFESSIONS } from '../src/content';
-import { createGame, applyAction, professionVictory } from '../src/game/engine';
+import { applyAction, professionVictory } from '../src/game/engine';
 import { importSave, exportSave, migrateState, validateState } from '../src/persistence/storage';
 import { playToWin } from './helpers';
 

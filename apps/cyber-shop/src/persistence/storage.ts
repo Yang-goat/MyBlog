@@ -43,7 +43,9 @@ export function validateState(value: unknown): asserts value is GameState {
   check(object(s.records) && ['trades', 'repairs', 'revenue', 'repairIncome', 'days'].every(k => integer((s.records as unknown as Record<string, unknown>)[k])) && object(s.records.faults) && Object.entries(s.records.faults).every(([id, n]) => FAULTS.some(f => f.id === id) && integer(n)), '经营纪录无效。');
   const validateItem = (i: ItemInstance) => {
     check(object(i) && typeof i.id === 'string' && ITEMS.some(d => d.id === i.definitionId), '物品模板无效。');
-    check(['player', 'customer'].includes(i.owner) && ['stock', 'display', 'workshop'].includes(i.location), '物品归属或位置无效。');
+    check(['player', 'customer'].includes(i.owner) && ['stock', 'display', 'workshop', 'counter'].includes(i.location), '物品归属或位置无效。');
+    if (i.grid !== undefined) check(object(i.grid) && integer(i.grid.x) && integer(i.grid.y) && typeof i.grid.rotated === 'boolean', '仓库坐标无效。');
+    if (i.counterGrid !== undefined) check(object(i.counterGrid) && integer(i.counterGrid.x) && integer(i.counterGrid.y) && typeof i.counterGrid.rotated === 'boolean', '谈判台坐标无效。');
     check(i.owner !== 'customer' || i.location === 'workshop', '客户物品不能属于货架或展示柜。');
     check(['condition', 'integrity', 'capacity', 'purity', 'originality'].every(k => number((i as unknown as Record<string, unknown>)[k]) && Number((i as unknown as Record<string, unknown>)[k]) <= 100), '物品属性超出范围。');
     check(typeof i.authentic === 'boolean' && typeof i.provenance === 'string' && typeof i.compatibility === 'string', '物品来源记录无效。');
@@ -59,6 +61,8 @@ export function validateState(value: unknown): asserts value is GameState {
     check(object(v) && typeof v.id === 'string' && CHARACTERS.some(c => c.id === v.characterId) && ['seller', 'buyer', 'repair'].includes(v.kind) && CATEGORIES.some(c => c.id === v.category), '客户记录无效。');
     check(integer(v.quote) && integer(v.limit) && integer(v.rounds) && integer(v.patience) && typeof v.resolved === 'boolean' && typeof v.request === 'string', '客户报价记录无效。');
     if (v.item) validateItem(v.item);
+    if(v.goods !== undefined) { check(Array.isArray(v.goods) && v.goods.length <= 100 && new Set(v.goods.map(i=>i.id)).size === v.goods.length,'卖家货品列表无效。');v.goods.forEach(validateItem); }
+    if(v.budget !== undefined) check(integer(v.budget),'买家预算无效。');
   }
   check(Array.isArray(s.orders), '维修工单无效。');
   const activeItems = new Set<string>();
@@ -71,6 +75,10 @@ export function validateState(value: unknown): asserts value is GameState {
   check(new Set(s.orders.map(o => o.id)).size === s.orders.length, '存档含重复工单。');
   check(Array.isArray(s.ledger) && s.ledger.every(e => object(e) && integer(e.id) && integer(e.day) && typeof e.kind === 'string' && Number.isFinite(e.amount) && typeof e.note === 'string'), '账本无效。');
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');
+  if(s.visitorArrived !== undefined) check(typeof s.visitorArrived === 'boolean','叫号状态无效。');
+  if (s.storageUpgrades !== undefined) check(object(s.storageUpgrades) && integer(s.storageUpgrades.backpack) && s.storageUpgrades.backpack <= 1 && integer(s.storageUpgrades.crate) && s.storageUpgrades.crate <= 2, '仓库扩展记录无效。');
+  if (s.tutorial !== undefined) check(object(s.tutorial) && integer(s.tutorial.step) && s.tutorial.step <= 9 && typeof s.tutorial.skipped === 'boolean', '教学进度无效。');
+  if (s.conversations !== undefined) check(object(s.conversations) && Object.values(s.conversations).every(n => integer(n) && n <= 2), '对话进度无效。');
   if (s.challenge !== null) check(object(s.challenge) && ['batch-repair', 'exhibition', 'rare-trade'].includes(s.challenge.id) && ['goal', 'progress', 'deadline', 'reward'].every(k => integer((s.challenge as unknown as Record<string, unknown>)[k])), '挑战记录无效。');
   check(!s.endless || s.victory, '无尽模式缺少已完成的经营权结局。');
   check(!s.finalComplete || s.finalStage === 3, '最终委托阶段冲突。');

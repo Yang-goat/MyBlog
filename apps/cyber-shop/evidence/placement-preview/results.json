@@ -1,0 +1,13 @@
+{
+  "sameWarehouseColors": true,
+  "greenEmpty": true,
+  "redOverlap": true,
+  "redBoundary": true,
+  "rotationUpdates": true,
+  "clickSelection": true,
+  "cancelClears": true,
+  "selfOverlapAllowed": true,
+  "npcAndOwnedCollision": true,
+  "actualDropsMatch": true,
+  "errors": []
+}
