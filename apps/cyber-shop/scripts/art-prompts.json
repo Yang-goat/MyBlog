@@ -1,0 +1,398 @@
+[
+  {
+    "id": "scene-shop",
+    "name": "店铺",
+    "kind": "scene",
+    "prompt": "Use case: stylized-concept. Asset type: original cyberpunk shop game background, wide 16:9. A lived-in tiny repair and secondhand general store in the lower district of an immense future city. Photorealistic painterly concept art, non-pixel. Viewer stands behind the proprietor's counter looking toward the glass shop entrance and street beyond. Spacious clean worn metal counter across lower quarter for interactive objects, center floor clear for customer cutout. Left wall shelving with quiet silhouettes of practical electronics, batteries and tins, right side an old glass display cabinet and warm task lamp. Rainy cyan neon light from outside, soft amber work lights, aged dark metal, translucent glass and scratched polymer. Strong readable silhouettes, nuanced physically plausible material textures, welcoming human scale, not dystopian horror. Leave calm dark upper-left negative space for real UI overlay. No people, no text, no typography, no logos, no watermark, no UI, no panels, no collage. Composition detailed but not cluttered, clear luminous focal point around door and counter."
+  },
+  {
+    "id": "scene-city",
+    "name": "城市标题",
+    "kind": "scene",
+    "prompt": "Use case: stylized-concept. Asset type: original cyberpunk trading-game title background, panoramic 16:9. Rain-washed pedestrian alley in the lower district of an enormous layered future city at blue hour. A small inviting repair and secondhand general store on the RIGHT with amber window light, metal shutters, old objects behind glass. Cyan neon reflections, cables, elevated rail and distant towers; everyday life atmosphere without people. Left third a quiet shadowed wall and atmospheric alley suitable for large real text overlay. Photoreal painterly concept art, rich cinematic material detail, non-pixel. Keep signage blank and abstract. No text, letters, logos, watermark, UI or panels."
+  },
+  {
+    "id": "scene-workbench",
+    "name": "维修工作台场景",
+    "kind": "scene",
+    "prompt": "Use case: stylized-concept. Asset type: original cyberpunk repair game background, 16:9. Slightly overhead close view of a worn metal electronics repair workbench, a large clear dark antistatic mat at center occupying sixty percent of image for an interactive device. Amber articulated work lamp at upper right, cyan oscilloscope glow at back, small precision tools arranged at far edges, solder spool, modular drawers, aged metal, scratched polymer. Cozy believable neighborhood repair shop, realistic painterly concept art, detailed tactile materials. Clear calm central space, not a collage. No people, no hands, no device on central mat, no letters, no numbers, no text, no logo, no UI."
+  },
+  {
+    "id": "scene-ending",
+    "name": "经营权结局",
+    "kind": "scene",
+    "prompt": "Use case: stylized-concept. Asset type: original cyberpunk game victory illustration, 16:9. A repaired neighborhood communications beacon glowing gentle cyan above a small warm secondhand repair shop at sunrise in a huge future city's lower district. Shop shutters now open, plants and carefully restored old devices visible in window, sunlight touching worn brass key resting on foreground counter. Hopeful intimate scene, everyday craftsmanship and community, warm amber/cyan palette, photorealistic painterly concept art, non-pixel. Calm upper-left area for real interface text. No readable signage, no people, no typography, no logo, no watermark, no UI or frame."
+  },
+  {
+    "id": "lin-qiao",
+    "name": "林桥",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: waist-up game character cutout. Lin Qiao, an original middle-aged East Asian woman, neighborhood mutual-aid coordinator, short practical black hair with slight gray, calm kind face, teal-gray old patched work jacket, a small amber chest lamp and simple messenger strap, relaxed approachable pose facing viewer, hands naturally low, full head and shoulders visible with margins. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "pocket-com",
+    "name": "掌上通讯器",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: one single game inventory object. A practical old palm-sized black communications handset, thick worn casing with a small cyan display and chunky unlabeled physical buttons, short antenna, visible screws and repaired seam. Three-quarter view, entire object centered with generous margin. No hands, no stand, no duplicate views. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "portable-terminal",
+    "name": "随身终端",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: one single game inventory object. A foldable worn brushed-metal pocket terminal, half-open clamshell, small dim cyan glass display and compact unlabeled physical keyboard, reinforced hinge, practical industrial design. Three-quarter view, entire object centered with generous margin. No hands, no stand, no duplicate views. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "sweeper-drone",
+    "name": "清扫无人机",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: A compact disc-shaped cleaning drone, worn teal metal shell, two rugged wheels and a short front brush, sensor eye, practical utility robot. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "servo-arm",
+    "name": "伺服机械臂",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact industrial robotic arm, three articulated brushed-metal joints, amber cable sleeves, heavy small base and two-finger precision gripper. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "industrial-sensor",
+    "name": "工业传感器",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rugged cylindrical industrial sensor, weathered steel housing, vent fins and small cyan sensor lens, sturdy connector. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "air-circulator",
+    "name": "便携空气循环机",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One portable air circulation unit, small rectangular weathered ivory polymer housing, circular fan grille, fabric filter, carrying handle. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "battery-pack",
+    "name": "标准电池组",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One utilitarian modular battery pack, six dark cells inside a worn protective casing, cyan charge strip and reinforced orange terminals. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "capacitor-array",
+    "name": "微型电容阵列",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One miniature capacitor array, ceramic black cylinders in a compact square metal frame, thick copper busbars and amber insulating rings. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "power-module",
+    "name": "便携电源模块",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One portable power module, squat heavy metal box with folded carrying handle, heat sink vents, cyan status glass and connector sockets. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "alloy-plate",
+    "name": "高导合金板",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One thick silver-gray conductive alloy plate, angled flat rectangle with machined grooves, slightly tarnished cut edges and fine brushed surface. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "insulation-roll",
+    "name": "绝缘纤维卷",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rolled spool of cream industrial insulating fiber cloth, woven texture, clipped copper-free fastening band and worn cardboard core. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "catalyst-core",
+    "name": "稀土催化芯",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rare-earth catalyst core, tiny precision ceramic honeycomb cylinder held in a weathered silver protective cage, pale mineral flecks. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "purified-water",
+    "name": "净化饮水",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One sealed purified water bottle, reused translucent smoky-blue polymer, clear liquid, tamper-evident plain metal cap, blank paper band. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "synth-coffee",
+    "name": "合成咖啡",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One practical synthetic coffee canister, amber-brown cylinder with worn tin cap, tiny coffee-bean symbol but no writing, matte old paper wrap. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "algae-ration",
+    "name": "藻蛋白口粮",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One sealed algae-protein food ration pouch, muted olive vacuum pack, textured seam and small transparent window showing a brown nutrition bar. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "culture-starter",
+    "name": "速生菌种包",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One sealed transparent culture-starter pouch containing pale living mycelium and peat, cyan sterile closure strip, no lettering. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "nutrient-fluid",
+    "name": "营养培养液",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One durable translucent bottle of amber nutrient liquid, ribbed reinforced body, round dosing cap and plain green collar. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "bio-gel",
+    "name": "医用生物凝胶",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One medical biogel canister, small frosted sterile cylindrical cartridge with translucent pale blue gel, sealed white and teal caps. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "haptic-module",
+    "name": "触觉反馈模块",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One palm-sized haptic feedback module, curved slate-gray polymer pad with small tactile actuators and braided interface cable. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "optical-eye",
+    "name": "光学义眼组件",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One optical prosthetic-eye component, realistic engineered spherical camera assembly with cyan iris lens and tiny flexible gold connectors, no flesh. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "neural-bridge",
+    "name": "神经接口桥",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One neural-interface bridge module, small symmetric titanium arc holding three ceramic processing chips, delicate cyan optical connectors, no body. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "memory-buffer",
+    "name": "记忆缓存模块",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One memory buffer module, thin transparent protective cartridge with layered cyan glass storage elements and brushed-metal spine. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "diagnostic-unit",
+    "name": "便携诊疗仪",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One portable medical diagnostic unit, sturdy white-gray hand-sized instrument with cyan wave display, folded sensor probe and amber connector. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "infusion-pump",
+    "name": "稳态注射泵",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact precision medical infusion pump, ivory metal housing, transparent dosing cylinder, tiny actuator and protected tube, no needles or body. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "data-chip",
+    "name": "通用数据芯片",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One universal data chip, small worn dark ceramic rectangular cartridge with gold contact fingers and a cyan inset window. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "encrypted-box",
+    "name": "加密档案盒",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One encrypted archive storage box, dense rectangular dark metal case with mechanical lock ring, recessed glowing cyan seal and reinforced corners. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "he-jin",
+    "name": "贺津",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Older East Asian male industrial inspector, weathered face, cropped salt-and-pepper hair, gray and mustard utility vest, subtle mechanical hand exoskeleton, firm calm expression. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "mechanical-watch",
+    "name": "机械计时器",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One antique mechanical pocket timekeeper, tarnished brass case partly open revealing fine gears, plain clock face without numbers, short chain. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "lu-che",
+    "name": "陆澈",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Young adult East Asian man, urban courier, short tousled black hair, alert friendly expression, worn orange-red delivery jacket, sturdy one-shoulder mail bag, reflective cyan piping. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "song-yi",
+    "name": "宋宜",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Adult East Asian woman medical equipment technician, practical tied-back dark hair, composed focused face, white-gray short work coat, small green inspection lamp, tool pouch. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "wen-zhu",
+    "name": "温竹",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Androgynous adult East Asian audio archivist, round thin spectacles, gentle thoughtful face, faded long woven scarf, charcoal layered jacket, a small recording satchel. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "a-miao",
+    "name": "阿苗",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Warm round-faced East Asian woman running a rooftop canteen, tied-back dark hair, deep green work apron over warm orange shirt, rolled sleeves and relaxed welcoming face. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "qi-lan",
+    "name": "祁岚",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Confident adult East Asian female freight coordinator, short silver hair, deep muted violet freight trench coat, asymmetrical utility straps, watchful businesslike expression. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "bai-heng",
+    "name": "白衡",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Older East Asian male itinerant antique dealer, graying beard, thoughtful narrow eyes, old brown long coat with patched seams and leather satchel strap. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "luo-jin",
+    "name": "罗槿",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Mature East Asian female collector, dark neatly swept hair, elegant navy tailored coat, a fine modest metal chain, observant reserved expression. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "shen-wu",
+    "name": "沈雾",
+    "kind": "character",
+    "prompt": "Use case: stylized-concept. Asset type: single waist-up game character cutout, entire head and shoulders with margins, facing viewer, relaxed hands low. Subject: Androgynous middle-aged East Asian precision-equipment supervisor, short gray hair, silver-gray technical inspection uniform, tiny cyan collar light, composed analytical expression. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "holo-film",
+    "name": "全息电影卡",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One holographic film card, slim smoky transparent glass rectangle with a faint luminous cyan abstract scene strip, chipped metal edge. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "music-tape",
+    "name": "合成音乐带",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One old synthetic-music cassette, amber translucent polymer case, visible paired reels, dark blank label and small screws. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "game-cartridge",
+    "name": "旧式游戏卡匣",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One vintage video-game cartridge, squat worn brick-red polymer shell, exposed gold contacts, scratched blank label and screw. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "memory-crystal",
+    "name": "私人影像晶片",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One personal image-memory crystal, small prismatic translucent cyan crystal plate within a worn silver handheld protective frame. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "early-core",
+    "name": "早期计算核心",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One early-generation computing core, aged cream ceramic central block surrounded by rows of gold pins and dark cooling fins, retro technology. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "film-camera",
+    "name": "胶片相机",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One old analog film camera, worn black leatherette and brushed silver metal body, round glass lens, mechanical dials without text. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "spectrum-jewel",
+    "name": "限量光谱饰品",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One limited artisan spectrum pendant, layered iridescent glass prism held in delicate tarnished silver cage, short loop of chain. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "old-city-badge",
+    "name": "旧城纪念徽章",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One old-city commemorative badge, small tarnished bronze circular enamel pin with an abstract bridge silhouette in muted teal, no letters. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "bionic-toy",
+    "name": "初代仿生玩具",
+    "kind": "item",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One first-generation bionic toy, tiny old mechanical fox with worn ivory shell panels exposing brass gears, gentle cyan eyes, handmade nostalgic design. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "scanner",
+    "name": "多谱扫描仪",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One handheld multispectral scanner, worn black pistol-free ergonomic instrument, broad circular cyan lens, small amber indicators and short side grip. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "market-recorder",
+    "name": "行情记录器",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rugged pocket market recorder, flat aged metal pad with abstract unlabelled cyan line chart on glass display, three unlabeled buttons. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "serial-terminal",
+    "name": "序列检索终端",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact serial-record lookup terminal, worn metal miniature upright display with abstract cyan scan bars, small keyboard, connected scanning wand. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "micro-solder",
+    "name": "微焊工具",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One precision microsoldering tool, fine needle-like heated metal tip, textured dark handle, short coiled orange cable, standalone handheld tool. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "assembly-jig",
+    "name": "装配夹具",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact mechanical assembly jig, heavy worn steel base, two adjustable jaws and articulated clamps, orange padded contact surfaces. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "calibrator",
+    "name": "精密校准仪",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One precision calibrator instrument, palm-sized silver-black box, circular cyan gauge without numbers, fine adjustment knob and two neatly coiled probes. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "cleaner",
+    "name": "清洁剂",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One contact-cleaner squeeze bottle, translucent muted teal chemical bottle with narrow capped nozzle, blank cream safety band. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "electronic-parts",
+    "name": "电子备件",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One small opened organizer tray of electronic spare components, few capacitors, connectors and one circuit board, considered a single boxed kit. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "mechanical-parts",
+    "name": "机电组件",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One small boxed mechanical replacement kit, compact servo motor, steel gears and fitted bearing held together in dark foam tray. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "insulation",
+    "name": "绝缘材料",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact kit of insulating repair material, short black and orange heat-shrink sleeves and neatly folded fiber pad in a small metal tray. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "neural-supplies",
+    "name": "神经检测耗材",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One sealed neural-testing consumables pack, sterile silver pouch with transparent window showing gold contacts and pale sensor pads, no flesh. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "preserve-pack",
+    "name": "保鲜包",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One reusable preservation pack, rectangular translucent frosted gel pouch with teal seam and a small plain circular temperature indicator. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "workbench",
+    "name": "工作台",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One freestanding compact electronics repair workbench, weathered metal legs and dark antistatic top, small warm work lamp and shallow drawers, three-quarter furniture product view. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "stock-rack",
+    "name": "库存架",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One freestanding industrial storage rack, narrow four-tier worn dark metal shelving with mostly empty shelves and a few plain reusable bins, three-quarter furniture product view. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "cold-storage",
+    "name": "冷藏柜",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One freestanding compact cold-storage refrigerator, aged white and teal metal cabinet, glass-front door with softly glowing empty interior shelves, three-quarter furniture view. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  },
+  {
+    "id": "display-case",
+    "name": "收藏展示柜",
+    "kind": "equipment",
+    "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One freestanding antique display cabinet, worn dark metal frame and clean glass, three empty illuminated shelves with soft amber lights, three-quarter furniture product view. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery."
+  }
+]

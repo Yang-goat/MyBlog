@@ -51,6 +51,7 @@ src/
 │   ├── programming-languages/             # 程序设计语言随笔
 │   ├── web-development/                   # 前端随笔
 │   ├── hex-mahjong/                       # 海克斯麻将
+│   ├── cyber-shop/                        # 赛博杂货铺
 │   └── music/                             # 音乐
 ├── software-tools/                        # 软件工具
 │   ├── version-control/                   # 版本控制

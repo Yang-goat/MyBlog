@@ -135,8 +135,9 @@ function inspectHtml(dir) {
       if (!target) continue;
       target = decodeURIComponent(target);
       const local = target.startsWith("/") ? target : path.posix.join(path.posix.dirname(url), target);
-      // This separately built application is emitted by site:build, not docs:build.
-      if (local === "/hex-mahjong/" || local.startsWith("/hex-mahjong/assets/")) continue;
+      // Only these exact application entry routes are emitted after docs:build.
+      // Internal assets and arbitrary child paths still undergo normal checks.
+      if (local === "/hex-mahjong/" || local === "/cyber-shop/") continue;
       const disk = outputFile(local);
       check(fs.existsSync(disk) || fs.existsSync(disk + ".html"), `Broken local reference: ${url} -> ${local}`);
       report.localReferences++;

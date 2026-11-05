@@ -3,3 +3,4 @@ src/.vuepress/dist/
 src/.vuepress/.cache/
 src/.vuepress/.temp/
 /海克斯麻将网站版交接包_v1/
+/.playwright-mcp/

@@ -1,0 +1,612 @@
+{
+  "ok": true,
+  "elapsedSeconds": 90.124,
+  "actions": 565,
+  "winDay": 16,
+  "winLevel": 12,
+  "endlessDay": 26,
+  "endlessLevel": 17,
+  "purchasedCategories": [
+    "electronics",
+    "energy",
+    "food",
+    "neural",
+    "data",
+    "antique"
+  ],
+  "tradeCategories": [
+    "data",
+    "electronics",
+    "antique",
+    "energy",
+    "food",
+    "neural"
+  ],
+  "antiqueClientRepairs": 5,
+  "fullscreen": true,
+  "errors": [],
+  "missing": [],
+  "journal": [
+    {
+      "day": 1,
+      "chapter": 1,
+      "cash": 1632,
+      "hours": 4.5,
+      "repairs": 2,
+      "trades": 4,
+      "level": 1,
+      "skills": [],
+      "certificates": [
+        "civil"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 2,
+      "chapter": 1,
+      "cash": 3334,
+      "hours": 4,
+      "repairs": 4,
+      "trades": 8,
+      "level": 2,
+      "skills": [],
+      "certificates": [
+        "civil"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 3,
+      "chapter": 2,
+      "cash": 4095,
+      "hours": 6,
+      "repairs": 6,
+      "trades": 12,
+      "level": 3,
+      "skills": [
+        "precision-1"
+      ],
+      "certificates": [
+        "civil"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 4,
+      "chapter": 2,
+      "cash": 5188,
+      "hours": 3,
+      "repairs": 8,
+      "trades": 16,
+      "level": 4,
+      "skills": [
+        "precision-1",
+        "precision-2"
+      ],
+      "certificates": [
+        "civil",
+        "industrial"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 5,
+      "chapter": 2,
+      "cash": 5568,
+      "hours": 6.5,
+      "repairs": 10,
+      "trades": 20,
+      "level": 4,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3"
+      ],
+      "certificates": [
+        "civil",
+        "industrial"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 6,
+      "chapter": 2,
+      "cash": 7602,
+      "hours": 6.5,
+      "repairs": 12,
+      "trades": 24,
+      "level": 5,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1"
+      ],
+      "certificates": [
+        "civil",
+        "industrial"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 7,
+      "chapter": 3,
+      "cash": 8798,
+      "hours": 6,
+      "repairs": 14,
+      "trades": 28,
+      "level": 5,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1"
+      ],
+      "certificates": [
+        "civil",
+        "industrial"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 8,
+      "chapter": 3,
+      "cash": 9259,
+      "hours": 1.5,
+      "repairs": 16,
+      "trades": 32,
+      "level": 6,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 9,
+      "chapter": 3,
+      "cash": 10021,
+      "hours": 5,
+      "repairs": 18,
+      "trades": 37,
+      "level": 7,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 10,
+      "chapter": 3,
+      "cash": 11556,
+      "hours": 6,
+      "repairs": 20,
+      "trades": 41,
+      "level": 7,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 11,
+      "chapter": 3,
+      "cash": 12626,
+      "hours": 6,
+      "repairs": 22,
+      "trades": 45,
+      "level": 8,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 12,
+      "chapter": 3,
+      "cash": 14585,
+      "hours": 5,
+      "repairs": 24,
+      "trades": 49,
+      "level": 9,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 13,
+      "chapter": 3,
+      "cash": 17244,
+      "hours": 5,
+      "repairs": 26,
+      "trades": 53,
+      "level": 10,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 14,
+      "chapter": 4,
+      "cash": 19084,
+      "hours": 3,
+      "repairs": 29,
+      "trades": 57,
+      "level": 10,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 15,
+      "chapter": 4,
+      "cash": 21064,
+      "hours": 0.5,
+      "repairs": 32,
+      "trades": 61,
+      "level": 11,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 16,
+      "chapter": 4,
+      "cash": 12942,
+      "hours": 1.5,
+      "repairs": 35,
+      "trades": 65,
+      "level": 12,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "phase": "won"
+    },
+    {
+      "day": 17,
+      "chapter": 4,
+      "cash": 14194,
+      "hours": 1,
+      "repairs": 37,
+      "trades": 69,
+      "level": 13,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 18,
+      "chapter": 4,
+      "cash": 15816,
+      "hours": 4,
+      "repairs": 39,
+      "trades": 73,
+      "level": 13,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 19,
+      "chapter": 4,
+      "cash": 17462,
+      "hours": 6,
+      "repairs": 41,
+      "trades": 77,
+      "level": 14,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 20,
+      "chapter": 4,
+      "cash": 19315,
+      "hours": 5,
+      "repairs": 43,
+      "trades": 81,
+      "level": 14,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 21,
+      "chapter": 4,
+      "cash": 20504,
+      "hours": 5,
+      "repairs": 45,
+      "trades": 85,
+      "level": 15,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 22,
+      "chapter": 4,
+      "cash": 22935,
+      "hours": 5,
+      "repairs": 47,
+      "trades": 89,
+      "level": 15,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 23,
+      "chapter": 4,
+      "cash": 23684,
+      "hours": 6,
+      "repairs": 49,
+      "trades": 93,
+      "level": 16,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 24,
+      "chapter": 4,
+      "cash": 28015,
+      "hours": 5,
+      "repairs": 51,
+      "trades": 97,
+      "level": 16,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 25,
+      "chapter": 4,
+      "cash": 29396,
+      "hours": 7,
+      "repairs": 53,
+      "trades": 101,
+      "level": 17,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    },
+    {
+      "day": 26,
+      "chapter": 4,
+      "cash": 31060,
+      "hours": 5,
+      "repairs": 55,
+      "trades": 105,
+      "level": 17,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "phase": "closed"
+    }
+  ]
+}

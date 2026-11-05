@@ -17,7 +17,14 @@
     "hex:test": "pnpm --dir apps/hex-mahjong test",
     "hex:typecheck": "pnpm --dir apps/hex-mahjong typecheck",
     "hex:build": "pnpm --dir apps/hex-mahjong build",
-    "site:build": "pnpm docs:build && pnpm hex:build"
+    "cyber:dev": "pnpm --dir apps/cyber-shop dev",
+    "cyber:preview": "pnpm --dir apps/cyber-shop preview",
+    "cyber:validate": "pnpm --dir apps/cyber-shop validate",
+    "cyber:test": "pnpm --dir apps/cyber-shop test",
+    "cyber:typecheck": "pnpm --dir apps/cyber-shop typecheck",
+    "cyber:build": "pnpm --dir apps/cyber-shop build",
+    "site:check-apps": "node scripts/check-independent-apps.mjs",
+    "site:build": "pnpm docs:build && pnpm hex:build && pnpm cyber:build"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.2.0",

@@ -692,6 +692,11 @@ export default sidebar({
     "card-pools.html"
   ],
 
+  // 赛博杂货铺
+  "/notes/cyber-shop/": [
+    { text: "游戏介绍与操作", link: "/notes/cyber-shop/" }
+  ],
+
   // 音乐
   "/notes/music/": [
     "mixes.html"

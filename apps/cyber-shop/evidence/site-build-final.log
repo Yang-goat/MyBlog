@@ -1,0 +1,56 @@
+$ pnpm docs:build && pnpm hex:build && pnpm cyber:build
+$ vuepress-vite build src
+- Initializing and preparing data
+info [knowledge-graph] 272 articles, 181 topics, 208 citations, 443 memberships
+√ Initializing and preparing data - done in 14.83s
+- Compiling with vite
+√ Compiling with vite - done in 5.92s
+- Rendering 617 pages
+√ Rendering 617 pages - done in 11.96s
+@vuepress/plugin-seo:  √ Generating robots.txt
+@vuepress/plugin-sitemap:  √ Generating sitemap to sitemap.xml
+@vuepress/plugin-sitemap:  √ Appending sitemap path to robots.txt
+@vuepress/plugin-redirect:  √ Generating redirect files
+success VuePress build completed in 33.61s!
+$ pnpm --dir apps/hex-mahjong build
+$ vue-tsc --noEmit && vite build
+vite v8.0.16 building client environment for production...
+[2K
+transforming...✓ 73 modules transformed.
+rendering chunks...
+computing gzip size...
+../../src/.vuepress/dist/hex-mahjong/manifest.webmanifest                          0.56 kB
+../../src/.vuepress/dist/hex-mahjong/index.html                                    0.67 kB │ gzip:  0.42 kB
+../../src/.vuepress/dist/hex-mahjong/assets/index-CGsx31i5.css                    45.05 kB │ gzip:  9.51 kB
+../../src/.vuepress/dist/hex-mahjong/assets/workbox-window.prod.es5-Bd17z0YL.js    5.71 kB │ gzip:  2.25 kB │ map:  13.13 kB
+../../src/.vuepress/dist/hex-mahjong/assets/index-o64fMkTT.js                    327.30 kB │ gzip: 65.68 kB │ map: 718.04 kB
+
+✓ built in 384ms
+PWA v1.3.0
+mode      generateSW
+precache  19 entries (2543.41 KiB)
+files generated
+  ../../src/.vuepress/dist/hex-mahjong/sw.js.map
+  ../../src/.vuepress/dist/hex-mahjong/sw.js
+  ../../src/.vuepress/dist/hex-mahjong/workbox-9c191d2f.js.map
+  ../../src/.vuepress/dist/hex-mahjong/workbox-9c191d2f.js
+$ pnpm --dir apps/cyber-shop build
+$ vue-tsc --noEmit && vite build
+vite v8.0.16 building client environment for production...
+[2K
+transforming...✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+../../src/.vuepress/dist/cyber-shop/index.html                               0.91 kB │ gzip:   0.63 kB
+../../src/.vuepress/dist/cyber-shop/assets/index-jPl3p-rd.css               25.55 kB │ gzip:   6.51 kB
+../../src/.vuepress/dist/cyber-shop/assets/rolldown-runtime-Bh1tDfsg.js      0.56 kB │ gzip:   0.36 kB
+../../src/.vuepress/dist/cyber-shop/assets/ShopCanvas-BKcmYxte.js            5.48 kB │ gzip:   2.72 kB
+../../src/.vuepress/dist/cyber-shop/assets/index-D4BFsdDz.js               196.12 kB │ gzip:  74.80 kB
+../../src/.vuepress/dist/cyber-shop/assets/phaser-BHVmS0Eu.js            1,198.79 kB │ gzip: 319.33 kB
+
+✓ built in 614ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

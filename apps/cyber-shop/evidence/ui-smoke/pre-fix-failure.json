@@ -1,0 +1,235 @@
+{
+  "error": "Error: Phaser inventory object is entirely blocked by DOM controls",
+  "results": {
+    "respec": true,
+    "supplyPreview": true,
+    "modalIsolation": true,
+    "domDrag": true
+  },
+  "errors": [],
+  "state": {
+    "mode": "open",
+    "panel": "",
+    "selectedItem": "",
+    "selectedOrder": "",
+    "coordinates": "Phaser 1440×900，原点左上，x向右、y向下；DOM响应式",
+    "game": {
+      "coordinates": "Phaser 场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+      "day": 27,
+      "chapter": 4,
+      "phase": "open",
+      "cash": 30710,
+      "hours": 12,
+      "debt": 0,
+      "grace": 0,
+      "xp": 3025,
+      "level": 17,
+      "points": 8,
+      "skills": [
+        "supply-1",
+        "supply-2",
+        "supply-3",
+        "business-1",
+        "business-2",
+        "collection-1",
+        "trade-1",
+        "restoration-1"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "trained": [
+        "civil",
+        "industrial",
+        "neural",
+        "antique"
+      ],
+      "licenses": [
+        "regulated-trade"
+      ],
+      "equipment": {
+        "cleaner": 4,
+        "electronic-parts": 4,
+        "mechanical-parts": 4,
+        "insulation": 4,
+        "neural-supplies": 4,
+        "preserve-pack": 2,
+        "micro-solder": 1,
+        "workbench": 1,
+        "serial-terminal": 1,
+        "assembly-jig": 1,
+        "calibrator": 1
+      },
+      "stockUsage": 2,
+      "capacity": 24,
+      "displayCapacity": 3,
+      "attraction": 0,
+      "items": [
+        {
+          "id": "item-1",
+          "definitionId": "purified-water",
+          "name": "净化饮水",
+          "category": "food",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic",
+            "serial"
+          ],
+          "condition": 83,
+          "estimate": [
+            50,
+            72
+          ],
+          "cost": 28,
+          "expiresDay": 6,
+          "authentic": true,
+          "provenance": "可追溯的街区旧物",
+          "originality": 60
+        },
+        {
+          "id": "item-637",
+          "definitionId": "algae-ration",
+          "name": "藻蛋白口粮",
+          "category": "food",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "condition": 81,
+          "estimate": [
+            67,
+            96
+          ],
+          "cost": 46,
+          "expiresDay": 30
+        }
+      ],
+      "visitor": {
+        "id": "visitor-655",
+        "characterId": "lu-che",
+        "kind": "repair",
+        "category": "electronics",
+        "quote": 241,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "随身终端：响应周期忽快忽慢，时钟参考值应为 50。请先检测。",
+        "item": {
+          "id": "item-654",
+          "definitionId": "portable-terminal",
+          "name": "随身终端",
+          "category": "electronics",
+          "owner": "customer",
+          "location": "workshop",
+          "known": [
+            "basic",
+            "batch"
+          ],
+          "condition": 63,
+          "estimate": [
+            229,
+            329
+          ],
+          "salvageEstimate": [
+            266,
+            418
+          ]
+        }
+      },
+      "upcoming": [
+        {
+          "kind": "seller",
+          "category": "food"
+        },
+        {
+          "kind": "buyer",
+          "category": "food"
+        },
+        {
+          "kind": "repair",
+          "category": "neural"
+        },
+        {
+          "kind": "seller",
+          "category": "neural"
+        },
+        {
+          "kind": "buyer",
+          "category": "food"
+        },
+        {
+          "kind": "buyer",
+          "category": "food"
+        }
+      ],
+      "visitorIndex": 0,
+      "visitorCount": 7,
+      "orders": [],
+      "eventId": "archive-copy",
+      "eventResolved": false,
+      "questStages": {
+        "neighborhood-line": 3,
+        "archive-home": 2,
+        "workshop-trust": 3,
+        "clinic-promise": 3
+      },
+      "reputation": 245,
+      "relations": {
+        "union": 38,
+        "grayline": 15,
+        "neighborhood": 42
+      },
+      "records": {
+        "trades": 105,
+        "repairs": 55,
+        "revenue": 55827,
+        "repairIncome": 30184,
+        "days": 25,
+        "faults": {
+          "oxidized-contact": 16,
+          "broken-power": 7,
+          "jammed-bearing": 14,
+          "insulation-leak": 8,
+          "burnt-driver": 11,
+          "neural-noise": 6,
+          "sensor-drift": 4,
+          "clock-drift": 5,
+          "feedback-loop": 3,
+          "old-grease": 6,
+          "analog-drift": 3,
+          "worn-gear": 3
+        }
+      },
+      "finalStage": 3,
+      "finalComplete": true,
+      "professionMilestones": [
+        "relay-restored"
+      ],
+      "professions": [
+        {
+          "professionId": "restorer",
+          "implemented": true,
+          "mastered": false,
+          "milestone": "relay-restored",
+          "completed": true,
+          "ready": false
+        }
+      ],
+      "victory": true,
+      "endless": true,
+      "challenge": null,
+      "messages": [
+        "学会残值判断：收购时更清楚地判断故障旧货的翻新空间。",
+        "第 27 日开门，12 工时、7 位预约访客。",
+        "展品已撤回货架；库存超容量时仍保留物品。",
+        "净化饮水已入柜，普通交易不会出售它。当前吸引力 17。",
+        "展品已撤回货架；库存超容量时仍保留物品。"
+      ]
+    }
+  }
+}

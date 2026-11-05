@@ -1,0 +1,19 @@
+{
+  "name": "@goatyang/cyber-shop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4175 --strictPort",
+    "preview": "vite preview --host 127.0.0.1 --port 4176 --strictPort",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "validate": "node scripts/validate-art.mjs && vitest run tests/content.test.ts"
+  },
+  "dependencies": { "phaser": "3.90.0", "vue": "3.5.35" },
+  "devDependencies": {
+    "@types/node": "24.13.1", "@vitejs/plugin-vue": "6.0.7", "typescript": "5.9.3",
+    "vite": "8.0.16", "vitest": "4.1.10", "vue-tsc": "3.3.9"
+  }
+}

@@ -4,15 +4,18 @@ on:
   push:
     branches:
       - main
+      - 'codex/**'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -38,6 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 配置 GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       - name: 校验海克斯麻将数据
@@ -46,17 +50,36 @@ jobs:
       - name: 测试海克斯麻将
         run: pnpm hex:test
 
+      - name: 校验赛博杂货铺内容
+        run: pnpm cyber:validate
+
+      - name: 测试赛博杂货铺规则与存档
+        run: pnpm cyber:test
+
+      - name: 检查赛博杂货铺类型
+        run: pnpm cyber:typecheck
+
       - name: 构建项目
         run: pnpm site:build
 
+      - name: 校验内容结构与独立应用产物
+        run: |
+          node scripts/validate-content-structure.mjs
+          node scripts/check-independent-apps.mjs
+
       - name: 上传 GitHub Pages 产物
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./src/.vuepress/dist
 
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

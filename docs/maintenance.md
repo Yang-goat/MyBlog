@@ -38,10 +38,21 @@ git status --short
 pnpm.cmd hex:validate
 pnpm.cmd hex:test
 pnpm.cmd hex:typecheck
+pnpm.cmd cyber:validate
+pnpm.cmd cyber:test
+pnpm.cmd cyber:typecheck
 pnpm.cmd site:build
+node scripts/validate-content-structure.mjs
+node scripts/check-independent-apps.mjs
 ```
 
-`site:build` 先构建博客，再将海克斯麻将输出到 `dist/hex-mahjong/`；之后再次单独构建博客可能清掉应用产物。完整发布以 `site:build` 的结果为准。
+`site:build` 按博客、海克斯麻将、赛博杂货铺的顺序构建，两款应用分别输出到 `dist/hex-mahjong/` 和 `dist/cyber-shop/`。之后再次单独构建博客可能清掉应用产物，完整发布以 `site:build` 的结果为准。独立应用的 Vite 构建不得清空整个 `dist/`。
+
+`cyber:validate` 包含 66 项美术硬门禁：从真实内容注册表与场景引用确定预期 ID。64 项要求登记为 `generated`；经用户授权，仅 `electronic-parts` 和 `insulation` 允许 `original-drawn`，并要求项目内独立绘制源文件、明确来源说明及保留生成失败历史。全部素材检查唯一 ID/路径、精确大小写、文件数量、重复图片、WebP 容器、帧头、尺寸、透明通道及哈希；缺失或待完成素材会直接使校验失败。
+
+`check-independent-apps.mjs` 检查两款应用入口、构建脚本与样式资源、精确大小写、应用资源前缀，以及与博客首页同时存在；它复用同一 66 项门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
+
+GitHub Actions 在 `main`、`codex/**` 推送及面向 `main` 的拉取请求上执行验证。Pages 配置、发布产物上传和部署均限制为 `main`，手动从功能分支触发同样只验证。正式发布后仍需检查 `https://goatyang.com/cyber-shop/` 的实际页面、资源响应与版本。
 
 ## 预览与浏览器验证
 
@@ -53,6 +64,19 @@ pnpm.cmd docs:dev --host 127.0.0.1 --port 4173
 ```
 
 以终端实际 URL 为准，不重复启动占用同一目标端口的服务。只在涉及交互或视觉时进行浏览器验证；用户选择自行检查时尊重该安排。检查完成后停止自己启动的服务，若仍供用户预览则保留并告知地址。不要用 `Start-Process` 临时后台启动服务。
+
+赛博杂货铺使用独立 Vite 服务，开发与构建不会改写 VuePress 的 `.temp/`：
+
+```powershell
+pnpm.cmd cyber:dev
+# 开发：http://127.0.0.1:4175/cyber-shop/
+pnpm.cmd cyber:preview
+# 构建后预览：http://127.0.0.1:4176/cyber-shop/
+```
+
+两个命令都启用严格端口检查，分别在独立终端运行，需要停止时在对应终端按 `Ctrl+C`。启动后检查监听端口与真实 HTTP 响应。游戏存档的命名空间为 `cyber-shop:save:v1`，海克斯麻将继续使用独立的 `hex-mahjong` 数据库；本机与正式域名之间通过游戏内导出、导入迁移进度。
+
+导出文件只包含当前进度，不携带原站点的当日开门副本。导入后以导入点建立本地恢复备份，从下一营业日起再按开门状态备份。游戏开发、玩家操作和扩展入口见[赛博杂货铺交接说明](../apps/cyber-shop/README.md)。
 
 ## 临时文件与清理
 

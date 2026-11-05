@@ -1,0 +1,667 @@
+{
+  "ok": true,
+  "count": 66,
+  "totalBytes": 5109798,
+  "assets": [
+    {
+      "id": "scene-shop",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 376776,
+      "sha256": "70dc0e91d91f8b9a663b313ec8c355b2e158e03af7ec63fdfd538ff0bac49b59",
+      "match": true
+    },
+    {
+      "id": "scene-city",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 405190,
+      "sha256": "cb9a007462b74068290277c8cfd6f814368d87667867fbbc0637f13f4ccff567",
+      "match": true
+    },
+    {
+      "id": "scene-workbench",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 299156,
+      "sha256": "b737d9aa1e59cea47f3bc38b02af78d3f0af0e39eda5464813da57133cdcd788",
+      "match": true
+    },
+    {
+      "id": "scene-ending",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 345668,
+      "sha256": "d68e64e33aa701f924dbefdfe5098c78d51b313287aa9386b6bc0a1f3120170d",
+      "match": true
+    },
+    {
+      "id": "lin-qiao",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 138064,
+      "sha256": "d0c5c6d6693093a1fc8338313df3264c5a1318a86e2131fedfd1b4cdfaf4f6c7",
+      "match": true
+    },
+    {
+      "id": "pocket-com",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 467,
+      "height": 512,
+      "bytes": 39266,
+      "sha256": "68de22b8e09a0b1b891068cc17ea95b31d0f3b408d0859e24a69778d45bae424",
+      "match": true
+    },
+    {
+      "id": "portable-terminal",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 30430,
+      "sha256": "e8d0d126cab22e919959a2ccc06dd7647cdf86eb5e4561087475c54e61f36fb1",
+      "match": true
+    },
+    {
+      "id": "sweeper-drone",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 48712,
+      "sha256": "49549b4d8981554533d0aa6710d030179b8fdbfa57db3abce0500d1121479ac3",
+      "match": true
+    },
+    {
+      "id": "servo-arm",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 468,
+      "bytes": 54010,
+      "sha256": "f924eb212cee7a48d5dd372cdfb3a6156e5457c7d4f6f46b9b7f46f22dd1707f",
+      "match": true
+    },
+    {
+      "id": "industrial-sensor",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 42188,
+      "sha256": "646198eaf1a36924b2966c40c2896971c31c8deba7258ea5c0b4325b2e293c5b",
+      "match": true
+    },
+    {
+      "id": "air-circulator",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 41680,
+      "sha256": "e23235a2cdb8dfdf54cd971f5997b286949e609f3291b49ceae947e1e361e113",
+      "match": true
+    },
+    {
+      "id": "battery-pack",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 47486,
+      "sha256": "5d039ffb1ff93412481e9ae6b19e78bc457f446fe88ac7cfe714bce7112cb9ba",
+      "match": true
+    },
+    {
+      "id": "capacitor-array",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 473,
+      "bytes": 67314,
+      "sha256": "48728e3ae8335a8ddfdb97a4d845fff9feb896c57f5e077fe914083c5a0e06c2",
+      "match": true
+    },
+    {
+      "id": "power-module",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 48154,
+      "sha256": "951d0a45c5051a5ae5d3d63011b966ab302c4ef7906449c6bbda0f5027205cc1",
+      "match": true
+    },
+    {
+      "id": "alloy-plate",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 40522,
+      "sha256": "ec47390acd9fa010513771d455e38733880bf30269087cb4625cc1ef6582d73f",
+      "match": true
+    },
+    {
+      "id": "insulation-roll",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 63212,
+      "sha256": "7f864d59a78843e70bedfb6120c72ed11bb7bd2a39a4e76945e330da061fcde8",
+      "match": true
+    },
+    {
+      "id": "catalyst-core",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 45328,
+      "sha256": "2496c67cf358c01fe85e56952f4989bc0170fb3664f8e2ed22f4448b988e4572",
+      "match": true
+    },
+    {
+      "id": "purified-water",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 341,
+      "height": 512,
+      "bytes": 38544,
+      "sha256": "0a07cc931e254aa51ddb86be13186162162c595292a078b0d2dad17636b4bc0a",
+      "match": true
+    },
+    {
+      "id": "synth-coffee",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 468,
+      "height": 512,
+      "bytes": 51708,
+      "sha256": "0d4ab4ac43fed25c6e812ae7ef8bf1110fc64b0b6feca6062354df22a289b0b9",
+      "match": true
+    },
+    {
+      "id": "algae-ration",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 39574,
+      "sha256": "233e8e4782241da06e280f5d4e585227c50cff9af876a8f719a0e0c69c39ca87",
+      "match": true
+    },
+    {
+      "id": "culture-starter",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 468,
+      "bytes": 57080,
+      "sha256": "aaebcc4568602fdcc94610dc47a4e139dbe64c38b850af1795bd66f0eb0f789f",
+      "match": true
+    },
+    {
+      "id": "nutrient-fluid",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 341,
+      "height": 512,
+      "bytes": 38528,
+      "sha256": "ecbbfe5573636cf56429d4768543f3882ecb1fd211607aa12db8474eeae5b7e9",
+      "match": true
+    },
+    {
+      "id": "bio-gel",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 33544,
+      "sha256": "5689e75e6a329d4b4e2eb7a6d14b77f592592f08b0d058b67b58ac9180a26d8b",
+      "match": true
+    },
+    {
+      "id": "haptic-module",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 42182,
+      "sha256": "e5feff6acbe1367bccbabdf1b979687a573c2363cf50ad79d9a1acc55b1af43a",
+      "match": true
+    },
+    {
+      "id": "optical-eye",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 468,
+      "bytes": 65680,
+      "sha256": "4a566c150c544973f502ab04ff2c1c9aefd032eff3618e216a24b88b9e0ff689",
+      "match": true
+    },
+    {
+      "id": "neural-bridge",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 256,
+      "bytes": 33268,
+      "sha256": "f4f16432f558ab385576a04346492e94db6b756d9b2cac0d12ed9aebecf342de",
+      "match": true
+    },
+    {
+      "id": "memory-buffer",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 41598,
+      "sha256": "4e3432d8da7367a80e5decc4cacbc647a3b0cab842717154f3d7af6892695f8a",
+      "match": true
+    },
+    {
+      "id": "diagnostic-unit",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 39510,
+      "sha256": "09a227550155e1892bf950b478c34b1fa55e0cdc48a1b81e58386846ae36ebd5",
+      "match": true
+    },
+    {
+      "id": "infusion-pump",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 44154,
+      "sha256": "e790baefb3ebd6b62047e5ef903b5369f98747837203c32a606364bee80ad455",
+      "match": true
+    },
+    {
+      "id": "data-chip",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 28128,
+      "sha256": "112f422c541babff9b7fe29b7013c10c08f0712abe068bf71e5b1c9bd5433077",
+      "match": true
+    },
+    {
+      "id": "encrypted-box",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 48806,
+      "sha256": "03bb4d895b0730e4a3d3e4fd1299b49aeb6697efb5b836beb8ac6cc8196cd693",
+      "match": true
+    },
+    {
+      "id": "he-jin",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 151148,
+      "sha256": "1ae2197c1f1540a0da7ce7b00fc09223eafa8b31b9cf19898860349d1420fae0",
+      "match": true
+    },
+    {
+      "id": "mechanical-watch",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 48332,
+      "sha256": "36b08613be00ddc4a5e3d14fb01f044f6278b59e14772e8a99f0d2c77eca9e09",
+      "match": true
+    },
+    {
+      "id": "lu-che",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 143102,
+      "sha256": "d7aec1389b77472c355e403089741965a7bb9a0a7c9438fde706f21769385b70",
+      "match": true
+    },
+    {
+      "id": "song-yi",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 122334,
+      "sha256": "80fa06a23a4fc3bde35c2d89bfb98bf2be2bed5d72a7d13d2c3f0b1bc231a508",
+      "match": true
+    },
+    {
+      "id": "wen-zhu",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 150288,
+      "sha256": "216e0caf04081e29abb3384fe273136c09d0ec30621b4fcc1befd2baee206f49",
+      "match": true
+    },
+    {
+      "id": "a-miao",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 840,
+      "bytes": 139200,
+      "sha256": "4db02f8703915e54d20056474ccbf56e6c0dd14a762fa8a8269a1a7c9ef2ab01",
+      "match": true
+    },
+    {
+      "id": "qi-lan",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 922,
+      "bytes": 143466,
+      "sha256": "139eeb02ef67b9b63597d36465ff3fec58c71771bf088dbeac2547eff3fff4c7",
+      "match": true
+    },
+    {
+      "id": "bai-heng",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 873,
+      "bytes": 195546,
+      "sha256": "02d656a85bfab156e400cd8cda8aa4f246f44f7cfaa405db582b980ce18b2f75",
+      "match": true
+    },
+    {
+      "id": "luo-jin",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 844,
+      "bytes": 100520,
+      "sha256": "7ba199e5b6776be6d0b5447507c6c1dfa08280ef6ab50c5f9a10df8c80e84c83",
+      "match": true
+    },
+    {
+      "id": "shen-wu",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 768,
+      "height": 928,
+      "bytes": 149738,
+      "sha256": "36a07b48fe6041901fbe48b1ce31cfb0c6ac93255ee67beab9dd17ecced91b67",
+      "match": true
+    },
+    {
+      "id": "holo-film",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 30884,
+      "sha256": "b4a07a4bfcef2b5c51cd3faa522da9763e685c3e7ac8866bcf8ea46fdfdd9022",
+      "match": true
+    },
+    {
+      "id": "music-tape",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 50924,
+      "sha256": "78bf30a44795b4bed2fb89991e5ab7c9030d0e64da1dd023f5cfcf5d163cd3fc",
+      "match": true
+    },
+    {
+      "id": "game-cartridge",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 46476,
+      "sha256": "536a51276d1e5d5e3fa2565c8a1a09482c6df17053d392d0d289ca269bef3fca",
+      "match": true
+    },
+    {
+      "id": "memory-crystal",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 30324,
+      "sha256": "650eeca8f6e741a8dfd327bf0aeeae452c39454bb07211efc47b0b06db525155",
+      "match": true
+    },
+    {
+      "id": "early-core",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 41622,
+      "sha256": "cd51a14e0b72fa2445438594a88382dc5d52a8b67e71daa3436a3e604c0f521c",
+      "match": true
+    },
+    {
+      "id": "film-camera",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 53232,
+      "sha256": "e4cbc2cca3c3c1489ba496160c011d8236124f0f94b4cb6ab8950cf85bb97355",
+      "match": true
+    },
+    {
+      "id": "spectrum-jewel",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 30386,
+      "sha256": "3726b8c9b4846e48ce1f911c8dd99a69efb627e87e74353afba321297e72a518",
+      "match": true
+    },
+    {
+      "id": "old-city-badge",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 33112,
+      "sha256": "709e818903a30b30033ba109be26290235d07d12f23fb8b1d046e299b62cf855",
+      "match": true
+    },
+    {
+      "id": "bionic-toy",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 43338,
+      "sha256": "cce7e46ebde21ac9f4652947a93db0feb057423090a251e831006bfcb8745c09",
+      "match": true
+    },
+    {
+      "id": "scanner",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 40226,
+      "sha256": "0c33479f310819772c7ea4234a86fc05af3eb15a966509fc74feb4f2d4540373",
+      "match": true
+    },
+    {
+      "id": "market-recorder",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 35346,
+      "sha256": "ddccdf28a803d605fdfaac1bf916829139f6df7cf49c28307963af3f48388b59",
+      "match": true
+    },
+    {
+      "id": "serial-terminal",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 468,
+      "bytes": 57638,
+      "sha256": "7f0a73c3da9337f3adf78e40a886fdaf02f8acbc7ade6b1ec90f05bd41e7fe27",
+      "match": true
+    },
+    {
+      "id": "micro-solder",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 24360,
+      "sha256": "7e8fe7ea41b16995e13865772f20f220457caabcdc205ab55e4017070ec1128e",
+      "match": true
+    },
+    {
+      "id": "assembly-jig",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 54762,
+      "sha256": "dc04c012e3d6ec1e4cbdc3ab20701043369667b3416264d989f0ac9b8a0737bf",
+      "match": true
+    },
+    {
+      "id": "calibrator",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 48468,
+      "sha256": "1d8100af3126a2f6015d481ff7f0bda456eb311e3a2edecec885bc93afea467f",
+      "match": true
+    },
+    {
+      "id": "cleaner",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 341,
+      "height": 512,
+      "bytes": 29124,
+      "sha256": "462e324d89764ecaf158446431d70194c2641bc29f9d0a57d5ececd50b93cfbc",
+      "match": true
+    },
+    {
+      "id": "electronic-parts",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 37448,
+      "sha256": "22785375fb1170c61b1b60013b72ad52ffa779dc840b780667f4aa66f6210231",
+      "match": true
+    },
+    {
+      "id": "mechanical-parts",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 40590,
+      "sha256": "7319188c29ae7ab9a369e79372549afba88860c7fc457c54df1ab1958b3fc4c6",
+      "match": true
+    },
+    {
+      "id": "insulation",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 33164,
+      "sha256": "9bc15c6b2fd969ef3dafe9f930ef42df9554092f7d3e76f66a1a14d4d974e394",
+      "match": true
+    },
+    {
+      "id": "neural-supplies",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 41932,
+      "sha256": "5ea58be92c73eca0107cd56f116dfedcc605a4b4903c9a1a3df99b8d8fcc889f",
+      "match": true
+    },
+    {
+      "id": "preserve-pack",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 39142,
+      "sha256": "4d6d0a5b7ffdcc90f98db0053961df6aa206ff90e75d1f50bac0945d75f65a0a",
+      "match": true
+    },
+    {
+      "id": "workbench",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 512,
+      "height": 341,
+      "bytes": 41016,
+      "sha256": "4293b7767b861fb5a92b2a76f4a40a99292ee1ff1c31351b3d916a5e238b7199",
+      "match": true
+    },
+    {
+      "id": "stock-rack",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 341,
+      "height": 512,
+      "bytes": 53148,
+      "sha256": "aef7cccef0ac7fe517b1a4849fb640b73f5a536b5cb762b33502e42f925ab390",
+      "match": true
+    },
+    {
+      "id": "cold-storage",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 468,
+      "height": 512,
+      "bytes": 47842,
+      "sha256": "a06e30eaf66b04744e6f5cad7832909d6bb57dc8a87306150f422b97c4fe4079",
+      "match": true
+    },
+    {
+      "id": "display-case",
+      "status": 200,
+      "mime": "image/webp",
+      "width": 427,
+      "height": 512,
+      "bytes": 46160,
+      "sha256": "f814ffa42fe460c62b99a14c80146bbac13cf51831f6e5b14e58ae9ad115cc0a",
+      "match": true
+    }
+  ]
+}
