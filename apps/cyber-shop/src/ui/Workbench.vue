@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { ITEMS, FAULTS } from '../content';
 import { state, selectedOrder, dispatch, modal } from './store';
 import type { Operation } from '../game/types';
-import Art from './Art.vue';
+import BenchScene from '../scenes/BenchScene.vue';
 import RepairRig from './RepairRig.vue';
 const order = computed(() => state.value.orders.find(o => o.id === selectedOrder.value));
 const item = computed(() => state.value.items.find(i => i.id === order.value?.itemId));
@@ -24,7 +24,7 @@ function deliver() { if (order.value && dispatch({ type: 'deliver', orderId: ord
 
 <template>
   <div v-if="order && item" class="workbench-layout">
-    <section class="bench-visual"><Art id="scene-workbench" class="bench-background" eager /><div class="bench-shade"></div><p class="eyebrow bench-label">WORKBENCH / 手艺让旧物继续运转</p><Art :id="item.definitionId" :label="definition?.name" class="bench-object" eager /><div class="bench-info"><h2>{{ definition?.name }}</h2><p>{{ order.preserveOriginal ? '原貌保存委托 · 更换原件会降低原貌价值' : '恢复功能 · 检测后选择正确工序' }}</p><span>{{ item.owner === 'customer' ? '客户寄存物' : '自有旧货' }} · 外观 {{ order.diagnosed || item.known.includes('basic') ? item.condition + '%' : '待检测' }} · 原貌 {{ item.known.includes('serial') ? item.originality + '%' : '待核验' }}</span></div></section>
+    <section class="bench-visual"><BenchScene :item-id="item.definitionId" :diagnosed="order.diagnosed" :fault-count="faults.length" :verified="order.verified" :equipment="state.equipment"/><p class="eyebrow bench-label">WORKBENCH / 手艺让旧物继续运转</p><div class="bench-info"><h2>{{ definition?.name }}</h2><p>{{ order.preserveOriginal ? '原貌保存委托 · 更换原件会降低原貌价值' : '恢复功能 · 检测后选择正确工序' }}</p><span>{{ item.owner === 'customer' ? '客户寄存物' : '自有旧货' }} · 外观 {{ order.diagnosed || item.known.includes('basic') ? item.condition + '%' : '待检测' }} · 原貌 {{ item.known.includes('serial') ? item.originality + '%' : '待核验' }}</span></div></section>
     <section class="bench-controls"><p class="eyebrow">REPAIR FILE / {{ order.id }}</p><h2>从读数开始。</h2><p>{{ order.description }}</p><div class="repair-steps"><span :class="{ done: order.diagnosed }">01 检测</span><span :class="{ done: order.diagnosed && !faults.length }">02 修复</span><span :class="{ done: order.verified }">03 复检</span><span>04 交付</span></div>
       <div v-if="state.tutorial && !state.tutorial.skipped && state.tutorial.step >= 4 && state.tutorial.step <= 5" class="bench-tutorial"><strong>林桥的提醒</strong><p>{{ !order.diagnosed ? '先连接检测仪，确定故障。不要仅凭外观选择工序。' : faults.length ? '按检测结果清洁接点、拆装模块或校准信号。也可切换参数操作，最后点击执行工序。下方会显示修复结果。' : !order.verified ? '故障已排除。点击通电复检，确认能正常工作。' : '复检通过，交付并结算。回到店里后呼叫下一位，练习收购和入库。' }}</p></div>
       <div class="bench-budget"><span>剩余工时 <b>{{ state.hours }}</b></span><span>专用材料款 <b>₡{{ order.escrow }}</b></span></div>

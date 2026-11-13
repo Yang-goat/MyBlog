@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "ownedToolDisabled": true,
+  "facilityCap": true,
+  "insufficientCashDisabled": true,
+  "batchQuantity": 5,
+  "normalPrice": 80,
+  "earnedDiscountPrice": 68,
+  "ownedToolsVisible": 3,
+  "reducedMotion": true,
+  "errors": [],
+  "missing": []
+}

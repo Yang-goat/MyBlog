@@ -121,7 +121,7 @@ try{
   assert((await game()).items.some(i=>i.location==='display'));
  }
  await panel('设置与存档');const [download]=await Promise.all([page.waitForEvent('download'),click('导出当前存档')]);await download.saveAs(`${out}/career-save.json`);
- const before=await game();await page.locator('input[type=file]').setInputFiles(`${out}/career-save.json`);assert.deepEqual(await game(),before);
+ const before=await game();await page.locator('input[type=file]').setInputFiles(`${out}/career-save.json`);await page.waitForFunction(()=>JSON.parse(window.render_game_to_text()).panel==='');assert.deepEqual(await game(),before);
  await page.reload();await click('继续经营 ↗',false);assert.deepEqual(await game(),before);
  await page.setViewportSize({width:844,height:390});await shot('landscape-endless');
  assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);

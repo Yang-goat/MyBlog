@@ -6,8 +6,9 @@ import { inspectWebP } from './validate-art.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export function validateScenery({distRoot}={}) {
  const errors=[],manifest=JSON.parse(fs.readFileSync(path.join(root,'scenery-manifest.json'),'utf8'));
- const seen=new Set(),source=fs.readFileSync(path.join(root,'src/scenes/ShopCanvas.vue'),'utf8');
- const expected=[...source.matchAll(/\/cyber-shop\/(scenery\/[a-z0-9-]+\.webp)/g)].map(m=>m[1]);
+ const seen=new Set(),sceneRoot=path.join(root,'src/scenes');
+ const source=fs.readdirSync(sceneRoot).filter(file=>/\.(vue|ts)$/.test(file)).map(file=>fs.readFileSync(path.join(sceneRoot,file),'utf8')).join('\n');
+ const expected=[...new Set([...source.matchAll(/\/cyber-shop\/(scenery\/[a-z0-9-]+\.webp)/g)].map(m=>m[1]))];
  for(const a of manifest.assets){
   try{
    if(!/^scenery\/[a-z0-9-]+\.webp$/.test(a.path)||seen.has(a.path)||!expected.includes(a.path))throw Error('duplicate, invalid or unused path');seen.add(a.path);

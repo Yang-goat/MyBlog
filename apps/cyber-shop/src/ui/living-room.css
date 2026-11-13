@@ -1,4 +1,5 @@
 /* Fixtures and accessible controls use the same normalized geometry as room-renderer. */
+.dialog-toolbar{position:sticky;top:0;height:0;z-index:4;}
 .shop-open .shop-room { color:#e5e5cb; font-size:14px; }
 .shop-open .wall-clock {left:3.8%;top:13.5%;width:14.1%;height:11.2%;transform:none;text-align:left;padding:0 10px;gap:3px;}
 .shop-open .wall-clock strong {font-size:clamp(13px,1.2vw,20px);letter-spacing:.08em;}
@@ -12,10 +13,12 @@
 .room-showcase {left:3.1%;top:34.8%;width:17%;height:17.7%;}
 .room-showcase header {top:-16%;left:0;right:0;font-size:12px;}
 .room-showcase header small {font-size:10px;}
-.room-showcase>div {padding-bottom:5%;}
+.room-showcase>div {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));height:100%;padding:0;gap:0 5px;align-items:end;}
+.room-showcase>div>p {grid-column:1/-1;grid-row:1/-1;text-align:center;align-self:center;}
+.showcase-locked{grid-column:1/-1;grid-row:2;font-size:9px;text-align:center;align-self:center;color:#91aa98;line-height:1.6;}
 .room-showcase p {font-size:11px;color:#a9beb0;}
 .room-showcase button {font-size:10px;bottom:-15%;}
-.room-showcase .showcase-object {height:75%;}
+.room-showcase .showcase-object {width:100%;height:100%;padding:0 0 1.3vh;min-width:0;min-height:0;}
 .shop-open .mentor-note {left:2.8%;top:66%;width:17.8%;max-height:28%;transform:rotate(-1deg);padding:15px;background:linear-gradient(115deg,#e3d9b7,#c1b68c);border-top:7px solid #676d55;}
 .shop-open .mentor-note h3 {font-size:clamp(13px,1.1vw,18px);}
 .shop-open .mentor-note p {font-size:clamp(11px,.9vw,14px);line-height:1.7;}

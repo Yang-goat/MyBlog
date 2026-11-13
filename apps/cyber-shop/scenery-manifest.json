@@ -61,6 +61,36 @@
       "height": 320,
       "alpha": true,
       "sourceSha256": "098eb3767556fb1cb716337f02f416d3844eeff67d78b6e3062b1701d728fcbf"
+    },
+    {
+      "id": "bench-lamp",
+      "generation": "exec-1a35ffe4-2ade-437b-8138-cd569b99689a",
+      "role": "Independent articulated work lamp; light cone is drawn live by BenchScene.",
+      "prompt": "Create ONE standalone modular game prop sprite: an articulated vintage repair-workshop task lamp, fully isolated on a genuinely transparent background. Original cozy retro-futurist 2D game art, hand-painted gouache realism, beautifully worn dark jade enamel, brass joints and small amber chips. Tall portrait composition roughly 4:5, full silhouette visible with a narrow transparent margin. Viewed from the front with just a little top surface visible, minimal perspective. The lamp clamps to the right side of a desk: narrow clamp/base at bottom right, two jointed angled arms rising at right then reaching toward upper left, a broad bronze conical shade at upper left angled DOWN toward the center-left work surface. Shade has a warm ivory lit interior. No painted beam, no halo outside the object, no tabletop, no wall, no background, no other tools, no cables hanging outside the silhouette, no text or watermark. Subtle warm light from top right and cool teal fill. High detail at sprite scale, clean alpha edges, complete object must not touch image edges. This will sit in the upper-right corner of an interactive repair workbench; real-time light is drawn separately by the game.",
+      "width": 640,
+      "height": 800,
+      "bytes": 82062,
+      "sha256": "9d9ae8ba5ff0feee184499a1792cafd740ec4b99296f765c0d5ca9dbaec74c2b",
+      "sourceSha256": "262ca19d6a1347135e2ed02c34a2e45d1ad46f276ebc87a1f5f44e3c128649c2",
+      "tool": "image_gen",
+      "path": "scenery/bench-lamp.webp",
+      "source": "docs/art-revisions/living-shop/bench-lamp.png",
+      "alpha": true
+    },
+    {
+      "id": "parts-organizer",
+      "generation": "exec-2fcd58c3-a1bf-4d99-a516-b8aba608cee0",
+      "role": "Separate workshop parts drawers behind the instrument, item, light and owned tools.",
+      "prompt": "ONE modular environment sprite for an original cozy retro-futurist repair-shop game. A low wide vintage tabletop PARTS ORGANIZER, fully visible, isolated on a genuinely transparent background. Landscape 3:1 object silhouette with very narrow transparent margin. Straight-on frontal camera with only a tiny glimpse of the top; no strong perspective, no surrounding desk or scene. Three rows of eight small translucent smoky glass drawers in a dark jade painted metal rectangular housing, worn brass handles, tiny blank cream label slots, rich fine scuffs and chipped paint. Visible subtle assortments of screws, copper coils, gears and plugs behind some dark tinted drawers; not overly cluttered. No readable words or numerals, no branded labels. Soft amber highlight from upper right, cool teal reflected light on left, hand-painted realistic gouache game illustration, strong quiet material detail and grounded three-dimensional thickness. Thin dark base plinth; no cast shadow outside object, no glow, no extra objects on top, no watermark. The central game item and instruments will be composited in front separately. This is one production prop sprite, not a sheet of alternatives.",
+      "width": 1000,
+      "height": 333,
+      "bytes": 102986,
+      "sha256": "4036134ae52a765bffe1729b4294aa0c0eeee859275c3c3750d79ad207b9dbf2",
+      "sourceSha256": "4aeb481bc5b5f3a234ab3cdbbecfa1e3213cae99316a4c1c0c4bd6586ced458c",
+      "tool": "image_gen",
+      "path": "scenery/parts-organizer.webp",
+      "source": "docs/art-revisions/living-shop/parts-organizer.png",
+      "alpha": true
     }
   ]
 }

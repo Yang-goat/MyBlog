@@ -1,7 +1,7 @@
 import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES, EVENTS, QUESTS, THEMES, PROFESSIONS } from '../content';
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { warehouseLayout, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
-import type { Action, ActionResult, CategoryId, CertificateId, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
+import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
@@ -10,6 +10,7 @@ const def = (item: ItemInstance): ItemDefinition => ITEMS.find(d => d.id === ite
 const equipmentId = (effect: string) => EQUIPMENT.find(e => e.effect === effect)?.id ?? effect;
 const ownedEquipment = (s: GameState, effect: string) => s.equipment[equipmentId(effect)] ?? 0;
 export const skillEffect = (s: GameState, effect: string) => SKILLS.filter(n => s.skills.includes(n.id) && n.effect === effect).reduce((n, a) => n + a.amount, 0);
+export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)));
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
 export const capacity = (s: GameState) => BALANCE.stock + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
 export const displayCapacity = (s: GameState) => Math.min(BALANCE.maxShowcase, BALANCE.showcase + ownedEquipment(s, 'showcase') * 3);
@@ -446,7 +447,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const owned = s.equipment[e.id] ?? 0; if (e.type === 'tool' && owned) return fail('这件工具已经拥有。');
       if (e.type !== 'material' && count !== 1) return fail('工具和设施一次购买一件。');
       if (e.type === 'facility' && owned >= (e.effect === 'storage' ? 3 : e.effect === 'bench' ? 2 : 1)) return fail('该设施已达当前升级上限。');
-      const cost = round(e.price * count * (1 - (e.type === 'material' ? skillEffect(s, 'restock') : 0))); if (s.cash < cost) return fail('现金不足。');
+      const cost = equipmentPrice(s,e,count); if (s.cash < cost) return fail('现金不足。');
       pay(cost, 'equipment', `${e.name} × ${count}`); s.equipment[e.id] = owned + count; s.equipmentCosts[e.id] = (s.equipmentCosts[e.id] ?? 0) + cost; say(`购入${e.name} × ${count}。${e.description}`); break;
     }
     case 'display': {

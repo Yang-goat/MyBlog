@@ -13,7 +13,7 @@
 | `pnpm.cmd cyber:dev` | 开发服务：<http://127.0.0.1:4175/cyber-shop/> |
 | `pnpm.cmd cyber:build` | 类型检查并构建游戏 |
 | `pnpm.cmd cyber:preview` | 预览已构建游戏：<http://127.0.0.1:4176/cyber-shop/> |
-| `pnpm.cmd cyber:validate` | 原有 66 项资源、4 项分层场景素材与内容注册表校验 |
+| `pnpm.cmd cyber:validate` | 原有 66 项资源、6 项分层场景素材与内容注册表校验 |
 | `pnpm.cmd cyber:test` | 规则、成长、成本与存档测试 |
 | `pnpm.cmd cyber:typecheck` | Vue 与 TypeScript 类型检查 |
 
@@ -54,8 +54,10 @@ Vue 3、TypeScript 与 Vite 使用本仓库工具链。店铺通过 Canvas 2D �
 | [game/warehouse.ts](src/game/warehouse.ts) | 物品占格、旋转碰撞、台面布局与扩容 |
 | [scenes/ShopCanvas.vue](src/scenes/ShopCanvas.vue) | 场景资源加载、视口尺寸与帧调度 |
 | [scenes/room-renderer.ts](src/scenes/room-renderer.ts) | 分层店铺、雨水、街景、设备与光线 |
+| [scenes/BenchScene.vue](src/scenes/BenchScene.vue) | 独立维修台、实时检测屏、工作灯和已取得工具 |
 | [game/journey.ts](src/game/journey.ts) | 章节目标与现金收支日结的纯状态推导 |
 | [ui/RepairRig.vue](src/ui/RepairRig.vue) | 三类手动维修和执行前成本预览 |
+| [ui/EquipmentShop.vue](src/ui/EquipmentShop.vue) | 工具状态、设施上限、耗材批量采购与实际折扣预览 |
 | [ui/audio.ts](src/ui/audio.ts) | 环境音与动作反馈 |
 | [persistence/storage.ts](src/persistence/storage.ts) | 版本、导入校验、自动保存和恢复备份 |
 | [assets-manifest.json](assets-manifest.json) | 逐项素材 ID、提示词、来源、状态与发布路径 |
@@ -70,8 +72,8 @@ Vue 3、TypeScript 与 Vite 使用本仓库工具链。店铺通过 Canvas 2D �
 
 基础素材固定为 36 件商品、10 位人物、16 件工具耗材设施和 4 幅场景/结局，共 66 项。其中 64 项逐项通过 AI 图像工具生成；电子备件（`electronic-parts`）和绝缘材料（`insulation`）经用户授权分别采用原创绘制插画。发布图片位于 `public/art/`，提示词、绘制源文件与生成失败历史在资产清单登记。
 
-`cyber:validate` 要求 64 项为 `generated`，仅上述两个 ID 允许 `original-drawn`，并核对原创绘制来源及保留的失败历史。全部 66 项检查唯一 ID 与路径、大小写、文件数量、重复图片及 WebP 容器、帧头、尺寸、透明通道和哈希。旧整张店铺图 `scene-shop` 已明确归档，并保留原图；其余资源要求真实内容引用。
+`cyber:validate` 要求 64 项为 `generated`，仅上述两个 ID 允许 `original-drawn`，并核对原创绘制来源及保留的失败历史。全部 66 项检查唯一 ID 与路径、大小写、文件数量、重复图片及 WebP 容器、帧头、尺寸、透明通道和哈希。旧整张店铺图 `scene-shop` 和维修台图 `scene-workbench` 已明确归档，并保留原图或经过哈希核对的发布副本；其余资源要求真实内容引用。
 
-新增分层场景资源在 [scenery-manifest.json](scenery-manifest.json) 独立登记，当前为 4 项、455,570 字节。清单保留逐项生成提示词、原始 PNG、发布 WebP 与双方哈希。`validate-scenery.mjs` 从场景代码确定实际引用，并校验图片、原始素材和清单一致；整站检查要求全部发布图片与源文件逐字节相同。浏览器另行检查实际解码、视觉、触控、音频及完整游玩流程。
+新增分层场景资源在 [scenery-manifest.json](scenery-manifest.json) 独立登记，当前为 6 项、640,618 字节，包含街景、材质、终端、焊台、工作灯与零件抽屉。清单保留逐项生成提示词、原始 PNG、发布 WebP 与双方哈希。`validate-scenery.mjs` 从场景代码确定实际引用，并校验图片、原始素材和清单一致；整站检查要求全部发布图片与源文件逐字节相同。浏览器另行检查实际解码、视觉、触控、音频及完整游玩流程。
 
 功能分支 CI 只验证，正式部署限定 `main`。代码、截图或素材数量的单项通过不等于全部验收完成。实际命令、截图、流程耗时和限制见[验收记录](docs/verification.md)。

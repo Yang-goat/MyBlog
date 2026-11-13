@@ -1,5 +1,5 @@
 /** Original, layered scenery. No baked shop plate: all fixtures share the UI's coordinates. */
-export interface RoomView { day: number; hours: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number }
+export interface RoomView { day: number; hours: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number; owned?: boolean }
 export interface RoomArt {street?:HTMLImageElement;metal?:HTMLImageElement;terminal?:HTMLImageElement;solder?:HTMLImageElement}
 export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: number, view: RoomView, art:RoomArt={}) {
   const {street,metal,terminal,solder}=art;
@@ -77,6 +77,7 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   for(let i=0;i<16;i++){screw(i*96+12,18);line(i*96+24,12,i*96+24,46,'#30494a');}
   ctx.save();ctx.shadowColor='#81d5bf';ctx.shadowBlur=13;text('九 街 旧 物',578,43,29,'#b1daca','"Microsoft YaHei UI", sans-serif');ctx.restore();
   text('N° 09  /  REPAIR & RESALE',35,39,13,'#afbdab');text('雾港 · 往来皆是故事',1175,38,13,'#98aaa0','sans-serif');
+  if(view.owned){rect(843,22,164,24,'#203f39');line(843,46,1007,46,'#bba872');text('永久经营 · 自己的招牌',853,38,12,'#dcc593','sans-serif');}
   for(let i=0;i<24;i++){const x=332+i*32;poly([[x,69],[x+32,69],[x+34,94],[x-2,94]],i%2?'#3d615b':'#b2a57a');ellipse(x+16,94,18,7,i%2?'#304e49':'#91896a');}
   // Two warm hanging lights, independent of the street and wall.
   for(const x of [302,1138]){
@@ -97,6 +98,7 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   poly([[44,312],[90,312],[180,474],[146,474]],'#a7d7ca0b');
   for(const y of [379,461]){rect(43,y,248,6,'#627567');rect(43,y+6,248,4,'#11272a');line(46,y,287,y,'#bcc2a0');}
   glow(165,319,100,'#cbb47810');line(46,314,287,314,'#b6c89a',2);
+  if(view.equipment['display-case']){glow(165,404,110,'#d1b86c20');line(46,397,287,397,'#d3bd80',2);}
   // The right-hand call terminal has a physical, lit push-button.
   frame(1135,115,271,181);rect(1148,127,245,127,'#102b2c');
   for(let y=130;y<251;y+=4)line(1151,y,1389,y,'#c0e7a805');

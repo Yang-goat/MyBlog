@@ -124,6 +124,11 @@ export async function validateArt({ distRoot } = {}) {
       const archived = manifest.assets?.find(a => a.id === id);
       check(archived?.archived === true && archived.source === 'docs/art-revisions/scene-shop-v3.png' && fs.existsSync(path.join(appRoot, archived.source)), 'Original shop plate must retain its archived source');
       check(sceneConsumers.includes('drawRoom') && fs.existsSync(path.join(appRoot, 'scenery-manifest.json')), 'Layered shop replacement is missing');
+    } else if(id === 'scene-workbench') {
+      const archived=manifest.assets?.find(a=>a.id===id);
+      const archive=path.join(appRoot,'docs/art-revisions/scene-workbench-v1.webp');
+      check(archived?.archived===true && archived.archive==='docs/art-revisions/scene-workbench-v1.webp' && fs.existsSync(archive) && createHash('sha256').update(fs.readFileSync(archive)).digest('hex')===archived.sha256, 'Original workbench plate must retain its verified archive');
+      check(sceneConsumers.includes('<BenchScene') && fs.existsSync(path.join(appRoot,'src/scenes/BenchScene.vue')), 'Layered workbench replacement is missing');
     } else check(sceneConsumers.includes(`'${id}'`) || sceneConsumers.includes(`"${id}"`), `Scene has no UI reference: ${id}`);
   }
   check(expected.size === EXPECTED_COUNT, `Content references ${expected.size} art IDs; expected ${EXPECTED_COUNT}`);

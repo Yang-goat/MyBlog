@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ITEMS, CATEGORIES, SKILLS, EQUIPMENT, CERTIFICATES, EVENTS, QUESTS, THEMES, CHARACTERS } from '../content';
+import { ITEMS, CATEGORIES, SKILLS, CERTIFICATES, EVENTS, QUESTS, THEMES, CHARACTERS } from '../content';
 import { capacity, displayCapacity, attraction } from '../game/engine';
 import { state, modal, selectedItem, selectedOrder, dispatch, downloadSave, uploadSave, restore, fullScreen, muted, volume, ambience, reducedMotion, started, inspectSave } from './store';
 import type { CategoryId } from '../game/types';
 import Art from './Art.vue';
+import EquipmentShop from './EquipmentShop.vue';
 import ItemKnowledge from './ItemKnowledge.vue';
 import { BALANCE, CHALLENGES } from '../game/balance';
 const groupNames: Record<string, string> = { neighborhood: '街区互助社', union: '工造联合会', grayline: '灰线商团' };
-const category = ref('all'); const equipmentType = ref('tool'); const tab = ref('general');
+const category = ref('all'); const tab = ref('general');
 const respecMode = ref(false); const plan = ref<string[]>([]);
 const stock = computed(() => state.value.items.filter(i => i.owner === 'player' && (category.value === 'all' || ITEMS.find(d => d.id === i.definitionId)?.category === category.value)));
 const selected = computed(() => state.value.items.find(i => i.id === selectedItem.value && i.owner === 'player') ?? stock.value[0]);
@@ -51,7 +52,7 @@ function finalOrder() { if (dispatch({ type: 'startFinal' })) { selectedOrder.va
     </template>
 
     <template v-else-if="modal === 'equipment'">
-      <div class="panel-heading"><p class="eyebrow">SUPPLIES / 好工具，陪你久一点</p><h2>工具与设施采购</h2><p>工具扩展检测与维修能力。耗材按工序消耗，设施改善库存、保存和陈列。</p></div><div class="tab-row"><button :class="{ active: equipmentType === 'tool' }" @click="equipmentType = 'tool'">六件工具</button><button :class="{ active: equipmentType === 'material' }" @click="equipmentType = 'material'">六类耗材</button><button :class="{ active: equipmentType === 'facility' }" @click="equipmentType = 'facility'">四类设施</button></div><div class="equipment-grid"><article v-for="eq in EQUIPMENT.filter(e => e.type === equipmentType)" :key="eq.id" :data-equipment="eq.id"><Art :id="eq.id" :label="eq.name" /><div><span class="eyebrow">持有 {{ state.equipment[eq.id] ?? 0 }}</span><h3>{{ eq.name }}</h3><p>{{ eq.description }}</p><button @click="dispatch({ type: 'buyEquipment', equipmentId: eq.id })">采购 · ₡{{ eq.price }}</button></div></article></div>
+      <EquipmentShop/>
     </template>
 
     <template v-else-if="modal === 'collection'">

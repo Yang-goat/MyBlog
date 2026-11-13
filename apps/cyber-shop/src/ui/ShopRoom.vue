@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, onMounted, onUnmounted, ref, watch } from 'vue';
 import { ITEMS, CHARACTERS } from '../content';
-import { capacity, stockUsage, attraction } from '../game/engine';
+import { capacity, displayCapacity, stockUsage, attraction } from '../game/engine';
 import { footprint, warehouseLayout, GRID_COLUMNS, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
 import type { ItemInstance } from '../game/types';
 import { state, modal, selectedItem, selectedOrder, dispatch, notify, muted, fullScreen } from './store';
@@ -265,7 +265,7 @@ onUnmounted(() => { clearLongPress();tooltipObserver?.disconnect();window.remove
       <div class="wall-clock" aria-label="店铺营业信息"><strong>第 {{ state.day }} 日</strong><b class="television-cash" aria-label="现金">₡ {{ state.cash.toLocaleString() }}</b><span class="television-hours">工时 {{ state.hours }} / 12</span><small class="television-status">{{ state.phase === 'open' ? '营业中' : '已打烊' }}</small></div>
       <div class="television-controls" aria-label="电视机控制"><button aria-label="声音开关" :aria-pressed="!muted" @click="muted = !muted">{{ muted ? '静音' : '声音' }}</button><button aria-label="切换全屏" @click="fullScreen">全屏</button><button aria-label="操作指引" @click="modal = 'help'">指引</button></div>
       <button class="shop-plaque" @click="modal = 'journey'">第九街 · 杂货铺<small>{{ state.endless ? '' : `第 ${state.chapter} 章 · ` }}{{ chapter }}</small></button>
-      <section class="room-showcase" data-zone="display" @click="held ? place('display') : modal = 'collection'"><header>展示柜 <small>吸引力 {{ attraction(state) }}</small></header><div><button v-for="item in displays" :key="item.id" class="showcase-object" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" @click.stop @pointerdown="startPointer($event,item.id)"><Art :id="item.definitionId" :label="definition(item.definitionId)?.name" /></button><p v-if="!displays.length">留给值得记住的旧物</p></div><button @click.stop="modal = 'collection'">管理陈列 ↗</button></section>
+      <section class="room-showcase" data-zone="display" @click="held ? place('display') : modal = 'collection'"><header>展示柜 <small>吸引力 {{ attraction(state) }}</small></header><div><button v-for="item in displays" :key="item.id" class="showcase-object" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" @click.stop @pointerdown="startPointer($event,item.id)"><Art :id="item.definitionId" :label="definition(item.definitionId)?.name" /></button><p v-if="!displays.length">留给值得记住的旧物</p><span v-if="displays.length && displayCapacity(state) === 3" class="showcase-locked">增设展柜，可再陈列 3 件</span></div><button @click.stop="modal = 'collection'">管理陈列 ↗</button></section>
       <div v-if="tutorialStep < 9" class="mentor-note" aria-label="新手引导" :data-step="tutorialStep"><small>林桥的开店笔记 · {{ tutorialStep + 1 }} / 9</small><h3>{{ lessons[tutorialStep]?.[0] }}</h3><p>{{ lessons[tutorialStep]?.[1] }}</p><button v-if="tutorialStep === 0" class="primary" @click="lesson(1)">带我熟悉店铺 →</button><button v-if="tutorialStep >= 4 && tutorialStep <= 5 && orders.length" @click="showOrder(orders[0]!.id)">打开当前工单</button><button class="text-button" @click="lesson(9, true)">跳过引导</button></div>
       <template v-else><JourneyBoard compact /><button class="room-help" @click="lesson(0)">重新阅读开店引导</button></template>
     </aside>

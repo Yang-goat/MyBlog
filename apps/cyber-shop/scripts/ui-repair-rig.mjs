@@ -1,9 +1,9 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const out='apps/cyber-shop/evidence/living-shop/repair-rig';await fs.mkdir(out,{recursive:true});
+const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/repair-rig';await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}});page.setDefaultTimeout(8000);
-const errors=[],covered=new Set();page.on('pageerror',e=>errors.push(e.message));
+const errors=[],missing=[],covered=new Set(),diagnostics=new Set();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
 const state=async()=>JSON.parse(await page.evaluate(()=>window.render_game_to_text()));const g=async()=>(await state()).game;
 const click=(name)=>page.getByRole('button',{name,exact:true}).click();
 const close=async()=>{const panel=(await state()).panel;if(panel==='trade')await click('关闭谈判');else if(panel)await click('关闭面板');};
@@ -15,8 +15,10 @@ async function work(){
  for(let i=0;i<10;i++){
   let s=await g(),o=s.orders.find(o=>o.id===id);if(!o)break;const item=s.items.find(i=>i.id===o.itemId);
   if(s.hours<2){await close();return;}
+  const diagnostic=await page.locator('.bench-scene').getAttribute('data-diagnostic');diagnostics.add(diagnostic);
+  assert.equal(diagnostic,!o.diagnosed?'standby':o.verified?'passed':item.faults?.length?'fault':'ready');
   if(!o.diagnosed){await click('连接检测仪 →');continue;}
-  if(!item.faults?.length){if(!o.completedOps)await click('清洁表面并恢复品相');else if(!o.verified)await click('通电复检');else{await click('交付并结算 →');break;}continue;}
+  if(!item.faults?.length){if(!o.completedOps)await click('清洁表面并恢复品相');else if(!o.verified)await click('通电复检');else{await shot('verified');await click('交付并结算 →');break;}continue;}
   const fault=item.faults[0];const before={cash:s.cash,hours:s.hours,escrow:o.escrow};
   if(fault.operation==='clean'){
    const first=await page.getByRole('button',{name:'清洁接点 1',exact:true}).boundingBox();await page.mouse.move(first.x+first.width/2,first.y+first.height/2);await page.mouse.down();
@@ -45,7 +47,7 @@ try{
   }
   if(covered.size<3){await click('关店 / 日结 →');await click('确认闭店');await click('迎接新的一天 →');}
  }
- assert.equal(covered.size,3);assert.deepEqual(errors,[]);
+ assert.equal(covered.size,3);assert.equal(diagnostics.size,4);assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);
  const touch=await browser.newContext({viewport:{width:844,height:390},hasTouch:true,isMobile:true});const tp=await touch.newPage();
  await tp.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await tp.locator('#start-btn').tap();await tp.getByRole('button',{name:'跳过引导',exact:true}).tap();
  await tp.locator('.workshop-hotspot').tap();await tp.getByRole('button',{name:'接基础援助维修',exact:true}).tap();await tp.locator('.list-row').last().tap();await tp.getByRole('button',{name:'连接检测仪 →',exact:true}).tap();
@@ -53,6 +55,6 @@ try{
  await tp.getByRole('button',{name:'执行工序 →',exact:true}).scrollIntoViewIfNeeded();await tp.waitForTimeout(700);await tp.screenshot({path:`${out}/landscape-rig.png`});
  await tp.getByRole('button',{name:'执行工序 →',exact:true}).tap();
  assert.equal((JSON.parse(await tp.evaluate(()=>window.render_game_to_text()))).game.orders[0].completedOps,1);await touch.close();
- await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,operations:[...covered],noPreparationCost:true,touchClean:true,errors},null,2));console.log('REPAIR_RIG_PASS');
-}catch(e){await shot('failure').catch(()=>{});await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(e),state:await state(),errors},null,2));throw e;}
+ await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,operations:[...covered],diagnostics:[...diagnostics],noPreparationCost:true,touchClean:true,errors,missing},null,2));console.log('REPAIR_RIG_PASS');
+}catch(e){await shot('failure').catch(()=>{});await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(e),state:await state().catch(()=>null),errors,missing},null,2));throw e;}
 finally{await browser.close();}

@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "operations": [
+    "clean",
+    "replace",
+    "calibrate"
+  ],
+  "noPreparationCost": true,
+  "touchClean": true,
+  "errors": []
+}

@@ -50,9 +50,9 @@ node scripts/check-independent-apps.mjs
 
 `cyber:validate` 包含 66 项美术硬门禁：从真实内容注册表与场景引用确定预期 ID。64 项要求登记为 `generated`；经用户授权，仅 `electronic-parts` 和 `insulation` 允许 `original-drawn`，并要求项目内独立绘制源文件、明确来源说明及保留生成失败历史。全部素材检查唯一 ID/路径、精确大小写、文件数量、重复图片、WebP 容器、帧头、尺寸、透明通道及哈希；缺失或待完成素材会直接使校验失败。
 
-旧整张店铺图 `scene-shop` 已明确归档，门禁检查其归档原图及替代场景入口。分层店铺的 4 项图片由 `apps/cyber-shop/scenery-manifest.json` 独立登记；`validate-scenery.mjs` 按真实代码引用检查精确路径、WebP、尺寸、透明通道、原始 PNG 与发布文件哈希。
+旧整张店铺图 `scene-shop` 和维修台图 `scene-workbench` 已明确归档，门禁检查归档素材及各自的替代场景入口。分层场景的 6 项图片由 `apps/cyber-shop/scenery-manifest.json` 独立登记；`validate-scenery.mjs` 按真实代码引用检查精确路径、WebP、尺寸、透明通道、原始 PNG 与发布文件哈希。
 
-`check-independent-apps.mjs` 检查两款应用入口、构建脚本与样式资源、精确大小写、应用资源前缀，以及与博客首页同时存在；它复用 66 项基础资源与 4 项分层场景门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
+`check-independent-apps.mjs` 检查两款应用入口、构建脚本与样式资源、精确大小写、应用资源前缀，以及与博客首页同时存在；它复用 66 项基础资源与 6 项分层场景门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
 
 GitHub Actions 在 `main`、`codex/**` 推送及面向 `main` 的拉取请求上执行验证。Pages 配置、发布产物上传和部署均限制为 `main`，手动从功能分支触发同样只验证。正式发布后仍需检查 `https://goatyang.com/cyber-shop/` 的实际页面、资源响应与版本。
 

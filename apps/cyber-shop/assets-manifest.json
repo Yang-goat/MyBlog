@@ -54,6 +54,8 @@
     },
     {
       "id": "scene-workbench",
+      "archived": true,
+      "archive": "docs/art-revisions/scene-workbench-v1.webp",
       "kind": "scene",
       "name": "维修工作台场景",
       "prompt": "Use case: stylized-concept. Asset type: original cyberpunk repair game background, 16:9. Slightly overhead close view of a worn metal electronics repair workbench, a large clear dark antistatic mat at center occupying sixty percent of image for an interactive device. Amber articulated work lamp at upper right, cyan oscilloscope glow at back, small precision tools arranged at far edges, solder spool, modular drawers, aged metal, scratched polymer. Cozy believable neighborhood repair shop, realistic painterly concept art, detailed tactile materials. Clear calm central space, not a collage. No people, no hands, no device on central mat, no letters, no numbers, no text, no logo, no UI.",
