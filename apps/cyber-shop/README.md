@@ -35,6 +35,8 @@
 
 客户送修件及材料预付款独立保管，展示品退出普通售卖。零现金时可接基础援助维修；欠费有补救期。通关需要维修大师能力、职业最终委托与经营权收购款，之后可保存结局或继续免租经营。
 
+维修委托页可切换到修复档案，查看最近 80 次交付的收件日、交付日、前后品相、实际工序与报酬。跨日工单和未解决问题的操作都会如实留下记录；早期存档没有的历史不补写。回访对白会根据尚未完成的工单或真实交付记录变化。
+
 每次成功经营操作自动保存，营业日开门时保存恢复备份。命名空间为 `cyber-shop:save:v1` 与 `cyber-shop:day-start:v1`，独立于海克斯麻将。
 
 换设备或在本机与正式域名之间迁移时，先导出当前存档，再到目标环境导入。导出文件只含当前进度，不携带原站点的当日开门副本；导入后以导入点建立本地恢复备份，从下一营业日起恢复按开门状态备份。损坏或版本不兼容的文件会被拒绝；自动保存不会静默覆盖已有损坏存档。
@@ -58,6 +60,8 @@ Vue 3、TypeScript 与 Vite 使用本仓库工具链。店铺通过 Canvas 2D �
 | [game/journey.ts](src/game/journey.ts) | 章节目标与现金收支日结的纯状态推导 |
 | [ui/RepairRig.vue](src/ui/RepairRig.vue) | 三类手动维修和执行前成本预览 |
 | [ui/EquipmentShop.vue](src/ui/EquipmentShop.vue) | 工具状态、设施上限、耗材批量采购与实际折扣预览 |
+| [ui/RepairArchive.vue](src/ui/RepairArchive.vue) | 实际工序、跨日交付与报酬档案 |
+| [game/narrative.ts](src/game/narrative.ts) | 按真实工单与交付记录生成回访对白 |
 | [ui/audio.ts](src/ui/audio.ts) | 环境音与动作反馈 |
 | [persistence/storage.ts](src/persistence/storage.ts) | 版本、导入校验、自动保存和恢复备份 |
 | [assets-manifest.json](assets-manifest.json) | 逐项素材 ID、提示词、来源、状态与发布路径 |

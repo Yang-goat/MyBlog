@@ -4,6 +4,7 @@ import { ITEMS, CHARACTERS } from '../content';
 import { capacity, displayCapacity, stockUsage, attraction } from '../game/engine';
 import { footprint, warehouseLayout, GRID_COLUMNS, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
 import type { ItemInstance } from '../game/types';
+import { visitorGreeting } from '../game/narrative';
 import { state, modal, selectedItem, selectedOrder, dispatch, notify, muted, fullScreen } from './store';
 import Art from './Art.vue';
 import VisitorPanel from './VisitorPanel.vue';
@@ -23,7 +24,8 @@ const person = computed(() => CHARACTERS.find(p => p.id === visitor.value?.chara
 const canCall = computed(()=>state.value.phase==='open' && !!visitor.value && (state.value.visitorArrived===false || (visitor.value.resolved&&state.value.visitorIndex<state.value.visitors.length-1)));
 const talking = computed(() => state.value.visitorArrived !== false && !!visitor.value && !visitor.value.resolved && state.value.phase === 'open');
 const speechStep = computed(() => state.value.conversations?.[visitor.value?.id ?? ''] ?? 0);
-const dialogue = computed(() => speechStep.value === 0 ? (state.value.met.includes(person.value?.id ?? '') ? person.value?.returning : person.value?.intro) : visitor.value?.request);
+const greeting=computed(()=>visitorGreeting(state.value,visitor.value));
+const dialogue = computed(() => speechStep.value === 0 ? greeting.value : visitor.value?.request);
 const layout = computed(() => warehouseLayout(state.value.items, capacity(state.value)));
 const stock = computed(() => state.value.items.filter(i => layout.value.positions[i.id]));
 const waiting = computed(() => state.value.items.filter(i => i.owner === 'player' && (i.location === 'counter' || layout.value.overflow.includes(i.id))));
@@ -273,7 +275,7 @@ onUnmounted(() => { clearLongPress();tooltipObserver?.disconnect();window.remove
     <div class="visitor-window">
       <section v-if="touchInfo && inspectedItem && !modal" class="touch-item-info" role="dialog" aria-label="物品信息"><button class="item-info-close" @click="touchInfo = ''">关闭物品信息 ×</button><ItemInfoCard :item="inspectedItem"/></section>
       <Transition name="guest" mode="out-in"><Art v-if="talking && person" :key="visitor?.id" :id="person.id" :label="person.name" class="room-person" eager /></Transition>
-      <div v-if="talking && person" class="speech-bubble"><small>{{ person.role }}</small><h2>{{ person.name }}</h2><p>{{ dialogue }}</p><button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : '看看带来的货' }} <kbd>空格</kbd></button><div v-else class="speech-options"><button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button><button @click="history = !history">对话记录</button><button @click="notify(person.bargain)">聊聊这笔生意</button></div><div v-if="history" class="dialogue-history"><p>{{ person.intro }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></div></div>
+      <div v-if="talking && person" class="speech-bubble"><small>{{ person.role }}</small><h2>{{ person.name }}</h2><p>{{ dialogue }}</p><button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : '看看带来的货' }} <kbd>空格</kbd></button><div v-else class="speech-options"><button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button><button @click="history = !history">对话记录</button><button @click="notify(person.bargain)">聊聊这笔生意</button></div><div v-if="history" class="dialogue-history"><p>{{ greeting }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></div></div>
       <div v-else class="quiet-window"><strong>{{ state.phase === 'open' ? '柜台暂时安静' : '今晚的招牌收好了' }}</strong><span>{{ state.phase === 'open' ? '按右侧设备的绿色按钮叫号。' : '整理仓库，准备明天。' }}</span></div>
     </div>
 

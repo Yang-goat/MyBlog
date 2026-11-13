@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "crossDay": true,
+  "wrongAttemptRecorded": true,
+  "actualReward": 310,
+  "conditionBefore": 56,
+  "conditionAfter": 70,
+  "exportReplacesLaterState": true,
+  "reload": true,
+  "errors": [],
+  "missing": []
+}

@@ -1,0 +1,645 @@
+{
+  "format": "cyber-shop",
+  "version": 1,
+  "savedAt": "2026-11-13T13:17:40.437Z",
+  "checksum": "675a9146",
+  "state": {
+    "version": 1,
+    "contentVersion": "demo-1",
+    "balanceVersion": "demo-2",
+    "seed": 20261105,
+    "rng": 3233180559,
+    "serial": 44,
+    "day": 2,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 1425,
+    "hours": 10,
+    "debt": 0,
+    "grace": 0,
+    "xp": 29,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "equipmentCosts": {},
+    "items": [
+      {
+        "id": "item-1",
+        "definitionId": "purified-water",
+        "owner": "player",
+        "location": "stock",
+        "condition": 83,
+        "integrity": 46,
+        "capacity": 44,
+        "purity": 72,
+        "authentic": true,
+        "originality": 60,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 6,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-2",
+        "definitionId": "data-chip",
+        "owner": "player",
+        "location": "stock",
+        "condition": 59,
+        "integrity": 75,
+        "capacity": 87,
+        "purity": 65,
+        "authentic": true,
+        "originality": 89,
+        "provenance": "可追溯的合法授权副本",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 60,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 1,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "owner": "player",
+        "location": "stock",
+        "condition": 61,
+        "integrity": 68,
+        "capacity": 66,
+        "purity": 68,
+        "authentic": true,
+        "originality": 79,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 208,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        }
+      }
+    ],
+    "visitors": [
+      {
+        "id": "visitor-27",
+        "characterId": "qi-lan",
+        "kind": "repair",
+        "item": {
+          "id": "item-26",
+          "definitionId": "pocket-com",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 51,
+          "integrity": 87,
+          "capacity": 57,
+          "purity": 97,
+          "authentic": false,
+          "originality": 72,
+          "provenance": "来源不明的复刻品",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "clock-drift"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 2,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 134,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "掌上通讯器：响应周期忽快忽慢，时钟参考值应为 50。请先检测。"
+      },
+      {
+        "id": "visitor-32",
+        "characterId": "a-miao",
+        "kind": "seller",
+        "item": {
+          "id": "item-28",
+          "definitionId": "alloy-plate",
+          "owner": "player",
+          "location": "stock",
+          "condition": 83,
+          "integrity": 99,
+          "capacity": 63,
+          "purity": 85,
+          "authentic": true,
+          "originality": 96,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 2,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-28",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 83,
+            "integrity": 99,
+            "capacity": 63,
+            "purity": 85,
+            "authentic": true,
+            "originality": 96,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-29",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 89,
+            "integrity": 74,
+            "capacity": 58,
+            "purity": 86,
+            "authentic": true,
+            "originality": 62,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-30",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 48,
+            "integrity": 77,
+            "capacity": 77,
+            "purity": 70,
+            "authentic": true,
+            "originality": 60,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-31",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 72,
+            "integrity": 69,
+            "capacity": 57,
+            "purity": 74,
+            "authentic": true,
+            "originality": 75,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-28": {
+            "ask": 101,
+            "minimum": 75
+          },
+          "item-29": {
+            "ask": 107,
+            "minimum": 79
+          },
+          "item-30": {
+            "ask": 60,
+            "minimum": 45
+          },
+          "item-31": {
+            "ask": 81,
+            "minimum": 60
+          }
+        },
+        "category": "energy",
+        "quote": 101,
+        "limit": 75,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "带了一批能源与工业材料，每件成色不一样，价签都在。可以先挑、先检查。看保质期和实用价值，临期货只接受清楚的折价。"
+      },
+      {
+        "id": "visitor-33",
+        "characterId": "lin-qiao",
+        "kind": "buyer",
+        "budget": 400,
+        "category": "food",
+        "quote": 78,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "想找一件食品与生物制品。更在意可靠和街坊价；愿意听完检查依据。"
+      },
+      {
+        "id": "visitor-35",
+        "characterId": "lin-qiao",
+        "kind": "repair",
+        "item": {
+          "id": "item-34",
+          "definitionId": "air-circulator",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 72,
+          "integrity": 94,
+          "capacity": 40,
+          "purity": 97,
+          "authentic": true,
+          "originality": 99,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "旧式专用接口",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 2,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 316,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "便携空气循环机：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-40",
+        "characterId": "song-yi",
+        "kind": "seller",
+        "item": {
+          "id": "item-36",
+          "definitionId": "synth-coffee",
+          "owner": "player",
+          "location": "stock",
+          "condition": 71,
+          "integrity": 47,
+          "capacity": 70,
+          "purity": 66,
+          "authentic": true,
+          "originality": 80,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": 6,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 2,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-36",
+            "definitionId": "synth-coffee",
+            "owner": "player",
+            "location": "stock",
+            "condition": 71,
+            "integrity": 47,
+            "capacity": 70,
+            "purity": 66,
+            "authentic": true,
+            "originality": 80,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": 6,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-37",
+            "definitionId": "synth-coffee",
+            "owner": "player",
+            "location": "stock",
+            "condition": 90,
+            "integrity": 97,
+            "capacity": 50,
+            "purity": 88,
+            "authentic": true,
+            "originality": 98,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": 6,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-38",
+            "definitionId": "algae-ration",
+            "owner": "player",
+            "location": "stock",
+            "condition": 50,
+            "integrity": 89,
+            "capacity": 65,
+            "purity": 94,
+            "authentic": false,
+            "originality": 71,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "旧式专用接口",
+            "expiresDay": 6,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-39",
+            "definitionId": "purified-water",
+            "owner": "player",
+            "location": "stock",
+            "condition": 72,
+            "integrity": 62,
+            "capacity": 61,
+            "purity": 86,
+            "authentic": false,
+            "originality": 89,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "开放标准",
+            "expiresDay": 7,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 2,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-36": {
+            "ask": 73,
+            "minimum": 54
+          },
+          "item-37": {
+            "ask": 85,
+            "minimum": 62
+          },
+          "item-38": {
+            "ask": 47,
+            "minimum": 35
+          },
+          "item-39": {
+            "ask": 43,
+            "minimum": 32
+          }
+        },
+        "category": "food",
+        "quote": 73,
+        "limit": 54,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "带了一批食品与生物制品，每件成色不一样，价签都在。可以先挑、先检查。接受有记录的合理成本，对来源不明的器械保持距离。"
+      },
+      {
+        "id": "visitor-41",
+        "characterId": "a-miao",
+        "kind": "buyer",
+        "budget": 716,
+        "category": "energy",
+        "quote": 179,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "想找一件能源与工业材料。看保质期和实用价值，临期货只接受清楚的折价。"
+      },
+      {
+        "id": "visitor-42",
+        "characterId": "a-miao",
+        "kind": "buyer",
+        "budget": 400,
+        "category": "food",
+        "quote": 78,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "想找一件食品与生物制品。看保质期和实用价值，临期货只接受清楚的折价。"
+      }
+    ],
+    "visitorIndex": 0,
+    "orders": [
+      {
+        "id": "order-24",
+        "itemId": "item-23",
+        "characterId": "lin-qiao",
+        "description": "街坊救急：掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "replace",
+            "module": "power",
+            "result": "miss",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 2,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 56
+      }
+    ],
+    "reputation": 2,
+    "relations": {
+      "neighborhood": 1
+    },
+    "questStages": {},
+    "eventId": "night-meal",
+    "eventResolved": false,
+    "discovered": [
+      "purified-water",
+      "data-chip",
+      "mechanical-watch"
+    ],
+    "met": [
+      "lin-qiao"
+    ],
+    "repairHistory": [
+      {
+        "orderId": "order-24",
+        "definitionId": "pocket-com",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 1,
+        "day": 2,
+        "conditionBefore": 56,
+        "conditionAfter": 70,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "replace",
+            "module": "power",
+            "result": "miss",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 2,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      }
+    ],
+    "records": {
+      "trades": 0,
+      "repairs": 1,
+      "revenue": 310,
+      "repairIncome": 310,
+      "days": 1,
+      "faults": {
+        "oxidized-contact": 1
+      }
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "victory": false,
+    "endless": false,
+    "freeRespec": true,
+    "ledger": [
+      {
+        "id": 25,
+        "day": 1,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 43,
+        "day": 2,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-23"
+      },
+      {
+        "id": 44,
+        "day": 2,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "街坊救急：掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-23"
+      }
+    ],
+    "messages": [
+      "店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。",
+      "已接单：掌上通讯器。材料预付款 1000 已进入专款账户，完成后收入 310。",
+      "检测完成，发现 1 项故障。请对照下方线索选择工序与操作位置。",
+      "操作未解决问题，消耗 1 工时。请对照检测结果选择故障模块。",
+      "第 1 日结算，支出 85。明天继续。",
+      "第 2 日开门，12 工时、7 位预约访客。",
+      "触点氧化已完成，耗时 1，耗材成本 16（预付款）。",
+      "复检通过，可以交付。",
+      "交付完成，收到 310 信用点。剩余材料预付款归还客户。"
+    ],
+    "appointments": null,
+    "challenge": null,
+    "visitorArrived": false,
+    "tutorial": {
+      "step": 9,
+      "skipped": true
+    },
+    "conversations": {}
+  }
+}

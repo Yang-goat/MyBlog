@@ -28,13 +28,16 @@ export interface CollectionTheme { id: string; name: string; description: string
 export interface ProfessionDefinition { id: string; name: string; implemented: boolean; masterySkills: string[]; finalMilestone: string; description: string }
 export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
 export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
-export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean }
+export interface RepairStep { day: number; operation: Operation; module?: string; faultId?: string; result: 'fixed' | 'cleaned' | 'miss'; hours: number; preserve: boolean }
+export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean; receivedDay?: number; conditionBefore?: number; steps?: RepairStep[] }
+export interface RepairReceipt { orderId: string; definitionId: string; characterId: string; kind: RepairOrder['kind']; receivedDay?: number; day: number; conditionBefore?: number; conditionAfter: number; completedOps: number; steps: RepairStep[]; reward: number }
 export interface LedgerEntry { id: number; day: number; kind: string; amount: number; itemId?: string; note: string }
 export interface GameState {
   visitorArrived?: boolean;
   storageUpgrades?: { backpack: number; crate: number };
   tutorial?: { step: number; skipped: boolean };
   conversations?: Record<string, number>;
+  repairHistory?: RepairReceipt[];
   version: number; contentVersion: string; balanceVersion: string; seed: number; rng: number; serial: number;
   day: number; chapter: number; phase: 'open' | 'closed' | 'won' | 'ended' | 'failed'; cash: number; hours: number; debt: number; grace: number;
   xp: number; level: number; points: number; skills: string[]; certificates: CertificateId[]; trained: CertificateId[]; licenses: string[];

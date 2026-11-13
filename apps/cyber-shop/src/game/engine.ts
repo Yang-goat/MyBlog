@@ -1,6 +1,7 @@
 import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES, EVENTS, QUESTS, THEMES, PROFESSIONS } from '../content';
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { warehouseLayout, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
+import { visitorGreeting } from './narrative';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
@@ -143,7 +144,7 @@ export function createGame(seed = 11052026): GameState {
   const s: GameState = { version: SAVE_VERSION, contentVersion: CONTENT_VERSION, balanceVersion: BALANCE.version, seed: seed >>> 0, rng: seed >>> 0, serial: 0,
     day: 1, chapter: 1, phase: 'open', cash: BALANCE.initialCash, hours: BALANCE.hours, debt: 0, grace: 0, xp: 0, level: 1, points: BALANCE.initialPoints,
     skills: [], certificates: ['civil'], trained: ['civil'], licenses: [], equipment: {}, equipmentCosts: {}, items: [], visitors: [], visitorIndex: 0, orders: [],
-    reputation: 0, relations: {}, questStages: {}, eventId: '', eventResolved: false, discovered: [], met: [], records: { trades: 0, repairs: 0, revenue: 0, repairIncome: 0, days: 0, faults: {} },
+    reputation: 0, relations: {}, questStages: {}, eventId: '', eventResolved: false, discovered: [], met: [], repairHistory: [], records: { trades: 0, repairs: 0, revenue: 0, repairIncome: 0, days: 0, faults: {} },
     finalStage: 0, finalComplete: false, professionMilestones: [], victory: false, endless: false, freeRespec: true, ledger: [], messages: ['店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。'], appointments: null, challenge: null };
   for (const effect of ['cleaner', 'parts', 'mechanical', 'insulation', 'neuralSupply', 'preserveSupply']) s.equipment[equipmentId(effect)] = effect === 'preserveSupply' ? 2 : 4;
   for (const effect of ['solder', 'bench']) s.equipment[equipmentId(effect)] = 1;
@@ -181,7 +182,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   const spendHours = (n: number) => { if (s.hours < n) return false; s.hours = Math.round((s.hours - n) * 2) / 2; return true; };
   const findItem = (id: string) => s.items.find(i => i.id === id);
   const currentVisitor = (id: string) => s.visitors.find((v, index) => v.id === id && index === s.visitorIndex && s.visitorArrived !== false && !v.resolved);
-  const finishVisitor = (v: Visitor) => { v.resolved = true; if (!s.met.includes(v.characterId)) { s.met.push(v.characterId); const p = CHARACTERS.find(c => c.id === v.characterId); if (p) say(p.intro, 'arrival'); } };
+  const finishVisitor = (v: Visitor) => { v.resolved = true; if (!s.met.includes(v.characterId)) s.met.push(v.characterId); };
   const orderItem = (id: string) => { const order = s.orders.find(o => o.id === id && !o.delivered); return { order, item: order ? findItem(order.itemId) : undefined }; };
   const activeOrder = (itemId: string) => s.orders.some(o => o.itemId === itemId && !o.delivered);
   const canRepair = (item: ItemInstance) => { const d = def(item); return d.certificate && s.certificates.includes(d.certificate); };
@@ -191,7 +192,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     const reward = round(base * (1 + skillEffect(s, 'precisionMaster') + skillEffect(s, 'workshopMaster') + Math.min(.2, attraction(s) / 500)));
     const preserveOriginal = def(item).category === 'antique' && (kind === 'own' || random(s) > .35);
     const order: RepairOrder = { id: id(s, 'order'), itemId: item.id, characterId, description: `${def(item).name}的${kind === 'own' ? '自有旧货翻新' : '维修委托'}；${preserveOriginal ? '保存原貌，优先修整原件。' : '以恢复功能为先，可以更换模块，完成后请复检。'}`, diagnosed: false, verified: false, delivered: false,
-      escrow: kind === 'own' ? 0 : 1000, reward: kind === 'own' ? 0 : reward, completedOps: 0, kind, preserveOriginal, ...extra };
+      escrow: kind === 'own' ? 0 : 1000, reward: kind === 'own' ? 0 : reward, completedOps: 0, kind, preserveOriginal, receivedDay: s.day, steps: [], ...extra };
     item.location = 'workshop'; s.orders.push(order); return order;
   };
   if (s.phase === 'failed' || (s.phase === 'ended' && action.type !== 'continueEndless')) return fail('本局已结算。可以恢复当日备份或重新开局。');
@@ -334,7 +335,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if(v.resolved){if(s.visitorIndex>=s.visitors.length-1)return fail('今日来客已接待完毕。');s.visitorIndex++;}
       s.visitorArrived=true;const c=CHARACTERS.find(c=>c.id===s.visitors[s.visitorIndex]!.characterId);say(`叫号完成，${c?.name??'顾客'}来到门前。`,'arrival');break;
     }
-    case 'nextVisitor': { const v = s.visitors[s.visitorIndex]; if (v && !v.resolved) return fail('请先完成或拒绝当前客户的请求。'); if (s.visitorIndex >= s.visitors.length - 1) return fail('预约客户已经到齐，可整理库存或闭店。'); s.visitorIndex++; s.visitorArrived=true; const next = s.visitors[s.visitorIndex]!; const c = CHARACTERS.find(c => c.id === next.characterId); say(c ? `${c.name}进店。${s.met.includes(c.id) ? c.returning : c.intro}` : '下一位客户进店。', 'arrival'); break; }
+    case 'nextVisitor': { const v = s.visitors[s.visitorIndex]; if (v && !v.resolved) return fail('请先完成或拒绝当前客户的请求。'); if (s.visitorIndex >= s.visitors.length - 1) return fail('预约客户已经到齐，可整理库存或闭店。'); s.visitorIndex++; s.visitorArrived=true; const next = s.visitors[s.visitorIndex]!; const c = CHARACTERS.find(c => c.id === next.characterId); say(c ? `${c.name}进店。${visitorGreeting(s,next)}` : '下一位客户进店。', 'arrival'); break; }
     case 'acceptRepair': {
       let v = action.visitorId ? currentVisitor(action.visitorId) : undefined;
       if (action.visitorId && (!v || v.kind !== 'repair')) return fail('这件委托已处理。');
@@ -358,7 +359,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'diagnose': {
       const { order, item } = orderItem(action.orderId); if (!order || !item) return fail('找不到进行中的工单。'); if (order.diagnosed) return fail('已经检测过，无需重复消耗工时。');
       if (!spendHours(Math.max(.5, BALANCE.diagnosisHours - skillEffect(s, 'diagnosis') * .5 - (ownedEquipment(s, 'scan') ? .5 : 0)))) return fail('工时不足，工单会保留至明天。');
-      order.diagnosed = true; if (!item.known.includes('diagnosed')) item.known.push('diagnosed');
+      order.diagnosed = true; order.conditionBefore ??= item.condition; if (!item.known.includes('diagnosed')) item.known.push('diagnosed');
       say(item.faults.length ? `检测完成，发现 ${item.faults.length} 项故障。请对照下方线索选择工序与操作位置。` : '功能正常，可做一次清洁恢复品相后复检。'); break;
     }
     case 'repair': {
@@ -373,7 +374,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const preserve = !!action.preserve && def(item).category === 'antique' && fault?.operation === 'replace';
       const hours = correct ? Math.max(BALANCE.minimumOperationHours, (fault?.hours ?? 1) + (preserve ? 1 : 0) - (fault?.operation === 'replace' ? skillEffect(s, 'assembly') * .5 + (ownedEquipment(s, 'assemblyTool') ? .5 : 0) : 0) - (has(s, 'workshopMaster') ? .5 : 0) - (ownedEquipment(s, 'bench') > 1 ? .5 : 0)) : 1;
       if (!spendHours(hours)) return fail('剩余工时不足；闭店后可继续同一工单。');
-      if (!correct) { say(`操作未解决问题，消耗 1 工时。${action.operation === 'replace' ? '请对照检测结果选择故障模块。' : action.operation === 'calibrate' ? '读数偏离目标，请重新设置参数。' : '该故障需要更换模块或校准。'}`, 'error'); break; }
+      const logStep=(result:'fixed'|'cleaned'|'miss')=>{order.steps=[...(order.steps??[]),{day:s.day,operation:action.quick&&fault?fault.operation:action.operation,module:fault?.module??action.module?.slice(0,80),faultId:fault?.id,result,hours,preserve}].slice(-64);};
+      if (!correct) { logStep('miss'); say(`操作未解决问题，消耗 1 工时。${action.operation === 'replace' ? '请对照检测结果选择故障模块。' : action.operation === 'calibrate' ? '读数偏离目标，请重新设置参数。' : '该故障需要更换模块或校准。'}`, 'error'); break; }
       const materialId = preserve ? equipmentId('parts') : fault?.material ?? equipmentId('cleaner');
       const material = EQUIPMENT.find(e => e.id === materialId); const materialPrice = material?.price ?? 20;
       const materialCost = round(materialPrice * (1 - Math.min(.5, skillEffect(s, 'materials'))));
@@ -388,7 +390,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       item.condition = clamp(item.condition + 14 + skillEffect(s, 'restoration'), 0, 100);
       if (fault?.operation === 'replace' && def(item).category === 'antique' && !preserve) item.originality = clamp(item.originality - (has(s, 'rebirthMaster') ? 5 : 18), 0, 100);
       if (fault?.operation === 'replace' && !preserve && order.kind === 'own' && has(s, 'recycle')) { const key = equipmentId('parts'); s.equipment[key] = (s.equipment[key] ?? 0) + 1; }
-      order.completedOps++; say(`${fault?.name ?? '表面清洁'}已完成，耗时 ${hours}，耗材成本 ${materialCost}${order.kind !== 'own' ? '（预付款）' : ''}。`, 'repair'); break;
+      logStep(fault?'fixed':'cleaned'); order.completedOps++; say(`${fault?.name ?? '表面清洁'}已完成，耗时 ${hours}，耗材成本 ${materialCost}${order.kind !== 'own' ? '（预付款）' : ''}。`, 'repair'); break;
     }
     case 'verify': {
       const { order, item } = orderItem(action.orderId); if (!order || !item || !order.diagnosed) return fail('请先检测。'); if (order.verified) return fail('已经通过复检。');
@@ -398,6 +400,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     }
     case 'deliver': {
       const { order, item } = orderItem(action.orderId); if (!order || !item || !order.verified || item.faults.length) return fail('需要完成修复并通过复检后交付。');
+      const cashBefore=s.cash;
       order.delivered = true; order.escrow = 0;
       if (order.kind === 'own') { item.location = 'stock'; s.records.repairs++; gainXp(s, BALANCE.repairXp); say(`翻新完成，总成本 ${item.cost}，可以出售或鉴定陈列。`, 'repair'); }
       else {
@@ -408,12 +411,13 @@ export function applyAction(input: GameState, action: Action): ActionResult {
           let reward = order.reward;
           if (order.preserveOriginal && item.originality < 50) { reward = round(reward * .75); say('功能恢复了，但原貌损失超过委托期望，报酬减少四分之一。'); }
           earn(reward, 'repair-income', order.description, item.id); s.records.repairIncome += reward; s.records.repairs++; s.reputation += 2; gainXp(s, BALANCE.repairXp + (def(item).certificate === 'civil' ? 0 : 8));
-          const p = CHARACTERS.find(c => c.id === order.characterId); if (p) { s.relations[p.group] = (s.relations[p.group] ?? 0) + 1; if (!s.met.includes(p.id)) { s.met.push(p.id); say(p.intro, 'arrival'); } }
+          const p = CHARACTERS.find(c => c.id === order.characterId); if (p) { s.relations[p.group] = (s.relations[p.group] ?? 0) + 1; if (!s.met.includes(p.id)) s.met.push(p.id); }
           if (order.kind === 'final') { s.finalStage++; if (s.finalStage >= 3) { s.finalComplete = true; const milestone = PROFESSIONS.find(p => p.id === 'restorer')!.finalMilestone; if (!s.professionMilestones.includes(milestone)) s.professionMilestones.push(milestone); say('街区联络中枢恢复了信号，最终委托完成。接下来可以收购经营权。'); } }
           if (s.challenge?.id === 'batch-repair') s.challenge.progress++;
           say(`交付完成，收到 ${reward} 信用点。剩余材料预付款归还客户。`, 'repair');
         }
       }
+      s.repairHistory=[...(s.repairHistory??[]),{orderId:order.id,definitionId:item.definitionId,characterId:order.characterId,kind:order.kind,receivedDay:order.receivedDay,day:s.day,conditionBefore:order.conditionBefore,conditionAfter:item.condition,completedOps:order.completedOps,steps:order.steps??[],reward:s.cash-cashBefore}].slice(-80);
       break;
     }
     case 'train': {
@@ -517,9 +521,9 @@ export function visibleState(s: GameState) {
     xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
     stockUsage: stockUsage(s), capacity: capacity(s), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: warehouseLayout(s.items, capacity(s)), tutorial: s.tutorial, conversations: s.conversations,
-    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
+    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
-    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records,
+    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[],
     finalStage: s.finalStage, finalComplete: s.finalComplete, professionMilestones: s.professionMilestones, professions: PROFESSIONS.filter(p => p.implemented).map(p => professionVictory(s, p.id)), victory: s.victory, endless: s.endless, challenge: s.challenge, messages: s.messages.slice(-5) };
 }

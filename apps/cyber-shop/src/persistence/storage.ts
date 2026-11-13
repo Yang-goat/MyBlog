@@ -15,6 +15,16 @@ const number = (v: unknown) => typeof v === 'number' && Number.isFinite(v) && v 
 const integer = (v: unknown) => number(v) && Number.isSafeInteger(v);
 const strings = (v: unknown): v is string[] => Array.isArray(v) && v.every(a => typeof a === 'string') && new Set(v).size === v.length;
 const refs = (values: string[], ids: string[]) => values.every(v => ids.includes(v));
+function validateRepairSteps(value:unknown,day:number){
+  check(Array.isArray(value)&&value.length<=64,'工序记录无效。');
+  for(const step of value){
+    check(object(step)&&integer(step.day)&&Number(step.day)>=1&&Number(step.day)<=day&&['clean','replace','calibrate'].includes(String(step.operation))&&['fixed','cleaned','miss'].includes(String(step.result)),'工序内容无效。');
+    check(number(step.hours)&&Number(step.hours)>=.5&&Number(step.hours)<=BALANCE.hours&&Number(step.hours)*2%1===0&&typeof step.preserve==='boolean','工序工时无效。');
+    check(step.module===undefined||(typeof step.module==='string'&&step.module.length<=80),'工序位置无效。');
+    check(step.faultId===undefined||FAULTS.some(f=>f.id===step.faultId),'工序故障无效。');
+    check(step.result!=='fixed'||typeof step.faultId==='string','已修复工序缺少故障。');
+  }
+}
 
 /** The import boundary checks structure, identifiers and ownership before replacing live state. */
 export function validateState(value: unknown): asserts value is GameState {
@@ -71,9 +81,25 @@ export function validateState(value: unknown): asserts value is GameState {
     check(object(o) && typeof o.id === 'string' && typeof o.itemId === 'string' && typeof o.characterId === 'string' && typeof o.description === 'string' && ['client', 'exam', 'final', 'own'].includes(o.kind), '维修工单内容无效。');
     check(['diagnosed', 'verified', 'delivered', 'preserveOriginal'].every(k => typeof (o as unknown as Record<string, unknown>)[k] === 'boolean') && integer(o.escrow) && integer(o.reward) && integer(o.completedOps), '维修工单数值无效。');
     check(!o.certificate || CERTIFICATES.some(c => c.id === o.certificate), '考核证书无效。');
+    if(o.receivedDay!==undefined)check(integer(o.receivedDay)&&o.receivedDay>=1&&o.receivedDay<=s.day,'收件日期无效。');
+    if(o.conditionBefore!==undefined)check(o.diagnosed&&number(o.conditionBefore)&&o.conditionBefore<=100,'修前状态无效。');
+    if(o.steps!==undefined)validateRepairSteps(o.steps,s.day);
     if (!o.delivered) { const item = s.items.find(i => i.id === o.itemId); check(item && item.location === 'workshop' && !activeItems.has(item.id), '进行中的工单物品缺失或重复。'); check(o.kind === 'own' ? item.owner === 'player' : item.owner === 'customer', '维修工单归属冲突。'); activeItems.add(item.id); }
   }
   check(new Set(s.orders.map(o => o.id)).size === s.orders.length, '存档含重复工单。');
+  if(s.repairHistory!==undefined){
+    check(Array.isArray(s.repairHistory)&&s.repairHistory.length<=80,'修复档案无效。');
+    for(const receipt of s.repairHistory){
+      check(object(receipt)&&typeof receipt.orderId==='string'&&ITEMS.some(i=>i.id===receipt.definitionId)&&['client','exam','final','own'].includes(receipt.kind),'修复档案内容无效。');
+      check(receipt.kind==='own'?receipt.characterId==='player':receipt.kind==='exam'?receipt.characterId==='examiner':CHARACTERS.some(c=>c.id===receipt.characterId),'修复档案客户无效。');
+      check(integer(receipt.day)&&receipt.day>=1&&receipt.day<=s.day&&integer(receipt.reward)&&integer(receipt.completedOps),'修复档案结算无效。');
+      if(receipt.receivedDay!==undefined)check(integer(receipt.receivedDay)&&receipt.receivedDay>=1&&receipt.receivedDay<=receipt.day,'修复档案收件日期无效。');
+      if(receipt.conditionBefore!==undefined)check(number(receipt.conditionBefore)&&receipt.conditionBefore<=100,'修复档案修前状态无效。');
+      check(number(receipt.conditionAfter)&&receipt.conditionAfter<=100,'修复档案修后状态无效。');
+      validateRepairSteps(receipt.steps,receipt.day);
+    }
+    check(new Set(s.repairHistory.map(r=>r.orderId)).size===s.repairHistory.length,'存档含重复修复档案。');
+  }
   check(Array.isArray(s.ledger) && s.ledger.every(e => object(e) && integer(e.id) && integer(e.day) && typeof e.kind === 'string' && Number.isFinite(e.amount) && typeof e.note === 'string'), '账本无效。');
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');
   if(s.visitorArrived !== undefined) check(typeof s.visitorArrived === 'boolean','叫号状态无效。');

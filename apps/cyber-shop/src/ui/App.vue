@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
-import { state, started, modal, toast, saveError, hasSave, selectedOrder, begin, resume, restore, dispatch, inspectSave, uploadSave, textState, fullScreen, cleanup, reducedMotion } from './store';
+import { state, started, modal, toast, saveError, hasSave, begin, resume, restore, dispatch, inspectSave, uploadSave, textState, fullScreen, cleanup, reducedMotion } from './store';
 import Art from './Art.vue';
 import Workbench from './Workbench.vue';
+import WorkshopBoard from './WorkshopBoard.vue';
 import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
 import JourneyBoard from './JourneyBoard.vue';
@@ -16,7 +17,6 @@ const newConfirm = ref(false);
 const counterCount=computed(()=>new Set([...state.value.items.filter(i=>i.location==='counter').map(i=>i.id),...tradeIds.value]).size);
 const activeOrders = computed(() => state.value.orders.filter(o => !o.delivered));
 const closing = computed(() => dayReport(state.value));
-function showOrder(id: string) { selectedOrder.value = id; modal.value = 'workbench'; }
 function keydown(e: KeyboardEvent) {
   if ((e.target as HTMLElement)?.matches('input,textarea,select')) return;
   if (e.key.toLowerCase() === 'f') { e.preventDefault(); void fullScreen(); }
@@ -64,7 +64,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
           <JourneyBoard v-else-if="modal === 'journey'" />
           <DayReport v-else-if="modal === 'day-report'" />
           <div v-else-if="modal === 'close-day'" class="dialog-body"><p class="eyebrow">CLOSE / 收起招牌</p><h2>结束今天的营业？</h2><p>未接待的客人会离开。已接工单和货物保留，食品按保存条件老化；结算维护费与租金。</p><p class="closing-forecast">今日收入 ₡{{ closing.income }} · 已支出 ₡{{ closing.expenses }}<br />闭店待缴 ₡{{ closing.pendingFees }} · 预计结余 ₡{{ Math.max(0, state.cash - closing.pendingFees) }}</p><p v-if="activeOrders.length">仍有 {{ activeOrders.length }} 个工单，可以明天继续。</p><p v-if="counterCount" class="warning" role="alert">谈判台还有 {{ counterCount }} 件物品，暂时不能闭店。请将自有物品全部入库，未购买的来货撤回店外。</p><button v-if="counterCount" @click="modal = ''">返回整理台面</button><button class="primary" :disabled="counterCount > 0" @click="dispatch({ type: 'closeDay' }) && (modal = 'day-report')">确认闭店</button></div>
-          <div v-else-if="modal === 'orders'" class="dialog-body"><p class="eyebrow">WORKSHOP / 维修委托</p><h2>一件一件修好。</h2><p>客户物品独立保管。材料预付款只能用于这一份工单。</p><button class="primary" @click="dispatch({ type: 'acceptRepair' })">接基础援助维修</button><p class="small muted">即使没有现金，也能凭手艺重新开始。</p><button v-for="order in activeOrders" :key="order.id" class="list-row" @click="showOrder(order.id)"><span>{{ order.description }}</span><b>打开工作台 →</b></button></div>
+          <WorkshopBoard v-else-if="modal === 'orders'"/>
           <Notebook v-else />
         </section>
       </div>

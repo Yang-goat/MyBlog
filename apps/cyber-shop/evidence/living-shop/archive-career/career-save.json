@@ -1,0 +1,5807 @@
+{
+  "format": "cyber-shop",
+  "version": 1,
+  "savedAt": "2026-11-13T13:22:55.220Z",
+  "checksum": "a26697d6",
+  "state": {
+    "version": 1,
+    "contentVersion": "demo-1",
+    "balanceVersion": "demo-2",
+    "seed": 20261105,
+    "rng": 2820244495,
+    "serial": 711,
+    "day": 23,
+    "chapter": 4,
+    "phase": "open",
+    "cash": 24292,
+    "hours": 11.5,
+    "debt": 0,
+    "grace": 0,
+    "xp": 2689,
+    "level": 15,
+    "points": 6,
+    "skills": [
+      "precision-1",
+      "precision-2",
+      "precision-3",
+      "workshop-1",
+      "workshop-2",
+      "workshop-3",
+      "precision-4"
+    ],
+    "certificates": [
+      "civil",
+      "industrial",
+      "neural",
+      "antique"
+    ],
+    "trained": [
+      "civil",
+      "industrial",
+      "neural",
+      "antique"
+    ],
+    "licenses": [
+      "regulated-trade"
+    ],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1,
+      "assembly-jig": 1,
+      "calibrator": 1,
+      "serial-terminal": 1
+    },
+    "equipmentCosts": {},
+    "items": [
+      {
+        "id": "item-674",
+        "definitionId": "data-chip",
+        "owner": "player",
+        "location": "display",
+        "condition": 67,
+        "integrity": 45,
+        "capacity": 90,
+        "purity": 93,
+        "authentic": true,
+        "originality": 72,
+        "provenance": "可追溯的合法授权副本",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [
+          "broken-power"
+        ],
+        "known": [
+          "basic",
+          "serial"
+        ],
+        "cost": 23,
+        "acquiredDay": 22,
+        "preservedUntil": 0,
+        "counterGrid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        },
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        }
+      }
+    ],
+    "visitors": [
+      {
+        "id": "visitor-696",
+        "characterId": "he-jin",
+        "kind": "repair",
+        "item": {
+          "id": "item-695",
+          "definitionId": "pocket-com",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 79,
+          "integrity": 68,
+          "capacity": 83,
+          "purity": 80,
+          "authentic": true,
+          "originality": 92,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 23,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 175,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "掌上通讯器：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-701",
+        "characterId": "lu-che",
+        "kind": "seller",
+        "item": {
+          "id": "item-697",
+          "definitionId": "encrypted-box",
+          "owner": "player",
+          "location": "stock",
+          "condition": 49,
+          "integrity": 86,
+          "capacity": 92,
+          "purity": 70,
+          "authentic": true,
+          "originality": 78,
+          "provenance": "可追溯的合法授权副本",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 23,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-697",
+            "definitionId": "encrypted-box",
+            "owner": "player",
+            "location": "stock",
+            "condition": 49,
+            "integrity": 86,
+            "capacity": 92,
+            "purity": 70,
+            "authentic": true,
+            "originality": 78,
+            "provenance": "可追溯的合法授权副本",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-698",
+            "definitionId": "data-chip",
+            "owner": "player",
+            "location": "stock",
+            "condition": 64,
+            "integrity": 62,
+            "capacity": 48,
+            "purity": 94,
+            "authentic": true,
+            "originality": 97,
+            "provenance": "可追溯的合法授权副本",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-699",
+            "definitionId": "memory-crystal",
+            "owner": "player",
+            "location": "stock",
+            "condition": 54,
+            "integrity": 59,
+            "capacity": 35,
+            "purity": 82,
+            "authentic": true,
+            "originality": 62,
+            "provenance": "可追溯的合法授权副本",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "clock-drift"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-700",
+            "definitionId": "holo-film",
+            "owner": "player",
+            "location": "stock",
+            "condition": 71,
+            "integrity": 72,
+            "capacity": 52,
+            "purity": 72,
+            "authentic": true,
+            "originality": 94,
+            "provenance": "可追溯的合法授权副本",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-697": {
+            "ask": 201,
+            "minimum": 171
+          },
+          "item-698": {
+            "ask": 39,
+            "minimum": 33
+          },
+          "item-699": {
+            "ask": 124,
+            "minimum": 106
+          },
+          "item-700": {
+            "ask": 83,
+            "minimum": 71
+          }
+        },
+        "category": "data",
+        "quote": 201,
+        "limit": 171,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "带了一批数据与娱乐载体，每件成色不一样，价签都在。可以先挑、先检查。出价直接，能接受小幅让步，不愿耗掉半天路线。"
+      },
+      {
+        "id": "visitor-702",
+        "characterId": "bai-heng",
+        "kind": "buyer",
+        "budget": 2912,
+        "category": "data",
+        "quote": 728,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "想找一件数据与娱乐载体。愿意讨论出处，真伪未明时不会承担全部风险。"
+      },
+      {
+        "id": "visitor-704",
+        "characterId": "luo-jin",
+        "kind": "repair",
+        "item": {
+          "id": "item-703",
+          "definitionId": "pocket-com",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 57,
+          "integrity": 57,
+          "capacity": 41,
+          "purity": 74,
+          "authentic": true,
+          "originality": 86,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 23,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 143,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "掌上通讯器：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-709",
+        "characterId": "bai-heng",
+        "kind": "seller",
+        "item": {
+          "id": "item-705",
+          "definitionId": "early-core",
+          "owner": "player",
+          "location": "stock",
+          "condition": 83,
+          "integrity": 97,
+          "capacity": 47,
+          "purity": 73,
+          "authentic": true,
+          "originality": 93,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 23,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-705",
+            "definitionId": "early-core",
+            "owner": "player",
+            "location": "stock",
+            "condition": 83,
+            "integrity": 97,
+            "capacity": 47,
+            "purity": 73,
+            "authentic": true,
+            "originality": 93,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-706",
+            "definitionId": "early-core",
+            "owner": "player",
+            "location": "stock",
+            "condition": 61,
+            "integrity": 85,
+            "capacity": 80,
+            "purity": 80,
+            "authentic": true,
+            "originality": 71,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "old-grease"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-707",
+            "definitionId": "bionic-toy",
+            "owner": "player",
+            "location": "stock",
+            "condition": 83,
+            "integrity": 69,
+            "capacity": 42,
+            "purity": 85,
+            "authentic": true,
+            "originality": 89,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "analog-drift"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-708",
+            "definitionId": "film-camera",
+            "owner": "player",
+            "location": "stock",
+            "condition": 61,
+            "integrity": 91,
+            "capacity": 76,
+            "purity": 68,
+            "authentic": true,
+            "originality": 73,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 23,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-705": {
+            "ask": 994,
+            "minimum": 847
+          },
+          "item-706": {
+            "ask": 544,
+            "minimum": 464
+          },
+          "item-707": {
+            "ask": 641,
+            "minimum": 546
+          },
+          "item-708": {
+            "ask": 437,
+            "minimum": 372
+          }
+        },
+        "category": "antique",
+        "quote": 994,
+        "limit": 847,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "带了一批古董与奢品，每件成色不一样，价签都在。可以先挑、先检查。愿意讨论出处，真伪未明时不会承担全部风险。"
+      },
+      {
+        "id": "visitor-710",
+        "characterId": "lu-che",
+        "kind": "buyer",
+        "budget": 1164,
+        "category": "data",
+        "quote": 291,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "想找一件数据与娱乐载体。出价直接，能接受小幅让步，不愿耗掉半天路线。"
+      },
+      {
+        "id": "visitor-711",
+        "characterId": "bai-heng",
+        "kind": "buyer",
+        "budget": 2152,
+        "category": "data",
+        "quote": 538,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "想找一件数据与娱乐载体。愿意讨论出处，真伪未明时不会承担全部风险。"
+      }
+    ],
+    "visitorIndex": 0,
+    "orders": [
+      {
+        "id": "order-21",
+        "itemId": "item-4",
+        "characterId": "he-jin",
+        "description": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 63
+      },
+      {
+        "id": "order-26",
+        "itemId": "item-12",
+        "characterId": "he-jin",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 55
+      },
+      {
+        "id": "order-49",
+        "itemId": "item-32",
+        "characterId": "lin-qiao",
+        "description": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 2,
+        "steps": [
+          {
+            "day": 2,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 58
+      },
+      {
+        "id": "order-54",
+        "itemId": "item-40",
+        "characterId": "lin-qiao",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 2,
+        "steps": [
+          {
+            "day": 2,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 54
+      },
+      {
+        "id": "order-80",
+        "itemId": "item-63",
+        "characterId": "qi-lan",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 3,
+        "steps": [
+          {
+            "day": 3,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 60
+      },
+      {
+        "id": "order-87",
+        "itemId": "item-71",
+        "characterId": "lin-qiao",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 3,
+        "steps": [
+          {
+            "day": 3,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 77
+      },
+      {
+        "id": "order-113",
+        "itemId": "item-112",
+        "characterId": "examiner",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 0,
+        "completedOps": 2,
+        "kind": "exam",
+        "preserveOriginal": false,
+        "receivedDay": 4,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 4,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "certificate": "industrial",
+        "conditionBefore": 91
+      },
+      {
+        "id": "order-116",
+        "itemId": "item-93",
+        "characterId": "qi-lan",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 4,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 76
+      },
+      {
+        "id": "order-122",
+        "itemId": "item-101",
+        "characterId": "qi-lan",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 4,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 65
+      },
+      {
+        "id": "order-147",
+        "itemId": "item-129",
+        "characterId": "lin-qiao",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 5,
+        "steps": [
+          {
+            "day": 5,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 74
+      },
+      {
+        "id": "order-153",
+        "itemId": "item-137",
+        "characterId": "he-jin",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 5,
+        "steps": [
+          {
+            "day": 5,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 76
+      },
+      {
+        "id": "order-176",
+        "itemId": "item-158",
+        "characterId": "lu-che",
+        "description": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 460,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 6,
+        "steps": [
+          {
+            "day": 6,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 63
+      },
+      {
+        "id": "order-182",
+        "itemId": "item-166",
+        "characterId": "qi-lan",
+        "description": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 6,
+        "steps": [
+          {
+            "day": 6,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 82
+      },
+      {
+        "id": "order-205",
+        "itemId": "item-188",
+        "characterId": "he-jin",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 7,
+        "steps": [
+          {
+            "day": 7,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 91
+      },
+      {
+        "id": "order-211",
+        "itemId": "item-196",
+        "characterId": "qi-lan",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 7,
+        "steps": [
+          {
+            "day": 7,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 89
+      },
+      {
+        "id": "order-235",
+        "itemId": "item-234",
+        "characterId": "examiner",
+        "description": "便携诊疗仪的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 0,
+        "completedOps": 2,
+        "kind": "exam",
+        "preserveOriginal": false,
+        "receivedDay": 8,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 8,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "certificate": "neural",
+        "conditionBefore": 90
+      },
+      {
+        "id": "order-239",
+        "itemId": "item-216",
+        "characterId": "lu-che",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 8,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 53
+      },
+      {
+        "id": "order-245",
+        "itemId": "item-224",
+        "characterId": "qi-lan",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 460,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 8,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 8,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 60
+      },
+      {
+        "id": "order-269",
+        "itemId": "item-252",
+        "characterId": "he-jin",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 9,
+        "steps": [
+          {
+            "day": 9,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 57
+      },
+      {
+        "id": "order-275",
+        "itemId": "item-260",
+        "characterId": "song-yi",
+        "description": "触觉反馈模块的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 620,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 9,
+        "steps": [
+          {
+            "day": 9,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 9,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 62
+      },
+      {
+        "id": "order-298",
+        "itemId": "item-281",
+        "characterId": "qi-lan",
+        "description": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 10,
+        "steps": [
+          {
+            "day": 10,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 90
+      },
+      {
+        "id": "order-304",
+        "itemId": "item-289",
+        "characterId": "lin-qiao",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 10,
+        "steps": [
+          {
+            "day": 10,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 62
+      },
+      {
+        "id": "order-327",
+        "itemId": "item-309",
+        "characterId": "lin-qiao",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 460,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 11,
+        "steps": [
+          {
+            "day": 11,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 11,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 86
+      },
+      {
+        "id": "order-334",
+        "itemId": "item-317",
+        "characterId": "lin-qiao",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 11,
+        "steps": [
+          {
+            "day": 11,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 85
+      },
+      {
+        "id": "order-357",
+        "itemId": "item-339",
+        "characterId": "he-jin",
+        "description": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 460,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 12,
+        "steps": [
+          {
+            "day": 12,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 12,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 51
+      },
+      {
+        "id": "order-364",
+        "itemId": "item-347",
+        "characterId": "song-yi",
+        "description": "便携诊疗仪的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 620,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 12,
+        "steps": [
+          {
+            "day": 12,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 12,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 49
+      },
+      {
+        "id": "order-389",
+        "itemId": "item-371",
+        "characterId": "lu-che",
+        "description": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 460,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 13,
+        "steps": [
+          {
+            "day": 13,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 13,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 57
+      },
+      {
+        "id": "order-396",
+        "itemId": "item-379",
+        "characterId": "lin-qiao",
+        "description": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 310,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 13,
+        "steps": [
+          {
+            "day": 13,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 61
+      },
+      {
+        "id": "order-420",
+        "itemId": "item-402",
+        "characterId": "he-jin",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 419,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 14,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 61
+      },
+      {
+        "id": "order-426",
+        "itemId": "item-410",
+        "characterId": "he-jin",
+        "description": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 14,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 14,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 63
+      },
+      {
+        "id": "order-432",
+        "itemId": "item-431",
+        "characterId": "lin-qiao",
+        "description": "街区联络中枢 · 机电传动恢复",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 650,
+        "completedOps": 2,
+        "kind": "final",
+        "preserveOriginal": false,
+        "receivedDay": 14,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 14,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "finalStage": 0,
+        "conditionBefore": 67
+      },
+      {
+        "id": "order-456",
+        "itemId": "item-455",
+        "characterId": "lin-qiao",
+        "description": "街区联络中枢 · 供能稳定",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 850,
+        "completedOps": 2,
+        "kind": "final",
+        "preserveOriginal": false,
+        "receivedDay": 15,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "finalStage": 1,
+        "conditionBefore": 71
+      },
+      {
+        "id": "order-460",
+        "itemId": "item-437",
+        "characterId": "lu-che",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 15,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 58
+      },
+      {
+        "id": "order-467",
+        "itemId": "item-445",
+        "characterId": "song-yi",
+        "description": "记忆缓存模块的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 837,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 15,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 61
+      },
+      {
+        "id": "order-473",
+        "itemId": "item-472",
+        "characterId": "lin-qiao",
+        "description": "街区联络中枢 · 神经接口联调",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 1400,
+        "completedOps": 3,
+        "kind": "final",
+        "preserveOriginal": false,
+        "receivedDay": 15,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "calibrate",
+            "module": "feedback",
+            "faultId": "feedback-loop",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "finalStage": 2,
+        "conditionBefore": 79
+      },
+      {
+        "id": "order-496",
+        "itemId": "item-475",
+        "characterId": "qi-lan",
+        "description": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 16,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 87
+      },
+      {
+        "id": "order-503",
+        "itemId": "item-483",
+        "characterId": "qi-lan",
+        "description": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 16,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 80
+      },
+      {
+        "id": "order-529",
+        "itemId": "item-528",
+        "characterId": "examiner",
+        "description": "机械计时器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 0,
+        "completedOps": 2,
+        "kind": "exam",
+        "preserveOriginal": false,
+        "receivedDay": 17,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "calibrate",
+            "module": "oscillator",
+            "faultId": "analog-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "certificate": "antique",
+        "conditionBefore": 59
+      },
+      {
+        "id": "order-532",
+        "itemId": "item-510",
+        "characterId": "shen-wu",
+        "description": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 17,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 66
+      },
+      {
+        "id": "order-539",
+        "itemId": "item-518",
+        "characterId": "bai-heng",
+        "description": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 17,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 74
+      },
+      {
+        "id": "order-562",
+        "itemId": "item-545",
+        "characterId": "lu-che",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 419,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 18,
+        "steps": [
+          {
+            "day": 18,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 63
+      },
+      {
+        "id": "order-566",
+        "itemId": "item-553",
+        "characterId": "shen-wu",
+        "description": "早期计算核心的维修委托；保存原貌，优先修整原件。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 1067,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": true,
+        "receivedDay": 18,
+        "steps": [
+          {
+            "day": 18,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 18,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          }
+        ],
+        "conditionBefore": 79
+      },
+      {
+        "id": "order-591",
+        "itemId": "item-574",
+        "characterId": "he-jin",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 419,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 19,
+        "steps": [
+          {
+            "day": 19,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 52
+      },
+      {
+        "id": "order-597",
+        "itemId": "item-582",
+        "characterId": "bai-heng",
+        "description": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 419,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 19,
+        "steps": [
+          {
+            "day": 19,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 92
+      },
+      {
+        "id": "order-621",
+        "itemId": "item-603",
+        "characterId": "lin-qiao",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 20,
+        "steps": [
+          {
+            "day": 20,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 20,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 81
+      },
+      {
+        "id": "order-627",
+        "itemId": "item-611",
+        "characterId": "luo-jin",
+        "description": "机械计时器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 1067,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 20,
+        "steps": [
+          {
+            "day": 20,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          },
+          {
+            "day": 20,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 77
+      },
+      {
+        "id": "order-652",
+        "itemId": "item-634",
+        "characterId": "shen-wu",
+        "description": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 419,
+        "completedOps": 1,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 21,
+        "steps": [
+          {
+            "day": 21,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 52
+      },
+      {
+        "id": "order-658",
+        "itemId": "item-642",
+        "characterId": "shen-wu",
+        "description": "稳态注射泵的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 837,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 21,
+        "steps": [
+          {
+            "day": 21,
+            "operation": "calibrate",
+            "module": "feedback",
+            "faultId": "feedback-loop",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 21,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 53
+      },
+      {
+        "id": "order-682",
+        "itemId": "item-664",
+        "characterId": "he-jin",
+        "description": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 621,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 22,
+        "steps": [
+          {
+            "day": 22,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 22,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 80
+      },
+      {
+        "id": "order-689",
+        "itemId": "item-672",
+        "characterId": "bai-heng",
+        "description": "胶片相机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "diagnosed": true,
+        "verified": true,
+        "delivered": true,
+        "escrow": 0,
+        "reward": 1067,
+        "completedOps": 2,
+        "kind": "client",
+        "preserveOriginal": false,
+        "receivedDay": 22,
+        "steps": [
+          {
+            "day": 22,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          },
+          {
+            "day": 22,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "conditionBefore": 53
+      }
+    ],
+    "reputation": 187,
+    "relations": {
+      "union": 27,
+      "grayline": 20,
+      "neighborhood": 33
+    },
+    "questStages": {
+      "neighborhood-line": 3,
+      "archive-home": 1,
+      "workshop-trust": 3,
+      "clinic-promise": 3
+    },
+    "eventId": "serial-dispute",
+    "eventResolved": false,
+    "discovered": [
+      "purified-water",
+      "data-chip",
+      "mechanical-watch",
+      "portable-terminal",
+      "battery-pack",
+      "synth-coffee",
+      "algae-ration",
+      "haptic-module",
+      "game-cartridge",
+      "holo-film",
+      "film-camera",
+      "air-circulator",
+      "servo-arm",
+      "alloy-plate",
+      "insulation-roll",
+      "nutrient-fluid",
+      "culture-starter",
+      "neural-bridge",
+      "infusion-pump",
+      "spectrum-jewel",
+      "sweeper-drone",
+      "pocket-com",
+      "diagnostic-unit",
+      "bionic-toy",
+      "catalyst-core",
+      "power-module"
+    ],
+    "met": [
+      "he-jin",
+      "qi-lan",
+      "lu-che",
+      "lin-qiao",
+      "wen-zhu",
+      "song-yi",
+      "a-miao",
+      "shen-wu",
+      "bai-heng",
+      "luo-jin"
+    ],
+    "repairHistory": [
+      {
+        "orderId": "order-21",
+        "definitionId": "pocket-com",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 1,
+        "day": 1,
+        "conditionBefore": 63,
+        "conditionAfter": 77,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-26",
+        "definitionId": "air-circulator",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 1,
+        "day": 1,
+        "conditionBefore": 55,
+        "conditionAfter": 69,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 1,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-49",
+        "definitionId": "pocket-com",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 2,
+        "day": 2,
+        "conditionBefore": 58,
+        "conditionAfter": 72,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 2,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-54",
+        "definitionId": "portable-terminal",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 2,
+        "day": 2,
+        "conditionBefore": 54,
+        "conditionAfter": 68,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 2,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-80",
+        "definitionId": "portable-terminal",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 3,
+        "day": 3,
+        "conditionBefore": 60,
+        "conditionAfter": 74,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 3,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-87",
+        "definitionId": "air-circulator",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 3,
+        "day": 3,
+        "conditionBefore": 77,
+        "conditionAfter": 91,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 3,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-113",
+        "definitionId": "industrial-sensor",
+        "characterId": "examiner",
+        "kind": "exam",
+        "receivedDay": 4,
+        "day": 4,
+        "conditionBefore": 91,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 4,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 0
+      },
+      {
+        "orderId": "order-116",
+        "definitionId": "portable-terminal",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 4,
+        "day": 4,
+        "conditionBefore": 76,
+        "conditionAfter": 90,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-122",
+        "definitionId": "air-circulator",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 4,
+        "day": 4,
+        "conditionBefore": 65,
+        "conditionAfter": 79,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 4,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-147",
+        "definitionId": "portable-terminal",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 5,
+        "day": 5,
+        "conditionBefore": 74,
+        "conditionAfter": 88,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 5,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-153",
+        "definitionId": "air-circulator",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 5,
+        "day": 5,
+        "conditionBefore": 76,
+        "conditionAfter": 90,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 5,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-176",
+        "definitionId": "servo-arm",
+        "characterId": "lu-che",
+        "kind": "client",
+        "receivedDay": 6,
+        "day": 6,
+        "conditionBefore": 63,
+        "conditionAfter": 77,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 6,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "reward": 460
+      },
+      {
+        "orderId": "order-182",
+        "definitionId": "pocket-com",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 6,
+        "day": 6,
+        "conditionBefore": 82,
+        "conditionAfter": 96,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 6,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-205",
+        "definitionId": "air-circulator",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 7,
+        "day": 7,
+        "conditionBefore": 91,
+        "conditionAfter": 100,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 7,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-211",
+        "definitionId": "air-circulator",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 7,
+        "day": 7,
+        "conditionBefore": 89,
+        "conditionAfter": 100,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 7,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-235",
+        "definitionId": "diagnostic-unit",
+        "characterId": "examiner",
+        "kind": "exam",
+        "receivedDay": 8,
+        "day": 8,
+        "conditionBefore": 90,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 8,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 0
+      },
+      {
+        "orderId": "order-239",
+        "definitionId": "portable-terminal",
+        "characterId": "lu-che",
+        "kind": "client",
+        "receivedDay": 8,
+        "day": 8,
+        "conditionBefore": 53,
+        "conditionAfter": 67,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-245",
+        "definitionId": "industrial-sensor",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 8,
+        "day": 8,
+        "conditionBefore": 60,
+        "conditionAfter": 88,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 8,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 8,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1.5,
+            "preserve": false
+          }
+        ],
+        "reward": 460
+      },
+      {
+        "orderId": "order-269",
+        "definitionId": "air-circulator",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 9,
+        "day": 9,
+        "conditionBefore": 57,
+        "conditionAfter": 71,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 9,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-275",
+        "definitionId": "haptic-module",
+        "characterId": "song-yi",
+        "kind": "client",
+        "receivedDay": 9,
+        "day": 9,
+        "conditionBefore": 62,
+        "conditionAfter": 90,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 9,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 9,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 620
+      },
+      {
+        "orderId": "order-298",
+        "definitionId": "pocket-com",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 10,
+        "day": 10,
+        "conditionBefore": 90,
+        "conditionAfter": 100,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 10,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-304",
+        "definitionId": "portable-terminal",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 10,
+        "day": 10,
+        "conditionBefore": 62,
+        "conditionAfter": 76,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 10,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-327",
+        "definitionId": "industrial-sensor",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 11,
+        "day": 11,
+        "conditionBefore": 86,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 11,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 11,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 460
+      },
+      {
+        "orderId": "order-334",
+        "definitionId": "portable-terminal",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 11,
+        "day": 11,
+        "conditionBefore": 85,
+        "conditionAfter": 99,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 11,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-357",
+        "definitionId": "servo-arm",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 12,
+        "day": 12,
+        "conditionBefore": 51,
+        "conditionAfter": 79,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 12,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 12,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 460
+      },
+      {
+        "orderId": "order-364",
+        "definitionId": "diagnostic-unit",
+        "characterId": "song-yi",
+        "kind": "client",
+        "receivedDay": 12,
+        "day": 12,
+        "conditionBefore": 49,
+        "conditionAfter": 77,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 12,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 12,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 620
+      },
+      {
+        "orderId": "order-389",
+        "definitionId": "sweeper-drone",
+        "characterId": "lu-che",
+        "kind": "client",
+        "receivedDay": 13,
+        "day": 13,
+        "conditionBefore": 57,
+        "conditionAfter": 85,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 13,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 13,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 460
+      },
+      {
+        "orderId": "order-396",
+        "definitionId": "air-circulator",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 13,
+        "day": 13,
+        "conditionBefore": 61,
+        "conditionAfter": 75,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 13,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 310
+      },
+      {
+        "orderId": "order-420",
+        "definitionId": "portable-terminal",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 14,
+        "day": 14,
+        "conditionBefore": 61,
+        "conditionAfter": 75,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 419
+      },
+      {
+        "orderId": "order-426",
+        "definitionId": "servo-arm",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 14,
+        "day": 14,
+        "conditionBefore": 63,
+        "conditionAfter": 91,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 14,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-432",
+        "definitionId": "servo-arm",
+        "characterId": "lin-qiao",
+        "kind": "final",
+        "receivedDay": 14,
+        "day": 14,
+        "conditionBefore": 67,
+        "conditionAfter": 95,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 14,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 14,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 650
+      },
+      {
+        "orderId": "order-456",
+        "definitionId": "power-module",
+        "characterId": "lin-qiao",
+        "kind": "final",
+        "receivedDay": 15,
+        "day": 15,
+        "conditionBefore": 71,
+        "conditionAfter": 99,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 850
+      },
+      {
+        "orderId": "order-460",
+        "definitionId": "industrial-sensor",
+        "characterId": "lu-che",
+        "kind": "client",
+        "receivedDay": 15,
+        "day": 15,
+        "conditionBefore": 58,
+        "conditionAfter": 86,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-467",
+        "definitionId": "memory-buffer",
+        "characterId": "song-yi",
+        "kind": "client",
+        "receivedDay": 15,
+        "day": 15,
+        "conditionBefore": 61,
+        "conditionAfter": 89,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 15,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 15,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 837
+      },
+      {
+        "orderId": "order-473",
+        "definitionId": "neural-bridge",
+        "characterId": "lin-qiao",
+        "kind": "final",
+        "receivedDay": 15,
+        "day": 16,
+        "conditionBefore": 79,
+        "conditionAfter": 100,
+        "completedOps": 3,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "calibrate",
+            "module": "optic",
+            "faultId": "sensor-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "calibrate",
+            "module": "feedback",
+            "faultId": "feedback-loop",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 1400
+      },
+      {
+        "orderId": "order-496",
+        "definitionId": "sweeper-drone",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 16,
+        "day": 16,
+        "conditionBefore": 87,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-503",
+        "definitionId": "servo-arm",
+        "characterId": "qi-lan",
+        "kind": "client",
+        "receivedDay": 16,
+        "day": 16,
+        "conditionBefore": 80,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 16,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 16,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-529",
+        "definitionId": "mechanical-watch",
+        "characterId": "examiner",
+        "kind": "exam",
+        "receivedDay": 17,
+        "day": 17,
+        "conditionBefore": 59,
+        "conditionAfter": 87,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "calibrate",
+            "module": "oscillator",
+            "faultId": "analog-drift",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          }
+        ],
+        "reward": 0
+      },
+      {
+        "orderId": "order-532",
+        "definitionId": "sweeper-drone",
+        "characterId": "shen-wu",
+        "kind": "client",
+        "receivedDay": 17,
+        "day": 17,
+        "conditionBefore": 66,
+        "conditionAfter": 94,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-539",
+        "definitionId": "servo-arm",
+        "characterId": "bai-heng",
+        "kind": "client",
+        "receivedDay": 17,
+        "day": 17,
+        "conditionBefore": 74,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 17,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 17,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-562",
+        "definitionId": "portable-terminal",
+        "characterId": "lu-che",
+        "kind": "client",
+        "receivedDay": 18,
+        "day": 18,
+        "conditionBefore": 63,
+        "conditionAfter": 77,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 18,
+            "operation": "clean",
+            "module": "contacts",
+            "faultId": "oxidized-contact",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 419
+      },
+      {
+        "orderId": "order-566",
+        "definitionId": "early-core",
+        "characterId": "shen-wu",
+        "kind": "client",
+        "receivedDay": 18,
+        "day": 18,
+        "conditionBefore": 79,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 18,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 18,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          }
+        ],
+        "reward": 1067
+      },
+      {
+        "orderId": "order-591",
+        "definitionId": "portable-terminal",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 19,
+        "day": 19,
+        "conditionBefore": 52,
+        "conditionAfter": 66,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 19,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 419
+      },
+      {
+        "orderId": "order-597",
+        "definitionId": "portable-terminal",
+        "characterId": "bai-heng",
+        "kind": "client",
+        "receivedDay": 19,
+        "day": 19,
+        "conditionBefore": 92,
+        "conditionAfter": 100,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 19,
+            "operation": "replace",
+            "module": "power",
+            "faultId": "broken-power",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 419
+      },
+      {
+        "orderId": "order-621",
+        "definitionId": "industrial-sensor",
+        "characterId": "lin-qiao",
+        "kind": "client",
+        "receivedDay": 20,
+        "day": 20,
+        "conditionBefore": 81,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 20,
+            "operation": "replace",
+            "module": "insulation",
+            "faultId": "insulation-leak",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 20,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-627",
+        "definitionId": "mechanical-watch",
+        "characterId": "luo-jin",
+        "kind": "client",
+        "receivedDay": 20,
+        "day": 20,
+        "conditionBefore": 77,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 20,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          },
+          {
+            "day": 20,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 1067
+      },
+      {
+        "orderId": "order-652",
+        "definitionId": "pocket-com",
+        "characterId": "shen-wu",
+        "kind": "client",
+        "receivedDay": 21,
+        "day": 21,
+        "conditionBefore": 52,
+        "conditionAfter": 66,
+        "completedOps": 1,
+        "steps": [
+          {
+            "day": 21,
+            "operation": "calibrate",
+            "module": "clock",
+            "faultId": "clock-drift",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 419
+      },
+      {
+        "orderId": "order-658",
+        "definitionId": "infusion-pump",
+        "characterId": "shen-wu",
+        "kind": "client",
+        "receivedDay": 21,
+        "day": 21,
+        "conditionBefore": 53,
+        "conditionAfter": 81,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 21,
+            "operation": "calibrate",
+            "module": "feedback",
+            "faultId": "feedback-loop",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": false
+          },
+          {
+            "day": 21,
+            "operation": "clean",
+            "module": "neural",
+            "faultId": "neural-noise",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 837
+      },
+      {
+        "orderId": "order-682",
+        "definitionId": "industrial-sensor",
+        "characterId": "he-jin",
+        "kind": "client",
+        "receivedDay": 22,
+        "day": 22,
+        "conditionBefore": 80,
+        "conditionAfter": 100,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 22,
+            "operation": "clean",
+            "module": "drive",
+            "faultId": "jammed-bearing",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          },
+          {
+            "day": 22,
+            "operation": "replace",
+            "module": "drive",
+            "faultId": "burnt-driver",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 621
+      },
+      {
+        "orderId": "order-689",
+        "definitionId": "film-camera",
+        "characterId": "bai-heng",
+        "kind": "client",
+        "receivedDay": 22,
+        "day": 22,
+        "conditionBefore": 53,
+        "conditionAfter": 81,
+        "completedOps": 2,
+        "steps": [
+          {
+            "day": 22,
+            "operation": "replace",
+            "module": "mechanism",
+            "faultId": "worn-gear",
+            "result": "fixed",
+            "hours": 2,
+            "preserve": true
+          },
+          {
+            "day": 22,
+            "operation": "clean",
+            "module": "mechanism",
+            "faultId": "old-grease",
+            "result": "fixed",
+            "hours": 1,
+            "preserve": false
+          }
+        ],
+        "reward": 1067
+      }
+    ],
+    "records": {
+      "trades": 90,
+      "repairs": 47,
+      "revenue": 47102,
+      "repairIncome": 24268,
+      "days": 21,
+      "faults": {
+        "oxidized-contact": 11,
+        "broken-power": 6,
+        "jammed-bearing": 14,
+        "insulation-leak": 7,
+        "clock-drift": 7,
+        "neural-noise": 6,
+        "sensor-drift": 5,
+        "burnt-driver": 10,
+        "feedback-loop": 2,
+        "old-grease": 4,
+        "analog-drift": 1,
+        "worn-gear": 3
+      }
+    },
+    "finalStage": 3,
+    "finalComplete": true,
+    "professionMilestones": [
+      "relay-restored"
+    ],
+    "victory": true,
+    "endless": true,
+    "freeRespec": true,
+    "ledger": [
+      {
+        "id": 22,
+        "day": 1,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-4"
+      },
+      {
+        "id": 23,
+        "day": 1,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-4"
+      },
+      {
+        "id": 24,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -161,
+        "note": "买入随身终端",
+        "itemId": "item-6"
+      },
+      {
+        "id": 25,
+        "day": 1,
+        "kind": "sale",
+        "amount": 90,
+        "note": "售出通用数据芯片",
+        "itemId": "item-2"
+      },
+      {
+        "id": 27,
+        "day": 1,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-12"
+      },
+      {
+        "id": 28,
+        "day": 1,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-12"
+      },
+      {
+        "id": 29,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -63,
+        "note": "买入标准电池组",
+        "itemId": "item-14"
+      },
+      {
+        "id": 30,
+        "day": 1,
+        "kind": "sale",
+        "amount": 278,
+        "note": "售出随身终端",
+        "itemId": "item-6"
+      },
+      {
+        "id": 31,
+        "day": 1,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 50,
+        "day": 2,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-32"
+      },
+      {
+        "id": 51,
+        "day": 2,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-32"
+      },
+      {
+        "id": 52,
+        "day": 2,
+        "kind": "purchase",
+        "amount": -43,
+        "note": "买入标准电池组",
+        "itemId": "item-34"
+      },
+      {
+        "id": 53,
+        "day": 2,
+        "kind": "sale",
+        "amount": 605,
+        "note": "售出机械计时器",
+        "itemId": "item-3"
+      },
+      {
+        "id": 55,
+        "day": 2,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-40"
+      },
+      {
+        "id": 56,
+        "day": 2,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-40"
+      },
+      {
+        "id": 57,
+        "day": 2,
+        "kind": "purchase",
+        "amount": -68,
+        "note": "买入合成咖啡",
+        "itemId": "item-42"
+      },
+      {
+        "id": 58,
+        "day": 2,
+        "kind": "sale",
+        "amount": 87,
+        "note": "售出标准电池组",
+        "itemId": "item-14"
+      },
+      {
+        "id": 59,
+        "day": 2,
+        "kind": "sale",
+        "amount": 74,
+        "note": "售出标准电池组",
+        "itemId": "item-34"
+      },
+      {
+        "id": 60,
+        "day": 2,
+        "kind": "quest",
+        "amount": 140,
+        "note": "巷道里的声音第 1 阶段"
+      },
+      {
+        "id": 61,
+        "day": 2,
+        "kind": "quest",
+        "amount": 160,
+        "note": "把旧城带回家第 1 阶段"
+      },
+      {
+        "id": 62,
+        "day": 2,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 81,
+        "day": 3,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-63"
+      },
+      {
+        "id": 82,
+        "day": 3,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-63"
+      },
+      {
+        "id": 83,
+        "day": 3,
+        "kind": "purchase",
+        "amount": -49,
+        "note": "买入藻蛋白口粮",
+        "itemId": "item-65"
+      },
+      {
+        "id": 84,
+        "day": 3,
+        "kind": "sale",
+        "amount": 68,
+        "note": "售出净化饮水",
+        "itemId": "item-1"
+      },
+      {
+        "id": 85,
+        "day": 3,
+        "kind": "sale",
+        "amount": 100,
+        "note": "售出合成咖啡",
+        "itemId": "item-42"
+      },
+      {
+        "id": 86,
+        "day": 3,
+        "kind": "sale",
+        "amount": 86,
+        "note": "售出藻蛋白口粮",
+        "itemId": "item-65"
+      },
+      {
+        "id": 88,
+        "day": 3,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-71"
+      },
+      {
+        "id": 89,
+        "day": 3,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-71"
+      },
+      {
+        "id": 90,
+        "day": 3,
+        "kind": "purchase",
+        "amount": -151,
+        "note": "买入触觉反馈模块",
+        "itemId": "item-73"
+      },
+      {
+        "id": 91,
+        "day": 3,
+        "kind": "quest",
+        "amount": 180,
+        "note": "工序单上的名字第 1 阶段"
+      },
+      {
+        "id": 92,
+        "day": 3,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 110,
+        "day": 4,
+        "kind": "event",
+        "amount": 20,
+        "note": "帮忙核对授权"
+      },
+      {
+        "id": 111,
+        "day": 4,
+        "kind": "training",
+        "amount": -180,
+        "note": "工业设备"
+      },
+      {
+        "id": 114,
+        "day": 4,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-112"
+      },
+      {
+        "id": 115,
+        "day": 4,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 28，不计入自由现金",
+        "itemId": "item-112"
+      },
+      {
+        "id": 117,
+        "day": 4,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-93"
+      },
+      {
+        "id": 118,
+        "day": 4,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-93"
+      },
+      {
+        "id": 119,
+        "day": 4,
+        "kind": "purchase",
+        "amount": -88,
+        "note": "买入触觉反馈模块",
+        "itemId": "item-95"
+      },
+      {
+        "id": 120,
+        "day": 4,
+        "kind": "sale",
+        "amount": 264,
+        "note": "售出触觉反馈模块",
+        "itemId": "item-73"
+      },
+      {
+        "id": 121,
+        "day": 4,
+        "kind": "sale",
+        "amount": 156,
+        "note": "售出触觉反馈模块",
+        "itemId": "item-95"
+      },
+      {
+        "id": 123,
+        "day": 4,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-101"
+      },
+      {
+        "id": 124,
+        "day": 4,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-101"
+      },
+      {
+        "id": 125,
+        "day": 4,
+        "kind": "purchase",
+        "amount": -153,
+        "note": "买入旧式游戏卡匣",
+        "itemId": "item-103"
+      },
+      {
+        "id": 126,
+        "day": 4,
+        "kind": "quest",
+        "amount": 300,
+        "note": "工序单上的名字第 2 阶段"
+      },
+      {
+        "id": 127,
+        "day": 4,
+        "kind": "quest",
+        "amount": 220,
+        "note": "每一次稳定读数第 1 阶段"
+      },
+      {
+        "id": 128,
+        "day": 4,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 146,
+        "day": 5,
+        "kind": "event",
+        "amount": 35,
+        "note": "帮货队重排路线"
+      },
+      {
+        "id": 148,
+        "day": 5,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-129"
+      },
+      {
+        "id": 149,
+        "day": 5,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-129"
+      },
+      {
+        "id": 150,
+        "day": 5,
+        "kind": "purchase",
+        "amount": -125,
+        "note": "买入全息电影卡",
+        "itemId": "item-131"
+      },
+      {
+        "id": 151,
+        "day": 5,
+        "kind": "sale",
+        "amount": 223,
+        "note": "售出旧式游戏卡匣",
+        "itemId": "item-103"
+      },
+      {
+        "id": 152,
+        "day": 5,
+        "kind": "sale",
+        "amount": 221,
+        "note": "售出全息电影卡",
+        "itemId": "item-131"
+      },
+      {
+        "id": 154,
+        "day": 5,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 32，不计入自由现金",
+        "itemId": "item-137"
+      },
+      {
+        "id": 155,
+        "day": 5,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-137"
+      },
+      {
+        "id": 156,
+        "day": 5,
+        "kind": "purchase",
+        "amount": -440,
+        "note": "买入胶片相机",
+        "itemId": "item-139"
+      },
+      {
+        "id": 157,
+        "day": 5,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 175,
+        "day": 6,
+        "kind": "event",
+        "amount": 30,
+        "note": "协助街坊登记"
+      },
+      {
+        "id": 177,
+        "day": 6,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 28，不计入自由现金",
+        "itemId": "item-158"
+      },
+      {
+        "id": 178,
+        "day": 6,
+        "kind": "repair-income",
+        "amount": 460,
+        "note": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-158"
+      },
+      {
+        "id": 179,
+        "day": 6,
+        "kind": "purchase",
+        "amount": -475,
+        "note": "买入机械计时器",
+        "itemId": "item-160"
+      },
+      {
+        "id": 180,
+        "day": 6,
+        "kind": "sale",
+        "amount": 778,
+        "note": "售出胶片相机",
+        "itemId": "item-139"
+      },
+      {
+        "id": 181,
+        "day": 6,
+        "kind": "sale",
+        "amount": 847,
+        "note": "售出机械计时器",
+        "itemId": "item-160"
+      },
+      {
+        "id": 183,
+        "day": 6,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 16，不计入自由现金",
+        "itemId": "item-166"
+      },
+      {
+        "id": 184,
+        "day": 6,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-166"
+      },
+      {
+        "id": 185,
+        "day": 6,
+        "kind": "purchase",
+        "amount": -252,
+        "note": "买入便携空气循环机",
+        "itemId": "item-168"
+      },
+      {
+        "id": 186,
+        "day": 6,
+        "kind": "quest",
+        "amount": 360,
+        "note": "巷道里的声音第 2 阶段"
+      },
+      {
+        "id": 187,
+        "day": 6,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 206,
+        "day": 7,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-188"
+      },
+      {
+        "id": 207,
+        "day": 7,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-188"
+      },
+      {
+        "id": 208,
+        "day": 7,
+        "kind": "purchase",
+        "amount": -280,
+        "note": "买入伺服机械臂",
+        "itemId": "item-190"
+      },
+      {
+        "id": 209,
+        "day": 7,
+        "kind": "sale",
+        "amount": 452,
+        "note": "售出便携空气循环机",
+        "itemId": "item-168"
+      },
+      {
+        "id": 210,
+        "day": 7,
+        "kind": "sale",
+        "amount": 506,
+        "note": "售出伺服机械臂",
+        "itemId": "item-190"
+      },
+      {
+        "id": 212,
+        "day": 7,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-196"
+      },
+      {
+        "id": 213,
+        "day": 7,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-196"
+      },
+      {
+        "id": 214,
+        "day": 7,
+        "kind": "purchase",
+        "amount": -87,
+        "note": "买入高导合金板",
+        "itemId": "item-198"
+      },
+      {
+        "id": 215,
+        "day": 7,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 233,
+        "day": 8,
+        "kind": "training",
+        "amount": -420,
+        "note": "神经接口"
+      },
+      {
+        "id": 236,
+        "day": 8,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-234"
+      },
+      {
+        "id": 237,
+        "day": 8,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-234"
+      },
+      {
+        "id": 238,
+        "day": 8,
+        "kind": "license",
+        "amount": -450,
+        "note": "通用交易许可"
+      },
+      {
+        "id": 240,
+        "day": 8,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-216"
+      },
+      {
+        "id": 241,
+        "day": 8,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-216"
+      },
+      {
+        "id": 242,
+        "day": 8,
+        "kind": "purchase",
+        "amount": -58,
+        "note": "买入绝缘纤维卷",
+        "itemId": "item-218"
+      },
+      {
+        "id": 243,
+        "day": 8,
+        "kind": "sale",
+        "amount": 157,
+        "note": "售出高导合金板",
+        "itemId": "item-198"
+      },
+      {
+        "id": 244,
+        "day": 8,
+        "kind": "sale",
+        "amount": 104,
+        "note": "售出绝缘纤维卷",
+        "itemId": "item-218"
+      },
+      {
+        "id": 246,
+        "day": 8,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-224"
+      },
+      {
+        "id": 247,
+        "day": 8,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-224"
+      },
+      {
+        "id": 248,
+        "day": 8,
+        "kind": "repair-income",
+        "amount": 460,
+        "note": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-224"
+      },
+      {
+        "id": 249,
+        "day": 8,
+        "kind": "purchase",
+        "amount": -92,
+        "note": "买入营养培养液",
+        "itemId": "item-226"
+      },
+      {
+        "id": 250,
+        "day": 8,
+        "kind": "quest",
+        "amount": 440,
+        "note": "每一次稳定读数第 2 阶段"
+      },
+      {
+        "id": 251,
+        "day": 8,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 270,
+        "day": 9,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-252"
+      },
+      {
+        "id": 271,
+        "day": 9,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-252"
+      },
+      {
+        "id": 272,
+        "day": 9,
+        "kind": "purchase",
+        "amount": -122,
+        "note": "买入速生菌种包",
+        "itemId": "item-254"
+      },
+      {
+        "id": 273,
+        "day": 9,
+        "kind": "sale",
+        "amount": 167,
+        "note": "售出营养培养液",
+        "itemId": "item-226"
+      },
+      {
+        "id": 274,
+        "day": 9,
+        "kind": "sale",
+        "amount": 225,
+        "note": "售出速生菌种包",
+        "itemId": "item-254"
+      },
+      {
+        "id": 276,
+        "day": 9,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-260"
+      },
+      {
+        "id": 277,
+        "day": 9,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-260"
+      },
+      {
+        "id": 278,
+        "day": 9,
+        "kind": "repair-income",
+        "amount": 620,
+        "note": "触觉反馈模块的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-260"
+      },
+      {
+        "id": 279,
+        "day": 9,
+        "kind": "purchase",
+        "amount": -314,
+        "note": "买入神经接口桥",
+        "itemId": "item-262"
+      },
+      {
+        "id": 280,
+        "day": 9,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 299,
+        "day": 10,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-281"
+      },
+      {
+        "id": 300,
+        "day": 10,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-281"
+      },
+      {
+        "id": 301,
+        "day": 10,
+        "kind": "purchase",
+        "amount": -293,
+        "note": "买入稳态注射泵",
+        "itemId": "item-283"
+      },
+      {
+        "id": 302,
+        "day": 10,
+        "kind": "sale",
+        "amount": 696,
+        "note": "售出神经接口桥",
+        "itemId": "item-262"
+      },
+      {
+        "id": 303,
+        "day": 10,
+        "kind": "sale",
+        "amount": 544,
+        "note": "售出稳态注射泵",
+        "itemId": "item-283"
+      },
+      {
+        "id": 305,
+        "day": 10,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-289"
+      },
+      {
+        "id": 306,
+        "day": 10,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-289"
+      },
+      {
+        "id": 307,
+        "day": 10,
+        "kind": "purchase",
+        "amount": -31,
+        "note": "买入通用数据芯片",
+        "itemId": "item-291"
+      },
+      {
+        "id": 308,
+        "day": 10,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 326,
+        "day": 11,
+        "kind": "event",
+        "amount": 25,
+        "note": "登记捐赠授权"
+      },
+      {
+        "id": 328,
+        "day": 11,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-309"
+      },
+      {
+        "id": 329,
+        "day": 11,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-309"
+      },
+      {
+        "id": 330,
+        "day": 11,
+        "kind": "repair-income",
+        "amount": 460,
+        "note": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-309"
+      },
+      {
+        "id": 331,
+        "day": 11,
+        "kind": "purchase",
+        "amount": -117,
+        "note": "买入旧式游戏卡匣",
+        "itemId": "item-311"
+      },
+      {
+        "id": 332,
+        "day": 11,
+        "kind": "sale",
+        "amount": 67,
+        "note": "售出通用数据芯片",
+        "itemId": "item-291"
+      },
+      {
+        "id": 333,
+        "day": 11,
+        "kind": "sale",
+        "amount": 220,
+        "note": "售出旧式游戏卡匣",
+        "itemId": "item-311"
+      },
+      {
+        "id": 335,
+        "day": 11,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-317"
+      },
+      {
+        "id": 336,
+        "day": 11,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-317"
+      },
+      {
+        "id": 337,
+        "day": 11,
+        "kind": "purchase",
+        "amount": -564,
+        "note": "买入限量光谱饰品",
+        "itemId": "item-319"
+      },
+      {
+        "id": 338,
+        "day": 11,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 356,
+        "day": 12,
+        "kind": "event",
+        "amount": 20,
+        "note": "协助街坊预约"
+      },
+      {
+        "id": 358,
+        "day": 12,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-339"
+      },
+      {
+        "id": 359,
+        "day": 12,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-339"
+      },
+      {
+        "id": 360,
+        "day": 12,
+        "kind": "repair-income",
+        "amount": 460,
+        "note": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-339"
+      },
+      {
+        "id": 361,
+        "day": 12,
+        "kind": "purchase",
+        "amount": -598,
+        "note": "买入限量光谱饰品",
+        "itemId": "item-341"
+      },
+      {
+        "id": 362,
+        "day": 12,
+        "kind": "sale",
+        "amount": 1056,
+        "note": "售出限量光谱饰品",
+        "itemId": "item-319"
+      },
+      {
+        "id": 363,
+        "day": 12,
+        "kind": "sale",
+        "amount": 1137,
+        "note": "售出限量光谱饰品",
+        "itemId": "item-341"
+      },
+      {
+        "id": 365,
+        "day": 12,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-347"
+      },
+      {
+        "id": 366,
+        "day": 12,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-347"
+      },
+      {
+        "id": 367,
+        "day": 12,
+        "kind": "repair-income",
+        "amount": 620,
+        "note": "便携诊疗仪的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-347"
+      },
+      {
+        "id": 368,
+        "day": 12,
+        "kind": "purchase",
+        "amount": -240,
+        "note": "买入清扫无人机",
+        "itemId": "item-349"
+      },
+      {
+        "id": 369,
+        "day": 12,
+        "kind": "quest",
+        "amount": 700,
+        "note": "每一次稳定读数第 3 阶段"
+      },
+      {
+        "id": 370,
+        "day": 12,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 388,
+        "day": 13,
+        "kind": "event",
+        "amount": -35,
+        "note": "向旧城居民求证"
+      },
+      {
+        "id": 390,
+        "day": 13,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 21，不计入自由现金",
+        "itemId": "item-371"
+      },
+      {
+        "id": 391,
+        "day": 13,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-371"
+      },
+      {
+        "id": 392,
+        "day": 13,
+        "kind": "repair-income",
+        "amount": 460,
+        "note": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-371"
+      },
+      {
+        "id": 393,
+        "day": 13,
+        "kind": "purchase",
+        "amount": -106,
+        "note": "买入掌上通讯器",
+        "itemId": "item-373"
+      },
+      {
+        "id": 394,
+        "day": 13,
+        "kind": "sale",
+        "amount": 379,
+        "note": "售出清扫无人机",
+        "itemId": "item-349"
+      },
+      {
+        "id": 395,
+        "day": 13,
+        "kind": "sale",
+        "amount": 197,
+        "note": "售出掌上通讯器",
+        "itemId": "item-373"
+      },
+      {
+        "id": 397,
+        "day": 13,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-379"
+      },
+      {
+        "id": 398,
+        "day": 13,
+        "kind": "repair-income",
+        "amount": 310,
+        "note": "便携空气循环机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-379"
+      },
+      {
+        "id": 399,
+        "day": 13,
+        "kind": "purchase",
+        "amount": -46,
+        "note": "买入绝缘纤维卷",
+        "itemId": "item-381"
+      },
+      {
+        "id": 400,
+        "day": 13,
+        "kind": "quest",
+        "amount": 620,
+        "note": "工序单上的名字第 3 阶段"
+      },
+      {
+        "id": 401,
+        "day": 13,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 419,
+        "day": 14,
+        "kind": "event",
+        "amount": 35,
+        "note": "协助配送"
+      },
+      {
+        "id": 421,
+        "day": 14,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-402"
+      },
+      {
+        "id": 422,
+        "day": 14,
+        "kind": "repair-income",
+        "amount": 419,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-402"
+      },
+      {
+        "id": 423,
+        "day": 14,
+        "kind": "purchase",
+        "amount": -32,
+        "note": "买入标准电池组",
+        "itemId": "item-404"
+      },
+      {
+        "id": 424,
+        "day": 14,
+        "kind": "sale",
+        "amount": 90,
+        "note": "售出绝缘纤维卷",
+        "itemId": "item-381"
+      },
+      {
+        "id": 425,
+        "day": 14,
+        "kind": "sale",
+        "amount": 64,
+        "note": "售出标准电池组",
+        "itemId": "item-404"
+      },
+      {
+        "id": 427,
+        "day": 14,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-410"
+      },
+      {
+        "id": 428,
+        "day": 14,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-410"
+      },
+      {
+        "id": 429,
+        "day": 14,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-410"
+      },
+      {
+        "id": 430,
+        "day": 14,
+        "kind": "purchase",
+        "amount": -77,
+        "note": "买入营养培养液",
+        "itemId": "item-412"
+      },
+      {
+        "id": 433,
+        "day": 14,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-431"
+      },
+      {
+        "id": 434,
+        "day": 14,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-431"
+      },
+      {
+        "id": 435,
+        "day": 14,
+        "kind": "repair-income",
+        "amount": 650,
+        "note": "街区联络中枢 · 机电传动恢复",
+        "itemId": "item-431"
+      },
+      {
+        "id": 436,
+        "day": 14,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 454,
+        "day": 15,
+        "kind": "event",
+        "amount": -50,
+        "note": "组织临时接力"
+      },
+      {
+        "id": 457,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 21，不计入自由现金",
+        "itemId": "item-455"
+      },
+      {
+        "id": 458,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-455"
+      },
+      {
+        "id": 459,
+        "day": 15,
+        "kind": "repair-income",
+        "amount": 850,
+        "note": "街区联络中枢 · 供能稳定",
+        "itemId": "item-455"
+      },
+      {
+        "id": 461,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 21，不计入自由现金",
+        "itemId": "item-437"
+      },
+      {
+        "id": 462,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-437"
+      },
+      {
+        "id": 463,
+        "day": 15,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-437"
+      },
+      {
+        "id": 464,
+        "day": 15,
+        "kind": "purchase",
+        "amount": -112,
+        "note": "买入速生菌种包",
+        "itemId": "item-439"
+      },
+      {
+        "id": 465,
+        "day": 15,
+        "kind": "sale",
+        "amount": 171,
+        "note": "售出营养培养液",
+        "itemId": "item-412"
+      },
+      {
+        "id": 466,
+        "day": 15,
+        "kind": "sale",
+        "amount": 223,
+        "note": "售出速生菌种包",
+        "itemId": "item-439"
+      },
+      {
+        "id": 468,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-445"
+      },
+      {
+        "id": 469,
+        "day": 15,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-445"
+      },
+      {
+        "id": 470,
+        "day": 15,
+        "kind": "repair-income",
+        "amount": 837,
+        "note": "记忆缓存模块的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-445"
+      },
+      {
+        "id": 471,
+        "day": 15,
+        "kind": "purchase",
+        "amount": -90,
+        "note": "买入触觉反馈模块",
+        "itemId": "item-447"
+      },
+      {
+        "id": 474,
+        "day": 15,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 492,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-472"
+      },
+      {
+        "id": 493,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-472"
+      },
+      {
+        "id": 494,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-472"
+      },
+      {
+        "id": 495,
+        "day": 16,
+        "kind": "repair-income",
+        "amount": 1400,
+        "note": "街区联络中枢 · 神经接口联调",
+        "itemId": "item-472"
+      },
+      {
+        "id": 497,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-475"
+      },
+      {
+        "id": 498,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-475"
+      },
+      {
+        "id": 499,
+        "day": 16,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-475"
+      },
+      {
+        "id": 500,
+        "day": 16,
+        "kind": "purchase",
+        "amount": -390,
+        "note": "买入便携诊疗仪",
+        "itemId": "item-477"
+      },
+      {
+        "id": 501,
+        "day": 16,
+        "kind": "sale",
+        "amount": 178,
+        "note": "售出触觉反馈模块",
+        "itemId": "item-447"
+      },
+      {
+        "id": 502,
+        "day": 16,
+        "kind": "sale",
+        "amount": 775,
+        "note": "售出便携诊疗仪",
+        "itemId": "item-477"
+      },
+      {
+        "id": 504,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 21，不计入自由现金",
+        "itemId": "item-483"
+      },
+      {
+        "id": 505,
+        "day": 16,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-483"
+      },
+      {
+        "id": 506,
+        "day": 16,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-483"
+      },
+      {
+        "id": 507,
+        "day": 16,
+        "kind": "purchase",
+        "amount": -91,
+        "note": "买入全息电影卡",
+        "itemId": "item-485"
+      },
+      {
+        "id": 508,
+        "day": 16,
+        "kind": "quest",
+        "amount": 800,
+        "note": "巷道里的声音第 3 阶段"
+      },
+      {
+        "id": 509,
+        "day": 16,
+        "kind": "ownership",
+        "amount": -12000,
+        "note": "购买永久经营权并结清欠费"
+      },
+      {
+        "id": 527,
+        "day": 17,
+        "kind": "training",
+        "amount": -700,
+        "note": "古董科技"
+      },
+      {
+        "id": 530,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-528"
+      },
+      {
+        "id": 531,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-528"
+      },
+      {
+        "id": 533,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-510"
+      },
+      {
+        "id": 534,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-510"
+      },
+      {
+        "id": 535,
+        "day": 17,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "清扫无人机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-510"
+      },
+      {
+        "id": 536,
+        "day": 17,
+        "kind": "purchase",
+        "amount": -171,
+        "note": "买入旧式游戏卡匣",
+        "itemId": "item-512"
+      },
+      {
+        "id": 537,
+        "day": 17,
+        "kind": "sale",
+        "amount": 181,
+        "note": "售出全息电影卡",
+        "itemId": "item-485"
+      },
+      {
+        "id": 538,
+        "day": 17,
+        "kind": "sale",
+        "amount": 339,
+        "note": "售出旧式游戏卡匣",
+        "itemId": "item-512"
+      },
+      {
+        "id": 540,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-518"
+      },
+      {
+        "id": 541,
+        "day": 17,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-518"
+      },
+      {
+        "id": 542,
+        "day": 17,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "伺服机械臂的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-518"
+      },
+      {
+        "id": 543,
+        "day": 17,
+        "kind": "purchase",
+        "amount": -606,
+        "note": "买入初代仿生玩具",
+        "itemId": "item-520"
+      },
+      {
+        "id": 544,
+        "day": 17,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      },
+      {
+        "id": 563,
+        "day": 18,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-545"
+      },
+      {
+        "id": 564,
+        "day": 18,
+        "kind": "repair-income",
+        "amount": 419,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-545"
+      },
+      {
+        "id": 565,
+        "day": 18,
+        "kind": "purchase",
+        "amount": -699,
+        "note": "买入限量光谱饰品",
+        "itemId": "item-547"
+      },
+      {
+        "id": 567,
+        "day": 18,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-553"
+      },
+      {
+        "id": 568,
+        "day": 18,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-553"
+      },
+      {
+        "id": 569,
+        "day": 18,
+        "kind": "repair-income",
+        "amount": 1067,
+        "note": "早期计算核心的维修委托；保存原貌，优先修整原件。",
+        "itemId": "item-553"
+      },
+      {
+        "id": 570,
+        "day": 18,
+        "kind": "purchase",
+        "amount": -200,
+        "note": "买入随身终端",
+        "itemId": "item-555"
+      },
+      {
+        "id": 571,
+        "day": 18,
+        "kind": "sale",
+        "amount": 1204,
+        "note": "售出初代仿生玩具",
+        "itemId": "item-520"
+      },
+      {
+        "id": 572,
+        "day": 18,
+        "kind": "sale",
+        "amount": 1338,
+        "note": "售出限量光谱饰品",
+        "itemId": "item-547"
+      },
+      {
+        "id": 573,
+        "day": 18,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      },
+      {
+        "id": 592,
+        "day": 19,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-574"
+      },
+      {
+        "id": 593,
+        "day": 19,
+        "kind": "repair-income",
+        "amount": 419,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-574"
+      },
+      {
+        "id": 594,
+        "day": 19,
+        "kind": "purchase",
+        "amount": -109,
+        "note": "买入随身终端",
+        "itemId": "item-576"
+      },
+      {
+        "id": 595,
+        "day": 19,
+        "kind": "sale",
+        "amount": 326,
+        "note": "售出随身终端",
+        "itemId": "item-555"
+      },
+      {
+        "id": 596,
+        "day": 19,
+        "kind": "sale",
+        "amount": 211,
+        "note": "售出随身终端",
+        "itemId": "item-576"
+      },
+      {
+        "id": 598,
+        "day": 19,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-582"
+      },
+      {
+        "id": 599,
+        "day": 19,
+        "kind": "repair-income",
+        "amount": 419,
+        "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-582"
+      },
+      {
+        "id": 600,
+        "day": 19,
+        "kind": "purchase",
+        "amount": -435,
+        "note": "买入稀土催化芯",
+        "itemId": "item-584"
+      },
+      {
+        "id": 601,
+        "day": 19,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      },
+      {
+        "id": 602,
+        "day": 19,
+        "kind": "challenge",
+        "amount": 1500,
+        "note": "无尽挑战完成"
+      },
+      {
+        "id": 620,
+        "day": 20,
+        "kind": "event",
+        "amount": 20,
+        "note": "帮忙核对授权"
+      },
+      {
+        "id": 622,
+        "day": 20,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 21，不计入自由现金",
+        "itemId": "item-603"
+      },
+      {
+        "id": 623,
+        "day": 20,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-603"
+      },
+      {
+        "id": 624,
+        "day": 20,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-603"
+      },
+      {
+        "id": 625,
+        "day": 20,
+        "kind": "purchase",
+        "amount": -205,
+        "note": "买入便携电源模块",
+        "itemId": "item-605"
+      },
+      {
+        "id": 626,
+        "day": 20,
+        "kind": "sale",
+        "amount": 398,
+        "note": "售出便携电源模块",
+        "itemId": "item-605"
+      },
+      {
+        "id": 628,
+        "day": 20,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-611"
+      },
+      {
+        "id": 629,
+        "day": 20,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-611"
+      },
+      {
+        "id": 630,
+        "day": 20,
+        "kind": "repair-income",
+        "amount": 1067,
+        "note": "机械计时器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-611"
+      },
+      {
+        "id": 631,
+        "day": 20,
+        "kind": "purchase",
+        "amount": -109,
+        "note": "买入速生菌种包",
+        "itemId": "item-613"
+      },
+      {
+        "id": 632,
+        "day": 20,
+        "kind": "sale",
+        "amount": 865,
+        "note": "售出稀土催化芯",
+        "itemId": "item-584"
+      },
+      {
+        "id": 633,
+        "day": 20,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      },
+      {
+        "id": 651,
+        "day": 21,
+        "kind": "event",
+        "amount": 35,
+        "note": "帮货队重排路线"
+      },
+      {
+        "id": 653,
+        "day": 21,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-634"
+      },
+      {
+        "id": 654,
+        "day": 21,
+        "kind": "repair-income",
+        "amount": 419,
+        "note": "掌上通讯器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-634"
+      },
+      {
+        "id": 655,
+        "day": 21,
+        "kind": "purchase",
+        "amount": -29,
+        "note": "买入藻蛋白口粮",
+        "itemId": "item-636"
+      },
+      {
+        "id": 656,
+        "day": 21,
+        "kind": "sale",
+        "amount": 183,
+        "note": "售出速生菌种包",
+        "itemId": "item-613"
+      },
+      {
+        "id": 657,
+        "day": 21,
+        "kind": "sale",
+        "amount": 57,
+        "note": "售出藻蛋白口粮",
+        "itemId": "item-636"
+      },
+      {
+        "id": 659,
+        "day": 21,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-642"
+      },
+      {
+        "id": 660,
+        "day": 21,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 41，不计入自由现金",
+        "itemId": "item-642"
+      },
+      {
+        "id": 661,
+        "day": 21,
+        "kind": "repair-income",
+        "amount": 837,
+        "note": "稳态注射泵的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-642"
+      },
+      {
+        "id": 662,
+        "day": 21,
+        "kind": "purchase",
+        "amount": -86,
+        "note": "买入触觉反馈模块",
+        "itemId": "item-644"
+      },
+      {
+        "id": 663,
+        "day": 21,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      },
+      {
+        "id": 681,
+        "day": 22,
+        "kind": "event",
+        "amount": 30,
+        "note": "协助街坊登记"
+      },
+      {
+        "id": 683,
+        "day": 22,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-664"
+      },
+      {
+        "id": 684,
+        "day": 22,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 36，不计入自由现金",
+        "itemId": "item-664"
+      },
+      {
+        "id": 685,
+        "day": 22,
+        "kind": "repair-income",
+        "amount": 621,
+        "note": "工业传感器的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-664"
+      },
+      {
+        "id": 686,
+        "day": 22,
+        "kind": "purchase",
+        "amount": -300,
+        "note": "买入便携诊疗仪",
+        "itemId": "item-666"
+      },
+      {
+        "id": 687,
+        "day": 22,
+        "kind": "sale",
+        "amount": 180,
+        "note": "售出触觉反馈模块",
+        "itemId": "item-644"
+      },
+      {
+        "id": 688,
+        "day": 22,
+        "kind": "sale",
+        "amount": 597,
+        "note": "售出便携诊疗仪",
+        "itemId": "item-666"
+      },
+      {
+        "id": 690,
+        "day": 22,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 24，不计入自由现金",
+        "itemId": "item-672"
+      },
+      {
+        "id": 691,
+        "day": 22,
+        "kind": "escrow-material",
+        "amount": 0,
+        "note": "客户专款支出 12，不计入自由现金",
+        "itemId": "item-672"
+      },
+      {
+        "id": 692,
+        "day": 22,
+        "kind": "repair-income",
+        "amount": 1067,
+        "note": "胶片相机的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+        "itemId": "item-672"
+      },
+      {
+        "id": 693,
+        "day": 22,
+        "kind": "purchase",
+        "amount": -23,
+        "note": "买入通用数据芯片",
+        "itemId": "item-674"
+      },
+      {
+        "id": 694,
+        "day": 22,
+        "kind": "daily-fee",
+        "amount": -20,
+        "note": "营业维护，应付 20"
+      }
+    ],
+    "messages": [
+      "购入 1 件，共 ₡29。已购货物留在谈判台，继续选货或先入库。",
+      "藻蛋白口粮已放入仓库。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，宋宜来到门前。",
+      "售出 2 件，共 ₡240。可以继续分批出售，或结束接待。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，沈雾来到门前。",
+      "已接单：稳态注射泵。材料预付款 1000 已进入专款账户，完成后收入 837。",
+      "检测完成，发现 2 项故障。请对照下方线索选择工序与操作位置。",
+      "反馈回路振荡已完成，耗时 2，耗材成本 41（预付款）。",
+      "神经接口污染已完成，耗时 1，耗材成本 41（预付款）。",
+      "复检通过，可以交付。",
+      "交付完成，收到 837 信用点。剩余材料预付款归还客户。",
+      "叫号完成，宋宜来到门前。",
+      "触觉反馈模块：成色 73%；有功能异常，进一步检测可定位；参考价 149–349。",
+      "购入 1 件，共 ₡86。已购货物留在谈判台，继续选货或先入库。",
+      "触觉反馈模块已放入仓库。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，林桥来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，宋宜来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "第 21 日结算，支出 20。明天继续。",
+      "第 22 日开门，12 工时、7 位预约访客。",
+      "登记服务费 30 信用点。",
+      "叫号完成，贺津来到门前。",
+      "已接单：工业传感器。材料预付款 1000 已进入专款账户，完成后收入 621。",
+      "检测完成，发现 2 项故障。请对照下方线索选择工序与操作位置。",
+      "轴承积尘已完成，耗时 1，耗材成本 12（预付款）。",
+      "驱动模块烧损已完成，耗时 1，耗材成本 36（预付款）。",
+      "复检通过，可以交付。",
+      "交付完成，收到 621 信用点。剩余材料预付款归还客户。",
+      "叫号完成，沈雾来到门前。",
+      "便携诊疗仪：成色 56%；有功能异常，进一步检测可定位；参考价 395–922。",
+      "购入 1 件，共 ₡300。已购货物留在谈判台，继续选货或先入库。",
+      "便携诊疗仪已放入仓库。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，宋宜来到门前。",
+      "售出 2 件，共 ₡777。可以继续分批出售，或结束接待。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，白衡来到门前。",
+      "已接单：胶片相机。材料预付款 1000 已进入专款账户，完成后收入 1067。",
+      "检测完成，发现 2 项故障。请对照下方线索选择工序与操作位置。",
+      "原始齿轮磨损已完成，耗时 2，耗材成本 24（预付款）。",
+      "旧润滑脂固化已完成，耗时 1，耗材成本 12（预付款）。",
+      "复检通过，可以交付。",
+      "交付完成，收到 1067 信用点。剩余材料预付款归还客户。",
+      "叫号完成，罗槿来到门前。",
+      "通用数据芯片：成色 67%；有功能异常，进一步检测可定位；参考价 69–160。",
+      "购入 1 件，共 ₡23。已购货物留在谈判台，继续选货或先入库。",
+      "通用数据芯片已放入仓库。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，沈雾来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，宋宜来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "第 22 日结算，支出 20。明天继续。",
+      "第 23 日开门，12 工时、7 位预约访客。",
+      "序列核验：真实原件；可追溯的合法授权副本；原貌 72%。",
+      "通用数据芯片已入柜，普通交易不会出售它。当前吸引力 15。"
+    ],
+    "appointments": null,
+    "challenge": null,
+    "visitorArrived": false,
+    "tutorial": {
+      "step": 9,
+      "skipped": true
+    },
+    "conversations": {
+      "visitor-5": 2,
+      "visitor-10": 2,
+      "visitor-11": 2,
+      "visitor-13": 2,
+      "visitor-18": 2,
+      "visitor-19": 2,
+      "visitor-20": 2,
+      "visitor-33": 2,
+      "visitor-38": 2,
+      "visitor-39": 2,
+      "visitor-41": 2,
+      "visitor-46": 2,
+      "visitor-47": 2,
+      "visitor-48": 2,
+      "visitor-64": 2,
+      "visitor-69": 2,
+      "visitor-70": 2,
+      "visitor-72": 2,
+      "visitor-77": 2,
+      "visitor-78": 2,
+      "visitor-79": 2,
+      "visitor-94": 2,
+      "visitor-99": 2,
+      "visitor-100": 2,
+      "visitor-102": 2,
+      "visitor-107": 2,
+      "visitor-108": 2,
+      "visitor-109": 2,
+      "visitor-130": 2,
+      "visitor-135": 2,
+      "visitor-136": 2,
+      "visitor-138": 2,
+      "visitor-143": 2,
+      "visitor-144": 2,
+      "visitor-145": 2,
+      "visitor-159": 2,
+      "visitor-164": 2,
+      "visitor-165": 2,
+      "visitor-167": 2,
+      "visitor-172": 2,
+      "visitor-173": 2,
+      "visitor-174": 2,
+      "visitor-189": 2,
+      "visitor-194": 2,
+      "visitor-195": 2,
+      "visitor-197": 2,
+      "visitor-202": 2,
+      "visitor-203": 2,
+      "visitor-204": 2,
+      "visitor-217": 2,
+      "visitor-222": 2,
+      "visitor-223": 2,
+      "visitor-225": 2,
+      "visitor-230": 2,
+      "visitor-231": 2,
+      "visitor-232": 2,
+      "visitor-253": 2,
+      "visitor-258": 2,
+      "visitor-259": 2,
+      "visitor-261": 2,
+      "visitor-266": 2,
+      "visitor-267": 2,
+      "visitor-268": 2,
+      "visitor-282": 2,
+      "visitor-287": 2,
+      "visitor-288": 2,
+      "visitor-290": 2,
+      "visitor-295": 2,
+      "visitor-296": 2,
+      "visitor-297": 2,
+      "visitor-310": 2,
+      "visitor-315": 2,
+      "visitor-316": 2,
+      "visitor-318": 2,
+      "visitor-323": 2,
+      "visitor-324": 2,
+      "visitor-325": 2,
+      "visitor-340": 2,
+      "visitor-345": 2,
+      "visitor-346": 2,
+      "visitor-348": 2,
+      "visitor-353": 2,
+      "visitor-354": 2,
+      "visitor-355": 2,
+      "visitor-372": 2,
+      "visitor-377": 2,
+      "visitor-378": 2,
+      "visitor-380": 2,
+      "visitor-385": 2,
+      "visitor-386": 2,
+      "visitor-387": 2,
+      "visitor-403": 2,
+      "visitor-408": 2,
+      "visitor-409": 2,
+      "visitor-411": 2,
+      "visitor-416": 2,
+      "visitor-417": 2,
+      "visitor-418": 2,
+      "visitor-438": 2,
+      "visitor-443": 2,
+      "visitor-444": 2,
+      "visitor-446": 2,
+      "visitor-451": 2,
+      "visitor-452": 2,
+      "visitor-453": 2,
+      "visitor-476": 2,
+      "visitor-481": 2,
+      "visitor-482": 2,
+      "visitor-484": 2,
+      "visitor-489": 2,
+      "visitor-490": 2,
+      "visitor-491": 2,
+      "visitor-511": 2,
+      "visitor-516": 2,
+      "visitor-517": 2,
+      "visitor-519": 2,
+      "visitor-524": 2,
+      "visitor-525": 2,
+      "visitor-526": 2,
+      "visitor-546": 2,
+      "visitor-551": 2,
+      "visitor-552": 2,
+      "visitor-554": 2,
+      "visitor-559": 2,
+      "visitor-560": 2,
+      "visitor-561": 2,
+      "visitor-575": 2,
+      "visitor-580": 2,
+      "visitor-581": 2,
+      "visitor-583": 2,
+      "visitor-588": 2,
+      "visitor-589": 2,
+      "visitor-590": 2,
+      "visitor-604": 2,
+      "visitor-609": 2,
+      "visitor-610": 2,
+      "visitor-612": 2,
+      "visitor-617": 2,
+      "visitor-618": 2,
+      "visitor-619": 2,
+      "visitor-635": 2,
+      "visitor-640": 2,
+      "visitor-641": 2,
+      "visitor-643": 2,
+      "visitor-648": 2,
+      "visitor-649": 2,
+      "visitor-650": 2,
+      "visitor-665": 2,
+      "visitor-670": 2,
+      "visitor-671": 2,
+      "visitor-673": 2,
+      "visitor-678": 2,
+      "visitor-679": 2,
+      "visitor-680": 2
+    }
+  }
+}
