@@ -1,12 +1,12 @@
 import {chromium} from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const out='apps/cyber-shop/evidence/immersive-room';await fs.mkdir(out,{recursive:true});
+const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/immersive-room';await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true});const context=await browser.newContext({viewport:{width:1920,height:948}});const page=await context.newPage();page.setDefaultTimeout(8000);
 const errors=[];page.on('pageerror',e=>errors.push(e.message));const g=async()=>JSON.parse(await page.evaluate(()=>window.render_game_to_text())).game;
 const click=name=>page.getByRole('button',{name,exact:true}).click();const results={};
 try{
- await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');await page.waitForTimeout(700);
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');await page.waitForTimeout(700);
  assert.equal((await g()).visitorArrived,false);await page.locator('.room-person').waitFor({state:'hidden'});assert.equal(await page.locator('.room-person').count(),0);assert.equal(await page.locator('.topbar,.bottom-nav').count(),0);
  for(const [width,height] of [[1920,948],[1440,960],[960,650],[844,390]]){
   await page.setViewportSize({width,height});await page.waitForTimeout(100);
@@ -31,9 +31,9 @@ try{
  await click('关店 / 日结 →');await click('确认闭店');await click('迎接新的一天 →');assert.equal((await g()).visitorArrived,false);await page.locator('.room-person').waitFor({state:'hidden'});assert.equal(await page.locator('.room-person').count(),0);
  await page.reload();await page.getByRole('button',{name:/继续经营/}).click();await page.waitForSelector('.call-green-button');assert.equal((await g()).visitorArrived,false);await click('绿色叫号按钮');assert.equal((await g()).visitorIndex,0);results.dailyCall=true;
  await click('结束当前接待');await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
- await page.locator('.incoming-item').first().hover();await page.getByRole('tooltip').waitFor();assert((await page.getByRole('tooltip').innerText()).includes('尚未购入'));assert((await page.getByRole('tooltip').innerText()).includes('卖家要价'));
+ await page.locator('.incoming-item').first().hover();await page.getByRole('tooltip').waitFor();assert((await page.getByRole('tooltip').innerText()).includes('尚未购入'));assert((await page.getByRole('tooltip').innerText()).includes('这件要价'));
  await page.locator('.incoming-item').first().click({button:'right'});await page.getByRole('menuitem',{name:'放到谈判台',exact:true}).click();await page.getByRole('dialog',{name:'谈判交易',exact:true}).waitFor();await click('关闭谈判');results.incomingContextTrade=true;
- const touch=await browser.newContext({viewport:{width:1280,height:800},hasTouch:true,isMobile:true});const tp=await touch.newPage();await tp.goto('http://127.0.0.1:4175/cyber-shop/');await tp.locator('#start-btn').tap();await tp.waitForSelector('.warehouse-item');await tp.locator('.warehouse-item').first().tap();await tp.getByRole('dialog',{name:'物品信息'}).waitFor();assert.equal(await tp.getByRole('tooltip').count(),0);
+ const touch=await browser.newContext({viewport:{width:1280,height:800},hasTouch:true,isMobile:true});const tp=await touch.newPage();await tp.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await tp.locator('#start-btn').tap();await tp.waitForSelector('.warehouse-item');await tp.locator('.warehouse-item').first().tap();await tp.getByRole('dialog',{name:'物品信息'}).waitFor();assert.equal(await tp.getByRole('tooltip').count(),0);
  const tb=await tp.locator('.touch-item-info').boundingBox(),vb=await tp.locator('.visitor-window').boundingBox();assert(tb.x>=vb.x&&tb.y>=vb.y&&tb.y+tb.height<=vb.y+vb.height+1);await tp.screenshot({path:`${out}/touch-info.png`});
  await tp.getByRole('button',{name:'关闭物品信息 ×',exact:true}).tap();
  const target=await tp.locator('.warehouse-item').first().boundingBox();const cdp=await touch.newCDPSession(tp);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:target.x+target.width/2,y:target.y+target.height/2}]});await tp.waitForTimeout(650);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await tp.getByRole('menu',{name:'物品操作'}).waitFor();await tp.getByRole('menuitem',{name:'取消',exact:true}).tap();results.touchTapAndLongPress=true;

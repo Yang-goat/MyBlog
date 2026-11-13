@@ -5,11 +5,17 @@ import Art from './Art.vue';
 import Workbench from './Workbench.vue';
 import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
+import JourneyBoard from './JourneyBoard.vue';
+import DayReport from './DayReport.vue';
+import { dayReport } from '../game/journey';
 import { tradeIds } from './trade-selection';
+import { vDialogFocus } from './dialog-focus';
+import { version } from '../../package.json';
 const seed = ref(20261105);
 const newConfirm = ref(false);
 const counterCount=computed(()=>new Set([...state.value.items.filter(i=>i.location==='counter').map(i=>i.id),...tradeIds.value]).size);
 const activeOrders = computed(() => state.value.orders.filter(o => !o.delivered));
+const closing = computed(() => dayReport(state.value));
 function showOrder(id: string) { selectedOrder.value = id; modal.value = 'workbench'; }
 function keydown(e: KeyboardEvent) {
   if ((e.target as HTMLElement)?.matches('input,textarea,select')) return;
@@ -44,18 +50,20 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
         <details class="seed-option"><summary>固定种子开局</summary><label>街区种子 <input v-model.number="seed" type="number" min="1" max="4294967295" /></label></details>
         <p class="small muted">暂停式营业 · 思考不消耗时间 · 本机自动保存</p>
       </div>
-      <footer class="title-footer"><span>修复 / 交易 / 收藏</span><span>DEMO 0.1.0 · 原创世界</span><button @click="fullScreen">全屏 F ↗</button></footer>
-      <div v-if="newConfirm" class="modal-backdrop" @click.self="newConfirm = false"><section class="small-dialog" role="dialog" aria-modal="true" aria-label="重新开局"><h2>重新开门？</h2><p>当前进度将归档后替换。想保留可迁移副本，请先继续游戏并导出存档。</p><div class="actions"><button @click="newConfirm = false">返回</button><button class="primary" @click="begin(seed); newConfirm = false">确认新开局</button></div></section></div>
+      <footer class="title-footer"><span>修复 / 交易 / 收藏</span><span>修复师篇 · {{version}}</span><button @click="fullScreen">全屏 F ↗</button></footer>
+      <div v-if="newConfirm" class="modal-backdrop" @click.self="newConfirm = false"><section v-dialog-focus class="small-dialog" @keydown.esc.stop="newConfirm = false" role="dialog" aria-modal="true" aria-label="重新开局"><h2>重新开门？</h2><p>当前进度将归档后替换。想保留可迁移副本，请先继续游戏并导出存档。</p><div class="actions"><button @click="newConfirm = false">返回</button><button class="primary" @click="begin(seed); newConfirm = false">确认新开局</button></div></section></div>
     </section>
 
     <template v-else>
       <ShopRoom />
       <p v-if="saveError" class="save-error" role="alert">自动保存失败：{{ saveError }}。可在设置中导出进度。</p>
       <div v-if="modal && modal !== 'trade'" class="modal-backdrop" @click.self="modal = ''">
-        <section :class="['notebook', { 'repair-notebook': modal === 'workbench' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
+        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
           <button class="modal-close" aria-label="关闭面板" @click="modal = ''">×</button>
           <Workbench v-if="modal === 'workbench'" />
-          <div v-else-if="modal === 'close-day'" class="dialog-body"><p class="eyebrow">CLOSE / 收起招牌</p><h2>结束今天的营业？</h2><p>未接待的客人会离开。已接工单和货物保留，食品按保存条件老化；结算维护费与租金。</p><p v-if="activeOrders.length">仍有 {{ activeOrders.length }} 个工单，可以明天继续。</p><p v-if="counterCount" class="warning" role="alert">谈判台还有 {{ counterCount }} 件物品，暂时不能闭店。请将自有物品全部入库，未购买的来货撤回店外。</p><button v-if="counterCount" @click="modal = ''">返回整理台面</button><button class="primary" :disabled="counterCount > 0" @click="dispatch({ type: 'closeDay' }) && (modal = '')">确认闭店</button></div>
+          <JourneyBoard v-else-if="modal === 'journey'" />
+          <DayReport v-else-if="modal === 'day-report'" />
+          <div v-else-if="modal === 'close-day'" class="dialog-body"><p class="eyebrow">CLOSE / 收起招牌</p><h2>结束今天的营业？</h2><p>未接待的客人会离开。已接工单和货物保留，食品按保存条件老化；结算维护费与租金。</p><p class="closing-forecast">今日收入 ₡{{ closing.income }} · 已支出 ₡{{ closing.expenses }}<br />闭店待缴 ₡{{ closing.pendingFees }} · 预计结余 ₡{{ Math.max(0, state.cash - closing.pendingFees) }}</p><p v-if="activeOrders.length">仍有 {{ activeOrders.length }} 个工单，可以明天继续。</p><p v-if="counterCount" class="warning" role="alert">谈判台还有 {{ counterCount }} 件物品，暂时不能闭店。请将自有物品全部入库，未购买的来货撤回店外。</p><button v-if="counterCount" @click="modal = ''">返回整理台面</button><button class="primary" :disabled="counterCount > 0" @click="dispatch({ type: 'closeDay' }) && (modal = 'day-report')">确认闭店</button></div>
           <div v-else-if="modal === 'orders'" class="dialog-body"><p class="eyebrow">WORKSHOP / 维修委托</p><h2>一件一件修好。</h2><p>客户物品独立保管。材料预付款只能用于这一份工单。</p><button class="primary" @click="dispatch({ type: 'acceptRepair' })">接基础援助维修</button><p class="small muted">即使没有现金，也能凭手艺重新开始。</p><button v-for="order in activeOrders" :key="order.id" class="list-row" @click="showOrder(order.id)"><span>{{ order.description }}</span><b>打开工作台 →</b></button></div>
           <Notebook v-else />
         </section>

@@ -118,7 +118,14 @@ export async function validateArt({ distRoot } = {}) {
     }
   }
   const sceneConsumers = [path.join(appRoot, 'src/ui'), path.join(appRoot, 'src/scenes')].flatMap(dir => fs.readdirSync(dir).filter(name => /\.(?:vue|ts)$/.test(name)).map(name => fs.readFileSync(path.join(dir, name), 'utf8'))).join('\n');
-  for (const id of sceneIds) { expected.set(id, 'scene'); check(sceneConsumers.includes(`'${id}'`) || sceneConsumers.includes(`"${id}"`), `Scene has no UI/Phaser reference: ${id}`); }
+  for (const id of sceneIds) {
+    expected.set(id, 'scene');
+    if (id === 'scene-shop') {
+      const archived = manifest.assets?.find(a => a.id === id);
+      check(archived?.archived === true && archived.source === 'docs/art-revisions/scene-shop-v3.png' && fs.existsSync(path.join(appRoot, archived.source)), 'Original shop plate must retain its archived source');
+      check(sceneConsumers.includes('drawRoom') && fs.existsSync(path.join(appRoot, 'scenery-manifest.json')), 'Layered shop replacement is missing');
+    } else check(sceneConsumers.includes(`'${id}'`) || sceneConsumers.includes(`"${id}"`), `Scene has no UI reference: ${id}`);
+  }
   check(expected.size === EXPECTED_COUNT, `Content references ${expected.size} art IDs; expected ${EXPECTED_COUNT}`);
   const assets = Array.isArray(manifest.assets) ? manifest.assets : [];
   report.registered = assets.length;

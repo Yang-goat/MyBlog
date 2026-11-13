@@ -1,7 +1,10 @@
-import { shallowRef, ref } from 'vue';
+import { shallowRef, ref, watch } from 'vue';
 import { applyAction, createGame, visibleState } from '../game/engine';
 import { loadSave, saveGame, replaceSave, saveDayBackup, replaceDayBackup, restoreDayBackup, exportSave, importSave } from '../persistence/storage';
 import type { Action, GameState, PresentationEvent } from '../game/types';
+import { journey, dayReport } from '../game/journey';
+import { ShopAudio } from './audio';
+import { version } from '../../package.json';
 
 export const state = shallowRef<GameState>(createGame(20261105));
 export const started = ref(false);
@@ -15,20 +18,28 @@ export const selectedOrder = ref('');
 export const reducedMotion = ref(matchMedia('(prefers-reduced-motion: reduce)').matches);
 export const muted = ref(false);
 export const volume = ref(0.25);
+export const ambience = ref(true);
+const preferencesKey='cyber-shop:preferences:v1';
+try {
+  const settings=JSON.parse(localStorage.getItem(preferencesKey)??'{}');
+  if(typeof settings.muted==='boolean')muted.value=settings.muted;
+  if(typeof settings.ambience==='boolean')ambience.value=settings.ambience;
+  if(typeof settings.reducedMotion==='boolean')reducedMotion.value=settings.reducedMotion;
+  if(typeof settings.volume==='number'&&Number.isFinite(settings.volume))volume.value=Math.max(0,Math.min(1,settings.volume));
+} catch { /* Invalid display preferences never affect a game save. */ }
 const listeners = new Set<(events: PresentationEvent[]) => void>();
-let audio: AudioContext | undefined;
+const audio = new ShopAudio();
 let timer: ReturnType<typeof setTimeout>;
+function syncAtmosphere(){audio.setAtmosphere(started.value&&!document.hidden&&!muted.value&&ambience.value?volume.value*(state.value.day%4===0?.035:.11):0);}
+const stopPreferences=watch([muted,volume,reducedMotion,ambience],()=>{try{localStorage.setItem(preferencesKey,JSON.stringify({muted:muted.value,volume:volume.value,reducedMotion:reducedMotion.value,ambience:ambience.value}));}catch{/* Game export remains available when storage is full. */}syncAtmosphere();});
+const stopAtmosphere=watch([started,()=>state.value.day],syncAtmosphere);
+document.addEventListener('visibilitychange',syncAtmosphere);
 
 export function notify(text: string) { toast.value = text; clearTimeout(timer); timer = setTimeout(() => toast.value = '', 6500); }
 export function listen(fn: (events: PresentationEvent[]) => void) { listeners.add(fn); return () => listeners.delete(fn); }
-export function unlockAudio() { if (!audio) audio = new AudioContext(); if (audio.state === 'suspended') void audio.resume().catch(() => {}); }
+export function unlockAudio() { audio.unlock(); syncAtmosphere(); }
 export function sound(kind = 'trade') {
-  if (!audio || muted.value || audio.state !== 'running') return;
-  const osc = audio.createOscillator(); const gain = audio.createGain();
-  osc.type = 'sine'; osc.frequency.setValueAtTime(kind === 'error' ? 160 : kind === 'repair' ? 680 : 440, audio.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(kind === 'error' ? 100 : 880, audio.currentTime + 0.15);
-  gain.gain.setValueAtTime(volume.value * 0.12, audio.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 0.25);
-  osc.connect(gain).connect(audio.destination); osc.start(); osc.stop(audio.currentTime + 0.26);
+  if (!muted.value) audio.cue(kind,volume.value);
 }
 export function dispatch(action: Action) {
   unlockAudio();
@@ -61,7 +72,7 @@ export async function uploadSave(file?: File) {
   catch (e) { notify(`导入失败：${e instanceof Error ? e.message : String(e)}`); }
 }
 export function textState() {
-  return JSON.stringify({ mode: started.value ? state.value.phase : 'title', panel: modal.value, selectedItem: selectedItem.value, selectedOrder: selectedOrder.value, coordinates: 'Phaser 1440×900，原点左上，x向右、y向下；DOM响应式', game: visibleState(state.value) });
+  return JSON.stringify({ version, mode: started.value ? state.value.phase : 'title', panel: modal.value, selectedItem: selectedItem.value, selectedOrder: selectedOrder.value, coordinates: '画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式', game: visibleState(state.value), journey: journey(state.value), dayReport: dayReport(state.value), presentation: {reducedMotion:reducedMotion.value,muted:muted.value,volume:volume.value,ambience:ambience.value,audio:audio.status()} });
 }
 export async function fullScreen() { try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); } catch { notify('当前浏览器未允许全屏，可使用浏览器全屏功能。'); } }
-export function cleanup() { clearTimeout(timer); void audio?.close(); listeners.clear(); }
+export function cleanup() { clearTimeout(timer); audio.close();stopPreferences();stopAtmosphere();document.removeEventListener('visibilitychange',syncAtmosphere);listeners.clear(); }

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateArt } from "../apps/cyber-shop/scripts/validate-art.mjs";
+import { validateScenery } from "../apps/cyber-shop/scripts/validate-scenery.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "src/.vuepress/dist");
@@ -62,6 +63,9 @@ for (const app of apps) {
 
 const art = await validateArt({ distRoot: dist });
 errors.push(...art.errors);
+const scenery = validateScenery({ distRoot: dist });
+errors.push(...scenery.errors);
+console.log(JSON.stringify({ scenery }, null, 2));
 
 console.log(JSON.stringify({ applications: apps.map(app => app.id), checkedResources: checked.size, art: { expected: art.expected, generated: art.generated, originalDrawn: art.originalDrawn, validatedFiles: art.validatedFiles, validatedDistFiles: art.validatedDistFiles, opaqueCutouts: art.opaqueCutouts }, errors }, null, 2));
 assert.equal(errors.length, 0, "Independent application artifact checks failed");

@@ -1,0 +1,304 @@
+{
+  "error": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: '领取谢礼' }) resolved to 2 elements:\n    1) <button>领取谢礼</button> aka getByRole('button', { name: '领取谢礼' }).first()\n    2) <button>领取谢礼</button> aka getByRole('button', { name: '领取谢礼' }).nth(1)\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '领取谢礼' })\u001b[22m\n",
+  "state": {
+    "mode": "open",
+    "panel": "journey",
+    "selectedItem": "item-42",
+    "selectedOrder": "order-54",
+    "coordinates": "画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式",
+    "game": {
+      "coordinates": "Phaser 场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+      "day": 2,
+      "chapter": 1,
+      "phase": "open",
+      "cash": 2750,
+      "hours": 4,
+      "debt": 0,
+      "grace": 0,
+      "xp": 181,
+      "level": 2,
+      "points": 0,
+      "skills": [
+        "precision-1"
+      ],
+      "certificates": [
+        "civil"
+      ],
+      "trained": [
+        "civil"
+      ],
+      "licenses": [],
+      "equipment": {
+        "cleaner": 4,
+        "electronic-parts": 4,
+        "mechanical-parts": 4,
+        "insulation": 4,
+        "neural-supplies": 4,
+        "preserve-pack": 2,
+        "micro-solder": 1,
+        "workbench": 1
+      },
+      "stockUsage": 1,
+      "capacity": 36,
+      "displayCapacity": 3,
+      "attraction": 0,
+      "items": [
+        {
+          "id": "item-3",
+          "definitionId": "mechanical-watch",
+          "name": "机械计时器",
+          "category": "antique",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "condition": 61,
+          "estimate": [
+            225,
+            525
+          ],
+          "cost": 208
+        }
+      ],
+      "visitorArrived": true,
+      "warehouse": {
+        "positions": {
+          "item-3": {
+            "x": 2,
+            "y": 0,
+            "rotated": false
+          }
+        },
+        "overflow": []
+      },
+      "tutorial": {
+        "step": 9,
+        "skipped": true
+      },
+      "conversations": {
+        "visitor-5": 2,
+        "visitor-10": 2,
+        "visitor-11": 2,
+        "visitor-13": 2,
+        "visitor-18": 2,
+        "visitor-19": 2,
+        "visitor-20": 2,
+        "visitor-33": 2,
+        "visitor-38": 2,
+        "visitor-39": 2,
+        "visitor-41": 2,
+        "visitor-46": 2,
+        "visitor-47": 2,
+        "visitor-48": 2
+      },
+      "visitor": {
+        "id": "visitor-48",
+        "characterId": "a-miao",
+        "kind": "buyer",
+        "category": "food",
+        "quote": 78,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": true,
+        "request": "想找一件食品与生物制品。看保质期和实用价值，临期货只接受清楚的折价。",
+        "budget": 336
+      },
+      "visitorIndex": 6,
+      "visitorCount": 7,
+      "orders": [],
+      "eventId": "night-meal",
+      "eventResolved": true,
+      "questStages": {},
+      "reputation": 19,
+      "relations": {
+        "union": 5,
+        "grayline": 1,
+        "neighborhood": 1
+      },
+      "records": {
+        "trades": 10,
+        "repairs": 4,
+        "revenue": 1968,
+        "repairIncome": 1240,
+        "days": 1,
+        "faults": {
+          "oxidized-contact": 3,
+          "broken-power": 1
+        }
+      },
+      "finalStage": 0,
+      "finalComplete": false,
+      "professionMilestones": [],
+      "professions": [
+        {
+          "professionId": "restorer",
+          "implemented": true,
+          "mastered": false,
+          "milestone": "relay-restored",
+          "completed": false,
+          "ready": false
+        }
+      ],
+      "victory": false,
+      "endless": false,
+      "challenge": null,
+      "messages": [
+        "礼貌谢绝，保留工时和现金。",
+        "叫号完成，阿苗来到门前。",
+        "售出 1 件，共 ₡64。可以继续分批出售，或结束接待。",
+        "礼貌谢绝，保留工时和现金。",
+        "学会故障定位：诊断节省半点工时，更快获得可执行的故障读数。"
+      ]
+    },
+    "journey": {
+      "title": "重新开门",
+      "story": "林桥把钥匙留给了你。让第一批旧物重新运转，也让这条街记住店门里的灯。",
+      "tasks": [
+        {
+          "id": "repairs",
+          "title": "让旧物重新运转",
+          "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+          "current": 4,
+          "target": 5,
+          "done": false,
+          "panel": "orders",
+          "label": "前往维修工作台"
+        }
+      ],
+      "next": {
+        "id": "repairs",
+        "title": "让旧物重新运转",
+        "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+        "current": 4,
+        "target": 5,
+        "done": false,
+        "panel": "orders",
+        "label": "前往维修工作台"
+      },
+      "ready": [
+        {
+          "id": "neighborhood-line",
+          "name": "巷道里的声音",
+          "reward": 140
+        },
+        {
+          "id": "archive-home",
+          "name": "把旧城带回家",
+          "reward": 160
+        }
+      ],
+      "activeOrders": 0,
+      "investment": 1,
+      "nextLevelXp": 179
+    },
+    "dayReport": {
+      "income": 980,
+      "expenses": 109,
+      "net": 871,
+      "openingCash": 1879,
+      "closingCash": 2750,
+      "repairs": 2,
+      "repairIncome": 620,
+      "sales": 4,
+      "saleIncome": 360,
+      "fees": 0,
+      "pendingFees": 85,
+      "entries": [
+        {
+          "id": 50,
+          "day": 2,
+          "kind": "escrow-material",
+          "amount": 0,
+          "note": "客户专款支出 32，不计入自由现金",
+          "itemId": "item-32"
+        },
+        {
+          "id": 51,
+          "day": 2,
+          "kind": "repair-income",
+          "amount": 310,
+          "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+          "itemId": "item-32"
+        },
+        {
+          "id": 52,
+          "day": 2,
+          "kind": "purchase",
+          "amount": -72,
+          "note": "买入绝缘纤维卷",
+          "itemId": "item-34"
+        },
+        {
+          "id": 53,
+          "day": 2,
+          "kind": "sale",
+          "amount": 81,
+          "note": "售出净化饮水",
+          "itemId": "item-1"
+        },
+        {
+          "id": 55,
+          "day": 2,
+          "kind": "escrow-material",
+          "amount": 0,
+          "note": "客户专款支出 16，不计入自由现金",
+          "itemId": "item-40"
+        },
+        {
+          "id": 56,
+          "day": 2,
+          "kind": "repair-income",
+          "amount": 310,
+          "note": "随身终端的维修委托；以恢复功能为先，可以更换模块，完成后请复检。",
+          "itemId": "item-40"
+        },
+        {
+          "id": 57,
+          "day": 2,
+          "kind": "purchase",
+          "amount": -37,
+          "note": "买入净化饮水",
+          "itemId": "item-42"
+        },
+        {
+          "id": 58,
+          "day": 2,
+          "kind": "sale",
+          "amount": 87,
+          "note": "售出绝缘纤维卷",
+          "itemId": "item-14"
+        },
+        {
+          "id": 59,
+          "day": 2,
+          "kind": "sale",
+          "amount": 128,
+          "note": "售出绝缘纤维卷",
+          "itemId": "item-34"
+        },
+        {
+          "id": 60,
+          "day": 2,
+          "kind": "sale",
+          "amount": 64,
+          "note": "售出净化饮水",
+          "itemId": "item-42"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "missing": [],
+  "journal": [
+    {
+      "day": 1,
+      "chapter": 1,
+      "repairs": 2,
+      "trades": 4,
+      "cash": 1879,
+      "points": 0,
+      "phase": "closed"
+    }
+  ]
+}

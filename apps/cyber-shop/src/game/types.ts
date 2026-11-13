@@ -27,7 +27,7 @@ export interface QuestDefinition { id: string; name: string; character: string; 
 export interface CollectionTheme { id: string; name: string; description: string; items: string[]; bonus: number }
 export interface ProfessionDefinition { id: string; name: string; implemented: boolean; masterySkills: string[]; finalMilestone: string; description: string }
 export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
-export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
+export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean }
 export interface LedgerEntry { id: number; day: number; kind: string; amount: number; itemId?: string; note: string }
 export interface GameState {

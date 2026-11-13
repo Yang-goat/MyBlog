@@ -1,0 +1,171 @@
+{
+  "ok": true,
+  "winDay": 16,
+  "repairs": 35,
+  "trades": 66,
+  "purchases": [
+    "electronics",
+    "energy",
+    "food",
+    "neural",
+    "data",
+    "antique"
+  ],
+  "sales": [
+    "data",
+    "electronics",
+    "antique",
+    "energy",
+    "food",
+    "neural"
+  ],
+  "elapsedSeconds": 78.421,
+  "errors": [],
+  "missing": [],
+  "journal": [
+    {
+      "day": 1,
+      "chapter": 1,
+      "repairs": 2,
+      "trades": 4,
+      "cash": 1879,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 2,
+      "chapter": 1,
+      "repairs": 4,
+      "trades": 9,
+      "cash": 3369,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 3,
+      "chapter": 2,
+      "repairs": 6,
+      "trades": 14,
+      "cash": 4138,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 4,
+      "chapter": 2,
+      "repairs": 8,
+      "trades": 18,
+      "cash": 5212,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 5,
+      "chapter": 2,
+      "repairs": 10,
+      "trades": 22,
+      "cash": 5661,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 6,
+      "chapter": 2,
+      "repairs": 12,
+      "trades": 26,
+      "cash": 7634,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 7,
+      "chapter": 3,
+      "repairs": 14,
+      "trades": 30,
+      "cash": 8760,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 8,
+      "chapter": 3,
+      "repairs": 16,
+      "trades": 34,
+      "cash": 9126,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 9,
+      "chapter": 3,
+      "repairs": 18,
+      "trades": 38,
+      "cash": 9927,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 10,
+      "chapter": 3,
+      "repairs": 20,
+      "trades": 42,
+      "cash": 11378,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 11,
+      "chapter": 3,
+      "repairs": 22,
+      "trades": 46,
+      "cash": 11694,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 12,
+      "chapter": 3,
+      "repairs": 24,
+      "trades": 50,
+      "cash": 14764,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 13,
+      "chapter": 3,
+      "repairs": 26,
+      "trades": 54,
+      "cash": 16458,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 14,
+      "chapter": 4,
+      "repairs": 29,
+      "trades": 58,
+      "cash": 18143,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 15,
+      "chapter": 4,
+      "repairs": 32,
+      "trades": 62,
+      "cash": 20508,
+      "points": 2,
+      "phase": "closed"
+    },
+    {
+      "day": 16,
+      "chapter": 4,
+      "repairs": 35,
+      "trades": 66,
+      "cash": 12422,
+      "points": 3,
+      "phase": "won"
+    }
+  ]
+}

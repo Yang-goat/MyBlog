@@ -62,6 +62,7 @@ export function validateState(value: unknown): asserts value is GameState {
     check(integer(v.quote) && integer(v.limit) && integer(v.rounds) && integer(v.patience) && typeof v.resolved === 'boolean' && typeof v.request === 'string', '客户报价记录无效。');
     if (v.item) validateItem(v.item);
     if(v.goods !== undefined) { check(Array.isArray(v.goods) && v.goods.length <= 100 && new Set(v.goods.map(i=>i.id)).size === v.goods.length,'卖家货品列表无效。');v.goods.forEach(validateItem); }
+    if(v.priceTags !== undefined) check(v.kind==='seller' && object(v.priceTags) && Array.isArray(v.goods) && Object.keys(v.priceTags).length===v.goods.length && v.goods.every(i=>{const tag=v.priceTags![i.id];return object(tag)&&integer(tag.ask)&&tag.ask>0&&integer(tag.minimum)&&tag.minimum>0&&tag.minimum<=tag.ask;}),'卖家逐件价签无效。');
     if(v.budget !== undefined) check(integer(v.budget),'买家预算无效。');
   }
   check(Array.isArray(s.orders), '维修工单无效。');

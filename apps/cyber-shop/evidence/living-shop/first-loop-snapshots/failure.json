@@ -1,0 +1,178 @@
+{
+  "message": "locator.click: Error: strict mode violation: getByRole('button', { name: '迎接新的一天 →', exact: true }) resolved to 2 elements:\n    1) <button class=\"primary\">迎接新的一天 →</button> aka getByLabel('店铺：上方来货，中间交易，下方仓库').getByRole('button', { name: '迎接新的一天 →' })\n    2) <button class=\"primary wide\">迎接新的一天 →</button> aka getByLabel('day-report').getByRole('button', { name: '迎接新的一天 →' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '迎接新的一天 →', exact: true })\u001b[22m\n",
+  "errors": [],
+  "state": {
+    "coordinates": "Phaser 场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+    "day": 1,
+    "chapter": 1,
+    "phase": "closed",
+    "cash": 1354,
+    "hours": 8.5,
+    "debt": 0,
+    "grace": 0,
+    "xp": 45,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "stockUsage": 3.25,
+    "capacity": 36,
+    "displayCapacity": 3,
+    "attraction": 0,
+    "items": [
+      {
+        "id": "item-1",
+        "definitionId": "purified-water",
+        "name": "净化饮水",
+        "category": "food",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 83,
+        "estimate": [
+          37,
+          85
+        ],
+        "cost": 28,
+        "expiresDay": 6
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "name": "机械计时器",
+        "category": "antique",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 61,
+        "estimate": [
+          225,
+          525
+        ],
+        "cost": 208
+      },
+      {
+        "id": "item-6",
+        "definitionId": "portable-terminal",
+        "name": "随身终端",
+        "category": "electronics",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "condition": 51,
+        "estimate": [
+          149,
+          347
+        ],
+        "cost": 161
+      }
+    ],
+    "visitorArrived": true,
+    "warehouse": {
+      "positions": {
+        "item-1": {
+          "x": 8,
+          "y": 3,
+          "rotated": false
+        },
+        "item-3": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        },
+        "item-6": {
+          "x": 0,
+          "y": 3,
+          "rotated": false
+        }
+      },
+      "overflow": []
+    },
+    "tutorial": {
+      "step": 9,
+      "skipped": false
+    },
+    "conversations": {
+      "visitor-5": 2,
+      "visitor-10": 2,
+      "visitor-11": 2
+    },
+    "visitor": {
+      "id": "visitor-11",
+      "characterId": "wen-zhu",
+      "kind": "buyer",
+      "category": "data",
+      "quote": 202,
+      "rounds": 0,
+      "patience": 4,
+      "resolved": false,
+      "request": "想找一件数据与娱乐载体。珍视完整内容与可追溯出处，不按金属重量评估记忆。",
+      "budget": 718
+    },
+    "visitorIndex": 2,
+    "visitorCount": 7,
+    "orders": [],
+    "eventId": "rain-grid",
+    "eventResolved": false,
+    "questStages": {},
+    "reputation": 4,
+    "relations": {
+      "union": 1
+    },
+    "records": {
+      "trades": 2,
+      "repairs": 1,
+      "revenue": 400,
+      "repairIncome": 310,
+      "days": 1,
+      "faults": {
+        "oxidized-contact": 1
+      }
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "professions": [
+      {
+        "professionId": "restorer",
+        "implemented": true,
+        "mastered": false,
+        "milestone": "relay-restored",
+        "completed": false,
+        "ready": false
+      }
+    ],
+    "victory": false,
+    "endless": false,
+    "challenge": null,
+    "messages": [
+      "货路有很多条。你要什么，我可以找；但每条路都有自己的价。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，温竹来到门前。",
+      "售出 1 件，共 ₡90。可以继续分批出售，或结束接待。",
+      "第 1 日结算，支出 85。明天继续。"
+    ]
+  }
+}

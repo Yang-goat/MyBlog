@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "viewport": "844x390",
+  "touchOnly": true,
+  "expandedCallTarget": {
+    "width": "44px",
+    "height": "44px"
+  },
+  "customerRepair": true,
+  "sellerDialogueAndPurchase": true,
+  "store": true,
+  "dayReport": true,
+  "nextMorning": true,
+  "errors": []
+}

@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const out = 'apps/cyber-shop/evidence/room-redesign';
+const out = process.env.CYBER_EVIDENCE_DIR || 'apps/cyber-shop/evidence/room-redesign';
 await fs.mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 960 }, acceptDownloads: true });
@@ -35,6 +35,7 @@ try {
   await page.getByRole('button',{name:'连接检测仪 →',exact:true}).click();
   await shot('03-guided-repair');
   // The default opening order has contact corrosion; use the visible clean operation.
+  await click('参数操作');
   await page.getByRole('button',{name:/执行.*清洁|开始.*清洁|执行工序/}).click();
   await click('通电复检');
   await click('交付并结算 →');

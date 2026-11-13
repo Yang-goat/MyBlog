@@ -5,6 +5,7 @@
   "assets": [
     {
       "id": "scene-shop",
+      "archived": true,
       "kind": "scene",
       "name": "店铺",
       "prompt": "Edit scene-shop-v2: preserve exact camera, doorway, screens, incoming ledge and negotiation counter geometry; add physical cork backing below showcase, clipboard backing on right drawers, felt-lined empty storage drawer with brass corner brackets, warmer task lighting; no text, people, merchandise or UI. Original 2.5D painterly cyberpunk shop.",
@@ -13,7 +14,7 @@
       "status": "generated",
       "tool": "image_gen",
       "transparentRequested": false,
-      "usage": "Phaser 场景 / 标题与结局背景",
+      "usage": "旧版完整店铺贴图归档；现版本使用独立场景层与程序绘制柜体",
       "width": 1671,
       "height": 941,
       "mode": "RGB",

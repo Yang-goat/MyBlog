@@ -32,7 +32,7 @@ const attributes=computed(()=>{
 </script>
 <template><article class="item-info-card">
  <header><Art :id="item.definitionId"/><div><small>{{CATEGORIES.find(c=>c.id===definition.category)?.name}} · {{own?'店内物品':'客人来货'}}</small><h3>{{definition.name}}</h3></div></header>
- <dl class="item-prices"><div><dt>购入价</dt><dd>{{own?`₡${item.cost}`:'尚未购入'}}</dd></div><div><dt>价值估算</dt><dd>{{range(value)}}</dd></div><div><dt>{{buyer?'当前买家报价':'当前预计售价'}}</dt><dd>{{resale}}</dd></div><div v-if="!own&&guest?.kind==='seller'"><dt>卖家要价</dt><dd>₡{{guest.quote}} / 件</dd></div></dl>
+ <dl class="item-prices"><div><dt>购入价</dt><dd>{{own?`₡${item.cost}`:'尚未购入'}}</dd></div><div><dt>价值估算</dt><dd>{{range(value)}}</dd></div><div><dt>{{buyer?'当前买家报价':'当前预计售价'}}</dt><dd>{{resale}}</dd></div><div v-if="!own&&guest?.kind==='seller'"><dt>这件要价</dt><dd>₡{{tradeQuote(state,guest,item)}}</dd></div></dl>
  <p class="price-note">{{buyer?'实际成交还受买家剩余预算影响。':basic?'估价随检查结果与行情变化，售价以成交报价为准。':'尚未检查：按同类商品粗估，检查后会缩小范围。'}}</p>
  <dl class="item-attributes"><div v-for="[label,value] in attributes" :key="label"><dt>{{label}}</dt><dd>{{value}}</dd></div></dl>
  <p class="item-description">{{definition.description}}</p>

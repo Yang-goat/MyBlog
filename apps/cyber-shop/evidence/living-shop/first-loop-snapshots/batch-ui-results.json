@@ -1,0 +1,21 @@
+{
+  "singleThenBulk": true,
+  "singleThenMultiSale": true,
+  "discount": 435,
+  "remainingGoodsPersist": true,
+  "purchasedCounterPersist": true,
+  "storeAll": true,
+  "squareWarehouseCell": {
+    "x": 322.546875,
+    "y": 690.078125,
+    "width": 33,
+    "height": 33
+  },
+  "squareCounterCell": {
+    "x": 361,
+    "y": 514.59375,
+    "width": 29.90625,
+    "height": 29.328125
+  },
+  "errors": []
+}

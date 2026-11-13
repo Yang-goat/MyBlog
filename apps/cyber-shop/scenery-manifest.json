@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "date": "2026-11-13",
+  "assets": [
+    {
+      "id": "ninth-street",
+      "path": "scenery/ninth-street.webp",
+      "tool": "image_gen",
+      "generation": "exec-ad0d0921-5742-440a-864f-cdcb5b51fda3",
+      "role": "Independent exterior street plane. Canvas adds rain, traffic, light and parallax; no baked interior.",
+      "prompt": "Create one original game environment asset, a WIDE landscape 3:2 image for a layered 2.5D narrative shopkeeping game. This is ONLY THE STREET OUTSIDE THE SHOP, viewed straight ahead from a small storefront window, eye-level, no window frame, no shop interior, no counter, no UI, no people, no foreground objects. Quiet lived-in East Asian retro-futurist port neighborhood at blue hour after rain, nostalgic 1990s repair district. A narrow street at the bottom third, wet pavement, small cozy shops opposite, pipes, outdoor AC boxes, balconies, old antennas, cables overhead, a few tiny warm amber lamps and restrained pale jade neon signs with NO legible lettering, taller muted teal apartment blocks fading in the distance. Thoughtful authored 2D hand-painted game background with gouache-like grain and fine architectural detail, not glossy 3D, not pixel art, not anime characters, no extreme cyberpunk magenta. Palette dusty blue teal, desaturated sea green, tobacco brown, warm aged brass. Rich material surfaces and soft atmospheric light, bright enough to read architectural details. Wide central open sight line for characters that will be composited later. The bottom edge is road, the top edge is distant building skyline under overcast sky. No falling rain streaks: real-time game rain will be overlaid. No border, no watermark. Deliver a finished high-quality production background plate, not concept sheet or multiple panels.",
+      "sha256": "48ba8b4adedce64b7fd633eefdf2c5f276fa24e9197612f1638d33569f18e9aa",
+      "bytes": 293772,
+      "width": 1280,
+      "height": 853,
+      "source": "docs/art-revisions/living-shop/ninth-street.png",
+      "alpha": false,
+      "sourceSha256": "e8e3b5a9a9dca177110647f84713fa931068dd9b0d59b39802543876d2e213f2"
+    },
+    {
+      "id": "patina-metal",
+      "path": "scenery/patina-metal.webp",
+      "tool": "image_gen",
+      "generation": "exec-0920a508-fd2f-4657-983c-273388b3c4fd",
+      "role": "Low-contrast material composited on separately drawn walls, counter and cabinet fronts.",
+      "prompt": "One production material texture for an original hand-painted 2D retro-futurist game. Orthographic flat view of aged industrial PAINTED METAL SURFACE only, no objects, no edges, no frame, no labels, no screws, no text. Desaturated deep sea-green paint (#3c5650 base), fine worn brush grain, subtle tiny scratches, restrained oxidized bronze showing through scattered worn paint, slight patina from decades of use. Soft even diffuse light everywhere, no directional highlights or vignette, no perspective, no shadows of other objects. Elegant authored gouache illustration texture, rich tactile material but low contrast so overlayed text and game objects remain clear. Quiet small-scale surface detail across the whole image. Seamlessly tileable texture with visually matching opposite edges, landscape 3:2 image. No checkerboard, no transparency. This will be composited separately onto procedural cabinet fronts and a shop counter, not used as a full scene.",
+      "sha256": "b0e74d779f5791a066480092817838835cb617801fee06d86d3ac22e22a8e028",
+      "bytes": 47118,
+      "width": 1024,
+      "height": 683,
+      "source": "docs/art-revisions/living-shop/patina-metal.png",
+      "alpha": false,
+      "sourceSha256": "3f87536c4e66fed74612c21a1dd879da5bc71e04ddd304c8537f10e660fa782f"
+    },
+    {
+      "id": "crt-terminal",
+      "tool": "image_gen",
+      "generation": "exec-e31d06f4-af56-406a-8b65-c60b979d8396",
+      "role": "Independent monitor casing, shared by cash terminal and visitor terminal; live DOM text remains separate.",
+      "prompt": "Create ONE original game prop sprite on a genuinely transparent background: a wide squat vintage industrial CRT monitor, dead-on front orthographic view, NO perspective, no tabletop, no surrounding scene, no cables extending outside the object, fully visible entire object, tiny 3% transparent margin, landscape aspect ratio roughly 1.7:1. Hand-painted realistic 2D gouache/concept-art aesthetic for a cozy retro-futurist secondhand shop, detailed tactile dark jade painted metal, small chips exposing bronze, screws and rim bevels, subtle warm amber light from upper right, cool teal reflections. The screen must be completely EMPTY uniform almost black teal (#0b2428), broad readable glass rectangle, no reflections across the central screen, no text, no numbers, no image, no waveform. Physical screen occupies x 8%-82% and y 13%-80% of total prop, with right-side speaker grille and a single small knob at bottom right, chunky rectangular casing with gently rounded corners and short feet. Empty screen area must remain visually calm for dynamic game UI text. Some refined wear and patina on casing. No logos, no readable typography, no watermark. This is a standalone modular game asset, not an icon or multiple-view sheet.",
+      "path": "scenery/crt-terminal.webp",
+      "source": "docs/art-revisions/living-shop/crt-terminal.png",
+      "sha256": "10b50f9bea22d25d911dae848c3b76793f4880a1a64feb9b2a0eafb66b128db2",
+      "bytes": 41820,
+      "width": 640,
+      "height": 374,
+      "alpha": true,
+      "sourceSha256": "51ca8132f9b21959a3a805022f6da0592c6a8f7b1ab1bc056c4d512ca2cbf106"
+    },
+    {
+      "id": "solder-station",
+      "tool": "image_gen",
+      "generation": "exec-fe97bb46-93e7-4cd7-ae2d-2cdd25af63bc",
+      "role": "Standalone soldering station on the right-hand workbench.",
+      "prompt": "ONE original game prop, transparent background. Compact desktop soldering station assembly for a cozy retro-futurist repair shop. Landscape 2:1 composition, full object visible nearly filling frame with a small transparent margin, front view with only a very slight view of top surface, matching hand-painted realistic 2D game object art. A squat worn dark-jade metal control box on the left with one EMPTY dark teal screen and two brass knobs, a coiled black cable, a copper-tipped soldering iron resting safely in a spiral metal holder on the right, small tray with sponge below holder. The three parts form one cohesive tabletop assembly on a thin dark metal base. Refined gouache/concept-painting surface detail, weathered bronze edges and chipped green enamel, warm task-lamp reflection upper right and soft cool edge light, strong readable silhouette. No written text, no digits, no labels, no characters, no surrounding table, no scene, no extra tools floating apart, no watermark. This sprite is a modular object to be composited into a game scene.",
+      "path": "scenery/solder-station.webp",
+      "source": "docs/art-revisions/living-shop/solder-station.png",
+      "sha256": "400ca8b6eeec75e568cead4afb5ff1b0ac0b7a962bafc20a3e9f7e0d1bb015f4",
+      "bytes": 72860,
+      "width": 640,
+      "height": 320,
+      "alpha": true,
+      "sourceSha256": "098eb3767556fb1cb716337f02f416d3844eeff67d78b6e3062b1701d728fcbf"
+    }
+  ]
+}
