@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "unchangedOtherAssets": 69,
+  "unchangedOtherBounds": 39,
+  "items": [
+    {
+      "id": "industrial-sensor",
+      "archiveHashMatches": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "publishedSize": [
+        512,
+        512
+      ],
+      "sourceAspect": 1.0,
+      "publishedAspect": 1.0,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixelFraction": 0.4152,
+      "bytes": 80348
+    },
+    {
+      "id": "haptic-module",
+      "archiveHashMatches": true,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "publishedSize": [
+        512,
+        512
+      ],
+      "sourceAspect": 1.0,
+      "publishedAspect": 1.0,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixelFraction": 0.4032,
+      "bytes": 66834
+    },
+    {
+      "id": "nutrient-fluid",
+      "archiveHashMatches": true,
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "publishedSize": [
+        341,
+        512
+      ],
+      "sourceAspect": 0.6666666666666666,
+      "publishedAspect": 0.666015625,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixelFraction": 0.1991,
+      "bytes": 46566
+    },
+    {
+      "id": "holo-film",
+      "archiveHashMatches": true,
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "publishedSize": [
+        512,
+        256
+      ],
+      "sourceAspect": 2.0,
+      "publishedAspect": 2.0,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixelFraction": 0.2903,
+      "bytes": 35324
+    }
+  ]
+}

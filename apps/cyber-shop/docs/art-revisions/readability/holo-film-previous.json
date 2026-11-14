@@ -1,0 +1,23 @@
+{
+  "id": "holo-film",
+  "name": "全息电影卡",
+  "kind": "item",
+  "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One holographic film card, slim smoky transparent glass rectangle with a faint luminous cyan abstract scene strip, chipped metal edge. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery.",
+  "path": "public/art/holo-film.webp",
+  "source": "C:\\Users\\admin\\.codex\\generated_images\\01a1aaf7-2444-79a1-bc25-b26649bfd913\\exec-da17b4c9-e6cf-47ff-b8f1-62e3622d09bb.png",
+  "status": "generated",
+  "tool": "image_gen",
+  "transparentRequested": true,
+  "usage": "交易、库存、维修与陈列中的商品图片",
+  "width": 512,
+  "height": 341,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 30884,
+  "sha256": "b4a07a4bfcef2b5c51cd3faa522da9763e685c3e7ac8866bcf8ea46fdfdd9022",
+  "generationId": "exec-da17b4c9-e6cf-47ff-b8f1-62e3622d09bb",
+  "visualReview": "逐项查看生成结果；主体、轮廓、构图与无界面文字要求通过"
+}

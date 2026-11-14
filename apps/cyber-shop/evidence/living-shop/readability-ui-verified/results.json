@@ -1,0 +1,499 @@
+{
+  "ok": true,
+  "importedCareerDay": 17,
+  "found": {
+    "industrial-sensor": {
+      "id": "item-598",
+      "day": 17
+    },
+    "holo-film": {
+      "id": "item-619",
+      "day": 18
+    },
+    "nutrient-fluid": {
+      "id": "item-665",
+      "day": 20
+    },
+    "haptic-module": {
+      "id": "item-704",
+      "day": 22
+    }
+  },
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 948,
+      "cell": 33
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "cell": 29
+    },
+    {
+      "width": 960,
+      "height": 650,
+      "cell": 18
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "cell": 12
+    }
+  ],
+  "checks": [
+    {
+      "stage": "incoming",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "staged",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "purchased",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "warehouse",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "incoming",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "staged",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "purchased",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "warehouse",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "incoming",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "staged",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "purchased",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "warehouse",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "incoming",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "staged",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "purchased",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "warehouse",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "container",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 87,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 87,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "container",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 29,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "container-rotation-1",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 29,
+      "height": 58
+    },
+    {
+      "stage": "container-rotation-0",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "warehouse-1920",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 66,
+      "height": 66
+    },
+    {
+      "stage": "warehouse-1920",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 66,
+      "height": 66
+    },
+    {
+      "stage": "warehouse-1920",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6661014111692124,
+      "width": 66,
+      "height": 99
+    },
+    {
+      "stage": "warehouse-1920",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 2.0004764346905146,
+      "width": 66,
+      "height": 33
+    },
+    {
+      "stage": "warehouse-1440",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "warehouse-1440",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 58,
+      "height": 58
+    },
+    {
+      "stage": "warehouse-1440",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6660223589752811,
+      "width": 58,
+      "height": 87
+    },
+    {
+      "stage": "warehouse-1440",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 1.9999965330504301,
+      "width": 58,
+      "height": 29
+    },
+    {
+      "stage": "warehouse-960",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "stage": "warehouse-960",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "stage": "warehouse-960",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.6659012629161883,
+      "width": 36,
+      "height": 54
+    },
+    {
+      "stage": "warehouse-960",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 2.0008914285714283,
+      "width": 36,
+      "height": 18
+    },
+    {
+      "stage": "warehouse-844",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "stage": "warehouse-844",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "stage": "warehouse-844",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.665933392894268,
+      "width": 24,
+      "height": 36
+    },
+    {
+      "stage": "warehouse-844",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 2,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "stage": "touch-warehouse",
+      "id": "industrial-sensor",
+      "native": 1,
+      "rendered": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "stage": "touch-warehouse",
+      "id": "haptic-module",
+      "native": 1,
+      "rendered": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "stage": "touch-warehouse",
+      "id": "nutrient-fluid",
+      "native": 0.666015625,
+      "rendered": 0.665933392894268,
+      "width": 24,
+      "height": 36
+    },
+    {
+      "stage": "touch-warehouse",
+      "id": "holo-film",
+      "native": 2,
+      "rendered": 2,
+      "width": 24,
+      "height": 12
+    }
+  ],
+  "actualPurchases": true,
+  "fourRotationActionsPerItem": true,
+  "rectangularOrientations": 2,
+  "touch": true,
+  "errors": []
+}

@@ -264,3 +264,16 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 | 脚本语法 / `git diff --check` | PASS |
 
 `ledger-first` 记录测试落点被浮窗遮挡的失败，改为真正可见空格后继续；没有强制点击或更改物品位置。`ledger-second` 记录界面关闭后筛选丢失，随后修为本次经营保留、新局/读档清空。`ledger-third` 和最终版本通过，历史证据保留。手机通过正常导出的 `nested-save.json` 经 UI 导入，没有注入游戏状态。最终桌面与手机图已查看，浏览器无异常或缺图。主包 378.01 KB；既有 pnpm 元数据警告与 Git 换行提示保留。账户剩余 62%，当前未发布。
+
+## 2026-11-14 四件旧物的辨识度
+
+基线 `01aac1fbb`，四件美术独立重画并更新实际透明边界，保持原占格与统一等比渲染。旧图片及元数据完整归档。检查范围是美术和存放显示，未改动经济、仓库容量或旋转规则。
+
+- `pnpm.cmd --filter @goatyang/cyber-shop build` 通过类型检查及游戏构建，主包 378.01 KB。
+- `pnpm.cmd --filter @goatyang/cyber-shop validate`：73 基础资源、13 补充资源、3 项内容测试通过。
+- `ui-assets.mjs`：`readability-assets` 全部 86 项浏览器解码、MIME、SHA256 通过，总计 7,048,246 字节，比前版增加 75,290 字节。额外源文件核对确认四张旧图归档哈希一致，其他 69 项基础素材元数据和 39 项比例边界未变。
+- `ui-readable-art.mjs`：`readability-ui-verified` 从正常导出的第 17 日职业存档继续，经 NPC 在第 17、18、20、22 日购得四件物品。五处存放区域宽高比、占格大小、每件四次横竖切换、箱内存取、1920/1440/960/844 四视口统一方格及触控设备显示通过，浏览器错误 0。
+- `ui-inventory-catalog.mjs` 的全量实际尺寸校样、最终桌面和手机仓库、箱内图已查看。原始 `web_game_playwright_client.js` 的 `readability-skill` 已执行并查看 canvas 截图；实际 UI 以专项 DOM 截图为准。
+- `node scripts/check-independent-apps.mjs`、脚本语法与 `git diff --check` 通过。仅有既有 pnpm 工作区元数据提示和 Git 换行提示。
+
+前三次 UI 失败分别来自脚本点到被覆盖格子、假设错背包方向，以及把矩形两朝向规则当作异形四朝向规则；证据保留在 `readability-ui-first`、`readability-ui-final`、`readability-ui-clean`。修正测试后最终通过，没有修改产品规则绕过检查。本轮未重跑完整职业通关和整站构建，前阶段 146 项规则测试与 617 页构建记录保留；受影响的游戏产物已重建。账户剩余 61%，尚未推送部署。

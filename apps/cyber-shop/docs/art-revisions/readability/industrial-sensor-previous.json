@@ -1,0 +1,23 @@
+{
+  "id": "industrial-sensor",
+  "name": "工业传感器",
+  "kind": "item",
+  "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rugged cylindrical industrial sensor, weathered steel housing, vent fins and small cyan sensor lens, sturdy connector. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery.",
+  "path": "public/art/industrial-sensor.webp",
+  "source": "C:\\Users\\admin\\.codex\\generated_images\\01a1aaf7-2444-79a1-bc25-b26649bfd913\\exec-2162d560-291f-430e-a6ae-965b595f8603.png",
+  "status": "generated",
+  "tool": "image_gen",
+  "transparentRequested": true,
+  "usage": "交易、库存、维修与陈列中的商品图片",
+  "width": 512,
+  "height": 341,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 42188,
+  "sha256": "646198eaf1a36924b2966c40c2896971c31c8deba7258ea5c0b4325b2e293c5b",
+  "generationId": "exec-2162d560-291f-430e-a6ae-965b595f8603",
+  "visualReview": "逐项查看生成结果；主体、轮廓、构图与无界面文字要求通过"
+}

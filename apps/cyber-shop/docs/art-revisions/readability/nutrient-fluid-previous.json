@@ -1,0 +1,23 @@
+{
+  "id": "nutrient-fluid",
+  "name": "营养培养液",
+  "kind": "item",
+  "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One durable translucent bottle of amber nutrient liquid, ribbed reinforced body, round dosing cap and plain green collar. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery.",
+  "path": "public/art/nutrient-fluid.webp",
+  "source": "C:\\Users\\admin\\.codex\\generated_images\\01a1aaf7-2444-79a1-bc25-b26649bfd913\\exec-44d1effe-5198-4053-b925-68908218b698.png",
+  "status": "generated",
+  "tool": "image_gen",
+  "transparentRequested": true,
+  "usage": "交易、库存、维修与陈列中的商品图片",
+  "width": 341,
+  "height": 512,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 38528,
+  "sha256": "ecbbfe5573636cf56429d4768543f3882ecb1fd211607aa12db8474eeae5b7e9",
+  "generationId": "exec-44d1effe-5198-4053-b925-68908218b698",
+  "visualReview": "逐项查看生成结果；主体、轮廓、构图与无界面文字要求通过"
+}
