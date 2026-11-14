@@ -1,0 +1,736 @@
+{
+  "format": "cyber-shop",
+  "version": 1,
+  "savedAt": "2026-11-14T06:10:51.884Z",
+  "checksum": "b055c121",
+  "state": {
+    "version": 1,
+    "contentVersion": "demo-1",
+    "balanceVersion": "demo-2",
+    "seed": 20261105,
+    "rng": 3349044983,
+    "serial": 133,
+    "day": 7,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 802,
+    "hours": 12,
+    "debt": 0,
+    "grace": 0,
+    "xp": 90,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1,
+      "scanner": 1
+    },
+    "equipmentCosts": {
+      "scanner": 240
+    },
+    "items": [
+      {
+        "id": "item-2",
+        "definitionId": "data-chip",
+        "owner": "player",
+        "location": "stock",
+        "condition": 59,
+        "integrity": 75,
+        "capacity": 87,
+        "purity": 65,
+        "authentic": true,
+        "originality": 89,
+        "provenance": "可追溯的合法授权副本",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 60,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 1,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "owner": "player",
+        "location": "stock",
+        "condition": 61,
+        "integrity": 68,
+        "capacity": 66,
+        "purity": 68,
+        "authentic": true,
+        "originality": 79,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 208,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        }
+      }
+    ],
+    "visitors": [
+      {
+        "id": "visitor-118",
+        "characterId": "lu-che",
+        "kind": "repair",
+        "item": {
+          "id": "item-117",
+          "definitionId": "portable-terminal",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 81,
+          "integrity": 91,
+          "capacity": 92,
+          "purity": 66,
+          "authentic": true,
+          "originality": 63,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 7,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 281,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "随身终端：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-123",
+        "characterId": "lin-qiao",
+        "kind": "seller",
+        "item": {
+          "id": "item-119",
+          "definitionId": "pocket-com",
+          "owner": "player",
+          "location": "stock",
+          "condition": 57,
+          "integrity": 61,
+          "capacity": 97,
+          "purity": 71,
+          "authentic": true,
+          "originality": 97,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "旧式专用接口",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 7,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-119",
+            "definitionId": "pocket-com",
+            "owner": "player",
+            "location": "stock",
+            "condition": 57,
+            "integrity": 61,
+            "capacity": 97,
+            "purity": 71,
+            "authentic": true,
+            "originality": 97,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-120",
+            "definitionId": "air-circulator",
+            "owner": "player",
+            "location": "stock",
+            "condition": 69,
+            "integrity": 97,
+            "capacity": 40,
+            "purity": 66,
+            "authentic": true,
+            "originality": 81,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "broken-power"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-121",
+            "definitionId": "portable-terminal",
+            "owner": "player",
+            "location": "stock",
+            "condition": 52,
+            "integrity": 86,
+            "capacity": 75,
+            "purity": 67,
+            "authentic": false,
+            "originality": 91,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "oxidized-contact"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-122",
+            "definitionId": "air-circulator",
+            "owner": "player",
+            "location": "stock",
+            "condition": 76,
+            "integrity": 54,
+            "capacity": 67,
+            "purity": 73,
+            "authentic": true,
+            "originality": 84,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "oxidized-contact"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-119": {
+            "ask": 107,
+            "minimum": 80
+          },
+          "item-120": {
+            "ask": 178,
+            "minimum": 132
+          },
+          "item-121": {
+            "ask": 125,
+            "minimum": 93
+          },
+          "item-122": {
+            "ask": 189,
+            "minimum": 140
+          }
+        },
+        "category": "electronics",
+        "quote": 107,
+        "limit": 80,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "带了一批民用与工业机电，每件成色不一样，价签都在。可以先挑、先检查。更在意可靠和街坊价；愿意听完检查依据。"
+      },
+      {
+        "id": "visitor-124",
+        "characterId": "wen-zhu",
+        "kind": "buyer",
+        "budget": 808,
+        "category": "antique",
+        "quote": 202,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "想找一件古董与奢品。珍视完整内容与可追溯出处，不按金属重量评估记忆。"
+      },
+      {
+        "id": "visitor-126",
+        "characterId": "lin-qiao",
+        "kind": "repair",
+        "item": {
+          "id": "item-125",
+          "definitionId": "portable-terminal",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 63,
+          "integrity": 86,
+          "capacity": 52,
+          "purity": 96,
+          "authentic": true,
+          "originality": 65,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 7,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 241,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "随身终端：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-131",
+        "characterId": "he-jin",
+        "kind": "seller",
+        "item": {
+          "id": "item-127",
+          "definitionId": "alloy-plate",
+          "owner": "player",
+          "location": "stock",
+          "condition": 83,
+          "integrity": 53,
+          "capacity": 66,
+          "purity": 97,
+          "authentic": true,
+          "originality": 94,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 7,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-127",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 83,
+            "integrity": 53,
+            "capacity": 66,
+            "purity": 97,
+            "authentic": true,
+            "originality": 94,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-128",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 93,
+            "integrity": 87,
+            "capacity": 62,
+            "purity": 86,
+            "authentic": true,
+            "originality": 74,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-129",
+            "definitionId": "battery-pack",
+            "owner": "player",
+            "location": "stock",
+            "condition": 88,
+            "integrity": 50,
+            "capacity": 69,
+            "purity": 78,
+            "authentic": true,
+            "originality": 73,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-130",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 68,
+            "integrity": 99,
+            "capacity": 55,
+            "purity": 96,
+            "authentic": true,
+            "originality": 80,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 7,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-127": {
+            "ask": 115,
+            "minimum": 85
+          },
+          "item-128": {
+            "ask": 110,
+            "minimum": 82
+          },
+          "item-129": {
+            "ask": 65,
+            "minimum": 48
+          },
+          "item-130": {
+            "ask": 100,
+            "minimum": 74
+          }
+        },
+        "category": "energy",
+        "quote": 115,
+        "limit": 85,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "带了一批能源与工业材料，每件成色不一样，价签都在。可以先挑、先检查。讲工序、批次与工时；报出实测值比夸外观有效。"
+      },
+      {
+        "id": "visitor-132",
+        "characterId": "he-jin",
+        "kind": "buyer",
+        "budget": 1704,
+        "category": "electronics",
+        "quote": 426,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "想找一件民用与工业机电。讲工序、批次与工时；报出实测值比夸外观有效。"
+      },
+      {
+        "id": "visitor-133",
+        "characterId": "wen-zhu",
+        "kind": "buyer",
+        "budget": 2328,
+        "category": "antique",
+        "quote": 582,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "想找一件古董与奢品。珍视完整内容与可追溯出处，不按金属重量评估记忆。"
+      }
+    ],
+    "visitorIndex": 0,
+    "orders": [],
+    "reputation": 6,
+    "relations": {
+      "neighborhood": 1,
+      "union": 1
+    },
+    "questStages": {},
+    "eventId": "serial-dispute",
+    "eventResolved": false,
+    "discovered": [
+      "purified-water",
+      "data-chip",
+      "mechanical-watch",
+      "battery-pack"
+    ],
+    "met": [
+      "lin-qiao",
+      "he-jin",
+      "qi-lan",
+      "lu-che"
+    ],
+    "repairHistory": [],
+    "records": {
+      "trades": 5,
+      "repairs": 0,
+      "revenue": 520,
+      "repairIncome": 0,
+      "days": 6,
+      "faults": {},
+      "deliveries": 2,
+      "deliveryIncome": 520
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "victory": false,
+    "endless": false,
+    "freeRespec": true,
+    "ledger": [
+      {
+        "id": 21,
+        "day": 1,
+        "kind": "delivery",
+        "amount": 100,
+        "note": "订货交付：值守台上的一瓶水（1 件）"
+      },
+      {
+        "id": 22,
+        "day": 1,
+        "kind": "equipment",
+        "amount": -240,
+        "note": "多谱扫描仪 × 1"
+      },
+      {
+        "id": 23,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -63,
+        "note": "买入标准电池组",
+        "itemId": "item-14"
+      },
+      {
+        "id": 24,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -105,
+        "note": "买入标准电池组",
+        "itemId": "item-15"
+      },
+      {
+        "id": 25,
+        "day": 1,
+        "kind": "delivery",
+        "amount": 420,
+        "note": "订货交付：小灯的备用电源（2 件）"
+      },
+      {
+        "id": 26,
+        "day": 1,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 44,
+        "day": 2,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 62,
+        "day": 3,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 80,
+        "day": 4,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 98,
+        "day": 5,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      },
+      {
+        "id": 116,
+        "day": 6,
+        "kind": "daily-fee",
+        "amount": -85,
+        "note": "营业维护与租金，应付 85"
+      }
+    ],
+    "messages": [
+      "店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。",
+      "已接下「值守台上的一瓶水」，第 3 日闭店前交货。款项在交货时结算。",
+      "已接下「雨中的短程呼叫」，第 6 日闭店前交货。款项在交货时结算。",
+      "已交付 1 件，收到 ₡100。林桥的回信已放进订货簿。",
+      "已接下「小灯的备用电源」，第 6 日闭店前交货。款项在交货时结算。",
+      "购入多谱扫描仪 × 1。扫描功能状态与故障线索，降低收购未知旧货的风险。",
+      "叫号完成，贺津来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，祁岚来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，陆澈来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，贺津来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，祁岚来到门前。",
+      "标准电池组：成色 56%；外观及基础功能可用；参考价 66–154。",
+      "扫描：容量 71%，纯度 96%。",
+      "购入 1 件，共 ₡63。已购货物留在谈判台，继续选货或先入库。",
+      "标准电池组：成色 88%；外观及基础功能可用；参考价 87–203。",
+      "扫描：容量 89%，纯度 68%。",
+      "购入 1 件，共 ₡105。已购货物留在谈判台，继续选货或先入库。",
+      "标准电池组：成色 85%；外观及基础功能可用；参考价 85–199。",
+      "扫描：容量 55%，纯度 86%。",
+      "标准电池组已放入仓库。",
+      "标准电池组已放入仓库。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，贺津来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，陆澈来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "已交付 2 件，收到 ₡420。贺津的回信已放进订货簿。",
+      "第 1 日结算，支出 85。明天继续。",
+      "第 2 日开门，12 工时、7 位预约访客。",
+      "第 2 日结算，支出 85。明天继续。",
+      "第 3 日开门，12 工时、7 位预约访客。",
+      "第 3 日结算，支出 85。明天继续。",
+      "第 4 日开门，12 工时、7 位预约访客。",
+      "第 4 日结算，支出 85。明天继续。",
+      "第 5 日开门，12 工时、7 位预约访客。",
+      "第 5 日结算，支出 85。明天继续。",
+      "第 6 日开门，12 工时、7 位预约访客。",
+      "「雨中的短程呼叫」已过交期，库存和现金保留。",
+      "第 6 日结算，支出 85。明天继续。",
+      "第 7 日开门，12 工时、7 位预约访客。",
+      "已接下「晚班留饭」，第 10 日闭店前交货。款项在交货时结算。",
+      "已告知订货人取消；库存和现金保留。"
+    ],
+    "appointments": null,
+    "challenge": null,
+    "visitorArrived": false,
+    "deliveries": [
+      {
+        "id": "delivery-1-doorstep-water",
+        "templateId": "doorstep-water",
+        "postedDay": 1,
+        "deadline": 3,
+        "status": "completed",
+        "acceptedDay": 1,
+        "goods": [
+          {
+            "itemId": "item-1",
+            "definitionId": "purified-water",
+            "cost": 28
+          }
+        ],
+        "closedDay": 1
+      },
+      {
+        "id": "delivery-1-backup-battery",
+        "templateId": "backup-battery",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "completed",
+        "acceptedDay": 1,
+        "goods": [
+          {
+            "itemId": "item-14",
+            "definitionId": "battery-pack",
+            "cost": 63
+          },
+          {
+            "itemId": "item-15",
+            "definitionId": "battery-pack",
+            "cost": 105
+          }
+        ],
+        "closedDay": 1
+      },
+      {
+        "id": "delivery-1-courier-call",
+        "templateId": "courier-call",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "expired",
+        "acceptedDay": 1,
+        "closedDay": 6
+      },
+      {
+        "id": "delivery-7-night-pantry",
+        "templateId": "night-pantry",
+        "postedDay": 7,
+        "deadline": 10,
+        "status": "cancelled",
+        "acceptedDay": 7,
+        "closedDay": 7
+      },
+      {
+        "id": "delivery-7-workshop-insulation",
+        "templateId": "workshop-insulation",
+        "postedDay": 7,
+        "deadline": 12,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-7-public-screening",
+        "templateId": "public-screening",
+        "postedDay": 7,
+        "deadline": 12,
+        "status": "offered"
+      }
+    ],
+    "tutorial": {
+      "step": 9,
+      "skipped": true
+    },
+    "conversations": {
+      "visitor-5": 2,
+      "visitor-10": 2,
+      "visitor-11": 2,
+      "visitor-13": 2,
+      "visitor-18": 2,
+      "visitor-19": 2,
+      "visitor-20": 2
+    }
+  }
+}

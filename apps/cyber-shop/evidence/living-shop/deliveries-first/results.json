@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "firstReward": 100,
+  "batteryReward": 420,
+  "batteries": [
+    {
+      "id": "item-14",
+      "day": 1,
+      "condition": 56,
+      "capacity": 71
+    },
+    {
+      "id": "item-15",
+      "day": 1,
+      "condition": 88,
+      "capacity": 89
+    },
+    {
+      "id": "item-16",
+      "day": 1,
+      "condition": 85,
+      "capacity": 55
+    }
+  ],
+  "delivered": 2,
+  "expired": 1,
+  "cancelled": 1,
+  "limit": 2,
+  "restored": true,
+  "errors": [],
+  "missing": []
+}

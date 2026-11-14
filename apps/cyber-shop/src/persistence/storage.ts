@@ -1,5 +1,6 @@
 import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUESTS, CATEGORIES, PROFESSIONS } from '../content';
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
+import { DELIVERIES } from '../content/deliveries';
 import type { GameState, ItemInstance } from '../game/types';
 
 export const SAVE_KEY = 'cyber-shop:save:v1';
@@ -51,6 +52,7 @@ export function validateState(value: unknown): asserts value is GameState {
   check(object(s.relations) && Object.values(s.relations).every(n => typeof n === 'number' && Number.isFinite(n)), '关系记录无效。');
   check(object(s.questStages) && Object.entries(s.questStages).every(([id, stage]) => { const q = QUESTS.find(q => q.id === id); return q && integer(stage) && stage <= q.stages.length; }), '人物委托进度无效。');
   check(object(s.records) && ['trades', 'repairs', 'revenue', 'repairIncome', 'days'].every(k => integer((s.records as unknown as Record<string, unknown>)[k])) && object(s.records.faults) && Object.entries(s.records.faults).every(([id, n]) => FAULTS.some(f => f.id === id) && integer(n)), '经营纪录无效。');
+  for(const key of ['deliveries','deliveryIncome'] as const)if(s.records[key]!==undefined)check(integer(s.records[key]),'订货累计记录无效。');
   const validateItem = (i: ItemInstance) => {
     check(object(i) && typeof i.id === 'string' && ITEMS.some(d => d.id === i.definitionId), '物品模板无效。');
     check(['player', 'customer'].includes(i.owner) && ['stock', 'display', 'workshop', 'counter'].includes(i.location), '物品归属或位置无效。');
@@ -99,6 +101,27 @@ export function validateState(value: unknown): asserts value is GameState {
       validateRepairSteps(receipt.steps,receipt.day);
     }
     check(new Set(s.repairHistory.map(r=>r.orderId)).size===s.repairHistory.length,'存档含重复修复档案。');
+  }
+  if(s.deliveries!==undefined){
+    check(Array.isArray(s.deliveries)&&s.deliveries.length<=64,'订货簿无效。');
+    check(new Set(s.deliveries.map(j=>j.id)).size===s.deliveries.length&&s.deliveries.filter(j=>j.status==='active').length<=2,'订货单重复或超过承接上限。');
+    for(const job of s.deliveries){
+      check(object(job)&&typeof job.id==='string'&&['offered','active','completed','expired','cancelled'].includes(job.status),'订货单内容无效。');
+      const request=DELIVERIES.find(d=>d.id===job.templateId);check(request,'订货模板不存在。');
+      check(integer(job.postedDay)&&job.postedDay>=1&&job.postedDay<=s.day&&job.id===`delivery-${job.postedDay}-${job.templateId}`,'订货发布日期无效。');
+      check(integer(job.deadline)&&job.deadline===job.postedDay+request.days-1,'订货交期无效。');
+      if(job.status==='offered')check(job.acceptedDay===undefined&&job.closedDay===undefined&&job.postedDay===s.day,'待接订货记录无效。');
+      else check(integer(job.acceptedDay)&&job.acceptedDay===job.postedDay,'订货接取日期无效。');
+      if(['completed','expired','cancelled'].includes(job.status)){
+        check(integer(job.closedDay)&&job.closedDay!>=job.postedDay&&job.closedDay!<=s.day,'订货结算日期无效。');
+        check(job.status==='expired'?job.closedDay!>=job.deadline:job.closedDay!<=job.deadline,'订货结算超出期限。');
+      }else check(job.closedDay===undefined,'未结算订货含结束日期。');
+      if(job.status==='completed'){
+        check(Array.isArray(job.goods)&&job.goods.length===request.quantity&&new Set(job.goods.map(g=>g.itemId)).size===job.goods.length,'订货交货清单无效。');
+        check(job.goods.every(g=>object(g)&&typeof g.itemId==='string'&&request.itemIds.includes(g.definitionId)&&integer(g.cost)),'订货货品记录无效。');
+        check(job.goods.every(g=>!s.items.some(i=>i.id===g.itemId)),'已交货物仍留在库存。');
+      }else check(job.goods===undefined,'未完成订货含交货清单。');
+    }
   }
   check(Array.isArray(s.ledger) && s.ledger.every(e => object(e) && integer(e.id) && integer(e.day) && typeof e.kind === 'string' && Number.isFinite(e.amount) && typeof e.note === 'string'), '账本无效。');
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');

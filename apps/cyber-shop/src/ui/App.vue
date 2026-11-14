@@ -8,6 +8,7 @@ import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
 import JourneyBoard from './JourneyBoard.vue';
 import DayReport from './DayReport.vue';
+import DeliveryBoard from './DeliveryBoard.vue';
 import { dayReport, financialRecovery } from '../game/journey';
 import { tradeIds } from './trade-selection';
 import { vDialogFocus } from './dialog-focus';
@@ -64,6 +65,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
           <Workbench v-if="modal === 'workbench'" />
           <JourneyBoard v-else-if="modal === 'journey'" />
           <DayReport v-else-if="modal === 'day-report'" />
+          <DeliveryBoard v-else-if="modal === 'deliveries'" />
           <div v-else-if="modal === 'close-day'" class="dialog-body"><p class="eyebrow">CLOSE / 收起招牌</p><h2>结束今天的营业？</h2><p>未接待的客人会离开。已接工单和货物保留，食品按保存条件老化；结算维护费与租金。</p><p class="closing-forecast">今日收入 ₡{{ closing.income }} · 已支出 ₡{{ closing.expenses }}<br />闭店待缴 ₡{{ closing.pendingFees }} · 预计结余 ₡{{ Math.max(0, state.cash - closing.pendingFees) }}</p><p v-if="state.cash<closing.pendingFees" class="warning">本次还差 ₡{{closing.pendingFees-state.cash}}，未付部分会计入欠费。<template v-if="recovery.closingChances===1">若这次日结后仍欠费，店铺将暂停营业；可以先返回接援助维修。</template></p><p v-if="activeOrders.length">仍有 {{ activeOrders.length }} 个工单，可以明天继续。</p><p v-if="counterCount" class="warning" role="alert">谈判台还有 {{ counterCount }} 件物品，暂时不能闭店。请将自有物品全部入库，未购买的来货撤回店外。</p><button v-if="counterCount" @click="modal = ''">返回整理台面</button><button class="primary" :disabled="counterCount > 0" @click="dispatch({ type: 'closeDay' }) && (modal = 'day-report')">确认闭店</button></div>
           <WorkshopBoard v-else-if="modal === 'orders'"/>
           <Notebook v-else />

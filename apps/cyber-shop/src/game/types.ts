@@ -32,22 +32,37 @@ export interface RepairStep { day: number; operation: Operation; module?: string
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean; receivedDay?: number; conditionBefore?: number; steps?: RepairStep[] }
 export interface RepairReceipt { orderId: string; definitionId: string; characterId: string; kind: RepairOrder['kind']; receivedDay?: number; day: number; conditionBefore?: number; conditionAfter: number; completedOps: number; steps: RepairStep[]; reward: number }
 export interface LedgerEntry { id: number; day: number; kind: string; amount: number; itemId?: string; note: string }
+export interface DeliveryDefinition {
+  id: string; title: string; characterId: string; category: CategoryId; chapter: number; itemIds: string[];
+  quantity: number; days: number; reward: number; xp: number; description: string; thanks: string;
+  condition: number; functional?: boolean; capacity?: number; purity?: number; integrity?: number;
+  freshDays?: number; authentic?: boolean; originality?: number; authorized?: boolean; compatible?: boolean;
+}
+export interface DeliveryJob {
+  id: string; templateId: string; postedDay: number; deadline: number;
+  status: 'offered' | 'active' | 'completed' | 'expired' | 'cancelled'; acceptedDay?: number; closedDay?: number;
+  goods?: { itemId: string; definitionId: string; cost: number }[];
+}
 export interface GameState {
   visitorArrived?: boolean;
   storageUpgrades?: { backpack: number; crate: number };
   tutorial?: { step: number; skipped: boolean };
   conversations?: Record<string, number>;
   repairHistory?: RepairReceipt[];
+  deliveries?: DeliveryJob[];
   version: number; contentVersion: string; balanceVersion: string; seed: number; rng: number; serial: number;
   day: number; chapter: number; phase: 'open' | 'closed' | 'won' | 'ended' | 'failed'; cash: number; hours: number; debt: number; grace: number;
   xp: number; level: number; points: number; skills: string[]; certificates: CertificateId[]; trained: CertificateId[]; licenses: string[];
   equipment: Record<string, number>; equipmentCosts: Record<string, number>; items: ItemInstance[]; visitors: Visitor[]; visitorIndex: number; orders: RepairOrder[];
   reputation: number; relations: Record<string, number>; questStages: Record<string, number>; eventId: string; eventResolved: boolean;
-  discovered: string[]; met: string[]; records: { trades: number; repairs: number; revenue: number; repairIncome: number; days: number; faults: Record<string, number> };
+  discovered: string[]; met: string[]; records: { trades: number; repairs: number; revenue: number; repairIncome: number; days: number; faults: Record<string, number>; deliveries?: number; deliveryIncome?: number };
   finalStage: number; finalComplete: boolean; professionMilestones: string[]; victory: boolean; endless: boolean; freeRespec: boolean;
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type: 'acceptDelivery'; jobId: string }
+ | { type: 'deliverGoods'; jobId: string; itemIds: string[] }
+ | { type: 'cancelDelivery'; jobId: string }
  | { type: 'callVisitor' }
  | { type: 'buyStorage'; kind: 'backpack' | 'crate' }
  | { type: 'tradeBatch'; visitorId: string; itemIds: string[]; amount?: number; placements?: Record<string, {x:number;y:number;rotated:boolean}> }

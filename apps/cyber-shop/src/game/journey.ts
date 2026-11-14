@@ -57,7 +57,8 @@ export function dayReport(s:GameState) {
   const expenses=entries.filter(e=>e.amount<0).reduce((n,e)=>n-e.amount,0);
   const repairs=entries.filter(e=>e.kind==='repair-income');
   const sales=entries.filter(e=>e.kind==='sale'||e.kind==='clearance');
+  const deliveries=entries.filter(e=>e.kind==='delivery');
   const fees=entries.filter(e=>e.kind==='daily-fee').reduce((n,e)=>n-e.amount,0);
   const pendingFees=s.phase==='open'?operatingFees(s)+s.debt:0;
-  return {income,expenses,net:income-expenses,openingCash:s.cash-income+expenses,closingCash:s.cash,repairs:repairs.length,repairIncome:repairs.reduce((n,e)=>n+e.amount,0),sales:sales.length,saleIncome:sales.reduce((n,e)=>n+e.amount,0),fees,pendingFees,entries};
+  return {income,expenses,net:income-expenses,openingCash:s.cash-income+expenses,closingCash:s.cash,repairs:repairs.length,repairIncome:repairs.reduce((n,e)=>n+e.amount,0),sales:sales.length,saleIncome:sales.reduce((n,e)=>n+e.amount,0),deliveries:deliveries.length,deliveryIncome:deliveries.reduce((n,e)=>n+e.amount,0),fees,pendingFees,entries};
 }

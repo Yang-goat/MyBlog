@@ -3,9 +3,11 @@ import { computed } from 'vue';
 import { state, modal, dispatch, selectedOrder } from './store';
 import { CHAPTERS, journey } from '../game/journey';
 import { districtKeepsakes } from '../game/district';
+import { deliveryJobs } from '../game/deliveries';
 const props=defineProps<{compact?:boolean}>();
 const route=computed(()=>journey(state.value));
 const keepsakes=computed(()=>districtKeepsakes(state.value));
+const deliveries=computed(()=>deliveryJobs(state.value).filter(j=>j.status==='active'));
 function work(){const order=state.value.orders.find(o=>!o.delivered);if(order){selectedOrder.value=order.id;modal.value='workbench';}else modal.value='orders';}
 </script>
 <template>
@@ -21,6 +23,7 @@ function work(){const order=state.value.orders.find(o=>!o.delivered);if(order){s
   </template>
   <template v-else>
    <p class="journey-story">{{route.story}}</p>
+   <button class="text-button" @click="modal='deliveries'">街坊订货 · {{deliveries.length?`${deliveries.length} 份正在备货`:'看看今天需要什么'}} ↗</button>
    <ol class="chapter-path"><li v-for="(chapter,index) in CHAPTERS" :key="chapter.title" :class="{active:index+1===state.chapter,done:index+1<state.chapter||state.victory}"><span>{{index+1<state.chapter||state.victory?'✓':'0'+(index+1)}}</span>{{chapter.title}}</li></ol>
    <section v-if="keepsakes.length" class="journey-keepsakes" aria-label="街坊留下的纪念"><button v-for="gift in keepsakes" :key="gift.id" :data-keepsake="gift.id" @click="modal='journal'"><span>{{gift.name}}</span><small>{{gift.author}}留下的心意 ↗</small></button></section>
    <div class="journey-tasks"><article v-for="task in route.tasks" :key="task.id" :class="{done:task.done}"><span class="task-check">{{task.done?'✓':'○'}}</span><div><h3>{{task.title}} <small>{{Math.min(task.current,task.target).toLocaleString()}} / {{task.target.toLocaleString()}}</small></h3><p>{{task.detail}}</p><button @click="modal=task.panel">{{task.label}} ↗</button></div></article></div>

@@ -2,6 +2,7 @@ import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES,
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { warehouseLayout, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
+import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
@@ -143,6 +144,7 @@ function generateDay(s: GameState) {
     if (guest) s.visitors[3]!.characterId = guest.id;
   }
   s.visitorIndex = 0; s.visitorArrived = false;
+  s.deliveries=newDeliveryDay(s,s.deliveries);
 }
 export function createGame(seed = 11052026): GameState {
   const s: GameState = { version: SAVE_VERSION, contentVersion: CONTENT_VERSION, balanceVersion: BALANCE.version, seed: seed >>> 0, rng: seed >>> 0, serial: 0,
@@ -176,6 +178,7 @@ export function questProgress(s: GameState, questId: string) {
 }
 export function applyAction(input: GameState, action: Action): ActionResult {
   const s = clone(input); const events: PresentationEvent[] = [];
+  s.deliveries??=newDeliveryDay(s);
   // Anchor legacy/new-game stock before removing an item so its neighbours stay put.
   const initialLayout = warehouseLayout(s.items, capacity(s));
   for (const item of s.items) if (initialLayout.positions[item.id]) item.grid = initialLayout.positions[item.id];
@@ -201,9 +204,41 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   };
   if (s.phase === 'failed' || (s.phase === 'ended' && action.type !== 'continueEndless')) return fail('本局已结算。可以恢复当日备份或重新开局。');
   if (s.phase === 'won' && !['continueEndless', 'endGame'].includes(action.type)) return fail('请在结局中选择结束并保存，或继续经营。');
-  const openOnly: Action['type'][] = ['callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
+  const openOnly: Action['type'][] = ['acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
   if (openOnly.includes(action.type) && s.phase !== 'open') return fail('这项操作需要开店后进行。');
   switch (action.type) {
+    case 'acceptDelivery': {
+      const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='offered'&&j.postedDay===s.day);
+      if(!job)return fail('这份订货单已经接取或不再开放。');
+      if(s.deliveries.filter(j=>j.status==='active').length>=DELIVERY_LIMIT)return fail('最多同时承接两份订货，先交货或取消一份。');
+      job.status='active';job.acceptedDay=s.day;
+      say(`已接下「${deliveryDefinition(job).title}」，第 ${job.deadline} 日闭店前交货。款项在交货时结算。`);break;
+    }
+    case 'cancelDelivery': {
+      const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='active');
+      if(!job)return fail('这份订货没有进行中。');
+      job.status='cancelled';job.closedDay=s.day;say('已告知订货人取消；库存和现金保留。');break;
+    }
+    case 'deliverGoods': {
+      const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='active');
+      if(!job||s.day>job.deadline)return fail('这份订货不在可交货期限内。');
+      const request=deliveryDefinition(job);
+      if(!Array.isArray(action.itemIds)||action.itemIds.length!==request.quantity||new Set(action.itemIds).size!==action.itemIds.length)return fail(`请选 ${request.quantity} 件不同的合格货品。`);
+      const goods=action.itemIds.map(itemId=>findItem(itemId));
+      if(goods.some(i=>!i))return fail('部分选中货品已经离开店铺。');
+      for(const item of goods as ItemInstance[]){const check=deliveryItemCheck(s,request,item);if(!check.ready)return fail(`${def(item).name}：${check.reason}。`);}
+      if(!spendHours(DELIVERY_HOURS))return fail('交货需要半个工时，今天已经来不及打包。');
+      const selected=goods as ItemInstance[];
+      job.goods=selected.map(i=>({itemId:i.id,definitionId:i.definitionId,cost:i.cost}));job.status='completed';job.closedDay=s.day;
+      s.items=s.items.filter(i=>!action.itemIds.includes(i.id));
+      earn(request.reward,'delivery',`订货交付：${request.title}（${request.quantity} 件）`);
+      s.records.deliveries=(s.records.deliveries??0)+1;s.records.deliveryIncome=(s.records.deliveryIncome??0)+request.reward;
+      s.records.trades+=selected.length;gainXp(s,request.xp);s.reputation+=2;
+      const person=CHARACTERS.find(c=>c.id===request.characterId)!;s.relations[person.group]=(s.relations[person.group]??0)+1;
+      if(!s.met.includes(person.id))s.met.push(person.id);
+      if(s.challenge?.id==='rare-trade')s.challenge.progress+=selected.filter(i=>def(i).rarity>=3&&i.authentic).length;
+      say(`已交付 ${selected.length} 件，收到 ₡${request.reward}。${person.name}的回信已放进订货簿。`,'trade');break;
+    }
     case 'tradeBatch': {
       const v=currentVisitor(action.visitorId);
       if (!v || v.kind === 'repair') return fail('当前没有可交易的客人。');
@@ -494,6 +529,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (s.debt > 0) s.grace++; else s.grace = 0;
       s.phase = !s.victory && s.grace > BALANCE.graceDays ? 'failed' : 'closed'; s.records.days++; gainXp(s, BALANCE.dayXp);
       if (s.challenge) { if (s.challenge.id === 'exhibition') s.challenge.progress = attraction(s); if (s.challenge.progress >= s.challenge.goal) { earn(s.challenge.reward, 'challenge', '无尽挑战完成'); gainXp(s, 60); say('挑战完成，奖励已结算。'); s.challenge = null; } else if (s.day >= s.challenge.deadline) { say('本次可选挑战到期；经营权与已有藏品均保留。'); s.challenge = null; } }
+      for(const job of s.deliveries)if(job.status==='active'&&job.deadline<=s.day){job.status='expired';job.closedDay=s.day;say(`「${deliveryDefinition(job).title}」已过交期，库存和现金保留。`);}
       say(s.phase === 'failed' ? '补救期已过，店铺暂停营业。可恢复当日开始备份，或重新开局。' : s.debt ? `闭店：仍欠 ${s.debt}。${s.victory?'永久经营权保留，欠费并入下次维护结算。':`还有 ${debtClosingChances(s)} 次营业日结可补救。`}基础维修与清货可以恢复现金。` : `第 ${s.day} 日结算，支出 ${paid}。明天继续。`, 'day'); break;
     }
     case 'openDay': {
@@ -529,6 +565,6 @@ export function visibleState(s: GameState) {
     visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
-    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[],
+    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),
     finalStage: s.finalStage, finalComplete: s.finalComplete, professionMilestones: s.professionMilestones, professions: PROFESSIONS.filter(p => p.implemented).map(p => professionVictory(s, p.id)), victory: s.victory, endless: s.endless, challenge: s.challenge, messages: s.messages.slice(-5) };
 }
