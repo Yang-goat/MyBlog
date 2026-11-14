@@ -3,7 +3,7 @@ import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { fits, occupy, footprint, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
 import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
-import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, canNest, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
+import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, nestingProblem, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers } from './modifiers';
 import { allocateQuote } from './negotiation';
@@ -366,7 +366,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'moveStorage': {
       const box=s.containers?.find(c=>c.id===action.storageId);if(!box)return fail('找不到这件箱包。');const at={x:action.x,y:action.y,rotated:action.rotated};
       if(action.counter){const plan=shopCounterLayout(s),occupied=new Set<number>();for(const o of ownedObjects(s))if(o.id!==box.id&&plan.positions[o.id])occupy(o,plan.positions[o.id]!,occupied,SURFACE_COLUMNS);if(!fits(box,at,occupied,SURFACE_CAPACITY,SURFACE_COLUMNS))return fail('谈判台没有完整空位。');box.location='counter';box.counterGrid=at;delete box.grid;delete box.containerId;}
-      else {if(!canNest(s,box,action.containerId))return fail('箱包不能放进自己或自己的内层箱包。');if(!objectFits(s,rootCapacity(s),box,at,action.containerId))return fail('箱包外形放不下，试着旋转或腾出空格。');putObject(box,at,action.containerId);}
+      else {const problem=nestingProblem(s,box,action.containerId);if(problem)return fail(problem);if(!objectFits(s,rootCapacity(s),box,at,action.containerId))return fail('箱包外形放不下，试着旋转或腾出空格。');putObject(box,at,action.containerId);}
       say('箱包与里面的物品已一起移动。');break;
     }
     case 'buyLabeler': {

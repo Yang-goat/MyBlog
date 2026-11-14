@@ -18,12 +18,20 @@ describe('nested containers acquired through NPC trading',()=>{
  });
  it('supports box inside box and bag inside bag, retaining all contents through an outer move and save',()=>{
   let s=shop();for(const style of ['transit-crate','transit-crate','courier-pack','courier-pack'])s=buy(s,style);
-  const [a,b,c,d]=s.containers!.map(c=>c.id);s=stash(s,a!);s=stash(s,b!,a);s=stash(s,c!,b);s=stash(s,d!,c);
+  const [a,b,c,d]=s.containers!.map(c=>c.id);s=stash(s,a!);s=stash(s,b!,a);s=stash(s,c!);s=stash(s,d!,c);
   const item=s.items.find(i=>i.definitionId==='data-chip')??s.items[0]!;s=act(s,{type:'moveStock',itemId:item.id,containerId:d,x:0,y:0,rotated:false});
   expect(containerItems(s,a!)[0]!.id).toBe(b);expect(containerItems(s,c!)[0]!.id).toBe(d);
   const inner=structuredClone(s.containers!.slice(1));s=act(s,{type:'moveStorage',storageId:a!,x:12,y:2,rotated:true});expect(s.containers!.slice(1)).toEqual(inner);expect(s.items.find(i=>i.id===item.id)?.containerId).toBe(d);
-  expect(importSave(exportSave(s))).toEqual(s);expect(visibleState(s).containers.at(-1)?.path).toEqual([a,b,c,d]);
-  reject(s,{type:'moveStorage',storageId:a!,containerId:d,x:0,y:0,rotated:false});reject(s,{type:'moveStorage',storageId:b!,containerId:b,x:0,y:0,rotated:false});
+  expect(importSave(exportSave(s))).toEqual(s);expect(visibleState(s).containers.at(-1)?.path).toEqual([c,d]);
+  reject(s,{type:'moveStorage',storageId:a!,containerId:b,x:0,y:0,rotated:false});reject(s,{type:'moveStorage',storageId:b!,containerId:b,x:0,y:0,rotated:false});
+ });
+ it('enforces three levels for both a single box and an already packed subtree',()=>{
+  let s=shop();for(let n=0;n<4;n++)s=buy(s,'courier-pouch');const [a,b,c,d]=s.containers!.map(c=>c.id);
+  s=stash(s,a!);s=stash(s,b!,a);s=stash(s,c!,b);s=stash(s,d!);
+  reject(s,{type:'moveStorage',storageId:d!,containerId:c,x:0,y:0,rotated:false});
+  reject(s,{type:'moveStorage',storageId:a!,containerId:d,x:0,y:0,rotated:false});
+  const bad=structuredClone(s);bad.containers![3]!.containerId=c;bad.containers![3]!.grid={x:0,y:0,rotated:false};expect(()=>validateState(bad)).toThrow('三层');
+  const before=structuredClone(s.containers!.filter(box=>[b,c].includes(box.id)));s=act(s,{type:'moveStorage',storageId:a!,x:15,y:2,rotated:false});expect(s.containers!.filter(box=>[b,c].includes(box.id))).toEqual(before);expect(visibleState(s).containers.find(box=>box.id===c)?.path).toEqual([a,b,c]);validateState(s);
  });
  it('rejects overlapping or oversized shells without changing cash, goods or paths',()=>{
   let s=buy(shop(),'courier-pouch');s=stash(s,s.containers![0]!.id);s=buy(s,'freight-case');const [small,large]=s.containers!;

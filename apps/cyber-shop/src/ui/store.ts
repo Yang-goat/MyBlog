@@ -16,7 +16,6 @@ export const saveError = ref('');
 const backupError = ref('');
 export const hasSave = ref(false);
 export const selectedItem = ref('');
-export const selectedStorage = ref('');
 export const selectedOrder = ref('');
 export const reducedMotion = ref(matchMedia('(prefers-reduced-motion: reduce)').matches);
 export const muted = ref(false);

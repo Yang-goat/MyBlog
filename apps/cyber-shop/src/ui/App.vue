@@ -8,11 +8,11 @@ import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
 import JourneyBoard from './JourneyBoard.vue';
 import DayReport from './DayReport.vue';
-import StorageRoom from './StorageRoom.vue';
 import DeliveryBoard from './DeliveryBoard.vue';
 import { dayReport, financialRecovery } from '../game/journey';
 import { tradeIds } from './trade-selection';
 import { vDialogFocus } from './dialog-focus';
+import {containerWindows} from './container-windows';
 import { START_MODIFIERS } from '../game/modifiers';
 import { version } from '../../package.json';
 const seed = ref(20261105);
@@ -30,7 +30,7 @@ function keydown(e: KeyboardEvent) {
 }
 onMounted(() => {
   inspectSave(); window.addEventListener('keydown', keydown);
-  window.render_game_to_text = textState;
+  window.render_game_to_text = () => JSON.stringify({...JSON.parse(textState()),openContainers:containerWindows.value.map(w=>({id:w.id,x:w.x,y:w.y}))});
   window.advanceTime = async () => { /* Paused economy: presentation does not advance a business day. */ await new Promise<void>(resolve => requestAnimationFrame(() => resolve())); };
 });
 onUnmounted(() => { window.removeEventListener('keydown', keydown); delete window.render_game_to_text; delete window.advanceTime; cleanup(); });
@@ -66,9 +66,9 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
       <ShopRoom />
       <p v-if="saveError" class="save-error" role="alert">自动保存失败：{{ saveError }}。可在设置中导出进度。</p>
       <div v-if="modal && modal !== 'trade'" class="modal-backdrop" @click.self="modal = ''">
-        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help', 'storage-notebook': modal === 'storage' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
+        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
           <div class="dialog-toolbar"><button class="modal-close" aria-label="关闭面板" @click="modal = ''">×</button></div>
-          <StorageRoom v-if="modal === 'storage'"/><Workbench v-else-if="modal === 'workbench'" />
+          <Workbench v-if="modal === 'workbench'" />
           <JourneyBoard v-else-if="modal === 'journey'" />
           <DayReport v-else-if="modal === 'day-report'" />
           <DeliveryBoard v-else-if="modal === 'deliveries'" />

@@ -18,7 +18,7 @@ try{
  await click('查看今日街区行情');await focusLoop();const chosenLabel=await page.locator('.event-story .vertical-actions button').last().locator('strong').innerText();await page.locator('.event-story .vertical-actions button').last().click();assert((await g()).eventResolved);
  await page.keyboard.press('Escape');assert(await page.getByRole('button',{name:'查看今日街区行情',exact:true}).evaluate(el=>el===document.activeElement));
  assert((await page.locator('.market-action').innerText()).includes(chosenLabel));
- await click('箱包 / 扩容');await focusLoop();await page.keyboard.press('Escape');assert.equal(await page.getByRole('dialog').count(),0);
+ await click('库存');await focusLoop();await page.keyboard.press('Escape');assert.equal(await page.getByRole('dialog').count(),0);
  await click('绿色叫号按钮');await click('结束当前接待');await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
  await click('把来货放上台 →');await focusLoop();const before=await g();assert.equal(before.visitor.goods.length,4);
  assert(new Set(before.visitor.goods.map(i=>i.quote)).size>1);assert(before.visitor.goods.every(i=>i.condition===undefined));

@@ -1,6 +1,6 @@
 import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUESTS, CATEGORIES, PROFESSIONS } from '../content';
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
-import { LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
+import { MAX_CONTAINER_DEPTH, LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
 import { STORAGE_STYLES } from '../content/storage';
 import { validModifiers } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
@@ -154,7 +154,7 @@ export function validateState(value: unknown): asserts value is GameState {
       check(c.location!=='counter'||(c.containerId===undefined&&!!c.counterGrid),'台面箱包位置无效。');
       check(c.location!=='stock'||!!c.grid,'仓库箱包缺少坐标。');
     }
-    for(const c of s.containers)check(containerTrail(s,c.id)!==null,'箱包嵌套循环或指向不存在的箱包。');
+    for(const c of s.containers){const trail=containerTrail(s,c.id);check(trail!==null,'箱包嵌套循环或指向不存在的箱包。');check(trail.length<=MAX_CONTAINER_DEPTH,'箱包最多嵌套三层。');}
   }
   for(const item of ownedObjects(s))if(item.containerId!==undefined){
     check(typeof item.containerId==='string'&&s.containers?.some(c=>c.id===item.containerId),'物品指向不存在的箱包。');
