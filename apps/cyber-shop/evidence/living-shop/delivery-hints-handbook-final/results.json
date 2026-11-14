@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "warehouseProp": true,
+  "inventoryProp": true,
+  "spreads": 7,
+  "pageAnimation": true,
+  "keyboard": true,
+  "contentsJump": true,
+  "reducedMotion": true,
+  "contextReturn": true,
+  "noEconomicChange": true,
+  "squareCells": true,
+  "touch": true,
+  "errors": [],
+  "missing": []
+}

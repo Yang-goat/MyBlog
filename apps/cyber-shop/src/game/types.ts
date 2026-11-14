@@ -53,6 +53,7 @@ export interface DeliveryJob {
 export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:Rotation}; counterGrid?:{x:number;y:number;rotated:Rotation}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
 export interface StorageOffer { id:string; styleId:string; price:number }
 export interface GameState {
+  deliverySource?:{jobId:string;count:number};
   factionAppointment?:FactionId;
   containers?: StorageContainer[];
   modifiers?:string[];
@@ -73,6 +74,7 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type:'sourceDelivery'; jobId:string|null }
  | { type:'reserveItem'; itemId:string; reserved:boolean }
  | { type:'appointFaction'; factionId:FactionId|null }
  | { type: 'acceptDelivery'; jobId: string }

@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "day": 4,
+      "inspected": 4,
+      "acquired": [
+        "item-15",
+        "item-34"
+      ],
+      "navigationPreservedBasket": true,
+      "unknownToChecked": true,
+      "reservationProgress": true,
+      "actualDeliveryReward": 420,
+      "paidSourcingNextDay": true,
+      "freeBookingReload": true,
+      "lastDayReminder": true,
+      "reload": true,
+      "deliberateExpiryKeepsStock": true
+    },
+    {
+      "touch": true,
+      "day": 4,
+      "inspected": 4,
+      "acquired": [
+        "item-15",
+        "item-34"
+      ],
+      "navigationPreservedBasket": true,
+      "unknownToChecked": true,
+      "reservationProgress": true,
+      "actualDeliveryReward": 420,
+      "paidSourcingNextDay": true,
+      "freeBookingReload": true,
+      "lastDayReminder": true,
+      "reload": true,
+      "deliberateExpiryKeepsStock": true
+    }
+  ],
+  "errors": []
+}

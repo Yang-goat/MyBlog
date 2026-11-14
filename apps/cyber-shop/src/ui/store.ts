@@ -23,6 +23,8 @@ const backupError = ref('');
 export const hasSave = ref(false);
 export const selectedItem = ref('');
 export const selectedOrder = ref('');
+export const selectedDelivery=ref(''),deliveryReturn=ref('');
+export function openDelivery(jobId:string){selectedDelivery.value=jobId;deliveryReturn.value=modal.value==='deliveries'?deliveryReturn.value:modal.value;modal.value='deliveries';}
 export const reducedMotion = ref(matchMedia('(prefers-reduced-motion: reduce)').matches);
 export const muted = ref(false);
 export const volume = ref(0.25);

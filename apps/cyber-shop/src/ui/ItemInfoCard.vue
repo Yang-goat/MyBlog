@@ -6,6 +6,7 @@ import { estimateValue, tradeQuote, attraction,clearanceQuote } from '../game/en
 import { BALANCE } from '../game/balance';
 import { state } from './store';
 import Art from './Art.vue';
+import DeliveryHints from './DeliveryHints.vue';
 import ReserveBadge from './ReserveBadge.vue';
 import {foodFreshness} from '../game/freshness';
 const props=defineProps<{item:ItemInstance}>();
@@ -38,6 +39,6 @@ const attributes=computed(()=>{
  <dl class="item-prices"><div><dt>购入价</dt><dd>{{own?`₡${item.cost}`:'尚未购入'}}</dd></div><div><dt>{{expired?'清货回收价':'价值估算'}}</dt><dd>{{range(value)}}</dd></div><div><dt>{{buyer?'当前买家报价':'当前预计售价'}}</dt><dd>{{resale}}</dd></div><div v-if="!own&&guest?.kind==='seller'"><dt>这件要价</dt><dd>₡{{tradeQuote(state,guest,item)}}</dd></div></dl>
  <p class="price-note">{{item.reserved?'已留货：出售、清货或交付订货前须先解除。':expired?'可在库存账本折价清货。':buyer?'实际成交还受买家剩余预算影响。':basic?'估价随检查结果与行情变化，售价以成交报价为准。':'尚未检查：按同类商品粗估，检查后会缩小范围。'}}</p>
  <dl class="item-attributes"><div v-for="[label,value] in attributes" :key="label"><dt>{{label}}</dt><dd>{{value}}</dd></div></dl>
- <p class="item-description">{{definition.description}}</p>
+ <DeliveryHints :item="item" :links="false"/><p class="item-description">{{definition.description}}</p>
  <footer>鼠标右键 / 触屏长按 · 物品操作</footer>
 </article></template>

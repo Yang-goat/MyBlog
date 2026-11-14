@@ -2,7 +2,7 @@ import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES,
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { fits, occupy, footprint, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
-import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
+import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT, deliverySourcePlan, DELIVERY_SOURCE_PREMIUM } from './deliveries';
 import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, nestingProblem, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
@@ -10,7 +10,7 @@ import { allocateQuote } from './negotiation';
 import {buyerRemaining,purchaseQuantity,fulfillDemand} from './demand';
 import {faction,type FactionId} from '../content/factions';
 import {factionFor,buyerPreference,trusted,recordTradeRelation,factionStoragePrice,factionVisit,factionKnown,factionContacts,CONTACT_RELATION} from './factions';
-import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer } from './types';
+import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer, DeliveryDefinition } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
@@ -136,7 +136,7 @@ function customer(s: GameState, category: CategoryId, preferred?: string) {
   return CHARACTERS.find(c => c.id === preferred) ?? pick(s, pool.length ? pool : CHARACTERS.filter(c => !c.endless));
 }
 function accessibleDefinitions(s: GameState, category?: CategoryId) { return ITEMS.filter(d => d.chapter <= s.chapter && (!category || d.category === category) && (!d.regulated || s.licenses.includes('regulated-trade'))); }
-function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, groupId?:FactionId): Visitor {
+function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, groupId?:FactionId,source?:{request:DeliveryDefinition;count:number}): Visitor {
   // Trading authorization governs transfer of ownership, not receiving a client's device for licensed service.
   let pool = kind === 'repair'
     ? ITEMS.filter(d => d.chapter <= s.chapter && d.category === category && d.certificate && s.certificates.includes(d.certificate))
@@ -157,18 +157,29 @@ function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, 
     if(affiliation.id==='uppercity'){good.condition=Math.max(85,good.condition);good.faults=[];}
     if(affiliation.id==='watch'){good.provenance='可追溯的巡务署备案旧物';good.authentic=true;}
   });
+  if(source&&goods){
+    for(let n=0;n<source.count;n++){
+      const target=ITEMS.find(d=>d.id===source.request.itemIds[n%source.request.itemIds.length])!;
+      const good=createItem(s,target),need=source.request;
+      good.condition=Math.max(good.condition,need.condition);good.capacity=Math.max(good.capacity,need.capacity??0);good.purity=Math.max(good.purity,need.purity??0);good.integrity=Math.max(good.integrity,need.integrity??0);good.originality=Math.max(good.originality,need.originality??0);
+      if(need.functional)good.faults=[];if(need.freshDays)good.expiresDay=Math.max(good.expiresDay??s.day,s.day+need.freshDays);
+      if(need.compatible)good.compatibility='开放标准';if(need.authentic){good.authentic=true;good.provenance='可追溯的商人核验旧物';}if(need.authorized)good.provenance='可追溯的合法授权副本';
+      good.known=['basic','scan','serial'];goods[n]=good;
+    }
+    item=goods[0];
+  }
   const relation = clamp(s.relations[person.group] ?? 0, -10, 20);
   const value = item ? itemValue(s, item) : d.price;
   const advantage = skillEffect(s, 'bargain') + (s.met.includes(person.id) ? skillEffect(s, 'loyalty') : 0);
   const quote = kind === 'seller' ? round(value * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0, relation) / 150)) : round(value * BALANCE.buyerFactor * affiliation.buyer);
-  const priceTags = goods ? Object.fromEntries(goods.map(i => [i.id, {
-    ask: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0,relation) / 150))),
-    minimum: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFloor * affiliation.seller * (1 - advantage))),
+  const priceTags = goods ? Object.fromEntries(goods.map((i,index) => [i.id, {
+    ask: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0,relation) / 150)*(source&&index<source.count?DELIVERY_SOURCE_PREMIUM:1))),
+    minimum: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFloor * affiliation.seller * (1 - advantage)*(source&&index<source.count?DELIVERY_SOURCE_PREMIUM:1))),
   }])) : undefined;
-  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, demand:kind==='buyer'?{limit:purchaseQuantity(affiliation.id,d.category),fulfilled:0}:undefined, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote,
-    limit: kind === 'seller' ? round(value * BALANCE.sellerFloor * affiliation.seller * (1 - advantage)) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
+  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, demand:kind==='buyer'?{limit:purchaseQuantity(affiliation.id,d.category),fulfilled:0}:undefined, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote:priceTags&&item?priceTags[item.id]!.ask:quote,
+    limit: kind === 'seller' ? (priceTags&&item?priceTags[item.id]!.minimum:round(value * BALANCE.sellerFloor * affiliation.seller * (1 - advantage))) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
     rounds: 0, patience: person.patience, resolved: false,
-    request: kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `这趟想收 ${purchaseQuantity(affiliation.id,d.category)} 件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
+    request: source?`按「${source.request.title}」找到 ${source.count} 件货，已核对交货条件；同成色来货价加 25%，你仍可逐件决定是否收下。`:kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `这趟想收 ${purchaseQuantity(affiliation.id,d.category)} 件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
 }
 function generateDay(s: GameState) {
   s.eventId = EVENTS[(s.day - 1) % EVENTS.length]!.id; s.eventResolved = false;
@@ -181,10 +192,12 @@ function generateDay(s: GameState) {
   const route=factionVisit(s),network=route?faction(route):undefined;
   const preferredCategory=network?.categories[(s.day-2+network.categories.length)%network.categories.length];
   const networkCategory=preferredCategory&&accessibleDefinitions(s,preferredCategory).length ? preferredCategory : network?.categories.find(c=>accessibleDefinitions(s,c).length)??categories[s.day%categories.length]!;
-  s.visitors = [makeVisitor(s, 'repair', 'electronics'), makeVisitor(s, 'seller', supplierCategory), makeVisitor(s, 'buyer', saleCategory),
+  const sourceJob=s.deliveries?.find(j=>j.id===s.deliverySource?.jobId&&j.status==='active'&&j.deadline>=s.day);
+  const source=sourceJob&&s.deliverySource?{request:deliveryDefinition(sourceJob),count:s.deliverySource.count}:undefined;
+  s.visitors = [makeVisitor(s, 'repair', 'electronics'), makeVisitor(s, 'seller', source?.request.category??supplierCategory,undefined,source), makeVisitor(s, 'buyer', saleCategory),
     makeVisitor(s, 'repair', repairCategory,route==='contractors'?route:undefined), makeVisitor(s, 'seller',networkCategory,route),
     makeVisitor(s, 'buyer',route?networkCategory:supplierCategory,route), makeVisitor(s, 'buyer', attraction(s)>20 && has(s,'collector') ? 'antique' : saleCategory)];
-  delete s.factionAppointment;
+  delete s.factionAppointment;delete s.deliverySource;
   if (s.endless) {
     const guests = CHARACTERS.filter(c => c.endless);
     const guest = guests.find(c => !s.met.includes(c.id)) ?? guests[(s.day - 1) % guests.length];
@@ -294,6 +307,12 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
   }
   switch (action.type) {
+    case 'sourceDelivery': {
+      if(action.jobId===null){delete s.deliverySource;say('已取消明日的订货询货。');break;}
+      const job=s.deliveries.find(j=>j.id===action.jobId);if(!job)return fail('没有这份订货。');
+      const plan=deliverySourcePlan(s,job);if(!plan.ok)return fail(plan.reason);
+      s.deliverySource={jobId:job.id,count:plan.count};say(`已请商人寻找 ${plan.count} 件订货所需旧物，明日随首位卖家到店；报价加 25%，到店再决定购买。`);break;
+    }
     case 'reserveItem': {
       const item=findItem(action.itemId);
       if(!item||item.owner!=='player'||typeof action.reserved!=='boolean')return fail('只能标记店内自有货物。');
@@ -316,7 +335,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'cancelDelivery': {
       const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='active');
       if(!job)return fail('这份订货没有进行中。');
-      job.status='cancelled';job.closedDay=s.day;say('已告知订货人取消；库存和现金保留。');break;
+      job.status='cancelled';job.closedDay=s.day;if(s.deliverySource?.jobId===job.id)delete s.deliverySource;say('已告知订货人取消；库存和现金保留。');break;
     }
     case 'deliverGoods': {
       const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='active');
@@ -328,7 +347,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       for(const item of goods as ItemInstance[]){const check=deliveryItemCheck(s,request,item);if(!check.ready)return fail(`${def(item).name}：${check.reason}。`);}
       if(!spendHours(DELIVERY_HOURS))return fail('交货需要半个工时，今天已经来不及打包。');
       const selected=goods as ItemInstance[];
-      job.goods=selected.map(i=>({itemId:i.id,definitionId:i.definitionId,cost:i.cost}));job.status='completed';job.closedDay=s.day;
+      job.goods=selected.map(i=>({itemId:i.id,definitionId:i.definitionId,cost:i.cost}));job.status='completed';job.closedDay=s.day;if(s.deliverySource?.jobId===job.id)delete s.deliverySource;
       s.items=s.items.filter(i=>!action.itemIds.includes(i.id));
       earn(request.reward,'delivery',`订货交付：${request.title}（${request.quantity} 件）`);
       s.records.deliveries=(s.records.deliveries??0)+1;s.records.deliveryIncome=(s.records.deliveryIncome??0)+request.reward;
@@ -710,6 +729,6 @@ export function visibleState(s: GameState) {
     visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods,demand:visitor.demand, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
-    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, factions:factionContacts(s), factionAppointment:s.factionAppointment??null, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),
+    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, factions:factionContacts(s), factionAppointment:s.factionAppointment??null, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s), deliverySource:s.deliverySource,
     finalStage: s.finalStage, finalComplete: s.finalComplete, professionMilestones: s.professionMilestones, professions: PROFESSIONS.filter(p => p.implemented).map(p => professionVictory(s, p.id)), victory: s.victory, endless: s.endless, challenge: s.challenge, messages: s.messages.slice(-5) };
 }

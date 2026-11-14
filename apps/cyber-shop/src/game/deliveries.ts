@@ -5,6 +5,7 @@ import type { DeliveryDefinition, DeliveryJob, GameState, ItemInstance } from '.
 
 export const DELIVERY_HOURS=.5;
 export const DELIVERY_LIMIT=2;
+export const DELIVERY_SOURCE_PREMIUM=1.25;
 export const deliveryDefinition=(job:DeliveryJob)=>DELIVERIES.find(d=>d.id===job.templateId)!;
 export function newDeliveryDay(s:GameState,previous:DeliveryJob[]=[]):DeliveryJob[]{
  previous=previous.map(j=>j.status==='active'&&j.deadline<s.day?{...j,status:'expired',closedDay:j.deadline}:j);
@@ -44,6 +45,12 @@ export function deliveryItemCheck(s:GameState,d:DeliveryDefinition,item:ItemInst
  if(item.reserved)return no('已留货，请先解除留货');
  if(item.location!=='stock'||s.orders.some(o=>!o.delivered&&o.itemId===item.id))return no(item.location==='display'?'请先撤展':'请先将物品收回货架');
  if(!itemAccessible(s,item))return no('箱包被压住，先移走上层箱包');
+ return deliveryQualityCheck(s,d,item);
+}
+/** Shared by owned-stock acceptance and inspected supplier previews; no ownership is implied. */
+export function deliveryQualityCheck(s:GameState,d:DeliveryDefinition,item:ItemInstance):DeliveryCheck{
+ const no=(reason:string,inspect?:DeliveryCheck['inspect']):DeliveryCheck=>({ready:false,reason,inspect});
+ if(!d.itemIds.includes(item.definitionId))return no('型号不在这份订货单内');
  if(ITEMS.find(i=>i.id===item.definitionId)!.regulated&&!s.licenses.includes('regulated-trade'))return no('尚未取得交易许可');
  if(!item.known.some(k=>['basic','diagnosed'].includes(k)))return no('先检查品相与基础功能','basic');
  if(item.condition<d.condition)return no(`品相 ${item.condition}%，未达 ${d.condition}%`);
@@ -59,4 +66,23 @@ export function deliveryItemCheck(s:GameState,d:DeliveryDefinition,item:ItemInst
  if(d.authorized&&!item.provenance.includes('合法授权'))return no('尚无可核对的合法授权');
  if(d.originality&&item.originality<d.originality)return no(`原貌 ${item.originality}%，未达 ${d.originality}%`);
  return {ready:true,reason:'符合交货要求'};
+}
+
+export const activeDeliveries=(s:GameState)=>deliveryJobs(s).filter(j=>j.status==='active'&&j.deadline>=s.day);
+export const deliveryReadyCount=(s:GameState,job:DeliveryJob)=>s.items.filter(i=>deliveryItemCheck(s,deliveryDefinition(job),i).ready).length;
+export function deliverySourcePlan(s:GameState,job:DeliveryJob){
+ const request=deliveryDefinition(job),count=Math.max(0,request.quantity-deliveryReadyCount(s,job));
+ const reason=job.status!=='active'?'先接下订货':job.deadline<=s.day?'来不及在交期前到货':!count?'货架已有足量合格货物':request.itemIds.every(id=>ITEMS.find(d=>d.id===id)!.regulated)&&!s.licenses.includes('regulated-trade')?'先取得交易许可':'';
+ return {ok:!reason,reason,count};
+}
+/** Only active, accepted requests and current visible goods are used as purchasing clues. */
+export function itemDeliveryHints(s:GameState,item:ItemInstance){
+ const own=s.items.some(i=>i.id===item.id&&i.owner==='player');
+ const visitor=s.visitors[s.visitorIndex];
+ const incoming=!own&&s.visitorArrived!==false&&visitor?.kind==='seller'&&!visitor.resolved&&(visitor.goods??(visitor.item?[visitor.item]:[])).some(i=>i.id===item.id);
+ if(!own&&!incoming)return [];
+ return activeDeliveries(s).filter(job=>deliveryDefinition(job).itemIds.includes(item.definitionId)).map(job=>({
+  job,request:deliveryDefinition(job),incoming,readyCount:deliveryReadyCount(s,job),
+  check:incoming?deliveryQualityCheck(s,deliveryDefinition(job),item):deliveryItemCheck(s,deliveryDefinition(job),item),
+ }));
 }

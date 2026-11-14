@@ -144,6 +144,11 @@ export function validateState(value: unknown): asserts value is GameState {
       }else check(job.goods===undefined,'未完成订货含交货清单。');
     }
   }
+  if(s.deliverySource!==undefined){
+    check(object(s.deliverySource)&&typeof s.deliverySource.jobId==='string'&&integer(s.deliverySource.count)&&s.deliverySource.count>=1,'订货询货记录无效。');
+    const job=s.deliveries?.find(j=>j.id===s.deliverySource!.jobId),request=DELIVERIES.find(d=>d.id===job?.templateId);
+    check(job?.status==='active'&&job.deadline>s.day&&request&&s.deliverySource.count<=request.quantity,'订货询货超出交期或数量。');
+  }
   check(Array.isArray(s.ledger) && s.ledger.every(e => object(e) && integer(e.id) && integer(e.day) && typeof e.kind === 'string' && Number.isFinite(e.amount) && typeof e.note === 'string'), '账本无效。');
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');
   if(s.visitorArrived !== undefined) check(typeof s.visitorArrived === 'boolean','叫号状态无效。');
