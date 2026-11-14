@@ -2,6 +2,7 @@ import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUE
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
 import { MAX_CONTAINER_DEPTH, LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
 import { STORAGE_STYLES } from '../content/storage';
+import { validRotation } from '../game/warehouse';
 import { validModifiers, dailyHours } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
 import type { GameState, ItemInstance } from '../game/types';
@@ -60,8 +61,8 @@ export function validateState(value: unknown): asserts value is GameState {
   const validateItem = (i: ItemInstance) => {
     check(object(i) && typeof i.id === 'string' && ITEMS.some(d => d.id === i.definitionId), '物品模板无效。');
     check(['player', 'customer'].includes(i.owner) && ['stock', 'display', 'workshop', 'counter'].includes(i.location), '物品归属或位置无效。');
-    if (i.grid !== undefined) check(object(i.grid) && integer(i.grid.x) && integer(i.grid.y) && typeof i.grid.rotated === 'boolean', '仓库坐标无效。');
-    if (i.counterGrid !== undefined) check(object(i.counterGrid) && integer(i.counterGrid.x) && integer(i.counterGrid.y) && typeof i.counterGrid.rotated === 'boolean', '谈判台坐标无效。');
+    if (i.grid !== undefined) check(object(i.grid) && integer(i.grid.x) && integer(i.grid.y) && validRotation(i.grid.rotated), '仓库坐标无效。');
+    if (i.counterGrid !== undefined) check(object(i.counterGrid) && integer(i.counterGrid.x) && integer(i.counterGrid.y) && validRotation(i.counterGrid.rotated), '谈判台坐标无效。');
     check(i.owner !== 'customer' || i.location === 'workshop', '客户物品不能属于货架或展示柜。');
     check(['condition', 'integrity', 'capacity', 'purity', 'originality'].every(k => number((i as unknown as Record<string, unknown>)[k]) && Number((i as unknown as Record<string, unknown>)[k]) <= 100), '物品属性超出范围。');
     check(typeof i.authentic === 'boolean' && typeof i.provenance === 'string' && typeof i.compatibility === 'string', '物品来源记录无效。');
@@ -150,7 +151,7 @@ export function validateState(value: unknown): asserts value is GameState {
       check(object(c)&&typeof c.id==='string'&&/^container-\d+$/.test(c.id)&&STORAGE_STYLES.some(d=>d.id===c.styleId),'箱包款式或标识无效。');
       check(c.owner==='player'&&['stock','counter'].includes(c.location)&&integer(c.cost)&&integer(c.acquiredDay)&&c.acquiredDay<=s.day,'箱包归属或成本无效。');
       check(validContainerLabel(c.label)&&LABEL_COLORS.includes(c.color),'箱包标签无效。');
-      for(const at of [c.grid,c.counterGrid])if(at!==undefined)check(object(at)&&integer(at.x)&&integer(at.y)&&typeof at.rotated==='boolean','箱包坐标无效。');
+      for(const at of [c.grid,c.counterGrid])if(at!==undefined)check(object(at)&&integer(at.x)&&integer(at.y)&&validRotation(at.rotated),'箱包坐标无效。');
       check(c.location!=='counter'||(c.containerId===undefined&&!!c.counterGrid),'台面箱包位置无效。');
       check(c.location!=='stock'||!!c.grid,'仓库箱包缺少坐标。');
     }

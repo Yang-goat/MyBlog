@@ -1,5 +1,5 @@
 import type { GameState, ItemInstance, StorageContainer } from './types';
-import { warehouseLayout, counterLayout, footprint, fits, occupy, type Placement } from './warehouse';
+import { warehouseLayout, counterLayout, occupiedCells, orientations, fits, occupy, type Placement } from './warehouse';
 import { storageStyle } from '../content/storage';
 export type StoredObject = ItemInstance | StorageContainer;
 export const LABELER_PRICE = 90;
@@ -28,7 +28,7 @@ export const canNest=(s:GameState,object:StoredObject,target?:string)=>nestingPr
 export function roomLayout(s:GameState,capacity:number,target?:string){const c=s.containers?.find(c=>c.id===target);return c?containerLayout(s,c):rootLayout(s,capacity);}
 export function roomShape(s:GameState,capacity:number,target?:string){const c=s.containers?.find(c=>c.id===target);if(c){const d=storageStyle(c.styleId);return{columns:d.columns,cells:d.columns*d.rows};}return{columns:24,cells:capacity*4};}
 export function objectFits(s:GameState,capacity:number,object:StoredObject,at:Placement,target?:string){if(target&&!s.containers?.some(c=>c.id===target))return false;if(!canNest(s,object,target))return false;const layout=roomLayout(s,capacity,target),shape=roomShape(s,capacity,target),occupied=new Set<number>();for(const other of ownedObjects(s))if(other.id!==object.id&&layout.positions[other.id])occupy(other,layout.positions[other.id]!,occupied,shape.columns);return fits(object,at,occupied,shape.cells/4,shape.columns);}
-export function firstObjectPlace(s:GameState,capacity:number,object:StoredObject,target?:string){const shape=roomShape(s,capacity,target);for(let n=0;n<shape.cells;n++)for(const rotated of [false,true]){const at={x:n%shape.columns,y:Math.floor(n/shape.columns),rotated};if(objectFits(s,capacity,object,at,target))return at;}return undefined;}
+export function firstObjectPlace(s:GameState,capacity:number,object:StoredObject,target?:string){const shape=roomShape(s,capacity,target);for(let n=0;n<shape.cells;n++)for(const rotated of orientations(object)){const at={x:n%shape.columns,y:Math.floor(n/shape.columns),rotated};if(objectFits(s,capacity,object,at,target))return at;}return undefined;}
 export function putObject(object:StoredObject,at:Placement,target?:string){object.location='stock';object.grid={...at};delete object.counterGrid;if(target)object.containerId=target;else delete object.containerId;}
 /** Dry run includes goods already on the counter. Purchases still land on the counter. */
 export function canReceive(s:GameState,capacity:number,incoming:StoredObject[]){const trial=structuredClone(s);for(const o of incoming){if(isContainer(o)){trial.containers??=[];trial.containers.push(structuredClone(o));}else trial.items.push(structuredClone(o));}
@@ -36,4 +36,4 @@ export function canReceive(s:GameState,capacity:number,incoming:StoredObject[]){
  for(const o of waiting){let placed=false;for(const target of [undefined,...(trial.containers??[]).map(c=>c.id)]){const at=firstObjectPlace(trial,capacity,o,target);if(at){putObject(o,at,target);placed=true;break;}}if(!placed)return false;}
  return true;
 }
-export const usedCells=(s:GameState,target?:string)=>ownedObjects(s).filter(o=>o.location==='stock'&&o.containerId===target).reduce((n,o)=>{const f=footprint(o);return n+f.width*f.height;},0);
+export const usedCells=(s:GameState,target?:string)=>ownedObjects(s).filter(o=>o.location==='stock'&&o.containerId===target).reduce((n,o)=>n+occupiedCells(o).length,0);

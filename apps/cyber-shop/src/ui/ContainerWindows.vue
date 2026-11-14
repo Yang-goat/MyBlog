@@ -7,18 +7,19 @@ import {storageStyle} from '../content/storage';
 import {ITEMS} from '../content';
 import {rootCapacity} from '../game/engine';
 import {footprint} from '../game/warehouse';
-import type {StorageContainer} from '../game/types';
+import type {StorageContainer,Rotation} from '../game/types';
 import InventoryArt from '../scenes/InventoryArt.vue';
+import {inventoryPlacement,previewPlacement} from './inventory-shape';
 import {inventoryCell} from './inventory-metrics';
 import StorageArt from '../scenes/StorageArt.vue';
-const props=defineProps<{held:string;rotated:boolean;hover?:{x:number;y:number;containerId?:string}}>();
+const props=defineProps<{held:string;rotated:Rotation;hover?:{x:number;y:number;containerId?:string}}>();
 const emit=defineEmits<{start:[event:PointerEvent,id:string];place:[zone:string,x:number,y:number,target:string];open:[id:string,event:MouseEvent];rotate:[];cancel:[];auto:[target?:string]}>();
 const resizeTick=ref(0);
 const windows=computed(()=>{resizeTick.value;return containerWindows.value.flatMap(w=>{const box=state.value.containers?.find(c=>c.id===w.id);return box?[{...w,box,size:windowSize(w.id),layout:containerLayout(state.value,box),contents:containerItems(state.value,w.id)}]:[];});});
 const heldObject=computed(()=>ownedObjects(state.value).find(o=>o.id===props.held));
 const name=(o:StoredObject)=>isContainer(o)?o.label:ITEMS.find(d=>d.id===o.definitionId)!.name;
-const atStyle=(o:StoredObject,at:{x:number;y:number;rotated:boolean})=>{const f=footprint(o,at.rotated);return{gridColumn:`${at.x+1} / span ${f.width}`,gridRow:`${at.y+1} / span ${f.height}`};};
-function preview(id:string){const o=heldObject.value,h=props.hover;if(!o||h?.containerId!==id)return null;const size=windowSize(id),f=footprint(o,props.rotated);return{valid:objectFits(state.value,rootCapacity(state.value),o,{x:h.x,y:h.y,rotated:props.rotated},id),style:{gridColumn:`${h.x+1} / span ${Math.min(f.width,size.columns-h.x)}`,gridRow:`${h.y+1} / span ${Math.min(f.height,size.rows-h.y)}`}};}
+const atStyle=inventoryPlacement;
+function preview(id:string){const o=heldObject.value,h=props.hover;if(!o||h?.containerId!==id)return null;const size=windowSize(id),f=footprint(o,props.rotated);return{valid:objectFits(state.value,rootCapacity(state.value),o,{x:h.x,y:h.y,rotated:props.rotated},id),style:previewPlacement(o,{x:h.x,y:h.y,rotated:props.rotated})};}
 const labelId=ref(''),label=ref(''),color=ref<StorageContainer['color']>('ivory');
 function labelBox(box:StorageContainer){if(!state.value.labeler){dispatch({type:'buyLabeler'});return;}labelId.value=labelId.value===box.id?'':box.id;label.value=box.label;color.value=box.color;}
 function print(){if(dispatch({type:'labelContainer',containerId:labelId.value,label:label.value.trim(),color:color.value}))labelId.value='';}

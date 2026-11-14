@@ -9,3 +9,6 @@
 .shop-room .container-grid{border:0;outline:1px solid #527b82}.shop-room .warehouse-section>header>span{margin-right:auto}.shop-room .warehouse-section>header button{font-size:12px}.shop-room .warehouse-section>header{padding-bottom:4px}
 .shop-room .drag-ghost{padding:0!important;background:#335a67aa!important;border:1px solid #9cddd8!important;transform:translate(-50%,-50%)!important;opacity:.92;pointer-events:none}
 @media(max-height:550px){.shop-room .warehouse-section>header button{font-size:10px}}
+.shop-room .warehouse-item:has(.shape-outline),.shop-room .surface-grid .surface-item:has(.shape-outline),.shop-room .container-item:has(.shape-outline){border:0!important;background:none!important;box-shadow:none!important}
+.shop-room button.selected .shape-outline polygon,.shop-room button[aria-pressed=true] .shape-outline polygon{fill:#436f7380;stroke:#a3f1df;stroke-width:4px}
+.shop-room .warehouse-grid,.shop-room .surface-grid,.shop-room .container-grid{overflow:hidden}

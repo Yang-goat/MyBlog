@@ -3,8 +3,8 @@ import { computed, defineAsyncComponent, onMounted, onUnmounted, ref, watch } fr
 import { ITEMS, CHARACTERS } from '../content';
 import { capacity, rootCapacity, displayCapacity, stockUsage, attraction } from '../game/engine';
 import { dailyHours } from '../game/modifiers';
-import { footprint, warehouseLayout, GRID_COLUMNS, fits, occupy, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
-import type { ItemInstance } from '../game/types';
+import { footprint, rotateObject, warehouseLayout, GRID_COLUMNS, fits, occupy, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
+import type { ItemInstance, Rotation } from '../game/types';
 import { rootLayout, shopCounterLayout, ownedObjects, firstObjectPlace, isContainer, nestingProblem, type StoredObject } from '../game/containers';
 import { storageStyle } from '../content/storage';
 import { visitorGreeting } from '../game/narrative';
@@ -25,6 +25,7 @@ import './living-room.css';
 import './neon-room.css';
 import './inventory-consistency.css';
 import InventoryArt from '../scenes/InventoryArt.vue';
+import {inventoryPlacement,previewPlacement,shapeClip} from './inventory-shape';
 import {inventoryCell,measureInventory} from './inventory-metrics';
 const ShopCanvas = defineAsyncComponent(() => import('../scenes/ShopCanvas.vue'));
 
@@ -50,9 +51,10 @@ const incomingAt = ref<Record<string,Placement>>({});
 const counter = computed(() => shopCounterLayout(state.value));
 const incomingGoods=computed(()=>guestGoods.value.filter(i=>!tradeIds.value.includes(i.id)));
 const incomingLayout=computed(()=>warehouseLayout(incomingGoods.value.map(i=>({...i,owner:'player',location:'stock',grid:incomingAt.value[i.id]})),GRID_COLUMNS*3/4));
-const surfaceStyle = (item: ItemInstance | import('../game/types').StorageContainer, at?: Placement) => at ? { gridColumn: `${at.x + 1} / span ${footprint(item, at.rotated).width}`, gridRow: `${at.y + 1} / span ${footprint(item, at.rotated).height}` } : {};
+const surfaceStyle = inventoryPlacement;
 const held = ref('');
-const rotated = ref(false);
+const rotated = ref<Rotation>(false);
+function rotateHeld(direction=1){if(currentItem.value)rotated.value=rotateObject(currentItem.value,rotated.value,direction);}
 const hoverCell = ref<{ x: number; y: number; zone: 'warehouse' | 'trade' | 'container'; containerId?:string }>();
 const dragging = ref(false);
 const pointer = ref({ x: 0, y: 0 });
@@ -143,9 +145,7 @@ const validPreview = computed(() => {
 });
 const previewStyle = computed(() => {
   if (!hoverCell.value || !currentItem.value) return {};
-  const { x, y, zone } = hoverCell.value;
-  const { width, height } = footprint(currentItem.value, rotated.value);
-  return { gridColumn: `${x + 1} / span ${Math.min(width, (zone === 'trade' ? SURFACE_COLUMNS : GRID_COLUMNS) - x)}`, gridRow: `${y + 1} / span ${Math.min(height, (zone === 'trade' ? SURFACE_ROWS : gridRows.value) - y)}` };
+  return previewPlacement(currentItem.value,{x:hoverCell.value.x,y:hoverCell.value.y,rotated:rotated.value});
 });
 function place(zone: string, x?: number, y?: number, target?:string, rotation=rotated.value) {
   const object=objectById(held.value);if(!object)return;
@@ -203,7 +203,7 @@ function endPointer(e: PointerEvent) {
 function cancelPointer() { clearLongPress(); down = undefined; dragging.value = false; hoverCell.value = undefined; }
 function key(e: KeyboardEvent) {
   if ((e.target as HTMLElement)?.matches('input,select,textarea') || modal.value || tutorialStep.value<9) return;
-  if (['q', 'e'].includes(e.key.toLowerCase()) && held.value) { e.preventDefault(); rotated.value = !rotated.value; }
+  if (['q', 'e'].includes(e.key.toLowerCase()) && held.value) { e.preventDefault(); rotateHeld(e.key.toLowerCase()==='q'?-1:1); }
   if (e.key === 'Escape') {if(!held.value)closeTopContainer();held.value = '';touchInfo.value='';pinnedInfo.value='';itemMenu.value=undefined;}
   if (e.code === 'Space' && !(e.target as HTMLElement)?.closest('.container-window') && talking.value && speechStep.value < 2) { e.preventDefault(); speak(); }
 }
@@ -253,7 +253,7 @@ function runItemAction(action:string){
  else if(action==='repair')place('workshop');
  else if(action==='rotate'){
   const at=tradePlaces.value[id]??counter.value.positions[id]??layout.value.positions[id]??incomingLayout.value.positions[id];if(!at)return;
-  rotated.value=!at.rotated;
+  rotated.value=rotateObject(item,at.rotated);
   if(tradeIds.value.includes(id)){stageTrade(id,{...at,rotated:rotated.value});held.value='';}
   else place(item.location==='counter'?'trade':state.value.items.some(i=>i.id===id)?'warehouse':'incoming',at.x,at.y);
  }
@@ -284,9 +284,9 @@ onUnmounted(() => { inventoryObserver?.disconnect();clearLongPress();tooltipObse
 
     <div class="negotiation-table" data-zone="trade"><header><button v-if="waiting.length" @click="waiting.forEach(autoStore)">全部入库 ↓</button><button v-if="staged && talking" @click="modal = 'trade'">打开谈判 ↗</button></header><div class="surface-grid table-objects" aria-label="谈判台格子区"><button v-for="n in 72" :key="n" class="surface-cell" :style="{gridColumn:(n-1)%24+1,gridRow:Math.floor((n-1)/24)+1}" :aria-label="`谈判空格 ${n}`" @click="held && place('trade',(n-1)%24,Math.floor((n-1)/24))"></button><button v-for="id in talking ? tradeIds : []" :key="id" class="physical-item surface-item staged-item" :data-item="id" :style="itemById(id) ? surfaceStyle(itemById(id)!,tradePlaces[id]) : {}" @pointerdown="startPointer($event,id)" @dblclick="modal = 'trade'"><InventoryArt v-if="itemById(id)" :object="itemById(id)!" :rotated="tradePlaces[id]?.rotated"/></button><button v-for="item in waitingItems.filter(i=>!tradeIds.includes(i.id))" :key="item.id" class="physical-item purchased-item surface-item" :style="surfaceStyle(item,counter.positions[item.id])" :data-item="item.id" @pointerdown="startPointer($event,item.id)" @keydown.enter="pick(item.id)" @dblclick="autoStore(item)"><InventoryArt :object="item" :rotated="counter.positions[item.id]?.rotated"/></button><button v-for="box in (state.containers??[]).filter(c=>c.location==='counter')" :key="box.id" class="surface-item purchased storage-on-counter" :data-counter-container="box.id" :data-container-object="box.id" :aria-label="`收纳 ${box.label}`" :style="surfaceStyle(box,counter.positions[box.id])" @pointerdown="startPointer($event,box.id)" @dblclick="openBox(box.id,$event)" @keydown.enter="openBox(box.id)"><InventoryArt :object="box" :rotated="counter.positions[box.id]?.rotated"/></button><div v-if="held && hoverCell?.zone === 'trade' && currentItem && !modal" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div></div></div>
 
-    <section class="warehouse-section"><header><span>{{ stockUsage(state) * 4 }} / {{ capacity(state) * 4 }} 格</span><button v-if="held" aria-label="旋转物品" @click="rotated = !rotated">↻</button><button @click="dispatch({ type: 'sort' })">整理</button><button v-if="held && currentItem && isContainer(currentItem)" @click="openBox(currentItem.id,$event)">打开箱包</button><button @click="modal = 'inventory'">详细账目 ↗</button></header><div class="warehouse-body"><div ref="warehouseViewport" class="warehouse-scroll"><div class="warehouse-grid" data-zone="warehouse" :style="{ '--rows': gridRows }" role="group" aria-label="可整理的格子仓库"><button v-for="n in gridRows * GRID_COLUMNS" :key="n" class="warehouse-cell" :style="{ gridColumn: (n - 1) % GRID_COLUMNS + 1, gridRow: Math.floor((n - 1) / GRID_COLUMNS) + 1 }" :disabled="n > rootCapacity(state) * 4" :aria-label="`仓库空格 ${n}`" @click="!dragging && held && place('warehouse', (n - 1) % GRID_COLUMNS, Math.floor((n - 1) / GRID_COLUMNS))"></button><button v-for="item in stock.filter(i => !(talking && tradeIds.includes(i.id)))" :key="item.id" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" :class="['warehouse-item', { selected: held === item.id }]" :style="{ gridColumn: `${layout.positions[item.id]!.x + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).width}`, gridRow: `${layout.positions[item.id]!.y + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).height}` }" @pointerdown="startPointer($event, item.id)" @keydown.enter="pick(item.id)" @dblclick="selectedItem = item.id; modal = 'inventory'"><InventoryArt :object="item" :rotated="layout.positions[item.id]!.rotated"/><span>{{ definition(item.definitionId)?.name }}</span><small v-if="item.expiresDay !== null">{{ item.expiresDay < state.day ? '已过期' : `第${item.expiresDay}日到期` }}</small></button><button v-for="box in (state.containers??[]).filter(c=>layout.positions[c.id])" :key="box.id" class="warehouse-item" :data-world-container="box.id" :data-container-object="box.id" :class="{selected:held===box.id}" :aria-label="`打开 ${box.label}`" :style="surfaceStyle(box,layout.positions[box.id])" @pointerdown="startPointer($event,box.id)" @dblclick="openBox(box.id,$event)" @keydown.enter="openBox(box.id)"><InventoryArt :object="box" :rotated="layout.positions[box.id]!.rotated"/><span>{{box.label}}</span></button><div v-if="held && hoverCell?.zone === 'warehouse' && currentItem && !modal" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div></div></div><aside class="warehouse-tools" aria-label="仓库用具"><HandbookProp/><button class="storage-dock" :aria-label="state.labeler?'标签机使用说明':'购入标签机 · ₡90'" @click="state.labeler?notify('双击打开箱包，点击标题旁的标签按钮命名。'):dispatch({type:'buyLabeler'})"><StorageArt kind="labeler"/><span>{{state.labeler?'标签机':'标签机 ₡90'}}</span></button></aside></div></section>
+    <section class="warehouse-section"><header><span>{{ stockUsage(state) * 4 }} / {{ capacity(state) * 4 }} 格</span><button v-if="held" aria-label="旋转物品" @click="rotateHeld()">↻</button><button @click="dispatch({ type: 'sort' })">整理</button><button v-if="held && currentItem && isContainer(currentItem)" @click="openBox(currentItem.id,$event)">打开箱包</button><button @click="modal = 'inventory'">详细账目 ↗</button></header><div class="warehouse-body"><div ref="warehouseViewport" class="warehouse-scroll"><div class="warehouse-grid" data-zone="warehouse" :style="{ '--rows': gridRows }" role="group" aria-label="可整理的格子仓库"><button v-for="n in gridRows * GRID_COLUMNS" :key="n" class="warehouse-cell" :style="{ gridColumn: (n - 1) % GRID_COLUMNS + 1, gridRow: Math.floor((n - 1) / GRID_COLUMNS) + 1 }" :disabled="n > rootCapacity(state) * 4" :aria-label="`仓库空格 ${n}`" @click="!dragging && held && place('warehouse', (n - 1) % GRID_COLUMNS, Math.floor((n - 1) / GRID_COLUMNS))"></button><button v-for="item in stock.filter(i => !(talking && tradeIds.includes(i.id)))" :key="item.id" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" :class="['warehouse-item', { selected: held === item.id }]" :style="surfaceStyle(item,layout.positions[item.id])" @pointerdown="startPointer($event, item.id)" @keydown.enter="pick(item.id)" @dblclick="selectedItem = item.id; modal = 'inventory'"><InventoryArt :object="item" :rotated="layout.positions[item.id]!.rotated"/><span>{{ definition(item.definitionId)?.name }}</span><small v-if="item.expiresDay !== null">{{ item.expiresDay < state.day ? '已过期' : `第${item.expiresDay}日到期` }}</small></button><button v-for="box in (state.containers??[]).filter(c=>layout.positions[c.id])" :key="box.id" class="warehouse-item" :data-world-container="box.id" :data-container-object="box.id" :class="{selected:held===box.id}" :aria-label="`打开 ${box.label}`" :style="surfaceStyle(box,layout.positions[box.id])" @pointerdown="startPointer($event,box.id)" @dblclick="openBox(box.id,$event)" @keydown.enter="openBox(box.id)"><InventoryArt :object="box" :rotated="layout.positions[box.id]!.rotated"/><span>{{box.label}}</span></button><div v-if="held && hoverCell?.zone === 'warehouse' && currentItem && !modal" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div></div></div><aside class="warehouse-tools" aria-label="仓库用具"><HandbookProp/><button class="storage-dock" :aria-label="state.labeler?'标签机使用说明':'购入标签机 · ₡90'" @click="state.labeler?notify('双击打开箱包，点击标题旁的标签按钮命名。'):dispatch({type:'buyLabeler'})"><StorageArt kind="labeler"/><span>{{state.labeler?'标签机':'标签机 ₡90'}}</span></button></aside></div></section>
 
-    <ContainerWindows :held="held" :rotated="rotated" :hover="hoverCell" @start="startPointer" @place="place" @open="openBox" @rotate="rotated=!rotated" @cancel="held=''" @auto="autoInto"/>
+    <ContainerWindows :held="held" :rotated="rotated" :hover="hoverCell" @start="startPointer" @place="place" @open="openBox" @rotate="rotateHeld()" @cancel="held=''" @auto="autoInto"/>
     <aside class="room-right"><div class="queue-terminal"><small>柜台呼叫器</small><strong>{{ state.visitors.filter(v => !v.resolved).length }} <span>位待接待</span></strong><button v-if="talking" @click="dispatch({ type: 'reject', visitorId: visitor!.id })">结束当前接待</button><span v-else-if="canCall" class="waiting-call"></span><button v-else-if="state.phase === 'closed'" class="primary" @click="dispatch({ type: 'openDay' })">迎接新的一天 →</button><span v-else>今日来客已接待完毕</span></div><button class="workshop-hotspot" data-zone="workshop" @click="held ? place('workshop') : modal = 'orders'">维修工作台 <b>{{ orders.length }} 件待办 ↗</b></button><button v-for="order in orders.slice(0, 3)" :key="order.id" class="room-order" @click="showOrder(order.id)">{{ definition(state.items.find(i => i.id === order.itemId)?.definitionId ?? '')?.name }}<small>{{ order.verified ? '待交付' : order.diagnosed ? '待修复 / 复检' : '待检测' }}</small></button><button class="closing-switch" v-if="state.phase === 'open'" @click="modal = 'close-day'">关店 / 日结 →</button></aside>
     <MarketNote v-if="!orders.length" />
     <button class="call-green-button" :class="{'call-ready':canCall}" :disabled="!canCall" aria-label="绿色叫号按钮" @click="dispatch({type:'callVisitor'})"><span class="sr-only">叫号，接待下一位顾客</span></button>
@@ -298,7 +298,7 @@ onUnmounted(() => { inventoryObserver?.disconnect();clearLongPress();tooltipObse
       <button @click="modal = 'journal'">街区手记</button>
       <button @click="modal = 'settings'">设置与存档</button>
     </nav>
-    <div v-if="dragging && currentItem" class="drag-ghost" :style="{ left: pointer.x + 'px', top: pointer.y + 'px', width:footprint(currentItem,rotated).width*inventoryCell+'px',height:footprint(currentItem,rotated).height*inventoryCell+'px' }"><InventoryArt :object="currentItem" :rotated="rotated"/></div>
+    <div v-if="dragging && currentItem" class="drag-ghost" :style="{ left: pointer.x + 'px', top: pointer.y + 'px', clipPath:shapeClip(currentItem,rotated),width:footprint(currentItem,rotated).width*inventoryCell+'px',height:footprint(currentItem,rotated).height*inventoryCell+'px' }"><InventoryArt :object="currentItem" :rotated="rotated"/></div>
     <Teleport to="body">
       <div v-if="inspectedItem && !touchInfo && !modal && !dragging && !itemMenu" ref="tooltipElement" class="pointer-item-info" role="tooltip" :style="tooltipStyle"><ItemInfoCard :item="inspectedItem"/></div>
       <div v-if="itemMenu && menuItem && !modal" class="item-context-menu" role="menu" aria-label="物品操作" :style="menuStyle" @contextmenu.prevent><small>{{definition(menuItem.definitionId)?.name}}</small><button v-for="action in menuActions" :key="action.id" role="menuitem" :disabled="action.disabled" @click="runItemAction(action.id)">{{action.label}}</button><button role="menuitem" class="menu-dismiss" @click="itemMenu = undefined">取消</button></div>

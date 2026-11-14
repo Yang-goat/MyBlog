@@ -19,7 +19,7 @@ const buyer=computed(()=>guest.value?.kind==='buyer'&&!guest.value.resolved&&gue
 const resale=computed(()=>buyer.value?`₡${tradeQuote(state.value,guest.value!,props.item)}`:range(value.value.map(n=>Math.round(n*(BALANCE.buyerFactor+Math.min(.18,attraction(state.value)/400))))));
 const attributes=computed(()=>{
  const i=props.item,d=definition.value;
- const rows=[['占用格子',`${d.footprint.width} × ${d.footprint.height}`],['外观品相',basic.value?`${i.condition}%`:'待检查']];
+ const rows=[['占用格子',d.shape?`${d.size*4} 格 · 非矩形（${d.footprint.width}×${d.footprint.height}）`:`${d.footprint.width} × ${d.footprint.height}`],['外观品相',basic.value?`${i.condition}%`:'待检查']];
  if(d.certificate)rows.push(['设备状态',scanned.value?(i.faults.length?`${i.faults.length} 项故障`:'功能正常'):'待检测']);
  if(d.category==='energy')rows.push(['有效容量',scanned.value?`${i.capacity}%`:'待扫描'],['材料纯度',scanned.value?`${i.purity}%`:'待扫描']);
  if(d.category==='data')rows.push(['数据完整度',scanned.value?`${i.integrity}%`:'待扫描']);

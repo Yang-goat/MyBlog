@@ -3,7 +3,7 @@ import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES,
 
 describe('content registry integrity', () => {
   it('contains the agreed playable content counts and unique stable identifiers', () => {
-    for (const [list, count] of [[ITEMS, 36], [CATEGORIES, 6], [FAULTS, 12], [CHARACTERS, 10], [SKILLS, 24], [EQUIPMENT, 16], [CERTIFICATES, 4], [EVENTS, 16], [QUESTS, 4], [THEMES, 3], [PROFESSIONS, 6]] as const) {
+    for (const [list, count] of [[ITEMS, 39], [CATEGORIES, 6], [FAULTS, 12], [CHARACTERS, 10], [SKILLS, 24], [EQUIPMENT, 16], [CERTIFICATES, 4], [EVENTS, 16], [QUESTS, 4], [THEMES, 3], [PROFESSIONS, 6]] as const) {
       expect(list).toHaveLength(count); expect(new Set(list.map(a => a.id)).size).toBe(count);
       for (const entry of list) expect(entry.id).toMatch(/^[a-z][a-z0-9-]+$/);
     }
@@ -11,7 +11,7 @@ describe('content registry integrity', () => {
     expect(PROFESSIONS.filter(p => p.implemented).map(p => p.id)).toEqual(['restorer']);
   });
   it('keeps category-specific capabilities and valid referenced content', () => {
-    for (const category of CATEGORIES) { expect(ITEMS.filter(d => d.category === category.id)).toHaveLength(6); expect(ITEMS.some(d => d.category === category.id && d.chapter === 1)).toBe(true); }
+    for (const category of CATEGORIES) { expect(ITEMS.filter(d => d.category === category.id)).toHaveLength(category.id==='electronics'?8:category.id==='energy'?7:6); expect(ITEMS.some(d => d.category === category.id && d.chapter === 1)).toBe(true); }
     for (const d of ITEMS) {
       expect(d.image).toBe(`${d.id}.webp`); expect(d.price).toBeGreaterThan(0); expect(d.size).toBeGreaterThan(0);
       expect(d.description.length).toBeGreaterThan(5); expect(d.actions.length).toBeGreaterThan(0); expect(d.states.length).toBeGreaterThan(0);

@@ -1,0 +1,322 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== true\n",
+  "state": {
+    "coordinates": "店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+    "day": 1,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 747,
+    "hours": 12,
+    "maxHours": 12,
+    "debt": 0,
+    "grace": 0,
+    "xp": 16,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "stockUsage": 5.25,
+    "capacity": 42,
+    "rootCapacity": 36,
+    "labeler": false,
+    "modifiers": [],
+    "containers": [
+      {
+        "id": "container-26",
+        "styleId": "courier-pack",
+        "owner": "player",
+        "location": "stock",
+        "cost": 300,
+        "acquiredDay": 1,
+        "label": "快递员背包",
+        "color": "ivory",
+        "grid": {
+          "x": 7,
+          "y": 0,
+          "rotated": false
+        },
+        "name": "快递员背包",
+        "layout": {
+          "positions": {
+            "item-6": {
+              "x": 0,
+              "y": 3,
+              "rotated": 1
+            }
+          },
+          "overflow": []
+        },
+        "columns": 4,
+        "rows": 6,
+        "path": [
+          "container-26"
+        ]
+      }
+    ],
+    "displayCapacity": 3,
+    "attraction": 0,
+    "items": [
+      {
+        "id": "item-1",
+        "definitionId": "purified-water",
+        "name": "净化饮水",
+        "category": "food",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "accessible": true,
+        "condition": 83,
+        "estimate": [
+          37,
+          85
+        ],
+        "cost": 28,
+        "expiresDay": 6
+      },
+      {
+        "id": "item-2",
+        "definitionId": "data-chip",
+        "name": "通用数据芯片",
+        "category": "data",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "accessible": true,
+        "condition": 59,
+        "estimate": [
+          64,
+          148
+        ],
+        "cost": 60
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "name": "机械计时器",
+        "category": "antique",
+        "owner": "player",
+        "location": "stock",
+        "known": [
+          "basic"
+        ],
+        "accessible": true,
+        "condition": 61,
+        "estimate": [
+          225,
+          525
+        ],
+        "cost": 208
+      },
+      {
+        "id": "item-6",
+        "definitionId": "angle-drill",
+        "name": "充电电钻",
+        "category": "electronics",
+        "owner": "player",
+        "location": "stock",
+        "known": [],
+        "containerId": "container-26",
+        "accessible": true,
+        "cost": 153
+      }
+    ],
+    "visitorArrived": true,
+    "warehouse": {
+      "positions": {
+        "item-1": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        },
+        "item-2": {
+          "x": 1,
+          "y": 0,
+          "rotated": false
+        },
+        "item-3": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        },
+        "container-26": {
+          "x": 7,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      "overflow": []
+    },
+    "tutorial": {
+      "step": 9,
+      "skipped": false
+    },
+    "conversations": {
+      "visitor-10": 2
+    },
+    "visitor": {
+      "id": "visitor-10",
+      "characterId": "qi-lan",
+      "kind": "seller",
+      "category": "electronics",
+      "quote": 145,
+      "rounds": 0,
+      "patience": 2,
+      "resolved": false,
+      "request": "带了一批民用与工业机电，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+      "greeting": "货路有很多条。你要什么，我可以找；但每条路都有自己的价。",
+      "goods": [
+        {
+          "id": "item-7",
+          "definitionId": "folding-worklight",
+          "name": "折叠检修灯",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "cost": 0,
+          "quote": 145
+        },
+        {
+          "id": "item-8",
+          "definitionId": "angle-drill",
+          "name": "充电电钻",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "cost": 0,
+          "quote": 120
+        },
+        {
+          "id": "item-9",
+          "definitionId": "angle-drill",
+          "name": "充电电钻",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "cost": 0,
+          "quote": 212
+        }
+      ],
+      "storageGoods": [
+        {
+          "id": "storage-offer-21",
+          "styleId": "courier-pouch",
+          "price": 120
+        }
+      ],
+      "lastTrade": {
+        "kind": "buy",
+        "amount": 300,
+        "cost": 300,
+        "goods": [
+          {
+            "definitionId": "courier-pack",
+            "itemId": "container-26",
+            "cost": 300
+          }
+        ]
+      },
+      "item": {
+        "id": "item-7",
+        "definitionId": "folding-worklight",
+        "name": "折叠检修灯",
+        "category": "electronics",
+        "owner": "player",
+        "location": "stock",
+        "known": [],
+        "accessible": true,
+        "cost": 0
+      }
+    },
+    "visitorIndex": 1,
+    "visitorCount": 7,
+    "orders": [],
+    "eventId": "rain-grid",
+    "eventResolved": false,
+    "questStages": {},
+    "reputation": 1,
+    "relations": {},
+    "records": {
+      "trades": 2,
+      "repairs": 0,
+      "revenue": 0,
+      "repairIncome": 0,
+      "days": 0,
+      "faults": {}
+    },
+    "repairHistory": [],
+    "deliveries": [
+      {
+        "id": "delivery-1-doorstep-water",
+        "templateId": "doorstep-water",
+        "postedDay": 1,
+        "deadline": 3,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-courier-call",
+        "templateId": "courier-call",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-backup-battery",
+        "templateId": "backup-battery",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      }
+    ],
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "professions": [
+      {
+        "professionId": "restorer",
+        "implemented": true,
+        "mastered": false,
+        "milestone": "relay-restored",
+        "completed": false,
+        "ready": false
+      }
+    ],
+    "victory": false,
+    "endless": false,
+    "challenge": null,
+    "messages": [
+      "买下快递员背包 · ₡300，先将箱包从谈判台收好。",
+      "充电电钻已归位。",
+      "箱包与里面的物品已一起移动。",
+      "充电电钻已归位。",
+      "充电电钻已归位。"
+    ]
+  },
+  "errors": [],
+  "missing": []
+}

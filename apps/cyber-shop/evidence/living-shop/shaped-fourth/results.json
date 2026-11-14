@@ -1,0 +1,504 @@
+{
+  "incomingAspects": [
+    {
+      "id": "angle-drill",
+      "native": 0.75,
+      "rendered": 0.7500785037191137
+    },
+    {
+      "id": "portable-terminal",
+      "native": 1.501466275659824,
+      "rendered": 1.5014224974719432
+    },
+    {
+      "id": "folding-worklight",
+      "native": 1.501466275659824,
+      "rendered": 1.5016267878663059
+    },
+    {
+      "id": "pocket-com",
+      "native": 0.912109375,
+      "rendered": 0.9121755788013882
+    },
+    {
+      "id": "purified-water",
+      "native": 0.666015625,
+      "rendered": 0.6659970485292868
+    },
+    {
+      "id": "data-chip",
+      "native": 1.501466275659824,
+      "rendered": 1.5011337868480725
+    },
+    {
+      "id": "mechanical-watch",
+      "native": 1.501466275659824,
+      "rendered": 1.501448899188876
+    }
+  ],
+  "turns": [
+    {
+      "rotation": 1,
+      "aspects": [
+        {
+          "id": "portable-terminal",
+          "native": 1.501466275659824,
+          "rendered": 1.5014224974719432
+        },
+        {
+          "id": "pocket-com",
+          "native": 0.912109375,
+          "rendered": 0.9121755788013882
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659970485292868
+        },
+        {
+          "id": "data-chip",
+          "native": 1.501466275659824,
+          "rendered": 1.5011337868480725
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501448899188876
+        },
+        {
+          "id": "angle-drill",
+          "native": 0.75,
+          "rendered": 0.7500785037191137
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5016267878663059
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "rotation": 2,
+      "aspects": [
+        {
+          "id": "portable-terminal",
+          "native": 1.501466275659824,
+          "rendered": 1.5014224974719432
+        },
+        {
+          "id": "pocket-com",
+          "native": 0.912109375,
+          "rendered": 0.9121755788013882
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659970485292868
+        },
+        {
+          "id": "data-chip",
+          "native": 1.501466275659824,
+          "rendered": 1.5011337868480725
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501448899188876
+        },
+        {
+          "id": "angle-drill",
+          "native": 0.75,
+          "rendered": 0.7500785037191137
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5016267878663059
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "rotation": 3,
+      "aspects": [
+        {
+          "id": "portable-terminal",
+          "native": 1.501466275659824,
+          "rendered": 1.5014224974719432
+        },
+        {
+          "id": "pocket-com",
+          "native": 0.912109375,
+          "rendered": 0.9121755788013882
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659970485292868
+        },
+        {
+          "id": "data-chip",
+          "native": 1.501466275659824,
+          "rendered": 1.5011337868480725
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501448899188876
+        },
+        {
+          "id": "angle-drill",
+          "native": 0.75,
+          "rendered": 0.7500785037191137
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5016267878663059
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "rotation": 0,
+      "aspects": [
+        {
+          "id": "portable-terminal",
+          "native": 1.501466275659824,
+          "rendered": 1.5014224974719432
+        },
+        {
+          "id": "pocket-com",
+          "native": 0.912109375,
+          "rendered": 0.9121755788013882
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659970485292868
+        },
+        {
+          "id": "data-chip",
+          "native": 1.501466275659824,
+          "rendered": 1.5011337868480725
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501448899188876
+        },
+        {
+          "id": "angle-drill",
+          "native": 0.75,
+          "rendered": 0.7500785037191137
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5016267878663059
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    }
+  ],
+  "pouchAspects": [
+    {
+      "id": "portable-terminal",
+      "native": 1.501466275659824,
+      "rendered": 1.5014224974719432
+    },
+    {
+      "id": "pocket-com",
+      "native": 0.912109375,
+      "rendered": 0.9121755788013882
+    },
+    {
+      "id": "purified-water",
+      "native": 0.666015625,
+      "rendered": 0.6659970485292868
+    },
+    {
+      "id": "mechanical-watch",
+      "native": 1.501466275659824,
+      "rendered": 1.501448899188876
+    },
+    {
+      "id": "folding-worklight",
+      "native": 1.501466275659824,
+      "rendered": 1.5016267878663059
+    },
+    {
+      "id": "courier-pouch",
+      "native": 1,
+      "rendered": 1
+    },
+    {
+      "id": "courier-pack",
+      "native": 1,
+      "rendered": 1
+    },
+    {
+      "id": "data-chip",
+      "native": 1.501466275659824,
+      "rendered": 1.5011337868480725
+    },
+    {
+      "id": "angle-drill",
+      "native": 0.75,
+      "rendered": 0.7500785037191137
+    }
+  ],
+  "reload": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 960,
+      "cell": 29,
+      "aspects": [
+        {
+          "id": "insulation-roll",
+          "native": 1.501466275659824,
+          "rendered": 1.5013901472756666
+        },
+        {
+          "id": "alloy-plate",
+          "native": 1.501466275659824,
+          "rendered": 1.5015894292774439
+        },
+        {
+          "id": "battery-pack",
+          "native": 1.501466275659824,
+          "rendered": 1.5013901472756666
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659970485292868
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501448899188876
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5016267878663059
+        },
+        {
+          "id": "three-way-valve",
+          "native": 1.501466275659824,
+          "rendered": 1.5014985032392063
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 948,
+      "cell": 33,
+      "aspects": [
+        {
+          "id": "insulation-roll",
+          "native": 1.501466275659824,
+          "rendered": 1.5015154812235763
+        },
+        {
+          "id": "alloy-plate",
+          "native": 1.501466275659824,
+          "rendered": 1.501389337995517
+        },
+        {
+          "id": "battery-pack",
+          "native": 1.501466275659824,
+          "rendered": 1.5015154812235763
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6659660236753024
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.501648264293339
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.501614948061757
+        },
+        {
+          "id": "three-way-valve",
+          "native": 1.501466275659824,
+          "rendered": 1.5017897392356043
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "width": 960,
+      "height": 650,
+      "cell": 18,
+      "aspects": [
+        {
+          "id": "insulation-roll",
+          "native": 1.501466275659824,
+          "rendered": 1.50114102648498
+        },
+        {
+          "id": "alloy-plate",
+          "native": 1.501466275659824,
+          "rendered": 1.5018160430897498
+        },
+        {
+          "id": "battery-pack",
+          "native": 1.501466275659824,
+          "rendered": 1.50114102648498
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6658741817992159
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.5014320610687024
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.501416430594901
+        },
+        {
+          "id": "three-way-valve",
+          "native": 1.501466275659824,
+          "rendered": 1.5015579873196352
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "cell": 12,
+      "aspects": [
+        {
+          "id": "insulation-roll",
+          "native": 1.501466275659824,
+          "rendered": 1.5017667844522968
+        },
+        {
+          "id": "alloy-plate",
+          "native": 1.501466275659824,
+          "rendered": 1.5021831797464722
+        },
+        {
+          "id": "battery-pack",
+          "native": 1.501466275659824,
+          "rendered": 1.5017667844522968
+        },
+        {
+          "id": "purified-water",
+          "native": 0.666015625,
+          "rendered": 0.6663026086956522
+        },
+        {
+          "id": "mechanical-watch",
+          "native": 1.501466275659824,
+          "rendered": 1.5014749262536873
+        },
+        {
+          "id": "folding-worklight",
+          "native": 1.501466275659824,
+          "rendered": 1.5010758620689655
+        },
+        {
+          "id": "three-way-valve",
+          "native": 1.501466275659824,
+          "rendered": 1.5017056519598662
+        },
+        {
+          "id": "courier-pouch",
+          "native": 1,
+          "rendered": 1
+        },
+        {
+          "id": "courier-pack",
+          "native": 1,
+          "rendered": 1
+        }
+      ]
+    }
+  ],
+  "concavityClickable": true,
+  "interlocking": true,
+  "solidCollisionRejected": true,
+  "edgeRejected": true,
+  "errors": []
+}

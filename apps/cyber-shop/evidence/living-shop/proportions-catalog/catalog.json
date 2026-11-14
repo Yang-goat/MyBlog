@@ -1,0 +1,368 @@
+[
+  {
+    "id": "pocket-com",
+    "name": "掌上通讯器",
+    "footprint": {
+      "width": 1,
+      "height": 2
+    },
+    "cells": 2
+  },
+  {
+    "id": "portable-terminal",
+    "name": "随身终端",
+    "footprint": {
+      "width": 3,
+      "height": 2
+    },
+    "cells": 6
+  },
+  {
+    "id": "sweeper-drone",
+    "name": "清扫无人机",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "cells": 9
+  },
+  {
+    "id": "servo-arm",
+    "name": "伺服机械臂",
+    "footprint": {
+      "width": 3,
+      "height": 5
+    },
+    "cells": 15
+  },
+  {
+    "id": "industrial-sensor",
+    "name": "工业传感器",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "angle-drill",
+    "name": "充电电钻",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "shape": [
+      "111",
+      "011",
+      "011"
+    ],
+    "cells": 7
+  },
+  {
+    "id": "folding-worklight",
+    "name": "折叠检修灯",
+    "footprint": {
+      "width": 4,
+      "height": 3
+    },
+    "shape": [
+      "1110",
+      "1111",
+      "0111"
+    ],
+    "cells": 10
+  },
+  {
+    "id": "air-circulator",
+    "name": "便携空气循环机",
+    "footprint": {
+      "width": 2,
+      "height": 4
+    },
+    "cells": 8
+  },
+  {
+    "id": "battery-pack",
+    "name": "标准电池组",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "capacitor-array",
+    "name": "微型电容阵列",
+    "footprint": {
+      "width": 3,
+      "height": 2
+    },
+    "cells": 6
+  },
+  {
+    "id": "power-module",
+    "name": "便携电源模块",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "cells": 9
+  },
+  {
+    "id": "alloy-plate",
+    "name": "高导合金板",
+    "footprint": {
+      "width": 5,
+      "height": 2
+    },
+    "cells": 10
+  },
+  {
+    "id": "insulation-roll",
+    "name": "绝缘纤维卷",
+    "footprint": {
+      "width": 2,
+      "height": 3
+    },
+    "cells": 6
+  },
+  {
+    "id": "three-way-valve",
+    "name": "三通阀",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "shape": [
+      "111",
+      "111",
+      "010"
+    ],
+    "cells": 7
+  },
+  {
+    "id": "catalyst-core",
+    "name": "稀土催化芯",
+    "footprint": {
+      "width": 1,
+      "height": 2
+    },
+    "cells": 2
+  },
+  {
+    "id": "purified-water",
+    "name": "净化饮水",
+    "footprint": {
+      "width": 1,
+      "height": 3
+    },
+    "cells": 3
+  },
+  {
+    "id": "synth-coffee",
+    "name": "合成咖啡",
+    "footprint": {
+      "width": 1,
+      "height": 2
+    },
+    "cells": 2
+  },
+  {
+    "id": "algae-ration",
+    "name": "藻蛋白口粮",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "culture-starter",
+    "name": "速生菌种包",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "nutrient-fluid",
+    "name": "营养培养液",
+    "footprint": {
+      "width": 2,
+      "height": 3
+    },
+    "cells": 6
+  },
+  {
+    "id": "bio-gel",
+    "name": "医用生物凝胶",
+    "footprint": {
+      "width": 1,
+      "height": 2
+    },
+    "cells": 2
+  },
+  {
+    "id": "haptic-module",
+    "name": "触觉反馈模块",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "optical-eye",
+    "name": "光学义眼组件",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "cells": 1
+  },
+  {
+    "id": "neural-bridge",
+    "name": "神经接口桥",
+    "footprint": {
+      "width": 3,
+      "height": 1
+    },
+    "cells": 3
+  },
+  {
+    "id": "memory-buffer",
+    "name": "记忆缓存模块",
+    "footprint": {
+      "width": 2,
+      "height": 1
+    },
+    "cells": 2
+  },
+  {
+    "id": "diagnostic-unit",
+    "name": "便携诊疗仪",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "cells": 9
+  },
+  {
+    "id": "infusion-pump",
+    "name": "稳态注射泵",
+    "footprint": {
+      "width": 2,
+      "height": 4
+    },
+    "cells": 8
+  },
+  {
+    "id": "data-chip",
+    "name": "通用数据芯片",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "cells": 1
+  },
+  {
+    "id": "encrypted-box",
+    "name": "加密档案盒",
+    "footprint": {
+      "width": 3,
+      "height": 2
+    },
+    "cells": 6
+  },
+  {
+    "id": "holo-film",
+    "name": "全息电影卡",
+    "footprint": {
+      "width": 2,
+      "height": 1
+    },
+    "cells": 2
+  },
+  {
+    "id": "music-tape",
+    "name": "合成音乐带",
+    "footprint": {
+      "width": 2,
+      "height": 1
+    },
+    "cells": 2
+  },
+  {
+    "id": "game-cartridge",
+    "name": "旧式游戏卡匣",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "memory-crystal",
+    "name": "私人影像晶片",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "cells": 1
+  },
+  {
+    "id": "mechanical-watch",
+    "name": "机械计时器",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "cells": 4
+  },
+  {
+    "id": "early-core",
+    "name": "早期计算核心",
+    "footprint": {
+      "width": 3,
+      "height": 3
+    },
+    "cells": 9
+  },
+  {
+    "id": "film-camera",
+    "name": "胶片相机",
+    "footprint": {
+      "width": 3,
+      "height": 2
+    },
+    "cells": 6
+  },
+  {
+    "id": "spectrum-jewel",
+    "name": "限量光谱饰品",
+    "footprint": {
+      "width": 1,
+      "height": 2
+    },
+    "cells": 2
+  },
+  {
+    "id": "old-city-badge",
+    "name": "旧城纪念徽章",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "cells": 1
+  },
+  {
+    "id": "bionic-toy",
+    "name": "初代仿生玩具",
+    "footprint": {
+      "width": 3,
+      "height": 4
+    },
+    "cells": 12
+  }
+]

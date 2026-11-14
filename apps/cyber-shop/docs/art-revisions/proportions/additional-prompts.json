@@ -1,0 +1,12 @@
+[
+  {
+    "id": "servo-arm",
+    "name": "伺服机械臂",
+    "prompt": "Edit this old inventory illustration into a naturally taller industrial robotic manipulator, keeping its distinctive worn ochre safety paint, graphite joints, routed orange cables and small cyan status lamps. The current arm is folded too far sideways. Extend its articulated joints upward into a believable upright working pose with a compact bolted base at the bottom, shoulder joint above it, long upper arm rising, bent elbow near the top, and an open two-finger precision gripper at upper right. Object silhouette height about 1.7 times its width; keep real mechanical proportions, circular bearings, consistent link thickness, a readable two-prong gripper and all connected parts. Do not digitally stretch the original. Painterly realistic cyberpunk game inventory prop, shallow front three-quarter view, complete object with narrow transparent margins, warm neutral workshop light. Genuine transparent background including gaps between links. No text, markings, floor, background glow, cast shadow, grid or extra props."
+  },
+  {
+    "id": "catalyst-core",
+    "name": "稀土催化芯",
+    "prompt": "Redesign the referenced catalyst-core inventory prop as a clearly recognizable industrial catalyst cartridge standing upright. The original is lying horizontally; make a naturally vertical cylinder about twice as tall as it is wide, without stretching. Key identity: large exposed ivory ceramic honeycomb core visible in a front cutaway window, graphite steel protective ribs, copper sealing collars at top and bottom, fine metal mesh along one side and one tiny cyan status indicator. Show the perforated honeycomb at the top in a shallow front three-quarter view. Distinct from batteries: no battery terminals, no charging display, dominant cream ceramic honeycomb and worn copper rings. Painterly realistic original cyberpunk salvage prop, full object, close framed with narrow transparent margins, naturally proportioned cylinder. Genuine transparent background, no floor, shadow, atmospheric glow, lettering, logo, grid or extra props."
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "id": "servo-arm",
+  "name": "伺服机械臂",
+  "kind": "item",
+  "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One compact industrial robotic arm, three articulated brushed-metal joints, amber cable sleeves, heavy small base and two-finger precision gripper. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery.",
+  "path": "public/art/servo-arm.webp",
+  "source": "C:\\Users\\admin\\.codex\\generated_images\\01a1aaf7-2444-79a1-bc25-b26649bfd913\\exec-4c2868cd-9f51-4ef8-9989-34333cc08895.png",
+  "status": "generated",
+  "tool": "image_gen",
+  "transparentRequested": true,
+  "usage": "交易、库存、维修与陈列中的商品图片",
+  "width": 512,
+  "height": 468,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 54010,
+  "sha256": "f924eb212cee7a48d5dd372cdfb3a6156e5457c7d4f6f46b9b7f46f22dd1707f",
+  "generationId": "exec-4c2868cd-9f51-4ef8-9989-34333cc08895",
+  "visualReview": "逐项查看生成结果；主体、轮廓、构图与无界面文字要求通过"
+}

@@ -3,7 +3,7 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 
-const out='apps/cyber-shop/evidence/placement-preview';
+const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/placement-preview';
 await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:960}});
@@ -20,14 +20,14 @@ const preview=async(zone,valid,width,height)=>{
  const p=page.locator(`${zone==='warehouse'?'.warehouse-grid':'.negotiation-table'} .placement-preview`);
  await p.waitFor({state:'visible'});
  assert.equal(await p.evaluate(el=>el.classList.contains('invalid')),!valid);
- const style=await p.evaluate(el=>{const s=getComputedStyle(el);return {column:s.gridColumnEnd,row:s.gridRowEnd,border:s.borderTopColor,background:s.backgroundColor};});
- if(width)assert.equal(style.column,`span ${width}`);
- if(height)assert.equal(style.row,`span ${height}`);
+ const style=await p.evaluate(el=>{const s=getComputedStyle(el);const cell=parseFloat(s.getPropertyValue('--inventory-cell'));return {columns:parseFloat(s.width)/cell,rows:parseFloat(s.height)/cell,border:s.borderTopColor,background:s.backgroundColor};});
+ if(width)assert.equal(style.columns,width);
+ if(height)assert.equal(style.rows,height);
  return style;
 };
 const shot=async name=>{await page.waitForTimeout(150);await page.screenshot({path:`${out}/${name}.png`});};
 try {
- await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await page.waitForSelector('.warehouse-item');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await page.waitForSelector('.warehouse-item');
  const initial=await game(),bottle=initial.items[0].id,chip=initial.items[1].id;
  // A held 1x3 bottle previews the same green footprint in both regions.
  await start(page.locator(`[data-item="${bottle}"]`));await move('warehouse',8,1);
@@ -36,7 +36,7 @@ try {
  assert.equal(warehouseGreen.border,tradeGreen.border);assert.equal(warehouseGreen.background,tradeGreen.background);
  await shot('01-green-counter');
  // The same pointer is out of bounds at the bottom until the bottle is rotated.
- await move('trade',10,2);const tradeRed=await preview('trade',false,1,1);await shot('02-red-boundary');
+ await move('trade',10,2);const tradeRed=await preview('trade',false,1,3);await shot('02-red-boundary');
  await page.keyboard.press('e');await preview('trade',true,3,1);await shot('03-rotated-green');
  await page.mouse.up();assert.equal((await game()).items.find(i=>i.id===bottle).location,'counter');
  assert.deepEqual(await page.locator(`.purchased-item[data-item="${bottle}"]`).evaluate(el=>({column:el.style.gridColumn,row:el.style.gridRow})),{column:'11 / span 3',row:'3 / span 1'});
@@ -48,7 +48,7 @@ try {
  await move('trade',8,0);await preview('trade',true,1,1);await page.mouse.click((await point('trade',8,0)).x,(await point('trade',8,0)).y);
  assert.equal((await game()).items.find(i=>i.id===chip).location,'counter');
  await page.locator(`[data-item="${bottle}"]`).click();await move('trade',10,2);await preview('trade',true,3,1);
- await move('trade',23,2);await preview('trade',false,1,1);await page.keyboard.press('Escape');assert.equal(await page.locator('.placement-preview').count(),0);
+ await move('trade',23,2);await preview('trade',false,3,1);await page.keyboard.press('Escape');assert.equal(await page.locator('.placement-preview').count(),0);
  // NPC goods use the same preview, counting the owned goods already on the table.
  await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
  await start(page.locator('.incoming-item').first());await move('trade',8,0);await preview('trade',false);

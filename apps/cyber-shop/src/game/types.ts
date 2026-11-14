@@ -2,7 +2,9 @@ export type CategoryId = 'electronics' | 'energy' | 'food' | 'neural' | 'data' |
 export type CertificateId = 'civil' | 'industrial' | 'neural' | 'antique';
 export type Operation = 'clean' | 'replace' | 'calibrate';
 export interface CategoryDefinition { id: CategoryId; name: string; description: string; tradeRule: string }
+export type Rotation = boolean | 0 | 1 | 2 | 3;
 export interface ItemDefinition {
+  shape?: string[];
   footprint: { width: number; height: number };
   id: string; name: string; category: CategoryId; price: number; size: number; chapter: number;
   certificate?: CertificateId; regulated?: boolean; shelfLife?: number; rarity: number; valueMetric?: 'capacity' | 'purity';
@@ -12,8 +14,8 @@ export interface FaultDefinition { id: string; name: string; symptom: string; op
 export interface ItemInstance {
   id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
   containerId?: string;
-  grid?: { x: number; y: number; rotated: boolean };
-  counterGrid?: { x: number; y: number; rotated: boolean };
+  grid?: { x: number; y: number; rotated: Rotation };
+  counterGrid?: { x: number; y: number; rotated: Rotation };
   condition: number; integrity: number; capacity: number; purity: number; authentic: boolean; originality: number;
   provenance: string; compatibility: string; expiresDay: number | null; faults: string[]; known: string[];
   cost: number; acquiredDay: number; preservedUntil: number;
@@ -46,7 +48,7 @@ export interface DeliveryJob {
   status: 'offered' | 'active' | 'completed' | 'expired' | 'cancelled'; acceptedDay?: number; closedDay?: number;
   goods?: { itemId: string; definitionId: string; cost: number }[];
 }
-export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:boolean}; counterGrid?:{x:number;y:number;rotated:boolean}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
+export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:Rotation}; counterGrid?:{x:number;y:number;rotated:Rotation}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
 export interface StorageOffer { id:string; styleId:string; price:number }
 export interface GameState {
   containers?: StorageContainer[];
@@ -74,12 +76,12 @@ export type Action =
  | { type: 'callVisitor' }
  | { type: 'buyStorage'; visitorId:string; offerId:string }
  | { type: 'sellStorage'; visitorId:string; storageId:string }
- | { type: 'moveStorage'; storageId:string; containerId?:string; counter?:boolean; x:number; y:number; rotated:boolean }
+ | { type: 'moveStorage'; storageId:string; containerId?:string; counter?:boolean; x:number; y:number; rotated:Rotation }
  | { type: 'buyLabeler' }
  | { type: 'labelContainer'; containerId: string; label: string; color: StorageContainer['color'] }
- | { type: 'tradeBatch'; visitorId: string; itemIds: string[]; amount?: number; placements?: Record<string, {x:number;y:number;rotated:boolean}> }
- | { type: 'moveCounter'; itemId: string; x: number; y: number; rotated: boolean }
- | { type: 'moveStock'; itemId: string; x: number; y: number; rotated: boolean; containerId?: string }
+ | { type: 'tradeBatch'; visitorId: string; itemIds: string[]; amount?: number; placements?: Record<string, {x:number;y:number;rotated:Rotation}> }
+ | { type: 'moveCounter'; itemId: string; x: number; y: number; rotated: Rotation }
+ | { type: 'moveStock'; itemId: string; x: number; y: number; rotated: Rotation; containerId?: string }
  | { type: 'talk'; visitorId: string }
  | { type: 'tutorial'; step: number; skipped?: boolean }
  | { type: 'inspect'; itemId?: string; visitorId?: string; method?: 'basic' | 'scan' | 'serial' }

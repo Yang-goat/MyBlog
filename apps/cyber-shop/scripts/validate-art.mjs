@@ -7,7 +7,7 @@ import ts from 'typescript';
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentRoot = path.join(appRoot, 'src/content');
 const sceneIds = ['scene-city', 'scene-shop', 'scene-workbench', 'scene-ending'];
-const EXPECTED_COUNT = 66;
+const EXPECTED_COUNT = 69;
 // User-authorized exceptions after recorded image-generation failures; all other assets stay AI-generated.
 const originalDrawingIds = new Set(['electronic-parts', 'insulation']);
 
@@ -102,14 +102,15 @@ export function inspectWebP(buffer) {
 export async function validateArt({ distRoot } = {}) {
   const errors = []; const check = (condition, message) => { if (!condition) errors.push(message); };
   const report = { expected: EXPECTED_COUNT, registered: 0, generated: 0, originalDrawn: 0, validatedFiles: 0, validatedDistFiles: 0, totalBytes: 0, opaqueCutouts: [], missing: [], errors };
-  let content; let manifest;
+  let content; let manifest; let inventoryBounds;
   try {
     content = await import(contentModuleUrl(path.join(contentRoot, 'index.ts')));
     manifest = JSON.parse(fs.readFileSync(path.join(appRoot, 'assets-manifest.json'), 'utf8'));
+    inventoryBounds = JSON.parse(fs.readFileSync(path.join(appRoot, 'src/scenes/inventory-art-bounds.json'), 'utf8'));
   } catch (error) { errors.push(`Cannot read content/art registry: ${error.message}`); return report; }
 
   const expected = new Map();
-  for (const [list, kind, count] of [[content.ITEMS, 'item', 36], [content.CHARACTERS, 'character', 10], [content.EQUIPMENT, 'equipment', 16]]) {
+  for (const [list, kind, count] of [[content.ITEMS, 'item', 39], [content.CHARACTERS, 'character', 10], [content.EQUIPMENT, 'equipment', 16]]) {
     check(Array.isArray(list) && list.length === count, `Expected ${count} ${kind} definitions`);
     for (const entry of list ?? []) {
       check(!expected.has(entry.id), `Duplicate content art ID: ${entry.id}`);
@@ -158,6 +159,10 @@ export async function validateArt({ distRoot } = {}) {
     const bytes = fs.readFileSync(path.join(appRoot, canonical));
     try {
       const info = inspectWebP(bytes);
+      if (asset.kind === 'item') {
+        const b = inventoryBounds[id];
+        check(Array.isArray(b) && b.length >= 6 && b.every(Number.isFinite) && b[0] >= 0 && b[1] >= 0 && b[2] > 0 && b[3] > 0 && b[0]+b[2] <= 1.000001 && b[1]+b[3] <= 1.000001 && b[4] === info.width && b[5] === info.height && (b[6] === undefined || b[6] > 0 && b[6] <= 1), `Invalid proportional inventory bounds: ${id}`);
+      }
       check(info.width >= 64 && info.height >= 64, `Asset is too small to be a base illustration: ${id}`);
       const limits = asset.kind === 'scene' ? [1920, 1080] : asset.kind === 'character' ? [768, 1024] : [512, 512];
       check(info.width <= limits[0] && info.height <= limits[1], `Asset exceeds published size: ${id} ${info.width}x${info.height}`);

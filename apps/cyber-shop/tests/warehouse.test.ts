@@ -44,7 +44,7 @@ describe('physical warehouse and ownership transfer', () => {
   });
   it('defines physical footprints for every item and charges real occupied area', () => {
     expect(new Set(ITEMS.map(d => `${d.footprint.width}x${d.footprint.height}`)).size).toBeGreaterThan(8);
-    for (const d of ITEMS) expect(d.size * 4).toBe(d.footprint.width * d.footprint.height);
+    for (const d of ITEMS) expect(d.size * 4).toBe(d.shape?.join('').replaceAll('0','').length ?? d.footprint.width * d.footprint.height);
     expect(ITEMS.find(d => d.id === 'data-chip')!.footprint).toEqual({width:1,height:1});
     expect(ITEMS.find(d => d.id === 'servo-arm')!.footprint).toEqual({width:3,height:5});
   });

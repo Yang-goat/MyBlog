@@ -29,7 +29,7 @@ try{
  await click('全部入库 ↓');const root=page.locator(`.warehouse-item[data-item="${id}"]`);assert.deepEqual(await dimensions(root),original);
  const pack=(await game()).containers.find(c=>c.styleId==='courier-pack').id,win=page.locator(`[data-container-window="${pack}"]`);await page.locator(`[data-world-container="${pack}"]`).dblclick();await moveWindow(pack,1120,340);
  await root.click();await win.getByRole('button',{name:'箱内空格 1',exact:true}).click();assert.equal((await game()).items.find(i=>i.id===id).containerId,pack);const inner=win.locator(`[data-storage-object="${id}"]`);assert.deepEqual(await dimensions(inner),original);results.sameItemAcrossFiveAreas=original;
- await inner.click();await page.keyboard.press('e');await win.getByRole('button',{name:'箱内空格 13',exact:true}).click();const turned=await dimensions(inner);closeEnough(turned.width,original.height);closeEnough(turned.height,original.width);closeEnough(turned.artWidth,turned.width-2);closeEnough(turned.artHeight,turned.height-2);assert.equal((await game()).containers.find(c=>c.id===pack).layout.positions[id].rotated,true);results.rotation=true;
+ await inner.click();await page.keyboard.press('e');await win.getByRole('button',{name:'箱内空格 13',exact:true}).click();const turned=await dimensions(inner);closeEnough(turned.width,original.height);closeEnough(turned.height,original.width);closeEnough(turned.artWidth,turned.width-2);closeEnough(turned.artHeight,turned.height-2);assert.equal(Number((await game()).containers.find(c=>c.id===pack).layout.positions[id].rotated),1);results.rotation=true;
  results.viewports=[];
  for(const [width,height] of [[1440,960],[1920,948],[960,650],[844,390]]){
   await page.setViewportSize({width,height});await page.waitForTimeout(120);

@@ -44,15 +44,15 @@ for asset in manifest['assets']:
     total += asset['bytes']
     counts[asset['kind']] = counts.get(asset['kind'], 0) + 1
 manifest['audit'] = {
-    'expected': 66, 'completed': sum(counts.values()),
+    'expected': 69, 'completed': sum(counts.values()),
     'generated': sum(a['status'] == 'generated' for a in manifest['assets']),
     'originalDrawn': sum(a['status'] == 'original-drawn' for a in manifest['assets']),
     'failed': failures,
     'counts': counts, 'bytes': total, 'mib': round(total / 1024 / 1024, 3),
     'allPublishedFilesDecoded': True,
     'allCutoutsHaveAlpha': True,
-    'generationMethod': '64 项分别调用内置 image_gen；2 项在用户授权后以 Pillow 11.3.0 原创绘制。Pillow 同时用于 WebP 编码与发布尺寸缩放。',
-    'sourcePolicy': '64 项原始 PNG 保留在 source 记录的 Codex generated_images 目录；2 项原创绘制源码随项目保存。游戏只引用 public/art 中的 WebP。',
+    'generationMethod': '67 项分别调用内置 image_gen；2 项在用户授权后以 Pillow 11.3.0 原创绘制。Pillow 同时用于 WebP 编码与发布尺寸缩放。',
+    'sourcePolicy': '67 项原始 PNG 保留在 source 记录的目录；新图和重画图在 docs/art-revisions 归档，2 项原创绘制源码随项目保存。游戏只引用 public/art 中的 WebP。',
 }
 manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 (root / 'scripts/art-prompts.json').write_text(json.dumps([

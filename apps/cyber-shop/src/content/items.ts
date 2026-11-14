@@ -26,6 +26,8 @@ const rows: Record<CategoryId, ItemRow[]> = {
     ['sweeper-drone', '清扫无人机', 560, 2, 2, 2, '沿着街边磁轨寻找灰尘，滚轮里常缠着旧电线。', 'industrial'],
     ['servo-arm', '伺服机械臂', 920, 3, 2, 2, '工坊淘汰的紧凑机械臂，校准后仍能稳稳夹住一颗螺母。', 'industrial'],
     ['industrial-sensor', '工业传感器', 680, 1, 2, 2, '能忍受高温与粉尘，却容不得漂移的零点。', 'industrial'],
+    ['angle-drill', '充电电钻', 360, 1, 1, 1, '短钻头、橡胶握把和可拆电池，一眼能认出的工坊常客。', 'civil'],
+    ['folding-worklight', '折叠检修灯', 280, 1, 1, 1, '偏置的灯头与电池底座，能把光送进机壳深处。', 'civil'],
     ['air-circulator', '便携空气循环机', 460, 2, 1, 1, '把巷道里沉闷的空气送过滤芯，宿舍和小店都需要。', 'civil'],
   ],
   energy: [
@@ -34,6 +36,7 @@ const rows: Record<CategoryId, ItemRow[]> = {
     ['power-module', '便携电源模块', 640, 2, 2, 2, '带调压控制板的小型电源，容量衰减和控制故障需要分开判断。', 'industrial'],
     ['alloy-plate', '高导合金板', 210, 2, 1, 1, '同样一块银灰薄板，批次纯度决定它是好导体还是昂贵废料。'],
     ['insulation-roll', '绝缘纤维卷', 140, 1, 1, 1, '潮湿季最容易缺货的工业纤维，保持干燥才能发挥作用。'],
+    ['three-way-valve', '三通阀', 220, 1, 1, 1, '红色手轮控制三路管线，铜锈和磨损藏在螺纹里。'],
     ['catalyst-core', '稀土催化芯', 980, 1, 3, 3, '提纯设备中的细小核心，来源批次比外壳的光泽更有说服力。'],
   ],
   food: [
@@ -71,7 +74,9 @@ const rows: Record<CategoryId, ItemRow[]> = {
 };
 
 // Footprints reflect the packaged object, not its price or rarity. One legacy capacity unit = four cells.
+const shapes:Record<string,string[]> = { 'angle-drill':['111','011','011'], 'three-way-valve':['111','111','010'], 'folding-worklight':['1110','1111','0111'] };
 const footprints: Record<string, [number, number]> = {
+  'angle-drill':[3,3], 'three-way-valve':[3,3], 'folding-worklight':[4,3],
   'pocket-com': [1,2], 'portable-terminal': [3,2], 'sweeper-drone': [3,3], 'servo-arm': [3,5], 'industrial-sensor': [2,2], 'air-circulator': [2,4],
   'battery-pack': [2,2], 'capacitor-array': [3,2], 'power-module': [3,3], 'alloy-plate': [5,2], 'insulation-roll': [2,3], 'catalyst-core': [1,2],
   'purified-water': [1,3], 'synth-coffee': [1,2], 'algae-ration': [2,2], 'culture-starter': [2,2], 'nutrient-fluid': [2,3], 'bio-gel': [1,2],
@@ -86,5 +91,5 @@ export const ITEMS: ItemDefinition[] = (Object.keys(rows) as CategoryId[]).flatM
   if (certificate) actions.push('repair');
   if (category === 'food') actions.push('preserve');
   const [width, height] = footprints[id]!;
-  return { id, name, category, price, size: width * height / 4, footprint: { width, height }, chapter, rarity, description, certificate, regulated, shelfLife, valueMetric, states: states[category], actions, preferences: preferences[category], image: `${id}.webp` };
+  return { id, name, category, price, size: (shapes[id]?.join('').replaceAll('0','').length ?? width * height) / 4, shape: shapes[id], footprint: { width, height }, chapter, rarity, description, certificate, regulated, shelfLife, valueMetric, states: states[category], actions, preferences: preferences[category], image: `${id}.webp` };
 }));

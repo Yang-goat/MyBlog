@@ -1,0 +1,23 @@
+{
+  "id": "catalyst-core",
+  "name": "稀土催化芯",
+  "kind": "item",
+  "prompt": "Use case: product-mockup. Asset type: single game object cutout, entire object centered with generous margins, three-quarter view, no duplicate views or hands. Subject: One rare-earth catalyst core, tiny precision ceramic honeycomb cylinder held in a weathered silver protective cage, pale mineral flecks. Photorealistic painterly concept art for an original cyberpunk neighborhood repair-shop game, non-pixel. Worn dark metal, scratched polymer, subtle cyan accents and warm amber edge light. Crisp readable silhouette and realistic tactile material. No readable text, digits, logos, watermarks or UI. Isolated on a genuinely transparent background, no opaque rectangle, no floor or scenery.",
+  "path": "public/art/catalyst-core.webp",
+  "source": "C:\\Users\\admin\\.codex\\generated_images\\01a1aaf7-2444-79a1-bc25-b26649bfd913\\exec-d26666cb-2ef7-4304-9cc4-a1e5c72fba86.png",
+  "status": "generated",
+  "tool": "image_gen",
+  "transparentRequested": true,
+  "usage": "交易、库存、维修与陈列中的商品图片",
+  "width": 512,
+  "height": 341,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "bytes": 45328,
+  "sha256": "2496c67cf358c01fe85e56952f4989bc0170fb3664f8e2ed22f4448b988e4572",
+  "generationId": "exec-d26666cb-2ef7-4304-9cc4-a1e5c72fba86",
+  "visualReview": "逐项查看生成结果；主体、轮廓、构图与无界面文字要求通过"
+}

@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen built-in",
+  "intent": "Redesign existing objects with recognizable functional parts and natural proportions",
+  "assets": [
+    {
+      "id": "air-circulator",
+      "name": "便携空气循环机",
+      "prompt": "Project asset for an original cyberpunk second-hand shop game. Generate a single isolated object on genuine transparent background, detailed painterly 2.5D game prop, neutral front three-quarter view with very little perspective foreshortening, worn believable metal and plastic, restrained warm edge light and tiny cyan indicators. Clear functional silhouette legible at 30 to 90 pixels. Entire object visible. No words, logos, label text, UI, grid, pedestal, cast shadow, collage or extra objects. Preserve natural real object proportions. The reference is the old object to redesign; retain its subject and worn grounded visual family but replace the form as specified. Do not stretch the old image. Redesign as a naturally tall narrow portable air purifier / air circulator tower, height about twice width. Two visibly round fan grilles stacked vertically in an ivory metal housing, replaceable dark filter grille at the bottom, compact strong carry handle above, teal side latches. The two round fans must remain circular, not oval. A practical heavy street workshop appliance, no science fiction weapon parts."
+    },
+    {
+      "id": "infusion-pump",
+      "name": "稳态注射泵",
+      "prompt": "Project asset for an original cyberpunk second-hand shop game. Generate a single isolated object on genuine transparent background, detailed painterly 2.5D game prop, neutral front three-quarter view with very little perspective foreshortening, worn believable metal and plastic, restrained warm edge light and tiny cyan indicators. Clear functional silhouette legible at 30 to 90 pixels. Entire object visible. No words, logos, label text, UI, grid, pedestal, cast shadow, collage or extra objects. Preserve natural real object proportions. The reference is the old object to redesign; retain its subject and worn grounded visual family but replace the form as specified. Do not stretch the old image. Redesign as a naturally tall narrow vertical clinical syringe pump, height about twice width. A large clearly visible transparent upright syringe barrel with liquid and recognizable plunger occupies one side; a narrow ivory control column with small dark teal status screen occupies the other side. Mechanical clamp, orange safety latch, short curved delivery tube at the bottom, small carry handle. It must read immediately as medical syringe equipment, not a radio or firearm. Syringe axis vertical, no attached pole, no person."
+    },
+    {
+      "id": "data-chip",
+      "name": "通用数据芯片",
+      "prompt": "Project asset for an original cyberpunk second-hand shop game. Generate a single isolated object on genuine transparent background, detailed painterly 2.5D game prop, neutral front three-quarter view with very little perspective foreshortening, worn believable metal and plastic, restrained warm edge light and tiny cyan indicators. Clear functional silhouette legible at 30 to 90 pixels. Entire object visible. No words, logos, label text, UI, grid, pedestal, cast shadow, collage or extra objects. Preserve natural real object proportions. The reference is the old object to redesign; retain its subject and worn grounded visual family but replace the form as specified. Do not stretch the old image. Redesign as a compact nearly square plug-in data memory chip viewed almost straight from above. Emerald green square PCB, one large clearly visible black square integrated circuit at its center, a short row of chunky gold contacts along the lower edge, small copper circuit traces and one cyan status diode. Strong simple square silhouette, gold contacts obvious at tiny size. No glass holographic display, no elongated USB stick, no decorative box."
+    }
+  ]
+}
