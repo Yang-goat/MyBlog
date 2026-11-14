@@ -24,10 +24,10 @@ function tick(now:number){frame=requestAnimationFrame(tick);if(document.hidden||
 function move(e:PointerEvent){targetPointer=e.clientX/window.innerWidth*2-1;}
 const advance=async(ms:number)=>{if(!Number.isFinite(ms)||ms<0)return;manualTime=true;elapsed+=Math.min(ms,10000);pulse=Math.max(0,pulse-ms/650);render();};
 onMounted(()=>{
-  street.onload=render;street.src='/cyber-shop/scenery/ninth-street.webp';
+  street.onload=render;street.src='/cyber-shop/scenery/neon-ninth-street.webp';
   metal.onload=render;metal.src='/cyber-shop/scenery/patina-metal.webp';
-  terminal.onload=render;terminal.src='/cyber-shop/scenery/crt-terminal.webp';
-  solder.onload=render;solder.src='/cyber-shop/scenery/solder-station.webp';
+  terminal.onload=render;terminal.src='/cyber-shop/scenery/neon-terminal.webp';
+  solder.onload=render;solder.src='/cyber-shop/scenery/neon-solder-station.webp';
   resize();observer=new ResizeObserver(resize);observer.observe(canvas.value!);
   frame=requestAnimationFrame(tick);window.addEventListener('pointermove',move);
   stopWatch=watch([state,reducedMotion],render);

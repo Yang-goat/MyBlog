@@ -21,6 +21,7 @@ import { vDialogFocus } from './dialog-focus';
 import { tradeIds, tradePlaces, stageTrade, removeTrade, clearTrade, guestGoods, tradeItem } from './trade-selection';
 import './room.css';
 import './living-room.css';
+import './neon-room.css';
 const ShopCanvas = defineAsyncComponent(() => import('../scenes/ShopCanvas.vue'));
 
 const chapters = ['重新开门', '街区口碑', '高价与代价', '自己的招牌'];

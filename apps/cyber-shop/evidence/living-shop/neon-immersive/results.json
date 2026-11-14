@@ -1,0 +1,10 @@
+{
+  "viewportFill": true,
+  "embeddedMenus": true,
+  "hoverInfo": true,
+  "contextAction": true,
+  "dailyCall": true,
+  "incomingContextTrade": true,
+  "touchTapAndLongPress": true,
+  "errors": []
+}

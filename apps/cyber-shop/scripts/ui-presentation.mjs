@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const out='apps/cyber-shop/evidence/living-shop/presentation';await fs.mkdir(out,{recursive:true});
+const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/presentation';await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1440,height:960}});const errors=[];
 page.on('pageerror',e=>errors.push(e.message));
 const read=async()=>JSON.parse(await page.evaluate(()=>window.render_game_to_text()));

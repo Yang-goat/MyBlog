@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "operations": [
+    "clean",
+    "replace",
+    "calibrate"
+  ],
+  "diagnostics": [
+    "standby",
+    "fault",
+    "ready",
+    "passed"
+  ],
+  "noPreparationCost": true,
+  "touchClean": true,
+  "errors": [],
+  "missing": []
+}

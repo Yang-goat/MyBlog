@@ -19,7 +19,7 @@ const tools=computed(()=>[
   <img class="parts-organizer" :src="'/cyber-shop/scenery/parts-organizer.webp'" alt="" draggable="false"/>
   <div class="bench-desk"><div class="bench-mat"></div><div class="bench-ruler"></div></div>
   <div class="bench-scope">
-   <img :src="'/cyber-shop/scenery/crt-terminal.webp'" alt="" draggable="false"/>
+   <img :src="'/cyber-shop/scenery/neon-terminal.webp'" alt="" draggable="false"/>
    <div class="scope-glass"><small>{{label}}</small><svg viewBox="0 0 200 80"><path d="M0 20H200 M0 40H200 M0 60H200 M40 0V80 M80 0V80 M120 0V80 M160 0V80" stroke="#8aad8140" stroke-width=".5"/><polyline :points="signal" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><i></i></div>
   </div>
   <div class="bench-lamp-beam"></div><div class="bench-light-pool"></div>

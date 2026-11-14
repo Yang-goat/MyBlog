@@ -23,6 +23,16 @@ export function validateScenery({distRoot}={}) {
  }
  for(const file of expected)if(!seen.has(file))errors.push(`Unregistered scene layer: ${file}`);
  for(const file of fs.readdirSync(path.join(root,'public/scenery')))if(!seen.has('scenery/'+file))errors.push(`Unregistered scenery file: ${file}`);
+ for(const a of manifest.archivedAssets||[]){
+  try{
+   if(!/^docs\/art-revisions\/living-shop\/[a-z0-9-]+\.webp$/.test(a.path)||!a.retired||!a.reason)throw Error('invalid archive metadata');
+   const b=fs.readFileSync(path.join(root,a.path));
+   if(b.length!==a.bytes||createHash('sha256').update(b).digest('hex')!==a.sha256)throw Error('archived image differs');
+   if(!/^docs\/art-revisions\/living-shop\/[a-z0-9-]+\.png$/.test(a.source)||createHash('sha256').update(fs.readFileSync(path.join(root,a.source))).digest('hex')!==a.sourceSha256)throw Error('archived original differs');
+   const oldPath=path.join('scenery',path.basename(a.path));
+   if(fs.existsSync(path.join(root,'public',oldPath))||(distRoot&&fs.existsSync(path.join(distRoot,'cyber-shop',oldPath))))throw Error('retired image still published');
+  }catch(e){errors.push(`${a.id} (archive): ${e.message}`);}
+ }
  return {layers:seen.size,errors};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const report=validateScenery();console.log(JSON.stringify(report,null,2));if(report.errors.length)process.exitCode=1;}

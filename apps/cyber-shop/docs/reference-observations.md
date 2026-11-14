@@ -37,3 +37,9 @@
 补充查阅 [Garena 官方 Operations Mode 101](https://deltaforce.garena.com/en/news/system/RMDWVM) 的仓库说明，以及 [Delta Force 官方更新页](https://www.playdeltaforce.com/en/detail.html?content_id=f709fd25a7beaa4810aac8ba19e78596b204&father_content_id=f709fd25a7beaa4810aac8ba19e78596b204) 搜索摘要中的可移动详情与仓库交互优化。官方更新页正文为动态加载，本轮文本工具未完整展开；未将其作为原游戏双击容器或三层规则的实测证据。本次具体交互以用户描述为准，素材与经济数值继续使用本项目原创内容。
 
 新增难度词条扩展暂缓，先完成浮窗、层数限制与跨窗口搬运的正常输入验收。此前独立收纳页与四层演示属于被本次要求取代的本地实验。
+
+## 2026-11-14 霓虹街区与独立设备素材
+
+参考 [Cloudpunk 官方商店介绍](https://store.steampowered.com/app/746850/Cloudpunk/) 的雨夜霓虹城市，以及 [VA-11 Hall-A 开发者资料页](https://sukeban.moe/press/sheet.php?p=Cyberpunk_Bartender_Action+VA-11+HALL-A) 中通过小店和来客呈现赛博朋克日常的方向。本轮阅读官方文字资料，没有将其写成实际游玩观察。采用冷色街景、少量暖色工作灯与店内生活物件的组合；没有复制游戏素材或界面。
+
+分别生成街道背景平面、终端机壳、焊台三个原创资产。雨水、车流、灯光、墙面、台面和柜体继续分别绘制；终端屏幕内容和叫号绿钮仍由游戏状态控制。旧素材及提示词完整归档，当前在用补充素材仍为十三项。

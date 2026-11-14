@@ -12,21 +12,21 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   const text = (label: string,x: number,y: number,size: number,color: string,font='monospace') => { ctx.fillStyle=color;ctx.font=`${size}px ${font}`;ctx.fillText(label,x,y); };
   const glow = (x: number,y: number,r: number,color: string) => { const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,color);g.addColorStop(1,'transparent');rect(x-r,y-r,r*2,r*2,g as unknown as string); };
   const gradient = (x: number,y: number,w: number,h: number,top: string,bottom: string) => { const g=ctx.createLinearGradient(x,y,x,y+h);g.addColorStop(0,top);g.addColorStop(1,bottom);ctx.fillStyle=g;ctx.fillRect(x,y,w,h); };
-  const patina=(x:number,y:number,w:number,h:number,alpha=.23)=>{if(!metal?.complete||!metal.naturalWidth)return;ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(metal,0,0,metal.naturalWidth,metal.naturalHeight,x,y,w,h);ctx.restore();};
+  const patina=(x:number,y:number,w:number,h:number,alpha=.23)=>{if(!metal?.complete||!metal.naturalWidth)return;ctx.save();ctx.globalAlpha=alpha;ctx.globalCompositeOperation='luminosity';ctx.drawImage(metal,0,0,metal.naturalWidth,metal.naturalHeight,x,y,w,h);ctx.restore();};
   const screw = (x: number,y: number) => { ellipse(x+1,y+2,3,3,'#090f10');ellipse(x,y,2.4,2.4,'#78817a');line(x-1.5,y,x+1.5,y,'#25312e'); };
   const frame = (x: number,y: number,w: number,h: number) => {
-    rect(x+6,y+7,w,h,'#050c10aa');gradient(x,y,w,h,'#56645d','#293b3b');rect(x+3,y+3,w-6,h-6,'#253735');patina(x,y,w,h);
-    line(x+2,y+2,x+w-2,y+2,'#889080',2);line(x+2,y+h,x+w,y+h,'#0b1518',4);
+    rect(x+6,y+7,w,h,'#050c10aa');gradient(x,y,w,h,'#566775','#293a48');rect(x+3,y+3,w-6,h-6,'#223441');patina(x,y,w,h);
+    line(x+2,y+2,x+w-2,y+2,'#8da3ad',2);line(x+2,y+h,x+w,y+h,'#0b1518',4);
     [[x+8,y+8],[x+w-8,y+8],[x+8,y+h-8],[x+w-8,y+h-8]].forEach(([a,b])=>screw(a!,b!));
   };
   const t=view.motion?view.time/1000:0;
   const night=view.closed?1:1-view.hours/12;
   const rain=view.day%4!==0;
-  gradient(0,0,W,H,'#273d3e','#122b2d');
-  // Limewashed masonry, joints, conduit and repaired patches.
+  gradient(0,0,W,H,'#273544','#14212e');
+  // Patched industrial wall panels; the old surface texture contributes luminance only.
   for(let row=0;row<13;row++)for(let col=0;col<12;col++){
     const x=col*128-(row%2)*64,y=row*51;
-    rect(x+2,y+2,124,47,(row*7+col*13)%5===0?'#314747':'#2b4041');
+    rect(x+2,y+2,124,47,(row*7+col*13)%5===0?'#354551':'#2c3b49');
     line(x+3,y+48,x+125,y+48,'#152d30');
   }
   patina(0,0,W,650,.15);
@@ -58,7 +58,7 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
     const sourceHeight=street.naturalWidth/(756/342);
     ctx.drawImage(street,0,Math.max(0,street.naturalHeight-sourceHeight),street.naturalWidth,sourceHeight,338+shift,82,766,348);
     rect(342,85,756,342,`rgba(5,24,36,${.12+night*.25})`);
-    glow(750,340,150,'#edba6b12');
+    glow(450,285,155,'#49dce218');glow(1010,220,150,'#c35bdf15');
   }
   const travel=(t*23)%970;
   rect(230+travel,324,43,14,'#15272f');rect(235+travel,320,25,7,'#334d51');rect(269+travel,330,4,3,'#eac8a0');
@@ -71,23 +71,25 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   poly([[342,85],[460,85],[650,428],[572,428]],'#b7dbc407');
   for(let i=0;i<14;i++){const x=360+(i*83)%720,y=110+(i*59)%290;line(x,y,x-2,y+19,'#a6d6d535');}
   ctx.restore();
-  rect(336,410,768,17,'#60776d');rect(332,427,776,12,'#152f31');line(340,411,1100,411,'#9b9f7d',2);
-  // Header beam, original sign and striped fabric awning.
-  gradient(0,0,W,66,'#1a3033','#102428');line(0,63,W,63,'#7b826a',3);
-  for(let i=0;i<16;i++){screw(i*96+12,18);line(i*96+24,12,i*96+24,46,'#30494a');}
+  rect(336,410,768,17,'#526779');rect(332,427,776,12,'#142632');line(340,411,1100,411,'#80abb2',2);
+  // Shop beam and retractable metal shutter, separate from the outside street.
+  gradient(0,0,W,66,'#172b38','#10212e');line(0,63,W,63,'#486775',3);
+  for(let i=0;i<16;i++){screw(i*96+12,18);line(i*96+24,12,i*96+24,46,'#304451');}
   ctx.save();ctx.shadowColor='#81d5bf';ctx.shadowBlur=13;text('九 街 旧 物',578,43,29,'#b1daca','"Microsoft YaHei UI", sans-serif');ctx.restore();
   text('N° 09  /  REPAIR & RESALE',35,39,13,'#afbdab');text('雾港 · 往来皆是故事',1175,38,13,'#98aaa0','sans-serif');
   if(view.owned){rect(843,22,164,24,'#203f39');line(843,46,1007,46,'#bba872');text('永久经营 · 自己的招牌',853,38,12,'#dcc593','sans-serif');}
-  for(let i=0;i<24;i++){const x=332+i*32;poly([[x,69],[x+32,69],[x+34,94],[x-2,94]],i%2?'#3d615b':'#b2a57a');ellipse(x+16,94,18,7,i%2?'#304e49':'#91896a');}
-  // Two warm hanging lights, independent of the street and wall.
+  gradient(330,67,780,27,'#42535f','#182e39');
+  for(let i=0;i<24;i++){const x=333+i*32;rect(x,69,30,19,i%4===0?'#405967':'#2d414e');line(x,69,x,90,'#64798566');}
+  line(339,94,1099,94,'#72cbd0',2);glow(355,103,85,'#49c6d52a');glow(1079,103,80,'#b36cdb20');
+  // Compact utility lights retain a warm work surface inside the cooler street.
   for(const x of [302,1138]){
     const sway=Math.sin(t*.6+x)*2;
     line(x,61,x+sway,133,'#131e20',3);
-    poly([[x-27+sway,150],[x-13+sway,132],[x+13+sway,132],[x+27+sway,150]],'#bca678');
+    poly([[x-27+sway,150],[x-13+sway,132],[x+13+sway,132],[x+27+sway,150]],'#536c7b');
     ellipse(x+sway,151,27,6,'#e5d0a1');glow(x,205,100,'#e8c47c20');
     poly([[x-20,156],[x+20,156],[x+100,490],[x-100,490]],'#f4d79104');
   }
-  // Business CRT and speaker: the live numbers are rendered as accessible DOM.
+  // Future industrial terminal casing; live numbers remain accessible DOM.
   frame(32,99,270,159);rect(43,111,224,126,'#111e24');gradient(51,118,208,111,'#122e2e','#0b2024');
   for(let y=119;y<229;y+=4)line(53,y,257,y,'#bcebd504');
   for(let y=120;y<205;y+=7)line(276,y,290,y,'#101e23',2);
@@ -113,17 +115,17 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   if(view.chapter>=2){ellipse(1364,411,14,7,'#6e9a91');glow(1364,403,28,'#88d6c93a');}
   if(solder?.complete&&solder.naturalWidth){rect(1141,339,259,109,'#253c37');patina(1141,339,259,109,.3);ctx.drawImage(solder,1140,328,260,130);}
   // Counter: one continuous slab, with bevel, scratches, inset receiving and trading mats.
-  poly([[0,453],[1440,453],[1440,618],[0,618]],'#6b6a55');
-  gradient(0,460,W,151,'#687265','#3b5049');
+  poly([[0,453],[1440,453],[1440,618],[0,618]],'#435361');
+  gradient(0,460,W,151,'#566673','#2d404d');
   patina(0,460,W,151,.4);
   for(let i=0;i<48;i++){const x=(i*157)%1440,y=469+(i*23)%132;line(x,y,x+12+(i%5)*5,y+.4,'#c4b8940b');}
-  line(0,455,W,455,'#c2b992',4);line(0,611,W,611,'#a59a75',3);
-  gradient(0,615,W,32,'#4d5546','#293d38');line(0,646,W,646,'#10292a',5);
-  rect(347,393,746,78,'#0e2629');gradient(350,396,740,72,'#3c5853','#1d3735');line(350,396,1090,396,'#8a9580',2);
-  rect(347,494,746,98,'#132b2a');rect(351,498,738,90,'#233d35');
+  line(0,455,W,455,'#809ca6',4);line(0,611,W,611,'#5f8792',3);
+  gradient(0,615,W,32,'#364650','#213340');line(0,646,W,646,'#10292a',5);
+  rect(347,393,746,78,'#0e2629');gradient(350,396,740,72,'#304a58','#142e3a');line(350,396,1090,396,'#8a9580',2);
+  rect(347,494,746,98,'#132b2a');rect(351,498,738,90,'#203640');
   for(let x=356;x<1090;x+=20)line(x,500,x,587,'#b2c2a204');
   line(353,501,1086,501,'#7f907348');line(353,586,1086,586,'#7f907348');
-  // Patina, measuring ruler, a steaming enamel cup and a desk plant.
+  // Measuring ruler, a steaming enamel cup and plant keep the workbench lived-in.
   for(let i=0;i<60;i++)line(352+i*12,604,352+i*12,600-(i%5===0?5:0),'#b8b38e55');
   ellipse(202,539,25,9,'#18352f70');rect(183,508,32,30,'#bbbc98');ellipse(199,508,16,5,'#ded6b2');ellipse(199,509,12,3,'#563c2c');
   ctx.strokeStyle='#c3c5a6';ctx.lineWidth=4;ctx.beginPath();ctx.arc(218,522,9,-Math.PI/2,Math.PI/2);ctx.stroke();
@@ -131,17 +133,21 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   poly([[78,514],[119,514],[112,547],[85,547]],'#9b785a');ellipse(98,514,21,5,'#473f2f');
   for(let i=0;i<6;i++){const a=i*1.1;line(98,515,98+Math.cos(a)*25,483+Math.sin(a)*20,'#829f6d',3);ellipse(98+Math.cos(a)*25,483+Math.sin(a)*20,9,5,'#94aa7b');}
   // Cabinets below the slab, recessed warehouse and pinned order board.
-  gradient(0,650,W,250,'#2b403c','#1d302e');
+  gradient(0,650,W,250,'#2a3846','#182936');
   for(const x of [17,315,1112,1412]){rect(x,650,9,250,'#122b2b');line(x+10,653,x+10,900,'#6c76604d',2);}
   frame(323,631,794,260);rect(333,641,774,240,'#102629');
-  for(let i=0;i<3;i++){rect(23,661+i*74,278,64,'#32493f');patina(23,661+i*74,278,64);line(25,662+i*74,299,662+i*74,'#73816a');rect(118,678+i*74,82,7,'#172e2c');line(121,678+i*74,198,678+i*74,'#9ba382');}
+  for(let i=0;i<3;i++){rect(23,661+i*74,278,64,'#30434d');patina(23,661+i*74,278,64);line(25,662+i*74,299,662+i*74,'#5b7b84');rect(118,678+i*74,82,7,'#172e2c');line(121,678+i*74,198,678+i*74,'#9ba382');}
   rect(1137,482,268,158,'#202f2d');for(let i=0;i<8;i++)screw(1150+i*34,488);
   text('WORK ORDERS',1153,507,10,'#b2ac88');
   for(let row=0;row<3;row++)for(let col=0;col<2;col++){
-    const x=1138+col*137,y=665+row*52;gradient(x,y,130,45,'#526051','#33473e');patina(x,y,130,45);line(x,y,x+130,y,'#8f9272');rect(x+44,y+7,42,5,'#1f352f');
+    const x=1138+col*137,y=665+row*52;gradient(x,y,130,45,'#425963','#233d48');patina(x,y,130,45);line(x,y,x+130,y,'#6c8990');rect(x+44,y+7,42,5,'#1f352f');
   }
   if(view.repairs>0){text(`RESTORED  ${String(view.repairs).padStart(3,'0')}`,40,868,11,'#b9b89a');}
   if(view.chapter>=3){text('工造联合会  /  认可工坊',1139,862,12,'#d0bd86','sans-serif');}
+  // Restrained neon spill follows physical fixture edges, never the inventory contents.
+  const cyan=view.closed?.1:.22;
+  glow(320,300,160,`rgba(57,203,221,${cyan})`);glow(1124,285,160,`rgba(174,79,204,${cyan*.55})`);
+  line(335,642,1106,642,'#66aab377',1);line(25,647,300,647,'#65d1d955',2);line(1137,647,1408,647,'#ad77c455',2);
   // Vignette stays gentle so objects remain readable.
   const vignette=ctx.createRadialGradient(720,410,290,720,450,900);vignette.addColorStop(0,'transparent');vignette.addColorStop(1,'#03151d55');ctx.fillStyle=vignette;ctx.fillRect(0,0,W,H);
 }

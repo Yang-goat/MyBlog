@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "preferencesPersist": true,
+  "mutingAndAmbience": true,
+  "reducedMotion": true,
+  "presentationDoesNotAdvanceEconomy": true,
+  "fullscreen": true,
+  "renderMsPerFrame": 15.05,
+  "errors": []
+}
