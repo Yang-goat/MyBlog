@@ -6,6 +6,7 @@ import { faction } from '../content/factions';
 import { validRotation } from '../game/warehouse';
 import { validModifiers, dailyHours } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
+import {ENERGY_PROFILES,energyEligible} from '../game/energy';
 import type { GameState, ItemInstance } from '../game/types';
 
 export const SAVE_KEY = 'cyber-shop:save:v1';
@@ -72,6 +73,12 @@ export function validateState(value: unknown): asserts value is GameState {
     check((i.expiresDay === null || integer(i.expiresDay)) && integer(i.cost) && integer(i.acquiredDay) && integer(i.preservedUntil), '物品成本或保质期无效。');
     check(strings(i.faults) && refs(i.faults, FAULTS.map(a => a.id)) && strings(i.known) && refs(i.known, ['basic', 'scan', 'serial', 'batch', 'diagnosed', 'restored']), '物品检测记录无效。');
     const d = ITEMS.find(d => d.id === i.definitionId)!;
+    if(i.energyPreparation!==undefined){
+      const p=i.energyPreparation,profile=ENERGY_PROFILES.find(v=>v.id===p?.profileId);
+      check(object(p)&&energyEligible(i)&&profile&&integer(p.day)&&p.day>=1&&p.day<=s.day,'能源整备记录无效。');
+      check(integer(p.before)&&p.before<100&&integer(p.after)&&p.after>p.before&&p.after===Math.min(profile.target,p.before+profile.gain)&&i.capacity===p.after,'能源整备容量记录无效。');
+      check(integer(p.electricity)&&p.electricity>0&&integer(p.materialCost)&&p.electricity+p.materialCost<=i.cost&&number(p.hours)&&p.hours>=profile.hours+.5&&p.hours*2%1===0,'能源整备成本记录无效。');
+    }
     check(!i.faults.length || (d.certificate && i.faults.every(id => FAULTS.find(f => f.id === id)?.certificate === d.certificate)), '该商品含不适用的故障。');
   };
   check(Array.isArray(s.items) && s.items.length < 10000, '库存数据无效。'); s.items.forEach(validateItem);
@@ -110,6 +117,15 @@ export function validateState(value: unknown): asserts value is GameState {
     if (!o.delivered) { const item = s.items.find(i => i.id === o.itemId); check(item && item.location === 'workshop' && !activeItems.has(item.id), '进行中的工单物品缺失或重复。'); check(o.kind === 'own' ? item.owner === 'player' : item.owner === 'customer', '维修工单归属冲突。'); activeItems.add(item.id); }
   }
   check(new Set(s.orders.map(o => o.id)).size === s.orders.length, '存档含重复工单。');
+  if(s.energyPrepared!==undefined)check(integer(s.energyPrepared)&&s.energyPrepared>=s.items.filter(i=>i.energyPreparation).length,'能源整备累计记录无效。');
+  if(s.energyWork!==undefined){
+    const w=s.energyWork;check(object(w)&&typeof w.itemId==='string','能源工单无效。');
+    const item=s.items.find(i=>i.id===w.itemId),profile=ENERGY_PROFILES.find(p=>p.id===w.profileId);
+    check(item&&energyEligible(item)&&item.owner==='player'&&item.location==='workshop'&&!item.energyPreparation&&!item.grid&&!item.counterGrid&&!item.containerId&&!activeItems.has(item.id),'能源工单物品缺失或归属冲突。');
+    check(profile&&integer(w.startedDay)&&w.startedDay>=1&&w.startedDay<=s.day&&integer(w.before)&&w.before<100&&integer(w.target)&&w.target>w.before&&w.target===Math.min(profile.target,w.before+profile.gain),'能源工单方案无效。');
+    check(integer(w.electricity)&&w.electricity>0&&integer(w.materialCost)&&w.electricity+w.materialCost<=item.cost&&w.processHours===profile.hours&&integer(w.attempts)&&typeof w.verified==='boolean'&&(!w.verified||w.attempts>0),'能源工单投入无效。');
+    check(item.capacity===(w.verified?w.target:w.before)&&!item.faults.length&&item.known.some(k=>['basic','diagnosed'].includes(k))&&item.known.some(k=>['scan','batch'].includes(k)),'能源工单检测状态无效。');
+  }
   if(s.repairHistory!==undefined){
     check(Array.isArray(s.repairHistory)&&s.repairHistory.length<=80,'修复档案无效。');
     for(const receipt of s.repairHistory){

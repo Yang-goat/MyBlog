@@ -1,5 +1,7 @@
 /** Original, layered scenery. No baked shop plate: all fixtures share the UI's coordinates. */
-export interface RoomView { day: number; hours: number; maxHours?: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number; owned?: boolean }
+export interface RoomSurface {x:number;y:number;width:number;height:number}
+export type RoomSurfaces=Partial<Record<'incoming'|'trade'|'warehouse',RoomSurface>>;
+export interface RoomView { day: number; hours: number; maxHours?: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number; owned?: boolean; surfaces?:RoomSurfaces }
 export interface RoomArt {street?:HTMLImageElement;metal?:HTMLImageElement;terminal?:HTMLImageElement;solder?:HTMLImageElement}
 export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: number, view: RoomView, art:RoomArt={}) {
   const {street,metal,terminal,solder}=art;
@@ -19,6 +21,39 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
     line(x+2,y+2,x+w-2,y+2,'#8da3ad',2);line(x+2,y+h,x+w,y+h,'#0b1518',4);
     [[x+8,y+8],[x+w-8,y+8],[x+8,y+h-8],[x+w-8,y+h-8]].forEach(([a,b])=>screw(a!,b!));
   };
+  // The three fitted surfaces belong to different depth planes: street, counter, under-counter.
+  const inventoryTray=(surface:RoomSurface|undefined,kind:'outside'|'counter'|'storage')=>{
+    if(!surface)return;
+    const {x,y,width:w,height:h}=surface;
+    if(kind==='outside'){
+      rect(x-4,y+h+5,w+8,7,'#07151dc0');
+      gradient(x-4,y-4,w+8,h+8,'#5d7a84','#2a4353');
+      gradient(x,y,w,h,'#314b59','#223c4b');
+      line(x-3,y-3,x+w+3,y-3,'#98c5d1',1.5);
+      line(x-3,y+h+4,x+w+3,y+h+4,'#64869c',3);
+      line(x,y+h+6,x+w,y+h+6,'#102431',2);
+      line(x-3,y,x-3,y+h,'#7ee0dc88',2);line(x+w+3,y,x+w+3,y+h,'#b77da18a',2);
+      for(const a of [x+9,x+w-9]){screw(a,y-2);line(a,y+h+7,a,y+h+11,'#7793a1',3);}
+    }else if(kind==='counter'){
+      rect(x-4,y-4,w+8,h+8,'#1a2c31');
+      gradient(x-3,y-3,w+6,h+6,'#a49b7f','#5c685f');
+      gradient(x,y,w,h,'#3c4c4e','#293d40');
+      line(x-2,y-2,x+w+2,y-2,'#d6c49a',1.5);line(x-2,y+h+3,x+w+2,y+h+3,'#142a2d',2);
+      for(const a of [x+7,x+w-7])screw(a,y+h+2);
+    }else{
+      rect(x-9,y-9,w+18,h+19,'#081923');
+      poly([[x-8,y-8],[x,y],[x,y+h],[x-8,y+h+8]],'#314953');
+      poly([[x+w+8,y-8],[x+w,y],[x+w,y+h],[x+w+8,y+h+8]],'#213641');
+      gradient(x,y,w,h,'#0e222e','#18313a');
+      gradient(x,y,w,7,'#06151cb3','#06151c00');
+      line(x-8,y-8,x+w+8,y-8,'#516a70',2);
+      gradient(x-8,y+h,w+16,7,'#637878','#304650');
+      line(x-8,y+h,x+w+8,y+h,'#90aba3',1.5);line(x-8,y+h+8,x+w+8,y+h+8,'#081820',3);
+    }
+  };
+  const incoming=view.surfaces?.incoming,trade=view.surfaces?.trade;
+  const windowBottom=incoming?incoming.y+incoming.height+14:490,windowHeight=windowBottom-85;
+  const counterBack=windowBottom+2,counterFront=Math.max(counterBack+90,trade?trade.y+trade.height+29:613);
   const t=view.motion?view.time/1000:0;
   const night=view.closed?1:1-view.hours/(view.maxHours??12);
   const rain=view.day%4!==0;
@@ -34,9 +69,9 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   rect(1410,0,8,600,'#142a2c');line(1412,0,1412,600,'#6a796c',2);
   for(let y=45;y<590;y+=120){rect(13,y,20,7,'#586b5f');rect(1405,y,18,7,'#53665d');}
   // Deep window recess. Street layers move independently of the fixed counter.
-  frame(328,74,784,365);rect(340,84,760,344,'#071c26');
-  ctx.save();ctx.beginPath();ctx.rect(342,85,756,342);ctx.clip();
-  gradient(342,85,756,342,night>.6?'#0d2337':'#294658','#142d36');
+  frame(328,74,784,windowBottom-74);rect(340,84,760,windowHeight+1,'#071c26');
+  ctx.save();ctx.beginPath();ctx.rect(342,85,756,windowHeight);ctx.clip();
+  gradient(342,85,756,windowHeight,night>.6?'#0d2337':'#294658','#142d36');
   const shift=view.motion?view.pointer*5:0;
   for(let i=0;i<15;i++){
     const x=330+i*58+shift*.4,y=110+(i*43)%90,w=45+(i*7)%25;
@@ -55,23 +90,26 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   for(let i=0;i<16;i++)line(350+i*48,382+(i%4)*8,375+i*48,382+(i%4)*8,i%3?'#5d877b55':'#cc9a6d66',2);
   if(street?.complete&&street.naturalWidth){
     // A separate illustrated street plane; window geometry, weather and fixtures remain live.
-    const sourceHeight=street.naturalWidth/(756/342);
-    ctx.drawImage(street,0,Math.max(0,street.naturalHeight-sourceHeight),street.naturalWidth,sourceHeight,338+shift,82,766,348);
-    rect(342,85,756,342,`rgba(5,24,36,${.12+night*.25})`);
+    const sourceHeight=street.naturalWidth/(766/(windowHeight+6));
+    ctx.drawImage(street,0,Math.max(0,street.naturalHeight-sourceHeight),street.naturalWidth,sourceHeight,338+shift,82,766,windowHeight+6);
+    rect(342,85,756,windowHeight,`rgba(5,24,36,${.12+night*.25})`);
     glow(450,285,155,'#49dce218');glow(1010,220,150,'#c35bdf15');
   }
   const travel=(t*23)%970;
   rect(230+travel,324,43,14,'#15272f');rect(235+travel,320,25,7,'#334d51');rect(269+travel,330,4,3,'#eac8a0');
   line(241+travel,350,275+travel,350,'#9cc7b344',2);
   if(rain)for(let i=0;i<90;i++){
-    const x=342+(i*137)%760,y=85+((i*71+t*(105+i%5*13))%344);
+    const x=342+(i*137)%760,y=85+((i*71+t*(105+i%5*13))%windowHeight);
     line(x,y,x-3,y+13,'#a0c9cb25');
   }
   // Glass highlights and raindrops on the close pane.
-  poly([[342,85],[460,85],[650,428],[572,428]],'#b7dbc407');
+  poly([[342,85],[460,85],[650,windowBottom],[572,windowBottom]],'#b7dbc407');
   for(let i=0;i<14;i++){const x=360+(i*83)%720,y=110+(i*59)%290;line(x,y,x-2,y+19,'#a6d6d535');}
+  inventoryTray(incoming,'outside');
   ctx.restore();
-  rect(336,410,768,17,'#526779');rect(332,427,776,12,'#142632');line(340,411,1100,411,'#80abb2',2);
+  // This sill is in front of the receiving shelf and separates rainy street from the dry counter.
+  gradient(333,windowBottom,774,9,'#70838b','#3b5260');
+  line(340,windowBottom,1100,windowBottom,'#9db9c0',2);line(333,windowBottom+9,1107,windowBottom+9,'#102834',3);
   // Shop beam and retractable metal shutter, separate from the outside street.
   gradient(0,0,W,66,'#172b38','#10212e');line(0,63,W,63,'#486775',3);
   for(let i=0;i<16;i++){screw(i*96+12,18);line(i*96+24,12,i*96+24,46,'#304451');}
@@ -110,19 +148,16 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   for(let i=0;i<3;i++) {rect(1330+i*17,365,9,53,['#a1aa93','#b68e65','#668f85'][i]!);ellipse(1334+i*17,365,4.5,3,'#c4c6a9');}
   if(view.chapter>=2){ellipse(1364,411,14,7,'#6e9a91');glow(1364,403,28,'#88d6c93a');}
   if(solder?.complete&&solder.naturalWidth){rect(1141,339,259,109,'#253c37');patina(1141,339,259,109,.3);ctx.drawImage(solder,1140,328,260,130);}
-  // Counter: one continuous slab, with bevel, scratches, inset receiving and trading mats.
-  poly([[0,453],[1440,453],[1440,618],[0,618]],'#435361');
-  gradient(0,460,W,151,'#566673','#2d404d');
-  patina(0,460,W,151,.4);
-  for(let i=0;i<48;i++){const x=(i*157)%1440,y=469+(i*23)%132;line(x,y,x+12+(i%5)*5,y+.4,'#c4b8940b');}
-  line(0,455,W,455,'#809ca6',4);line(0,611,W,611,'#5f8792',3);
-  gradient(0,615,W,32,'#364650','#213340');line(0,646,W,646,'#10292a',5);
-  rect(347,393,746,78,'#0e2629');gradient(350,396,740,72,'#304a58','#142e3a');line(350,396,1090,396,'#8a9580',2);
-  rect(347,494,746,98,'#132b2a');rect(351,498,738,90,'#203640');
-  for(let x=356;x<1090;x+=20)line(x,500,x,587,'#b2c2a204');
-  line(353,501,1086,501,'#7f907348');line(353,586,1086,586,'#7f907348');
+  // One dry, continuous shop counter. Only the middle grid is inset into this desktop.
+  gradient(0,counterBack,W,counterFront-counterBack,'#65716d','#3c5158');
+  patina(0,counterBack,W,counterFront-counterBack,.35);
+  for(let i=0;i<48;i++){const x=(i*157)%1440,y=counterBack+9+(i*23)%(counterFront-counterBack-18);line(x,y,x+12+(i%5)*5,y+.4,'#d4c8a914');}
+  line(0,counterBack,W,counterBack,'#929e90',3);
+  line(0,counterFront,W,counterFront,'#adbaaa',3);
+  gradient(0,counterFront+3,W,Math.max(32,650-counterFront-3),'#4a5b5d','#243a46');line(0,648,W,648,'#0b1d27',5);
+  inventoryTray(trade,'counter');
   // Measuring ruler, a steaming enamel cup and plant keep the workbench lived-in.
-  for(let i=0;i<60;i++)line(352+i*12,604,352+i*12,600-(i%5===0?5:0),'#b8b38e55');
+  for(let i=0;i<60;i++)line(352+i*12,counterFront-8,352+i*12,counterFront-12-(i%5===0?5:0),'#d0c8a866');
   ellipse(202,539,25,9,'#18352f70');rect(183,508,32,30,'#bbbc98');ellipse(199,508,16,5,'#ded6b2');ellipse(199,509,12,3,'#563c2c');
   ctx.strokeStyle='#c3c5a6';ctx.lineWidth=4;ctx.beginPath();ctx.arc(218,522,9,-Math.PI/2,Math.PI/2);ctx.stroke();
   for(let i=0;i<3;i++){const y=502-((t*10+i*13)%44);line(196+Math.sin(t+i)*4,y,201+Math.sin(t+i+1)*5,y-10,'#e2dfbd30',2);}
@@ -130,8 +165,9 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   for(let i=0;i<6;i++){const a=i*1.1;line(98,515,98+Math.cos(a)*25,483+Math.sin(a)*20,'#829f6d',3);ellipse(98+Math.cos(a)*25,483+Math.sin(a)*20,9,5,'#94aa7b');}
   // Cabinets below the slab, recessed warehouse and pinned order board.
   gradient(0,650,W,250,'#2a3846','#182936');
+  gradient(323,650,788,36,'#06141dd9','#06141d00');
   for(const x of [17,315,1112,1412]){rect(x,650,9,250,'#122b2b');line(x+10,653,x+10,900,'#6c76604d',2);}
-  frame(323,631,794,260);rect(333,641,774,240,'#102629');
+  inventoryTray(view.surfaces?.warehouse,'storage');
   for(let i=0;i<3;i++){rect(23,661+i*74,278,64,'#30434d');patina(23,661+i*74,278,64);line(25,662+i*74,299,662+i*74,'#5b7b84');rect(118,678+i*74,82,7,'#172e2c');line(121,678+i*74,198,678+i*74,'#9ba382');}
   rect(1137,482,268,158,'#202f2d');for(let i=0;i<8;i++)screw(1150+i*34,488);
   for(let row=0;row<3;row++)for(let col=0;col<2;col++){
@@ -140,7 +176,7 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   // Restrained neon spill follows physical fixture edges, never the inventory contents.
   const cyan=view.closed?.1:.22;
   glow(320,300,160,`rgba(57,203,221,${cyan})`);glow(1124,285,160,`rgba(174,79,204,${cyan*.55})`);
-  line(335,642,1106,642,'#66aab377',1);line(25,647,300,647,'#65d1d955',2);line(1137,647,1408,647,'#ad77c455',2);
+  line(25,647,300,647,'#65d1d955',2);line(1137,647,1408,647,'#ad77c455',2);
   // Vignette stays gentle so objects remain readable.
   const vignette=ctx.createRadialGradient(720,410,290,720,450,900);vignette.addColorStop(0,'transparent');vignette.addColorStop(1,'#03151d55');ctx.fillStyle=vignette;ctx.fillRect(0,0,W,H);
 }

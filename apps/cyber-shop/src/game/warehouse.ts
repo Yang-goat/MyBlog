@@ -3,6 +3,7 @@ import { storageStyle } from '../content/storage';
 import type { ItemInstance, StorageContainer, Rotation } from './types';
 
 export const GRID_COLUMNS = 24;
+export const WAREHOUSE_PAGE_ROWS = 6;
 export const SURFACE_COLUMNS = 24;
 export const SURFACE_ROWS = 3;
 export const SURFACE_CAPACITY = SURFACE_COLUMNS * SURFACE_ROWS / 4;
@@ -31,10 +32,11 @@ export function occupiedCells(item:Object,rotated:Rotation=false){
  for(let t=0;t<turns(rotated);t++){cells=cells.map(c=>({x:height-1-c.y,y:c.x}));[width,height]=[height,width];}
  result=cells;cellCache.set(key,result);return result;
 }
-export function fits(item: ItemInstance | StorageContainer, at: Placement, occupied: Set<number>, capacity: number, columns = GRID_COLUMNS) {
+export function fits(item: ItemInstance | StorageContainer, at: Placement, occupied: Set<number>, capacity: number, columns = GRID_COLUMNS, pageRows?:number) {
   if (!Number.isSafeInteger(at.x) || !Number.isSafeInteger(at.y) || at.x < 0 || at.y < 0 || !validRotation(at.rotated)) return false;
   const { width, height } = footprint(item, at.rotated);
   if (at.x + width > columns) return false;
+  if(pageRows&&Math.floor(at.y/pageRows)!==Math.floor((at.y+height-1)/pageRows))return false;
   for (const cell of occupiedCells(item,at.rotated)) { const x=at.x+cell.x,y=at.y+cell.y;
     if (y * columns + x >= capacity * 4 || occupied.has(y * columns + x)) return false;
   }
@@ -43,16 +45,16 @@ export function fits(item: ItemInstance | StorageContainer, at: Placement, occup
 export function occupy(item: ItemInstance | StorageContainer, at: Placement, occupied: Set<number>, columns = GRID_COLUMNS) {
   for (const cell of occupiedCells(item,at.rotated)) occupied.add((at.y+cell.y)*columns+at.x+cell.x);
 }
-export function warehouseLayout(items: (ItemInstance | StorageContainer)[], capacity: number, columns = GRID_COLUMNS, containerId?: string) {
+export function warehouseLayout(items: (ItemInstance | StorageContainer)[], capacity: number, columns = GRID_COLUMNS, containerId?: string,pageRows?:number) {
   const stock = items.filter(i => i.owner === 'player' && i.location === 'stock' && i.containerId === containerId);
   const occupied = new Set<number>(); const positions: Record<string, Placement> = {}; const overflow: string[] = [];
-  for (const item of stock) if (item.grid && fits(item, item.grid, occupied, capacity, columns)) { positions[item.id] = item.grid; occupy(item, item.grid, occupied, columns); }
+  for (const item of stock) if (item.grid && fits(item, item.grid, occupied, capacity, columns,pageRows)) { positions[item.id] = item.grid; occupy(item, item.grid, occupied, columns); }
   for (const item of stock) {
     if (positions[item.id]) continue;
     let found = false;
     for (let cell = 0; cell < capacity * 4 && !found; cell++) for (const rotated of orientations(item)) {
       const at = { x: cell % columns, y: Math.floor(cell / columns), rotated };
-      if (fits(item, at, occupied, capacity, columns)) { positions[item.id] = at; occupy(item, at, occupied, columns); found = true; break; }
+      if (fits(item, at, occupied, capacity, columns,pageRows)) { positions[item.id] = at; occupy(item, at, occupied, columns); found = true; break; }
     }
     if (!found) overflow.push(item.id);
   }

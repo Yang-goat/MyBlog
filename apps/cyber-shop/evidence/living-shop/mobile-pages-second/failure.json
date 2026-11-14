@@ -1,0 +1,1707 @@
+{
+  "error": "TimeoutError: locator.tap: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: '扩仓1 · 120 格', exact: true })\u001b[22m\n",
+  "state": {
+    "version": "0.2.0",
+    "mode": "open",
+    "panel": "",
+    "selectedItem": "item-587",
+    "selectedOrder": "",
+    "coordinates": "画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式",
+    "game": {
+      "coordinates": "店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+      "day": 17,
+      "chapter": 4,
+      "phase": "open",
+      "cash": 13428,
+      "hours": 12,
+      "maxHours": 12,
+      "debt": 0,
+      "grace": 0,
+      "xp": 2050,
+      "level": 12,
+      "points": 2,
+      "skills": [
+        "precision-1",
+        "precision-2",
+        "precision-3",
+        "workshop-1",
+        "workshop-2",
+        "workshop-3",
+        "precision-4",
+        "business-1"
+      ],
+      "certificates": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "trained": [
+        "civil",
+        "industrial",
+        "neural"
+      ],
+      "licenses": [
+        "regulated-trade"
+      ],
+      "equipment": {
+        "cleaner": 4,
+        "electronic-parts": 4,
+        "mechanical-parts": 4,
+        "insulation": 4,
+        "neural-supplies": 4,
+        "preserve-pack": 2,
+        "micro-solder": 1,
+        "workbench": 1,
+        "assembly-jig": 1,
+        "calibrator": 1,
+        "stock-rack": 3
+      },
+      "energyPrepared": 0,
+      "stockUsage": 0.25,
+      "capacity": 66,
+      "rootCapacity": 66,
+      "labeler": false,
+      "modifiers": [],
+      "containers": [],
+      "displayCapacity": 3,
+      "attraction": 0,
+      "items": [
+        {
+          "id": "item-587",
+          "definitionId": "memory-crystal",
+          "name": "私人影像晶片",
+          "category": "data",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "reserved": false,
+          "cost": 317
+        }
+      ],
+      "visitorArrived": true,
+      "warehouse": {
+        "positions": {
+          "item-587": {
+            "x": 0,
+            "y": 0,
+            "rotated": false
+          }
+        },
+        "overflow": []
+      },
+      "tutorial": {
+        "step": 9,
+        "skipped": false
+      },
+      "conversations": {
+        "visitor-5": 2,
+        "visitor-10": 2,
+        "visitor-11": 2,
+        "visitor-13": 2,
+        "visitor-18": 2,
+        "visitor-19": 2,
+        "visitor-20": 2,
+        "visitor-38": 2,
+        "visitor-43": 2,
+        "visitor-44": 2,
+        "visitor-46": 2,
+        "visitor-51": 2,
+        "visitor-52": 2,
+        "visitor-53": 2,
+        "visitor-73": 2,
+        "visitor-78": 2,
+        "visitor-79": 2,
+        "visitor-81": 2,
+        "visitor-86": 2,
+        "visitor-87": 2,
+        "visitor-88": 2,
+        "visitor-109": 2,
+        "visitor-114": 2,
+        "visitor-115": 2,
+        "visitor-117": 2,
+        "visitor-122": 2,
+        "visitor-123": 2,
+        "visitor-124": 2,
+        "visitor-150": 2,
+        "visitor-155": 2,
+        "visitor-156": 2,
+        "visitor-158": 2,
+        "visitor-163": 2,
+        "visitor-164": 2,
+        "visitor-165": 2,
+        "visitor-183": 2,
+        "visitor-188": 2,
+        "visitor-189": 2,
+        "visitor-191": 2,
+        "visitor-196": 2,
+        "visitor-197": 2,
+        "visitor-198": 2,
+        "visitor-217": 2,
+        "visitor-222": 2,
+        "visitor-223": 2,
+        "visitor-225": 2,
+        "visitor-230": 2,
+        "visitor-231": 2,
+        "visitor-232": 2,
+        "visitor-250": 2,
+        "visitor-255": 2,
+        "visitor-256": 2,
+        "visitor-258": 2,
+        "visitor-263": 2,
+        "visitor-264": 2,
+        "visitor-265": 2,
+        "visitor-292": 2,
+        "visitor-297": 2,
+        "visitor-298": 2,
+        "visitor-300": 2,
+        "visitor-305": 2,
+        "visitor-306": 2,
+        "visitor-307": 2,
+        "visitor-327": 2,
+        "visitor-332": 2,
+        "visitor-333": 2,
+        "visitor-335": 2,
+        "visitor-340": 2,
+        "visitor-341": 2,
+        "visitor-342": 2,
+        "visitor-360": 2,
+        "visitor-365": 2,
+        "visitor-366": 2,
+        "visitor-368": 2,
+        "visitor-373": 2,
+        "visitor-374": 2,
+        "visitor-375": 2,
+        "visitor-395": 2,
+        "visitor-400": 2,
+        "visitor-401": 2,
+        "visitor-403": 2,
+        "visitor-408": 2,
+        "visitor-409": 2,
+        "visitor-410": 2,
+        "visitor-431": 2,
+        "visitor-436": 2,
+        "visitor-437": 2,
+        "visitor-439": 2,
+        "visitor-444": 2,
+        "visitor-445": 2,
+        "visitor-446": 2,
+        "visitor-466": 2,
+        "visitor-471": 2,
+        "visitor-472": 2,
+        "visitor-474": 2,
+        "visitor-479": 2,
+        "visitor-480": 2,
+        "visitor-481": 2,
+        "visitor-505": 2,
+        "visitor-510": 2,
+        "visitor-511": 2,
+        "visitor-513": 2,
+        "visitor-518": 2,
+        "visitor-519": 2,
+        "visitor-520": 2,
+        "visitor-547": 2,
+        "visitor-552": 2,
+        "visitor-553": 2,
+        "visitor-555": 2,
+        "visitor-560": 2,
+        "visitor-561": 2,
+        "visitor-562": 2,
+        "visitor-591": 2
+      },
+      "visitor": {
+        "id": "visitor-591",
+        "characterId": "ji-yan",
+        "kind": "seller",
+        "category": "data",
+        "quote": 216,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": true,
+        "request": "带了一批数据与娱乐载体，每件成色不一样，价签都在。可以先挑、先检查。预算不是问题，能否直接使用才是。品相八成五以上且无故障的货，我愿意加价。",
+        "greeting": "上回那件神经接口桥已经取回了，工序单我也留着。今天又走到你这扇门前。",
+        "goods": [
+          {
+            "id": "item-588",
+            "definitionId": "encrypted-box",
+            "name": "加密档案盒",
+            "category": "data",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "reserved": false,
+            "cost": 0,
+            "quote": 216
+          },
+          {
+            "id": "item-589",
+            "definitionId": "encrypted-box",
+            "name": "加密档案盒",
+            "category": "data",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "reserved": false,
+            "cost": 0,
+            "quote": 171
+          },
+          {
+            "id": "item-590",
+            "definitionId": "game-cartridge",
+            "name": "旧式游戏卡匣",
+            "category": "data",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "reserved": false,
+            "cost": 0,
+            "quote": 194
+          }
+        ],
+        "storageGoods": [
+          {
+            "id": "storage-offer-602",
+            "styleId": "courier-pouch",
+            "price": 120
+          },
+          {
+            "id": "storage-offer-603",
+            "styleId": "courier-pack",
+            "price": 300
+          }
+        ],
+        "lastTrade": {
+          "kind": "buy",
+          "amount": 317,
+          "cost": 317,
+          "goods": [
+            {
+              "definitionId": "memory-crystal",
+              "itemId": "item-587",
+              "cost": 317
+            }
+          ]
+        },
+        "item": {
+          "id": "item-588",
+          "definitionId": "encrypted-box",
+          "name": "加密档案盒",
+          "category": "data",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "reserved": false,
+          "cost": 0
+        }
+      },
+      "visitorIndex": 1,
+      "visitorCount": 7,
+      "orders": [],
+      "eventId": "rain-grid",
+      "eventResolved": false,
+      "questStages": {
+        "neighborhood-line": 3,
+        "archive-home": 1,
+        "workshop-trust": 3,
+        "clinic-promise": 3
+      },
+      "reputation": 155,
+      "relations": {
+        "union": 22,
+        "grayline": 19,
+        "neighborhood": 33,
+        "uppercity": 18,
+        "contractors": 15,
+        "watch": 8,
+        "freewave": 12
+      },
+      "factions": [
+        {
+          "id": "neighborhood",
+          "name": "九街互助社",
+          "shortName": "街坊",
+          "stratum": "下层居民",
+          "color": "#b7cb8b",
+          "contact": "lin-qiao",
+          "categories": [
+            "food",
+            "electronics"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1,
+          "description": "快递员、食堂、诊所和住户凑成的互助网络。旧设备每天都要继续工作。",
+          "tradeNote": "日常补给与实用旧物",
+          "perk": "信任 16：每日维护费减 ₡10。",
+          "known": true,
+          "relation": 33,
+          "level": "信任",
+          "canAppoint": true,
+          "trusted": true
+        },
+        {
+          "id": "union",
+          "name": "工造联合会",
+          "shortName": "工造",
+          "stratum": "工人和独立工坊",
+          "color": "#dfae70",
+          "contact": "he-jin",
+          "categories": [
+            "electronics",
+            "energy"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1.2,
+          "description": "靠工序、批次和交付记录建立信用的工坊联盟。",
+          "tradeNote": "工业器材与材料，预算较充足",
+          "perk": "信任 16：工具商店耗材九折，可叠加技能优惠。",
+          "known": true,
+          "relation": 22,
+          "level": "信任",
+          "canAppoint": true,
+          "trusted": true
+        },
+        {
+          "id": "grayline",
+          "name": "灰线黑市",
+          "shortName": "灰线",
+          "stratum": "地下货运网络",
+          "color": "#b99cda",
+          "contact": "qi-lan",
+          "categories": [
+            "energy",
+            "electronics",
+            "data"
+          ],
+          "seller": 0.9,
+          "buyer": 0.95,
+          "budget": 1,
+          "description": "绕开正规货路的旧货商。价格低，磨损和缺失的批次凭据需要店主自己判断。",
+          "tradeNote": "进货便宜，成色较低、部分批次不全",
+          "perk": "信任 16：灰线卖家的箱包价格再减 15%。",
+          "known": true,
+          "relation": 19,
+          "level": "信任",
+          "canAppoint": true,
+          "trusted": true
+        },
+        {
+          "id": "uppercity",
+          "name": "云阶采购圈",
+          "shortName": "云阶",
+          "stratum": "上层企业与私人买家",
+          "color": "#c6d7ee",
+          "contact": "ji-yan",
+          "categories": [
+            "data",
+            "antique",
+            "neural"
+          ],
+          "seller": 1.12,
+          "buyer": 1.1,
+          "budget": 1.6,
+          "description": "从高层办公区下来的采购人。预算宽裕，重视可直接使用的高品相货物。",
+          "tradeNote": "完好且品相 ≥85 的货物另加价 15%",
+          "perk": "信任 16：云阶买家的完好高品相加价由 15% 升至 20%。",
+          "known": true,
+          "relation": 18,
+          "level": "信任",
+          "canAppoint": true,
+          "trusted": true
+        },
+        {
+          "id": "contractors",
+          "name": "铁隼合约团",
+          "shortName": "铁隼",
+          "stratum": "独立佣兵",
+          "color": "#d18b84",
+          "contact": "han-qiao",
+          "categories": [
+            "electronics",
+            "energy",
+            "neural"
+          ],
+          "seller": 0.96,
+          "buyer": 1.04,
+          "budget": 1.15,
+          "description": "按合同工作的护送员和外勤佣兵。装备要能用，外壳上的伤痕可以留下。",
+          "tradeNote": "无功能故障的设备另加价 8%",
+          "perk": "信任 16：铁隼客户新接维修工单报酬增加 15%。",
+          "known": true,
+          "relation": 15,
+          "level": "熟客",
+          "canAppoint": true,
+          "trusted": false
+        },
+        {
+          "id": "watch",
+          "name": "九区巡务署",
+          "shortName": "巡务",
+          "stratum": "辖区警务",
+          "color": "#8fbcdf",
+          "contact": "xu-zheng",
+          "categories": [
+            "electronics",
+            "data",
+            "neural"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1.1,
+          "description": "负责街区秩序和流转登记的警务部门。可查验的来源比口头保证更有效。",
+          "tradeNote": "已核验且可追溯的货物另加价 10%",
+          "perk": "信任 16：通用交易许可费用减 25%。",
+          "known": true,
+          "relation": 8,
+          "level": "熟客",
+          "canAppoint": true,
+          "trusted": false
+        },
+        {
+          "id": "freewave",
+          "name": "自由频段",
+          "shortName": "频段",
+          "stratum": "地下反抗组织",
+          "color": "#78c9bd",
+          "contact": "yan-que",
+          "categories": [
+            "data",
+            "energy",
+            "electronics"
+          ],
+          "seller": 0.96,
+          "buyer": 1,
+          "budget": 0.9,
+          "description": "用地下电台连接各个下层街区，反对上层企业垄断通信。成员靠回收器材维持广播。",
+          "tradeNote": "数据载体与能源材料另加价 8%",
+          "perk": "信任 16：数据货物的来源核验免工时，仍需序列检索终端。",
+          "known": true,
+          "relation": 12,
+          "level": "熟客",
+          "canAppoint": true,
+          "trusted": false
+        }
+      ],
+      "factionAppointment": null,
+      "records": {
+        "trades": 68,
+        "repairs": 35,
+        "revenue": 33885,
+        "repairIncome": 16738,
+        "days": 15,
+        "faults": {
+          "oxidized-contact": 6,
+          "broken-power": 8,
+          "jammed-bearing": 12,
+          "insulation-leak": 6,
+          "clock-drift": 3,
+          "burnt-driver": 10,
+          "neural-noise": 5,
+          "sensor-drift": 4,
+          "feedback-loop": 2
+        }
+      },
+      "repairHistory": [
+        {
+          "orderId": "order-26",
+          "definitionId": "portable-terminal",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 1,
+          "day": 1,
+          "conditionBefore": 63,
+          "conditionAfter": 77,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 1,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-31",
+          "definitionId": "folding-worklight",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 1,
+          "day": 1,
+          "conditionBefore": 55,
+          "conditionAfter": 69,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 1,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-59",
+          "definitionId": "portable-terminal",
+          "characterId": "lin-qiao",
+          "kind": "client",
+          "receivedDay": 2,
+          "day": 2,
+          "conditionBefore": 58,
+          "conditionAfter": 72,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 2,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-64",
+          "definitionId": "angle-drill",
+          "characterId": "lin-qiao",
+          "kind": "client",
+          "receivedDay": 2,
+          "day": 2,
+          "conditionBefore": 54,
+          "conditionAfter": 68,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 2,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-94",
+          "definitionId": "portable-terminal",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 3,
+          "day": 3,
+          "conditionBefore": 66,
+          "conditionAfter": 80,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 3,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-100",
+          "definitionId": "folding-worklight",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 3,
+          "day": 3,
+          "conditionBefore": 90,
+          "conditionAfter": 100,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 3,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-132",
+          "definitionId": "industrial-sensor",
+          "characterId": "examiner",
+          "kind": "exam",
+          "receivedDay": 4,
+          "day": 4,
+          "conditionBefore": 86,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 4,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 4,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 0
+        },
+        {
+          "orderId": "order-135",
+          "definitionId": "pocket-com",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 4,
+          "day": 4,
+          "conditionBefore": 75,
+          "conditionAfter": 89,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 4,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-140",
+          "definitionId": "air-circulator",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 4,
+          "day": 4,
+          "conditionBefore": 79,
+          "conditionAfter": 93,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 4,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-171",
+          "definitionId": "air-circulator",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 5,
+          "day": 5,
+          "conditionBefore": 53,
+          "conditionAfter": 67,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 5,
+              "operation": "calibrate",
+              "module": "clock",
+              "faultId": "clock-drift",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-176",
+          "definitionId": "portable-terminal",
+          "characterId": "yan-que",
+          "kind": "client",
+          "receivedDay": 5,
+          "day": 5,
+          "conditionBefore": 90,
+          "conditionAfter": 100,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 5,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-204",
+          "definitionId": "sweeper-drone",
+          "characterId": "qi-lan",
+          "kind": "client",
+          "receivedDay": 6,
+          "day": 6,
+          "conditionBefore": 55,
+          "conditionAfter": 69,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 6,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-209",
+          "definitionId": "air-circulator",
+          "characterId": "yan-que",
+          "kind": "client",
+          "receivedDay": 6,
+          "day": 6,
+          "conditionBefore": 56,
+          "conditionAfter": 70,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 6,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-238",
+          "definitionId": "air-circulator",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 7,
+          "day": 7,
+          "conditionBefore": 80,
+          "conditionAfter": 94,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 7,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-243",
+          "definitionId": "industrial-sensor",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 7,
+          "day": 7,
+          "conditionBefore": 65,
+          "conditionAfter": 79,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 7,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-273",
+          "definitionId": "diagnostic-unit",
+          "characterId": "examiner",
+          "kind": "exam",
+          "receivedDay": 8,
+          "day": 8,
+          "conditionBefore": 50,
+          "conditionAfter": 78,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 8,
+              "operation": "clean",
+              "module": "neural",
+              "faultId": "neural-noise",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 8,
+              "operation": "calibrate",
+              "module": "optic",
+              "faultId": "sensor-drift",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 0
+        },
+        {
+          "orderId": "order-277",
+          "definitionId": "sweeper-drone",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 8,
+          "day": 8,
+          "conditionBefore": 53,
+          "conditionAfter": 81,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 8,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            },
+            {
+              "day": 8,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-283",
+          "definitionId": "servo-arm",
+          "characterId": "yan-que",
+          "kind": "client",
+          "receivedDay": 8,
+          "day": 8,
+          "conditionBefore": 67,
+          "conditionAfter": 95,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 8,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1.5,
+              "preserve": false
+            },
+            {
+              "day": 8,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-313",
+          "definitionId": "industrial-sensor",
+          "characterId": "lu-che",
+          "kind": "client",
+          "receivedDay": 9,
+          "day": 9,
+          "conditionBefore": 85,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 9,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 9,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-319",
+          "definitionId": "diagnostic-unit",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 9,
+          "day": 9,
+          "conditionBefore": 71,
+          "conditionAfter": 99,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 9,
+              "operation": "clean",
+              "module": "neural",
+              "faultId": "neural-noise",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 9,
+              "operation": "calibrate",
+              "module": "optic",
+              "faultId": "sensor-drift",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 620
+        },
+        {
+          "orderId": "order-348",
+          "definitionId": "angle-drill",
+          "characterId": "xu-zheng",
+          "kind": "client",
+          "receivedDay": 10,
+          "day": 10,
+          "conditionBefore": 68,
+          "conditionAfter": 82,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 10,
+              "operation": "calibrate",
+              "module": "clock",
+              "faultId": "clock-drift",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-353",
+          "definitionId": "pocket-com",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 10,
+          "day": 10,
+          "conditionBefore": 77,
+          "conditionAfter": 91,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 10,
+              "operation": "replace",
+              "module": "power",
+              "faultId": "broken-power",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 310
+        },
+        {
+          "orderId": "order-381",
+          "definitionId": "sweeper-drone",
+          "characterId": "yan-que",
+          "kind": "client",
+          "receivedDay": 11,
+          "day": 11,
+          "conditionBefore": 92,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 11,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 11,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-387",
+          "definitionId": "servo-arm",
+          "characterId": "qi-lan",
+          "kind": "client",
+          "receivedDay": 11,
+          "day": 11,
+          "conditionBefore": 84,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 11,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 11,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-416",
+          "definitionId": "servo-arm",
+          "characterId": "lu-che",
+          "kind": "client",
+          "receivedDay": 12,
+          "day": 12,
+          "conditionBefore": 64,
+          "conditionAfter": 92,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 12,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 12,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 460
+        },
+        {
+          "orderId": "order-422",
+          "definitionId": "haptic-module",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 12,
+          "day": 12,
+          "conditionBefore": 86,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 12,
+              "operation": "calibrate",
+              "module": "feedback",
+              "faultId": "feedback-loop",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            },
+            {
+              "day": 12,
+              "operation": "clean",
+              "module": "neural",
+              "faultId": "neural-noise",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 620
+        },
+        {
+          "orderId": "order-453",
+          "definitionId": "air-circulator",
+          "characterId": "lin-qiao",
+          "kind": "client",
+          "receivedDay": 13,
+          "day": 13,
+          "conditionBefore": 58,
+          "conditionAfter": 72,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 13,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 419
+        },
+        {
+          "orderId": "order-458",
+          "definitionId": "servo-arm",
+          "characterId": "han-qiao",
+          "kind": "client",
+          "receivedDay": 13,
+          "day": 13,
+          "conditionBefore": 52,
+          "conditionAfter": 80,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 13,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 13,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 621
+        },
+        {
+          "orderId": "order-487",
+          "definitionId": "sweeper-drone",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 14,
+          "day": 14,
+          "conditionBefore": 76,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 14,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 14,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 621
+        },
+        {
+          "orderId": "order-493",
+          "definitionId": "portable-terminal",
+          "characterId": "he-jin",
+          "kind": "client",
+          "receivedDay": 14,
+          "day": 14,
+          "conditionBefore": 66,
+          "conditionAfter": 80,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 14,
+              "operation": "clean",
+              "module": "contacts",
+              "faultId": "oxidized-contact",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 419
+        },
+        {
+          "orderId": "order-499",
+          "definitionId": "servo-arm",
+          "characterId": "lin-qiao",
+          "kind": "final",
+          "receivedDay": 14,
+          "day": 14,
+          "conditionBefore": 69,
+          "conditionAfter": 97,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 14,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 14,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 650
+        },
+        {
+          "orderId": "order-527",
+          "definitionId": "power-module",
+          "characterId": "lin-qiao",
+          "kind": "final",
+          "receivedDay": 15,
+          "day": 15,
+          "conditionBefore": 73,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 15,
+              "operation": "replace",
+              "module": "insulation",
+              "faultId": "insulation-leak",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 15,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 850
+        },
+        {
+          "orderId": "order-531",
+          "definitionId": "sweeper-drone",
+          "characterId": "qi-lan",
+          "kind": "client",
+          "receivedDay": 15,
+          "day": 15,
+          "conditionBefore": 81,
+          "conditionAfter": 100,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 15,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 15,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 621
+        },
+        {
+          "orderId": "order-537",
+          "definitionId": "neural-bridge",
+          "characterId": "ji-yan",
+          "kind": "client",
+          "receivedDay": 15,
+          "day": 15,
+          "conditionBefore": 69,
+          "conditionAfter": 97,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 15,
+              "operation": "calibrate",
+              "module": "optic",
+              "faultId": "sensor-drift",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            },
+            {
+              "day": 15,
+              "operation": "clean",
+              "module": "neural",
+              "faultId": "neural-noise",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 837
+        },
+        {
+          "orderId": "order-544",
+          "definitionId": "neural-bridge",
+          "characterId": "lin-qiao",
+          "kind": "final",
+          "receivedDay": 15,
+          "day": 16,
+          "conditionBefore": 68,
+          "conditionAfter": 100,
+          "completedOps": 3,
+          "steps": [
+            {
+              "day": 16,
+              "operation": "clean",
+              "module": "neural",
+              "faultId": "neural-noise",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 16,
+              "operation": "calibrate",
+              "module": "optic",
+              "faultId": "sensor-drift",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            },
+            {
+              "day": 16,
+              "operation": "calibrate",
+              "module": "feedback",
+              "faultId": "feedback-loop",
+              "result": "fixed",
+              "hours": 2,
+              "preserve": false
+            }
+          ],
+          "reward": 1400
+        },
+        {
+          "orderId": "order-572",
+          "definitionId": "sweeper-drone",
+          "characterId": "xu-zheng",
+          "kind": "client",
+          "receivedDay": 16,
+          "day": 16,
+          "conditionBefore": 71,
+          "conditionAfter": 99,
+          "completedOps": 2,
+          "steps": [
+            {
+              "day": 16,
+              "operation": "clean",
+              "module": "drive",
+              "faultId": "jammed-bearing",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            },
+            {
+              "day": 16,
+              "operation": "replace",
+              "module": "drive",
+              "faultId": "burnt-driver",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 621
+        },
+        {
+          "orderId": "order-578",
+          "definitionId": "pocket-com",
+          "characterId": "xu-zheng",
+          "kind": "client",
+          "receivedDay": 16,
+          "day": 16,
+          "conditionBefore": 80,
+          "conditionAfter": 94,
+          "completedOps": 1,
+          "steps": [
+            {
+              "day": 16,
+              "operation": "calibrate",
+              "module": "clock",
+              "faultId": "clock-drift",
+              "result": "fixed",
+              "hours": 1,
+              "preserve": false
+            }
+          ],
+          "reward": 419
+        }
+      ],
+      "deliveries": [
+        {
+          "id": "delivery-17-cloud-lounge",
+          "templateId": "cloud-lounge",
+          "postedDay": 17,
+          "deadline": 22,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-17-field-radio",
+          "templateId": "field-radio",
+          "postedDay": 17,
+          "deadline": 22,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-17-freewave-power",
+          "templateId": "freewave-power",
+          "postedDay": 17,
+          "deadline": 22,
+          "status": "offered"
+        }
+      ],
+      "finalStage": 3,
+      "finalComplete": true,
+      "professionMilestones": [
+        "relay-restored"
+      ],
+      "professions": [
+        {
+          "professionId": "restorer",
+          "implemented": true,
+          "mastered": true,
+          "milestone": "relay-restored",
+          "completed": true,
+          "ready": true
+        }
+      ],
+      "victory": true,
+      "endless": true,
+      "challenge": null,
+      "messages": [
+        "礼貌谢绝，保留工时和现金。",
+        "叫号完成，季砚来到门前。",
+        "购入 1 件，共 ₡317。已购货物留在谈判台，继续选货或先入库。",
+        "私人影像晶片已归位。",
+        "礼貌谢绝，保留工时和现金。"
+      ]
+    },
+    "journey": {
+      "title": "长明的店灯",
+      "story": "招牌已经属于你。继续修复、收藏，或者接一份自己喜欢的街区挑战。",
+      "tasks": [
+        {
+          "id": "antique",
+          "title": "古董科技",
+          "detail": "培训费 ₡700；通过后获配：序列检索终端。",
+          "current": 0,
+          "target": 1,
+          "done": false,
+          "panel": "growth",
+          "label": "查看资质与考核"
+        },
+        {
+          "id": "display",
+          "title": "给旧物留一盏灯",
+          "detail": "查验来源后，把三件自有真品放进展示柜。展品保留在店内，持续增加吸引力。",
+          "current": 0,
+          "target": 3,
+          "done": false,
+          "panel": "collection",
+          "label": "整理收藏展示柜"
+        },
+        {
+          "id": "catalogue",
+          "title": "补全旧物图鉴",
+          "detail": "不同街坊会带来不同的旧物。买入新型号就会记入图鉴，不需要一直持有。",
+          "current": 24,
+          "target": 39,
+          "done": false,
+          "panel": "collection",
+          "label": "翻开旧物图鉴"
+        },
+        {
+          "id": "skills",
+          "title": "磨练自己的全部手艺",
+          "detail": "经验继续积累。主线之外，可以慢慢补齐交易、陈列和其他维修方向。",
+          "current": 8,
+          "target": 24,
+          "done": false,
+          "panel": "growth",
+          "label": "查看成长与技能"
+        }
+      ],
+      "next": {
+        "id": "antique",
+        "title": "古董科技",
+        "detail": "培训费 ₡700；通过后获配：序列检索终端。",
+        "current": 0,
+        "target": 1,
+        "done": false,
+        "panel": "growth",
+        "label": "查看资质与考核"
+      },
+      "ready": [],
+      "activeOrders": 0,
+      "investment": 8,
+      "nextLevelXp": 110
+    },
+    "dayReport": {
+      "stock": {
+        "count": 1,
+        "cost": 317,
+        "aged": 0
+      },
+      "income": 0,
+      "expenses": 1097,
+      "net": -1097,
+      "openingCash": 14525,
+      "closingCash": 13428,
+      "repairs": 0,
+      "repairIncome": 0,
+      "sales": 0,
+      "saleIncome": 0,
+      "deliveries": 0,
+      "deliveryIncome": 0,
+      "fees": 0,
+      "pendingFees": 10,
+      "entries": [
+        {
+          "id": 606,
+          "day": 17,
+          "kind": "equipment",
+          "amount": -260,
+          "note": "库存架 × 1"
+        },
+        {
+          "id": 607,
+          "day": 17,
+          "kind": "equipment",
+          "amount": -260,
+          "note": "库存架 × 1"
+        },
+        {
+          "id": 608,
+          "day": 17,
+          "kind": "equipment",
+          "amount": -260,
+          "note": "库存架 × 1"
+        },
+        {
+          "id": 609,
+          "day": 17,
+          "kind": "purchase",
+          "amount": -317,
+          "note": "买入私人影像晶片",
+          "itemId": "item-587"
+        }
+      ]
+    },
+    "presentation": {
+      "layoutUndoCount": 0,
+      "reducedMotion": false,
+      "muted": false,
+      "volume": 0.25,
+      "ambience": true,
+      "audio": {
+        "state": "running",
+        "ambienceLevel": 0.0275
+      }
+    },
+    "openContainers": []
+  },
+  "errors": []
+}

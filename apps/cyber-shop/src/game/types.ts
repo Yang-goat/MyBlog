@@ -2,6 +2,10 @@ import type {FactionId} from '../content/factions';
 export type CategoryId = 'electronics' | 'energy' | 'food' | 'neural' | 'data' | 'antique';
 export type CertificateId = 'civil' | 'industrial' | 'neural' | 'antique';
 export type Operation = 'clean' | 'replace' | 'calibrate';
+export type EnergyProfileId = 'economy' | 'balanced' | 'precision';
+export type EnergyLoad = 'steady' | 'pulse' | 'regulated';
+export interface EnergyPreparation {profileId:EnergyProfileId;day:number;before:number;after:number;electricity:number;materialCost:number;hours:number}
+export interface EnergyWork {itemId:string;profileId:EnergyProfileId;startedDay:number;before:number;target:number;electricity:number;materialCost:number;processHours:number;attempts:number;verified:boolean}
 export interface CategoryDefinition { id: CategoryId; name: string; description: string; tradeRule: string }
 export type Rotation = boolean | 0 | 1 | 2 | 3;
 export interface ItemDefinition {
@@ -13,6 +17,7 @@ export interface ItemDefinition {
 }
 export interface FaultDefinition { id: string; name: string; symptom: string; operation: Operation; module: string; target: number; material: string; hours: number; certificate: CertificateId }
 export interface ItemInstance {
+  energyPreparation?:EnergyPreparation;
   reserved?: boolean;
   id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
   containerId?: string;
@@ -53,6 +58,8 @@ export interface DeliveryJob {
 export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:Rotation}; counterGrid?:{x:number;y:number;rotated:Rotation}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
 export interface StorageOffer { id:string; styleId:string; price:number }
 export interface GameState {
+  energyWork?:EnergyWork;
+  energyPrepared?:number;
   deliverySource?:{jobId:string;count:number};
   factionAppointment?:FactionId;
   containers?: StorageContainer[];
@@ -74,6 +81,9 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type:'startEnergy'; itemId:string; profileId:EnergyProfileId }
+ | { type:'verifyEnergy'; load:EnergyLoad; value:number }
+ | { type:'finishEnergy' }
  | { type:'sourceDelivery'; jobId:string|null }
  | { type:'reserveItem'; itemId:string; reserved:boolean }
  | { type:'appointFaction'; factionId:FactionId|null }

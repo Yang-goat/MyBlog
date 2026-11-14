@@ -18,6 +18,7 @@
 | 维修证书 `CERTIFICATES` | 4 | `progression.ts` |
 | 职业 `PROFESSIONS` | 6，修复师完整实现 | `progression.ts` |
 | 配方 `RECIPES` | 空注册表 | `progression.ts` |
+| 储能整备 `ENERGY_PROFILES` | 3 个方案、3 种适用型号、3 种复核负载 | `../game/energy.ts` |
 
 美术对应 39 件商品、14 位人物、16 件经营道具和 4 幅场景/结局，共 73 个独立文件。71 项逐项 AI 生成；电子备件与绝缘材料采用单独原创绘制，经用户授权只对这两个 ID 放行 `original-drawn`。来源、绘制源文件及此前生成失败记录见[素材清单](../assets-manifest.json)，全部图片仍须通过同一文件与产物门禁。
 

@@ -12,6 +12,25 @@
 .shop-room .warehouse-item:has(.shape-outline),.shop-room .surface-grid .surface-item:has(.shape-outline),.shop-room .container-item:has(.shape-outline){border:0!important;background:none!important;box-shadow:none!important}
 .shop-room button.selected .shape-outline polygon,.shop-room button[aria-pressed=true] .shape-outline polygon{fill:#436f7380;stroke:#a3f1df;stroke-width:4px}
 .shop-room .warehouse-grid,.shop-room .surface-grid,.shop-room .container-grid{overflow:hidden}
+.shop-open .shop-room .warehouse-scroll{overflow:hidden;padding:0;scrollbar-width:none}
+.shop-room .warehouse-tabs{display:flex;align-items:center;gap:3px;margin-right:auto;flex-shrink:0}
+.shop-room .warehouse-section>header:has(.warehouse-tabs)>span{margin-right:0}
+.shop-open .shop-room .warehouse-tabs button{min-width:35px;min-height:22px;padding:1px 5px;background:#152d37;border:1px solid #486875;color:#a9c2c8;white-space:nowrap}
+.shop-open .shop-room .warehouse-tabs button[aria-selected=true]{background:#36545c;color:#f0e4b9;border-color:#b4aa7d;box-shadow:inset 0 -2px #d8c89b}
+@media(max-height:550px){
+ .shop-open .shop-room .warehouse-section{top:68.5%;height:30%}
+ .shop-open .shop-room .warehouse-tools{overflow:hidden;display:grid;grid-template-rows:minmax(0,1.3fr) minmax(0,1fr);gap:2px;padding:0 1px}
+ .shop-open .shop-room .warehouse-tools>.handbook-prop,.shop-open .shop-room .warehouse-tools>.storage-dock{height:100%;min-height:0;padding:1px;gap:1px}
+ .shop-open .shop-room .warehouse-tools img{height:0;min-height:0;flex:1;width:100%;object-fit:contain}
+ .shop-open .shop-room .warehouse-tools span{font-size:8px;flex-shrink:0}
+}
+@media(max-width:700px) and (max-height:550px){
+ .shop-open .television-controls{gap:3px}
+ .shop-open .television-controls button{font-size:9px;padding:2px 3px;white-space:nowrap}
+ .shop-open .cabinet-menu button{font-size:8px;padding:0 1px;white-space:nowrap;letter-spacing:0}
+ .shop-open .workshop-hotspot{font-size:9px;white-space:nowrap}
+ .shop-open .closing-switch{font-size:9px;white-space:nowrap}
+}
 
 .shop-room [data-located=true]{outline:2px solid #ffe4a3!important;outline-offset:-2px;filter:brightness(1.2)}
 .shop-room [data-located=true] .shape-outline polygon{fill:#8c805644;stroke:#ffe4a3;stroke-width:4px}

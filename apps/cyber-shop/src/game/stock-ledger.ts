@@ -6,7 +6,7 @@ export type StockOrder='oldest'|'newest'|'cost';
 export interface StockFilter {query?:string;category?:string;status?:StockStatus;order?:StockOrder}
 export const heldDays=(s:GameState,i:ItemInstance)=>Math.max(0,s.day-i.acquiredDay);
 export function stockLocation(s:GameState,i:ItemInstance){
- if(i.location==='workshop')return '维修工作台';
+ if(i.location==='workshop')return s.energyWork?.itemId===i.id?'能源工位':'维修工作台';
  if(i.location==='display')return '展示柜';
  const path=containerTrail(s,i.containerId)??[];
  return [(path[0]?.location??i.location)==='counter'?'谈判台':'仓库',...path.map(containerName)].join(' › ');

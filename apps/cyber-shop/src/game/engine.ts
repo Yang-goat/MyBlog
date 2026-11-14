@@ -3,6 +3,7 @@ import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { fits, occupy, footprint, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
 import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT, deliverySourcePlan, DELIVERY_SOURCE_PREMIUM } from './deliveries';
+import {energyPlan,energyTest,energyReturnPosition,ENERGY_LOADS,ENERGY_VERIFY_HOURS,ENERGY_XP} from './energy';
 import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, nestingProblem, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
@@ -300,13 +301,36 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   };
   if (s.phase === 'failed' || (s.phase === 'ended' && action.type !== 'continueEndless')) return fail('本局已结算。可以恢复当日备份或重新开局。');
   if (s.phase === 'won' && !['continueEndless', 'endGame'].includes(action.type)) return fail('请在结局中选择结束并保存，或继续经营。');
-  const openOnly: Action['type'][] = ['buyStorage','sellStorage','acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
+  const openOnly: Action['type'][] = ['startEnergy','verifyEnergy','buyStorage','sellStorage','acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
   if (openOnly.includes(action.type) && s.phase !== 'open') return fail('这项操作需要开店后进行。');
   if ('itemId' in action && action.itemId) {
     const targeted = findItem(action.itemId);
+    if(s.energyWork?.itemId===action.itemId&&action.type!=='reserveItem')return fail('这件货正在能源工位整备，请先完成负载复核并收回。');
     if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
   }
   switch (action.type) {
+    case 'startEnergy': {
+      const item=findItem(action.itemId),plan=energyPlan(s,item,action.profileId);if(!plan.ok||!item||!plan.profile||plan.target===null)return fail(plan.reason);
+      spendHours(plan.hours);pay(plan.electricity,'energy-electricity',`${def(item).name} · ${plan.profile.name}电费`,item.id);
+      if(plan.material){s.equipment[plan.material.id]!--;s.equipmentCosts[plan.material.id]=(s.equipmentCosts[plan.material.id]??0)-plan.materialCost;ledger(s,'energy-material',0,`${plan.material.name} × 1，已购耗材成本 ${plan.materialCost}`,item.id);}
+      item.cost+=plan.cost;item.location='workshop';delete item.grid;delete item.containerId;delete item.counterGrid;
+      s.energyWork={itemId:item.id,profileId:plan.profile.id,startedDay:s.day,before:item.capacity,target:plan.target,electricity:plan.electricity,materialCost:plan.materialCost,processHours:plan.hours,attempts:0,verified:false};
+      say(`${plan.profile.name}已完成，接下来接入负载复核。电费与耗材共计 ₡${plan.cost} 已计入物品成本。`);break;
+    }
+    case 'verifyEnergy': {
+      const work=s.energyWork,item=work?findItem(work.itemId):undefined,test=item?energyTest(item):undefined;
+      if(!work||!item||!test)return fail('能源工位没有待复核货物。');if(work.verified)return fail('负载复核已经通过，可以收回货架。');
+      if(!ENERGY_LOADS.some(l=>l.id===action.load)||!Number.isSafeInteger(action.value)||action.value<0||action.value>100)return fail('检测档位或参考读数无效。');
+      if(!spendHours(ENERGY_VERIFY_HOURS))return fail('复核需要半个工时，可以明天继续。');work.attempts++;
+      if(action.load!==test.load||Math.abs(action.value-test.value)>2){say('负载或参考读数不匹配。已用 0.5 h，货物与材料保留；按铭牌重新设置。','error');break;}
+      work.verified=true;item.capacity=work.target;say(`负载稳定：有效容量 ${work.before}% → ${work.target}%。收回货架后可出售或交货。`,'success');break;
+    }
+    case 'finishEnergy': {
+      const work=s.energyWork,item=work?findItem(work.itemId):undefined;if(!work||!item||!work.verified)return fail('先完成能源负载复核。');
+      const position=energyReturnPosition(s,rootCapacity(s));if(!position)return fail('仓库没有可容纳这件货的连续空位；整理后再收回，货物会留在工位。');
+      item.location='stock';item.grid=position;item.energyPreparation={profileId:work.profileId,day:s.day,before:work.before,after:work.target,electricity:work.electricity,materialCost:work.materialCost,hours:work.processHours+work.attempts*ENERGY_VERIFY_HOURS};
+      s.energyPrepared=(s.energyPrepared??0)+1;gainXp(s,ENERGY_XP);ledger(s,'energy-complete',0,`${def(item).name}整备：${work.before}% → ${work.target}%，工时 ${item.energyPreparation.hours}，累计成本 ${item.cost}`,item.id);delete s.energyWork;say(`能源整备完成，已收回货架。累计成本 ₡${item.cost}。`,'repair');break;
+    }
     case 'sourceDelivery': {
       if(action.jobId===null){delete s.deliverySource;say('已取消明日的订货询货。');break;}
       const job=s.deliveries.find(j=>j.id===action.jobId);if(!job)return fail('没有这份订货。');
@@ -713,7 +737,7 @@ export function visibleState(s: GameState) {
   const visibleItem = (i: ItemInstance) => {
     const d = def(i); const basic = i.known.includes('basic') || i.known.includes('diagnosed'); const scan = i.known.includes('scan') || i.known.includes('batch'); const serial = i.known.includes('serial');
     return { id: i.id, definitionId: d.id, name: d.name, category: d.category, owner: i.owner, location: i.location, known: i.known,
-      containerId: i.containerId, accessible: itemAccessible(s, i), reserved: !!i.reserved,
+      containerId: i.containerId, accessible: itemAccessible(s, i), reserved: !!i.reserved, energyPreparation:i.energyPreparation,
       condition: basic ? i.condition : undefined, estimate: basic ? estimateValue(s, i) : undefined, cost: i.owner === 'player' ? i.cost : undefined,
       capacity: scan && d.category === 'energy' ? i.capacity : undefined, purity: scan && d.category === 'energy' ? i.purity : undefined,
       integrity: scan && d.category === 'data' ? i.integrity : undefined, compatibility: scan && d.category === 'neural' ? i.compatibility : undefined,
@@ -723,7 +747,7 @@ export function visibleState(s: GameState) {
   };
   const visitor = s.visitors[s.visitorIndex];
   return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, phase: s.phase, cash: s.cash, hours: s.hours, maxHours: dailyHours(s), debt: s.debt, grace: s.grace,
-    xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
+    xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment, energyWork:s.energyWork,energyPrepared:s.energyPrepared??0,
     stockUsage: stockUsage(s), capacity: capacity(s), rootCapacity: rootCapacity(s), labeler: s.labeler ?? false, modifiers:s.modifiers??[], containers:(s.containers??[]).map(c=>({...c,name:storageStyle(c.styleId).name,layout:containerLayout(s,c),columns:storageStyle(c.styleId).columns,rows:storageStyle(c.styleId).rows,path:containerTrail(s,c.id)?.map(p=>p.id)})), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: rootLayout(s, rootCapacity(s)), tutorial: s.tutorial, conversations: s.conversations,
     visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods,demand:visitor.demand, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,

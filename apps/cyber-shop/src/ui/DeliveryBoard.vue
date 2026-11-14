@@ -5,7 +5,7 @@ import {CHARACTERS,ITEMS,EQUIPMENT} from '../content';
 import {deliveryJobs,deliveryDefinition,deliveryItemCheck,deliveryRequirements,deliverySourcePlan,DELIVERY_HOURS,DELIVERY_LIMIT} from '../game/deliveries';
 import Art from './Art.vue';
 const selectedId=selectedDelivery,chosen=ref<string[]>([]),cancelConfirm=ref(false);
-const returnLabel=computed(()=>({trade:'返回交易',inventory:'返回库存','close-day':'返回闭店确认'}[deliveryReturn.value]??'返回店铺'));
+const returnLabel=computed(()=>({trade:'返回交易',inventory:'返回库存','close-day':'返回闭店确认',energy:'返回能源工位'}[deliveryReturn.value]??'返回店铺'));
 onUnmounted(()=>{selectedDelivery.value='';deliveryReturn.value='';});
 const jobs=computed(()=>deliveryJobs(state.value));
 const active=computed(()=>jobs.value.filter(j=>j.status==='active'));

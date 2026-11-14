@@ -1,0 +1,1896 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "modifier": "",
+      "name": "1440",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "incoming",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "purchased",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "stored",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "1920",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 222
+          },
+          "paint": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 222
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 222,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "1366",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 156
+          },
+          "paint": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 156
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 156,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "960",
+      "viewport": {
+        "width": 960,
+        "height": 650
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 264,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 264,
+            "y": 360.75,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 360.75000000000006,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 226.984375,
+            "y": 484.75,
+            "width": 432,
+            "height": 108
+          },
+          "paint": {
+            "x": 226.984375,
+            "y": 484.74999999999994,
+            "width": 432,
+            "height": 108
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 108,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "844",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 72
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 72
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 72,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "scrolled",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 72
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 72
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 72,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "",
+      "name": "reloaded",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 174
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 174,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "1440",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "1920",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "1366",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "960",
+      "viewport": {
+        "width": 960,
+        "height": 650
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 264,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 264,
+            "y": 360.75,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 360.75000000000006,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 226.984375,
+            "y": 484.75,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 226.984375,
+            "y": 484.74999999999994,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "844",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "scrolled",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "cramped-stock",
+      "name": "reloaded",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "1440",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 232,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "1920",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 475.1875,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "paint": {
+            "x": 515.984375,
+            "y": 599.390625,
+            "width": 888,
+            "height": 111
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 111,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 255.796875
+          },
+          "paint": {
+            "x": 478.984375,
+            "y": 797.1875,
+            "width": 888,
+            "height": 255.796875
+          },
+          "cell": {
+            "width": 37,
+            "height": 37
+          },
+          "gridHeight": 296,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "1366",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 337.90625,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "paint": {
+            "x": 371,
+            "y": 426.234375,
+            "width": 624,
+            "height": 78
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 78,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 174.671875
+          },
+          "paint": {
+            "x": 333.984375,
+            "y": 574.109375,
+            "width": 624,
+            "height": 174.671875
+          },
+          "cell": {
+            "width": 26,
+            "height": 26
+          },
+          "gridHeight": 208,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "960",
+      "viewport": {
+        "width": 960,
+        "height": 650
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 264,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 286,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 264,
+            "y": 360.75,
+            "width": 432,
+            "height": 54
+          },
+          "paint": {
+            "x": 264.00000000000006,
+            "y": 360.75000000000006,
+            "width": 432,
+            "height": 54
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 54,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 226.984375,
+            "y": 484.75,
+            "width": 432,
+            "height": 144
+          },
+          "paint": {
+            "x": 226.984375,
+            "y": 484.74999999999994,
+            "width": 432,
+            "height": 144
+          },
+          "cell": {
+            "width": 18,
+            "height": 18
+          },
+          "gridHeight": 144,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "844",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 77.5
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 77.5
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 96,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "scrolled",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 277.984375,
+            "y": 171.59375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 171.59375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 18
+        },
+        "trade": {
+          "dom": {
+            "x": 277.984375,
+            "y": 216.4375,
+            "width": 288,
+            "height": 36
+          },
+          "paint": {
+            "x": 277.98437500000006,
+            "y": 216.4375,
+            "width": 288.00000000000006,
+            "height": 36
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 36,
+          "scrollTop": 18
+        },
+        "warehouse": {
+          "dom": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288,
+            "height": 77.5
+          },
+          "paint": {
+            "x": 252.484375,
+            "y": 303.90625,
+            "width": 288.00000000000006,
+            "height": 77.5
+          },
+          "cell": {
+            "width": 12,
+            "height": 12
+          },
+          "gridHeight": 96,
+          "scrollTop": 18
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 232,
+          "scrollTop": 0
+        }
+      }
+    },
+    {
+      "modifier": "roomy-stock",
+      "name": "reloaded",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "geometry": {
+        "incoming": {
+          "dom": {
+            "x": 372,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 422.390625,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "trade": {
+          "dom": {
+            "x": 372,
+            "y": 532.796875,
+            "width": 696,
+            "height": 87
+          },
+          "paint": {
+            "x": 372.00000000000006,
+            "y": 532.7968750000001,
+            "width": 696,
+            "height": 87
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 87,
+          "scrollTop": 0
+        },
+        "warehouse": {
+          "dom": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "paint": {
+            "x": 334.984375,
+            "y": 711.390625,
+            "width": 696,
+            "height": 224.59375
+          },
+          "cell": {
+            "width": 29,
+            "height": 29
+          },
+          "gridHeight": 232,
+          "scrollTop": 0
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,5 +1,5 @@
 import type { GameState, ItemInstance, StorageContainer } from './types';
-import { warehouseLayout, counterLayout, occupiedCells, orientations, fits, occupy, type Placement } from './warehouse';
+import { warehouseLayout, counterLayout, occupiedCells, orientations, fits, occupy, GRID_COLUMNS,WAREHOUSE_PAGE_ROWS,type Placement } from './warehouse';
 import { storageStyle } from '../content/storage';
 export type StoredObject = ItemInstance | StorageContainer;
 export const LABELER_PRICE = 90;
@@ -10,7 +10,7 @@ export const containerName=(c:StorageContainer)=>c.label||storageStyle(c.styleId
 export const ownedObjects=(s:GameState):StoredObject[]=>[...s.items.filter(i=>i.owner==='player'),...(s.containers??[])];
 export const containerItems=(s:GameState,id:string)=>ownedObjects(s).filter(i=>i.location==='stock'&&i.containerId===id);
 export function containerLayout(s:GameState,c:StorageContainer){const d=storageStyle(c.styleId);return warehouseLayout(ownedObjects(s),d.columns*d.rows/4,d.columns,c.id);}
-export const rootLayout=(s:GameState,capacity:number)=>warehouseLayout(ownedObjects(s),capacity);
+export const rootLayout=(s:GameState,capacity:number)=>warehouseLayout(ownedObjects(s),capacity,GRID_COLUMNS,undefined,WAREHOUSE_PAGE_ROWS);
 export const shopCounterLayout=(s:GameState)=>counterLayout(ownedObjects(s));
 export function containerTrail(s:GameState,id?:string){const trail:StorageContainer[]=[];const seen=new Set<string>();while(id){if(seen.has(id))return null;seen.add(id);const c=s.containers?.find(c=>c.id===id);if(!c)return null;trail.unshift(c);id=c.containerId;}return trail;}
 export const itemAccessible=(s:GameState,i:StoredObject)=>containerTrail(s,i.containerId)!==null;
@@ -27,7 +27,7 @@ export function nestingProblem(s:GameState,object:StoredObject,target?:string):s
 export const canNest=(s:GameState,object:StoredObject,target?:string)=>nestingProblem(s,object,target)===null;
 export function roomLayout(s:GameState,capacity:number,target?:string){const c=s.containers?.find(c=>c.id===target);return c?containerLayout(s,c):rootLayout(s,capacity);}
 export function roomShape(s:GameState,capacity:number,target?:string){const c=s.containers?.find(c=>c.id===target);if(c){const d=storageStyle(c.styleId);return{columns:d.columns,cells:d.columns*d.rows};}return{columns:24,cells:capacity*4};}
-export function objectFits(s:GameState,capacity:number,object:StoredObject,at:Placement,target?:string){if(target&&!s.containers?.some(c=>c.id===target))return false;if(!canNest(s,object,target))return false;const layout=roomLayout(s,capacity,target),shape=roomShape(s,capacity,target),occupied=new Set<number>();for(const other of ownedObjects(s))if(other.id!==object.id&&layout.positions[other.id])occupy(other,layout.positions[other.id]!,occupied,shape.columns);return fits(object,at,occupied,shape.cells/4,shape.columns);}
+export function objectFits(s:GameState,capacity:number,object:StoredObject,at:Placement,target?:string){if(target&&!s.containers?.some(c=>c.id===target))return false;if(!canNest(s,object,target))return false;const layout=roomLayout(s,capacity,target),shape=roomShape(s,capacity,target),occupied=new Set<number>();for(const other of ownedObjects(s))if(other.id!==object.id&&layout.positions[other.id])occupy(other,layout.positions[other.id]!,occupied,shape.columns);return fits(object,at,occupied,shape.cells/4,shape.columns,target?undefined:WAREHOUSE_PAGE_ROWS);}
 export function firstObjectPlace(s:GameState,capacity:number,object:StoredObject,target?:string){const shape=roomShape(s,capacity,target);for(let n=0;n<shape.cells;n++)for(const rotated of orientations(object)){const at={x:n%shape.columns,y:Math.floor(n/shape.columns),rotated};if(objectFits(s,capacity,object,at,target))return at;}return undefined;}
 export function putObject(object:StoredObject,at:Placement,target?:string){object.location='stock';object.grid={...at};delete object.counterGrid;if(target)object.containerId=target;else delete object.containerId;}
 /** Dry run includes goods already on the counter. Purchases still land on the counter. */

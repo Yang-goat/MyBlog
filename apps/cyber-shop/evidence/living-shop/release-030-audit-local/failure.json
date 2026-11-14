@@ -1,0 +1,673 @@
+{
+  "error": "TimeoutError: locator.tap: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('tab', { name: '扩仓1 · 80 格', exact: true })\u001b[22m\n",
+  "base": "http://127.0.0.1:4176/cyber-shop/",
+  "assets": [
+    {
+      "file": "assets/ShopCanvas-CEwQMsnv.css",
+      "status": 200,
+      "type": "text/css",
+      "bytes": 153,
+      "sha256": "ff4ace5826fd6abc6653e7bdc0032b0ac8467a528dba43d37b3f20ca8d6a8dc4"
+    },
+    {
+      "file": "art/air-circulator.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 45108,
+      "sha256": "e5c6d08331c6cad5703113a1bcdca12ec3f8def1840977c465cea9d62bfb59c5"
+    },
+    {
+      "file": "art/a-miao.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 139200,
+      "sha256": "4db02f8703915e54d20056474ccbf56e6c0dd14a762fa8a8269a1a7c9ef2ab01"
+    },
+    {
+      "file": "assets/ShopCanvas-DdfaNmh5.js",
+      "status": 200,
+      "type": "text/javascript",
+      "bytes": 12048,
+      "sha256": "7788b4b53a40c485241e31d2a71ee4921606e11fb75af26dacbaad29bd69bd28"
+    },
+    {
+      "file": "assets/index-Xu2xrV3n.css",
+      "status": 200,
+      "type": "text/css",
+      "bytes": 157042,
+      "sha256": "eaabcaed0759d72caa90843a32e641849f0b1807c1c84db4faf93c7cb8dd3f80"
+    },
+    {
+      "file": "assets/index-CebUdYqA.js",
+      "status": 200,
+      "type": "text/javascript",
+      "bytes": 415745,
+      "sha256": "b4b7b70d95543423a454e8a490df05a855d949d39e20918108b13458517af324"
+    },
+    {
+      "file": "art/algae-ration.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 39574,
+      "sha256": "233e8e4782241da06e280f5d4e585227c50cff9af876a8f719a0e0c69c39ca87"
+    },
+    {
+      "file": "art/angle-drill.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 45212,
+      "sha256": "3b6bfa2dffd7892b4b29a5066e6354b3e244a460ec27ac5e18c4c10df060a39d"
+    },
+    {
+      "file": "art/alloy-plate.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 40522,
+      "sha256": "ec47390acd9fa010513771d455e38733880bf30269087cb4625cc1ef6582d73f"
+    },
+    {
+      "file": "art/bai-heng.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 195546,
+      "sha256": "02d656a85bfab156e400cd8cda8aa4f246f44f7cfaa405db582b980ce18b2f75"
+    },
+    {
+      "file": "art/battery-pack.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 47486,
+      "sha256": "5d039ffb1ff93412481e9ae6b19e78bc457f446fe88ac7cfe714bce7112cb9ba"
+    },
+    {
+      "file": "art/assembly-jig.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 54762,
+      "sha256": "dc04c012e3d6ec1e4cbdc3ab20701043369667b3416264d989f0ac9b8a0737bf"
+    },
+    {
+      "file": "art/bio-gel.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 33544,
+      "sha256": "5689e75e6a329d4b4e2eb7a6d14b77f592592f08b0d058b67b58ac9180a26d8b"
+    },
+    {
+      "file": "art/bionic-toy.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 43338,
+      "sha256": "cce7e46ebde21ac9f4652947a93db0feb057423090a251e831006bfcb8745c09"
+    },
+    {
+      "file": "art/capacitor-array.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 67314,
+      "sha256": "48728e3ae8335a8ddfdb97a4d845fff9feb896c57f5e077fe914083c5a0e06c2"
+    },
+    {
+      "file": "art/calibrator.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 48468,
+      "sha256": "1d8100af3126a2f6015d481ff7f0bda456eb311e3a2edecec885bc93afea467f"
+    },
+    {
+      "file": "art/cleaner.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 29124,
+      "sha256": "462e324d89764ecaf158446431d70194c2641bc29f9d0a57d5ececd50b93cfbc"
+    },
+    {
+      "file": "art/catalyst-core.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 51354,
+      "sha256": "71e3f92fda923a54f7abe6e772b73b7f2644cf470af844049294665a30e95983"
+    },
+    {
+      "file": "art/cold-storage.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 47842,
+      "sha256": "a06e30eaf66b04744e6f5cad7832909d6bb57dc8a87306150f422b97c4fe4079"
+    },
+    {
+      "file": "art/data-chip.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 59218,
+      "sha256": "da0567ada669e74e348c9b7b3a0f5aa318470c3c23feff3edca442f83a570475"
+    },
+    {
+      "file": "art/culture-starter.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 57080,
+      "sha256": "aaebcc4568602fdcc94610dc47a4e139dbe64c38b850af1795bd66f0eb0f789f"
+    },
+    {
+      "file": "art/diagnostic-unit.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 39510,
+      "sha256": "09a227550155e1892bf950b478c34b1fa55e0cdc48a1b81e58386846ae36ebd5"
+    },
+    {
+      "file": "art/display-case.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 46160,
+      "sha256": "f814ffa42fe460c62b99a14c80146bbac13cf51831f6e5b14e58ae9ad115cc0a"
+    },
+    {
+      "file": "art/early-core.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 41622,
+      "sha256": "cd51a14e0b72fa2445438594a88382dc5d52a8b67e71daa3436a3e604c0f521c"
+    },
+    {
+      "file": "art/electronic-parts.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 37448,
+      "sha256": "22785375fb1170c61b1b60013b72ad52ffa779dc840b780667f4aa66f6210231"
+    },
+    {
+      "file": "art/film-camera.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 53232,
+      "sha256": "e4cbc2cca3c3c1489ba496160c011d8236124f0f94b4cb6ab8950cf85bb97355"
+    },
+    {
+      "file": "art/folding-worklight.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 31828,
+      "sha256": "5a46c9207a30c8db97f5bb03c5f659742ce974f92f01ade1b48f9a88cde95139"
+    },
+    {
+      "file": "art/encrypted-box.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 48806,
+      "sha256": "03bb4d895b0730e4a3d3e4fd1299b49aeb6697efb5b836beb8ac6cc8196cd693"
+    },
+    {
+      "file": "art/game-cartridge.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 46476,
+      "sha256": "536a51276d1e5d5e3fa2565c8a1a09482c6df17053d392d0d289ca269bef3fca"
+    },
+    {
+      "file": "art/han-qiao.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 191216,
+      "sha256": "f12c25f82ecfa68b20bb161cc897d662d4273d7573405517a906b45fc7bd9973"
+    },
+    {
+      "file": "art/haptic-module.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 66834,
+      "sha256": "f422a8794e12b273e9d345d8dd2583dfc73f5b338adb1e54b6e8c3160f0b98bd"
+    },
+    {
+      "file": "art/industrial-sensor.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 80348,
+      "sha256": "791795596b79efe712887c3f2b3483ecbf3c988d064afc816474918d0ced2e16"
+    },
+    {
+      "file": "art/holo-film.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 35324,
+      "sha256": "1036b84685f0cdabd1f0cd228fb749c11eb61098bb98215b573c5b0f5ebc47e5"
+    },
+    {
+      "file": "art/infusion-pump.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 33190,
+      "sha256": "a677c8283e7a32e622f5c2503b4c3bc2b8778ef530633aa4a6d6c7fe5a0c67af"
+    },
+    {
+      "file": "art/insulation-roll.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 63212,
+      "sha256": "7f864d59a78843e70bedfb6120c72ed11bb7bd2a39a4e76945e330da061fcde8"
+    },
+    {
+      "file": "art/he-jin.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 151148,
+      "sha256": "1ae2197c1f1540a0da7ce7b00fc09223eafa8b31b9cf19898860349d1420fae0"
+    },
+    {
+      "file": "art/insulation.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 33164,
+      "sha256": "9bc15c6b2fd969ef3dafe9f930ef42df9554092f7d3e76f66a1a14d4d974e394"
+    },
+    {
+      "file": "art/ji-yan.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 95768,
+      "sha256": "03a58af78aa3a85a0296dbb00be0afc9d8719b10a32ea935c51b736cfe692576"
+    },
+    {
+      "file": "art/luo-jin.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 100520,
+      "sha256": "7ba199e5b6776be6d0b5447507c6c1dfa08280ef6ab50c5f9a10df8c80e84c83"
+    },
+    {
+      "file": "art/lin-qiao.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 138064,
+      "sha256": "d0c5c6d6693093a1fc8338313df3264c5a1318a86e2131fedfd1b4cdfaf4f6c7"
+    },
+    {
+      "file": "art/lu-che.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 143102,
+      "sha256": "d7aec1389b77472c355e403089741965a7bb9a0a7c9438fde706f21769385b70"
+    },
+    {
+      "file": "art/market-recorder.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 35346,
+      "sha256": "ddccdf28a803d605fdfaac1bf916829139f6df7cf49c28307963af3f48388b59"
+    },
+    {
+      "file": "art/mechanical-parts.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 40590,
+      "sha256": "7319188c29ae7ab9a369e79372549afba88860c7fc457c54df1ab1958b3fc4c6"
+    },
+    {
+      "file": "art/mechanical-watch.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 48332,
+      "sha256": "36b08613be00ddc4a5e3d14fb01f044f6278b59e14772e8a99f0d2c77eca9e09"
+    },
+    {
+      "file": "art/memory-crystal.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 30324,
+      "sha256": "650eeca8f6e741a8dfd327bf0aeeae452c39454bb07211efc47b0b06db525155"
+    },
+    {
+      "file": "art/memory-buffer.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 41598,
+      "sha256": "4e3432d8da7367a80e5decc4cacbc647a3b0cab842717154f3d7af6892695f8a"
+    },
+    {
+      "file": "art/micro-solder.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 24360,
+      "sha256": "7e8fe7ea41b16995e13865772f20f220457caabcdc205ab55e4017070ec1128e"
+    },
+    {
+      "file": "art/music-tape.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 50924,
+      "sha256": "78bf30a44795b4bed2fb89991e5ab7c9030d0e64da1dd023f5cfcf5d163cd3fc"
+    },
+    {
+      "file": "art/neural-bridge.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 33268,
+      "sha256": "f4f16432f558ab385576a04346492e94db6b756d9b2cac0d12ed9aebecf342de"
+    },
+    {
+      "file": "art/neural-supplies.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 41932,
+      "sha256": "5ea58be92c73eca0107cd56f116dfedcc605a4b4903c9a1a3df99b8d8fcc889f"
+    },
+    {
+      "file": "art/nutrient-fluid.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 46566,
+      "sha256": "2045ffde891ad56bd487c8f41141b82203bea41eab42ee5dd637aa1bb40bc0ea"
+    },
+    {
+      "file": "art/old-city-badge.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 33112,
+      "sha256": "709e818903a30b30033ba109be26290235d07d12f23fb8b1d046e299b62cf855"
+    },
+    {
+      "file": "art/optical-eye.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 65680,
+      "sha256": "4a566c150c544973f502ab04ff2c1c9aefd032eff3618e216a24b88b9e0ff689"
+    },
+    {
+      "file": "art/pocket-com.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 39266,
+      "sha256": "68de22b8e09a0b1b891068cc17ea95b31d0f3b408d0859e24a69778d45bae424"
+    },
+    {
+      "file": "art/portable-terminal.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 30430,
+      "sha256": "e8d0d126cab22e919959a2ccc06dd7647cdf86eb5e4561087475c54e61f36fb1"
+    },
+    {
+      "file": "art/power-module.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 48154,
+      "sha256": "951d0a45c5051a5ae5d3d63011b966ab302c4ef7906449c6bbda0f5027205cc1"
+    },
+    {
+      "file": "art/purified-water.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 38544,
+      "sha256": "0a07cc931e254aa51ddb86be13186162162c595292a078b0d2dad17636b4bc0a"
+    },
+    {
+      "file": "art/preserve-pack.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 39142,
+      "sha256": "4d6d0a5b7ffdcc90f98db0053961df6aa206ff90e75d1f50bac0945d75f65a0a"
+    },
+    {
+      "file": "art/scanner.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 40226,
+      "sha256": "0c33479f310819772c7ea4234a86fc05af3eb15a966509fc74feb4f2d4540373"
+    },
+    {
+      "file": "art/qi-lan.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 143466,
+      "sha256": "139eeb02ef67b9b63597d36465ff3fec58c71771bf088dbeac2547eff3fff4c7"
+    },
+    {
+      "file": "art/servo-arm.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 35524,
+      "sha256": "07d13c07b52b0d3ab2be6c2eae7b60928ac3c0652b5ade8fc4450440f2db8182"
+    },
+    {
+      "file": "art/scene-city.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 405190,
+      "sha256": "cb9a007462b74068290277c8cfd6f814368d87667867fbbc0637f13f4ccff567"
+    },
+    {
+      "file": "art/scene-ending.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 345668,
+      "sha256": "d68e64e33aa701f924dbefdfe5098c78d51b313287aa9386b6bc0a1f3120170d"
+    },
+    {
+      "file": "art/serial-terminal.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 57638,
+      "sha256": "7f0a73c3da9337f3adf78e40a886fdaf02f8acbc7ade6b1ec90f05bd41e7fe27"
+    },
+    {
+      "file": "art/scene-shop.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 239248,
+      "sha256": "b974c0b886b01d0d033331c68c84c761f96e1e791d1d934a89b249d38518a088"
+    },
+    {
+      "file": "art/scene-workbench.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 299156,
+      "sha256": "b737d9aa1e59cea47f3bc38b02af78d3f0af0e39eda5464813da57133cdcd788"
+    },
+    {
+      "file": "art/spectrum-jewel.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 30386,
+      "sha256": "3726b8c9b4846e48ce1f911c8dd99a69efb627e87e74353afba321297e72a518"
+    },
+    {
+      "file": "art/stock-rack.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 53148,
+      "sha256": "aef7cccef0ac7fe517b1a4849fb640b73f5a536b5cb762b33502e42f925ab390"
+    },
+    {
+      "file": "art/song-yi.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 122334,
+      "sha256": "80fa06a23a4fc3bde35c2d89bfb98bf2be2bed5d72a7d13d2c3f0b1bc231a508"
+    },
+    {
+      "file": "art/shen-wu.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 149738,
+      "sha256": "36a07b48fe6041901fbe48b1ce31cfb0c6ac93255ee67beab9dd17ecced91b67"
+    },
+    {
+      "file": "art/synth-coffee.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 51708,
+      "sha256": "0d4ab4ac43fed25c6e812ae7ef8bf1110fc64b0b6feca6062354df22a289b0b9"
+    },
+    {
+      "file": "art/sweeper-drone.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 48712,
+      "sha256": "49549b4d8981554533d0aa6710d030179b8fdbfa57db3abce0500d1121479ac3"
+    },
+    {
+      "file": "art/workbench.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 41016,
+      "sha256": "4293b7767b861fb5a92b2a76f4a40a99292ee1ff1c31351b3d916a5e238b7199"
+    },
+    {
+      "file": "art/three-way-valve.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 52638,
+      "sha256": "8a5bf0eeead55a57097aa710913cb760dd13bbe9ce0129a38e738b68584e9d88"
+    },
+    {
+      "file": "art/wen-zhu.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 150288,
+      "sha256": "216e0caf04081e29abb3384fe273136c09d0ec30621b4fcc1befd2baee206f49"
+    },
+    {
+      "file": "art/xu-zheng.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 136532,
+      "sha256": "8326c486462df940b68e5c3e457245fb3994c58c1f041f7c815493788cabdd45"
+    },
+    {
+      "file": "art/yan-que.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 199922,
+      "sha256": "201eb8cc08df7a40ac5110e69b6a27b4155f61a0073012eadab6460375cd35a6"
+    },
+    {
+      "file": "scenery/bench-lamp.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 82062,
+      "sha256": "9d9ae8ba5ff0feee184499a1792cafd740ec4b99296f765c0d5ca9dbaec74c2b"
+    },
+    {
+      "file": "scenery/neon-solder-station.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 44950,
+      "sha256": "ec0cc5d787237c472cc059a3f0709425986a9692d72121c0a166432277a64302"
+    },
+    {
+      "file": "scenery/neon-terminal.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 26632,
+      "sha256": "8d153282f29e7137c46c3d3bea2e45e97e945fcbf15f63ee9f4b40149b6c43e2"
+    },
+    {
+      "file": "scenery/manager-handbook.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 132098,
+      "sha256": "6beeaab548bda144d860171dd1c3e646595e5ac5d3451687c7604120d9713e5e"
+    },
+    {
+      "file": "scenery/parts-organizer.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 102986,
+      "sha256": "4036134ae52a765bffe1729b4294aa0c0eeee859275c3c3750d79ad207b9dbf2"
+    },
+    {
+      "file": "scenery/handbook-spread.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 245090,
+      "sha256": "db07376f808bc53aae38c1712cdc96ffca864fc9844024da05c857022afd5e15"
+    },
+    {
+      "file": "scenery/neon-ninth-street.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 270476,
+      "sha256": "6ab60376feb4e0db24f6e8b85d15fa8fccc94a9a037fbe54c202f3022992b854"
+    },
+    {
+      "file": "scenery/patina-metal.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 47118,
+      "sha256": "b0e74d779f5791a066480092817838835cb617801fee06d86d3ac22e22a8e028"
+    },
+    {
+      "file": "scenery/storage-freight.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 55932,
+      "sha256": "afbbf1f31b2083a71e96d18393ecc61baddda86fba25b0ff8a9800c059d36ef1"
+    },
+    {
+      "file": "scenery/storage-crate.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 65876,
+      "sha256": "1e189b010fe7b3db8b93dd782985d680e9153b358996ca74fdd029095412f07c"
+    },
+    {
+      "file": "scenery/storage-labeler.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 58912,
+      "sha256": "70df5e037b7402491af7cb19e9ee03d8ae29c1749f0c307d622fc042ae2c916a"
+    },
+    {
+      "file": "scenery/storage-backpack.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 65512,
+      "sha256": "a5413d5bfd1e524db88f7d1938c2badbc8e253139c51c80dab8b9d9735787c67"
+    },
+    {
+      "file": "scenery/storage-pouch.webp",
+      "status": 200,
+      "type": "image/webp",
+      "bytes": 38832,
+      "sha256": "46db892f6b4a4b48de3f5b3efb9735baf329ff447bacd736146886ca4d288042"
+    }
+  ],
+  "checks": [
+    {
+      "decoded": 86
+    },
+    {
+      "touch": false,
+      "version": "0.3.0",
+      "capacity": 224,
+      "geometry": [
+        {
+          "width": 696,
+          "height": 87,
+          "cell": 29,
+          "square": true,
+          "inside": true,
+          "scrollable": false
+        },
+        {
+          "width": 696,
+          "height": 87,
+          "cell": 29,
+          "square": true,
+          "inside": true,
+          "scrollable": false
+        },
+        {
+          "width": 696,
+          "height": 174,
+          "cell": 29,
+          "square": true,
+          "inside": true,
+          "scrollable": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

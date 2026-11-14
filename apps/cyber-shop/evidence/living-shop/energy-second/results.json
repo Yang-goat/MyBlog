@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "oldCapacity": 55,
+      "newCapacity": 90,
+      "materialCost": 5,
+      "electricity": 9,
+      "totalHours": 3,
+      "wrongLoad": true,
+      "crossDay": true,
+      "reload": true,
+      "oldRepairsUnchanged": true,
+      "deliveryReward": 420,
+      "exportImport": true
+    },
+    {
+      "touch": true,
+      "oldCapacity": 55,
+      "newCapacity": 90,
+      "materialCost": 5,
+      "electricity": 9,
+      "totalHours": 3,
+      "wrongLoad": true,
+      "crossDay": true,
+      "reload": true,
+      "oldRepairsUnchanged": true,
+      "deliveryReward": 420,
+      "exportImport": true
+    }
+  ],
+  "errors": []
+}

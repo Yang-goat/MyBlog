@@ -92,7 +92,7 @@ export const CERTIFICATES: CertificateDefinition[] = [
 export const PROFESSIONS: ProfessionDefinition[] = [
   { id: 'restorer', name: '修复师', implemented: true, masterySkills: ['precision-4', 'workshop-4', 'restoration-4'], finalMilestone: 'relay-restored', description: '诊断、工序、复检与交付；首版完整职业。' },
   { id: 'fabricator', name: '合成工匠', implemented: false, masterySkills: [], finalMilestone: 'community-fabricator', description: '规划方向：拆解材料、制造配方与设备定制；当前对应商品可交易。' },
-  { id: 'energy-tech', name: '能源技师', implemented: false, masterySkills: [], finalMilestone: 'microgrid-stable', description: '规划方向：充能、提纯、供能设备加工；当前容量和纯度影响交易。' },
+  { id: 'energy-tech', name: '能源技师', implemented: false, masterySkills: [], finalMilestone: 'microgrid-stable', description: '已开放储能整备与负载复核；职业成长、提纯和最终委托仍在规划。' },
   { id: 'cultivator', name: '生态培育者', implemented: false, masterySkills: [], finalMilestone: 'roof-garden', description: '规划方向：培养、性状筛选和批量生产；当前保鲜与食品交易可用。' },
   { id: 'data-broker', name: '数据经纪人', implemented: false, masterySkills: [], finalMilestone: 'archive-recovered', description: '规划方向：授权数据恢复、解密与信息委托；当前载体买卖和硬件维修可用。' },
   { id: 'curator', name: '遗物策展人', implemented: false, masterySkills: [], finalMilestone: 'district-exhibition', description: '规划方向：深度考据、主题展览和私人拍卖；当前收藏陈列可用。' },
