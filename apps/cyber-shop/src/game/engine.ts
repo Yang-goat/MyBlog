@@ -26,6 +26,18 @@ export const operatingFees = (s: GameState) => BALANCE.maintenance - (trusted(s,
 export const licensePrice=(s:GameState)=>round(BALANCE.licensePrice*(trusted(s,'watch') ? .75 : 1));
 export const debtClosingChances = (s: GameState) => s.victory ? null : Math.max(0, BALANCE.graceDays + 1 - s.grace);
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
+/** Uses the current day before opening the next day; boxes never count as refrigeration. */
+export function nextOpeningExpiry(s:GameState,item:ItemInstance){
+ const expiry=item.expiresDay;
+ return expiry!==null&&item.owner==='player'&&expiry>=s.day&&ownedEquipment(s,'cold')&&(s.day+1)%2===0 ? expiry+1 : expiry;
+}
+export function preservationPlan(s:GameState,item?:ItemInstance){
+ const materialId=equipmentId('preserveSupply'),stock=s.equipment[materialId]??0,days=2+skillEffect(s,'preservation');
+ const materialCost=stock>0?Math.floor((s.equipmentCosts[materialId]??0)/stock):0;
+ const known=!!item?.known.includes('basic');
+ const reason=!item||item.owner!=='player'||def(item).category!=='food'||item.expiresDay===null?'请选择自有食品或生物制品。':s.phase!=='open'?'开店后才能处理食品。':!known?'先检查食品日期。':item.expiresDay<s.day?'已经过期，不能通过保鲜恢复。':item.preservedUntil>0?'这批商品已经使用过保鲜包。':stock<1?'没有保鲜包。':'';
+ return {ok:!reason,reason,materialId,stock,days,materialCost,expiresDay:known&&item?.expiresDay!==null&&item?.expiresDay!==undefined?item.expiresDay+days:null};
+}
 export const rootCapacity = (s: GameState) => BALANCE.stock + modifierEffect(s,'cells') / 4 + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
 export const capacity = (s: GameState) => rootCapacity(s) + (s.containers ?? []).reduce((sum, c) => sum + storageStyle(c.styleId).columns * storageStyle(c.styleId).rows / 4, 0);
 export const displayCapacity = (s: GameState) => Math.min(BALANCE.maxShowcase, BALANCE.showcase + ownedEquipment(s, 'showcase') * 3);
@@ -606,7 +618,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       item.location = 'display'; delete item.containerId; delete item.grid; say(`${def(item).name}已入柜，普通交易不会出售它。当前吸引力 ${attraction(s)}。`, 'display'); break;
     }
     case 'withdraw': { const item = findItem(action.itemId); if (!item || item.location !== 'display' || item.owner !== 'player') return fail('找不到展品。'); item.location = 'stock'; say('展品已撤回货架；库存超容量时仍保留物品。', 'display'); break; }
-    case 'preserve': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || def(item).category !== 'food' || item.expiresDay === null) return fail('请选择自有食品或生物制品。'); if (item.expiresDay < s.day) return fail('已经过期，不能通过保鲜恢复。'); if (item.preservedUntil > 0) return fail('这批商品已经使用过保鲜包。'); const key = equipmentId('preserveSupply'); if (!(s.equipment[key] > 0)) return fail('没有保鲜包。'); const usedCost = Math.floor((s.equipmentCosts[key] ?? 0) / s.equipment[key]!); s.equipment[key]!--; s.equipmentCosts[key] = (s.equipmentCosts[key] ?? 0) - usedCost; const days = 2 + skillEffect(s, 'preservation'); item.expiresDay += days; item.preservedUntil = item.expiresDay; item.cost += usedCost; say(`保鲜后有效期延长至第 ${item.expiresDay} 日。`); break; }
+    case 'preserve': { const item=findItem(action.itemId),plan=preservationPlan(s,item);if(!plan.ok||!item)return fail(plan.reason);s.equipment[plan.materialId]!--;s.equipmentCosts[plan.materialId]=(s.equipmentCosts[plan.materialId]??0)-plan.materialCost;item.expiresDay=plan.expiresDay!;item.preservedUntil=item.expiresDay;item.cost+=plan.materialCost;say(`保鲜后有效期延长至第 ${item.expiresDay} 日。`);break; }
     case 'liquidate': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能清理货架上的自有商品。'); if (def(item).regulated && !s.licenses.includes('regulated-trade')) return fail('受管制商品需要合法交易许可。'); const price = clearanceQuote(s,item); earn(price, 'clearance', `清货${def(item).name}，总成本 ${item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); s.records.trades++; gainXp(s, 2); say(`清货完成，回笼 ${price}。`, 'trade'); break; }
     case 'sort': { if (s.phase === 'open' && !spendHours(has(s, 'restock') ? 0 : .5)) return fail('整理需要半点工时，闭店后可免费整理。'); s.items.forEach(i => { if (i.location === 'stock' && !i.containerId) delete i.grid; }); s.items.sort((a, b) => (a.expiresDay ?? Infinity) - (b.expiresDay ?? Infinity) || def(a).category.localeCompare(def(b).category)); say('货架按临期优先、品类归位；持有快捷补货技能时耗材采购自动享受折扣。'); break; }
     case 'appoint': { if (action.category !== null && !CATEGORIES.some(c => c.id === action.category)) return fail('未知商品分类。'); if (action.category && !has(s, 'targetSupply')) return fail('先学习定向采购。'); s.appointments = action.category; say(action.category ? '已预约下一营业日的定向货源。' : '已恢复自然来访。'); break; }
@@ -638,8 +650,9 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       say(s.phase === 'failed' ? '补救期已过，店铺暂停营业。可恢复当日开始备份，或重新开局。' : s.debt ? `闭店：仍欠 ${s.debt}。${s.victory?'永久经营权保留，欠费并入下次维护结算。':`还有 ${debtClosingChances(s)} 次营业日结可补救。`}基础维修与清货可以恢复现金。` : `第 ${s.day} 日结算，支出 ${paid}。明天继续。`, 'day'); break;
     }
     case 'openDay': {
-      if (s.phase !== 'closed') return fail('请先闭店结算。'); s.day++; s.hours = dailyHours(s); s.phase = 'open';
-      for (const item of s.items) if (item.owner === 'player' && item.expiresDay !== null && item.expiresDay >= s.day - 1 && ownedEquipment(s, 'cold') && s.day % 2 === 0) item.expiresDay++;
+      if (s.phase !== 'closed') return fail('请先闭店结算。');
+      for(const item of s.items)item.expiresDay=nextOpeningExpiry(s,item);
+      s.day++; s.hours = dailyHours(s); s.phase = 'open';
       for (const order of s.orders) if (!order.delivered && order.kind !== 'own' && order.escrow < 300) order.escrow = 300;
       generateDay(s); say(`第 ${s.day} 日开门，${dailyHours(s)} 工时、${BALANCE.visitors} 位预约访客。`, 'day'); break;
     }

@@ -6,6 +6,7 @@ import { estimateValue, tradeQuote, attraction } from '../game/engine';
 import { BALANCE } from '../game/balance';
 import { state } from './store';
 import Art from './Art.vue';
+import {foodFreshness} from '../game/freshness';
 const props=defineProps<{item:ItemInstance}>();
 const definition=computed(()=>ITEMS.find(d=>d.id===props.item.definitionId)!);
 const own=computed(()=>state.value.items.some(i=>i.id===props.item.id&&i.owner==='player'));
@@ -24,7 +25,7 @@ const attributes=computed(()=>{
  if(d.category==='energy')rows.push(['有效容量',scanned.value?`${i.capacity}%`:'待扫描'],['材料纯度',scanned.value?`${i.purity}%`:'待扫描']);
  if(d.category==='data')rows.push(['数据完整度',scanned.value?`${i.integrity}%`:'待扫描']);
  if(d.category==='neural')rows.push(['接口兼容',scanned.value?i.compatibility:'待扫描']);
- if(d.category==='food')rows.push(['保质期限',basic.value?(i.expiresDay===null?'长期':`第 ${i.expiresDay} 日${i.expiresDay<state.value.day?' · 已过期':''}`):'待检查']);
+ if(d.category==='food')rows.push(['保质期限',foodFreshness(state.value,i)!.text]);
  if(d.category==='antique')rows.push(['原貌',serial.value?`${i.originality}%`:'待核验'],['真伪',serial.value?(i.authentic?'真实原件':'复刻品'):'待核验']);
  if(serial.value)rows.push(['来源',i.provenance]);
  return rows;

@@ -5,3 +5,5 @@
 .stock-locate{width:100%;font-size:12px;padding:9px;margin-bottom:15px;border-color:#839c8b;color:#d4e6ba}
 .inventory-grid .item-tile small{overflow-wrap:anywhere}
 @media(max-width:1000px){.stock-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.stock-filters input{grid-column:1/-1}.stock-match-count{font-size:11px}.stock-actions button{font-size:10px;padding:7px}}
+
+.preservation-preview{padding:12px;border:1px solid #66877b66;background:#203d35}.preservation-preview p{font-size:12px;line-height:1.6;margin:0 0 8px}.preservation-preview button{width:100%;margin-top:5px}.food-tag[data-freshness="expiring"]{color:#e9ca8f}.food-tag[data-freshness="expired"]{color:#efb6a1}

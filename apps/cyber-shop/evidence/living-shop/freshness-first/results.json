@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "preservation": {
+    "previewCost": 7,
+    "consumed": 1,
+    "newExpiry": 4,
+    "reload": true,
+    "expiresOnDay": 5,
+    "expiredNotNearExpiry": true
+  },
+  "unknownDateHidden": true,
+  "touchColdAndPreserve": true,
+  "errors": []
+}

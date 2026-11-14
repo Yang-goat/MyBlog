@@ -277,3 +277,21 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 - `node scripts/check-independent-apps.mjs`、脚本语法与 `git diff --check` 通过。仅有既有 pnpm 工作区元数据提示和 Git 换行提示。
 
 前三次 UI 失败分别来自脚本点到被覆盖格子、假设错背包方向，以及把矩形两朝向规则当作异形四朝向规则；证据保留在 `readability-ui-first`、`readability-ui-final`、`readability-ui-clean`。修正测试后最终通过，没有修改产品规则绕过检查。本轮未重跑完整职业通关和整站构建，前阶段 146 项规则测试与 617 页构建记录保留；受影响的游戏产物已重建。账户剩余 61%，尚未推送部署。
+
+## 2026-11-14 食品过夜预览与保鲜成本
+
+基线 `54bd9704d`，工作区干净。修正日结读取未知保质期，以及过期商品仍标注临期折价；保鲜前必须基础检查日期。预览和实际处理共用保鲜计划、冷藏跨日期限计算，原耗材/技能/隔日冷藏数值保持。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：22 文件、151 项；未知信息不泄露、拒绝不扣耗材、实际均摊成本、一次保鲜、嵌套/展示/客户归属、32 组冷藏日期边界与真实开店一致 |
+| `ui-freshness.mjs` | PASS：`freshness-final`，临期词条新局、闭店前跳转食品、真实购买耗材、预览与实际 ₡7 成本一致、一次消耗、保存重载、第五日过期、闭店不能保鲜、真实旧存档中未知日期先检查、844×390 触控冷藏与保鲜 |
+| `ui-handbook.mjs` | PASS：`freshness-handbook-final`，六章翻页/目录/返回原操作/键盘/触控，并补拍新增食品说明所在的库存章节 |
+| 原始 `web_game_playwright_client.js` | PASS：`freshness-skill`，canvas 截图与状态已检查；实际界面由专项 DOM 截图验证 |
+| `pnpm.cmd site:build` | PASS：退出 0，617 页，日志 `freshness-site-build.log`；游戏主包 380.64 KB |
+| `pnpm.cmd --filter @goatyang/cyber-shop validate` | PASS：73 基础素材、13 补充素材、3 项内容测试 |
+| `node scripts/validate-content-structure.mjs` | PASS：79,254 本地引用 |
+| `node scripts/check-independent-apps.mjs` | PASS：两独立应用与发布资源 |
+| 脚本语法 / `git diff --check` | PASS |
+
+首轮 `freshness-first` 实际交互已通过，截图检查后把食品保鲜预览提前，手机截图等待提示条消失；最终版本再次通过。已查看最终桌面食品详情、未知日期提醒、手机操作与两种尺寸的库存书页，浏览器错误 0。当前完整职业通关沿用此前 `demand-journey` 的真实 UI 证据，本轮未把食品专项称为重跑完整职业。仅有既有 pnpm 元数据与 Git 换行提示。账户剩余 60%，未推送部署。

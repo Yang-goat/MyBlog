@@ -77,7 +77,7 @@ const equipmentRows: EquipmentRow[] = [
   ['preserve-pack', '保鲜包', 'material', 22, 'preserveSupply', 1, '延长一件食品的有效保存时间；过期食品不能重新变鲜。'],
   ['workbench', '工作台', 'facility', 300, 'bench', 1, '升级工位与夹持空间，提高维修作业效率。'],
   ['stock-rack', '库存架', 'facility', 260, 'storage', 8, '增加 32 格库存容量；自有物品与客户工单分开管理。'],
-  ['cold-storage', '冷藏柜', 'facility', 380, 'cold', 2, '为食品提供稳定冷藏，延长日结时的保存期限。'],
+  ['cold-storage', '冷藏柜', 'facility', 380, 'cold', 2, '每隔一日开店时，为仍有效的食品延长一天保存期；不恢复过期食品。'],
   ['display-case', '收藏展示柜', 'facility', 450, 'showcase', 3, '展示位从 3 格扩展到 6 格，展品退出普通售卖。'],
 ];
 export const EQUIPMENT: EquipmentDefinition[] = equipmentRows.map(([id, name, type, price, effect, amount, description]) => ({ id, name, type, price, effect, amount, description, image: `${id}.webp` }));
