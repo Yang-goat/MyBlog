@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "threeLevels": true,
+  "ancestorLabelSearch": true,
+  "combinedFilters": true,
+  "costSort": true,
+  "selectionStaysInResults": true,
+  "locateWithoutMoving": true,
+  "oneFloatingWindow": true,
+  "focus": true,
+  "reload": true,
+  "actualClearanceQuote": 42,
+  "ownRepairRoute": true,
+  "agedFilter": true,
+  "touch": true,
+  "errors": [],
+  "missing": []
+}

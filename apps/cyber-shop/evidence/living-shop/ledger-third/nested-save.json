@@ -1,0 +1,739 @@
+{
+  "format": "cyber-shop",
+  "version": 1,
+  "savedAt": "2026-11-14T11:02:29.210Z",
+  "checksum": "4f16e1a9",
+  "state": {
+    "modifiers": [
+      "extra-cash"
+    ],
+    "version": 1,
+    "contentVersion": "demo-1",
+    "balanceVersion": "demo-2",
+    "seed": 20261105,
+    "rng": 1715357865,
+    "serial": 32,
+    "day": 1,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 690,
+    "hours": 12,
+    "debt": 0,
+    "grace": 0,
+    "xp": 32,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "equipmentCosts": {},
+    "items": [
+      {
+        "id": "item-1",
+        "definitionId": "purified-water",
+        "owner": "player",
+        "location": "stock",
+        "condition": 83,
+        "integrity": 46,
+        "capacity": 44,
+        "purity": 72,
+        "authentic": true,
+        "originality": 60,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 6,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-2",
+        "definitionId": "data-chip",
+        "owner": "player",
+        "location": "stock",
+        "condition": 59,
+        "integrity": 75,
+        "capacity": 87,
+        "purity": 65,
+        "authentic": true,
+        "originality": 89,
+        "provenance": "可追溯的合法授权副本",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 60,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        },
+        "containerId": "container-26"
+      },
+      {
+        "id": "item-3",
+        "definitionId": "mechanical-watch",
+        "owner": "player",
+        "location": "stock",
+        "condition": 61,
+        "integrity": 68,
+        "capacity": 66,
+        "purity": 68,
+        "authentic": true,
+        "originality": 79,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 208,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-6",
+        "definitionId": "angle-drill",
+        "owner": "player",
+        "location": "stock",
+        "condition": 39,
+        "integrity": 87,
+        "capacity": 51,
+        "purity": 99,
+        "authentic": true,
+        "originality": 86,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [],
+        "cost": 120,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 4,
+          "y": 0,
+          "rotated": 0
+        }
+      }
+    ],
+    "visitors": [
+      {
+        "id": "visitor-5",
+        "characterId": "he-jin",
+        "kind": "repair",
+        "item": {
+          "id": "item-4",
+          "definitionId": "portable-terminal",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 63,
+          "integrity": 87,
+          "capacity": 62,
+          "purity": 97,
+          "authentic": true,
+          "originality": 77,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 241,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": true,
+        "request": "随身终端：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-10",
+        "characterId": "qi-lan",
+        "kind": "seller",
+        "item": {
+          "id": "item-7",
+          "definitionId": "folding-worklight",
+          "owner": "player",
+          "location": "stock",
+          "condition": 60,
+          "integrity": 51,
+          "capacity": 46,
+          "purity": 94,
+          "authentic": true,
+          "originality": 95,
+          "provenance": "灰线旧货，批次凭据不完整",
+          "compatibility": "旧式专用接口",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-7",
+            "definitionId": "folding-worklight",
+            "owner": "player",
+            "location": "stock",
+            "condition": 60,
+            "integrity": 51,
+            "capacity": 46,
+            "purity": 94,
+            "authentic": true,
+            "originality": 95,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-8",
+            "definitionId": "angle-drill",
+            "owner": "player",
+            "location": "stock",
+            "condition": 41,
+            "integrity": 85,
+            "capacity": 77,
+            "purity": 90,
+            "authentic": true,
+            "originality": 61,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [
+              "broken-power"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-9",
+            "definitionId": "angle-drill",
+            "owner": "player",
+            "location": "stock",
+            "condition": 76,
+            "integrity": 64,
+            "capacity": 38,
+            "purity": 76,
+            "authentic": true,
+            "originality": 77,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-7": {
+            "ask": 117,
+            "minimum": 86
+          },
+          "item-8": {
+            "ask": 95,
+            "minimum": 70
+          },
+          "item-9": {
+            "ask": 174,
+            "minimum": 128
+          }
+        },
+        "category": "electronics",
+        "quote": 117,
+        "limit": 86,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": true,
+        "request": "带了一批民用与工业机电，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+        "storageGoods": [],
+        "relationCredited": true,
+        "lastTrade": {
+          "kind": "buy",
+          "amount": 300,
+          "cost": 300,
+          "goods": [
+            {
+              "definitionId": "courier-pack",
+              "itemId": "container-28",
+              "cost": 300
+            }
+          ]
+        }
+      },
+      {
+        "id": "visitor-11",
+        "characterId": "lu-che",
+        "kind": "buyer",
+        "demand": {
+          "limit": 2,
+          "fulfilled": 0
+        },
+        "budget": 1164,
+        "category": "data",
+        "quote": 291,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": true,
+        "request": "这趟想收 2 件数据与娱乐载体。出价直接，能接受小幅让步，不愿耗掉半天路线。"
+      },
+      {
+        "id": "visitor-13",
+        "characterId": "he-jin",
+        "kind": "repair",
+        "item": {
+          "id": "item-12",
+          "definitionId": "folding-worklight",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 55,
+          "integrity": 85,
+          "capacity": 86,
+          "purity": 67,
+          "authentic": true,
+          "originality": 67,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "broken-power"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 164,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": true,
+        "request": "折叠检修灯：输入侧有电，供电板输出始终为零。请先检测。"
+      },
+      {
+        "id": "visitor-18",
+        "characterId": "qi-lan",
+        "kind": "seller",
+        "item": {
+          "id": "item-14",
+          "definitionId": "battery-pack",
+          "owner": "player",
+          "location": "stock",
+          "condition": 44,
+          "integrity": 64,
+          "capacity": 71,
+          "purity": 96,
+          "authentic": true,
+          "originality": 74,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-14",
+            "definitionId": "battery-pack",
+            "owner": "player",
+            "location": "stock",
+            "condition": 44,
+            "integrity": 64,
+            "capacity": 71,
+            "purity": 96,
+            "authentic": true,
+            "originality": 74,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-15",
+            "definitionId": "battery-pack",
+            "owner": "player",
+            "location": "stock",
+            "condition": 76,
+            "integrity": 65,
+            "capacity": 89,
+            "purity": 68,
+            "authentic": true,
+            "originality": 70,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-16",
+            "definitionId": "battery-pack",
+            "owner": "player",
+            "location": "stock",
+            "condition": 73,
+            "integrity": 56,
+            "capacity": 55,
+            "purity": 86,
+            "authentic": false,
+            "originality": 64,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-17",
+            "definitionId": "insulation-roll",
+            "owner": "player",
+            "location": "stock",
+            "condition": 55,
+            "integrity": 58,
+            "capacity": 95,
+            "purity": 69,
+            "authentic": true,
+            "originality": 77,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-14": {
+            "ask": 50,
+            "minimum": 37
+          },
+          "item-15": {
+            "ask": 86,
+            "minimum": 64
+          },
+          "item-16": {
+            "ask": 51,
+            "minimum": 38
+          },
+          "item-17": {
+            "ask": 48,
+            "minimum": 35
+          }
+        },
+        "category": "energy",
+        "quote": 50,
+        "limit": 37,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": true,
+        "request": "带了一批能源与工业材料，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+        "storageGoods": [
+          {
+            "id": "storage-offer-24",
+            "styleId": "freight-case",
+            "price": 900
+          }
+        ],
+        "relationCredited": true,
+        "lastTrade": {
+          "kind": "buy",
+          "amount": 480,
+          "cost": 480,
+          "goods": [
+            {
+              "definitionId": "transit-crate",
+              "itemId": "container-30",
+              "cost": 480
+            }
+          ]
+        }
+      },
+      {
+        "id": "visitor-19",
+        "characterId": "he-jin",
+        "kind": "buyer",
+        "demand": {
+          "limit": 3,
+          "fulfilled": 0
+        },
+        "budget": 1291,
+        "category": "electronics",
+        "quote": 269,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "这趟想收 3 件民用与工业机电。讲工序、批次与工时；报出实测值比夸外观有效。"
+      },
+      {
+        "id": "visitor-20",
+        "characterId": "lu-che",
+        "kind": "buyer",
+        "demand": {
+          "limit": 2,
+          "fulfilled": 0
+        },
+        "budget": 1164,
+        "category": "data",
+        "quote": 291,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "这趟想收 2 件数据与娱乐载体。出价直接，能接受小幅让步，不愿耗掉半天路线。"
+      }
+    ],
+    "visitorIndex": 4,
+    "orders": [],
+    "reputation": 1,
+    "relations": {
+      "grayline": 2
+    },
+    "questStages": {},
+    "eventId": "rain-grid",
+    "eventResolved": false,
+    "discovered": [
+      "purified-water",
+      "data-chip",
+      "mechanical-watch",
+      "angle-drill"
+    ],
+    "met": [
+      "he-jin",
+      "qi-lan",
+      "lu-che"
+    ],
+    "repairHistory": [],
+    "records": {
+      "trades": 4,
+      "repairs": 0,
+      "revenue": 0,
+      "repairIncome": 0,
+      "days": 0,
+      "faults": {}
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "victory": false,
+    "endless": false,
+    "freeRespec": true,
+    "ledger": [
+      {
+        "id": 25,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -120,
+        "note": "买入充电电钻",
+        "itemId": "item-6"
+      },
+      {
+        "id": 27,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -120,
+        "note": "买入旧式腰包",
+        "itemId": "container-26"
+      },
+      {
+        "id": 29,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -300,
+        "note": "买入快递员背包",
+        "itemId": "container-28"
+      },
+      {
+        "id": 31,
+        "day": 1,
+        "kind": "purchase",
+        "amount": -480,
+        "note": "买入工业周转箱",
+        "itemId": "container-30"
+      },
+      {
+        "id": 32,
+        "day": 1,
+        "kind": "equipment",
+        "amount": -90,
+        "note": "便携标签机"
+      }
+    ],
+    "messages": [
+      "店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。",
+      "叫号完成，贺津来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，祁岚来到门前。",
+      "购入 1 件，共 ₡120。已购货物留在谈判台，继续选货或先入库。",
+      "买下旧式腰包 · ₡120，先将箱包从谈判台收好。",
+      "买下快递员背包 · ₡300，先将箱包从谈判台收好。",
+      "充电电钻已归位。",
+      "箱包与里面的物品已一起移动。",
+      "箱包与里面的物品已一起移动。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，陆澈来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，贺津来到门前。",
+      "礼貌谢绝，保留工时和现金。",
+      "叫号完成，祁岚来到门前。",
+      "买下工业周转箱 · ₡480，先将箱包从谈判台收好。",
+      "箱包与里面的物品已一起移动。",
+      "礼貌谢绝，保留工时和现金。",
+      "箱包与里面的物品已一起移动。",
+      "箱包与里面的物品已一起移动。",
+      "通用数据芯片已归位。",
+      "标签机已就位。",
+      "新标签已贴好。",
+      "新标签已贴好。"
+    ],
+    "appointments": null,
+    "challenge": null,
+    "visitorArrived": true,
+    "deliveries": [
+      {
+        "id": "delivery-1-doorstep-water",
+        "templateId": "doorstep-water",
+        "postedDay": 1,
+        "deadline": 3,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-courier-call",
+        "templateId": "courier-call",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-backup-battery",
+        "templateId": "backup-battery",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      }
+    ],
+    "tutorial": {
+      "step": 9,
+      "skipped": false
+    },
+    "conversations": {
+      "visitor-10": 2,
+      "visitor-18": 2
+    },
+    "containers": [
+      {
+        "id": "container-26",
+        "styleId": "courier-pouch",
+        "owner": "player",
+        "location": "stock",
+        "cost": 120,
+        "acquiredDay": 1,
+        "label": "芯片袋",
+        "color": "ivory",
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        },
+        "containerId": "container-28"
+      },
+      {
+        "id": "container-28",
+        "styleId": "courier-pack",
+        "owner": "player",
+        "location": "stock",
+        "cost": 300,
+        "acquiredDay": 1,
+        "label": "快递员背包",
+        "color": "ivory",
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        },
+        "containerId": "container-30"
+      },
+      {
+        "id": "container-30",
+        "styleId": "transit-crate",
+        "owner": "player",
+        "location": "stock",
+        "cost": 480,
+        "acquiredDay": 1,
+        "label": "待售箱",
+        "color": "ivory",
+        "grid": {
+          "x": 11,
+          "y": 0,
+          "rotated": false
+        }
+      }
+    ],
+    "labeler": true
+  }
+}

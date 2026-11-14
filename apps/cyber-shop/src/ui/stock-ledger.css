@@ -1,0 +1,7 @@
+.stock-filters{display:grid;grid-template-columns:minmax(210px,1.7fr) repeat(3,minmax(120px,1fr));gap:8px;margin:18px 0 10px}
+.stock-filters input,.stock-filters select{width:100%;font-size:12px;min-height:40px;padding:8px 10px}
+.stock-actions{margin:10px 0}.stock-match-count{font-size:12px;color:#bcd4c7;margin-right:auto}
+.item-inspector .stock-location{font-size:11px;color:#b8cbbf;overflow-wrap:anywhere;line-height:1.7;margin:14px 0 8px}
+.stock-locate{width:100%;font-size:12px;padding:9px;margin-bottom:15px;border-color:#839c8b;color:#d4e6ba}
+.inventory-grid .item-tile small{overflow-wrap:anywhere}
+@media(max-width:1000px){.stock-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.stock-filters input{grid-column:1/-1}.stock-match-count{font-size:11px}.stock-actions button{font-size:10px;padding:7px}}

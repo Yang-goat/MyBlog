@@ -246,3 +246,21 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 12 组实际文字范围、完整按钮、与菜单无重叠、页面无溢出、三区正方形格子一致性均通过；844×390 真实触控声音、手册、日结、次日及存档恢复通过，浏览器错误 0。最终桌面和横屏截图已查看，导入提示自然消失后拍摄。原始技能客户端 `room-fit-skill` 运行及 canvas 图查看完成。
 
 `pnpm.cmd --filter @goatyang/cyber-shop build`、`node scripts/check-independent-apps.mjs`、`node --check apps/cyber-shop/scripts/ui-room-fit.mjs`、`git diff --check` 通过。规则及博客内容未变，本阶段没有重跑规则测试和整站构建；前一阶段 141 项和 617 页结果仍保留，当前受影响的游戏产物已重新构建。既有 pnpm 元数据警告不影响退出码。
+
+## 2026-11-14 账本检索与实物定位
+
+基线 `5504b391e`。查询和排序不修改物品位置；账本筛选使用公共名称、玩家标签、存放路径及已知状态，未检查保质期不参与临期筛选。清货报价沿用原比例，界面和结算共用同一函数。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：21 文件，146 项；含三层路径、未知信息、所有权、状态筛选、不修改实物的排序和清货到账 |
+| `pnpm.cmd --filter @goatyang/cyber-shop build` / `validate` | PASS：类型、游戏构建、73 基础图及 13 补充图 |
+| `ui-stock-ledger.mjs` | PASS：`ledger-final` 正常 NPC 购买、三层标签检索、组合/空结果/成本排序、单窗定位与焦点、查询不改变经营状态、取出、重载、₡42 报价实际到账、送修与工单返回、三日积压、双击实物清旧筛选、844×390 真实触控 |
+| `ui-handbook.mjs` | PASS：`ledger-handbook`，实体入口、翻页、目录、上下文返回、键盘、减少动态与触控 |
+| 原始 `web_game_playwright_client.js` | PASS：`ledger-skill`，执行、状态与 canvas 截图已查看；完整 UI 以专项 DOM 图为准 |
+| `pnpm.cmd site:build` | PASS：退出 0、617 页，日志 `ledger-site-build.log` |
+| `node scripts/validate-content-structure.mjs` | PASS：79,254 本地引用 |
+| `node scripts/check-independent-apps.mjs` | PASS：两独立应用及资源 |
+| 脚本语法 / `git diff --check` | PASS |
+
+`ledger-first` 记录测试落点被浮窗遮挡的失败，改为真正可见空格后继续；没有强制点击或更改物品位置。`ledger-second` 记录界面关闭后筛选丢失，随后修为本次经营保留、新局/读档清空。`ledger-third` 和最终版本通过，历史证据保留。手机通过正常导出的 `nested-save.json` 经 UI 导入，没有注入游戏状态。最终桌面与手机图已查看，浏览器无异常或缺图。主包 378.01 KB；既有 pnpm 元数据警告与 Git 换行提示保留。账户剩余 62%，当前未发布。

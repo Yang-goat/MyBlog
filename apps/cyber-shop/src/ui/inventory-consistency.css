@@ -12,3 +12,6 @@
 .shop-room .warehouse-item:has(.shape-outline),.shop-room .surface-grid .surface-item:has(.shape-outline),.shop-room .container-item:has(.shape-outline){border:0!important;background:none!important;box-shadow:none!important}
 .shop-room button.selected .shape-outline polygon,.shop-room button[aria-pressed=true] .shape-outline polygon{fill:#436f7380;stroke:#a3f1df;stroke-width:4px}
 .shop-room .warehouse-grid,.shop-room .surface-grid,.shop-room .container-grid{overflow:hidden}
+
+.shop-room [data-located=true]{outline:2px solid #ffe4a3!important;outline-offset:-2px;filter:brightness(1.2)}
+.shop-room [data-located=true] .shape-outline polygon{fill:#8c805644;stroke:#ffe4a3;stroke-width:4px}

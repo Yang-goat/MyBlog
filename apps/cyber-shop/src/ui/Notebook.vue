@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref, toRefs, watch } from 'vue';
 import { ITEMS, CATEGORIES, SKILLS, CERTIFICATES, QUESTS, THEMES } from '../content';
-import { capacity, displayCapacity, attraction, licensePrice } from '../game/engine';
+import { capacity, displayCapacity, attraction, licensePrice, clearanceQuote } from '../game/engine';
 import { state, modal, selectedItem, selectedOrder, dispatch, downloadSave, uploadSave, restore, fullScreen, muted, volume, ambience, reducedMotion, started, inspectSave } from './store';
-import { containerName } from '../game/containers';
+import {stockEntries,stockLocation,heldDays} from '../game/stock-ledger';
+import {requestItemLocation,stockView} from './inventory-navigation';
 import type { CategoryId } from '../game/types';
 import Art from './Art.vue';
 import EquipmentShop from './EquipmentShop.vue';
@@ -15,10 +16,12 @@ import DistrictEvent from './DistrictEvent.vue';
 import { START_MODIFIERS } from '../game/modifiers';
 import { BALANCE, CHALLENGES } from '../game/balance';
 import FactionLedger from './FactionLedger.vue';
-const category = ref('all'); const tab = ref('general');
+const tab = ref('general');
+const {query:stockQuery,category,status:stockStatus,order:stockOrder}=toRefs(stockView);
 const respecMode = ref(false); const plan = ref<string[]>([]);
-const stock = computed(() => state.value.items.filter(i => i.owner === 'player' && (category.value === 'all' || ITEMS.find(d => d.id === i.definitionId)?.category === category.value)));
-const selected = computed(() => state.value.items.find(i => i.id === selectedItem.value && i.owner === 'player') ?? stock.value[0]);
+const stock = computed(() => stockEntries(state.value,{query:stockQuery.value,category:category.value,status:stockStatus.value,order:stockOrder.value}));
+const stockCost=computed(()=>stock.value.reduce((sum,i)=>sum+i.cost,0));
+const selected = computed(() => stock.value.find(i => i.id === selectedItem.value) ?? stock.value[0]);
 const definition = computed(() => ITEMS.find(d => d.id === selected.value?.definitionId));
 const displays = computed(() => state.value.items.filter(i => i.location === 'display'));
 const branches = computed(() => [...new Set(SKILLS.filter(s => s.tree === tab.value).map(s => s.branch))]);
@@ -28,7 +31,9 @@ const lost = computed(() => SKILLS.filter(s => state.value.skills.includes(s.id)
 const gained = computed(() => SKILLS.filter(s => !state.value.skills.includes(s.id) && plan.value.includes(s.id)));
 const name = (id: string) => ITEMS.find(d => d.id === id)?.name ?? id;
 watch(() => modal.value, () => { respecMode.value = false; });
-function startOwn() { if (selected.value && dispatch({ type: 'startRepair', itemId: selected.value.id })) { selectedOrder.value = state.value.orders.find(o => o.itemId === selected.value?.id && !o.delivered)?.id ?? ''; modal.value = 'workbench'; } }
+function startOwn() { const item=selected.value;if (item && dispatch({ type: 'startRepair', itemId: item.id })) { selectedOrder.value = state.value.orders.find(o => o.itemId === item.id && !o.delivered)?.id ?? ''; modal.value = 'workbench'; } }
+function clearStockFilters(){stockQuery.value='';category.value='all';stockStatus.value='all';stockOrder.value='oldest';}
+function locateStock(){const item=selected.value;if(!item)return;selectedItem.value=item.id;if(item.location==='workshop'){selectedOrder.value=state.value.orders.find(o=>o.itemId===item.id&&!o.delivered)?.id??'';modal.value='workbench';}else{modal.value='';requestItemLocation(item.id);}}
 function learn(id: string) { if (respecMode.value) plan.value = plan.value.includes(id) ? plan.value.filter(s => s !== id) : [...plan.value, id]; else dispatch({ type: 'learn', skillId: id }); }
 function drop(e: DragEvent) { const id = e.dataTransfer?.getData('text/plain'); if (id) dispatch({ type: 'display', itemId: id }); }
 function exam(id: typeof CERTIFICATES[number]['id']) { if (dispatch({ type: 'exam', certificate: id })) { selectedOrder.value = state.value.orders.find(o => o.kind === 'exam' && o.certificate === id && !o.delivered)?.id ?? ''; modal.value = 'workbench'; } }
@@ -38,11 +43,12 @@ function finalOrder() { if (dispatch({ type: 'startFinal' })) { selectedOrder.va
 <template>
   <div class="notebook-content">
     <template v-if="modal === 'inventory'">
-      <div class="panel-heading"><p class="eyebrow">STOCKROOM / 每件旧物，都有去处</p><h2>货架与库存</h2><p>库存容量 {{ capacity(state) * 4 }} 格 · 拖动物品到展示区，或选中后点击入柜。</p></div>
-      <div class="actions compact"><select v-model="category" aria-label="库存分类"><option value="all">全部分类</option><option v-for="c in CATEGORIES" :key="c.id" :value="c.id">{{ c.name }}</option></select><button @click="dispatch({ type: 'sort' })">快捷整理</button><button @click="modal=''">回到仓库整理 ↗</button><button @click="modal='deliveries'">街坊订货 ↗</button></div>
-      <div class="inventory-layout"><div class="inventory-grid"><HandbookProp class="inventory-handbook"/><button v-for="item in stock" :key="item.id" :data-item="item.id" :class="['item-tile', { selected: item.id === selected?.id }]" draggable="true" @dragstart="$event.dataTransfer?.setData('text/plain', item.id)" @click="selectedItem = item.id"><Art :id="item.definitionId" :label="name(item.definitionId)" /><strong>{{ name(item.definitionId) }}</strong><small>{{ item.location === 'display' ? '已陈列' : item.location === 'workshop' ? '维修中' : item.containerId ? containerName(state.containers!.find(c=>c.id===item.containerId)!) : item.location === 'counter' ? '在谈判台' : '在货架' }} · 成本 ₡{{ item.cost }}</small></button><p v-if="!stock.length" class="empty-note">货架暂时空了。可以到柜台收货，或接基础维修积攒现金。</p></div>
-        <aside v-if="selected && definition" class="item-inspector"><p class="eyebrow">{{ CATEGORIES.find(c => c.id === definition?.category)?.name }}</p><h3>{{ definition.name }}</h3><p>{{ definition.description }}</p><dl><dt>外观</dt><dd>{{ selected.known.includes('basic') ? selected.condition + '%' : '待检查' }}</dd><dt>实际累计成本</dt><dd>₡{{ selected.cost }}</dd><dt>占用</dt><dd>{{ definition.footprint.width }} × {{ definition.footprint.height }}（{{ definition.size * 4 }} 格）</dd><dt>保存至</dt><dd>{{ !selected.known.includes('basic') ? '待检查' : selected.expiresDay === null ? '长期' : `第${selected.expiresDay}日` }}</dd><template v-if="selected.known.includes('scan') && definition.category === 'energy'"><dt>有效容量</dt><dd>{{ selected.capacity }}%</dd></template><template v-if="selected.known.includes('scan') && definition.category === 'energy'"><dt>纯度</dt><dd>{{ selected.purity }}%</dd></template><template v-if="selected.known.includes('scan') && definition.category === 'data'"><dt>数据完整度</dt><dd>{{ selected.integrity }}%</dd></template><template v-if="selected.known.includes('serial')"><dt>鉴定</dt><dd>{{ selected.authentic ? '真实原物' : '仿品 / 来源存疑' }}</dd><dt>出处</dt><dd>{{ selected.provenance }}</dd></template></dl>
-          <ItemKnowledge :item="selected" /><div class="vertical-actions"><button @click="dispatch({ type: 'inspect', itemId: selected.id })">检查物品</button><button @click="dispatch({ type: 'inspect', itemId: selected.id, method: 'scan' })">多谱扫描</button><button @click="dispatch({ type: 'inspect', itemId: selected.id, method: 'serial' })">查验来源</button><button v-if="definition.certificate" @click="startOwn">送到工作台翻新</button><button v-if="selected.location !== 'display'" @click="dispatch({ type: 'display', itemId: selected.id })">放进收藏展示柜</button><button v-else @click="dispatch({ type: 'withdraw', itemId: selected.id })">撤展并返回货架</button><button v-if="definition.category === 'food'" @click="dispatch({ type: 'preserve', itemId: selected.id })">使用保鲜包</button><button class="danger-text" v-if="selected.location === 'stock'" @click="dispatch({ type: 'liquidate', itemId: selected.id })">折价清货</button></div>
+      <div class="panel-heading"><h2>货架与库存</h2><p>库存容量 {{ capacity(state) * 4 }} 格</p></div>
+      <div class="stock-filters"><input v-model="stockQuery" type="search" aria-label="查找库存" placeholder="物品名 / 品类 / 箱包标签"/><select v-model="category" aria-label="库存分类"><option value="all">全部分类</option><option v-for="c in CATEGORIES" :key="c.id" :value="c.id">{{ c.name }}</option></select><select v-model="stockStatus" aria-label="库存状态"><option value="all">全部状态</option><option value="stored">待售库存</option><option value="aged">持有至少三日</option><option value="unchecked">待基础检查</option><option value="expiring">已知临期 / 过期</option></select><select v-model="stockOrder" aria-label="库存排序"><option value="oldest">最早入库优先</option><option value="newest">最新入库优先</option><option value="cost">成本从高到低</option></select></div>
+      <div class="actions compact stock-actions"><button @click="clearStockFilters">清除筛选</button><span class="stock-match-count" aria-live="polite">{{stock.length}} 件 · 成本 ₡{{stockCost}}</span><button @click="dispatch({ type: 'sort' })">快捷整理</button><button @click="modal=''">回到仓库整理 ↗</button><button @click="modal='deliveries'">街坊订货 ↗</button></div>
+      <div class="inventory-layout"><div class="inventory-grid"><HandbookProp class="inventory-handbook"/><button v-for="item in stock" :key="item.id" :data-item="item.id" :class="['item-tile', { selected: item.id === selected?.id }]" draggable="true" @dragstart="$event.dataTransfer?.setData('text/plain', item.id)" @click="selectedItem = item.id"><Art :id="item.definitionId" :label="name(item.definitionId)" /><strong>{{ name(item.definitionId) }}</strong><small>{{stockLocation(state,item)}}</small><small>成本 ₡{{item.cost}} · 持有 {{heldDays(state,item)}} 日</small></button><p v-if="!stock.length" class="empty-note">没有符合条件的货物。</p></div>
+        <aside v-if="selected && definition" class="item-inspector"><p class="eyebrow">{{ CATEGORIES.find(c => c.id === definition?.category)?.name }}</p><h3>{{ definition.name }}</h3><p class="stock-location">{{stockLocation(state,selected)}} · 持有 {{heldDays(state,selected)}} 日</p><button class="stock-locate" @click="locateStock">{{selected.location==='workshop'?'查看维修工单':'定位货物 ↗'}}</button><p>{{ definition.description }}</p><dl><dt>外观</dt><dd>{{ selected.known.includes('basic') ? selected.condition + '%' : '待检查' }}</dd><dt>实际累计成本</dt><dd>₡{{ selected.cost }}</dd><dt>占用</dt><dd>{{ definition.footprint.width }} × {{ definition.footprint.height }}（{{ definition.size * 4 }} 格）</dd><dt>保存至</dt><dd>{{ !selected.known.includes('basic') ? '待检查' : selected.expiresDay === null ? '长期' : `第${selected.expiresDay}日` }}</dd><template v-if="selected.known.includes('scan') && definition.category === 'energy'"><dt>有效容量</dt><dd>{{ selected.capacity }}%</dd></template><template v-if="selected.known.includes('scan') && definition.category === 'energy'"><dt>纯度</dt><dd>{{ selected.purity }}%</dd></template><template v-if="selected.known.includes('scan') && definition.category === 'data'"><dt>数据完整度</dt><dd>{{ selected.integrity }}%</dd></template><template v-if="selected.known.includes('serial')"><dt>鉴定</dt><dd>{{ selected.authentic ? '真实原物' : '仿品 / 来源存疑' }}</dd><dt>出处</dt><dd>{{ selected.provenance }}</dd></template></dl>
+          <ItemKnowledge :item="selected" /><div class="vertical-actions"><button @click="dispatch({ type: 'inspect', itemId: selected.id })">检查物品</button><button @click="dispatch({ type: 'inspect', itemId: selected.id, method: 'scan' })">多谱扫描</button><button @click="dispatch({ type: 'inspect', itemId: selected.id, method: 'serial' })">查验来源</button><button v-if="definition.certificate" @click="startOwn">送到工作台翻新</button><button v-if="selected.location !== 'display'" @click="dispatch({ type: 'display', itemId: selected.id })">放进收藏展示柜</button><button v-else @click="dispatch({ type: 'withdraw', itemId: selected.id })">撤展并返回货架</button><button v-if="definition.category === 'food'" @click="dispatch({ type: 'preserve', itemId: selected.id })">使用保鲜包</button><button class="danger-text" v-if="selected.location === 'stock'" @click="dispatch({ type: 'liquidate', itemId: selected.id })">折价清货 · ₡{{clearanceQuote(state,selected)}}</button></div>
         </aside></div>
       <div class="display-drop" @dragover.prevent @drop.prevent="drop">将已鉴定的自有物品拖到这里陈列 · 或使用物品详情中的“放进收藏展示柜”</div>
     </template>
@@ -76,3 +82,5 @@ function finalOrder() { if (dispatch({ type: 'startFinal' })) { selectedOrder.va
     <GameGuide v-else/>
   </div>
 </template>
+
+<style src="./stock-ledger.css"></style>

@@ -5,6 +5,7 @@ import type { Action, GameState, PresentationEvent } from '../game/types';
 import { journey, dayReport } from '../game/journey';
 import { ShopAudio } from './audio';
 import { version } from '../../package.json';
+import {resetInventoryNavigation} from './inventory-navigation';
 
 export const state = shallowRef<GameState>(createGame(20261105));
 export const started = ref(false);
@@ -59,18 +60,19 @@ export function dispatch(action: Action) {
 }
 export function inspectSave() { const saved = loadSave(); hasSave.value = !!saved.state; saveError.value = saved.error ?? ''; }
 export function begin(seed = 20261105, modifiers:string[] = []) {
+  resetInventoryNavigation();
   state.value = { ...createGame(seed,modifiers), tutorial: { step: 0, skipped: false }, conversations: {} }; const result = replaceSave(state.value); saveError.value = result.error ?? '';
   backupError.value = replaceDayBackup(state.value).error ?? ''; saveError.value = [result.error, backupError.value].filter(Boolean).join('；'); hasSave.value = result.ok; started.value = true; modal.value = ''; unlockAudio();
 }
-export function resume() { const saved = loadSave(); if (saved.state) { state.value = saved.state; started.value = true; modal.value = ''; unlockAudio(); } else notify(saved.error ?? '还没有存档。'); }
-export function restore() { const saved = restoreDayBackup(); if (saved.state) { const written = replaceSave(saved.state); if (!written.ok) { saveError.value = written.error ?? '无法保存恢复的进度'; notify(saveError.value); return; } state.value = saved.state; started.value = true; modal.value = ''; saveError.value = ''; notify('已恢复当日开始的备份。'); } else notify(saved.error ?? '没有当日备份。'); }
+export function resume() { const saved = loadSave(); if (saved.state) { resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; unlockAudio(); } else notify(saved.error ?? '还没有存档。'); }
+export function restore() { const saved = restoreDayBackup(); if (saved.state) { const written = replaceSave(saved.state); if (!written.ok) { saveError.value = written.error ?? '无法保存恢复的进度'; notify(saveError.value); return; } resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; saveError.value = ''; notify('已恢复当日开始的备份。'); } else notify(saved.error ?? '没有当日备份。'); }
 export function downloadSave() {
   const url = URL.createObjectURL(new Blob([exportSave(state.value)], { type: 'application/json' }));
   const a = document.createElement('a'); a.href = url; a.download = `cyber-shop-day-${state.value.day}.json`; a.click(); URL.revokeObjectURL(url);
 }
 export async function uploadSave(file?: File) {
   if (!file) return;
-  try { const next = importSave(await file.text()); const result = replaceSave(next); if (!result.ok) throw new Error(result.error ?? '无法写入'); state.value = next; backupError.value = replaceDayBackup(next).error ?? ''; started.value = true; modal.value = ''; saveError.value = backupError.value; hasSave.value = true; notify('存档已导入，并以导入点建立本地备份；下次开门后更新为当日开始备份。'); }
+  try { const next = importSave(await file.text()); const result = replaceSave(next); if (!result.ok) throw new Error(result.error ?? '无法写入'); resetInventoryNavigation();state.value = next; backupError.value = replaceDayBackup(next).error ?? ''; started.value = true; modal.value = ''; saveError.value = backupError.value; hasSave.value = true; notify('存档已导入，并以导入点建立本地备份；下次开门后更新为当日开始备份。'); }
   catch (e) { notify(`导入失败：${e instanceof Error ? e.message : String(e)}`); }
 }
 export function textState() {
