@@ -1,0 +1,685 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '仓库空格 69', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button aria-label=\"仓库空格 69\" class=\"warehouse-cell\"></button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button aria-label=\"充电电钻\" data-item=\"item-6\" class=\"warehouse-item selected\">…</button> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button aria-label=\"充电电钻\" data-item=\"item-6\" class=\"warehouse-item selected\">…</button> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    15 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <button aria-label=\"充电电钻\" data-item=\"item-6\" class=\"warehouse-item selected\">…</button> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "state": {
+    "version": "0.2.0",
+    "mode": "open",
+    "panel": "",
+    "selectedItem": "item-6",
+    "selectedOrder": "",
+    "coordinates": "画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式",
+    "game": {
+      "coordinates": "店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+      "day": 1,
+      "chapter": 1,
+      "phase": "open",
+      "cash": 690,
+      "hours": 12,
+      "maxHours": 12,
+      "debt": 0,
+      "grace": 0,
+      "xp": 32,
+      "level": 1,
+      "points": 0,
+      "skills": [],
+      "certificates": [
+        "civil"
+      ],
+      "trained": [
+        "civil"
+      ],
+      "licenses": [],
+      "equipment": {
+        "cleaner": 4,
+        "electronic-parts": 4,
+        "mechanical-parts": 4,
+        "insulation": 4,
+        "neural-supplies": 4,
+        "preserve-pack": 2,
+        "micro-solder": 1,
+        "workbench": 1
+      },
+      "stockUsage": 7.75,
+      "capacity": 53.25,
+      "rootCapacity": 36,
+      "labeler": true,
+      "modifiers": [
+        "extra-cash"
+      ],
+      "containers": [
+        {
+          "id": "container-26",
+          "styleId": "courier-pouch",
+          "owner": "player",
+          "location": "stock",
+          "cost": 120,
+          "acquiredDay": 1,
+          "label": "芯片袋",
+          "color": "ivory",
+          "containerId": "container-28",
+          "grid": {
+            "x": 0,
+            "y": 0,
+            "rotated": false
+          },
+          "name": "旧式腰包",
+          "layout": {
+            "positions": {
+              "item-2": {
+                "x": 0,
+                "y": 0,
+                "rotated": false
+              }
+            },
+            "overflow": []
+          },
+          "columns": 3,
+          "rows": 3,
+          "path": [
+            "container-30",
+            "container-28",
+            "container-26"
+          ]
+        },
+        {
+          "id": "container-28",
+          "styleId": "courier-pack",
+          "owner": "player",
+          "location": "stock",
+          "cost": 300,
+          "acquiredDay": 1,
+          "label": "快递员背包",
+          "color": "ivory",
+          "containerId": "container-30",
+          "grid": {
+            "x": 0,
+            "y": 0,
+            "rotated": false
+          },
+          "name": "快递员背包",
+          "layout": {
+            "positions": {
+              "container-26": {
+                "x": 0,
+                "y": 0,
+                "rotated": false
+              }
+            },
+            "overflow": []
+          },
+          "columns": 4,
+          "rows": 6,
+          "path": [
+            "container-30",
+            "container-28"
+          ]
+        },
+        {
+          "id": "container-30",
+          "styleId": "transit-crate",
+          "owner": "player",
+          "location": "stock",
+          "cost": 480,
+          "acquiredDay": 1,
+          "label": "待售箱",
+          "color": "ivory",
+          "grid": {
+            "x": 11,
+            "y": 0,
+            "rotated": false
+          },
+          "name": "工业周转箱",
+          "layout": {
+            "positions": {
+              "container-28": {
+                "x": 0,
+                "y": 0,
+                "rotated": false
+              }
+            },
+            "overflow": []
+          },
+          "columns": 6,
+          "rows": 6,
+          "path": [
+            "container-30"
+          ]
+        }
+      ],
+      "displayCapacity": 3,
+      "attraction": 0,
+      "items": [
+        {
+          "id": "item-1",
+          "definitionId": "purified-water",
+          "name": "净化饮水",
+          "category": "food",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "accessible": true,
+          "condition": 83,
+          "estimate": [
+            37,
+            85
+          ],
+          "cost": 28,
+          "expiresDay": 6
+        },
+        {
+          "id": "item-2",
+          "definitionId": "data-chip",
+          "name": "通用数据芯片",
+          "category": "data",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "containerId": "container-26",
+          "accessible": true,
+          "condition": 59,
+          "estimate": [
+            64,
+            148
+          ],
+          "cost": 60
+        },
+        {
+          "id": "item-3",
+          "definitionId": "mechanical-watch",
+          "name": "机械计时器",
+          "category": "antique",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "accessible": true,
+          "condition": 61,
+          "estimate": [
+            225,
+            525
+          ],
+          "cost": 208
+        },
+        {
+          "id": "item-6",
+          "definitionId": "angle-drill",
+          "name": "充电电钻",
+          "category": "electronics",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "cost": 120
+        }
+      ],
+      "visitorArrived": true,
+      "warehouse": {
+        "positions": {
+          "item-1": {
+            "x": 0,
+            "y": 0,
+            "rotated": false
+          },
+          "item-3": {
+            "x": 2,
+            "y": 0,
+            "rotated": false
+          },
+          "item-6": {
+            "x": 20,
+            "y": 2,
+            "rotated": 2
+          },
+          "container-30": {
+            "x": 11,
+            "y": 0,
+            "rotated": false
+          }
+        },
+        "overflow": []
+      },
+      "tutorial": {
+        "step": 9,
+        "skipped": false
+      },
+      "conversations": {
+        "visitor-10": 2,
+        "visitor-18": 2
+      },
+      "visitor": {
+        "id": "visitor-18",
+        "characterId": "qi-lan",
+        "kind": "seller",
+        "category": "energy",
+        "quote": 50,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": true,
+        "request": "带了一批能源与工业材料，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+        "greeting": "货路又换了条走法，不过这扇门还好找。",
+        "goods": [
+          {
+            "id": "item-14",
+            "definitionId": "battery-pack",
+            "name": "标准电池组",
+            "category": "energy",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "cost": 0,
+            "quote": 50
+          },
+          {
+            "id": "item-15",
+            "definitionId": "battery-pack",
+            "name": "标准电池组",
+            "category": "energy",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "cost": 0,
+            "quote": 86
+          },
+          {
+            "id": "item-16",
+            "definitionId": "battery-pack",
+            "name": "标准电池组",
+            "category": "energy",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "cost": 0,
+            "quote": 51
+          },
+          {
+            "id": "item-17",
+            "definitionId": "insulation-roll",
+            "name": "绝缘纤维卷",
+            "category": "energy",
+            "owner": "player",
+            "location": "stock",
+            "known": [],
+            "accessible": true,
+            "cost": 0,
+            "quote": 48
+          }
+        ],
+        "storageGoods": [
+          {
+            "id": "storage-offer-24",
+            "styleId": "freight-case",
+            "price": 900
+          }
+        ],
+        "lastTrade": {
+          "kind": "buy",
+          "amount": 480,
+          "cost": 480,
+          "goods": [
+            {
+              "definitionId": "transit-crate",
+              "itemId": "container-30",
+              "cost": 480
+            }
+          ]
+        },
+        "item": {
+          "id": "item-14",
+          "definitionId": "battery-pack",
+          "name": "标准电池组",
+          "category": "energy",
+          "owner": "player",
+          "location": "stock",
+          "known": [],
+          "accessible": true,
+          "cost": 0
+        }
+      },
+      "visitorIndex": 4,
+      "visitorCount": 7,
+      "orders": [],
+      "eventId": "rain-grid",
+      "eventResolved": false,
+      "questStages": {},
+      "reputation": 1,
+      "relations": {
+        "grayline": 2
+      },
+      "factions": [
+        {
+          "id": "neighborhood",
+          "name": "九街互助社",
+          "shortName": "街坊",
+          "stratum": "下层居民",
+          "color": "#b7cb8b",
+          "contact": "lin-qiao",
+          "categories": [
+            "food",
+            "electronics"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1,
+          "description": "快递员、食堂、诊所和住户凑成的互助网络。旧设备每天都要继续工作。",
+          "tradeNote": "日常补给与实用旧物",
+          "perk": "信任 16：每日维护费减 ₡10。",
+          "known": true,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "union",
+          "name": "工造联合会",
+          "shortName": "工造",
+          "stratum": "工人和独立工坊",
+          "color": "#dfae70",
+          "contact": "he-jin",
+          "categories": [
+            "electronics",
+            "energy"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1.2,
+          "description": "靠工序、批次和交付记录建立信用的工坊联盟。",
+          "tradeNote": "工业器材与材料，预算较充足",
+          "perk": "信任 16：工具商店耗材九折，可叠加技能优惠。",
+          "known": true,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "grayline",
+          "name": "灰线黑市",
+          "shortName": "灰线",
+          "stratum": "地下货运网络",
+          "color": "#b99cda",
+          "contact": "qi-lan",
+          "categories": [
+            "energy",
+            "electronics",
+            "data"
+          ],
+          "seller": 0.9,
+          "buyer": 0.95,
+          "budget": 1,
+          "description": "绕开正规货路的旧货商。价格低，磨损和缺失的批次凭据需要店主自己判断。",
+          "tradeNote": "进货便宜，成色较低、部分批次不全",
+          "perk": "信任 16：灰线卖家的箱包价格再减 15%。",
+          "known": true,
+          "relation": 2,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "uppercity",
+          "name": "云阶采购圈",
+          "shortName": "云阶",
+          "stratum": "上层企业与私人买家",
+          "color": "#c6d7ee",
+          "contact": "ji-yan",
+          "categories": [
+            "data",
+            "antique",
+            "neural"
+          ],
+          "seller": 1.12,
+          "buyer": 1.1,
+          "budget": 1.6,
+          "description": "从高层办公区下来的采购人。预算宽裕，重视可直接使用的高品相货物。",
+          "tradeNote": "完好且品相 ≥85 的货物另加价 15%",
+          "perk": "信任 16：云阶买家的完好高品相加价由 15% 升至 20%。",
+          "known": false,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "contractors",
+          "name": "铁隼合约团",
+          "shortName": "铁隼",
+          "stratum": "独立佣兵",
+          "color": "#d18b84",
+          "contact": "han-qiao",
+          "categories": [
+            "electronics",
+            "energy",
+            "neural"
+          ],
+          "seller": 0.96,
+          "buyer": 1.04,
+          "budget": 1.15,
+          "description": "按合同工作的护送员和外勤佣兵。装备要能用，外壳上的伤痕可以留下。",
+          "tradeNote": "无功能故障的设备另加价 8%",
+          "perk": "信任 16：铁隼客户新接维修工单报酬增加 15%。",
+          "known": false,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "watch",
+          "name": "九区巡务署",
+          "shortName": "巡务",
+          "stratum": "辖区警务",
+          "color": "#8fbcdf",
+          "contact": "xu-zheng",
+          "categories": [
+            "electronics",
+            "data",
+            "neural"
+          ],
+          "seller": 1,
+          "buyer": 1,
+          "budget": 1.1,
+          "description": "负责街区秩序和流转登记的警务部门。可查验的来源比口头保证更有效。",
+          "tradeNote": "已核验且可追溯的货物另加价 10%",
+          "perk": "信任 16：通用交易许可费用减 25%。",
+          "known": false,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        },
+        {
+          "id": "freewave",
+          "name": "自由频段",
+          "shortName": "频段",
+          "stratum": "地下反抗组织",
+          "color": "#78c9bd",
+          "contact": "yan-que",
+          "categories": [
+            "data",
+            "energy",
+            "electronics"
+          ],
+          "seller": 0.96,
+          "buyer": 1,
+          "budget": 0.9,
+          "description": "用地下电台连接各个下层街区，反对上层企业垄断通信。成员靠回收器材维持广播。",
+          "tradeNote": "数据载体与能源材料另加价 8%",
+          "perk": "信任 16：数据货物的来源核验免工时，仍需序列检索终端。",
+          "known": false,
+          "relation": 0,
+          "level": "初识",
+          "canAppoint": false,
+          "trusted": false
+        }
+      ],
+      "factionAppointment": null,
+      "records": {
+        "trades": 4,
+        "repairs": 0,
+        "revenue": 0,
+        "repairIncome": 0,
+        "days": 0,
+        "faults": {}
+      },
+      "repairHistory": [],
+      "deliveries": [
+        {
+          "id": "delivery-1-doorstep-water",
+          "templateId": "doorstep-water",
+          "postedDay": 1,
+          "deadline": 3,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-1-courier-call",
+          "templateId": "courier-call",
+          "postedDay": 1,
+          "deadline": 6,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-1-backup-battery",
+          "templateId": "backup-battery",
+          "postedDay": 1,
+          "deadline": 6,
+          "status": "offered"
+        }
+      ],
+      "finalStage": 0,
+      "finalComplete": false,
+      "professionMilestones": [],
+      "professions": [
+        {
+          "professionId": "restorer",
+          "implemented": true,
+          "mastered": false,
+          "milestone": "relay-restored",
+          "completed": false,
+          "ready": false
+        }
+      ],
+      "victory": false,
+      "endless": false,
+      "challenge": null,
+      "messages": [
+        "箱包与里面的物品已一起移动。",
+        "箱包与里面的物品已一起移动。",
+        "箱包与里面的物品已一起移动。",
+        "充电电钻已归位。",
+        "充电电钻已归位。"
+      ]
+    },
+    "journey": {
+      "title": "重新开门",
+      "story": "林桥把钥匙留给了你。让第一批旧物重新运转，也让这条街记住店门里的灯。",
+      "tasks": [
+        {
+          "id": "repairs",
+          "title": "让旧物重新运转",
+          "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+          "current": 0,
+          "target": 5,
+          "done": false,
+          "panel": "orders",
+          "label": "前往维修工作台"
+        }
+      ],
+      "next": {
+        "id": "repairs",
+        "title": "让旧物重新运转",
+        "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+        "current": 0,
+        "target": 5,
+        "done": false,
+        "panel": "orders",
+        "label": "前往维修工作台"
+      },
+      "ready": [],
+      "activeOrders": 0,
+      "investment": 0,
+      "nextLevelXp": 148
+    },
+    "dayReport": {
+      "stock": {
+        "count": 4,
+        "cost": 416,
+        "aged": 0
+      },
+      "income": 0,
+      "expenses": 1110,
+      "net": -1110,
+      "openingCash": 1800,
+      "closingCash": 690,
+      "repairs": 0,
+      "repairIncome": 0,
+      "sales": 0,
+      "saleIncome": 0,
+      "deliveries": 0,
+      "deliveryIncome": 0,
+      "fees": 0,
+      "pendingFees": 85,
+      "entries": [
+        {
+          "id": 25,
+          "day": 1,
+          "kind": "purchase",
+          "amount": -120,
+          "note": "买入充电电钻",
+          "itemId": "item-6"
+        },
+        {
+          "id": 27,
+          "day": 1,
+          "kind": "purchase",
+          "amount": -120,
+          "note": "买入旧式腰包",
+          "itemId": "container-26"
+        },
+        {
+          "id": 29,
+          "day": 1,
+          "kind": "purchase",
+          "amount": -300,
+          "note": "买入快递员背包",
+          "itemId": "container-28"
+        },
+        {
+          "id": 31,
+          "day": 1,
+          "kind": "purchase",
+          "amount": -480,
+          "note": "买入工业周转箱",
+          "itemId": "container-30"
+        },
+        {
+          "id": 32,
+          "day": 1,
+          "kind": "equipment",
+          "amount": -90,
+          "note": "便携标签机"
+        }
+      ]
+    },
+    "presentation": {
+      "layoutUndoCount": 2,
+      "reducedMotion": false,
+      "muted": false,
+      "volume": 0.25,
+      "ambience": true,
+      "audio": {
+        "state": "running",
+        "ambienceLevel": 0.0275
+      }
+    },
+    "openContainers": []
+  },
+  "errors": []
+}

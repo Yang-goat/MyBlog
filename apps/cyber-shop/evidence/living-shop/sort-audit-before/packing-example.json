@@ -1,0 +1,1751 @@
+{
+  "state": {
+    "modifiers": [],
+    "version": 1,
+    "contentVersion": "demo-1",
+    "balanceVersion": "demo-2",
+    "seed": 1,
+    "rng": 508085331,
+    "serial": 24,
+    "day": 1,
+    "chapter": 1,
+    "phase": "open",
+    "cash": 1200,
+    "hours": 12,
+    "debt": 0,
+    "grace": 0,
+    "xp": 0,
+    "level": 1,
+    "points": 0,
+    "skills": [],
+    "certificates": [
+      "civil"
+    ],
+    "trained": [
+      "civil"
+    ],
+    "licenses": [],
+    "equipment": {
+      "cleaner": 4,
+      "electronic-parts": 4,
+      "mechanical-parts": 4,
+      "insulation": 4,
+      "neural-supplies": 4,
+      "preserve-pack": 2,
+      "micro-solder": 1,
+      "workbench": 1
+    },
+    "equipmentCosts": {},
+    "items": [
+      {
+        "id": "item-900",
+        "definitionId": "insulation-roll",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-901",
+        "definitionId": "mechanical-watch",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-902",
+        "definitionId": "angle-drill",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 4,
+          "y": 0,
+          "rotated": 0
+        }
+      },
+      {
+        "id": "item-903",
+        "definitionId": "optical-eye",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 7,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-904",
+        "definitionId": "encrypted-box",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 8,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-905",
+        "definitionId": "power-module",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 11,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-906",
+        "definitionId": "music-tape",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 14,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-907",
+        "definitionId": "neural-bridge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 16,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-908",
+        "definitionId": "memory-buffer",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 19,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-909",
+        "definitionId": "old-city-badge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 21,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-910",
+        "definitionId": "infusion-pump",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 22,
+          "y": 0,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-911",
+        "definitionId": "insulation-roll",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 14,
+          "y": 1,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-912",
+        "definitionId": "film-camera",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 16,
+          "y": 1,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-913",
+        "definitionId": "early-core",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 19,
+          "y": 1,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-914",
+        "definitionId": "old-city-badge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 4,
+          "y": 1,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-915",
+        "definitionId": "game-cartridge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 2,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-916",
+        "definitionId": "memory-buffer",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 7,
+          "y": 1,
+          "rotated": true
+        }
+      },
+      {
+        "id": "item-917",
+        "definitionId": "three-way-valve",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 7,
+          "y": 2,
+          "rotated": 1
+        }
+      },
+      {
+        "id": "item-918",
+        "definitionId": "folding-worklight",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 4,
+          "y": 3,
+          "rotated": 0
+        }
+      },
+      {
+        "id": "item-919",
+        "definitionId": "haptic-module",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 3,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-920",
+        "definitionId": "bio-gel",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 2,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 10,
+          "y": 2,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-921",
+        "definitionId": "folding-worklight",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 11,
+          "y": 3,
+          "rotated": 0
+        }
+      },
+      {
+        "id": "item-922",
+        "definitionId": "industrial-sensor",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 16,
+          "y": 3,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-923",
+        "definitionId": "bio-gel",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 5,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 18,
+          "y": 3,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-924",
+        "definitionId": "optical-eye",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 4,
+          "y": 2,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-925",
+        "definitionId": "encrypted-box",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 19,
+          "y": 4,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-928",
+        "definitionId": "culture-starter",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 2,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 2,
+          "y": 4,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-929",
+        "definitionId": "purified-water",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": 3,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 8,
+          "y": 5,
+          "rotated": true
+        }
+      },
+      {
+        "id": "item-931",
+        "definitionId": "old-city-badge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 10,
+          "y": 4,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-933",
+        "definitionId": "catalyst-core",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 15,
+          "y": 4,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-934",
+        "definitionId": "game-cartridge",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 22,
+          "y": 4,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-937",
+        "definitionId": "memory-buffer",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 0,
+          "y": 5,
+          "rotated": false
+        }
+      },
+      {
+        "id": "item-947",
+        "definitionId": "music-tape",
+        "owner": "player",
+        "location": "stock",
+        "condition": 65,
+        "integrity": 73,
+        "capacity": 81,
+        "purity": 67,
+        "authentic": true,
+        "originality": 75,
+        "provenance": "可追溯的街区旧物",
+        "compatibility": "开放标准",
+        "expiresDay": null,
+        "faults": [],
+        "known": [
+          "basic"
+        ],
+        "cost": 28,
+        "acquiredDay": 1,
+        "preservedUntil": 0,
+        "grid": {
+          "x": 16,
+          "y": 5,
+          "rotated": false
+        }
+      }
+    ],
+    "visitors": [
+      {
+        "id": "visitor-5",
+        "characterId": "lin-qiao",
+        "kind": "repair",
+        "item": {
+          "id": "item-4",
+          "definitionId": "portable-terminal",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 65,
+          "integrity": 59,
+          "capacity": 84,
+          "purity": 98,
+          "authentic": true,
+          "originality": 67,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "clock-drift"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 245,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "随身终端：响应周期忽快忽慢，时钟参考值应为 50。请先检测。"
+      },
+      {
+        "id": "visitor-10",
+        "characterId": "lu-che",
+        "kind": "seller",
+        "item": {
+          "id": "item-6",
+          "definitionId": "air-circulator",
+          "owner": "player",
+          "location": "stock",
+          "condition": 87,
+          "integrity": 84,
+          "capacity": 97,
+          "purity": 99,
+          "authentic": true,
+          "originality": 66,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "broken-power"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-6",
+            "definitionId": "air-circulator",
+            "owner": "player",
+            "location": "stock",
+            "condition": 87,
+            "integrity": 84,
+            "capacity": 97,
+            "purity": 99,
+            "authentic": true,
+            "originality": 66,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "broken-power"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-7",
+            "definitionId": "folding-worklight",
+            "owner": "player",
+            "location": "stock",
+            "condition": 75,
+            "integrity": 93,
+            "capacity": 56,
+            "purity": 66,
+            "authentic": true,
+            "originality": 98,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "旧式专用接口",
+            "expiresDay": null,
+            "faults": [
+              "broken-power"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-8",
+            "definitionId": "air-circulator",
+            "owner": "player",
+            "location": "stock",
+            "condition": 64,
+            "integrity": 52,
+            "capacity": 88,
+            "purity": 79,
+            "authentic": false,
+            "originality": 66,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [
+              "broken-power"
+            ],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-9",
+            "definitionId": "folding-worklight",
+            "owner": "player",
+            "location": "stock",
+            "condition": 49,
+            "integrity": 100,
+            "capacity": 87,
+            "purity": 81,
+            "authentic": false,
+            "originality": 76,
+            "provenance": "来源不明的复刻品",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-6": {
+            "ask": 207,
+            "minimum": 153
+          },
+          "item-7": {
+            "ask": 114,
+            "minimum": 84
+          },
+          "item-8": {
+            "ask": 171,
+            "minimum": 126
+          },
+          "item-9": {
+            "ask": 116,
+            "minimum": 86
+          }
+        },
+        "category": "electronics",
+        "quote": 207,
+        "limit": 153,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "带了一批民用与工业机电，每件成色不一样，价签都在。可以先挑、先检查。出价直接，能接受小幅让步，不愿耗掉半天路线。",
+        "storageGoods": [
+          {
+            "id": "storage-offer-21",
+            "styleId": "courier-pouch",
+            "price": 120
+          },
+          {
+            "id": "storage-offer-22",
+            "styleId": "courier-pack",
+            "price": 300
+          }
+        ]
+      },
+      {
+        "id": "visitor-11",
+        "characterId": "a-miao",
+        "kind": "buyer",
+        "demand": {
+          "limit": 3,
+          "fulfilled": 0
+        },
+        "budget": 424,
+        "category": "food",
+        "quote": 106,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "这趟想收 3 件食品与生物制品。看保质期和实用价值，临期货只接受清楚的折价。"
+      },
+      {
+        "id": "visitor-13",
+        "characterId": "lu-che",
+        "kind": "repair",
+        "item": {
+          "id": "item-12",
+          "definitionId": "angle-drill",
+          "owner": "customer",
+          "location": "workshop",
+          "condition": 82,
+          "integrity": 80,
+          "capacity": 73,
+          "purity": 84,
+          "authentic": true,
+          "originality": 62,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [
+            "oxidized-contact"
+          ],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "category": "electronics",
+        "quote": 269,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "充电电钻：轻压接口时能短暂通电，接点电阻偏高。请先检测。"
+      },
+      {
+        "id": "visitor-18",
+        "characterId": "qi-lan",
+        "kind": "seller",
+        "item": {
+          "id": "item-14",
+          "definitionId": "insulation-roll",
+          "owner": "player",
+          "location": "stock",
+          "condition": 71,
+          "integrity": 60,
+          "capacity": 94,
+          "purity": 98,
+          "authentic": true,
+          "originality": 77,
+          "provenance": "可追溯的街区旧物",
+          "compatibility": "开放标准",
+          "expiresDay": null,
+          "faults": [],
+          "known": [],
+          "cost": 0,
+          "acquiredDay": 1,
+          "preservedUntil": 0
+        },
+        "goods": [
+          {
+            "id": "item-14",
+            "definitionId": "insulation-roll",
+            "owner": "player",
+            "location": "stock",
+            "condition": 71,
+            "integrity": 60,
+            "capacity": 94,
+            "purity": 98,
+            "authentic": true,
+            "originality": 77,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-15",
+            "definitionId": "alloy-plate",
+            "owner": "player",
+            "location": "stock",
+            "condition": 66,
+            "integrity": 86,
+            "capacity": 64,
+            "purity": 82,
+            "authentic": false,
+            "originality": 94,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-16",
+            "definitionId": "battery-pack",
+            "owner": "player",
+            "location": "stock",
+            "condition": 66,
+            "integrity": 49,
+            "capacity": 54,
+            "purity": 73,
+            "authentic": true,
+            "originality": 70,
+            "provenance": "可追溯的街区旧物",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          },
+          {
+            "id": "item-17",
+            "definitionId": "insulation-roll",
+            "owner": "player",
+            "location": "stock",
+            "condition": 62,
+            "integrity": 99,
+            "capacity": 66,
+            "purity": 75,
+            "authentic": true,
+            "originality": 99,
+            "provenance": "灰线旧货，批次凭据不完整",
+            "compatibility": "开放标准",
+            "expiresDay": null,
+            "faults": [],
+            "known": [],
+            "cost": 0,
+            "acquiredDay": 1,
+            "preservedUntil": 0
+          }
+        ],
+        "priceTags": {
+          "item-14": {
+            "ask": 79,
+            "minimum": 58
+          },
+          "item-15": {
+            "ask": 95,
+            "minimum": 70
+          },
+          "item-16": {
+            "ask": 48,
+            "minimum": 35
+          },
+          "item-17": {
+            "ask": 56,
+            "minimum": 41
+          }
+        },
+        "category": "energy",
+        "quote": 79,
+        "limit": 58,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "带了一批能源与工业材料，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+        "storageGoods": [
+          {
+            "id": "storage-offer-23",
+            "styleId": "transit-crate",
+            "price": 480
+          },
+          {
+            "id": "storage-offer-24",
+            "styleId": "freight-case",
+            "price": 900
+          }
+        ]
+      },
+      {
+        "id": "visitor-19",
+        "characterId": "lu-che",
+        "kind": "buyer",
+        "demand": {
+          "limit": 2,
+          "fulfilled": 0
+        },
+        "budget": 1256,
+        "category": "electronics",
+        "quote": 314,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 2,
+        "resolved": false,
+        "request": "这趟想收 2 件民用与工业机电。出价直接，能接受小幅让步，不愿耗掉半天路线。"
+      },
+      {
+        "id": "visitor-20",
+        "characterId": "lin-qiao",
+        "kind": "buyer",
+        "demand": {
+          "limit": 3,
+          "fulfilled": 0
+        },
+        "budget": 536,
+        "category": "food",
+        "quote": 134,
+        "limit": 13000,
+        "rounds": 0,
+        "patience": 4,
+        "resolved": false,
+        "request": "这趟想收 3 件食品与生物制品。更在意可靠和街坊价；愿意听完检查依据。"
+      }
+    ],
+    "visitorIndex": 0,
+    "orders": [],
+    "reputation": 0,
+    "relations": {},
+    "questStages": {},
+    "eventId": "rain-grid",
+    "eventResolved": false,
+    "discovered": [
+      "purified-water",
+      "data-chip",
+      "mechanical-watch"
+    ],
+    "met": [],
+    "repairHistory": [],
+    "records": {
+      "trades": 0,
+      "repairs": 0,
+      "revenue": 0,
+      "repairIncome": 0,
+      "days": 0,
+      "faults": {}
+    },
+    "finalStage": 0,
+    "finalComplete": false,
+    "professionMilestones": [],
+    "victory": false,
+    "endless": false,
+    "freeRespec": true,
+    "ledger": [],
+    "messages": [
+      "店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。"
+    ],
+    "appointments": null,
+    "challenge": null,
+    "visitorArrived": false,
+    "deliveries": [
+      {
+        "id": "delivery-1-doorstep-water",
+        "templateId": "doorstep-water",
+        "postedDay": 1,
+        "deadline": 3,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-courier-call",
+        "templateId": "courier-call",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      },
+      {
+        "id": "delivery-1-backup-battery",
+        "templateId": "backup-battery",
+        "postedDay": 1,
+        "deadline": 6,
+        "status": "offered"
+      }
+    ]
+  },
+  "before": {
+    "positions": {
+      "item-900": {
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "item-901": {
+        "x": 2,
+        "y": 0,
+        "rotated": false
+      },
+      "item-902": {
+        "x": 4,
+        "y": 0,
+        "rotated": 0
+      },
+      "item-903": {
+        "x": 7,
+        "y": 0,
+        "rotated": false
+      },
+      "item-904": {
+        "x": 8,
+        "y": 0,
+        "rotated": false
+      },
+      "item-905": {
+        "x": 11,
+        "y": 0,
+        "rotated": false
+      },
+      "item-906": {
+        "x": 14,
+        "y": 0,
+        "rotated": false
+      },
+      "item-907": {
+        "x": 16,
+        "y": 0,
+        "rotated": false
+      },
+      "item-908": {
+        "x": 19,
+        "y": 0,
+        "rotated": false
+      },
+      "item-909": {
+        "x": 21,
+        "y": 0,
+        "rotated": false
+      },
+      "item-910": {
+        "x": 22,
+        "y": 0,
+        "rotated": false
+      },
+      "item-911": {
+        "x": 14,
+        "y": 1,
+        "rotated": false
+      },
+      "item-912": {
+        "x": 16,
+        "y": 1,
+        "rotated": false
+      },
+      "item-913": {
+        "x": 19,
+        "y": 1,
+        "rotated": false
+      },
+      "item-914": {
+        "x": 4,
+        "y": 1,
+        "rotated": false
+      },
+      "item-915": {
+        "x": 2,
+        "y": 2,
+        "rotated": false
+      },
+      "item-916": {
+        "x": 7,
+        "y": 1,
+        "rotated": true
+      },
+      "item-917": {
+        "x": 7,
+        "y": 2,
+        "rotated": 1
+      },
+      "item-918": {
+        "x": 4,
+        "y": 3,
+        "rotated": 0
+      },
+      "item-919": {
+        "x": 0,
+        "y": 3,
+        "rotated": false
+      },
+      "item-920": {
+        "x": 10,
+        "y": 2,
+        "rotated": false
+      },
+      "item-921": {
+        "x": 11,
+        "y": 3,
+        "rotated": 0
+      },
+      "item-922": {
+        "x": 16,
+        "y": 3,
+        "rotated": false
+      },
+      "item-923": {
+        "x": 18,
+        "y": 3,
+        "rotated": false
+      },
+      "item-924": {
+        "x": 4,
+        "y": 2,
+        "rotated": false
+      },
+      "item-925": {
+        "x": 19,
+        "y": 4,
+        "rotated": false
+      },
+      "item-928": {
+        "x": 2,
+        "y": 4,
+        "rotated": false
+      },
+      "item-929": {
+        "x": 8,
+        "y": 5,
+        "rotated": true
+      },
+      "item-931": {
+        "x": 10,
+        "y": 4,
+        "rotated": false
+      },
+      "item-933": {
+        "x": 15,
+        "y": 4,
+        "rotated": false
+      },
+      "item-934": {
+        "x": 22,
+        "y": 4,
+        "rotated": false
+      },
+      "item-937": {
+        "x": 0,
+        "y": 5,
+        "rotated": false
+      },
+      "item-947": {
+        "x": 16,
+        "y": 5,
+        "rotated": false
+      }
+    },
+    "overflow": []
+  },
+  "after": {
+    "positions": {
+      "item-920": {
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "item-928": {
+        "x": 1,
+        "y": 0,
+        "rotated": false
+      },
+      "item-929": {
+        "x": 3,
+        "y": 0,
+        "rotated": false
+      },
+      "item-923": {
+        "x": 4,
+        "y": 0,
+        "rotated": false
+      },
+      "item-901": {
+        "x": 5,
+        "y": 0,
+        "rotated": false
+      },
+      "item-909": {
+        "x": 7,
+        "y": 0,
+        "rotated": false
+      },
+      "item-912": {
+        "x": 8,
+        "y": 0,
+        "rotated": false
+      },
+      "item-913": {
+        "x": 11,
+        "y": 0,
+        "rotated": false
+      },
+      "item-914": {
+        "x": 14,
+        "y": 0,
+        "rotated": false
+      },
+      "item-931": {
+        "x": 15,
+        "y": 0,
+        "rotated": false
+      },
+      "item-904": {
+        "x": 16,
+        "y": 0,
+        "rotated": false
+      },
+      "item-906": {
+        "x": 19,
+        "y": 0,
+        "rotated": false
+      },
+      "item-915": {
+        "x": 21,
+        "y": 0,
+        "rotated": false
+      },
+      "item-925": {
+        "x": 14,
+        "y": 1,
+        "rotated": true
+      },
+      "item-934": {
+        "x": 19,
+        "y": 1,
+        "rotated": false
+      },
+      "item-947": {
+        "x": 23,
+        "y": 0,
+        "rotated": true
+      },
+      "item-902": {
+        "x": 5,
+        "y": 1,
+        "rotated": 1
+      },
+      "item-918": {
+        "x": 0,
+        "y": 2,
+        "rotated": 0
+      },
+      "item-921": {
+        "x": 8,
+        "y": 2,
+        "rotated": 0
+      },
+      "item-922": {
+        "x": 16,
+        "y": 2,
+        "rotated": false
+      },
+      "item-900": {
+        "x": 21,
+        "y": 2,
+        "rotated": false
+      },
+      "item-905": {
+        "x": 18,
+        "y": 3,
+        "rotated": false
+      },
+      "item-911": {
+        "x": 12,
+        "y": 3,
+        "rotated": false
+      },
+      "item-933": {
+        "x": 4,
+        "y": 2,
+        "rotated": false
+      },
+      "item-903": {
+        "x": 18,
+        "y": 2,
+        "rotated": false
+      },
+      "item-907": {
+        "x": 23,
+        "y": 2,
+        "rotated": true
+      },
+      "item-908": {
+        "x": 0,
+        "y": 4,
+        "rotated": true
+      },
+      "item-910": {
+        "x": 4,
+        "y": 4,
+        "rotated": true
+      },
+      "item-916": {
+        "x": 8,
+        "y": 4,
+        "rotated": true
+      },
+      "item-919": {
+        "x": 14,
+        "y": 4,
+        "rotated": false
+      },
+      "item-924": {
+        "x": 16,
+        "y": 4,
+        "rotated": false
+      },
+      "item-937": {
+        "x": 17,
+        "y": 4,
+        "rotated": true
+      }
+    },
+    "overflow": [
+      "item-917"
+    ]
+  },
+  "events": [
+    {
+      "type": "success",
+      "text": "货架按临期优先、品类归位；持有快捷补货技能时耗材采购自动享受折扣。"
+    }
+  ]
+}

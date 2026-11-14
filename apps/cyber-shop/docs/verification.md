@@ -295,3 +295,23 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 | 脚本语法 / `git diff --check` | PASS |
 
 首轮 `freshness-first` 实际交互已通过，截图检查后把食品保鲜预览提前，手机截图等待提示条消失；最终版本再次通过。已查看最终桌面食品详情、未知日期提醒、手机操作与两种尺寸的库存书页，浏览器错误 0。当前完整职业通关沿用此前 `demand-journey` 的真实 UI 证据，本轮未把食品专项称为重跑完整职业。仅有既有 pnpm 元数据与 Git 换行提示。账户剩余 60%，未推送部署。
+
+## 2026-11-14 安全整理与摆放撤销
+
+基线 `56f06f72e`，开始时工作区干净。自动整理新增原子布局保护；最多 20 步会话撤销仅恢复布局，不退回已消耗工时。仓库、小窗和键盘共用入口，手册说明同步。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：23 文件、157 项，覆盖密集混合形状、逐步撤销、整箱子树、谈判台、失败动作、经济隔断、历史上限与过时布局 |
+| `audit-sort-layout.mjs` | PASS：50 组规则构造布局，新增溢出由修改前 48 组降到 0；48 组安全拒绝、2 组完成，拒绝保留原工时，证据 `sort-audit-before` / `sort-audit-after` |
+| `ui-layout-undo.mjs` | PASS：`layout-undo-verified`，普通移动和旋转、异形四向旋转连续撤销、整理工时保留、失败摆放保留历史、手持取消、刷新持久化且历史清空、真实清货后不可撤销、三层子树、谈判台往返和 844×390 触控 |
+| `ui-handbook.mjs` | PASS：`layout-undo-handbook`，桌面与触控翻页、上下文返回和新撤销说明；两种尺寸的库存书页已查看 |
+| 原始 `web_game_playwright_client.js` | PASS：`layout-undo-skill`，canvas 图与状态已检查，实际 UI 另由 DOM 专项截图验证 |
+| `pnpm.cmd --filter @goatyang/cyber-shop build` | PASS：类型检查及构建，游戏主包 382.95 KB |
+| `pnpm.cmd --filter @goatyang/cyber-shop validate` | PASS：73 基础素材、13 补充素材、3 项内容测试 |
+| `node scripts/check-independent-apps.mjs` | PASS：两独立应用、发布资源与游戏素材 |
+| 三份脚本语法 / `git diff --check` | PASS |
+
+首轮 UI `layout-undo-first` 通过；补充四向旋转的 `layout-undo-final` 因测试重复点击已被电钻占据的同一格而失败，改用两个真实空位交替放置后最终通过，没有强制穿透或修改产品规则。失败图和状态保留。嵌套场景使用先前正常导出的存档经设置 UI 导入，未注入状态；密集布局仅为规则审计。最终桌面、异形物品、小窗与手机截图已查看，浏览器错误 0。
+
+本轮修改游戏代码和开发说明，游戏产物已重建；没有改博客内容、导航或配置，未重复前阶段 617 页整站构建与完整职业通关。只有既有 pnpm 元数据警告及 Git 换行提示。账户已用 41%、剩余 59%，仍未到剩余 50% 的发布阈值，尚未推送部署。

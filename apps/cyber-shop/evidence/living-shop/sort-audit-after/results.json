@@ -1,0 +1,407 @@
+{
+  "cases": 50,
+  "newOverflowCases": 0,
+  "rejected": 48,
+  "rows": [
+    {
+      "seed": 1,
+      "count": 33,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 2,
+      "count": 34,
+      "ok": true,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 11.5
+    },
+    {
+      "seed": 3,
+      "count": 37,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 4,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 5,
+      "count": 31,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 6,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 7,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 8,
+      "count": 35,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 9,
+      "count": 29,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 10,
+      "count": 35,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 11,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 12,
+      "count": 37,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 13,
+      "count": 37,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 14,
+      "count": 33,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 15,
+      "count": 35,
+      "ok": true,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 11.5
+    },
+    {
+      "seed": 16,
+      "count": 30,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 17,
+      "count": 27,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 18,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 19,
+      "count": 35,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 20,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 21,
+      "count": 35,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 22,
+      "count": 29,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 23,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 24,
+      "count": 33,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 25,
+      "count": 40,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 26,
+      "count": 30,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 27,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 28,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 29,
+      "count": 31,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 30,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 31,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 32,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 33,
+      "count": 31,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 34,
+      "count": 30,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 35,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 36,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 37,
+      "count": 33,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 38,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 39,
+      "count": 31,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 40,
+      "count": 28,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 41,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 42,
+      "count": 31,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 43,
+      "count": 34,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 44,
+      "count": 30,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 45,
+      "count": 35,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 46,
+      "count": 33,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 47,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 48,
+      "count": 32,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 49,
+      "count": 36,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    },
+    {
+      "seed": 50,
+      "count": 30,
+      "ok": false,
+      "newOverflow": [],
+      "beforeHours": 12,
+      "afterHours": 12
+    }
+  ]
+}

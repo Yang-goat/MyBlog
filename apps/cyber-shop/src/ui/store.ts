@@ -6,6 +6,11 @@ import { journey, dayReport } from '../game/journey';
 import { ShopAudio } from './audio';
 import { version } from '../../package.json';
 import {resetInventoryNavigation} from './inventory-navigation';
+import {createLayoutHistory} from '../game/layout-history';
+
+const layoutHistory=createLayoutHistory();
+export const layoutUndoCount=ref(0),layoutUndoVersion=ref(0);
+function clearLayoutHistory(){layoutHistory.clear();layoutUndoCount.value=0;}
 
 export const state = shallowRef<GameState>(createGame(20261105));
 export const started = ref(false);
@@ -49,6 +54,7 @@ export function dispatch(action: Action) {
   const previousDay = state.value.day;
   const result = applyAction(state.value, action);
   if (result.ok) {
+    layoutHistory.record(state.value,result.state,action);layoutUndoCount.value=layoutHistory.size;
     state.value = result.state;
     if (state.value.day !== previousDay || action.type === 'openDay') backupError.value = saveDayBackup(state.value).error ?? '';
     const saved = saveGame(state.value); saveError.value = [saved.error, backupError.value].filter(Boolean).join('；'); hasSave.value = saved.ok;
@@ -58,25 +64,33 @@ export function dispatch(action: Action) {
   listeners.forEach(fn => fn(result.events));
   return result.ok;
 }
+export function undoLayout(){
+  const previous=layoutHistory.undo(state.value);layoutUndoCount.value=layoutHistory.size;
+  if(!previous)return;
+  state.value=previous;layoutUndoVersion.value++;
+  const saved=saveGame(previous);saveError.value=[saved.error,backupError.value].filter(Boolean).join('；');hasSave.value=saved.ok;
+  notify('已撤销上一步摆放；已用工时保留。');sound('move');
+}
 export function inspectSave() { const saved = loadSave(); hasSave.value = !!saved.state; saveError.value = saved.error ?? ''; }
 export function begin(seed = 20261105, modifiers:string[] = []) {
+  clearLayoutHistory();
   resetInventoryNavigation();
   state.value = { ...createGame(seed,modifiers), tutorial: { step: 0, skipped: false }, conversations: {} }; const result = replaceSave(state.value); saveError.value = result.error ?? '';
   backupError.value = replaceDayBackup(state.value).error ?? ''; saveError.value = [result.error, backupError.value].filter(Boolean).join('；'); hasSave.value = result.ok; started.value = true; modal.value = ''; unlockAudio();
 }
-export function resume() { const saved = loadSave(); if (saved.state) { resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; unlockAudio(); } else notify(saved.error ?? '还没有存档。'); }
-export function restore() { const saved = restoreDayBackup(); if (saved.state) { const written = replaceSave(saved.state); if (!written.ok) { saveError.value = written.error ?? '无法保存恢复的进度'; notify(saveError.value); return; } resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; saveError.value = ''; notify('已恢复当日开始的备份。'); } else notify(saved.error ?? '没有当日备份。'); }
+export function resume() { const saved = loadSave(); if (saved.state) { clearLayoutHistory();resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; unlockAudio(); } else notify(saved.error ?? '还没有存档。'); }
+export function restore() { const saved = restoreDayBackup(); if (saved.state) { const written = replaceSave(saved.state); if (!written.ok) { saveError.value = written.error ?? '无法保存恢复的进度'; notify(saveError.value); return; } clearLayoutHistory();resetInventoryNavigation();state.value = saved.state; started.value = true; modal.value = ''; saveError.value = ''; notify('已恢复当日开始的备份。'); } else notify(saved.error ?? '没有当日备份。'); }
 export function downloadSave() {
   const url = URL.createObjectURL(new Blob([exportSave(state.value)], { type: 'application/json' }));
   const a = document.createElement('a'); a.href = url; a.download = `cyber-shop-day-${state.value.day}.json`; a.click(); URL.revokeObjectURL(url);
 }
 export async function uploadSave(file?: File) {
   if (!file) return;
-  try { const next = importSave(await file.text()); const result = replaceSave(next); if (!result.ok) throw new Error(result.error ?? '无法写入'); resetInventoryNavigation();state.value = next; backupError.value = replaceDayBackup(next).error ?? ''; started.value = true; modal.value = ''; saveError.value = backupError.value; hasSave.value = true; notify('存档已导入，并以导入点建立本地备份；下次开门后更新为当日开始备份。'); }
+  try { const next = importSave(await file.text()); const result = replaceSave(next); if (!result.ok) throw new Error(result.error ?? '无法写入'); clearLayoutHistory();resetInventoryNavigation();state.value = next; backupError.value = replaceDayBackup(next).error ?? ''; started.value = true; modal.value = ''; saveError.value = backupError.value; hasSave.value = true; notify('存档已导入，并以导入点建立本地备份；下次开门后更新为当日开始备份。'); }
   catch (e) { notify(`导入失败：${e instanceof Error ? e.message : String(e)}`); }
 }
 export function textState() {
-  return JSON.stringify({ version, mode: started.value ? state.value.phase : 'title', panel: modal.value, selectedItem: selectedItem.value, selectedOrder: selectedOrder.value, coordinates: '画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式', game: visibleState(state.value), journey: journey(state.value), dayReport: dayReport(state.value), presentation: {reducedMotion:reducedMotion.value,muted:muted.value,volume:volume.value,ambience:ambience.value,audio:audio.status()} });
+  return JSON.stringify({ version, mode: started.value ? state.value.phase : 'title', panel: modal.value, selectedItem: selectedItem.value, selectedOrder: selectedOrder.value, coordinates: '画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式', game: visibleState(state.value), journey: journey(state.value), dayReport: dayReport(state.value), presentation: {layoutUndoCount:layoutUndoCount.value,reducedMotion:reducedMotion.value,muted:muted.value,volume:volume.value,ambience:ambience.value,audio:audio.status()} });
 }
 export async function fullScreen() { try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); } catch { notify('当前浏览器未允许全屏，可使用浏览器全屏功能。'); } }
 export function cleanup() { clearTimeout(timer); audio.close();stopPreferences();stopAtmosphere();document.removeEventListener('visibilitychange',syncAtmosphere);listeners.clear(); }

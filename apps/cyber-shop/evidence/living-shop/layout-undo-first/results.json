@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "moveRotateUndo": true,
+  "sortHoursRetained": true,
+  "failedPlacementKeepsHistory": true,
+  "heldCancelled": true,
+  "reloadClearsHistory": true,
+  "saleBarrier": true,
+  "nestedSubtree": true,
+  "counterRoundTrip": true,
+  "touch": true,
+  "errors": []
+}

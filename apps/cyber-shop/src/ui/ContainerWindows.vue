@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed,ref,onMounted,onUnmounted,watch} from 'vue';
-import {state,modal,dispatch} from './store';
+import {state,modal,dispatch,layoutUndoCount,undoLayout} from './store';
 import {containerWindows,windowSize,clampWindow,focusContainer,openContainer,closeContainer,clearContainerWindows} from './container-windows';
 import {containerItems,containerLayout,containerTrail,isContainer,ownedObjects,objectFits,usedCells,LABEL_COLORS,LABELER_PRICE,type StoredObject} from '../game/containers';
 import {storageStyle} from '../content/storage';
@@ -42,7 +42,7 @@ onUnmounted(()=>{clearContainerWindows();window.removeEventListener('pointermove
    <button v-for="o in w.contents.filter(o=>w.layout.positions[o.id])" :key="o.id" :data-storage-object="o.id" :data-located="locatedItem===o.id||undefined" :data-container-object="isContainer(o)?o.id:undefined" :aria-label="name(o)" :aria-pressed="held===o.id" :class="['container-item',{'nested-container':isContainer(o)}]" :style="atStyle(o,w.layout.positions[o.id]!)" @pointerdown.stop="emit('start',$event,o.id)" @dblclick.stop="isContainer(o)&&emit('open',o.id,$event)" @keydown.enter="isContainer(o)&&openContainer(o.id)"><InventoryArt :object="o" :rotated="w.layout.positions[o.id]!.rotated"/><small v-if="isContainer(o)" :data-color="o.color">{{o.label}}</small></button>
    <div v-if="preview(w.id)" :class="['container-preview',{invalid:!preview(w.id)!.valid}]" :style="preview(w.id)!.style"></div>
   </div></div>
-  <footer class="container-window-tools"><template v-if="heldObject"><button aria-label="旋转物品" @click="emit('rotate')">旋转</button><button @click="emit('auto',w.id)">放入</button><button @click="emit('auto')">取出</button><button v-if="isContainer(heldObject)" @click="emit('open',heldObject.id,$event)">打开</button><button aria-label="放下物品" @click="emit('cancel')">×</button></template></footer>
+  <footer class="container-window-tools"><button aria-label="撤销摆放" title="撤销摆放 · Ctrl / ⌘ Z" :disabled="!layoutUndoCount" @click="undoLayout">↶</button><template v-if="heldObject"><button aria-label="旋转物品" @click="emit('rotate')">旋转</button><button @click="emit('auto',w.id)">放入</button><button @click="emit('auto')">取出</button><button v-if="isContainer(heldObject)" @click="emit('open',heldObject.id,$event)">打开</button><button aria-label="放下物品" @click="emit('cancel')">×</button></template></footer>
   <form v-if="labelId===w.id" class="container-label-editor" @submit.prevent="print"><label>箱包名称<input v-model="label" aria-label="箱包名称" maxlength="24" autofocus/></label><div class="label-colors"><button v-for="c in LABEL_COLORS" :key="c" :data-color="c" :aria-label="`标签颜色 ${c}`" :aria-pressed="color===c" type="button" @click="color=c">{{color===c?'✓':''}}</button></div><div><button type="submit">打印标签</button><button type="button" @click="labelId=''">返回</button></div></form>
  </section>
 </template>
