@@ -5,7 +5,7 @@ import { visitorGreeting } from './narrative';
 import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
 import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, nestingProblem, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
-import { modifierEffect, validModifiers } from './modifiers';
+import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
 import { allocateQuote } from './negotiation';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer } from './types';
 
@@ -95,7 +95,7 @@ function createItem(s: GameState, d: ItemDefinition, owner: ItemInstance['owner'
     id: id(s, 'item'), definitionId: d.id, owner, location: owner === 'customer' ? 'workshop' : 'stock', condition: round(48 + random(s) * 45),
     integrity: round(45 + random(s) * 55), capacity: round(35 + random(s) * 65), purity: round(65 + random(s) * 35), authentic,
     originality: round(60 + random(s) * 40), provenance: d.category === 'data' ? (random(s) > .3 ? '可追溯的合法授权副本' : '个人转让，授权待核') : (authentic ? '可追溯的街区旧物' : '来源不明的复刻品'),
-    compatibility: random(s) > .25 ? '开放标准' : '旧式专用接口', expiresDay: d.shelfLife ? s.day + d.shelfLife : null,
+    compatibility: random(s) > .25 ? '开放标准' : '旧式专用接口', expiresDay: d.shelfLife ? s.day + foodShelfLife(s,d.shelfLife) : null,
     faults: [...faults], known: has(s, 'batchInfo') ? ['basic', 'batch'] : [], cost: 0, acquiredDay: s.day, preservedUntil: 0,
   };
 }
@@ -158,7 +158,7 @@ function generateDay(s: GameState) {
 export function createGame(seed = 11052026, modifiers: string[] = []): GameState {
   if (!validModifiers(modifiers)) throw new Error('开局词条无效或相互冲突。');
   const s: GameState = { modifiers:[...modifiers], version: SAVE_VERSION, contentVersion: CONTENT_VERSION, balanceVersion: BALANCE.version, seed: seed >>> 0, rng: seed >>> 0, serial: 0,
-    day: 1, chapter: 1, phase: 'open', cash: BALANCE.initialCash + modifierEffect({modifiers},'cash'), hours: BALANCE.hours, debt: 0, grace: 0, xp: 0, level: 1, points: BALANCE.initialPoints,
+    day: 1, chapter: 1, phase: 'open', cash: BALANCE.initialCash + modifierEffect({modifiers},'cash'), hours: dailyHours({modifiers}), debt: 0, grace: 0, xp: 0, level: 1, points: BALANCE.initialPoints,
     skills: [], certificates: ['civil'], trained: ['civil'], licenses: [], equipment: {}, equipmentCosts: {}, items: [], visitors: [], visitorIndex: 0, orders: [],
     reputation: 0, relations: {}, questStages: {}, eventId: '', eventResolved: false, discovered: [], met: [], repairHistory: [], records: { trades: 0, repairs: 0, revenue: 0, repairIncome: 0, days: 0, faults: {} },
     finalStage: 0, finalComplete: false, professionMilestones: [], victory: false, endless: false, freeRespec: true, ledger: [], messages: ['店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。'], appointments: null, challenge: null };
@@ -295,7 +295,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (goods.some(i => def(i).regulated) && !s.licenses.includes('regulated-trade')) return fail('这批物品需要交易许可。');
       const prices=goods.map(i => tradeQuote(s,v,i));
       if(prices.some(price=>price<=0))return fail('这批货中有已过期或没有交易价值的物品。');
-      const bulk=v.kind === 'seller' && goods.length >= 3 ? .9 : 1;
+      const bulk=v.kind === 'seller' ? wholesaleFactor(s,goods.length) : 1;
       const total=Math.max(1,Math.round(prices.reduce((a,b)=>a+b,0)*bulk));
       const offered=action.amount ?? total;
       if (!Number.isSafeInteger(offered) || offered <= 0) return fail('报价必须是正整数。');
@@ -612,10 +612,10 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       say(s.phase === 'failed' ? '补救期已过，店铺暂停营业。可恢复当日开始备份，或重新开局。' : s.debt ? `闭店：仍欠 ${s.debt}。${s.victory?'永久经营权保留，欠费并入下次维护结算。':`还有 ${debtClosingChances(s)} 次营业日结可补救。`}基础维修与清货可以恢复现金。` : `第 ${s.day} 日结算，支出 ${paid}。明天继续。`, 'day'); break;
     }
     case 'openDay': {
-      if (s.phase !== 'closed') return fail('请先闭店结算。'); s.day++; s.hours = BALANCE.hours; s.phase = 'open';
+      if (s.phase !== 'closed') return fail('请先闭店结算。'); s.day++; s.hours = dailyHours(s); s.phase = 'open';
       for (const item of s.items) if (item.owner === 'player' && item.expiresDay !== null && item.expiresDay >= s.day - 1 && ownedEquipment(s, 'cold') && s.day % 2 === 0) item.expiresDay++;
       for (const order of s.orders) if (!order.delivered && order.kind !== 'own' && order.escrow < 300) order.escrow = 300;
-      generateDay(s); say(`第 ${s.day} 日开门，${BALANCE.hours} 工时、${BALANCE.visitors} 位预约访客。`, 'day'); break;
+      generateDay(s); say(`第 ${s.day} 日开门，${dailyHours(s)} 工时、${BALANCE.visitors} 位预约访客。`, 'day'); break;
     }
     default: return fail('未知操作。');
   }
@@ -639,7 +639,7 @@ export function visibleState(s: GameState) {
       salvageEstimate: has(s, 'salvageValue') && basic && d.certificate ? [round(d.price * .7), round(d.price * 1.1)] : undefined };
   };
   const visitor = s.visitors[s.visitorIndex];
-  return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, phase: s.phase, cash: s.cash, hours: s.hours, debt: s.debt, grace: s.grace,
+  return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, phase: s.phase, cash: s.cash, hours: s.hours, maxHours: dailyHours(s), debt: s.debt, grace: s.grace,
     xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
     stockUsage: stockUsage(s), capacity: capacity(s), rootCapacity: rootCapacity(s), labeler: s.labeler ?? false, modifiers:s.modifiers??[], containers:(s.containers??[]).map(c=>({...c,name:storageStyle(c.styleId).name,layout:containerLayout(s,c),columns:storageStyle(c.styleId).columns,rows:storageStyle(c.styleId).rows,path:containerTrail(s,c.id)?.map(p=>p.id)})), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: rootLayout(s, rootCapacity(s)), tutorial: s.tutorial, conversations: s.conversations,

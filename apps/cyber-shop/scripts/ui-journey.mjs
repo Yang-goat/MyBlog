@@ -102,7 +102,10 @@ async function day(){
 }
 const start=Date.now();
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await click('推开店门 →',false);await page.waitForSelector('.warehouse-item');await click('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');
+ const modifiers=JSON.parse(process.env.CYBER_RUN_MODIFIERS||'[]');
+ if(modifiers.length){await click('选择开局词条');for(const id of modifiers)await page.locator(`[data-modifier="${id}"]`).click();await click('采用词条 →');}
+ await click('推开店门 →',false);await page.waitForSelector('.warehouse-item');await click('跳过引导');assert.deepEqual((await game()).modifiers,modifiers);
  for(let i=0;i<55&&!(await game()).victory;i++)await day();
  const victory=await game();assert(victory.victory,'Career must reach ownership via UI');assert.equal(chapters.size,4);await shot('ending');
  await click('结束并保存结局');await page.reload();await click('继续经营 ↗',false);assert.equal((await game()).phase,'ended');

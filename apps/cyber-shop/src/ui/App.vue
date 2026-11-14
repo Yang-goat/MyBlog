@@ -13,10 +13,12 @@ import { dayReport, financialRecovery } from '../game/journey';
 import { tradeIds } from './trade-selection';
 import { vDialogFocus } from './dialog-focus';
 import {containerWindows} from './container-windows';
-import { START_MODIFIERS } from '../game/modifiers';
+import { START_MODIFIERS, modifierEffect, dailyHours } from '../game/modifiers';
+import { BALANCE } from '../game/balance';
 import { version } from '../../package.json';
 const seed = ref(20261105);
 const startingModifiers=ref<string[]>([]),showModifiers=ref(false);
+const startingPreview=computed(()=>{const s={modifiers:startingModifiers.value};return {cash:BALANCE.initialCash+modifierEffect(s,'cash'),cells:BALANCE.stock*4+modifierEffect(s,'cells'),hours:dailyHours(s),fees:BALANCE.rent+BALANCE.maintenance+modifierEffect(s,'rent')};});
 function toggleModifier(id:string){const picked=START_MODIFIERS.find(m=>m.id===id)!;startingModifiers.value=startingModifiers.value.includes(id)?startingModifiers.value.filter(i=>i!==id):[...startingModifiers.value.filter(i=>START_MODIFIERS.find(m=>m.id===i)?.group!==picked.group),id];}
 const newConfirm = ref(false);
 const counterCount=computed(()=>new Set([...state.value.items.filter(i=>i.location==='counter').map(i=>i.id),...tradeIds.value,...(state.value.containers??[]).filter(c=>c.location==='counter').map(c=>c.id)]).size);
@@ -58,7 +60,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
         <p class="small muted">暂停式营业 · 思考不消耗时间 · 本机自动保存</p>
       </div>
       <footer class="title-footer"><span>修复 / 交易 / 收藏</span><span>修复师篇 · {{version}}</span><button @click="fullScreen">全屏 F ↗</button></footer>
-      <div v-if="showModifiers" class="modal-backdrop" @click.self="showModifiers=false"><section v-dialog-focus class="modifier-dialog" role="dialog" aria-modal="true" aria-label="开局词条" @keydown.esc.stop="showModifiers=false"><header><p class="eyebrow">NEW RUN / 自选经营条件</p><h2>开局词条</h2><p>正向帮助与负面挑战可以组合，同类词条互斥。</p></header><div class="modifier-options"><button v-for="m in START_MODIFIERS" :key="m.id" :class="{positive:m.positive,selected:startingModifiers.includes(m.id)}" :aria-pressed="startingModifiers.includes(m.id)" @click="toggleModifier(m.id)"><strong>{{m.positive?'＋':'−'}} {{m.name}}</strong><small>{{m.description}}</small></button></div><footer><button @click="startingModifiers=[]">恢复标准营业</button><button class="primary" @click="showModifiers=false">采用词条 →</button></footer></section></div>
+      <div v-if="showModifiers" class="modal-backdrop" @click.self="showModifiers=false"><section v-dialog-focus class="modifier-dialog" role="dialog" aria-modal="true" aria-label="开局词条" @keydown.esc.stop="showModifiers=false"><header><p class="eyebrow">NEW RUN / 自选经营条件</p><h2>开局词条</h2><p>正向帮助与负面挑战可以组合，同类词条互斥。</p></header><div class="modifier-preview" aria-live="polite"><span>开局 ₡{{startingPreview.cash}}</span><span>仓库 {{startingPreview.cells}} 格</span><span>每日 {{startingPreview.hours}} 工时</span><span>日支出 ₡{{startingPreview.fees}}</span></div><div class="modifier-options"><button v-for="m in START_MODIFIERS" :key="m.id" :data-modifier="m.id" :class="{positive:m.positive,selected:startingModifiers.includes(m.id)}" :aria-pressed="startingModifiers.includes(m.id)" @click="toggleModifier(m.id)"><strong>{{m.positive?'＋':'−'}} {{m.name}}</strong><small>{{m.description}}</small></button></div><footer><button @click="startingModifiers=[]">恢复标准营业</button><button class="primary" @click="showModifiers=false">采用词条 →</button></footer></section></div>
       <div v-if="newConfirm" class="modal-backdrop" @click.self="newConfirm = false"><section v-dialog-focus class="small-dialog" @keydown.esc.stop="newConfirm = false" role="dialog" aria-modal="true" aria-label="重新开局"><h2>重新开门？</h2><p>当前进度将归档后替换。想保留可迁移副本，请先继续游戏并导出存档。</p><div class="actions"><button @click="newConfirm = false">返回</button><button class="primary" @click="begin(seed,startingModifiers); newConfirm = false">确认新开局</button></div></section></div>
     </section>
 

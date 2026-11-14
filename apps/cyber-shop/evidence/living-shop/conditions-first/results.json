@@ -1,0 +1,27 @@
+{
+  "help": {
+    "hours": 14,
+    "modifiers": [
+      "long-shift",
+      "small-wholesale",
+      "fresh-supply"
+    ],
+    "quote": 359,
+    "foodExpiry": 8,
+    "reload": true,
+    "exportImport": true
+  },
+  "challenge": {
+    "hours": 10,
+    "modifiers": [
+      "short-shift",
+      "no-wholesale",
+      "short-dated"
+    ],
+    "quote": 526,
+    "foodExpiry": 2,
+    "reload": true,
+    "exportImport": true
+  },
+  "errors": []
+}

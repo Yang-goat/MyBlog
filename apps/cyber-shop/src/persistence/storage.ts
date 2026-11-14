@@ -2,7 +2,7 @@ import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUE
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
 import { MAX_CONTAINER_DEPTH, LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
 import { STORAGE_STYLES } from '../content/storage';
-import { validModifiers } from '../game/modifiers';
+import { validModifiers, dailyHours } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
 import type { GameState, ItemInstance } from '../game/types';
 
@@ -36,7 +36,8 @@ export function validateState(value: unknown): asserts value is GameState {
   const s = value as unknown as GameState;
   check(s.version === SAVE_VERSION && s.contentVersion === CONTENT_VERSION && s.balanceVersion === BALANCE.version, '存档结构、内容或数值版本不兼容，请保留原文件。');
   for (const key of ['seed', 'rng', 'serial', 'day', 'chapter', 'cash', 'debt', 'grace', 'xp', 'level', 'points', 'visitorIndex', 'finalStage'] as const) check(integer(s[key]), `存档字段 ${key} 无效。`);
-  check(number(s.hours) && s.hours <= BALANCE.hours && s.hours * 2 % 1 === 0, '工时无效。');
+  if(s.modifiers!==undefined)check(validModifiers(s.modifiers),'开局词条无效或相互冲突。');
+  check(number(s.hours) && s.hours <= dailyHours(s) && s.hours * 2 % 1 === 0, '工时无效。');
   check(s.day >= 1 && s.chapter >= 1 && s.chapter <= 4 && s.level >= 1 && s.finalStage <= 3 && s.rng <= 0xffffffff && s.seed <= 0xffffffff, '进度字段超出范围。');
   check(['open', 'closed', 'won', 'ended', 'failed'].includes(s.phase), '营业阶段无效。');
   for (const key of ['eventResolved', 'finalComplete', 'victory', 'endless', 'freeRespec'] as const) check(typeof s[key] === 'boolean', `存档字段 ${key} 无效。`);
@@ -142,7 +143,6 @@ export function validateState(value: unknown): asserts value is GameState {
   if(s.visitorArrived !== undefined) check(typeof s.visitorArrived === 'boolean','叫号状态无效。');
   if (s.storageUpgrades !== undefined) check(object(s.storageUpgrades) && integer(s.storageUpgrades.backpack) && s.storageUpgrades.backpack <= 1 && integer(s.storageUpgrades.crate) && s.storageUpgrades.crate <= 2, '仓库扩展记录无效。');
   if (s.labeler !== undefined) check(typeof s.labeler === 'boolean', '标签机记录无效。');
-  if(s.modifiers!==undefined)check(validModifiers(s.modifiers),'开局词条无效或相互冲突。');
   if(s.containers!==undefined){
     check(Array.isArray(s.containers)&&s.containers.length<=256,'箱包记录无效。');
     check(new Set([...s.items.map(i=>i.id),...s.containers.map(c=>c.id)]).size===s.items.length+s.containers.length,'箱包标识与已有物品重复。');

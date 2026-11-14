@@ -4,6 +4,7 @@ import { ITEMS, CHARACTERS, CATEGORIES } from '../content';
 import { state, dispatch, modal, selectedOrder, selectedItem, openGuide } from './store';
 import { itemAccessible } from '../game/containers';
 import { tradeQuote } from '../game/engine';
+import { wholesaleFactor, wholesaleMinimum } from '../game/modifiers';
 import { tradeIds, tradePlaces, stageTrade, removeTrade, clearTrade, guestGoods, tradeItem } from './trade-selection';
 import Art from './Art.vue';
 import ItemKnowledge from './ItemKnowledge.vue';
@@ -16,7 +17,7 @@ const selected=computed(()=>tradeIds.value.map(tradeItem).filter(i=>!!i));
 const focused=computed(()=>tradeItem(selectedItem.value)??selected.value[0]??visitor.value?.item);
 const definition=computed(()=>ITEMS.find(d=>d.id===focused.value?.definitionId));
 const subtotal=computed(()=>selected.value.reduce((n,i)=>n+tradeQuote(state.value,visitor.value!,i),0));
-const discount=computed(()=>visitor.value?.kind==='seller'&&selected.value.length>=3?subtotal.value-Math.round(subtotal.value*.9):0);
+const discount=computed(()=>visitor.value?.kind==='seller'?subtotal.value-Math.round(subtotal.value*wholesaleFactor(state.value,selected.value.length)):0);
 const total=computed(()=>subtotal.value-discount.value);
 const budget=computed(()=>visitor.value?.kind==='buyer'?(visitor.value.budget??Math.max(400,visitor.value.quote*4)):state.value.cash);
 const overBudget=computed(()=>Math.max(0,total.value-budget.value));
@@ -58,7 +59,7 @@ function acceptRepair(){if(dispatch({type:'acceptRepair',visitorId:visitor.value
   <aside class="trade-settlement" aria-label="议价与结算">
    <div class="trade-section-title"><span>本次清单</span><small>{{visitor.kind==='buyer'?'预算':'现金'}} ₡{{budget}}</small></div>
    <template v-if="selected.length">
-    <div class="basket-receipt"><span>本次 {{selected.length}} 件 · 原价 ₡{{subtotal}}</span><strong v-if="discount">批发九折 −₡{{discount}}</strong><small v-if="visitor.kind==='seller' && selected.length<3">3 件起九折</small><small v-else>买家剩余预算 ₡{{visitor.budget ?? Math.max(400,visitor.quote*4)}}</small><b>合计 ₡{{total}}</b></div>
+    <div class="basket-receipt"><span>本次 {{selected.length}} 件 · 原价 ₡{{subtotal}}</span><strong v-if="discount">批发九折 −₡{{discount}}</strong><small v-if="visitor.kind==='seller'">{{wholesaleMinimum(state)===null?'本局无批发折扣':`${wholesaleMinimum(state)} 件起九折`}}</small><small v-else>买家剩余预算 ₡{{visitor.budget ?? Math.max(400,visitor.quote*4)}}</small><b>合计 ₡{{total}}</b></div>
    </template>
    <section v-if="reply?.status==='counter'" ref="replyElement" class="negotiation-reply" aria-label="客人还价" aria-live="polite"><div><p>{{person?.name}}的还价</p><span>你报 ₡{{reply.offered}} · 这 {{reply.itemIds.length}} 件共 <b>₡{{reply.quote}}</b></span><small>{{reply.reason==='far'?'维持当前价':reply.reason==='budget'?'已到预算上限':'可以再让一步'}}{{replyMatches?'':' · 清单已变更'}}</small><button :disabled="!replyMatches||reply.quote>budget" @click="transact([...reply.itemIds],reply.quote)">接受还价 · ₡{{reply.quote}}</button></div></section>
    <template v-if="selected.length">

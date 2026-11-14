@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { state, reducedMotion, listen } from '../ui/store';
 import { drawRoom } from './room-renderer';
+import { dailyHours } from '../game/modifiers';
 defineProps<{ blocked: boolean; sceneryOnly?: boolean }>();
 const canvas = ref<HTMLCanvasElement>();
 let observer: ResizeObserver | undefined;
@@ -16,7 +17,7 @@ const terminal=new Image();
 const solder=new Image();
 function render() {
   const el=canvas.value,ctx=el?.getContext('2d'); if(!el||!ctx)return;
-  drawRoom(ctx,el.width,el.height,{day:state.value.day,hours:state.value.hours,closed:state.value.phase!=='open',chapter:state.value.chapter,repairs:state.value.records.repairs,equipment:state.value.equipment,motion:!reducedMotion.value,pointer,time:elapsed,owned:state.value.victory},{street,metal,terminal,solder});
+  drawRoom(ctx,el.width,el.height,{day:state.value.day,hours:state.value.hours,maxHours:dailyHours(state.value),closed:state.value.phase!=='open',chapter:state.value.chapter,repairs:state.value.records.repairs,equipment:state.value.equipment,motion:!reducedMotion.value,pointer,time:elapsed,owned:state.value.victory},{street,metal,terminal,solder});
   if(pulse>0&&!reducedMotion.value){ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle=`rgba(182,221,178,${pulse*.08})`;ctx.fillRect(el.width*.24,el.height*.55,el.width*.52,el.height*.11);}
 }
 function resize(){const el=canvas.value;if(!el)return;const box=el.getBoundingClientRect();const dpr=Math.min(2,window.devicePixelRatio||1);el.width=Math.round(box.width*dpr);el.height=Math.round(box.height*dpr);render();}

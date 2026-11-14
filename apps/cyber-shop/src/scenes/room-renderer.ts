@@ -1,5 +1,5 @@
 /** Original, layered scenery. No baked shop plate: all fixtures share the UI's coordinates. */
-export interface RoomView { day: number; hours: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number; owned?: boolean }
+export interface RoomView { day: number; hours: number; maxHours?: number; closed: boolean; chapter: number; repairs: number; equipment: Record<string, number>; motion: boolean; pointer: number; time: number; owned?: boolean }
 export interface RoomArt {street?:HTMLImageElement;metal?:HTMLImageElement;terminal?:HTMLImageElement;solder?:HTMLImageElement}
 export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: number, view: RoomView, art:RoomArt={}) {
   const {street,metal,terminal,solder}=art;
@@ -20,7 +20,7 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
     [[x+8,y+8],[x+w-8,y+8],[x+8,y+h-8],[x+w-8,y+h-8]].forEach(([a,b])=>screw(a!,b!));
   };
   const t=view.motion?view.time/1000:0;
-  const night=view.closed?1:1-view.hours/12;
+  const night=view.closed?1:1-view.hours/(view.maxHours??12);
   const rain=view.day%4!==0;
   gradient(0,0,W,H,'#273544','#14212e');
   // Patched industrial wall panels; the old surface texture contributes luminance only.
