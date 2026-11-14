@@ -5,7 +5,8 @@ import { state, dispatch, modal, selectedOrder, selectedItem, openGuide } from '
 import { itemAccessible } from '../game/containers';
 import { factionFor,relationName } from '../game/factions';
 import { showFaction } from './faction-view';
-import { tradeQuote } from '../game/engine';
+import {buyerRemaining} from '../game/demand';
+import { tradeQuote,operatingFees } from '../game/engine';
 import { wholesaleFactor, wholesaleMinimum } from '../game/modifiers';
 import { tradeIds, tradePlaces, stageTrade, removeTrade, clearTrade, guestGoods, tradeItem } from './trade-selection';
 import Art from './Art.vue';
@@ -23,6 +24,9 @@ const subtotal=computed(()=>selected.value.reduce((n,i)=>n+tradeQuote(state.valu
 const discount=computed(()=>visitor.value?.kind==='seller'?subtotal.value-Math.round(subtotal.value*wholesaleFactor(state.value,selected.value.length)):0);
 const total=computed(()=>subtotal.value-discount.value);
 const budget=computed(()=>visitor.value?.kind==='buyer'?(visitor.value.budget??Math.max(400,visitor.value.quote*4)):state.value.cash);
+const closingDue=computed(()=>operatingFees(state.value)+state.value.debt);
+const remainingDemand=computed(()=>visitor.value?buyerRemaining(visitor.value):Infinity);
+const overDemand=computed(()=>Math.max(0,selected.value.length-remainingDemand.value));
 const overBudget=computed(()=>Math.max(0,total.value-budget.value));
 const selectedCost=computed(()=>selected.value.reduce((n,i)=>n+i.cost,0));
 const reply=computed(()=>visitor.value?.negotiation);
@@ -32,45 +36,46 @@ watch(()=>reply.value?`${visitor.value?.id}:${reply.value.round}:${reply.value.s
 watch(()=>visitor.value?.lastTrade?`${visitor.value.id}:${visitor.value.lastTrade.goods.map(i=>i.itemId).join(',')}:${visitor.value.lastTrade.amount}`:'',async value=>{if(value){await nextTick();receiptElement.value?.scrollIntoView({block:'nearest'});}});
 const amount=ref(0);watch(total,n=>amount.value=n,{immediate:true});
 function toggle(id:string){selectedItem.value=id;if(tradeIds.value.includes(id))removeTrade(id);else stageTrade(id);}
-function chooseAll(){for(const item of candidates.value)if(!stageTrade(item.id))break;}
+function chooseAll(){for(const item of candidates.value){if(tradeIds.value.length>=remainingDemand.value)break;if(!stageTrade(item.id))break;}}
 function chooseWithinBudget(){
  if(visitor.value?.kind!=='buyer')return;
  clearTrade();let available=budget.value;
  for(const item of [...candidates.value].sort((a,b)=>tradeQuote(state.value,visitor.value!,a)-tradeQuote(state.value,visitor.value!,b))){
+  if(tradeIds.value.length>=remainingDemand.value)break;
   const price=tradeQuote(state.value,visitor.value!,item);
   if(price<=available&&stageTrade(item.id))available-=price;
  }
 }
 function transact(ids=tradeIds.value,offer?:number){if(visitor.value)dispatch({type:'tradeBatch',visitorId:visitor.value.id,itemIds:[...ids],amount:offer,placements:Object.fromEntries(ids.filter(id=>tradePlaces.value[id]).map(id=>[id,{...tradePlaces.value[id]!}]))});}
-function one(id:string){if(stageTrade(id))transact([id]);}
+function one(id:string){clearTrade();if(stageTrade(id))transact([id]);}
 function acceptRepair(){if(dispatch({type:'acceptRepair',visitorId:visitor.value?.id})){selectedOrder.value=state.value.orders.filter(o=>!o.delivered).at(-1)?.id??'';modal.value='workbench';}}
 </script>
 <template>
 <div v-if="visitor && !visitor.resolved" class="visitor-panel">
- <header class="visitor-heading trade-heading"><Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/><div><p class="eyebrow">{{person?.role}}</p><h2>{{person?.name}}</h2><button class="trade-faction" @click="showFaction(affiliation.id)">{{affiliation.shortName}} · {{relationName(state.relations[affiliation.id]??0)}}</button></div><span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span></header>
- <p class="trade-preference">{{affiliation.tradeNote}}</p><button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
+ <header class="visitor-heading trade-heading"><Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/><div><p class="eyebrow">{{person?.role}}</p><h2>{{person?.name}}</h2><button class="trade-faction" :title="affiliation.tradeNote" @click="showFaction(affiliation.id)">{{affiliation.shortName}} · {{relationName(state.relations[affiliation.id]??0)}}</button></div><span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span></header>
+ <button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
  <template v-if="visitor.kind==='repair'"><div v-if="focused" class="counter-item"><Art :id="focused.definitionId" eager/><h3>{{definition?.name}}</h3></div><p>接单后检测、维修、复检并交付；客户物品单独保管。</p><button class="primary wide" @click="acceptRepair">接下维修 →</button><button class="text-button" @click="dispatch({type:'reject',visitorId:visitor.id});clearTrade()">结束接待</button></template>
  <div v-else class="trade-workspace">
   <section class="trade-merchandise" aria-label="挑选与检查货品">
-   <div class="trade-section-title"><span>{{visitor.kind==='seller'?'来货托盘':'自有货架'}}</span><small>{{candidates.length}} 件可选</small></div>
-   <div class="actions compact"><button @click="chooseAll">{{visitor.kind==='seller'?'整批放上谈判台':'选取全部可售货物'}}</button><button v-if="visitor.kind==='buyer'" @click="chooseWithinBudget">按预算挑选</button><button @click="clearTrade">取消全部选择</button></div>
-   <div class="trade-lots"><div v-for="item in candidates" :key="item.id" :class="['trade-lot',{chosen:tradeIds.includes(item.id),examining:focused?.id===item.id}]"><button class="lot-select" :aria-pressed="tradeIds.includes(item.id)" :aria-label="`选择 ${item.id}`" @click="toggle(item.id)"><span class="lot-check">{{tradeIds.includes(item.id)?'✓':'＋'}}</span><Art :id="item.definitionId" eager/><span class="lot-label">{{ITEMS.find(d=>d.id===item.definitionId)?.name}}<small class="lot-price">₡{{tradeQuote(state,visitor,item)}} <i>{{(ITEMS.find(d=>d.id===item.definitionId)?.size??0)*4}} 格{{ITEMS.find(d=>d.id===item.definitionId)?.shape?' · 异形':''}}</i></small><small v-if="item.known.includes('basic') || item.known.includes('diagnosed')" class="lot-condition">品相 {{item.condition}}% · {{item.faults.length?'功能异常':'基础完好'}}</small><small v-else class="lot-condition">尚未检查</small></span></button><button class="lot-one" @click="one(item.id)">{{visitor.kind==='seller'?'只买这件':'只卖这件'}}</button></div></div>
+   <div class="trade-section-title"><span>{{visitor.kind==='seller'?'来货托盘':'自有货架'}}</span><small>{{candidates.length}} 件可选<span v-if="Number.isFinite(remainingDemand)"> · 还收 {{remainingDemand}} 件</span></small></div>
+   <div class="actions compact"><button :disabled="remainingDemand===0" @click="chooseAll">{{visitor.kind==='seller'?'整批放上谈判台':'按需求挑选'}}</button><button v-if="visitor.kind==='buyer'" :disabled="remainingDemand===0" @click="chooseWithinBudget">按预算挑选</button><button @click="clearTrade">取消全部选择</button></div>
+   <div class="trade-lots"><div v-for="item in candidates" :key="item.id" :class="['trade-lot',{chosen:tradeIds.includes(item.id),examining:focused?.id===item.id}]"><button class="lot-select" :disabled="visitor.kind==='buyer'&&remainingDemand===0" :aria-pressed="tradeIds.includes(item.id)" :aria-label="`选择 ${item.id}`" @click="toggle(item.id)"><span class="lot-check">{{tradeIds.includes(item.id)?'✓':'＋'}}</span><Art :id="item.definitionId" eager/><span class="lot-label">{{ITEMS.find(d=>d.id===item.definitionId)?.name}}<small class="lot-price">₡{{tradeQuote(state,visitor,item)}} <i>{{(ITEMS.find(d=>d.id===item.definitionId)?.size??0)*4}} 格{{ITEMS.find(d=>d.id===item.definitionId)?.shape?' · 异形':''}}</i></small><small v-if="item.known.includes('basic') || item.known.includes('diagnosed')" class="lot-condition">品相 {{item.condition}}% · {{item.faults.length?'功能异常':'基础完好'}}</small><small v-else class="lot-condition">尚未检查</small></span></button><button class="lot-one" :disabled="visitor.kind==='buyer'&&remainingDemand===0" @click="one(item.id)">{{visitor.kind==='seller'?'只买这件':'只卖这件'}}</button></div></div>
    <p v-if="!candidates.length" class="empty-tray">{{visitor.lastTrade?'本批已交货':'暂无匹配货品'}}</p>
    <section v-if="visitor.kind==='seller' && focused && candidates.some(i=>i.id===focused!.id)" class="trade-inspection" aria-label="货品检查"><Art :id="focused.definitionId" eager/><div><p class="eyebrow">正在查看</p><h3>{{definition?.name}}</h3><ItemKnowledge :item="focused" compact/><div class="actions compact"><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'basic'})">基础检查</button><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'scan'})">多谱扫描</button><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'serial'})">查序列</button></div></div></section>
-   <StorageOffers/>
+   <p v-if="visitor.kind==='buyer'&&remainingDemand===0" class="demand-filled">本次采购已齐</p><StorageOffers/>
   </section>
   <aside class="trade-settlement" aria-label="议价与结算">
    <div class="trade-section-title"><span>本次清单</span><small>{{visitor.kind==='buyer'?'预算':'现金'}} ₡{{budget}}</small></div>
    <template v-if="selected.length">
-    <div class="basket-receipt"><span>本次 {{selected.length}} 件 · 原价 ₡{{subtotal}}</span><strong v-if="discount">批发九折 −₡{{discount}}</strong><small v-if="visitor.kind==='seller'">{{wholesaleMinimum(state)===null?'本局无批发折扣':`${wholesaleMinimum(state)} 件起九折`}}</small><small v-else>买家剩余预算 ₡{{visitor.budget ?? Math.max(400,visitor.quote*4)}}</small><b>合计 ₡{{total}}</b></div>
+    <div class="basket-receipt"><span>本次 {{selected.length}} 件 · 原价 ₡{{subtotal}}</span><strong v-if="discount">批发九折 −₡{{discount}}</strong><small v-if="visitor.kind==='seller'">{{wholesaleMinimum(state)===null?'本局无批发折扣':`${wholesaleMinimum(state)} 件起九折`}}</small><small v-else>买家剩余预算 ₡{{visitor.budget ?? Math.max(400,visitor.quote*4)}}</small><b>合计 ₡{{total}}</b><small v-if="visitor.kind==='seller'" :class="{warning:state.cash-total<closingDue}">成交后 ₡{{state.cash-total}} · 日结需 ₡{{closingDue}}</small></div>
    </template>
-   <section v-if="reply?.status==='counter'" ref="replyElement" class="negotiation-reply" aria-label="客人还价" aria-live="polite"><div><p>{{person?.name}}的还价</p><span>你报 ₡{{reply.offered}} · 这 {{reply.itemIds.length}} 件共 <b>₡{{reply.quote}}</b></span><small>{{reply.reason==='far'?'维持当前价':reply.reason==='budget'?'已到预算上限':'可以再让一步'}}{{replyMatches?'':' · 清单已变更'}}</small><button :disabled="!replyMatches||reply.quote>budget" @click="transact([...reply.itemIds],reply.quote)">接受还价 · ₡{{reply.quote}}</button></div></section>
+   <section v-if="reply?.status==='counter'" ref="replyElement" class="negotiation-reply" aria-label="客人还价" aria-live="polite"><div><p>{{person?.name}}的还价</p><span>你报 ₡{{reply.offered}} · 这 {{reply.itemIds.length}} 件共 <b>₡{{reply.quote}}</b></span><small>{{reply.reason==='far'?'维持当前价':reply.reason==='budget'?'已到预算上限':'可以再让一步'}}{{replyMatches?'':' · 清单已变更'}}</small><button :disabled="!replyMatches||reply.quote>budget||overDemand>0||remainingDemand===0" @click="transact([...reply.itemIds],reply.quote)">接受还价 · ₡{{reply.quote}}</button></div></section>
    <template v-if="selected.length">
     <p v-if="visitor.kind==='buyer'" class="trade-cost-preview">货品累计成本 ₡{{selectedCost}} · 货款差额 ₡{{total-selectedCost}}</p>
-    <label class="offer-label" for="trade-offer">你的报价</label><div class="bargain-row"><input id="trade-offer" v-model.number="amount" type="number" min="1" aria-label="议价金额"/><button :disabled="visitor.rounds>=visitor.patience" @click="transact(tradeIds,amount)">报价并成交</button></div>
+    <label class="offer-label" for="trade-offer">你的报价</label><div class="bargain-row"><input id="trade-offer" v-model.number="amount" type="number" min="1" aria-label="议价金额"/><button :disabled="visitor.rounds>=visitor.patience||overDemand>0||remainingDemand===0" @click="transact(tradeIds,amount)">报价并成交</button></div>
     <p class="small muted negotiation-patience">剩余议价 {{Math.max(0,visitor.patience-visitor.rounds)}} 轮</p>
-    <p v-if="overBudget" class="warning basket-warning">超出{{visitor.kind==='buyer'?'买家预算':'现有现金'}} ₡{{overBudget}}。可减少数量或尝试较低报价。</p>
-    <button class="primary wide" :disabled="overBudget>0" @click="transact()">{{visitor.kind==='seller'?'收下选中的货':'成交并交货'}} →</button>
+    <p v-if="overDemand" class="warning basket-warning">超出采购数量 {{overDemand}} 件，请减少清单。</p><p v-if="overBudget" class="warning basket-warning">超出{{visitor.kind==='buyer'?'买家预算':'现有现金'}} ₡{{overBudget}}。可减少数量或尝试较低报价。</p>
+    <button class="primary wide" :disabled="overBudget>0||overDemand>0||remainingDemand===0" @click="transact()">{{visitor.kind==='seller'?'收下选中的货':'成交并交货'}} →</button>
    </template>
    <p v-else class="empty-basket">{{visitor.lastTrade?'已结清':'清单为空'}}</p>
    <div v-if="visitor.lastTrade" ref="receiptElement" aria-live="polite"><TradeReceipt :receipt="visitor.lastTrade"/></div>

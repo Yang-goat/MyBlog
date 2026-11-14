@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "sellerCounter": {
+    "itemIds": [
+      "item-6",
+      "item-7",
+      "item-8"
+    ],
+    "offered": 194,
+    "quote": 261,
+    "round": 1,
+    "status": "counter",
+    "reason": "price"
+  },
+  "buyerCounter": {
+    "itemIds": [
+      "item-2"
+    ],
+    "offered": 126,
+    "quote": 97,
+    "round": 1,
+    "status": "counter",
+    "reason": "price"
+  },
+  "purchaseReceipt": {
+    "kind": "buy",
+    "amount": 261,
+    "cost": 261,
+    "goods": [
+      {
+        "definitionId": "angle-drill",
+        "itemId": "item-6",
+        "cost": 94
+      },
+      {
+        "definitionId": "folding-worklight",
+        "itemId": "item-7",
+        "cost": 91
+      },
+      {
+        "definitionId": "angle-drill",
+        "itemId": "item-8",
+        "cost": 76
+      }
+    ]
+  },
+  "saleReceipt": {
+    "kind": "sell",
+    "amount": 97,
+    "cost": 60,
+    "goods": [
+      {
+        "definitionId": "data-chip",
+        "itemId": "item-2",
+        "cost": 60
+      }
+    ]
+  },
+  "reload": true,
+  "changedBasketBlocked": true,
+  "patienceWalkAway": true,
+  "touchAcceptance": true,
+  "errors": [],
+  "missing": []
+}

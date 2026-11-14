@@ -50,6 +50,10 @@ export function journey(s: GameState) {
   const investment=SKILLS.filter(k=>k.tree==='repair'&&s.skills.includes(k.id)).reduce((sum,k)=>sum+k.cost,0);
   return { title:s.endless?'长明的店灯':CHAPTERS[s.chapter-1]?.title??CHAPTERS[0].title, story:s.endless?'招牌已经属于你。继续修复、收藏，或者接一份自己喜欢的街区挑战。':CHAPTERS[s.chapter-1]?.story??CHAPTERS[0].story, tasks, next:tasks.find(t=>!t.done)??tasks[tasks.length-1]!, ready, activeOrders:active.length, investment, nextLevelXp:s.level*BALANCE.xpPerLevel-s.xp };
 }
+export function stockTurnover(s:GameState){
+ const goods=s.items.filter(i=>i.owner==='player'&&i.location!=='display');
+ return {count:goods.length,cost:goods.reduce((sum,i)=>sum+i.cost,0),aged:goods.filter(i=>s.day-i.acquiredDay>=3).length};
+}
 /** Cash movement, not profit: purchases remain inventory and escrow is not free cash. */
 export function dayReport(s:GameState) {
   const entries=s.ledger.filter(e=>e.day===s.day);
@@ -60,5 +64,5 @@ export function dayReport(s:GameState) {
   const deliveries=entries.filter(e=>e.kind==='delivery');
   const fees=entries.filter(e=>e.kind==='daily-fee').reduce((n,e)=>n-e.amount,0);
   const pendingFees=s.phase==='open'?operatingFees(s)+s.debt:0;
-  return {income,expenses,net:income-expenses,openingCash:s.cash-income+expenses,closingCash:s.cash,repairs:repairs.length,repairIncome:repairs.reduce((n,e)=>n+e.amount,0),sales:sales.length,saleIncome:sales.reduce((n,e)=>n+e.amount,0),deliveries:deliveries.length,deliveryIncome:deliveries.reduce((n,e)=>n+e.amount,0),fees,pendingFees,entries};
+  return {stock:stockTurnover(s),income,expenses,net:income-expenses,openingCash:s.cash-income+expenses,closingCash:s.cash,repairs:repairs.length,repairIncome:repairs.reduce((n,e)=>n+e.amount,0),sales:sales.length,saleIncome:sales.reduce((n,e)=>n+e.amount,0),deliveries:deliveries.length,deliveryIncome:deliveries.reduce((n,e)=>n+e.amount,0),fees,pendingFees,entries};
 }

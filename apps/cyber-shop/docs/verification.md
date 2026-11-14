@@ -218,3 +218,23 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 | `git diff --check` | PASS |
 
 截图、正常导出存档、结构化结果和构建日志见 `evidence/living-shop/factions-*`。本轮浏览器无异常或缺失资源；pnpm 工作区元数据警告与 Git 换行提示属于既有环境现象。自动化旅程证明可达性与兼容性，不等于首次玩家节奏验收。
+
+## 2026-11-14 有限需求与库存资金回归
+
+基线 `bea7fa355`。增加按人群生成的采购数量、分单与空箱包共享计数、旧档兼容、进货后现金及日结库存成本反馈。标准仓库保持 144 格。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：20 文件，141 项，含数量原子拒绝、持久化、旧档及箱包边界 |
+| `pnpm.cmd --filter @goatyang/cyber-shop validate` | PASS：73 基础资源、13 补充资源及内容 |
+| `ui-demand.mjs` | PASS：`demand-final-demand` 桌面与 844×390 真实触控，买四卖三、分单重载、余货与成本显示 |
+| `ui-batch.mjs` | PASS：`demand-batch`，单件与批发、持久化、实际入库、需求及预算 |
+| `ui-negotiation.mjs` | 初次 FAIL：手机小票溢出；修正头部高度后 `demand-final-negotiation` PASS，未放宽可见性断言 |
+| `ui-journey.mjs` | PASS：`demand-journey`，第 16 日结局、35 维修、67 交易、六类买卖、继续第 17 日与保存恢复 |
+| 原始 `web_game_playwright_client.js` | PASS：`demand-skill`，状态与 canvas 截图；完整界面以专项 DOM 截图为准 |
+| `pnpm.cmd site:build` | PASS：退出 0，617 页，含游戏类型检查与构建 |
+| `node scripts/validate-content-structure.mjs` | PASS：79,254 本地引用 |
+| `node scripts/check-independent-apps.mjs` | PASS：两应用、73 基础图和 13 补充图 |
+| `git diff --check` | PASS |
+
+三种子十日规则模拟前后数据保存在 `stock-flow-before.json` 与 `stock-flow-demand.json`，用途为比较固定采购策略的库存与现金；自动维修不能作为实际游玩证据。最终日结及手机成交截图已人工查看；历史失败目录保留。原始技能客户端的 canvas 截图不包含 DOM 界面。主包为 373.34 KB，完整日志为 `demand-site-build.log`；只有既有 pnpm 元数据警告与 Git 换行提示。正常旅程自动操作耗时 76.759 秒，不代表首次玩家通关时长。当前未发布，账户实测剩余 64%，继续按用户的 50% 阈值执行。

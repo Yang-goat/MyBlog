@@ -63,3 +63,9 @@
 按用户提出的《赛博朋克 2077》人群参考，阅读官方 [Hello, Night City](https://www.cyberpunk.net/en/news/20960/hello-night-city)、[Gangs](https://www.cyberpunk.net/en/news/21749/cyberpunk-2077-e3-2018-trailer-frame-by-frame-ep08-gangs) 与 [Corporations](https://www.cyberpunk.net/en/news/22070/cyberpunk-2077-e3-2018-trailer-frame-by-frame-ep11-corporations) 资料。前两页使用官方搜索正文摘录，企业篇展开阅读正文；采用上层企业、下层生活和不同组织交织的社会构成思路，未将其声称为亲自游玩的观察。
 
 本项目设计七个原创人群，以服装、随身工具、供货状态、预算和商品偏好体现区别。新增企业采购人季砚、佣兵韩峤、巡务员许征和电台联络员燕雀的独立立绘；未复制原游戏角色或标识。关系阈值、次日预约、合作待遇与事件取舍为适配本项目经营循环的设计，不主张这些数值或机制来自上述原游戏。
+
+## 2026-11-14 进货取舍与资金周转
+
+阅读 [Moonlighter 官方发行商商店介绍](https://store.steampowered.com/app/606150/Moonlighter/?l=english) 中管理售价、现金储备与选择有限背包收益的说明，以及 [Good Company 官方开发者介绍](https://www.chasing-carrots.com/good-company/) 关于货物流转和变化市场需求的设计描述。本轮采用资金和库存需要共同安排的经营思路；没有实际游玩这两款作品，也不将具体买家限购件数归为原游戏机制。
+
+本项目原有批发折扣配合充裕买家预算，使整批货物容易当日转售。因此按本项目七个人群设置一至四件的有限采购，保留既定仓库大小，并在成交清单与日结提供资金占用信息。具体件数和反馈位置为本项目设计；三种子模拟与正常界面回归结果见[试玩数值记录](balance-notes.md)。

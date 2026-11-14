@@ -82,7 +82,7 @@ async function customers(){
    await click('把来货放上台 →');if(s.hours>=.5)await click('基础检查');await click('收下选中的货 →');await close();
    if((await game()).items.some(i=>i.id===v.item.id)){purchases.add(v.category);await click('全部入库 ↓');}
   }else if(v.kind==='buyer'&&s.items.some(i=>i.owner==='player'&&i.location==='stock'&&i.category===v.category)){
-   await click('挑选出售货物 →');await click('选取全部可售货物');
+   await click('挑选出售货物 →');await click('按需求挑选');
    const sell=page.getByRole('button',{name:'成交并交货 →',exact:true});
    if(await sell.count()&&await sell.isDisabled())await click('按预算挑选');
    if(await sell.count()&&await sell.isEnabled())await click('成交并交货 →');await close();

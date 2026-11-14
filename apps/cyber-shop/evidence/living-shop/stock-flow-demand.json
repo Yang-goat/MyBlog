@@ -1,0 +1,521 @@
+{
+  "kind": "rules-simulation",
+  "report": [
+    {
+      "seed": 42,
+      "strategy": "single",
+      "days": [
+        {
+          "day": 1,
+          "cash": 1960,
+          "cells": 11,
+          "items": 3,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 2601,
+          "cells": 14,
+          "items": 3,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 3292,
+          "cells": 8,
+          "items": 2,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 4338,
+          "cells": 2,
+          "items": 1,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 5166,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 6230,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 6966,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 7653,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 8992,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 9888,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    },
+    {
+      "seed": 42,
+      "strategy": "bulk",
+      "days": [
+        {
+          "day": 1,
+          "cash": 1599,
+          "cells": 42,
+          "items": 8,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 1858,
+          "cells": 69,
+          "items": 14,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 2533,
+          "cells": 88,
+          "items": 15,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 3007,
+          "cells": 67,
+          "items": 15,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 3595,
+          "cells": 75,
+          "items": 17,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 4711,
+          "cells": 81,
+          "items": 19,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 5074,
+          "cells": 78,
+          "items": 19,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 7373,
+          "cells": 76,
+          "items": 17,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 8232,
+          "cells": 70,
+          "items": 20,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 9152,
+          "cells": 74,
+          "items": 24,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    },
+    {
+      "seed": 71,
+      "strategy": "single",
+      "days": [
+        {
+          "day": 1,
+          "cash": 2458,
+          "cells": 14,
+          "items": 3,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 3257,
+          "cells": 4,
+          "items": 2,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 3948,
+          "cells": 1,
+          "items": 1,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 4852,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 5477,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 6243,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 7001,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 7634,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 8792,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 9957,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    },
+    {
+      "seed": 71,
+      "strategy": "bulk",
+      "days": [
+        {
+          "day": 1,
+          "cash": 2391,
+          "cells": 42,
+          "items": 7,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 3268,
+          "cells": 37,
+          "items": 9,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 4169,
+          "cells": 26,
+          "items": 10,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 4706,
+          "cells": 36,
+          "items": 11,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 5977,
+          "cells": 37,
+          "items": 13,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 5842,
+          "cells": 50,
+          "items": 14,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 6412,
+          "cells": 72,
+          "items": 14,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 7544,
+          "cells": 68,
+          "items": 13,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 6814,
+          "cells": 93,
+          "items": 19,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 7402,
+          "cells": 87,
+          "items": 20,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    },
+    {
+      "seed": 11052026,
+      "strategy": "single",
+      "days": [
+        {
+          "day": 1,
+          "cash": 1836,
+          "cells": 14,
+          "items": 3,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 2405,
+          "cells": 21,
+          "items": 3,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 3376,
+          "cells": 7,
+          "items": 2,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 4249,
+          "cells": 3,
+          "items": 1,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 5075,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 6151,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 6933,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 7747,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 9066,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 10391,
+          "cells": 0,
+          "items": 0,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    },
+    {
+      "seed": 11052026,
+      "strategy": "bulk",
+      "days": [
+        {
+          "day": 1,
+          "cash": 1894,
+          "cells": 40,
+          "items": 7,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 2,
+          "cash": 2090,
+          "cells": 65,
+          "items": 13,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 3,
+          "cash": 3069,
+          "cells": 85,
+          "items": 16,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 4,
+          "cash": 3443,
+          "cells": 69,
+          "items": 17,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 5,
+          "cash": 4415,
+          "cells": 49,
+          "items": 18,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 6,
+          "cash": 4190,
+          "cells": 67,
+          "items": 20,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 7,
+          "cash": 5426,
+          "cells": 68,
+          "items": 17,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 8,
+          "cash": 6791,
+          "cells": 63,
+          "items": 17,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 9,
+          "cash": 5428,
+          "cells": 94,
+          "items": 22,
+          "closed": true,
+          "phase": "closed"
+        },
+        {
+          "day": 10,
+          "cash": 5213,
+          "cells": 94,
+          "items": 22,
+          "closed": true,
+          "phase": "closed"
+        }
+      ]
+    }
+  ]
+}

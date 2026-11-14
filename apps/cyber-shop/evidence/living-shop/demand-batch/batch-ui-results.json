@@ -1,0 +1,23 @@
+{
+  "singleThenBulk": true,
+  "singleThenMultiSale": true,
+  "budgetAwareSelection": true,
+  "remainingStockPreserved": true,
+  "discount": 347,
+  "remainingGoodsPersist": true,
+  "purchasedCounterPersist": true,
+  "storeAll": true,
+  "squareWarehouseCell": {
+    "x": 334.984375,
+    "y": 711.390625,
+    "width": 29,
+    "height": 29
+  },
+  "squareCounterCell": {
+    "x": 372,
+    "y": 532.796875,
+    "width": 29,
+    "height": 29
+  },
+  "errors": []
+}

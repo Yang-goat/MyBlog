@@ -7,6 +7,7 @@ import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayo
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
 import { allocateQuote } from './negotiation';
+import {buyerRemaining,purchaseQuantity,fulfillDemand} from './demand';
 import {faction,type FactionId} from '../content/factions';
 import {factionFor,buyerPreference,trusted,recordTradeRelation,factionStoragePrice,factionVisit,factionKnown,factionContacts,CONTACT_RELATION} from './factions';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer } from './types';
@@ -137,10 +138,10 @@ function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, 
     ask: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0,relation) / 150))),
     minimum: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFloor * affiliation.seller * (1 - advantage))),
   }])) : undefined;
-  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote,
+  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, demand:kind==='buyer'?{limit:purchaseQuantity(affiliation.id,d.category),fulfilled:0}:undefined, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote,
     limit: kind === 'seller' ? round(value * BALANCE.sellerFloor * affiliation.seller * (1 - advantage)) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
     rounds: 0, patience: person.patience, resolved: false,
-    request: kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `想找一件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
+    request: kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `这趟想收 ${purchaseQuantity(affiliation.id,d.category)} 件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
 }
 function generateDay(s: GameState) {
   s.eventId = EVENTS[(s.day - 1) % EVENTS.length]!.id; s.eventResolved = false;
@@ -312,6 +313,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const selected=action.itemIds.map(id => pool.find(i => i.id === id));
       if (selected.some(i => !i)) return fail('部分物品已经成交或不属于这笔交易。');
       const goods=selected as ItemInstance[];
+      if(v.kind==='buyer'&&goods.length>buyerRemaining(v))return fail(`本次还收 ${buyerRemaining(v)} 件，请减少清单数量。`);
       if (v.kind === 'buyer' && goods.some(i => !itemAccessible(s, i))) return fail('货品所在箱包被压住了，先移走上层箱包。');
       if (goods.some(i => def(i).regulated) && !s.licenses.includes('regulated-trade')) return fail('这批物品需要交易许可。');
       const prices=goods.map(i => tradeQuote(s,v,i));
@@ -344,14 +346,14 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         if(!v.goods.length&&!v.storageGoods?.length)finishVisitor(v);
       } else {
         const budget=v.budget ?? Math.max(400,v.quote*4);if(offered>budget)return fail(`买家剩余预算只有 ${budget}，请减少售出数量。`);
-        v.budget=budget-offered;let remaining=offered;
+        v.budget=budget-offered;fulfillDemand(v,goods.length);let remaining=offered;
         goods.forEach((i,index)=>{const value=index===goods.length-1?remaining:Math.floor(offered*prices[index]!/prices.reduce((a,b)=>a+b,0));remaining-=value;earn(value,'sale',`售出${def(i).name}，累计成本 ${i.cost}，货款差额 ${value-i.cost}`,i.id);});
         if(s.challenge?.id==='rare-trade')s.challenge.progress+=goods.filter(i=>def(i).rarity>=3&&i.authentic).length;
         s.items=s.items.filter(i=>!action.itemIds.includes(i.id));if(v.budget<=0)finishVisitor(v);
       }
       s.records.trades+=goods.length;gainXp(s,BALANCE.tradeXp*goods.length);s.reputation++;
       tradeReceipt(v,goods,offered);if(v.kind==='seller')v.lastTrade!.goods=goods.map(i=>({definitionId:i.definitionId,itemId:i.id,cost:s.items.find(owned=>owned.id===i.id)!.cost}));
-      say(`${v.kind==='seller'?'购入':'售出'} ${goods.length} 件，共 ₡${offered}${bulk<1?'，已享批发九折':''}。${v.kind==='seller'?'已购货物留在谈判台，继续选货或先入库。':'可以继续分批出售，或结束接待。'}`,'trade');break;
+      say(`${v.kind==='seller'?'购入':'售出'} ${goods.length} 件，共 ₡${offered}${bulk<1?'，已享批发九折':''}。${v.kind==='seller'?'已购货物留在谈判台，继续选货或先入库。':buyerRemaining(v)===0?'本次采购已齐，可以结束接待。':`还收 ${Number.isFinite(buyerRemaining(v))?buyerRemaining(v)+' 件，':''}可继续挑选或结束接待。`}`,'trade');break;
     }
     case 'moveCounter': {
       const item = findItem(action.itemId);
@@ -380,9 +382,10 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const visitor=currentVisitor(action.visitorId),box=s.containers?.find(c=>c.id===action.storageId);
       if(!visitor||visitor.kind!=='buyer'||!box)return fail('当前买家或箱包不可用。');
       if(containerItems(s,box.id).length)return fail('先取出箱包里的全部物品，再出售箱包。');
+      if(buyerRemaining(visitor)<1)return fail('这位买家本次采购已齐。');
       const price=round(storageStyle(box.styleId).price*.55),budget=visitor.budget??Math.max(400,visitor.quote*4);if(price>budget)return fail('买家剩余预算不足。');
       recordTradeRelation(s,visitor);visitor.lastTrade={kind:'sell',amount:price,cost:box.cost,goods:[{definitionId:box.styleId,itemId:box.id,cost:box.cost}]};
-      visitor.budget=budget-price;s.containers=s.containers!.filter(c=>c.id!==box.id);earn(price,'sale',`售出${storageStyle(box.styleId).name}，累计成本 ${box.cost}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);if(!visitor.budget)finishVisitor(visitor);say(`箱包成交 · ₡${price}。`,'trade');break;
+      visitor.budget=budget-price;fulfillDemand(visitor,1);s.containers=s.containers!.filter(c=>c.id!==box.id);earn(price,'sale',`售出${storageStyle(box.styleId).name}，累计成本 ${box.cost}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);if(!visitor.budget)finishVisitor(visitor);say(`箱包成交 · ₡${price}。`,'trade');break;
     }
     case 'moveStorage': {
       const box=s.containers?.find(c=>c.id===action.storageId);if(!box)return fail('找不到这件箱包。');const at={x:action.x,y:action.y,rotated:action.rotated};
@@ -440,6 +443,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const d = def(item);
       if (d.regulated && !s.licenses.includes('regulated-trade')) return fail('该商品需要通用受管制商品交易许可。维修证书不替代交易许可。');
       if (v.kind === 'buyer' && (item.owner !== 'player' || !['stock','counter'].includes(item.location) || activeOrder(item.id))) return fail('只能出售仓库或谈判台上的自有物品。送修物和展品不能出售。');
+      if(v.kind==='buyer'&&buyerRemaining(v)<1)return fail('这位买家本次采购已齐。');
       if (v.kind === 'buyer' && d.category !== v.category) return fail('这位买家需要另一类商品。');
       const offered = action.type === 'offer' ? action.amount : tradeQuote(s, v, item);
       if (!Number.isSafeInteger(offered) || offered <= 0) return fail('报价必须是正整数信用点。');
@@ -460,7 +464,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         if (!s.discovered.includes(d.id)) s.discovered.push(d.id);
         say(`以 ${offered} 买下${d.name}。货物在谈判台上，请拖入仓库。`, 'trade');
       } else {
-        v.budget=buyerBudget-offered;
+        v.budget=buyerBudget-offered;fulfillDemand(v,1);
         earn(offered, 'sale', `卖出${d.name}，总成本 ${item.cost}，毛利 ${offered - item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); say(`${d.name}成交 ${offered}；账面毛利 ${offered - item.cost}。`, 'trade');
         if (s.challenge?.id === 'rare-trade' && d.rarity >= 3 && item.authentic) s.challenge.progress++;
       }
@@ -664,7 +668,7 @@ export function visibleState(s: GameState) {
     xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
     stockUsage: stockUsage(s), capacity: capacity(s), rootCapacity: rootCapacity(s), labeler: s.labeler ?? false, modifiers:s.modifiers??[], containers:(s.containers??[]).map(c=>({...c,name:storageStyle(c.styleId).name,layout:containerLayout(s,c),columns:storageStyle(c.styleId).columns,rows:storageStyle(c.styleId).rows,path:containerTrail(s,c.id)?.map(p=>p.id)})), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: rootLayout(s, rootCapacity(s)), tutorial: s.tutorial, conversations: s.conversations,
-    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
+    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods,demand:visitor.demand, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
     eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, factions:factionContacts(s), factionAppointment:s.factionAppointment??null, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),

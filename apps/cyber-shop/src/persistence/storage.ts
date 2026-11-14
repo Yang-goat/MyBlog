@@ -83,6 +83,7 @@ export function validateState(value: unknown): asserts value is GameState {
     if(v.goods !== undefined) { check(Array.isArray(v.goods) && v.goods.length <= 100 && new Set(v.goods.map(i=>i.id)).size === v.goods.length,'卖家货品列表无效。');v.goods.forEach(validateItem); }
     if(v.priceTags !== undefined) check(v.kind==='seller' && object(v.priceTags) && Array.isArray(v.goods) && Object.keys(v.priceTags).length===v.goods.length && v.goods.every(i=>{const tag=v.priceTags![i.id];return object(tag)&&integer(tag.ask)&&tag.ask>0&&integer(tag.minimum)&&tag.minimum>0&&tag.minimum<=tag.ask;}),'卖家逐件价签无效。');
     if(v.relationCredited!==undefined)check(typeof v.relationCredited==='boolean','往来记录无效。');
+    if(v.demand!==undefined)check(v.kind==='buyer'&&object(v.demand)&&integer(v.demand.limit)&&v.demand.limit>=1&&v.demand.limit<=4&&integer(v.demand.fulfilled)&&v.demand.fulfilled<=v.demand.limit,'买家采购数量无效。');
     if(v.budget !== undefined) check(integer(v.budget),'买家预算无效。');
     if(v.buyerQuotes!==undefined)check(v.kind==='buyer'&&object(v.buyerQuotes)&&Object.values(v.buyerQuotes).every(q=>integer(q)&&q>0),'买家逐件还价无效。');
     if(v.negotiation!==undefined){

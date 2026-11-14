@@ -67,7 +67,7 @@ describe('selective and wholesale trade',()=>{
   const template=ITEMS.find(d=>d.category==='antique'&&d.rarity>=3)!;
   const source=s.items.find(i=>i.owner==='player')!;
   s.items=[0,1,2].map(n=>({...structuredClone(source),id:`rare-${n}`,definitionId:template.id,authentic:n<2,faults:[],location:'stock' as const}));
-  const v=s.visitors[2]!;v.category='antique';v.budget=100000;
+  const v=s.visitors[2]!;v.category='antique';v.budget=100000;v.demand={limit:3,fulfilled:0};
   s.challenge={id:'rare-trade',goal:2,progress:0,deadline:s.day+5,reward:2200};
   s=act(s,{type:'tradeBatch',visitorId:v.id,itemIds:s.items.map(i=>i.id)});
   expect(s.challenge!.progress).toBe(2);expect(s.ledger.filter(e=>e.kind==='challenge')).toHaveLength(0);

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "limit": 3,
+      "bought": 4,
+      "surplus": 1,
+      "persisted": true
+    },
+    {
+      "touch": true,
+      "limit": 3,
+      "bought": 4,
+      "surplus": 1,
+      "persisted": true
+    }
+  ],
+  "errors": []
+}
