@@ -98,6 +98,7 @@ export function estimateValue(s: GameState, item: ItemInstance): [number, number
   return [round(base * (1 - precision)), round(base * (1 + precision))];
 }
 export function tradeQuote(s: GameState, visitor: Visitor, item?: ItemInstance) {
+  if(item&&def(item).category==='food'&&item.expiresDay!==null&&item.expiresDay<s.day)return 0;
   if (visitor.kind === 'seller') return item ? visitor.priceTags?.[item.id]?.ask ?? visitor.quote : visitor.quote;
   if (!item) return visitor.quote;
   const loyalty = s.met.includes(visitor.characterId) ? skillEffect(s, 'loyalty') : 0;
@@ -105,6 +106,18 @@ export function tradeQuote(s: GameState, visitor: Visitor, item?: ItemInstance) 
   return Math.min(visitor.buyerQuotes?.[item.id]??proposed, buyerCeiling(s,visitor,item));
 }
 export const buyerCeiling=(s:GameState,v:Visitor,item:ItemInstance)=>round(itemValue(s,item)*v.limit/10000*buyerPreference(s,v,item));
+/** Public transaction prerequisites, shared by picking and final settlement. */
+export function tradeItemProblem(s:GameState,v:Visitor,item:ItemInstance):string{
+  if(v.kind==='repair')return '送修物不能交易。';
+  if(v.kind==='buyer'){
+    if(item.owner!=='player'||!['stock','counter'].includes(item.location)||s.orders.some(o=>!o.delivered&&o.itemId===item.id))return '这件物品不在待售库存。';
+    if(def(item).category!==v.category)return '不属于本次收购品类。';
+    if(!itemAccessible(s,item))return '先整理箱包，才能取出这件货。';
+  }
+  if(def(item).regulated&&!s.licenses.includes('regulated-trade'))return '需要通用交易许可。';
+  if(tradeQuote(s,v,item)<=0)return item.known.includes('basic')&&item.expiresDay!==null&&item.expiresDay<s.day?'已过期，无法成交。':'当前没有收购报价。';
+  return '';
+}
 function createItem(s: GameState, d: ItemDefinition, owner: ItemInstance['owner'] = 'player', forceFaults?: string[]): ItemInstance {
   const compatibleFaults = d.certificate ? FAULTS.filter(f => f.certificate === d.certificate) : [];
   const faults = forceFaults ?? (compatibleFaults.length && random(s) < .55 ? [pick(s, compatibleFaults).id] : []);
@@ -327,10 +340,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (selected.some(i => !i)) return fail('部分物品已经成交或不属于这笔交易。');
       const goods=selected as ItemInstance[];
       if(v.kind==='buyer'&&goods.length>buyerRemaining(v))return fail(`本次还收 ${buyerRemaining(v)} 件，请减少清单数量。`);
-      if (v.kind === 'buyer' && goods.some(i => !itemAccessible(s, i))) return fail('货品所在箱包被压住了，先移走上层箱包。');
-      if (goods.some(i => def(i).regulated) && !s.licenses.includes('regulated-trade')) return fail('这批物品需要交易许可。');
+      for(const item of goods){const problem=tradeItemProblem(s,v,item);if(problem)return fail(`${def(item).name}：${problem}`);}
       const prices=goods.map(i => tradeQuote(s,v,i));
-      if(prices.some(price=>price<=0))return fail('这批货中有已过期或没有交易价值的物品。');
       const bulk=v.kind === 'seller' ? wholesaleFactor(s,goods.length) : 1;
       const total=Math.max(1,Math.round(prices.reduce((a,b)=>a+b,0)*bulk));
       const offered=action.amount ?? total;
@@ -454,7 +465,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const item = v.kind === 'seller' ? v.item : action.itemId ? findItem(action.itemId) : undefined;
       if (!item) return fail('请先选择一件库存商品。');
       const d = def(item);
-      if (d.regulated && !s.licenses.includes('regulated-trade')) return fail('该商品需要通用受管制商品交易许可。维修证书不替代交易许可。');
+      const problem=tradeItemProblem(s,v,item);if(problem)return fail(problem);
       if (v.kind === 'buyer' && (item.owner !== 'player' || !['stock','counter'].includes(item.location) || activeOrder(item.id))) return fail('只能出售仓库或谈判台上的自有物品。送修物和展品不能出售。');
       if(v.kind==='buyer'&&buyerRemaining(v)<1)return fail('这位买家本次采购已齐。');
       if (v.kind === 'buyer' && d.category !== v.category) return fail('这位买家需要另一类商品。');

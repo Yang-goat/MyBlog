@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "day": 3,
+      "purchasedFor": 21,
+      "soldFor": 1,
+      "loss": -20,
+      "expiredRecovery": 3,
+      "autoSelectionSkippedExpired": true,
+      "reload": true
+    },
+    {
+      "touch": true,
+      "day": 3,
+      "purchasedFor": 21,
+      "soldFor": 1,
+      "loss": -20,
+      "expiredRecovery": 3,
+      "autoSelectionSkippedExpired": true,
+      "reload": true
+    }
+  ],
+  "errors": []
+}

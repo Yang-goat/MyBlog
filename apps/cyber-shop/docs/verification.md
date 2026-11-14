@@ -315,3 +315,24 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 首轮 UI `layout-undo-first` 通过；补充四向旋转的 `layout-undo-final` 因测试重复点击已被电钻占据的同一格而失败，改用两个真实空位交替放置后最终通过，没有强制穿透或修改产品规则。失败图和状态保留。嵌套场景使用先前正常导出的存档经设置 UI 导入，未注入状态；密集布局仅为规则审计。最终桌面、异形物品、小窗与手机截图已查看，浏览器错误 0。
 
 本轮修改游戏代码和开发说明，游戏产物已重建；没有改博客内容、导航或配置，未重复前阶段 617 页整站构建与完整职业通关。只有既有 pnpm 元数据警告及 Git 换行提示。账户已用 41%、剩余 59%，仍未到剩余 50% 的发布阈值，尚未推送部署。
+
+## 2026-11-14 可成交货物与报价决策
+
+基线 `38ceac46a`，工作区干净。交易清单、自动选择和结算共用前置检查；成本预览区分现价、自定义报价与客人还价。过期食品停止正常顾客交易，仍可清货回收原残值，已知过期信息卡同步显示回收价。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：24 文件、164 项；过期/当日边界、未知信息、许可、归属、工单、实际批发成本、还价入账、负差额、预算缺口与无效输入 |
+| `ui-trade-decisions.mjs` | PASS：`trade-decisions-verified`，正常新局至第 3 日，桌面和 844×390 真实触控；以 ₡21 买入、主动以 ₡1 售出，预览和小票差额 −₡20；两种自动选择跳过过期货物，重载、信息卡与实际清货回收一致 |
+| `ui-negotiation.mjs` | PASS：`trade-decisions-negotiation-final`，卖家与买家还价预览符合实际结算，清单变化后不显示旧预览，刷新恢复、耐心耗尽和触控回执通过 |
+| `ui-journey.mjs` | PASS：`trade-decisions-career`，正常新局第 16 日经营权结局，35 次维修、67 笔交易，六类商品买卖，结局保存/重载、继续经营至第 17 日和导入导出通过 |
+| `ui-handbook.mjs` | PASS：`trade-decisions-handbook`，翻页、返回、键盘与触控；桌面和手机交易书页已查看 |
+| 原始 `web_game_playwright_client.js` | PASS：`trade-decisions-skill`，已查看 canvas 截图和状态，实际交易以专项 DOM 截图为准 |
+| `pnpm.cmd --filter @goatyang/cyber-shop build` | PASS：类型检查及游戏构建，主包 386.25 KB |
+| `pnpm.cmd --filter @goatyang/cyber-shop validate` | PASS：73 基础素材、13 补充素材、3 内容测试 |
+| `node scripts/check-independent-apps.mjs` | PASS：两独立应用及资源 |
+| 两份脚本语法 / `git diff --check` | PASS |
+
+`trade-decisions-first` 失败来自测试误点身份标记，打开手记后继续点被遮挡的按钮；改为真实交谈入口后通过，旧失败图和状态保留。`second` / `final` 的实际交易已通过，查看截图后精简重复预览并提高禁用货品文字对比度，最后补查过期信息卡再形成 `verified`。最终桌面、手机、还价、手册、经营权结局和原始 canvas 图已查看，浏览器错误与缺失资源均为 0。
+
+完整职业流程测试用时 77.704 秒是自动化输入耗时，不是人工游玩时长；它只证明修复师流程可达，不代表其他五个职业已实现。该流程之后补充的是过期信息卡显示，最终专项在更新构建上复查通过。本轮没有修改博客内容、导航或站点配置，未重复前阶段 617 页整站构建。仅既有 pnpm 元数据警告及 Git 换行提示。账户已用 42%、剩余 58%，未到剩余 50% 的发布阈值，未推送部署。

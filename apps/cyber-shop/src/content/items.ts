@@ -3,7 +3,7 @@ import type { CategoryDefinition, CategoryId, CertificateId, ItemDefinition } fr
 export const CATEGORIES: CategoryDefinition[] = [
   { id: 'electronics', name: '民用与工业机电', description: '从掌心终端到街区的机械关节。', tradeRule: '功能故障与磨损降低报价；修复需要对应证书，体积影响仓储。' },
   { id: 'energy', name: '能源与工业材料', description: '维持下层城市运转的电与材料。', tradeRule: '有效容量、纯度与每日行情改变价格；原材料不能按电子故障维修。' },
-  { id: 'food', name: '食品与生物制品', description: '人们每天仍要喝水、吃饭、照顾伤口。', tradeRule: '到期后失去售卖价值，临期折价；冷藏与保鲜包延长可售时间。' },
+  { id: 'food', name: '食品与生物制品', description: '人们每天仍要喝水、吃饭、照顾伤口。', tradeRule: '过期后停止正常交易，仅可清货回收；临期折价，冷藏与保鲜包延长可售时间。' },
   { id: 'neural', name: '神经与医疗器件', description: '接在人身上的精密技术。', tradeRule: '型号兼容影响买家接受度；部分器件买卖需交易许可，维修另需证书。' },
   { id: 'data', name: '数据与娱乐载体', description: '一段影像、一首歌，也可能是一座城市的记忆。', tradeRule: '完整度、可读性和授权来源影响价值；修复硬件不会解密内容。' },
   { id: 'antique', name: '古董与奢品', description: '旧城留下的、仍有人在意的东西。', tradeRule: '真伪、出处、原貌和品相共同计价；更换部件可能损伤原貌价值。' },

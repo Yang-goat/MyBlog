@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { ITEMS, CHARACTERS } from '../content';
-import { capacity, rootCapacity, displayCapacity, stockUsage, attraction } from '../game/engine';
+import { capacity, rootCapacity, displayCapacity, stockUsage, attraction, tradeItemProblem } from '../game/engine';
 import { dailyHours } from '../game/modifiers';
 import { footprint, rotateObject, warehouseLayout, GRID_COLUMNS, fits, occupy, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
 import type { ItemInstance, Rotation } from '../game/types';
@@ -229,9 +229,8 @@ function showOrder(id: string) { selectedOrder.value = id; modal.value = 'workbe
 function openTrade() {
   if (!talking.value || speechStep.value < 2) return;
   if (visitor.value?.kind !== 'buyer' && !staged.value) {
-    const item = incomingGoods.value[0];
-    if (!item || !stageTrade(item.id)) return;
-    selectedItem.value = item.id;
+    const item = incomingGoods.value.find(i=>!tradeItemProblem(state.value,visitor.value!,i));
+    if (item && stageTrade(item.id)) selectedItem.value = item.id;
   }
   modal.value = 'trade';
 }

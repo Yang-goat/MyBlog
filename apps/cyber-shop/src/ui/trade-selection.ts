@@ -4,6 +4,7 @@ import { warehouseLayout, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS, orie
 import {ownedObjects,shopCounterLayout} from '../game/containers';
 import {buyerRemaining} from '../game/demand';
 import type { ItemInstance } from '../game/types';
+import {tradeItemProblem} from '../game/engine';
 export const tradeIds=ref<string[]>([]);
 export const tradePlaces=ref<Record<string,Placement>>({});
 export const currentGuest=computed(()=>state.value.visitors[state.value.visitorIndex]);
@@ -13,6 +14,7 @@ export function removeTrade(id:string){tradeIds.value=tradeIds.value.filter(v=>v
 export function clearTrade(){tradeIds.value=[];tradePlaces.value={};}
 export function stageTrade(id:string,desired?:Placement){
  const item=tradeItem(id);if(!item)return false;
+ const guest=currentGuest.value;if(guest){const problem=tradeItemProblem(state.value,guest,item);if(problem){notify(problem);return false;}}
  if(currentGuest.value?.kind==='buyer'&&!tradeIds.value.includes(id)&&tradeIds.value.length>=buyerRemaining(currentGuest.value)){notify(`这位买家还收 ${buyerRemaining(currentGuest.value)} 件，请先换下清单里的货物。`);return false;}
  const existing=shopCounterLayout(state.value);const occupied=new Set<number>();
  for(const i of ownedObjects(state.value))if(i.id!==id&&existing.positions[i.id])occupy(i,existing.positions[i.id]!,occupied,SURFACE_COLUMNS);

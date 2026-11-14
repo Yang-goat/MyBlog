@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ITEMS, CATEGORIES } from '../content';
 import type { ItemInstance } from '../game/types';
-import { estimateValue, tradeQuote, attraction } from '../game/engine';
+import { estimateValue, tradeQuote, attraction,clearanceQuote } from '../game/engine';
 import { BALANCE } from '../game/balance';
 import { state } from './store';
 import Art from './Art.vue';
@@ -14,10 +14,11 @@ const guest=computed(()=>state.value.visitors[state.value.visitorIndex]);
 const basic=computed(()=>props.item.known.some(k=>['basic','diagnosed','restored'].includes(k)));
 const scanned=computed(()=>props.item.known.some(k=>['scan','batch','diagnosed','restored'].includes(k)));
 const serial=computed(()=>props.item.known.includes('serial'));
-const value=computed(()=>basic.value?estimateValue(state.value,props.item):[Math.round(definition.value.price*.35),Math.round(definition.value.price*1.4)]);
+const expired=computed(()=>foodFreshness(state.value,props.item)?.status==='expired');
+const value=computed(()=>expired.value?[clearanceQuote(state.value,props.item),clearanceQuote(state.value,props.item)]:basic.value?estimateValue(state.value,props.item):[Math.round(definition.value.price*.35),Math.round(definition.value.price*1.4)]);
 const range=(v:number[])=>v[0]===v[1]?`₡${v[0]}`:`₡${v[0]}–${v[1]}`;
 const buyer=computed(()=>guest.value?.kind==='buyer'&&!guest.value.resolved&&guest.value.category===definition.value.category);
-const resale=computed(()=>buyer.value?`₡${tradeQuote(state.value,guest.value!,props.item)}`:range(value.value.map(n=>Math.round(n*(BALANCE.buyerFactor+Math.min(.18,attraction(state.value)/400))))));
+const resale=computed(()=>expired.value?'不可正常交易':buyer.value?(tradeQuote(state.value,guest.value!,props.item)>0?`₡${tradeQuote(state.value,guest.value!,props.item)}`:'无报价'):range(value.value.map(n=>Math.round(n*(BALANCE.buyerFactor+Math.min(.18,attraction(state.value)/400))))));
 const attributes=computed(()=>{
  const i=props.item,d=definition.value;
  const rows=[['占用格子',d.shape?`${d.size*4} 格 · 非矩形（${d.footprint.width}×${d.footprint.height}）`:`${d.footprint.width} × ${d.footprint.height}`],['外观品相',basic.value?`${i.condition}%`:'待检查']];
@@ -33,8 +34,8 @@ const attributes=computed(()=>{
 </script>
 <template><article class="item-info-card">
  <header><Art :id="item.definitionId"/><div><small>{{CATEGORIES.find(c=>c.id===definition.category)?.name}} · {{own?'店内物品':'客人来货'}}</small><h3>{{definition.name}}</h3></div></header>
- <dl class="item-prices"><div><dt>购入价</dt><dd>{{own?`₡${item.cost}`:'尚未购入'}}</dd></div><div><dt>价值估算</dt><dd>{{range(value)}}</dd></div><div><dt>{{buyer?'当前买家报价':'当前预计售价'}}</dt><dd>{{resale}}</dd></div><div v-if="!own&&guest?.kind==='seller'"><dt>这件要价</dt><dd>₡{{tradeQuote(state,guest,item)}}</dd></div></dl>
- <p class="price-note">{{buyer?'实际成交还受买家剩余预算影响。':basic?'估价随检查结果与行情变化，售价以成交报价为准。':'尚未检查：按同类商品粗估，检查后会缩小范围。'}}</p>
+ <dl class="item-prices"><div><dt>购入价</dt><dd>{{own?`₡${item.cost}`:'尚未购入'}}</dd></div><div><dt>{{expired?'清货回收价':'价值估算'}}</dt><dd>{{range(value)}}</dd></div><div><dt>{{buyer?'当前买家报价':'当前预计售价'}}</dt><dd>{{resale}}</dd></div><div v-if="!own&&guest?.kind==='seller'"><dt>这件要价</dt><dd>₡{{tradeQuote(state,guest,item)}}</dd></div></dl>
+ <p class="price-note">{{expired?'可在库存账本折价清货。':buyer?'实际成交还受买家剩余预算影响。':basic?'估价随检查结果与行情变化，售价以成交报价为准。':'尚未检查：按同类商品粗估，检查后会缩小范围。'}}</p>
  <dl class="item-attributes"><div v-for="[label,value] in attributes" :key="label"><dt>{{label}}</dt><dd>{{value}}</dd></div></dl>
  <p class="item-description">{{definition.description}}</p>
  <footer>鼠标右键 / 触屏长按 · 物品操作</footer>
