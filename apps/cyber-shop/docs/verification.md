@@ -238,3 +238,11 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 | `git diff --check` | PASS |
 
 三种子十日规则模拟前后数据保存在 `stock-flow-before.json` 与 `stock-flow-demand.json`，用途为比较固定采购策略的库存与现金；自动维修不能作为实际游玩证据。最终日结及手机成交截图已人工查看；历史失败目录保留。原始技能客户端的 canvas 截图不包含 DOM 界面。主包为 373.34 KB，完整日志为 `demand-site-build.log`；只有既有 pnpm 元数据警告与 Git 换行提示。正常旅程自动操作耗时 76.759 秒，不代表首次玩家通关时长。当前未发布，账户实测剩余 64%，继续按用户的 50% 阈值执行。
+
+## 2026-11-14 小屏显示回归
+
+基线 `b1af1ac87`，只调整 480 px 以下的电视字号/行距和闭店按钮高度/位置。`ui-room-fit.mjs` 在修复前真实重现文字裁切，历史证据保留于 `room-fit-before`。修复后 `room-fit-clean` 使用新局及通过 UI 导入的正常第 17 日存档，各测六种视口：1920×948、1440×960、960×650、844×390、740×360、667×375。
+
+12 组实际文字范围、完整按钮、与菜单无重叠、页面无溢出、三区正方形格子一致性均通过；844×390 真实触控声音、手册、日结、次日及存档恢复通过，浏览器错误 0。最终桌面和横屏截图已查看，导入提示自然消失后拍摄。原始技能客户端 `room-fit-skill` 运行及 canvas 图查看完成。
+
+`pnpm.cmd --filter @goatyang/cyber-shop build`、`node scripts/check-independent-apps.mjs`、`node --check apps/cyber-shop/scripts/ui-room-fit.mjs`、`git diff --check` 通过。规则及博客内容未变，本阶段没有重跑规则测试和整站构建；前一阶段 141 项和 617 页结果仍保留，当前受影响的游戏产物已重新构建。既有 pnpm 元数据警告不影响退出码。

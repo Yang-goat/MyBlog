@@ -1,0 +1,1245 @@
+{
+  "ok": false,
+  "measurements": [
+    {
+      "tag": "new-1920x948",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 72.953125,
+        "top": 127.96875,
+        "right": 343.671875,
+        "bottom": 234.140625,
+        "width": 270.71875,
+        "height": 106.171875
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 82.953125,
+            "top": 132.921875,
+            "right": 154.53125,
+            "bottom": 157.921875,
+            "width": 71.578125,
+            "height": 25
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 82.953125,
+            "top": 160.921875,
+            "right": 207.671875,
+            "bottom": 206.921875,
+            "width": 124.71875,
+            "height": 46
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 82.953125,
+            "top": 209.921875,
+            "right": 167.875,
+            "bottom": 228.921875,
+            "width": 84.921875,
+            "height": 19
+          },
+          "fits": true
+        },
+        {
+          "label": "营业中",
+          "rect": {
+            "left": 308.671875,
+            "top": 131.96875,
+            "right": 338.671875,
+            "bottom": 144.96875,
+            "width": 30,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 1522.546875,
+          "top": 910.078125,
+          "right": 1871.984375,
+          "bottom": 942.296875,
+          "width": 349.4375,
+          "height": 32.21875
+        },
+        "label": {
+          "left": 1659.375,
+          "top": 918.6875,
+          "right": 1735.15625,
+          "bottom": 933.6875,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 526.984375,
+          "top": 702.8125,
+          "right": 559.984375,
+          "bottom": 735.8125,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "left": 563.984375,
+          "top": 417.109375,
+          "right": 596.984375,
+          "bottom": 450.109375,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "left": 563.984375,
+          "top": 526.125,
+          "right": 596.984375,
+          "bottom": 559.125,
+          "width": 33,
+          "height": 33
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "new-1440x960",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 54.71875,
+        "top": 129.59375,
+        "right": 257.75,
+        "bottom": 237.109375,
+        "width": 203.03125,
+        "height": 107.515625
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 64.71875,
+            "top": 139.234375,
+            "right": 126.5625,
+            "bottom": 161.234375,
+            "width": 61.84375,
+            "height": 22
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 64.71875,
+            "top": 164.5625,
+            "right": 179.46875,
+            "bottom": 206.5625,
+            "width": 114.75,
+            "height": 42
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 64.71875,
+            "top": 209.96875,
+            "right": 138.09375,
+            "bottom": 225.96875,
+            "width": 73.375,
+            "height": 16
+          },
+          "fits": true
+        },
+        {
+          "label": "营业中",
+          "rect": {
+            "left": 222.75,
+            "top": 133.59375,
+            "right": 252.75,
+            "bottom": 146.59375,
+            "width": 30,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 1141.90625,
+          "top": 921.59375,
+          "right": 1403.984375,
+          "bottom": 954.21875,
+          "width": 262.078125,
+          "height": 32.625
+        },
+        "label": {
+          "left": 1235.046875,
+          "top": 930.40625,
+          "right": 1310.828125,
+          "bottom": 945.40625,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 334.984375,
+          "top": 711.390625,
+          "right": 363.984375,
+          "bottom": 740.390625,
+          "width": 29,
+          "height": 29
+        },
+        {
+          "left": 372,
+          "top": 422.390625,
+          "right": 401,
+          "bottom": 451.390625,
+          "width": 29,
+          "height": 29
+        },
+        {
+          "left": 372,
+          "top": 532.796875,
+          "right": 401,
+          "bottom": 561.796875,
+          "width": 29,
+          "height": 29
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "new-960x650",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 36.46875,
+        "top": 87.75,
+        "right": 171.828125,
+        "bottom": 160.546875,
+        "width": 135.359375,
+        "height": 72.796875
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 41.46875,
+            "top": 91.921875,
+            "right": 84.421875,
+            "bottom": 106.921875,
+            "width": 42.953125,
+            "height": 15
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 41.46875,
+            "top": 110.109375,
+            "right": 121.15625,
+            "bottom": 139.109375,
+            "width": 79.6875,
+            "height": 29
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 41.46875,
+            "top": 142.859375,
+            "right": 98.078125,
+            "bottom": 155.859375,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 761.265625,
+          "top": 624,
+          "right": 935.984375,
+          "bottom": 646.09375,
+          "width": 174.71875,
+          "height": 22.09375
+        },
+        "label": {
+          "left": 810.734375,
+          "top": 627.546875,
+          "right": 886.515625,
+          "bottom": 642.546875,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 226.984375,
+          "top": 484.75,
+          "right": 244.984375,
+          "bottom": 502.75,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "left": 264,
+          "top": 286,
+          "right": 282,
+          "bottom": 304,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "left": 264,
+          "top": 360.75,
+          "right": 282,
+          "bottom": 378.75,
+          "width": 18,
+          "height": 18
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "new-844x390",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 32.0625,
+        "top": 52.640625,
+        "right": 151.0625,
+        "bottom": 96.3125,
+        "width": 119,
+        "height": 43.671875
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 37.0625,
+            "top": 48.390625,
+            "right": 80.015625,
+            "bottom": 63.390625,
+            "width": 42.953125,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 37.0625,
+            "top": 63.578125,
+            "right": 99.421875,
+            "bottom": 86.578125,
+            "width": 62.359375,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 37.0625,
+            "top": 87.078125,
+            "right": 93.671875,
+            "bottom": 100.078125,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 669.28125,
+          "top": 374.390625,
+          "right": 822.875,
+          "bottom": 387.640625,
+          "width": 153.59375,
+          "height": 13.25
+        },
+        "label": {
+          "left": 717.65625,
+          "top": 377.390625,
+          "right": 774.5,
+          "bottom": 388.390625,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 252.484375,
+          "top": 303.90625,
+          "right": 264.484375,
+          "bottom": 315.90625,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 277.984375,
+          "top": 171.59375,
+          "right": 289.984375,
+          "bottom": 183.59375,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 277.984375,
+          "top": 216.4375,
+          "right": 289.984375,
+          "bottom": 228.4375,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "new-740x360",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 28.109375,
+        "top": 48.59375,
+        "right": 132.4375,
+        "bottom": 88.90625,
+        "width": 104.328125,
+        "height": 40.3125
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 33.109375,
+            "top": 42.65625,
+            "right": 76.0625,
+            "bottom": 57.65625,
+            "width": 42.953125,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 33.109375,
+            "top": 57.84375,
+            "right": 95.46875,
+            "bottom": 80.84375,
+            "width": 62.359375,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 33.109375,
+            "top": 81.34375,
+            "right": 89.71875,
+            "bottom": 94.34375,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 586.8125,
+          "top": 345.59375,
+          "right": 721.484375,
+          "bottom": 357.828125,
+          "width": 134.671875,
+          "height": 12.234375
+        },
+        "label": {
+          "left": 625.71875,
+          "top": 348.59375,
+          "right": 682.5625,
+          "bottom": 359.59375,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": false,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 212.484375,
+          "top": 282.078125,
+          "right": 223.484375,
+          "bottom": 293.078125,
+          "width": 11,
+          "height": 11
+        },
+        {
+          "left": 237.984375,
+          "top": 158.390625,
+          "right": 248.984375,
+          "bottom": 169.390625,
+          "width": 11,
+          "height": 11
+        },
+        {
+          "left": 237.984375,
+          "top": 199.796875,
+          "right": 248.984375,
+          "bottom": 210.796875,
+          "width": 11,
+          "height": 11
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "new-667x375",
+      "day": 1,
+      "cash": 1200,
+      "screen": {
+        "left": 25.34375,
+        "top": 50.625,
+        "right": 119.390625,
+        "bottom": 92.625,
+        "width": 94.046875,
+        "height": 42
+      },
+      "text": [
+        {
+          "label": "第 1 日",
+          "rect": {
+            "left": 30.34375,
+            "top": 45.53125,
+            "right": 73.296875,
+            "bottom": 60.53125,
+            "width": 42.953125,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 1,200",
+          "rect": {
+            "left": 30.34375,
+            "top": 60.71875,
+            "right": 92.703125,
+            "bottom": 83.71875,
+            "width": 62.359375,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 30.34375,
+            "top": 84.21875,
+            "right": 86.953125,
+            "bottom": 97.21875,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 528.921875,
+          "top": 360,
+          "right": 650.3125,
+          "bottom": 372.75,
+          "width": 121.390625,
+          "height": 12.75
+        },
+        "label": {
+          "left": 561.1875,
+          "top": 363,
+          "right": 618.03125,
+          "bottom": 374,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": false,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 163.984375,
+          "top": 293,
+          "right": 175.984375,
+          "bottom": 305,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 189.484375,
+          "top": 165,
+          "right": 201.484375,
+          "bottom": 177,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 189.484375,
+          "top": 208.125,
+          "right": 201.484375,
+          "bottom": 220.125,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-1920x948",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 72.953125,
+        "top": 127.96875,
+        "right": 343.671875,
+        "bottom": 234.140625,
+        "width": 270.71875,
+        "height": 106.171875
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 82.953125,
+            "top": 132.921875,
+            "right": 167.859375,
+            "bottom": 157.921875,
+            "width": 84.90625,
+            "height": 25
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 82.953125,
+            "top": 160.921875,
+            "right": 228.78125,
+            "bottom": 206.921875,
+            "width": 145.828125,
+            "height": 46
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 82.953125,
+            "top": 209.921875,
+            "right": 167.875,
+            "bottom": 228.921875,
+            "width": 84.921875,
+            "height": 19
+          },
+          "fits": true
+        },
+        {
+          "label": "营业中",
+          "rect": {
+            "left": 308.671875,
+            "top": 131.96875,
+            "right": 338.671875,
+            "bottom": 144.96875,
+            "width": 30,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 1522.546875,
+          "top": 910.078125,
+          "right": 1871.984375,
+          "bottom": 942.296875,
+          "width": 349.4375,
+          "height": 32.21875
+        },
+        "label": {
+          "left": 1659.375,
+          "top": 918.6875,
+          "right": 1735.15625,
+          "bottom": 933.6875,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 526.984375,
+          "top": 702.8125,
+          "right": 559.984375,
+          "bottom": 735.8125,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "left": 563.984375,
+          "top": 417.109375,
+          "right": 596.984375,
+          "bottom": 450.109375,
+          "width": 33,
+          "height": 33
+        },
+        {
+          "left": 563.984375,
+          "top": 526.125,
+          "right": 596.984375,
+          "bottom": 559.125,
+          "width": 33,
+          "height": 33
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-1440x960",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 54.71875,
+        "top": 129.59375,
+        "right": 257.75,
+        "bottom": 237.109375,
+        "width": 203.03125,
+        "height": 107.515625
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 64.71875,
+            "top": 139.234375,
+            "right": 138.078125,
+            "bottom": 161.234375,
+            "width": 73.359375,
+            "height": 22
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 64.71875,
+            "top": 164.5625,
+            "right": 198.890625,
+            "bottom": 206.5625,
+            "width": 134.171875,
+            "height": 42
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 64.71875,
+            "top": 209.96875,
+            "right": 138.09375,
+            "bottom": 225.96875,
+            "width": 73.375,
+            "height": 16
+          },
+          "fits": true
+        },
+        {
+          "label": "营业中",
+          "rect": {
+            "left": 222.75,
+            "top": 133.59375,
+            "right": 252.75,
+            "bottom": 146.59375,
+            "width": 30,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 1141.90625,
+          "top": 921.59375,
+          "right": 1403.984375,
+          "bottom": 954.21875,
+          "width": 262.078125,
+          "height": 32.625
+        },
+        "label": {
+          "left": 1235.046875,
+          "top": 930.40625,
+          "right": 1310.828125,
+          "bottom": 945.40625,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 334.984375,
+          "top": 711.390625,
+          "right": 363.984375,
+          "bottom": 740.390625,
+          "width": 29,
+          "height": 29
+        },
+        {
+          "left": 372,
+          "top": 422.390625,
+          "right": 401,
+          "bottom": 451.390625,
+          "width": 29,
+          "height": 29
+        },
+        {
+          "left": 372,
+          "top": 532.796875,
+          "right": 401,
+          "bottom": 561.796875,
+          "width": 29,
+          "height": 29
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-960x650",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 36.46875,
+        "top": 87.75,
+        "right": 171.828125,
+        "bottom": 160.546875,
+        "width": 135.359375,
+        "height": 72.796875
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 41.46875,
+            "top": 91.921875,
+            "right": 92.40625,
+            "bottom": 106.921875,
+            "width": 50.9375,
+            "height": 15
+          },
+          "fits": true
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 41.46875,
+            "top": 110.109375,
+            "right": 134.640625,
+            "bottom": 139.109375,
+            "width": 93.171875,
+            "height": 29
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 41.46875,
+            "top": 142.859375,
+            "right": 98.078125,
+            "bottom": 155.859375,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": true
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 761.265625,
+          "top": 624,
+          "right": 935.984375,
+          "bottom": 646.09375,
+          "width": 174.71875,
+          "height": 22.09375
+        },
+        "label": {
+          "left": 810.734375,
+          "top": 627.546875,
+          "right": 886.515625,
+          "bottom": 642.546875,
+          "width": 75.78125,
+          "height": 15
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 226.984375,
+          "top": 484.75,
+          "right": 244.984375,
+          "bottom": 502.75,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "left": 264,
+          "top": 286,
+          "right": 282,
+          "bottom": 304,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "left": 264,
+          "top": 360.75,
+          "right": 282,
+          "bottom": 378.75,
+          "width": 18,
+          "height": 18
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-844x390",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 32.0625,
+        "top": 52.640625,
+        "right": 151.0625,
+        "bottom": 96.3125,
+        "width": 119,
+        "height": 43.671875
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 37.0625,
+            "top": 48.390625,
+            "right": 88,
+            "bottom": 63.390625,
+            "width": 50.9375,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 37.0625,
+            "top": 63.578125,
+            "right": 109.984375,
+            "bottom": 86.578125,
+            "width": 72.921875,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 37.0625,
+            "top": 87.078125,
+            "right": 93.671875,
+            "bottom": 100.078125,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 669.28125,
+          "top": 374.390625,
+          "right": 822.875,
+          "bottom": 387.640625,
+          "width": 153.59375,
+          "height": 13.25
+        },
+        "label": {
+          "left": 717.65625,
+          "top": 377.390625,
+          "right": 774.5,
+          "bottom": 388.390625,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": true,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 252.484375,
+          "top": 303.90625,
+          "right": 264.484375,
+          "bottom": 315.90625,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 277.984375,
+          "top": 171.59375,
+          "right": 289.984375,
+          "bottom": 183.59375,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 277.984375,
+          "top": 216.4375,
+          "right": 289.984375,
+          "bottom": 228.4375,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-740x360",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 28.109375,
+        "top": 48.59375,
+        "right": 132.4375,
+        "bottom": 88.90625,
+        "width": 104.328125,
+        "height": 40.3125
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 33.109375,
+            "top": 42.65625,
+            "right": 84.046875,
+            "bottom": 57.65625,
+            "width": 50.9375,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 33.109375,
+            "top": 57.84375,
+            "right": 106.03125,
+            "bottom": 80.84375,
+            "width": 72.921875,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 33.109375,
+            "top": 81.34375,
+            "right": 89.71875,
+            "bottom": 94.34375,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 586.8125,
+          "top": 345.59375,
+          "right": 721.484375,
+          "bottom": 357.828125,
+          "width": 134.671875,
+          "height": 12.234375
+        },
+        "label": {
+          "left": 625.71875,
+          "top": 348.59375,
+          "right": 682.5625,
+          "bottom": 359.59375,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": false,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 212.484375,
+          "top": 282.078125,
+          "right": 223.484375,
+          "bottom": 293.078125,
+          "width": 11,
+          "height": 11
+        },
+        {
+          "left": 237.984375,
+          "top": 158.390625,
+          "right": 248.984375,
+          "bottom": 169.390625,
+          "width": 11,
+          "height": 11
+        },
+        {
+          "left": 237.984375,
+          "top": 199.796875,
+          "right": 248.984375,
+          "bottom": 210.796875,
+          "width": 11,
+          "height": 11
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "tag": "career-667x375",
+      "day": 17,
+      "cash": 14525,
+      "screen": {
+        "left": 25.34375,
+        "top": 50.625,
+        "right": 119.390625,
+        "bottom": 92.625,
+        "width": 94.046875,
+        "height": 42
+      },
+      "text": [
+        {
+          "label": "第 17 日",
+          "rect": {
+            "left": 30.34375,
+            "top": 45.53125,
+            "right": 81.28125,
+            "bottom": 60.53125,
+            "width": 50.9375,
+            "height": 15
+          },
+          "fits": false
+        },
+        {
+          "label": "₡ 14,525",
+          "rect": {
+            "left": 30.34375,
+            "top": 60.71875,
+            "right": 103.265625,
+            "bottom": 83.71875,
+            "width": 72.921875,
+            "height": 23
+          },
+          "fits": true
+        },
+        {
+          "label": "工时 12 / 12",
+          "rect": {
+            "left": 30.34375,
+            "top": 84.21875,
+            "right": 86.953125,
+            "bottom": 97.21875,
+            "width": 56.609375,
+            "height": 13
+          },
+          "fits": false
+        }
+      ],
+      "controls": {
+        "button": {
+          "left": 528.921875,
+          "top": 360,
+          "right": 650.3125,
+          "bottom": 372.75,
+          "width": 121.390625,
+          "height": 12.75
+        },
+        "label": {
+          "left": 561.1875,
+          "top": 363,
+          "right": 618.03125,
+          "bottom": 374,
+          "width": 56.84375,
+          "height": 11
+        },
+        "fits": false,
+        "separated": true
+      },
+      "cells": [
+        {
+          "left": 163.984375,
+          "top": 293,
+          "right": 175.984375,
+          "bottom": 305,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 189.484375,
+          "top": 165,
+          "right": 201.484375,
+          "bottom": 177,
+          "width": 12,
+          "height": 12
+        },
+        {
+          "left": 189.484375,
+          "top": 208.125,
+          "right": 201.484375,
+          "bottom": 220.125,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "overflow": false
+    }
+  ],
+  "problems": [
+    "new-844x390: clipped television text",
+    "new-740x360: clipped television text",
+    "new-740x360: close-day button clipped or overlaps menu",
+    "new-667x375: clipped television text",
+    "new-667x375: close-day button clipped or overlaps menu",
+    "career-844x390: clipped television text",
+    "career-740x360: clipped television text",
+    "career-740x360: close-day button clipped or overlaps menu",
+    "career-667x375: clipped television text",
+    "career-667x375: close-day button clipped or overlaps menu"
+  ],
+  "touchControls": true,
+  "closedAndReopened": true,
+  "saveRestored": true,
+  "errors": []
+}
