@@ -63,7 +63,7 @@ export type Action =
  | { type: 'acceptRepair'; visitorId?: string }
  | { type: 'startRepair'; itemId: string }
  | { type: 'diagnose'; orderId: string }
- | { type: 'repair'; orderId: string; operation: Operation; module?: string; value?: number; quick?: boolean; preserve?: boolean }
+ | { type: 'repair'; orderId: string; operation: Operation; module?: string; value?: number; quick?: boolean; preserve?: boolean; faultId?: string }
  | { type: 'verify'; orderId: string }
  | { type: 'deliver'; orderId: string }
  | { type: 'train'; certificate: CertificateId }

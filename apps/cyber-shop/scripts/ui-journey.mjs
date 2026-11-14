@@ -32,6 +32,7 @@ async function repairOrders(){
     await page.getByLabel('维修模块',{exact:true}).selectOption(f.module);
     if(f.operation==='calibrate')await page.getByLabel('精确校准参数',{exact:true}).fill(String(f.target));
     const preserve=page.getByLabel('修整原件',{exact:false});if(await preserve.count())await preserve.check();
+    if(await page.getByRole('button',{name:'执行工序',exact:true}).isDisabled()){await close();return;}
     await click('执行工序');
    }else if(!current.completedOps)await click('清洁表面并恢复品相');
    else if(!current.verified)await click('通电复检');

@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "checks": {
+    "physicalMaterial": true,
+    "escrow": true,
+    "skilledCalibration": true,
+    "selectedQuick": true,
+    "preservedAntique": true
+  },
+  "day": 27,
+  "errors": [],
+  "missing": []
+}

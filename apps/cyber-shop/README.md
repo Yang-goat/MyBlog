@@ -59,6 +59,7 @@ Vue 3、TypeScript 与 Vite 使用本仓库工具链。店铺通过 Canvas 2D �
 | [scenes/BenchScene.vue](src/scenes/BenchScene.vue) | 独立维修台、实时检测屏、工作灯和已取得工具 |
 | [game/journey.ts](src/game/journey.ts) | 章节目标与现金收支日结的纯状态推导 |
 | [ui/RepairRig.vue](src/ui/RepairRig.vue) | 三类手动维修和执行前成本预览 |
+| [game/repair-plan.ts](src/game/repair-plan.ts) | 通过实际规则事务预览工时、材料来源、回收与原貌变化 |
 | [ui/EquipmentShop.vue](src/ui/EquipmentShop.vue) | 工具状态、设施上限、耗材批量采购与实际折扣预览 |
 | [ui/RepairArchive.vue](src/ui/RepairArchive.vue) | 实际工序、跨日交付与报酬档案 |
 | [game/narrative.ts](src/game/narrative.ts) | 按真实工单与交付记录生成回访对白 |

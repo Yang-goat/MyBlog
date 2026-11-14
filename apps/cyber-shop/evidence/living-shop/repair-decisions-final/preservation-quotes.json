@@ -1,0 +1,13 @@
+{
+  "originalQuote": "执行本次工序\n1 工时\n\n机电组件 · 材料专款 ₡36\n从本工单预付款结算\n\n更换后原貌下降 18 点。修整原件可以保留原貌。",
+  "preservedQuote": "执行本次工序\n2 工时\n\n电子备件 · 材料专款 ₡24\n从本工单预付款结算",
+  "actualStep": {
+    "day": 24,
+    "operation": "replace",
+    "module": "mechanism",
+    "faultId": "worn-gear",
+    "result": "fixed",
+    "hours": 2,
+    "preserve": true
+  }
+}

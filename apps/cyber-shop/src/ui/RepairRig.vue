@@ -2,19 +2,23 @@
 import { computed, ref, watch } from 'vue';
 import type { FaultDefinition } from '../game/types';
 import { state, dispatch } from './store';
-import { applyAction } from '../game/engine';
+import { calibrationTolerance, repairPracticeNeeded } from '../game/engine';
+import { repairPlan } from '../game/repair-plan';
+import RepairEstimate from './RepairEstimate.vue';
 const props=defineProps<{fault:FaultDefinition;orderId:string;antique:boolean}>();
 const cleaned=ref<number[]>([]),screws=ref<number[]>([]),installed=ref(false),removed=ref(false),dial=ref(20),preserve=ref(false);
 watch(()=>[props.orderId,props.fault.id],()=>{cleaned.value=[];screws.value=[];installed.value=false;removed.value=false;dial.value=20;preserve.value=false;},{immediate:true});
-const ready=computed(()=>props.fault.operation==='clean'?cleaned.value.length===6:props.fault.operation==='replace'?installed.value:Math.abs(dial.value-props.fault.target)<=2);
-const practiced=computed(()=>(state.value.records.faults[props.fault.id]??0)>=(state.value.skills.includes('workshop-3')?1:3));
-const plan=computed(()=>applyAction(state.value,{type:'repair',orderId:props.orderId,operation:props.fault.operation,module:props.fault.module,value:dial.value,preserve:preserve.value}));
-const cost=computed(()=>{const before=state.value.orders.find(o=>o.id===props.orderId),after=plan.value.state.orders.find(o=>o.id===props.orderId);return {hours:state.value.hours-plan.value.state.hours,materials:Math.max(0,(before?.escrow??0)-(after?.escrow??0)),cash:state.value.cash-plan.value.state.cash};});
-const count=computed(()=>props.fault.operation==='clean'?`${cleaned.value.length} / 6 接点`:props.fault.operation==='replace'?installed.value?'新模块已就位':removed.value?'插槽已腾空':`${screws.value.length} / 4 固定螺丝`:`偏差 ${Math.abs(dial.value-props.fault.target)}`);
+const tolerance=computed(()=>calibrationTolerance(state.value));
+const ready=computed(()=>props.fault.operation==='clean'?cleaned.value.length===6:props.fault.operation==='replace'?installed.value:typeof dial.value==='number'&&Number.isFinite(dial.value)&&Math.abs(dial.value-props.fault.target)<=tolerance.value);
+const practiced=computed(()=>(state.value.records.faults[props.fault.id]??0)>=repairPracticeNeeded(state.value));
+const action=computed(()=>({type:'repair' as const,orderId:props.orderId,faultId:props.fault.id,operation:props.fault.operation,module:props.fault.module,value:dial.value,preserve:preserve.value}));
+const plan=computed(()=>repairPlan(state.value,action.value));
+const quickPlan=computed(()=>repairPlan(state.value,{...action.value,quick:true}));
+const count=computed(()=>props.fault.operation==='clean'?`${cleaned.value.length} / 6 接点`:props.fault.operation==='replace'?installed.value?(preserve.value?'原件已装回':'新模块已就位'):removed.value?'插槽已腾空':`${screws.value.length} / 4 固定螺丝`:`偏差 ${Math.abs(dial.value-props.fault.target)}`);
 const wave=(target:boolean)=>Array.from({length:81},(_,i)=>`${i*4},${48+Math.sin(i/6)*(target?20:20+Math.abs(dial.value-props.fault.target)*.55)}`).join(' ');
 function clean(n:number){if(!cleaned.value.includes(n))cleaned.value.push(n);}
 function stroke(e:PointerEvent){if(!e.buttons)return;const target=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-contact]');if(target)clean(Number(target.dataset.contact));}
-function execute(quick=false){dispatch({type:'repair',orderId:props.orderId,operation:props.fault.operation,module:props.fault.module,value:dial.value,preserve:preserve.value,quick});}
+function execute(quick=false){dispatch({...action.value,quick});}
 </script>
 <template>
  <section class="repair-rig" aria-label="手动维修操作台" :data-operation="fault.operation">
@@ -24,18 +28,18 @@ function execute(quick=false){dispatch({type:'repair',orderId:props.orderId,oper
    <div class="contact-board" @pointermove="stroke"><div class="circuit-traces"></div><button v-for="n in 6" :key="n" :data-contact="n" :class="{polished:cleaned.includes(n)}" :aria-label="`清洁接点 ${n}`" :aria-pressed="cleaned.includes(n)" @pointerdown.prevent="clean(n)" @click="clean(n)"><i></i><span>{{cleaned.includes(n)?'✓':'0'+n}}</span></button></div>
   </template>
   <template v-else-if="fault.operation==='replace'">
-   <p>{{installed?'接插件已锁定，可以结算本次拆装。':removed?'旧模块已取出，装入备件。':'先松开四角的固定螺丝，再取下故障模块。'}}</p>
-   <div class="module-board" :class="{removed,installed}"><div class="module-chip"><span>{{installed?'READY':removed?'EMPTY':'FAULT'}}</span><i></i><i></i><i></i></div><button v-for="n in 4" :key="n" :class="['rig-screw','screw-'+n,{loose:screws.includes(n)}]" :aria-label="`松开螺丝 ${n}`" :disabled="screws.includes(n)" @click="screws.push(n)">{{screws.includes(n)?'·':'+'}}</button><button v-if="!removed" class="module-action" :disabled="screws.length<4" @click="removed=true">取出故障模块</button><button v-else-if="!installed" class="module-action" @click="installed=true">装入替换模块</button></div>
+   <p>{{installed?'接插件已锁定，可以结算本次拆装。':removed?preserve?'旧模块已取出，修整后装回原件。':'旧模块已取出，装入备件。':'先松开四角的固定螺丝，再取下故障模块。'}}</p>
+   <div class="module-board" :class="{removed,installed}"><div class="module-chip"><span>{{installed?'READY':removed?'EMPTY':'FAULT'}}</span><i></i><i></i><i></i></div><button v-for="n in 4" :key="n" :class="['rig-screw','screw-'+n,{loose:screws.includes(n)}]" :aria-label="`松开螺丝 ${n}`" :disabled="screws.includes(n)" @click="screws.push(n)">{{screws.includes(n)?'·':'+'}}</button><button v-if="!removed" class="module-action" :disabled="screws.length<4" @click="removed=true">取出故障模块</button><button v-else-if="!installed" class="module-action" @click="installed=true">{{preserve?'修整并装回原件':'装入替换模块'}}</button></div>
    <label v-if="antique" class="check-row"><input v-model="preserve" type="checkbox" /> 修整原件，保留原貌（多 1 工时）</label>
   </template>
   <template v-else>
-   <p>转动读数，让实测信号与虚线参考重合。目标 {{fault.target}}，允许误差 ±2。</p>
+   <p>转动读数，让实测信号接近虚线参考。目标 {{fault.target}}，当前允许误差 ±{{tolerance}}。{{tolerance>2?'技能与工具已计入。':''}}</p>
    <div class="signal-screen"><svg viewBox="0 0 320 100" aria-hidden="true"><defs><pattern id="signal-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#557e6644" stroke-width="1"/></pattern></defs><rect width="320" height="100" fill="url(#signal-grid)"/><polyline :points="wave(true)" fill="none" stroke="#d3bb85" stroke-dasharray="5 5"/><polyline :points="wave(false)" fill="none" stroke="#a6e1b6" stroke-width="2"/></svg><strong>{{dial}}<small>{{ready?'信号稳定':'调整读数'}}</small></strong></div>
    <div class="rig-dial"><button aria-label="校准减 1" @click="dial=Math.max(0,dial-1)">−</button><input v-model.number="dial" type="range" min="0" max="100" aria-label="手动校准读数"/><button aria-label="校准加 1" @click="dial=Math.min(100,dial+1)">+</button></div>
    <label class="rig-exact">精确读数 <input v-model.number="dial" type="number" min="0" max="100" aria-label="手动精确校准"/></label>
   </template>
-  <p v-if="ready && plan.ok" class="rig-cost">本次 {{cost.hours}} 工时<span v-if="cost.materials"> · 材料专款 ₡{{cost.materials}}</span><span v-if="cost.cash"> · 现金 ₡{{cost.cash}}</span></p><p v-else-if="ready && !plan.ok" class="rig-blocked">{{plan.events[0]?.text}}</p>
-  <div class="rig-actions"><button class="primary" :disabled="!ready || !plan.ok" @click="execute()">{{ready?'执行工序':'完成操作后执行'}} →</button><button v-if="practiced" @click="execute(true)">熟练快捷工序</button></div>
+  <RepairEstimate v-if="ready" :plan="plan"/><RepairEstimate v-else-if="practiced" :plan="quickPlan"/>
+  <div class="rig-actions"><button class="primary" :disabled="!ready || !plan.ok" @click="execute()">{{ready?'执行工序':'完成操作后执行'}} →</button><button v-if="practiced" :disabled="!quickPlan.ok" @click="execute(true)">熟练快捷工序</button></div>
   <p class="rig-note">准备操作不消耗工时；点击执行后，统一结算工时与材料。</p>
  </section>
 </template>

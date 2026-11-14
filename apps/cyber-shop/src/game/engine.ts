@@ -12,6 +12,8 @@ const equipmentId = (effect: string) => EQUIPMENT.find(e => e.effect === effect)
 const ownedEquipment = (s: GameState, effect: string) => s.equipment[equipmentId(effect)] ?? 0;
 export const skillEffect = (s: GameState, effect: string) => SKILLS.filter(n => s.skills.includes(n.id) && n.effect === effect).reduce((n, a) => n + a.amount, 0);
 export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)));
+export const calibrationTolerance = (s: GameState) => 2 + skillEffect(s, 'calibration') + (ownedEquipment(s, 'calibrationTool') ? 3 : 0);
+export const repairPracticeNeeded = (s: GameState) => skillEffect(s, 'standard') > 0 ? 1 : 3;
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
 export const capacity = (s: GameState) => BALANCE.stock + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
 export const displayCapacity = (s: GameState) => Math.min(BALANCE.maxShowcase, BALANCE.showcase + ownedEquipment(s, 'showcase') * 3);
@@ -366,11 +368,11 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const { order, item } = orderItem(action.orderId); if (!order || !item || !order.diagnosed) return fail('先检测工单，再选择操作。');
       if (order.verified) return fail('已通过复检，请交付。');
       const faults = item.faults.map(id => FAULTS.find(f => f.id === id)!);
-      let fault = faults.find(f => f.operation === action.operation && (action.operation === 'clean' || f.module === action.module));
-      if (action.quick) { fault = faults[0]; if (!fault || (s.records.faults[fault.id] ?? 0) < (has(s, 'standard') ? 1 : 3)) return fail(has(s, 'standard') ? '标准工序仍需先亲手完成过一次同类故障。' : '该故障需要熟练处理 3 次后才能使用快捷工序。'); }
+      let fault = faults.find(f => (!action.faultId || f.id === action.faultId) && f.operation === action.operation && (action.operation === 'clean' || f.module === action.module));
+      if (action.quick) { fault = action.faultId ? faults.find(f=>f.id===action.faultId) : faults[0]; if (!fault || (s.records.faults[fault.id] ?? 0) < repairPracticeNeeded(s)) return fail(has(s, 'standard') ? '标准工序仍需先亲手完成过一次同类故障。' : '该故障需要熟练处理 3 次后才能使用快捷工序。'); }
       const cosmetic = !faults.length && action.operation === 'clean' && order.completedOps === 0;
-      if (action.operation === 'replace' && !ownedEquipment(s, 'solder') && order.kind !== 'exam') return fail('模块更换需要微焊工具。');
-      const correct = cosmetic || (fault && (action.quick || fault.operation !== 'calibrate' || (typeof action.value === 'number' && Math.abs(action.value - fault.target) <= 2 + skillEffect(s, 'calibration') + (ownedEquipment(s, 'calibrationTool') ? 3 : 0))));
+      if ((action.quick ? fault?.operation : action.operation) === 'replace' && !ownedEquipment(s, 'solder') && order.kind !== 'exam') return fail('模块更换需要微焊工具。');
+      const correct = cosmetic || (fault && (action.quick || fault.operation !== 'calibrate' || (typeof action.value === 'number' && Math.abs(action.value - fault.target) <= calibrationTolerance(s))));
       const preserve = !!action.preserve && def(item).category === 'antique' && fault?.operation === 'replace';
       const hours = correct ? Math.max(BALANCE.minimumOperationHours, (fault?.hours ?? 1) + (preserve ? 1 : 0) - (fault?.operation === 'replace' ? skillEffect(s, 'assembly') * .5 + (ownedEquipment(s, 'assemblyTool') ? .5 : 0) : 0) - (has(s, 'workshopMaster') ? .5 : 0) - (ownedEquipment(s, 'bench') > 1 ? .5 : 0)) : 1;
       if (!spendHours(hours)) return fail('剩余工时不足；闭店后可继续同一工单。');
@@ -379,18 +381,19 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const materialId = preserve ? equipmentId('parts') : fault?.material ?? equipmentId('cleaner');
       const material = EQUIPMENT.find(e => e.id === materialId); const materialPrice = material?.price ?? 20;
       const materialCost = round(materialPrice * (1 - Math.min(.5, skillEffect(s, 'materials'))));
+      let materialSummary = `材料专款 ${materialCost}`;
       if (order.kind === 'own') {
         const savedMaterial = has(s, 'materials') && (Object.values(s.records.faults).reduce((n, count) => n + count, 0) + 1) % 4 === 0;
-        if (savedMaterial) ledger(s, 'material-saving', 0, '耗材管理：本次利用余料完成工序', item.id);
-        else if ((s.equipment[materialId] ?? 0) > 0) { const usedCost = Math.floor((s.equipmentCosts[materialId] ?? 0) / s.equipment[materialId]!); s.equipment[materialId]!--; s.equipmentCosts[materialId] = (s.equipmentCosts[materialId] ?? 0) - usedCost; item.cost += usedCost; ledger(s, 'material-use', 0, `翻新消耗${material?.name ?? materialId}，按实际采购成本计入物品 ${usedCost}`, item.id); }
-        else if (s.cash >= materialCost) { pay(materialCost, 'repair-material', '翻新耗材', item.id); item.cost += materialCost; }
+        if (savedMaterial) { ledger(s, 'material-saving', 0, '耗材管理：本次利用余料完成工序', item.id); materialSummary='使用余料，未取用库存或现金'; }
+        else if ((s.equipment[materialId] ?? 0) > 0) { const usedCost = Math.floor((s.equipmentCosts[materialId] ?? 0) / s.equipment[materialId]!); s.equipment[materialId]!--; s.equipmentCosts[materialId] = (s.equipmentCosts[materialId] ?? 0) - usedCost; item.cost += usedCost; ledger(s, 'material-use', 0, `翻新消耗${material?.name ?? materialId}，按实际采购成本计入物品 ${usedCost}`, item.id); materialSummary=`库存${material?.name ?? materialId} × 1，计入成本 ${usedCost}`; }
+        else if (s.cash >= materialCost) { pay(materialCost, 'repair-material', '翻新耗材', item.id); item.cost += materialCost; materialSummary=`现金补充耗材 ${materialCost}`; }
         else return fail('翻新耗材不足。客户维修的预付款可以支持零现金接单。');
       } else { if (order.escrow < materialCost) return fail('预付材料不足，请闭店后领取客户追加的材料包。'); order.escrow -= materialCost; ledger(s, 'escrow-material', 0, `客户专款支出 ${materialCost}，不计入自由现金`, item.id); }
       if (fault) { item.faults = item.faults.filter(f => f !== fault!.id); s.records.faults[fault.id] = (s.records.faults[fault.id] ?? 0) + 1; }
       item.condition = clamp(item.condition + 14 + skillEffect(s, 'restoration'), 0, 100);
       if (fault?.operation === 'replace' && def(item).category === 'antique' && !preserve) item.originality = clamp(item.originality - (has(s, 'rebirthMaster') ? 5 : 18), 0, 100);
       if (fault?.operation === 'replace' && !preserve && order.kind === 'own' && has(s, 'recycle')) { const key = equipmentId('parts'); s.equipment[key] = (s.equipment[key] ?? 0) + 1; }
-      logStep(fault?'fixed':'cleaned'); order.completedOps++; say(`${fault?.name ?? '表面清洁'}已完成，耗时 ${hours}，耗材成本 ${materialCost}${order.kind !== 'own' ? '（预付款）' : ''}。`, 'repair'); break;
+      logStep(fault?'fixed':'cleaned'); order.completedOps++; say(`${fault?.name ?? '表面清洁'}已完成，耗时 ${hours}；${materialSummary}。`, 'repair'); break;
     }
     case 'verify': {
       const { order, item } = orderItem(action.orderId); if (!order || !item || !order.diagnosed) return fail('请先检测。'); if (order.verified) return fail('已经通过复检。');
