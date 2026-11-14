@@ -9,15 +9,15 @@ const click=name=>page.getByRole('button',{name,exact:true}).click();
 async function focusLoop(){
  const dialog=page.getByRole('dialog',{includeHidden:false});
  assert(await dialog.evaluate(el=>el.contains(document.activeElement)));
- const focusable=dialog.locator('button:not(:disabled),input:not(:disabled),select:not(:disabled),a[href]').filter({visible:true});
+ const focusable=dialog.locator('button:not(:disabled),input:not(:disabled),select:not(:disabled),a[href],summary').filter({visible:true});
  await focusable.first().focus();await page.keyboard.press('Shift+Tab');assert(await focusable.last().evaluate(el=>document.activeElement===el));
  await page.keyboard.press('Tab');assert(await focusable.first().evaluate(el=>document.activeElement===el));
 }
 try{
  await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');
- await click('查看今日街区行情');await focusLoop();await page.locator('.event-story .vertical-actions button').last().click();assert((await g()).eventResolved);
+ await click('查看今日街区行情');await focusLoop();const chosenLabel=await page.locator('.event-story .vertical-actions button').last().locator('strong').innerText();await page.locator('.event-story .vertical-actions button').last().click();assert((await g()).eventResolved);
  await page.keyboard.press('Escape');assert(await page.getByRole('button',{name:'查看今日街区行情',exact:true}).evaluate(el=>el===document.activeElement));
- await page.getByText('已记下今天的选择',{exact:false}).waitFor();
+ assert((await page.locator('.market-action').innerText()).includes(chosenLabel));
  await click('扩容 +');await focusLoop();await page.keyboard.press('Escape');assert.equal(await page.getByRole('dialog').count(),0);
  await click('绿色叫号按钮');await click('结束当前接待');await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
  await click('把来货放上台 →');await focusLoop();const before=await g();assert.equal(before.visitor.goods.length,4);

@@ -1,6 +1,6 @@
 import { nextTick, type ObjectDirective } from 'vue';
 
-const selector='button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex]';
+const selector='button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary,[tabindex]';
 const cleanups=new WeakMap<HTMLElement,()=>void>();
 const candidates=(el:HTMLElement)=>Array.from(el.querySelectorAll<HTMLElement>(selector)).filter(n=>n.tabIndex>=0&&!n.closest('[inert],[hidden]')&&n.getClientRects().length>0);
 /** Keep keyboard navigation inside the visible overlay, then return to its trigger. */

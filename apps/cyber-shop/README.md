@@ -63,6 +63,8 @@ Vue 3、TypeScript 与 Vite 使用本仓库工具链。店铺通过 Canvas 2D �
 | [ui/EquipmentShop.vue](src/ui/EquipmentShop.vue) | 工具状态、设施上限、耗材批量采购与实际折扣预览 |
 | [ui/RepairArchive.vue](src/ui/RepairArchive.vue) | 实际工序、跨日交付与报酬档案 |
 | [game/narrative.ts](src/game/narrative.ts) | 按真实工单与交付记录生成回访对白 |
+| [game/district.ts](src/game/district.ts) | 按实际委托领取记录和当日账本推导回信、纪念与行动回应 |
+| [content/stories.ts](src/content/stories.ts) | 四条街区委托的十二封阶段回信 |
 | [ui/audio.ts](src/ui/audio.ts) | 环境音与动作反馈 |
 | [persistence/storage.ts](src/persistence/storage.ts) | 版本、导入校验、自动保存和恢复备份 |
 | [assets-manifest.json](assets-manifest.json) | 逐项素材 ID、提示词、来源、状态与发布路径 |
