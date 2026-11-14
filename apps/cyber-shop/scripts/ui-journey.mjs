@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** Full career via normal UI only; read-only visible state guides the player. */
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
@@ -49,7 +50,7 @@ async function learn(){
  await close();
 }
 async function claims(){
- await close();await page.locator('.shop-plaque').click();
+ await close();await page.locator('.journey-open').click();
  for(let n=0;n<12&&(await snapshot()).journey.ready.length;n++)await page.getByRole('button',{name:'领取谢礼',exact:true}).first().click();
  await close();
  const s=await game();if(!s.eventResolved){await panel('街区手记');await page.locator('.event-story .vertical-actions button').last().click();await close();}
@@ -93,7 +94,7 @@ async function day(){
  await learn();await claims();await certificates();await repairOrders();await finalOrder();
  s=await game();if(s.chapter>=3&&!s.licenses.length){await panel('技能与资质');await click('证书与许可');await click(/申请通用交易许可/,false);await close();}
  await customers();await learn();await claims();await finalOrder();s=await game();
- if(!chapters.has(s.chapter)){chapters.add(s.chapter);await page.locator('.shop-plaque').click();await shot(`chapter-${s.chapter}`);await close();await shot(`room-${s.chapter}`);}
+ if(!chapters.has(s.chapter)){chapters.add(s.chapter);await page.locator('.journey-open').click();await shot(`chapter-${s.chapter}`);await close();await shot(`room-${s.chapter}`);}
  if(!s.victory&&s.finalComplete&&s.cash>=12000+s.debt){await panel('街区手记');await click('支付并买下店铺');}
  else {await close();if(await page.getByRole('button',{name:'全部入库 ↓',exact:true}).count())await click('全部入库 ↓');await click('关店 / 日结 →');await click('确认闭店');}
  s=await game();assert.notEqual(s.phase,'failed');const row={day:s.day,chapter:s.chapter,repairs:s.records.repairs,trades:s.records.trades,cash:s.cash,points:s.points,phase:s.phase};journal.push(row);console.log(JSON.stringify(row));
@@ -105,7 +106,7 @@ try{
  await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');
  const modifiers=JSON.parse(process.env.CYBER_RUN_MODIFIERS||'[]');
  if(modifiers.length){await click('选择开局词条');for(const id of modifiers)await page.locator(`[data-modifier="${id}"]`).click();await click('采用词条 →');}
- await click('推开店门 →',false);await page.waitForSelector('.warehouse-item');await click('跳过引导');assert.deepEqual((await game()).modifiers,modifiers);
+ await click('推开店门 →',false);await page.waitForSelector('.warehouse-item');await completeIntro(page);assert.deepEqual((await game()).modifiers,modifiers);
  for(let i=0;i<55&&!(await game()).victory;i++)await day();
  const victory=await game();assert(victory.victory,'Career must reach ownership via UI');assert.equal(chapters.size,4);await shot('ending');
  await click('结束并保存结局');await page.reload();await click('继续经营 ↗',false);assert.equal((await game()).phase,'ended');
@@ -122,7 +123,7 @@ try{
    if(!item.known.includes('serial'))await click('查验来源');
    if((await game()).items.find(i=>i.id===item.id)?.authentic)await click('放进收藏展示柜');
   }
-  await close();await page.locator('.shop-plaque').click();await shot('endless-goals');await close();await shot('endless-collection');
+  await close();await page.locator('.journey-open').click();await shot('endless-goals');await close();await shot('endless-collection');
   assert((await game()).items.some(i=>i.location==='display'));
  }
  await panel('设置与存档');const [download]=await Promise.all([page.waitForEvent('download'),click('导出当前存档')]);await download.saveAs(`${out}/career-save.json`);

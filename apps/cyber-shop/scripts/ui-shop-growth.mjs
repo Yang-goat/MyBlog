@@ -26,7 +26,7 @@ async function displayStock(){
 try{
  await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');
  await page.locator('input[type=file]').setInputFiles('apps/cyber-shop/evidence/living-shop/endless-career/career-save.json');
- await page.locator('.shop-plaque').waitFor();
+ await page.locator('.journey-open').waitFor();
  assert((await game()).victory);assert.equal(await count(),1);
  await page.locator('.showcase-locked').waitFor();
  await page.screenshot({path:`${out}/before-expansion.png`});

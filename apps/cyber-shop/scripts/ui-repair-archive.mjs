@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** A real cross-day work order, including an incorrect attempt and save migration. */
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
@@ -10,7 +11,7 @@ const click=(name,exact=true)=>page.getByRole('button',{name,exact}).click();
 const close=async()=>{if((await snap()).panel)await click('关闭面板');};
 const panel=async(name)=>{await close();await page.locator('.cabinet-menu').getByRole('button',{name,exact:false}).click();};
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);
  await page.locator('.workshop-hotspot').click();await click('接基础援助维修');const id=(await game()).orders[0].id;await page.locator(`[data-order="${id}"]`).click();await click('连接检测仪 →');
  const initial=(await game()).orders[0].conditionBefore;assert.equal((await game()).repairHistory.length,0);
  await click('参数操作');await page.getByLabel('维修工序',{exact:true}).selectOption('replace');await page.getByLabel('维修模块',{exact:true}).selectOption('power');await click('执行工序');assert.equal((await game()).orders[0].steps[0].result,'miss');

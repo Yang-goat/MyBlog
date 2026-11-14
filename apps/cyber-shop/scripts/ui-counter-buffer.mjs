@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -6,7 +7,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));const game=async(
 const click=n=>page.getByRole('button',{name:n,exact:true}).click();
 const drag=async(from,to)=>{const a=await from.boundingBox(),b=await to.boundingBox();await page.mouse.move(a.x+a.width/2,a.y+a.height/2);await page.mouse.down();await page.mouse.move(b.x+b.width/2,b.y+b.height/2,{steps:20});await page.mouse.up();await page.waitForTimeout(100);};
 try{
- await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');
+ await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await page.waitForSelector('.warehouse-item');
  const before=await game(),id=before.items[0].id;await drag(page.locator(`.warehouse-item[data-item="${id}"]`),page.getByRole('button',{name:'谈判空格 7',exact:true}));
  let s=await game();assert.equal(s.visitorArrived,false);assert.equal(s.items.find(i=>i.id===id).location,'counter');assert(!s.warehouse.positions[id]);assert.equal(await page.locator('.trade-dialog').count(),0);
  // Use the space just freed, then try the forbidden outside drop.

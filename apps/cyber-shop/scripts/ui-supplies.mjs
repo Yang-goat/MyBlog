@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** Normal procurement, earned skill discount, and visible equipment on the live workbench. */
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
@@ -11,7 +12,7 @@ const close=async()=>{if((await snap()).panel)await click('关闭面板');};
 const panel=async(name)=>{await close();await page.locator('.cabinet-menu').getByRole('button',{name,exact:false}).click();};
 const offer=id=>page.locator(`[data-equipment="${id}"]`);
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);
  await panel('工具采购');assert(await offer('micro-solder').getByRole('button',{name:'已拥有'}).isDisabled());
  await click('四类设施');const before=await game();await offer('workbench').getByRole('button').click();assert.equal((await game()).cash,before.cash-300);assert.equal((await game()).equipment.workbench,2);assert(await offer('workbench').getByRole('button',{name:'已达上限'}).isDisabled());
  await offer('cold-storage').getByRole('button').click();assert(await offer('cold-storage').getByRole('button').isDisabled());

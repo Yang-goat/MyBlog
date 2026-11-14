@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -14,7 +15,7 @@ async function focusLoop(){
  await page.keyboard.press('Tab');assert(await focusable.first().evaluate(el=>document.activeElement===el));
 }
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);
  await click('查看今日街区行情');await focusLoop();const chosenLabel=await page.locator('.event-story .vertical-actions button').last().locator('strong').innerText();await page.locator('.event-story .vertical-actions button').last().click();assert((await g()).eventResolved);
  await page.keyboard.press('Escape');assert(await page.getByRole('button',{name:'查看今日街区行情',exact:true}).evaluate(el=>el===document.activeElement));
  assert((await page.locator('.market-action').innerText()).includes(chosenLabel));

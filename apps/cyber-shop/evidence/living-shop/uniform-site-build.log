@@ -1,0 +1,51 @@
+[WARN] Your node_modules are out of sync with your lockfile. The workspace structure has changed since last install
+$ pnpm docs:build && pnpm hex:build && pnpm cyber:build
+$ vuepress-vite build src
+- Initializing and preparing data
+info [knowledge-graph] 272 articles, 181 topics, 208 citations, 443 memberships
+√ Initializing and preparing data - done in 20.48s
+- Compiling with vite
+√ Compiling with vite - done in 5.29s
+- Rendering 617 pages
+√ Rendering 617 pages - done in 10.60s
+@vuepress/plugin-seo:  √ Generating robots.txt
+@vuepress/plugin-sitemap:  √ Generating sitemap to sitemap.xml
+@vuepress/plugin-sitemap:  √ Appending sitemap path to robots.txt
+@vuepress/plugin-redirect:  √ Generating redirect files
+success VuePress build completed in 37.71s!
+$ pnpm --dir apps/hex-mahjong build
+$ vue-tsc --noEmit && vite build
+vite v8.0.16 building client environment for production...
+[2K
+transforming...✓ 73 modules transformed.
+rendering chunks...
+computing gzip size...
+../../src/.vuepress/dist/hex-mahjong/manifest.webmanifest                          0.56 kB
+../../src/.vuepress/dist/hex-mahjong/index.html                                    0.67 kB │ gzip:  0.42 kB
+../../src/.vuepress/dist/hex-mahjong/assets/index-CGsx31i5.css                    45.05 kB │ gzip:  9.51 kB
+../../src/.vuepress/dist/hex-mahjong/assets/workbox-window.prod.es5-Bd17z0YL.js    5.71 kB │ gzip:  2.25 kB │ map:  13.13 kB
+../../src/.vuepress/dist/hex-mahjong/assets/index-o64fMkTT.js                    327.30 kB │ gzip: 65.68 kB │ map: 718.04 kB
+
+✓ built in 514ms
+PWA v1.3.0
+mode      generateSW
+precache  19 entries (2543.41 KiB)
+files generated
+  ../../src/.vuepress/dist/hex-mahjong/sw.js.map
+  ../../src/.vuepress/dist/hex-mahjong/sw.js
+  ../../src/.vuepress/dist/hex-mahjong/workbox-9c191d2f.js.map
+  ../../src/.vuepress/dist/hex-mahjong/workbox-9c191d2f.js
+$ pnpm --dir apps/cyber-shop build
+$ vue-tsc --noEmit && vite build
+vite v8.0.16 building client environment for production...
+[2K
+transforming...✓ 125 modules transformed.
+rendering chunks...
+computing gzip size...
+../../src/.vuepress/dist/cyber-shop/index.html                        0.92 kB │ gzip:   0.64 kB
+../../src/.vuepress/dist/cyber-shop/assets/ShopCanvas-CmeriZkx.css    0.15 kB │ gzip:   0.13 kB
+../../src/.vuepress/dist/cyber-shop/assets/index-o6XlV5f8.css       139.76 kB │ gzip:  29.98 kB
+../../src/.vuepress/dist/cyber-shop/assets/ShopCanvas-DgUt-YJb.js    10.07 kB │ gzip:   5.10 kB
+../../src/.vuepress/dist/cyber-shop/assets/index-BS7BsZqZ.js        354.01 kB │ gzip: 130.32 kB
+
+✓ built in 408ms

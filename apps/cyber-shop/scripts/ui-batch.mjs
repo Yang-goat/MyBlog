@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -6,7 +7,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));const g=async()=>
 const click=n=>page.getByRole('button',{name:n,exact:true}).click();
 const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/batch';await fs.mkdir(out,{recursive:true});
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');await click('跳过引导');await click('绿色叫号按钮');await click('结束当前接待');await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');await completeIntro(page);await click('绿色叫号按钮');await click('结束当前接待');await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');
  const before=await g();assert.equal(before.visitor.goods.length,4);
  await page.locator('.incoming-item').first().click();await click('谈判空格 1');await page.waitForSelector('.trade-dialog');
  // First make a single purchase. The same NPC remains with three goods.

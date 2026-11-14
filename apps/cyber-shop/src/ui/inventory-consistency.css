@@ -1,0 +1,11 @@
+/* All physical inventory surfaces use the same measured square unit. */
+.shop-open .shop-room .warehouse-grid,.shop-room .surface-grid{--cell:var(--inventory-cell);grid-template-columns:repeat(24,var(--inventory-cell));grid-template-rows:repeat(var(--rows,3),var(--inventory-cell));width:calc(var(--inventory-cell)*24);height:calc(var(--inventory-cell)*var(--rows,3));min-height:0;max-width:none;gap:0;margin:0 auto;border:0}
+.shop-room .incoming-tray,.shop-room .negotiation-table{height:calc(var(--inventory-cell)*3);display:flex;align-items:center;justify-content:center;padding:0;border:0}
+.shop-room .incoming-tray{top:44%}.shop-room .negotiation-table{top:55.5%}.shop-room .negotiation-table header{justify-content:flex-end}
+.shop-room .warehouse-item,.shop-room .surface-grid .surface-item,.shop-room .container-item{position:relative!important;display:block!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;align-self:stretch;margin:0!important;padding:0!important;border:1px solid #749eaa9c!important;background:#3c657143!important;overflow:hidden!important;border-radius:0;box-shadow:inset 0 0 0 1px #051a2533}
+.shop-room .warehouse-item.selected,.shop-room .surface-grid .surface-item.selected,.shop-room .container-item[aria-pressed=true]{outline:2px solid #8cd6d1;outline-offset:-2px;background:#436f7380!important}
+.shop-room .warehouse-cell,.shop-room .surface-cell,.shop-room .container-cell{margin:0!important;padding:0!important;border:1px solid #6393a547!important;background:#10283275!important;min-width:0;min-height:0}
+.shop-room .warehouse-item>span:not(.inventory-art),.shop-room .warehouse-item>small,.shop-room .surface-item>span:not(.inventory-art){display:none}
+.shop-room .container-grid{border:0;outline:1px solid #527b82}.shop-room .warehouse-section>header>span{margin-right:auto}.shop-room .warehouse-section>header button{font-size:12px}.shop-room .warehouse-section>header{padding-bottom:4px}
+.shop-room .drag-ghost{padding:0!important;background:#335a67aa!important;border:1px solid #9cddd8!important;transform:translate(-50%,-50%)!important;opacity:.92;pointer-events:none}
+@media(max-height:550px){.shop-room .warehouse-section>header button{font-size:10px}}

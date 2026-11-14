@@ -1,12 +1,13 @@
 import {ref} from 'vue';
 import {state} from './store';
 import {storageStyle} from '../content/storage';
+import {inventoryCell} from './inventory-metrics';
 export interface ContainerWindow {id:string;x:number;y:number;order:number}
 export const containerWindows=ref<ContainerWindow[]>([]);
 let order=0;
 export function windowSize(id:string){
  const box=state.value.containers?.find(c=>c.id===id);const style=storageStyle(box?.styleId??'courier-pack');
- const cell=Math.min(44,Math.max(24,Math.floor((window.innerHeight-124)/style.rows)),Math.floor((window.innerWidth-40)/style.columns));
+ const cell=inventoryCell.value;
  return {width:Math.max(226,style.columns*cell+22),height:style.rows*cell+100,cell,columns:style.columns,rows:style.rows};
 }
 export function clampWindow(w:ContainerWindow){const size=windowSize(w.id);w.x=Math.max(8,Math.min(w.x,window.innerWidth-size.width-8));w.y=Math.max(8,Math.min(w.y,window.innerHeight-size.height-8));}

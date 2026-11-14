@@ -12,7 +12,7 @@ function work(){const order=state.value.orders.find(o=>!o.delivered);if(order){s
 </script>
 <template>
  <section :class="compact?'journey-note':'journey-page'" aria-label="主线任务板">
-  <p class="eyebrow">{{state.endless?'AFTER STORY':'STORY / '+String(state.chapter).padStart(2,'0')}}</p>
+  <p v-if="!compact" class="eyebrow">{{state.endless?'AFTER STORY':'STORY / '+String(state.chapter).padStart(2,'0')}}</p>
   <h2>{{route.title}}</h2>
   <template v-if="compact">
    <p class="journey-next">{{route.next.title}}</p><p class="journey-count">{{Math.min(route.next.current,route.next.target).toLocaleString()}} <span>/ {{route.next.target.toLocaleString()}}</span></p>

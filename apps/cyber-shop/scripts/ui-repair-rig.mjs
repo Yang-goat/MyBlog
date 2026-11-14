@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -37,7 +38,7 @@ async function work(){
  await close();
 }
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);
  for(let day=0;day<12&&covered.size<3;day++){
   await work();
   for(let n=0;n<7;n++){
@@ -49,7 +50,7 @@ try{
  }
  assert.equal(covered.size,3);assert.equal(diagnostics.size,4);assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);
  const touch=await browser.newContext({viewport:{width:844,height:390},hasTouch:true,isMobile:true});const tp=await touch.newPage();
- await tp.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await tp.locator('#start-btn').tap();await tp.getByRole('button',{name:'跳过引导',exact:true}).tap();
+ await tp.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await tp.locator('#start-btn').tap();await completeIntro(tp,true);
  await tp.locator('.workshop-hotspot').tap();await tp.getByRole('button',{name:'接基础援助维修',exact:true}).tap();await tp.locator('.list-row').last().tap();await tp.getByRole('button',{name:'连接检测仪 →',exact:true}).tap();
  for(let n=1;n<=6;n++)await tp.getByRole('button',{name:`清洁接点 ${n}`,exact:true}).tap();
  await tp.getByRole('button',{name:'执行工序 →',exact:true}).scrollIntoViewIfNeeded();await tp.waitForTimeout(700);await tp.screenshot({path:`${out}/landscape-rig.png`});

@@ -1,0 +1,41 @@
+{
+  "onboarding": {
+    "steps": 9,
+    "physicalBookFirst": true,
+    "noTimeOrCashSpent": true,
+    "instructionsInBook": true
+  },
+  "sameItemAcrossFiveAreas": {
+    "width": 87,
+    "height": 58,
+    "artWidth": 85,
+    "artHeight": 56
+  },
+  "rotation": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 960,
+      "cell": 29
+    },
+    {
+      "width": 1920,
+      "height": 948,
+      "cell": 33
+    },
+    {
+      "width": 960,
+      "height": 650,
+      "cell": 18
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "cell": 12
+    }
+  ],
+  "reload": true,
+  "smallTour": true,
+  "errors": [],
+  "missing": []
+}

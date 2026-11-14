@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import {chromium} from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -20,7 +21,7 @@ try{
   assert((await dialog.locator('.modifier-preview').innerText()).includes(`每日 ${hours} 工时`));
   const footer=await dialog.locator('footer').boundingBox(),vp=p.viewportSize();assert(footer.y>=0&&footer.y+footer.height<=vp.height);
   assert(await dialog.locator('.modifier-options').evaluate(e=>e.scrollHeight>=e.clientHeight));
-  await p.screenshot({path:`${out}/${adverse?'challenge-touch':'help-desktop'}-choices.png`});await click('采用词条 →');await p.locator('#start-btn')[action]();await click('跳过引导');
+  await p.screenshot({path:`${out}/${adverse?'challenge-touch':'help-desktop'}-choices.png`});await click('采用词条 →');await p.locator('#start-btn')[action]();await completeIntro(p,adverse);
   let s=await game(p);assert.deepEqual(s.modifiers,ids);assert.equal(s.hours,hours);assert.equal(s.maxHours,hours);assert.equal(s.rootCapacity*4,144);
   const water=s.items.find(i=>i.expiresDay!==undefined),oldWater=baseline.items.find(i=>i.id===water.id);
   assert.equal(water.expiresDay,adverse?2:oldWater.expiresDay+2);assert((await p.locator('.television-hours').innerText()).includes(`${hours} / ${hours}`));

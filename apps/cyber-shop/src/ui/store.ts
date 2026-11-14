@@ -10,7 +10,7 @@ export const state = shallowRef<GameState>(createGame(20261105));
 export const started = ref(false);
 export const modal = ref('');
 export const guideTopic=ref('shop'),guideReturn=ref('');
-export function openGuide(topic='shop'){guideReturn.value=modal.value==='help'?guideReturn.value:modal.value;guideTopic.value=topic;modal.value='help';}
+export function openGuide(topic='shop'){if(state.value.tutorial&&!state.value.tutorial.skipped&&state.value.tutorial.step<9)dispatch({type:'tutorial',step:9,skipped:false});guideReturn.value=modal.value==='help'?guideReturn.value:modal.value;guideTopic.value=topic;modal.value='help';}
 export const toast = ref('');
 export const saveError = ref('');
 const backupError = ref('');

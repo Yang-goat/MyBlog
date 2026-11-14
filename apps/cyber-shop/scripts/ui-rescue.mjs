@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** Spend actual cash, reach failure, restore the real day-start backup, and recover by hand. */
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
@@ -11,7 +12,7 @@ const click=(name,exact=true)=>page.getByRole('button',{name,exact}).click();
 const close=async()=>{if((await read()).panel)await click('关闭面板');};
 const panel=async name=>{await close();await page.locator('.cabinet-menu').getByRole('button',{name,exact:false}).click();};
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');await panel('工具采购');await click('四类设施');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await panel('工具采购');await click('四类设施');
  for(const id of ['workbench','cold-storage','stock-rack','stock-rack'])await page.locator(`[data-equipment="${id}"]`).getByRole('button').click();assert.equal((await game()).cash,0);await close();
  let recoveryPoint;
  for(let day=1;day<=4;day++){

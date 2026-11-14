@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** Earn and claim a first reply, persist a free choice, then read a fully earned correspondence. */
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
@@ -11,7 +12,7 @@ const close=async()=>{if((await read()).panel)await click('关闭面板');};
 const panel=async name=>{await close();await page.locator('.cabinet-menu').getByRole('button',{name,exact:false}).click();};
 const quest=id=>page.locator(`[data-quest="${id}"]`);
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await click('跳过引导');await panel('街区手记');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await panel('街区手记');
  assert.equal(await page.locator('.district-letter').count(),0);assert(await quest('neighborhood-line').getByRole('button',{name:/领取街坊谢礼/}).isDisabled());
  await quest('neighborhood-line').getByRole('button',{name:'继续维修 ↗',exact:true}).click();assert.equal((await read()).panel,'orders');await close();await panel('街区手记');
  const before=await game();await page.locator('.event-story').getByRole('button').first().click();assert.equal((await game()).cash,before.cash);await page.getByRole('heading',{name:'提供应急联络',exact:true}).waitFor();assert.equal(await page.locator('.event-story button').count(),0);await page.screenshot({path:`${out}/first-choice.png`});
@@ -27,8 +28,8 @@ try{
  for(let n=0;n<12;n++){const enabled=page.locator('.quest-claim .primary:enabled');if(!await enabled.count())break;await enabled.first().click();}
  assert.equal(await page.locator('.quest-complete').count(),4);assert.equal(await page.locator('.district-letter').count(),4);await quest('archive-home').scrollIntoViewIfNeeded();await page.waitForFunction(()=>!document.querySelector('.toast'));await page.screenshot({path:`${out}/completed-collection-story.png`});
  await quest('archive-home').locator('summary').click();assert.equal(await quest('archive-home').locator('.earlier-letters section').count(),2);
- await close();await page.locator('.shop-plaque').click();assert.equal(await page.locator('[data-keepsake]').count(),4);await page.screenshot({path:`${out}/four-keepsakes.png`});await page.locator('[data-keepsake]').first().click();assert.equal((await read()).panel,'journal');
+ await close();await page.locator('.journey-open').click();assert.equal(await page.locator('[data-keepsake]').count(),4);await page.screenshot({path:`${out}/four-keepsakes.png`});await page.locator('[data-keepsake]').first().click();assert.equal((await read()).panel,'journal');
  await page.setViewportSize({width:844,height:390});await quest('neighborhood-line').locator('.district-letter').scrollIntoViewIfNeeded();await page.screenshot({path:`${out}/letter-844.png`});assert(await page.locator('.notebook').evaluate(el=>el.scrollWidth<=el.clientWidth+1));await click('关闭面板');
- await page.reload();await click('继续经营 ↗',false);await page.locator('.shop-plaque').click();assert.equal(await page.locator('[data-keepsake]').count(),4);
+ await page.reload();await click('继续经营 ↗',false);await page.locator('.journey-open').click();assert.equal(await page.locator('[data-keepsake]').count(),4);
  assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,firstLetterEarned:true,freeChoicePersisted:true,paidChoice:60,allQuestStories:4,keepsakes:4,reload:true,errors,missing},null,2));console.log('DISTRICT_PASS');
 }catch(e){await page.screenshot({path:`${out}/failure.png`}).catch(()=>{});await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(e),state:await read().catch(()=>null),errors,missing},null,2));throw e;}finally{await browser.close();}

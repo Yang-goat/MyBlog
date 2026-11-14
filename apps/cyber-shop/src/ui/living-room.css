@@ -8,8 +8,8 @@
 .shop-open .wall-clock .television-status {position:absolute;right:5px;top:4px;font-size:10px;}
 .television-controls {left:3.2%;top:27%;width:17%;height:3.2%;}
 .television-controls button {font-size:11px;background:#142c2d;padding:4px 12px;border:1px solid #627567;}
-.shop-plaque {left:3%;top:8.3%;width:17%;font-size:12px;text-align:left;}
-.shop-plaque small {display:none;}
+
+
 .room-showcase {left:3.1%;top:34.8%;width:17%;height:17.7%;}
 .room-showcase header {top:-16%;left:0;right:0;font-size:12px;}
 .room-showcase header small {font-size:10px;}
@@ -89,7 +89,7 @@
  .shop-open .mentor-note{padding:8px;max-height:29%;}.shop-open .mentor-note p{font-size:10px;line-height:1.55;margin:4px 0;}.shop-open .mentor-note h3{font-size:12px;margin:4px 0;}.shop-open .mentor-note small{font-size:8px;}.shop-open .mentor-note button{padding:4px;font-size:9px;}
  .speech-bubble{padding:8px;top:2%;width:44%;}.speech-bubble p{font-size:11px;line-height:1.55;margin-bottom:6px;}.speech-bubble h2{font-size:16px;margin:2px 0 5px;}.speech-bubble button{font-size:10px;padding:5px;}.speech-bubble small{display:none;}
  .shop-open .wall-clock{padding:0 5px;}.shop-open .wall-clock .television-cash{font-size:23px;}.shop-open .wall-clock strong{font-size:12px;}.shop-open .wall-clock .television-hours{font-size:10px;}.shop-open .wall-clock .television-status{display:none;}
- .television-controls button{font-size:9px;padding:2px 6px;}.shop-plaque{font-size:10px;}.room-showcase header,.workshop-hotspot{font-size:10px;}.room-showcase p{font-size:9px;}.room-showcase header small,.room-showcase button{font-size:8px;}
+ .television-controls button{font-size:9px;padding:2px 6px;}.room-showcase header,.workshop-hotspot{font-size:10px;}.room-showcase p{font-size:9px;}.room-showcase header small,.room-showcase button{font-size:8px;}
  .queue-terminal{gap:2px;}.queue-terminal strong{font-size:25px;}.queue-terminal small{font-size:9px;}.queue-terminal strong span,.queue-terminal .waiting-call,.queue-terminal button{font-size:9px;}.queue-terminal button{padding:3px;}.call-guide{font-size:9px;padding:2px 5px;}
  .shop-open .room-order{font-size:10px;}.shop-open .room-order small{display:none;}.workshop-hotspot b{font-size:9px;}.warehouse-section>header{height:20px;min-height:20px;gap:5px;}.warehouse-section>header strong,.warehouse-section>header button{font-size:9px;}.warehouse-section>header span{font-size:8px;}.incoming-tray header,.negotiation-table header{font-size:9px;top:-15px;}.incoming-tray header small,.negotiation-table header button{font-size:9px;}.surface-hint{font-size:9px;}.warehouse-hint{display:none;}.quiet-window{padding:10px;}.quiet-window strong{font-size:14px;}.quiet-window span{font-size:10px;}
 }

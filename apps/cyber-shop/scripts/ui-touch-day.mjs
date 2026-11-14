@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 /** First-day customer flow using real touch input, without keyboard shortcuts. */
 import {chromium} from 'playwright';
 import fs from 'node:fs/promises';
@@ -6,9 +7,9 @@ const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/
 const browser=await chromium.launch({headless:true});const context=await browser.newContext({viewport:{width:844,height:390},hasTouch:true,isMobile:true});const page=await context.newPage();page.setDefaultTimeout(8000);
 const errors=[];page.on('pageerror',e=>errors.push(e.message));const g=async()=>JSON.parse(await page.evaluate(()=>window.render_game_to_text())).game;
 async function tap(name){const button=page.getByRole('button',{name,exact:true});await button.scrollIntoViewIfNeeded();await button.tap();}
-async function talk(){await tap('继续交谈 空格');const kind=(await g()).visitor.kind;await tap((kind==='repair'?'看看需要修什么':kind==='buyer'?'看看有什么合适的':'看看带来的货')+' 空格');}
+async function talk(){await tap('继续交谈');const kind=(await g()).visitor.kind;await tap((kind==='repair'?'看看需要修什么':kind==='buyer'?'看看有什么合适的':'看看带来的货'));}
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').tap();await tap('跳过引导');
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').tap();await completeIntro(page,true);
  const hit=await page.locator('.call-green-button').evaluate(el=>({width:getComputedStyle(el,'::after').width,height:getComputedStyle(el,'::after').height}));assert(parseFloat(hit.width)>=44&&parseFloat(hit.height)>=44);
  // Tap beside the small drawn lamp, inside its expanded touch target.
  const call=await page.locator('.call-green-button').boundingBox();await page.touchscreen.tap(call.x+call.width/2-17,call.y+call.height/2);

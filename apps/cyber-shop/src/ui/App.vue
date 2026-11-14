@@ -6,6 +6,7 @@ import Workbench from './Workbench.vue';
 import WorkshopBoard from './WorkshopBoard.vue';
 import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
+import ShopTour from './ShopTour.vue';
 import JourneyBoard from './JourneyBoard.vue';
 import DayReport from './DayReport.vue';
 import DeliveryBoard from './DeliveryBoard.vue';
@@ -65,7 +66,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
     </section>
 
     <template v-else>
-      <ShopRoom />
+      <ShopRoom /><ShopTour />
       <p v-if="saveError" class="save-error" role="alert">自动保存失败：{{ saveError }}。可在设置中导出进度。</p>
       <div v-if="modal && modal !== 'trade'" class="modal-backdrop" @click.self="modal = ''">
         <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">

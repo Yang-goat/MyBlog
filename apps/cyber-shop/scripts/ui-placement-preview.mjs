@@ -1,3 +1,4 @@
+import {completeIntro} from './ui-onboarding.mjs';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -26,7 +27,7 @@ const preview=async(zone,valid,width,height)=>{
 };
 const shot=async name=>{await page.waitForTimeout(150);await page.screenshot({path:`${out}/${name}.png`});};
 try {
- await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await page.waitForSelector('.warehouse-item');
+ await page.goto('http://127.0.0.1:4175/cyber-shop/');await page.locator('#start-btn').click();await completeIntro(page);await page.waitForSelector('.warehouse-item');
  const initial=await game(),bottle=initial.items[0].id,chip=initial.items[1].id;
  // A held 1x3 bottle previews the same green footprint in both regions.
  await start(page.locator(`[data-item="${bottle}"]`));await move('warehouse',8,1);

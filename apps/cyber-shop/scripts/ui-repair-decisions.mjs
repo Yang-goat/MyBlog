@@ -63,7 +63,7 @@ async function resolveOrder(id){
  await close();
 }
 try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('input[type=file]').setInputFiles('apps/cyber-shop/evidence/living-shop/archive-career/career-save.json');await page.locator('.shop-plaque').waitFor();
+ await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('input[type=file]').setInputFiles('apps/cyber-shop/evidence/living-shop/archive-career/career-save.json');await page.locator('.journey-open').waitFor();
  // A fourth-operation material saving would mask stock use; perform a real aid repair first if needed.
  if(Object.values((await game()).records.faults).reduce((n,v)=>n+v,0)%4===3){await page.locator('.workshop-hotspot').click();await click('接基础援助维修');await resolveOrder((await game()).orders.at(-1).id);}
  await panel('库存');await page.locator('.item-tile').first().click();await click('撤展并返回货架');await click('送到工作台翻新');await resolveOrder((await game()).orders.find(o=>o.kind==='own').id);

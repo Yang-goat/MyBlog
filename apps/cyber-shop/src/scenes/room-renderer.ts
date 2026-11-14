@@ -75,9 +75,6 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   // Shop beam and retractable metal shutter, separate from the outside street.
   gradient(0,0,W,66,'#172b38','#10212e');line(0,63,W,63,'#486775',3);
   for(let i=0;i<16;i++){screw(i*96+12,18);line(i*96+24,12,i*96+24,46,'#304451');}
-  ctx.save();ctx.shadowColor='#81d5bf';ctx.shadowBlur=13;text('九 街 旧 物',578,43,29,'#b1daca','"Microsoft YaHei UI", sans-serif');ctx.restore();
-  text('N° 09  /  REPAIR & RESALE',35,39,13,'#afbdab');text('雾港 · 往来皆是故事',1175,38,13,'#98aaa0','sans-serif');
-  if(view.owned){rect(843,22,164,24,'#203f39');line(843,46,1007,46,'#bba872');text('永久经营 · 自己的招牌',853,38,12,'#dcc593','sans-serif');}
   gradient(330,67,780,27,'#42535f','#182e39');
   for(let i=0;i<24;i++){const x=333+i*32;rect(x,69,30,19,i%4===0?'#405967':'#2d414e');line(x,69,x,90,'#64798566');}
   line(339,94,1099,94,'#72cbd0',2);glow(355,103,85,'#49c6d52a');glow(1079,103,80,'#b36cdb20');
@@ -104,7 +101,6 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   // The right-hand call terminal has a physical, lit push-button.
   frame(1135,115,271,181);rect(1148,127,245,127,'#102b2c');
   for(let y=130;y<251;y+=4)line(1151,y,1389,y,'#c0e7a805');
-  text('VISITOR CONTROL / 09',1153,280,10,'#a6b39d');
   if(terminal?.complete&&terminal.naturalWidth)ctx.drawImage(terminal,1131,111,278,186);
   // Solder station / tools. Equipment appears as it is bought.
   frame(1135,333,271,137);rect(1150,349,240,88,'#152d2f');
@@ -138,12 +134,9 @@ export function drawRoom(ctx: CanvasRenderingContext2D, width: number, height: n
   frame(323,631,794,260);rect(333,641,774,240,'#102629');
   for(let i=0;i<3;i++){rect(23,661+i*74,278,64,'#30434d');patina(23,661+i*74,278,64);line(25,662+i*74,299,662+i*74,'#5b7b84');rect(118,678+i*74,82,7,'#172e2c');line(121,678+i*74,198,678+i*74,'#9ba382');}
   rect(1137,482,268,158,'#202f2d');for(let i=0;i<8;i++)screw(1150+i*34,488);
-  text('WORK ORDERS',1153,507,10,'#b2ac88');
   for(let row=0;row<3;row++)for(let col=0;col<2;col++){
     const x=1138+col*137,y=665+row*52;gradient(x,y,130,45,'#425963','#233d48');patina(x,y,130,45);line(x,y,x+130,y,'#6c8990');rect(x+44,y+7,42,5,'#1f352f');
   }
-  if(view.repairs>0){text(`RESTORED  ${String(view.repairs).padStart(3,'0')}`,40,868,11,'#b9b89a');}
-  if(view.chapter>=3){text('工造联合会  /  认可工坊',1139,862,12,'#d0bd86','sans-serif');}
   // Restrained neon spill follows physical fixture edges, never the inventory contents.
   const cyan=view.closed?.1:.22;
   glow(320,300,160,`rgba(57,203,221,${cyan})`);glow(1124,285,160,`rgba(174,79,204,${cyan*.55})`);
