@@ -14,6 +14,8 @@ export const skillEffect = (s: GameState, effect: string) => SKILLS.filter(n => 
 export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)));
 export const calibrationTolerance = (s: GameState) => 2 + skillEffect(s, 'calibration') + (ownedEquipment(s, 'calibrationTool') ? 3 : 0);
 export const repairPracticeNeeded = (s: GameState) => skillEffect(s, 'standard') > 0 ? 1 : 3;
+export const operatingFees = (s: GameState) => BALANCE.maintenance + (s.victory ? 0 : BALANCE.rent);
+export const debtClosingChances = (s: GameState) => s.victory ? null : Math.max(0, BALANCE.graceDays + 1 - s.grace);
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
 export const capacity = (s: GameState) => BALANCE.stock + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
 export const displayCapacity = (s: GameState) => Math.min(BALANCE.maxShowcase, BALANCE.showcase + ownedEquipment(s, 'showcase') * 3);
@@ -488,11 +490,11 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'closeDay': {
       if (s.phase !== 'open') return fail('已经闭店。');
       if (s.items.some(i=>i.location==='counter')) return fail('谈判台还有物品，请全部收入仓库后再闭店。');
-      const fees = (s.victory ? 0 : BALANCE.rent) + BALANCE.maintenance; const due = fees + s.debt; const paid = Math.min(s.cash, due); pay(paid, 'daily-fee', `营业维护${s.victory ? '' : '与租金'}，应付 ${due}`); s.debt = due - paid;
+      const fees = operatingFees(s); const due = fees + s.debt; const paid = Math.min(s.cash, due); pay(paid, 'daily-fee', `营业维护${s.victory ? '' : '与租金'}，应付 ${due}`); s.debt = due - paid;
       if (s.debt > 0) s.grace++; else s.grace = 0;
       s.phase = !s.victory && s.grace > BALANCE.graceDays ? 'failed' : 'closed'; s.records.days++; gainXp(s, BALANCE.dayXp);
       if (s.challenge) { if (s.challenge.id === 'exhibition') s.challenge.progress = attraction(s); if (s.challenge.progress >= s.challenge.goal) { earn(s.challenge.reward, 'challenge', '无尽挑战完成'); gainXp(s, 60); say('挑战完成，奖励已结算。'); s.challenge = null; } else if (s.day >= s.challenge.deadline) { say('本次可选挑战到期；经营权与已有藏品均保留。'); s.challenge = null; } }
-      say(s.phase === 'failed' ? '补救期已过，店铺暂停营业。可恢复当日开始备份，或重新开局。' : s.debt ? `闭店：仍欠 ${s.debt}，补救期剩 ${Math.max(0, BALANCE.graceDays - s.grace)} 日。基础维修与清货可以恢复现金。` : `第 ${s.day} 日结算，支出 ${paid}。明天继续。`, 'day'); break;
+      say(s.phase === 'failed' ? '补救期已过，店铺暂停营业。可恢复当日开始备份，或重新开局。' : s.debt ? `闭店：仍欠 ${s.debt}。${s.victory?'永久经营权保留，欠费并入下次维护结算。':`还有 ${debtClosingChances(s)} 次营业日结可补救。`}基础维修与清货可以恢复现金。` : `第 ${s.day} 日结算，支出 ${paid}。明天继续。`, 'day'); break;
     }
     case 'openDay': {
       if (s.phase !== 'closed') return fail('请先闭店结算。'); s.day++; s.hours = BALANCE.hours; s.phase = 'open';

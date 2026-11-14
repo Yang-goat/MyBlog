@@ -1,7 +1,7 @@
 import type { GameState } from './types';
 import { BALANCE } from './balance';
 import { CERTIFICATES, EQUIPMENT, ITEMS, QUESTS, SKILLS } from '../content';
-import { isMaster, questProgress } from './engine';
+import { isMaster, questProgress, operatingFees, debtClosingChances } from './engine';
 
 export const CHAPTERS = [
   { title: '重新开门', story: '林桥把钥匙留给了你。让第一批旧物重新运转，也让这条街记住店门里的灯。', target: 5 },
@@ -10,6 +10,11 @@ export const CHAPTERS = [
   { title: '自己的招牌', story: '停摆的联络中枢还有三个模块需要修复。等信号再次亮起，就把这间店写进自己的未来。', target: 28 },
 ] as const;
 export interface JourneyTask { id: string; title: string; detail: string; current: number; target: number; done: boolean; panel: string; label: string }
+export function financialRecovery(s:GameState){
+ const fees=operatingFees(s),due=fees+s.debt,closingChances=debtClosingChances(s);
+ const deadline=closingChances===null?null:s.day+(s.phase==='closed'?1:0)+Math.max(0,closingChances-1);
+ return {fees,due,shortfall:Math.max(0,due-s.cash),closingChances,deadline};
+}
 export function journey(s: GameState) {
   const task=(id:string,title:string,detail:string,current:number,target:number,panel:string,label:string):JourneyTask=>({id,title,detail,current,target,done:current>=target,panel,label});
   const cert=(id:'industrial'|'neural'|'antique')=>{
@@ -35,6 +40,11 @@ export function journey(s: GameState) {
     ];
     if(s.challenge)tasks.unshift(task('challenge','完成当前街区挑战',`截止第 ${s.challenge.deadline} 日；完成后在闭店时领取 ₡${s.challenge.reward}。`,s.challenge.progress,s.challenge.goal,'journal','查看挑战进度'));
   }
+  if(s.debt>0&&s.phase!=='failed'){
+    const recovery=financialRecovery(s),secured=recovery.shortfall===0,closed=s.phase==='closed';
+    const detail=`下次日结需 ₡${recovery.due}，含欠费 ₡${s.debt} 与当日费用 ₡${recovery.fees}。${recovery.deadline===null?'永久经营权保留，赚够后可在日结补齐。':`请在第 ${recovery.deadline} 日闭店前备足费用。`}基础援助维修可零现金接单。`;
+    tasks.unshift({...task('rescue',secured?'日结补缴欠费':'先补齐经营费用',detail,Math.min(s.cash,recovery.due),recovery.due,closed?'day-report':secured?'close-day':'orders',closed?'迎接下一营业日':secured?'核对费用并日结':'接基础援助维修'),done:false});
+  }
   const ready=QUESTS.filter(q=>questProgress(s,q.id).ready).map(q=>({id:q.id,name:q.name,reward:q.stages[s.questStages[q.id]??0]!.reward}));
   const active=s.orders.filter(o=>!o.delivered);
   const investment=SKILLS.filter(k=>k.tree==='repair'&&s.skills.includes(k.id)).reduce((sum,k)=>sum+k.cost,0);
@@ -48,6 +58,6 @@ export function dayReport(s:GameState) {
   const repairs=entries.filter(e=>e.kind==='repair-income');
   const sales=entries.filter(e=>e.kind==='sale'||e.kind==='clearance');
   const fees=entries.filter(e=>e.kind==='daily-fee').reduce((n,e)=>n-e.amount,0);
-  const pendingFees=s.phase==='open'?BALANCE.maintenance+(s.victory?0:BALANCE.rent)+s.debt:0;
+  const pendingFees=s.phase==='open'?operatingFees(s)+s.debt:0;
   return {income,expenses,net:income-expenses,openingCash:s.cash-income+expenses,closingCash:s.cash,repairs:repairs.length,repairIncome:repairs.reduce((n,e)=>n+e.amount,0),sales:sales.length,saleIncome:sales.reduce((n,e)=>n+e.amount,0),fees,pendingFees,entries};
 }

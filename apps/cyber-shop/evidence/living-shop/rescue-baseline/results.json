@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "failureDay": 4,
+  "notices": [
+    {
+      "day": 1,
+      "notice": "尚欠 ₡85，还有 2 个完整营业日可补救。明天可以接基础援助维修。"
+    },
+    {
+      "day": 2,
+      "notice": "尚欠 ₡170，还有 1 个完整营业日可补救。明天可以接基础援助维修。"
+    },
+    {
+      "day": 3,
+      "notice": "尚欠 ₡255，还有 0 个完整营业日可补救。明天可以接基础援助维修。"
+    }
+  ],
+  "restoredExactDayStart": true,
+  "zeroCashRepairs": 2,
+  "finalDay": 5,
+  "finalCash": 280,
+  "errors": [],
+  "missing": []
+}
