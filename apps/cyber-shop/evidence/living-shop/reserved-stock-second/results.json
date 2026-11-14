@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "deliveryReward": 100,
+      "automaticSelectionSkipped": true,
+      "stagedSelectionRemoved": true,
+      "actualSaleKeptReserved": true,
+      "reloadAndExportImport": true,
+      "threeLayerStorage": true,
+      "releaseAfterTakingOut": true
+    },
+    {
+      "touch": true,
+      "deliveryReward": 100,
+      "automaticSelectionSkipped": true,
+      "stagedSelectionRemoved": true,
+      "actualSaleKeptReserved": true,
+      "reloadAndExportImport": true,
+      "threeLayerStorage": true,
+      "releaseAfterTakingOut": true
+    }
+  ],
+  "errors": []
+}

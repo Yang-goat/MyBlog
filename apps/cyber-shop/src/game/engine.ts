@@ -110,6 +110,7 @@ export const buyerCeiling=(s:GameState,v:Visitor,item:ItemInstance)=>round(itemV
 export function tradeItemProblem(s:GameState,v:Visitor,item:ItemInstance):string{
   if(v.kind==='repair')return '送修物不能交易。';
   if(v.kind==='buyer'){
+    if(item.reserved)return '已留货，请先解除留货。';
     if(item.owner!=='player'||!['stock','counter'].includes(item.location)||s.orders.some(o=>!o.delivered&&o.itemId===item.id))return '这件物品不在待售库存。';
     if(def(item).category!==v.category)return '不属于本次收购品类。';
     if(!itemAccessible(s,item))return '先整理箱包，才能取出这件货。';
@@ -293,6 +294,12 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
   }
   switch (action.type) {
+    case 'reserveItem': {
+      const item=findItem(action.itemId);
+      if(!item||item.owner!=='player'||typeof action.reserved!=='boolean')return fail('只能标记店内自有货物。');
+      if(action.reserved)item.reserved=true;else delete item.reserved;
+      say(action.reserved?'已留货，不会出售、清货或交付订货。':'已解除留货。');break;
+    }
     case 'appointFaction': {
       if(action.factionId===null){delete s.factionAppointment;say('已取消下个营业日的联络预约。');break;}
       const group=faction(action.factionId);if(!group)return fail('没有这条联络路线。');
@@ -630,7 +637,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     }
     case 'withdraw': { const item = findItem(action.itemId); if (!item || item.location !== 'display' || item.owner !== 'player') return fail('找不到展品。'); item.location = 'stock'; say('展品已撤回货架；库存超容量时仍保留物品。', 'display'); break; }
     case 'preserve': { const item=findItem(action.itemId),plan=preservationPlan(s,item);if(!plan.ok||!item)return fail(plan.reason);s.equipment[plan.materialId]!--;s.equipmentCosts[plan.materialId]=(s.equipmentCosts[plan.materialId]??0)-plan.materialCost;item.expiresDay=plan.expiresDay!;item.preservedUntil=item.expiresDay;item.cost+=plan.materialCost;say(`保鲜后有效期延长至第 ${item.expiresDay} 日。`);break; }
-    case 'liquidate': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能清理货架上的自有商品。'); if (def(item).regulated && !s.licenses.includes('regulated-trade')) return fail('受管制商品需要合法交易许可。'); const price = clearanceQuote(s,item); earn(price, 'clearance', `清货${def(item).name}，总成本 ${item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); s.records.trades++; gainXp(s, 2); say(`清货完成，回笼 ${price}。`, 'trade'); break; }
+    case 'liquidate': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能清理货架上的自有商品。'); if(item.reserved)return fail('已留货，请先解除留货。'); if (def(item).regulated && !s.licenses.includes('regulated-trade')) return fail('受管制商品需要合法交易许可。'); const price = clearanceQuote(s,item); earn(price, 'clearance', `清货${def(item).name}，总成本 ${item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); s.records.trades++; gainXp(s, 2); say(`清货完成，回笼 ${price}。`, 'trade'); break; }
     case 'sort': {
       const before=new Set(rootLayout(s,rootCapacity(s)).overflow);
       if (s.phase === 'open' && !spendHours(has(s, 'restock') ? 0 : .5)) return fail('整理需要半点工时，闭店后可免费整理。');
@@ -687,7 +694,7 @@ export function visibleState(s: GameState) {
   const visibleItem = (i: ItemInstance) => {
     const d = def(i); const basic = i.known.includes('basic') || i.known.includes('diagnosed'); const scan = i.known.includes('scan') || i.known.includes('batch'); const serial = i.known.includes('serial');
     return { id: i.id, definitionId: d.id, name: d.name, category: d.category, owner: i.owner, location: i.location, known: i.known,
-      containerId: i.containerId, accessible: itemAccessible(s, i),
+      containerId: i.containerId, accessible: itemAccessible(s, i), reserved: !!i.reserved,
       condition: basic ? i.condition : undefined, estimate: basic ? estimateValue(s, i) : undefined, cost: i.owner === 'player' ? i.cost : undefined,
       capacity: scan && d.category === 'energy' ? i.capacity : undefined, purity: scan && d.category === 'energy' ? i.purity : undefined,
       integrity: scan && d.category === 'data' ? i.integrity : undefined, compatibility: scan && d.category === 'neural' ? i.compatibility : undefined,

@@ -336,3 +336,21 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 `trade-decisions-first` 失败来自测试误点身份标记，打开手记后继续点被遮挡的按钮；改为真实交谈入口后通过，旧失败图和状态保留。`second` / `final` 的实际交易已通过，查看截图后精简重复预览并提高禁用货品文字对比度，最后补查过期信息卡再形成 `verified`。最终桌面、手机、还价、手册、经营权结局和原始 canvas 图已查看，浏览器错误与缺失资源均为 0。
 
 完整职业流程测试用时 77.704 秒是自动化输入耗时，不是人工游玩时长；它只证明修复师流程可达，不代表其他五个职业已实现。该流程之后补充的是过期信息卡显示，最终专项在更新构建上复查通过。本轮没有修改博客内容、导航或站点配置，未重复前阶段 617 页整站构建。仅既有 pnpm 元数据警告及 Git 换行提示。账户已用 42%、剩余 58%，未到剩余 50% 的发布阈值，未推送部署。
+
+## 2026-11-14 主动留货与处置保护
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：25 文件 / 171 项；跨日和存档、单件 / 混合批次 / 旧还价拒绝的原子性、解除后实际出售、订货成本和结款、保鲜 / 整理 / 陈列 / 翻新保留、客户物品、未知信息及旧存档 |
+| `ui-reserved-stock.mjs` | PASS：`reserved-stock-final`，桌面与 844×390 真实触控；自动挑选跳过留货，已选择货物标记后移出清单，实际卖出不带走留货，解除后交付饮水实收 ₡100；重载、导出导入、三层箱包与取出；桌面电钻四向旋转和撤销 |
+| `ui-reserved-controls.mjs` | PASS：`reserved-controls-final`，最小箱包各按钮边界和内容均未溢出，桌面 / 触屏留货及说明滚动通过，标记后收起触屏信息卡 |
+| `ui-handbook.mjs` | PASS：`reserved-stock-handbook`，六章七跨页、翻页、键盘、触控、操作返回；最后按钮简称调整后的说明另由 controls-final 覆盖 |
+| 原始 `web_game_playwright_client.js` | PASS：`reserved-stock-skill-final`，canvas 图和文本已查看；实际 DOM 交互由专项截图覆盖 |
+| `pnpm.cmd --filter @goatyang/cyber-shop build` | PASS：类型检查与最终构建，主包 389.09 KB |
+| `pnpm.cmd --filter @goatyang/cyber-shop validate` | PASS：73 基础资源、13 补充资源及 3 内容测试 |
+| `node scripts/check-independent-apps.mjs` / `node scripts/validate-content-structure.mjs` | PASS：两独立应用资源与 79,254 本地引用 |
+| 两份脚本语法 / `git diff --check` | PASS |
+
+首次规则测试因夹具对已经离开的维修客户重复 reject 失败，修正夹具操作顺序后通过。`reserved-stock-first` 脚本多前进一位客人，向数据买家查找电子货物超时；队列步数修正后 second 和 final 通过，失败证据保留。截图检查推动的额外修改包括：等账本淡入完成再截图、箱包标记后收起信息卡、最小箱包按钮单行显示。最后一项之后重跑 controls 和原始客户端，未重复全部交易流程。
+
+箱包使用 `ledger-final/nested-save.json` 的真实 UI 导出存档，经设置页导入；新流程也通过界面导出与导入，未注入状态。最终仓库 / 谈判台标记、交易限制、四向异形旋转、手机账本、箱包按钮与手册截图均已查看。浏览器错误为 0。本轮没有修改物品造型、占格或默认 144 格仓库，未改博客内容或站点配置；未重复此前 617 页整站构建和上一阶段完整修复师通关。既有 pnpm 元数据警告与 Git 换行提示保留。账户剩余 57%，尚未推送部署。

@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "touch": false,
+      "buttons": [
+        {
+          "text": "↶",
+          "x": 774.21875,
+          "y": 884.6875,
+          "width": 20.09375,
+          "height": 24,
+          "clientWidth": 18,
+          "scrollWidth": 18
+        },
+        {
+          "text": "旋转",
+          "x": 798.3125,
+          "y": 884.6875,
+          "width": 32,
+          "height": 24,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "放入",
+          "x": 834.3125,
+          "y": 884.6875,
+          "width": 32,
+          "height": 24,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "取出",
+          "x": 870.3125,
+          "y": 884.6875,
+          "width": 32,
+          "height": 24,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "留货",
+          "x": 906.3125,
+          "y": 884.6875,
+          "width": 32,
+          "height": 24,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "×",
+          "x": 942.3125,
+          "y": 884.6875,
+          "width": 19.421875,
+          "height": 24,
+          "clientWidth": 17,
+          "scrollWidth": 17
+        }
+      ],
+      "handbook": true,
+      "markClosesTouchInfo": true
+    },
+    {
+      "touch": true,
+      "buttons": [
+        {
+          "text": "↶",
+          "x": 453.71875,
+          "y": 254.203125,
+          "width": 20.09375,
+          "height": 30,
+          "clientWidth": 18,
+          "scrollWidth": 18
+        },
+        {
+          "text": "旋转",
+          "x": 477.8125,
+          "y": 254.203125,
+          "width": 32,
+          "height": 30,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "放入",
+          "x": 513.8125,
+          "y": 254.203125,
+          "width": 32,
+          "height": 30,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "取出",
+          "x": 549.8125,
+          "y": 254.203125,
+          "width": 32,
+          "height": 30,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "留货",
+          "x": 585.8125,
+          "y": 254.203125,
+          "width": 32,
+          "height": 30,
+          "clientWidth": 30,
+          "scrollWidth": 30
+        },
+        {
+          "text": "×",
+          "x": 621.8125,
+          "y": 254.203125,
+          "width": 19.421875,
+          "height": 30,
+          "clientWidth": 17,
+          "scrollWidth": 17
+        }
+      ],
+      "handbook": true,
+      "markClosesTouchInfo": true
+    }
+  ],
+  "errors": []
+}

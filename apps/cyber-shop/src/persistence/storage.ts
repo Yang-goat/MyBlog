@@ -62,6 +62,7 @@ export function validateState(value: unknown): asserts value is GameState {
   for(const key of ['deliveries','deliveryIncome'] as const)if(s.records[key]!==undefined)check(integer(s.records[key]),'订货累计记录无效。');
   const validateItem = (i: ItemInstance) => {
     check(object(i) && typeof i.id === 'string' && ITEMS.some(d => d.id === i.definitionId), '物品模板无效。');
+    if(i.reserved!==undefined)check(typeof i.reserved==='boolean'&&(!i.reserved||i.owner==='player'),'物品留货标记无效。');
     check(['player', 'customer'].includes(i.owner) && ['stock', 'display', 'workshop', 'counter'].includes(i.location), '物品归属或位置无效。');
     if (i.grid !== undefined) check(object(i.grid) && integer(i.grid.x) && integer(i.grid.y) && validRotation(i.grid.rotated), '仓库坐标无效。');
     if (i.counterGrid !== undefined) check(object(i.counterGrid) && integer(i.counterGrid.x) && integer(i.counterGrid.y) && validRotation(i.counterGrid.rotated), '谈判台坐标无效。');

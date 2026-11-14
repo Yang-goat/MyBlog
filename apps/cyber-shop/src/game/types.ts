@@ -13,6 +13,7 @@ export interface ItemDefinition {
 }
 export interface FaultDefinition { id: string; name: string; symptom: string; operation: Operation; module: string; target: number; material: string; hours: number; certificate: CertificateId }
 export interface ItemInstance {
+  reserved?: boolean;
   id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
   containerId?: string;
   grid?: { x: number; y: number; rotated: Rotation };
@@ -72,6 +73,7 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type:'reserveItem'; itemId:string; reserved:boolean }
  | { type:'appointFaction'; factionId:FactionId|null }
  | { type: 'acceptDelivery'; jobId: string }
  | { type: 'deliverGoods'; jobId: string; itemIds: string[] }

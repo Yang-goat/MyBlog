@@ -26,4 +26,4 @@ export function stageTrade(id:string,desired?:Placement){
  if(!tradeIds.value.includes(id))tradeIds.value.push(id);tradePlaces.value[id]=at;return true;
 }
 watch(()=>currentGuest.value?.id,clearTrade);
-watch(state,()=>{for(const id of [...tradeIds.value]){const i=tradeItem(id);if(!i||(i.location==='counter'&&currentGuest.value?.kind!=='buyer')||(currentGuest.value?.kind==='buyer'&&i.location!=='counter')||currentGuest.value?.resolved)removeTrade(id);}});
+watch(state,()=>{for(const id of [...tradeIds.value]){const i=tradeItem(id);if(!i||i.reserved||(i.location==='counter'&&currentGuest.value?.kind!=='buyer')||(currentGuest.value?.kind==='buyer'&&i.location!=='counter')||currentGuest.value?.resolved)removeTrade(id);}});

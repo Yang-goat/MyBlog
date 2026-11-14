@@ -1,7 +1,7 @@
 import {ITEMS,CATEGORIES} from '../content';
 import {containerTrail,containerName} from './containers';
 import type {GameState,ItemInstance} from './types';
-export type StockStatus='all'|'stored'|'aged'|'unchecked'|'expiring';
+export type StockStatus='all'|'stored'|'reserved'|'aged'|'unchecked'|'expiring';
 export type StockOrder='oldest'|'newest'|'cost';
 export interface StockFilter {query?:string;category?:string;status?:StockStatus;order?:StockOrder}
 export const heldDays=(s:GameState,i:ItemInstance)=>Math.max(0,s.day-i.acquiredDay);
@@ -19,7 +19,8 @@ export function stockEntries(s:GameState,filter:StockFilter={}){
   const d=ITEMS.find(d=>d.id===i.definitionId)!;
   if(filter.category&&filter.category!=='all'&&d.category!==filter.category)return false;
   const stored=i.location==='stock'||i.location==='counter';
-  if(filter.status==='stored'&&!stored)return false;
+  if(filter.status==='stored'&&(!stored||i.reserved))return false;
+  if(filter.status==='reserved'&&!i.reserved)return false;
   if(filter.status==='aged'&&(!stored||heldDays(s,i)<3))return false;
   if(filter.status==='unchecked'&&i.known.includes('basic'))return false;
   if(filter.status==='expiring'&&(!stored||!i.known.includes('basic')||i.expiresDay===null||i.expiresDay>s.day+1))return false;
