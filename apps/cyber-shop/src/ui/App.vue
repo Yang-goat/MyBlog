@@ -60,7 +60,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
       <ShopRoom />
       <p v-if="saveError" class="save-error" role="alert">自动保存失败：{{ saveError }}。可在设置中导出进度。</p>
       <div v-if="modal && modal !== 'trade'" class="modal-backdrop" @click.self="modal = ''">
-        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
+        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
           <div class="dialog-toolbar"><button class="modal-close" aria-label="关闭面板" @click="modal = ''">×</button></div>
           <Workbench v-if="modal === 'workbench'" />
           <JourneyBoard v-else-if="modal === 'journey'" />

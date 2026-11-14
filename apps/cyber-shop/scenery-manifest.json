@@ -91,6 +91,37 @@
       "path": "scenery/parts-organizer.webp",
       "source": "docs/art-revisions/living-shop/parts-organizer.png",
       "alpha": true
+    },
+    {
+      "id": "manager-handbook",
+      "generation": "exec-1b7af769-7557-4dd6-9b1b-0bcb3c117792",
+      "tool": "image_gen",
+      "role": "Physical cyberpunk shopkeeper handbook placed in the warehouse utility shelf.",
+      "prompt": "Use case: stylized-concept. Create ONE production game inventory prop, a closed physical paper shopkeeper handbook for an original cyberpunk second-hand shop. Fully isolated on a genuinely transparent background. Portrait 4:5 composition, entire book visible with a small transparent margin. Near frontal top-down view, slight 10 degree rotation and just enough perspective to see the cream paper block at the bottom and right, readable strong silhouette at 80px. Deep petrol-black woven polymer hard cover, stitched reinforced spine, scratched brushed gunmetal corner guards, a slim cyan illuminated identification strip embedded at the left edge and tiny magenta inspection sticker. This is worn practical low-life high-tech equipment, NOT steampunk, no brass, no gears, no fantasy runes, not a tablet. Cover title only the exact four Chinese characters '店长手册' in large subtly embossed warm ivory sans serif, two neat rows, and a small original geometric shop-key emblem beneath. Material realism, hand-painted high-end game concept illustration, crisp edges, no pixel art, no photographic background. Cool cyan edge light and subtle warm neutral top light. No hands, desk, loose objects, surrounding environment, cast shadow outside the silhouette, watermark or extra text. One closed book only.",
+      "path": "scenery/manager-handbook.webp",
+      "source": "docs/art-revisions/living-shop/manager-handbook.png",
+      "width": 512,
+      "height": 640,
+      "alpha": true,
+      "bytes": 132098,
+      "sha256": "6beeaab548bda144d860171dd1c3e646595e5ac5d3451687c7604120d9713e5e",
+      "sourceSha256": "4ce79c190cbcd0b1360a3afccfd52ee3d1c179d001cdb113ac59ef2d11a63646"
+    },
+    {
+      "id": "handbook-spread",
+      "generation": "exec-59459d03-cee4-4931-899d-ffc3d6b020f1",
+      "tool": "image_gen",
+      "role": "Blank open handbook body, with live accessible typography and page turning layered above.",
+      "prompt": "Use case: stylized-concept. Reference image is STYLE REFERENCE ONLY: the cyberpunk shopkeeper handbook cover, not an edit target. Generate a new separate production game UI art asset showing this same physical book OPEN FLAT to a completely BLANK two-page spread. Entire open book isolated on a genuinely transparent background. Wide landscape canvas, approximately 3:2; book almost fills canvas with 3 percent transparent margins. Camera directly overhead, no perspective tilt, no rotation. Left and right page boundaries rectangular and symmetrical, center fold exactly at horizontal midpoint. Cream-grey lightly aged paper, very subtle fibers and slight edge wear, ample clean LIGHT blank page areas for dark live HTML text to be overlaid: no printed text, no diagrams, no stamps, no lines, no page numbers. A thin visible border of the dark petrol-black polymer cover and gunmetal corner guards beneath the paper, matching the reference; subtle cyan strip along the outer left cover edge, one small magenta ribbon bookmark at upper right. Narrow gentle gutter shadow, layered page edges at the bottom, restrained dimensional realism. Page centers must stay uniformly light and unobstructed. High quality hand-painted realistic game prop, cyberpunk low-life high-tech styling, no brass and no gears. Not a screenshot, no UI buttons, no hands, tabletop, environment, pencils or additional objects. Real alpha transparency outside the silhouette. This asset is the static body of an interactive flipping paper manual; all typography and page-turn animation will be rendered separately in the game.",
+      "referenceGeneration": "exec-1b7af769-7557-4dd6-9b1b-0bcb3c117792",
+      "path": "scenery/handbook-spread.webp",
+      "source": "docs/art-revisions/living-shop/handbook-spread.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 245090,
+      "sha256": "db07376f808bc53aae38c1712cdc96ffca864fc9844024da05c857022afd5e15",
+      "sourceSha256": "158d15b06dd731d8edb6fc616e4e0031793376e228aa05bcdf9f826abff75639"
     }
   ]
 }

@@ -1,20 +1,2 @@
-import {chromium} from 'playwright';
-import fs from 'node:fs/promises';
-import assert from 'node:assert/strict';
-const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/guide';await fs.mkdir(out,{recursive:true});
-const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:960}});page.setDefaultTimeout(8000);
-const errors=[],missing=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
-const read=async()=>JSON.parse(await page.evaluate(()=>window.render_game_to_text())),game=async()=>(await read()).game;
-const click=(name,exact=true)=>page.getByRole('button',{name,exact}).click();
-const shot=async name=>{await page.waitForTimeout(100);await page.screenshot({path:`${out}/${name}.png`});};
-async function focusLoop(){const dialog=page.getByRole('dialog');const buttons=dialog.locator('button:not(:disabled),input:not(:disabled),summary').filter({visible:true});await buttons.first().focus();await page.keyboard.press('Shift+Tab');assert(await buttons.last().evaluate(el=>document.activeElement===el));await page.keyboard.press('Tab');assert(await buttons.first().evaluate(el=>document.activeElement===el));}
-try{
- await page.goto(process.env.CYBER_URL||'http://127.0.0.1:4176/cyber-shop/');await page.locator('#start-btn').click();assert(await page.locator('.mentor-note').isVisible());await click('跳过引导');assert.equal(await page.locator('.call-guide').count(),0);assert.equal(await page.locator('.warehouse-hint').count(),0);
- const initial=await game();await click('操作指引');await focusLoop();
- for(const title of ['开门营业','检查与议价','检测与维修','库存与收藏','街坊与成长','保存与补救']){await click(title);await page.waitForFunction(()=>{const el=document.querySelector('.guide-page img');return el?.complete&&el.naturalWidth>0;});assert.equal(await page.locator('.guide-page article section').count(),3);}
- assert.deepEqual(await game(),initial);await click('检查与议价');await shot('trade-guide');await page.setViewportSize({width:844,height:390});await page.locator('.game-guide footer').scrollIntoViewIfNeeded();await shot('guide-844');assert(await page.locator('.notebook').evaluate(el=>el.scrollWidth<=el.clientWidth+1));await page.keyboard.press('Escape');await page.setViewportSize({width:1440,height:960});
- await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');await click('查看维修委托 →');await click('接下维修 →');const repair=await game(),order=(await read()).selectedOrder;assert.equal(await page.locator('.bench-tutorial').count(),0);await click('维修教程 ?');assert.equal(await page.locator('.game-guide nav button[aria-pressed=true]').innerText(),'检测与维修');await click('返回操作 →');assert.equal((await read()).panel,'workbench');assert.equal((await read()).selectedOrder,order);assert.deepEqual(await game(),repair);await shot('lean-workbench');await click('关闭面板');
- await click('绿色叫号按钮');await page.keyboard.press('Space');await page.keyboard.press('Space');await click('把来货放上台 →');const basket=await page.locator('.trade-lot.chosen').count(),before=await game();assert.equal(await page.locator('.trade-hint').count(),0);assert.equal(await page.locator('.trade-dialog .dialogue').count(),0);await click('交易教程 ?');assert.equal(await page.locator('.game-guide nav button[aria-pressed=true]').innerText(),'检查与议价');await click('返回操作 →');assert.equal((await read()).panel,'trade');assert.equal(await page.locator('.trade-lot.chosen').count(),basket);assert.deepEqual(await game(),before);await shot('lean-trade');await click('关闭谈判');
- await click('操作指引');await click('开门营业');await click('重走开店引导');assert.equal((await game()).tutorial.step,0);assert.equal((await game()).tutorial.skipped,false);assert(await page.locator('.mentor-note').isVisible());await shot('tutorial-restored');
- assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,chapters:6,contextReturn:true,noEconomyChange:true,selectionPreserved:true,normalPlayHintsHidden:true,tutorialRestart:true,keyboardLoop:true,landscape:true,errors,missing},null,2));console.log('GUIDE_PASS');
-}catch(e){await shot('failure').catch(()=>{});await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(e),state:await read().catch(()=>null),errors,missing},null,2));throw e;}finally{await browser.close();}
+// Compatibility entry: the tutorial is now the physical manager handbook.
+import './ui-handbook.mjs';
