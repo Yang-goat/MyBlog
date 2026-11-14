@@ -110,7 +110,7 @@ describe('late-game and material accounting', () => {
     const template = structuredClone(s.items[0]!);
     for (let n = 0; n < 2; n++) {
       const item = { ...structuredClone(template), id: `rare-fixture-${n}`, definitionId: 'catalyst-core', owner: 'player' as const, location: 'stock' as const, authentic: true, faults: [] }; s.items.push(item);
-      const visitor = s.visitors[s.visitorIndex]!; visitor.kind = 'buyer'; visitor.category = 'energy'; visitor.limit = 15000; visitor.resolved = false;
+      const visitor = s.visitors[s.visitorIndex]!; visitor.kind = 'buyer'; visitor.category = 'energy'; visitor.limit = 15000; visitor.budget = 10000; visitor.resolved = false;
       s = act(s, { type: 'acceptTrade', visitorId: visitor.id, itemId: item.id }); expect(s.challenge!.progress).toBe(n + 1); expect(applyAction(s, { type: 'acceptTrade', visitorId: visitor.id, itemId: item.id }).ok).toBe(false);
       if (n === 0) s = act(s, { type: 'nextVisitor' });
     }

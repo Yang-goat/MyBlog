@@ -9,6 +9,8 @@ import { version } from '../../package.json';
 export const state = shallowRef<GameState>(createGame(20261105));
 export const started = ref(false);
 export const modal = ref('');
+export const guideTopic=ref('shop'),guideReturn=ref('');
+export function openGuide(topic='shop'){guideReturn.value=modal.value==='help'?guideReturn.value:modal.value;guideTopic.value=topic;modal.value='help';}
 export const toast = ref('');
 export const saveError = ref('');
 const backupError = ref('');

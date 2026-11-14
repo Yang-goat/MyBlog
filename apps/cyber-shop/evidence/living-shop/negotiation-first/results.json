@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "sellerCounter": {
+    "itemIds": [
+      "item-6",
+      "item-7",
+      "item-8"
+    ],
+    "offered": 1,
+    "quote": 412,
+    "round": 1,
+    "status": "counter"
+  },
+  "buyerCounter": {
+    "itemIds": [
+      "item-2"
+    ],
+    "offered": 99999,
+    "quote": 104,
+    "round": 1,
+    "status": "counter"
+  },
+  "purchaseReceipt": {
+    "kind": "buy",
+    "amount": 412,
+    "cost": 412,
+    "goods": [
+      {
+        "definitionId": "portable-terminal",
+        "itemId": "item-6",
+        "cost": 125
+      },
+      {
+        "definitionId": "air-circulator",
+        "itemId": "item-7",
+        "cost": 186
+      },
+      {
+        "definitionId": "portable-terminal",
+        "itemId": "item-8",
+        "cost": 101
+      }
+    ]
+  },
+  "saleReceipt": {
+    "kind": "sell",
+    "amount": 104,
+    "cost": 60,
+    "goods": [
+      {
+        "definitionId": "data-chip",
+        "itemId": "item-2",
+        "cost": 60
+      }
+    ]
+  },
+  "reload": true,
+  "changedBasketBlocked": true,
+  "patienceWalkAway": true,
+  "touchAcceptance": true,
+  "errors": [],
+  "missing": []
+}

@@ -3,6 +3,7 @@ import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { warehouseLayout, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
 import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
+import { allocateQuote } from './negotiation';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
@@ -80,7 +81,7 @@ export function tradeQuote(s: GameState, visitor: Visitor, item?: ItemInstance) 
   if (!item) return visitor.quote;
   const loyalty = s.met.includes(visitor.characterId) ? skillEffect(s, 'loyalty') : 0;
   const proposed = round(itemValue(s, item) * (BALANCE.buyerFactor + loyalty + Math.min(.18, attraction(s) / 400)));
-  return Math.min(proposed, round(itemValue(s, item) * visitor.limit / 10000));
+  return Math.min(visitor.buyerQuotes?.[item.id]??proposed, round(itemValue(s, item) * visitor.limit / 10000));
 }
 function createItem(s: GameState, d: ItemDefinition, owner: ItemInstance['owner'] = 'player', forceFaults?: string[]): ItemInstance {
   const compatibleFaults = d.certificate ? FAULTS.filter(f => f.certificate === d.certificate) : [];
@@ -193,6 +194,36 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   const orderItem = (id: string) => { const order = s.orders.find(o => o.id === id && !o.delivered); return { order, item: order ? findItem(order.itemId) : undefined }; };
   const activeOrder = (itemId: string) => s.orders.some(o => o.itemId === itemId && !o.delivered);
   const canRepair = (item: ItemInstance) => { const d = def(item); return d.certificate && s.certificates.includes(d.certificate); };
+  const counterOffer=(v:Visitor,goods:ItemInstance[],offered:number,bulk=1)=>{
+    v.rounds++;
+    let quote=Math.round(goods.reduce((n,i)=>n+tradeQuote(s,v,i),0)*bulk);
+    let reason:'price'|'budget'|'far'='price';
+    if(v.rounds<v.patience){
+      if(v.kind==='seller'){
+        if(v.goods&&!v.priceTags)v.priceTags=Object.fromEntries(v.goods.map(i=>[i.id,{ask:v.quote,minimum:v.limit}]));
+        const floor=Math.round(goods.reduce((n,i)=>n+(v.priceTags?.[i.id]?.minimum??v.limit),0)*bulk);
+        if(offered<floor*.6)reason='far';
+        else for(const item of goods){const minimum=v.priceTags?.[item.id]?.minimum??v.limit;const ask=Math.max(minimum,Math.round((tradeQuote(s,v,item)+minimum)/2));if(v.priceTags?.[item.id])v.priceTags[item.id]!.ask=ask;else v.quote=ask;}
+        if(v.item&&v.priceTags?.[v.item.id])v.quote=v.priceTags[v.item.id]!.ask;
+        quote=Math.round(goods.reduce((n,i)=>n+tradeQuote(s,v,i),0)*bulk);
+      }else{
+        const ceilings=goods.map(i=>Math.max(1,round(itemValue(s,i)*v.limit/10000)));
+        const ceiling=ceilings.reduce((n,c)=>n+c,0),budget=v.budget??Math.max(400,v.quote*4),maximum=Math.min(ceiling,budget);
+        if(quote>maximum){quote=maximum;reason=budget<ceiling?'budget':'price';}
+        else if(offered>ceiling*1.6)reason='far';
+        else quote=Math.min(maximum,Math.ceil((quote+maximum)/2));
+        const prices=allocateQuote(quote,ceilings);v.buyerQuotes??={};goods.forEach((item,index)=>{v.buyerQuotes![item.id]=prices[index]!;});
+      }
+    }
+    const closed=v.rounds>=v.patience;
+    v.negotiation={itemIds:goods.map(i=>i.id),offered,quote,round:v.rounds,status:closed?'closed':'counter',reason};
+    if(closed){finishVisitor(v);say('这次没有谈妥，客人告辞了。现金和货物保留。');}
+    else say(`${reason==='far'?'报价相差太远，客人维持当前价':reason==='budget'?'买家按剩余预算还价':v.kind==='seller'?'卖家让价':'买家还价'}：这 ${goods.length} 件共 ₡${quote}。还可议价 ${v.patience-v.rounds} 次。`);
+  };
+  const tradeReceipt=(v:Visitor,goods:ItemInstance[],amount:number)=>{
+    v.lastTrade={kind:v.kind==='seller'?'buy':'sell',amount,cost:v.kind==='seller'?amount:goods.reduce((n,i)=>n+i.cost,0),goods:goods.map(i=>({definitionId:i.definitionId,itemId:i.id,cost:i.cost}))};
+    delete v.negotiation;
+  };
   const makeOrder = (item: ItemInstance, kind: RepairOrder['kind'], characterId: string, extra: Partial<RepairOrder> = {}) => {
     const c = def(item).certificate;
     const base = c === 'antique' ? BALANCE.antiqueRepairReward : c === 'neural' ? BALANCE.neuralRepairReward : c === 'industrial' ? BALANCE.advancedRepairReward : BALANCE.basicRepairReward;
@@ -256,8 +287,10 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (!Number.isSafeInteger(offered) || offered <= 0) return fail('报价必须是正整数。');
       const floor=Math.round(goods.reduce((n,i)=>n+(v.priceTags?.[i.id]?.minimum??v.limit),0)*bulk);
       const ceiling=goods.reduce((n,i)=>n+Math.round(itemValue(s,i)*v.limit/10000),0);
-      if (v.kind === 'seller' ? offered < floor : offered > ceiling) {
-        v.rounds++; say(`这批报价不合适。还可以谈 ${Math.max(0,v.patience-v.rounds)} 轮。`); if(v.rounds>=v.patience) finishVisitor(v); break;
+      const buyerBudget=v.budget??Math.max(400,v.quote*4);
+      if(v.kind==='buyer'&&(buyerBudget<goods.length||(action.amount===undefined&&offered>buyerBudget)))return fail(`买家剩余预算只有 ${buyerBudget}，请减少售出数量。`);
+      if (v.kind === 'seller' ? offered < floor : offered > ceiling || offered > buyerBudget) {
+        counterOffer(v,goods,offered,bulk);break;
       }
       if (v.kind === 'seller') {
         if (s.cash < offered) return fail('现金不足，减少本次购入数量。');
@@ -277,11 +310,12 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       } else {
         const budget=v.budget ?? Math.max(400,v.quote*4);if(offered>budget)return fail(`买家剩余预算只有 ${budget}，请减少售出数量。`);
         v.budget=budget-offered;let remaining=offered;
-        goods.forEach((i,index)=>{const value=index===goods.length-1?remaining:Math.floor(offered*prices[index]!/prices.reduce((a,b)=>a+b,0));remaining-=value;earn(value,'sale',`售出${def(i).name}`,i.id);});
+        goods.forEach((i,index)=>{const value=index===goods.length-1?remaining:Math.floor(offered*prices[index]!/prices.reduce((a,b)=>a+b,0));remaining-=value;earn(value,'sale',`售出${def(i).name}，累计成本 ${i.cost}，货款差额 ${value-i.cost}`,i.id);});
         if(s.challenge?.id==='rare-trade')s.challenge.progress+=goods.filter(i=>def(i).rarity>=3&&i.authentic).length;
         s.items=s.items.filter(i=>!action.itemIds.includes(i.id));if(v.budget<=0)finishVisitor(v);
       }
       s.records.trades+=goods.length;gainXp(s,BALANCE.tradeXp*goods.length);s.reputation++;
+      tradeReceipt(v,goods,offered);if(v.kind==='seller')v.lastTrade!.goods=goods.map(i=>({definitionId:i.definitionId,itemId:i.id,cost:s.items.find(owned=>owned.id===i.id)!.cost}));
       say(`${v.kind==='seller'?'购入':'售出'} ${goods.length} 件，共 ₡${offered}${bulk<1?'，已享批发九折':''}。${v.kind==='seller'?'已购货物留在谈判台，继续选货或先入库。':'可以继续分批出售，或结束接待。'}`,'trade');break;
     }
     case 'moveCounter': {
@@ -349,8 +383,10 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       // The buyer's willingness multiplier was fixed on arrival; selecting another item only changes its objective value.
       const maxBuyer = round(itemValue(s, item) * v.limit / 10000);
       const minimum = v.priceTags?.[item.id]?.minimum ?? v.limit;
-      const accepted = v.kind === 'seller' ? offered >= minimum : offered <= maxBuyer;
-      if (!accepted) { v.rounds++; v.quote = v.kind === 'seller' ? Math.max(minimum, Math.round((tradeQuote(s,v,item) + minimum) / 2)) : Math.min(maxBuyer, Math.round((offered + maxBuyer) / 2)); if(v.kind==='seller'&&v.priceTags?.[item.id])v.priceTags[item.id]!.ask=v.quote; say(v.rounds >= v.patience ? '客户不再接受议价，结束了这笔交易。' : v.kind === 'seller' ? `价格太低。卖家愿意退到 ${v.quote}，还可以谈 ${v.patience - v.rounds} 轮。` : `超过我的预算。我的建议是 ${v.quote}，还可以谈 ${v.patience - v.rounds} 轮。`); if (v.rounds >= v.patience) finishVisitor(v); break; }
+      const buyerBudget=v.budget??Math.max(400,v.quote*4);
+      if(v.kind==='buyer'&&(buyerBudget<1||(action.type==='acceptTrade'&&offered>buyerBudget)))return fail(`买家剩余预算只有 ${buyerBudget}。`);
+      const accepted = v.kind === 'seller' ? offered >= minimum : offered <= maxBuyer&&offered<=buyerBudget;
+      if (!accepted) {counterOffer(v,[item],offered);break;}
       if (v.kind === 'seller') {
         if (s.cash < offered) return fail('自由现金不足；客户预付款不能用于收货。');
         if (stockUsage(s) + d.size > capacity(s)) return fail('库存容量不足，请卖出、清货或扩建库存架。');
@@ -361,10 +397,11 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         if (!s.discovered.includes(d.id)) s.discovered.push(d.id);
         say(`以 ${offered} 买下${d.name}。货物在谈判台上，请拖入仓库。`, 'trade');
       } else {
+        v.budget=buyerBudget-offered;
         earn(offered, 'sale', `卖出${d.name}，总成本 ${item.cost}，毛利 ${offered - item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); say(`${d.name}成交 ${offered}；账面毛利 ${offered - item.cost}。`, 'trade');
         if (s.challenge?.id === 'rare-trade' && d.rarity >= 3 && item.authentic) s.challenge.progress++;
       }
-      s.records.trades++; gainXp(s, BALANCE.tradeXp); s.reputation++; finishVisitor(v); break;
+      tradeReceipt(v,[item],offered);s.records.trades++; gainXp(s, BALANCE.tradeXp); s.reputation++; finishVisitor(v); break;
     }
     case 'reject': { const v = currentVisitor(action.visitorId); if (!v) return fail('该客户已离开。'); finishVisitor(v); say('礼貌谢绝，保留工时和现金。'); break; }
     case 'callVisitor': {
@@ -562,7 +599,7 @@ export function visibleState(s: GameState) {
     xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
     stockUsage: stockUsage(s), capacity: capacity(s), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: warehouseLayout(s.items, capacity(s)), tutorial: s.tutorial, conversations: s.conversations,
-    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
+    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
     eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),

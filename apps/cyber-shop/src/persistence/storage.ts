@@ -76,6 +76,17 @@ export function validateState(value: unknown): asserts value is GameState {
     if(v.goods !== undefined) { check(Array.isArray(v.goods) && v.goods.length <= 100 && new Set(v.goods.map(i=>i.id)).size === v.goods.length,'卖家货品列表无效。');v.goods.forEach(validateItem); }
     if(v.priceTags !== undefined) check(v.kind==='seller' && object(v.priceTags) && Array.isArray(v.goods) && Object.keys(v.priceTags).length===v.goods.length && v.goods.every(i=>{const tag=v.priceTags![i.id];return object(tag)&&integer(tag.ask)&&tag.ask>0&&integer(tag.minimum)&&tag.minimum>0&&tag.minimum<=tag.ask;}),'卖家逐件价签无效。');
     if(v.budget !== undefined) check(integer(v.budget),'买家预算无效。');
+    if(v.buyerQuotes!==undefined)check(v.kind==='buyer'&&object(v.buyerQuotes)&&Object.values(v.buyerQuotes).every(q=>integer(q)&&q>0),'买家逐件还价无效。');
+    if(v.negotiation!==undefined){
+      const reply=v.negotiation;check(object(reply)&&v.kind!=='repair'&&strings(reply.itemIds)&&reply.itemIds.length>0&&integer(reply.offered)&&reply.offered>0&&integer(reply.quote)&&reply.quote>0,'议价往来无效。');
+      check(integer(reply.round)&&reply.round>=1&&reply.round===v.rounds&&['counter','closed'].includes(reply.status),'议价轮次无效。');
+      if(reply.reason!==undefined)check(['price','budget','far'].includes(reply.reason),'还价说明无效。');
+    }
+    if(v.lastTrade!==undefined){
+      const receipt=v.lastTrade;check(object(receipt)&&receipt.kind===(v.kind==='seller'?'buy':v.kind==='buyer'?'sell':'')&&integer(receipt.amount)&&receipt.amount>0&&integer(receipt.cost),'成交回执无效。');
+      check(Array.isArray(receipt.goods)&&receipt.goods.length>0&&receipt.goods.every(g=>object(g)&&typeof g.itemId==='string'&&ITEMS.some(d=>d.id===g.definitionId)&&integer(g.cost)),'成交货品记录无效。');
+      check(new Set(receipt.goods.map(g=>g.itemId)).size===receipt.goods.length&&receipt.goods.reduce((n,g)=>n+g.cost,0)===receipt.cost,'成交成本记录不一致。');
+    }
   }
   check(Array.isArray(s.orders), '维修工单无效。');
   const activeItems = new Set<string>();

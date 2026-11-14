@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "chapters": 6,
+  "contextReturn": true,
+  "noEconomyChange": true,
+  "selectionPreserved": true,
+  "normalPlayHintsHidden": true,
+  "tutorialRestart": true,
+  "keyboardLoop": true,
+  "landscape": true,
+  "errors": [],
+  "missing": []
+}

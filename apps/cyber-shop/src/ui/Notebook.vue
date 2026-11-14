@@ -6,6 +6,7 @@ import { state, modal, selectedItem, selectedOrder, dispatch, downloadSave, uplo
 import type { CategoryId } from '../game/types';
 import Art from './Art.vue';
 import EquipmentShop from './EquipmentShop.vue';
+import GameGuide from './GameGuide.vue';
 import ItemKnowledge from './ItemKnowledge.vue';
 import DistrictQuest from './DistrictQuest.vue';
 import DistrictEvent from './DistrictEvent.vue';
@@ -69,6 +70,6 @@ function finalOrder() { if (dispatch({ type: 'startFinal' })) { selectedOrder.va
       <div class="panel-heading"><p class="eyebrow">SETTINGS / 歇一会儿也好</p><h2>存档与设置</h2><p>每次经营操作自动保存。本机与正式域名存储独立，使用导出、导入迁移。</p></div><div class="settings-layout"><section><h3>保存进度</h3><div class="vertical-actions"><button @click="downloadSave">导出当前存档</button><label class="file-button">导入存档<input type="file" accept=".json,application/json" @change="uploadSave(($event.target as HTMLInputElement).files?.[0])" /></label><button @click="restore">恢复营业日开始备份</button><button @click="started = false; modal = ''; inspectSave()">保存并返回标题</button></div><p class="small muted">导入前会校验版本与数据。存档格式 v{{ state.version }} · 内容 {{ state.contentVersion }} · 数值 {{ state.balanceVersion }}</p></section><section><h3>声音与显示</h3><label class="check-row"><input v-model="muted" type="checkbox" /> 静音</label><label class="check-row"><input v-model="ambience" type="checkbox" /> 雨声与街区环境音</label><label class="field-label">音量 {{ Math.round(volume * 100) }}%<input v-model.number="volume" type="range" min="0" max="1" step="0.05" /></label><label class="check-row"><input v-model="reducedMotion" type="checkbox" /> 减少动态效果</label><button @click="fullScreen">切换全屏 · F</button><p class="small muted">Esc 关闭面板或退出全屏。手机请使用横屏。</p><a href="/notes/cyber-shop/">返回博客游戏介绍 ↗</a></section></div>
     </template>
 
-    <template v-else><div class="panel-heading"><p class="eyebrow">FIELD GUIDE / 开店第一课</p><h2>欢迎来到第九街。</h2><p>思考不消耗现实时间。只有执行操作才消耗工时，点击闭店才结束营业日。</p></div><div class="guide-columns"><section><h3>收货与交易</h3><p>客人带来的商品可以检查、议价、收购。货架上的物品卖给偏好相符的买家；现金紧张时可折价清货。</p><p>食品会临期，电源看容量，材料看纯度，数据看完整度，神经器件看许可，古董看原貌和出处。</p></section><section><h3>修好一件物品</h3><p>接单后打开工作台，检测得到线索。选择工序和操作位置，校准时将读数调到目标。全部故障排除后复检，最后交付。</p><p>客户预付款专用于材料。没有现金时，从工作台接基础援助维修即可恢复经营。</p></section><section><h3>留下你的招牌</h3><p>完成委托获得经验和点数。维修与通用树共用点数，需要集中一条专精取得大师。考取证书扩大维修范围。</p><p>修复联络中枢并买下店铺即可通关。之后免租自由经营，积累点数、考古董证书、追寻收藏。</p></section></div></template>
+    <GameGuide v-else/>
   </div>
 </template>
