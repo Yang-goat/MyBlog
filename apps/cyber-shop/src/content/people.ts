@@ -1,13 +1,17 @@
 import type { CharacterDefinition, CollectionTheme, EventDefinition, QuestDefinition } from '../game/types';
 
 export const CHARACTERS: CharacterDefinition[] = [
+  { id:'ji-yan',name:'季砚',role:'云阶企业采购官',group:'uppercity',preferences:['data','antique','neural'],patience:3,bargain:'预算不是问题，能否直接使用才是。品相八成五以上且无故障的货，我愿意加价。',intro:'高层的采购目录里没有这条街。我想看看目录以外还有什么值得带走。',returning:'上次的交付已经入档。今天还是按实物谈。',endless:false,firstDay:2,image:'ji-yan.webp'},
+  { id:'han-qiao',name:'韩峤',role:'铁隼独立佣兵',group:'contractors',preferences:['electronics','energy','neural'],patience:2,bargain:'划痕不用遮，功能要正常。明天还得带着它出工。',intro:'护送车队刚回来。装备从来不挑好天气坏，先看看你这儿能不能接活。',returning:'又一趟合同结束了。这回带的东西，外壳比里面伤得重。',endless:false,firstDay:3,image:'han-qiao.webp'},
+  { id:'xu-zheng',name:'许征',role:'九区巡务署调查员',group:'watch',preferences:['electronics','data','neural'],patience:4,bargain:'查验过、能追溯的货，登记和报价都省事。口头保证不算记录。',intro:'许征，九区巡务署。今天来采买值勤设备，不是来查店。价签和来源给我看看。',returning:'这条街还算安稳。我顺路补几件值勤用的东西。',endless:false,firstDay:4,image:'xu-zheng.webp'},
+  { id:'yan-que',name:'燕雀',role:'自由频段地下联络员',group:'freewave',preferences:['data','energy','electronics'],patience:3,bargain:'电池和能读的载体优先。我们预算不多，但有人一直在等信号。',intro:'叫我燕雀。楼上的广播说所有频道都归他们，我想让楼下也能说句话。',returning:'昨晚又多了两个街区听见我们。今天来找下一批电源和载体。',endless:false,firstDay:5,image:'yan-que.webp'},
   { id: 'lin-qiao', name: '林桥', role: '街区互助社联络员', group: 'neighborhood', preferences: ['electronics', 'food'], patience: 4, bargain: '更在意可靠和街坊价；愿意听完检查依据。', intro: '门总算开了。先别急着换招牌，邻里有几件旧东西等人修。', returning: '上回送来的设备还好用，今天又有人托我带东西来。', endless: false, image: 'lin-qiao.webp' },
   { id: 'lu-che', name: '陆澈', role: '穿巷快递员', group: 'neighborhood', preferences: ['electronics', 'data'], patience: 2, bargain: '出价直接，能接受小幅让步，不愿耗掉半天路线。', intro: '我跑完整个下层。通讯器如果能撑过雨季，什么牌子都行。', returning: '你修的那台又跑完了一整圈。顺路给你留了点新消息。', endless: false, image: 'lu-che.webp' },
   { id: 'song-yi', name: '宋宜', role: '夜班诊所器械师', group: 'neighborhood', preferences: ['neural', 'food'], patience: 3, bargain: '接受有记录的合理成本，对来源不明的器械保持距离。', intro: '诊所不缺亮闪闪的设备，缺的是每天都能给出同一个读数的设备。', returning: '复检单我留着。下次若换了模块，也请写清楚。', endless: false, image: 'song-yi.webp' },
   { id: 'wen-zhu', name: '温竹', role: '旧城声音档案员', group: 'neighborhood', preferences: ['data', 'antique'], patience: 4, bargain: '珍视完整内容与可追溯出处，不按金属重量评估记忆。', intro: '我要找的东西也许不贵。里面有一段旧车站的广播声。', returning: '放映社又听到了那段报站声。今天想把旁边的空缺也补起来。', endless: false, image: 'wen-zhu.webp' },
   { id: 'he-jin', name: '贺津', role: '工造联合会检修员', group: 'union', preferences: ['electronics', 'energy'], patience: 3, bargain: '讲工序、批次与工时；报出实测值比夸外观有效。', intro: '会换零件还不够。能把故障原因讲清楚，工坊的单子才交给你。', returning: '这次带来的不是训练件，街区的机器开始认你的手艺了。', endless: false, image: 'he-jin.webp' },
   { id: 'a-miao', name: '阿苗', role: '屋顶食堂经营者', group: 'neighborhood', preferences: ['food', 'energy'], patience: 3, bargain: '看保质期和实用价值，临期货只接受清楚的折价。', intro: '锅每天都得开，食材每天都得看日期。能保住新鲜就有回头客。', returning: '上一批没有浪费。今晚食堂多留了一盏灯给晚归的人。', endless: false, image: 'a-miao.webp' },
-  { id: 'qi-lan', name: '祁岚', role: '灰线商团货运协调员', group: 'grayline', preferences: ['energy', 'electronics'], patience: 2, bargain: '批次清楚就快谈；来路含糊的便宜货需要额外核对。', intro: '货路有很多条。你要什么，我可以找；但每条路都有自己的价。', returning: '你上次查的批次号让人记住了。今天这批单据齐全。', endless: false, image: 'qi-lan.webp' },
+  { id: 'qi-lan', name: '祁岚', role: '灰线黑市货运协调员', group: 'grayline', preferences: ['energy', 'electronics'], patience: 2, bargain: '批次清楚就快谈；来路含糊的便宜货需要额外核对。', intro: '货路有很多条。你要什么，我可以找；但每条路都有自己的价。', returning: '你上次查的批次号让人记住了。今天带来的批次，还是一件件看。', endless: false, image: 'qi-lan.webp' },
   { id: 'bai-heng', name: '白衡', role: '旧物巡回商', group: 'grayline', preferences: ['antique', 'data'], patience: 4, bargain: '愿意讨论出处，真伪未明时不会承担全部风险。', intro: '听说这里的招牌终于属于店主了。我带来一些比招牌年纪还大的东西。', returning: '路又走了一圈。看见合适的旧物，我会想起你这扇门。', endless: true, image: 'bai-heng.webp' },
   { id: 'luo-jin', name: '罗槿', role: '私人生活史收藏家', group: 'neighborhood', preferences: ['antique', 'data'], patience: 4, bargain: '看展柜的故事与完整主题，对重复堆放没有额外兴趣。', intro: '我收藏的是人怎样生活，不只是哪年造了什么。先让我看看你的展柜。', returning: '上次那组陈列我还记得。这次又有了什么新的联系？', endless: true, image: 'luo-jin.webp' },
   { id: 'shen-wu', name: '沈雾', role: '轨道检修队精密设备主管', group: 'union', preferences: ['neural', 'electronics'], patience: 3, bargain: '为可靠工序付费，要求交付前可复核的读数。', intro: '联络中枢的复检记录传到了轨道层。我们有更细、更难的工单。', returning: '设备在列车上运行稳定。下一批仍按你的工序单来。', endless: true, image: 'shen-wu.webp' },
@@ -35,13 +39,13 @@ const eventRows: EventRow[] = [
     { label: '与食堂共享消息', cash: 0, reputation: 2, group: 'neighborhood', relation: 2, description: '公开日期信息，减少街区浪费。' },
     { label: '帮货队重排路线', cash: 35, reputation: 0, group: 'grayline', relation: 2, description: '路线整理结算 35 信用点。' },
   ]],
-  ['permit-desk', '临时许可咨询点', '管理处在街口设了咨询桌，说明受管制器件的流转要求。', 'neural', 1.05, [
-    { label: '公开交易须知', cash: 0, reputation: 2, group: 'union', relation: 2, description: '受管制商品仍须单独办理交易许可。' },
-    { label: '协助街坊登记', cash: 30, reputation: 1, group: 'neighborhood', relation: 1, description: '登记服务费 30 信用点。' },
+  ['permit-desk', '临时许可咨询点', '巡务署在街口设立登记台，自由频段希望替不便露面的街坊核对要求。', 'neural', 1.05, [
+    { label: '公开交易须知', cash: 0, reputation: 2, group: 'watch', relation: 2, description: '受管制商品仍须单独办理交易许可。' },
+    { label: '转交匿名咨询', cash: 0, reputation: 1, group: 'freewave', relation: 2, description: '帮助联络员核对流程，不代替街坊提交身份资料；交易许可要求仍然适用。' },
   ]],
   ['serial-dispute', '重复的序列号', '灰线货单里出现两个相同序列号。登记可能有误，也可能另有原因。', 'neural', .9, [
-    { label: '交联合会核验', cash: 0, reputation: 3, group: 'union', relation: 3, description: '保留证据并交叉核对，不把疑点当成结论。' },
-    { label: '要求货队补证', cash: 0, reputation: 1, group: 'grayline', relation: 1, description: '让供货方补齐来源单据。' },
+    { label: '交联合会核验', cash: 0, reputation: 3, group: 'union', relation: 3, otherRelations: {watch:2,grayline:-1}, description: '保留证据并交叉核对，不把疑点当成结论。' },
+    { label: '要求货队补证', cash: 0, reputation: 1, group: 'grayline', relation: 2, description: '让供货方补齐来源单据。' },
   ]],
   ['anniversary', '旧城纪念日', '街坊在曾经的车站遗址挂起小灯，旧城纪念品重新有人询问。', 'antique', 1.28, [
     { label: '支持公共陈列', cash: -70, reputation: 3, group: 'neighborhood', relation: 3, description: '支付 70 信用点制作公共陈列说明。' },
@@ -55,12 +59,12 @@ const eventRows: EventRow[] = [
     { label: '补贴检修记录耗材', cash: -60, reputation: 3, group: 'neighborhood', relation: 3, description: '支付 60 信用点帮助诊所维护记录。' },
     { label: '公开兼容型号表', cash: 0, reputation: 1, group: 'union', relation: 2, description: '减少买错代际的器件。' },
   ]],
-  ['archive-copy', '声音档案征集', '温竹正在整理即将拆除的下层广播站，完整介质更受重视。', 'data', 1.16, [
-    { label: '支持公共备份', cash: -50, reputation: 2, group: 'neighborhood', relation: 3, description: '支付 50 信用点，帮助档案增加备份。' },
-    { label: '登记捐赠授权', cash: 25, reputation: 1, group: 'union', relation: 1, description: '整理授权获得 25 信用点服务费。' },
+  ['archive-copy', '声音档案征集', '旧广播站的声音档案面临去留。自由频段希望留下公共副本，云阶采购人愿意出资购买独家整理权。', 'data', 1.16, [
+    { label: '支持公共备份', cash: -50, reputation: 2, group: 'freewave', relation: 3, otherRelations: {uppercity:-2}, description: '支付 50 信用点保留街区副本；云阶采购人撤回独家合作意向。' },
+    { label: '整理独家转让', cash: 100, reputation: 1, group: 'uppercity', relation: 3, otherRelations: {freewave:-2}, description: '核对权利人的转让授权，收取 100 信用点服务费；公共广播暂时无法使用这批档案。' },
   ]],
   ['cargo-detour', '货路绕行', '维修施工封住了近路，小批次机电货物短时稀缺。', 'electronics', 1.18, [
-    { label: '提供绕行指引', cash: 0, reputation: 2, group: 'grayline', relation: 2, description: '货队记下这间愿意共享消息的小店。' },
+    { label: '分担护送费用', cash: -80, reputation: 2, group: 'contractors', relation: 3, otherRelations: {grayline:1}, description: '支付 80 信用点，与铁隼护送员一起维持临时货路。' },
     { label: '协助街坊预约', cash: 20, reputation: 1, group: 'neighborhood', relation: 1, description: '预约登记获得 20 信用点。' },
   ]],
   ['replica-wave', '纪念品复刻热', '廉价复刻徽章挤满了摊位，藏家更看重可靠出处。', 'antique', .88, [

@@ -197,3 +197,24 @@ Skill 原始脚本 `develop-web-game/scripts/web_game_playwright_client.js` 也�
 - `uniform-career-final`：标准新局按真实 UI 第 16 日通关，35 次维修、66 笔交易，六类买卖均覆盖，结局保存、继续到第 17 日及存档往返通过。自动化耗时 75.711 秒不代表实际游玩时长。首次脚本仍定位已删除的顶部招牌，已改用主画面保留的任务板入口。
 - 17 文件、120 项规则测试通过；所有 UI 脚本语法检查、类型检查及构建通过。技能原始客户端 `uniform-skill` 已执行并查看 canvas 截图。初次测试中的聚焦按钮空格激活、公开状态字段定位和快速双击已打开内包的定位错误保留在 `uniform-grid-first/second`、`uniform-storage-first`，最终通过项见上述目录。
 - `uniform-site-build.log` 完整构建退出 0、617 页，主包 354.01 KB、场景块 10.07 KB。结构检查 79,254 引用、两应用产物/79 素材门禁和 `git diff --check` 通过。既有 pnpm 元数据提示保留，没有安装或修改依赖。
+
+
+## 2026-11-14 人群与关系回归
+
+基线 `ab4b870a5`。新增四位人物、七个人群的交易与信任待遇、次日人群预约、四份订货和多方关系事件。当前状态为本机通过，未发布；用户指定账户剩余 50% 时发布，本轮实测剩余 65%。
+
+| 检查 | 结果 |
+| --- | --- |
+| `pnpm.cmd --filter @goatyang/cyber-shop test` | PASS：19 文件，135 项 |
+| `pnpm.cmd --filter @goatyang/cyber-shop build` / `validate` | PASS：类型、游戏构建、73 基础图及内容 |
+| `ui-journey.mjs`，`CYBER_FACTIONS=1` | PASS：16 日结局、35 维修、67 交易、六类买卖；四位新来客、真实人群预约与一卖一买到访；结局及第 17 日存档恢复 |
+| `ui-faction-touch.mjs` | PASS：正常存档经 UI 导入，真实触控切换、预约持久化与取消；手册左右页可读和滚动 |
+| `ui-grid-consistency.mjs` / `ui-nested-storage.mjs` | PASS：格子一致性、蒙版/手册入口、三层浮窗与跨容器搬运 |
+| `ui-assets.mjs` | PASS：86 项，6,972,956 字节，解码/MIME/哈希一致 |
+| 原始 `web_game_playwright_client.js` | PASS：执行、状态与截图；完整界面另有 DOM 证据 |
+| `pnpm.cmd site:build` | PASS：617 页，退出 0 |
+| `node scripts/validate-content-structure.mjs` | PASS：79,254 本地引用 |
+| `node scripts/check-independent-apps.mjs` | PASS：两个独立应用，73 基础资源和 13 补充资源 |
+| `git diff --check` | PASS |
+
+截图、正常导出存档、结构化结果和构建日志见 `evidence/living-shop/factions-*`。本轮浏览器无异常或缺失资源；pnpm 工作区元数据警告与 Git 换行提示属于既有环境现象。自动化旅程证明可达性与兼容性，不等于首次玩家节奏验收。

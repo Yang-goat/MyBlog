@@ -5,13 +5,16 @@ import { todayResponse } from '../game/district';
 import { state, dispatch } from './store';
 const event=computed(()=>EVENTS.find(e=>e.id===state.value.eventId));
 const response=computed(()=>todayResponse(state.value));
-const groups:Record<string,string>={neighborhood:'街区互助社',union:'工造联合会',grayline:'灰线商团'};
+import { faction } from '../content/factions';
+import type { EventDefinition } from '../game/types';
+const signed=(n:number)=>`${n>=0?'+':''}${n}`;
+const relationEffects=(c:EventDefinition['choices'][number])=>Object.entries({[c.group]:c.relation,...c.otherRelations}).map(([id,n])=>`${faction(id)?.shortName??id} ${signed(n)}`).join(' · ');
 </script>
 <template>
  <article v-if="event" class="event-story district-event">
   <header><span class="eyebrow">九街通讯 · 第 {{state.day}} 日</span><b>{{state.eventResolved?'已回应':'今日消息'}}</b></header><h3>{{event.name}}</h3><p>{{event.text}}</p><p class="event-market">{{CATEGORIES.find(c=>c.id===event?.category)?.name}} 行情 ×{{event.multiplier}}</p>
-  <div v-if="!state.eventResolved" class="vertical-actions"><button v-for="(choice,index) in event.choices" :key="index" :disabled="state.phase!=='open'||state.cash+choice.cash<0" @click="dispatch({type:'eventChoice',index})"><strong>{{choice.label}}</strong><small>{{choice.description}}</small><span>现金 {{choice.cash>=0?'+':''}}{{choice.cash}} · 声望 +{{choice.reputation}} · {{groups[choice.group]}} +{{choice.relation}}</span><em v-if="state.cash+choice.cash<0">还差 ₡{{-choice.cash-state.cash}}</em></button></div>
-  <section v-else-if="response" class="event-response"><span>今天的选择 ✓</span><h4>{{response.label}}</h4><p>{{response.description}}</p><small>声望 +{{response.reputation}} · {{groups[response.group]}} +{{response.relation}}</small></section>
+  <div v-if="!state.eventResolved" class="vertical-actions"><button v-for="(choice,index) in event.choices" :key="index" :disabled="state.phase!=='open'||state.cash+choice.cash<0" @click="dispatch({type:'eventChoice',index})"><strong>{{choice.label}}</strong><small>{{choice.description}}</small><span>现金 {{choice.cash>=0?'+':''}}{{choice.cash}} · 声望 +{{choice.reputation}} · {{relationEffects(choice)}}</span><em v-if="state.cash+choice.cash<0">还差 ₡{{-choice.cash-state.cash}}</em></button></div>
+  <section v-else-if="response" class="event-response"><span>今天的选择 ✓</span><h4>{{response.label}}</h4><p>{{response.description}}</p><small>声望 +{{response.reputation}} · {{relationEffects(response)}}</small></section>
   <p v-else class="event-legacy">这一天已经参与过街区行动。旧记录未保留具体选择。</p>
   <p v-if="!state.eventResolved&&state.phase!=='open'" class="event-legacy">今天已闭店，明天开门后再看看新的消息。</p>
  </article>

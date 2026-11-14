@@ -3,6 +3,8 @@ import { computed, nextTick, ref, watch } from 'vue';
 import { ITEMS, CHARACTERS, CATEGORIES } from '../content';
 import { state, dispatch, modal, selectedOrder, selectedItem, openGuide } from './store';
 import { itemAccessible } from '../game/containers';
+import { factionFor,relationName } from '../game/factions';
+import { showFaction } from './faction-view';
 import { tradeQuote } from '../game/engine';
 import { wholesaleFactor, wholesaleMinimum } from '../game/modifiers';
 import { tradeIds, tradePlaces, stageTrade, removeTrade, clearTrade, guestGoods, tradeItem } from './trade-selection';
@@ -11,6 +13,7 @@ import ItemKnowledge from './ItemKnowledge.vue';
 import StorageOffers from './StorageOffers.vue';
 import TradeReceipt from './TradeReceipt.vue';
 const visitor=computed(()=>state.value.visitors[state.value.visitorIndex]);
+const affiliation=computed(()=>factionFor(visitor.value?.characterId??''));
 const person=computed(()=>CHARACTERS.find(c=>c.id===visitor.value?.characterId));
 const candidates=computed(()=>visitor.value?.kind==='seller'?guestGoods.value:state.value.items.filter(i=>i.owner==='player'&&itemAccessible(state.value,i)&&['stock','counter'].includes(i.location)&&ITEMS.find(d=>d.id===i.definitionId)?.category===visitor.value?.category));
 const selected=computed(()=>tradeIds.value.map(tradeItem).filter(i=>!!i));
@@ -44,8 +47,8 @@ function acceptRepair(){if(dispatch({type:'acceptRepair',visitorId:visitor.value
 </script>
 <template>
 <div v-if="visitor && !visitor.resolved" class="visitor-panel">
- <header class="visitor-heading trade-heading"><Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/><div><p class="eyebrow">{{person?.role}}</p><h2>{{person?.name}}</h2></div><span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span></header>
- <button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
+ <header class="visitor-heading trade-heading"><Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/><div><p class="eyebrow">{{person?.role}}</p><h2>{{person?.name}}</h2><button class="trade-faction" @click="showFaction(affiliation.id)">{{affiliation.shortName}} · {{relationName(state.relations[affiliation.id]??0)}}</button></div><span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span></header>
+ <p class="trade-preference">{{affiliation.tradeNote}}</p><button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
  <template v-if="visitor.kind==='repair'"><div v-if="focused" class="counter-item"><Art :id="focused.definitionId" eager/><h3>{{definition?.name}}</h3></div><p>接单后检测、维修、复检并交付；客户物品单独保管。</p><button class="primary wide" @click="acceptRepair">接下维修 →</button><button class="text-button" @click="dispatch({type:'reject',visitorId:visitor.id});clearTrade()">结束接待</button></template>
  <div v-else class="trade-workspace">
   <section class="trade-merchandise" aria-label="挑选与检查货品">

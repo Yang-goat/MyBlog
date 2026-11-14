@@ -1,3 +1,4 @@
+import {factionChecks} from './ui-faction-checks.mjs';
 import {completeIntro} from './ui-onboarding.mjs';
 /** Full career via normal UI only; read-only visible state guides the player. */
 import { chromium } from 'playwright';
@@ -18,6 +19,7 @@ const click=(name,exact=true)=>page.getByRole('button',{name,exact}).click();
 const close=async()=>{const p=(await snapshot()).panel;if(p==='trade')await click('关闭谈判');else if(p)await click('关闭面板');};
 const panel=async(name)=>{await close();await page.locator('.cabinet-menu').getByRole('button',{name,exact:false}).click();};
 const shot=async(name)=>{await page.waitForTimeout(150);await page.screenshot({path:`${out}/${name}.png`});};
+const factionAudit=process.env.CYBER_FACTIONS==='1'?factionChecks({page,game,close,panel,shot}):null;
 const skills=['precision-1','precision-2','precision-3','workshop-1','workshop-2','workshop-3','precision-4'];
 async function repairOrders(){
  for(let n=0;n<12;n++){
@@ -74,6 +76,7 @@ async function customers(){
   if(s.visitorArrived===false||s.visitor.resolved){const call=page.getByRole('button',{name:'绿色叫号按钮',exact:true});if(await call.isEnabled())await call.click();else break;}
   s=await game();const v=s.visitor;
   for(let j=0;j<2;j++){const current=await game();if((current.conversations?.[v.id]??0)<2)await page.keyboard.press('Space');}
+  await factionAudit?.visitor(v);
   if(v.kind==='repair'&&s.hours>=3){await click('查看维修委托 →');await click('接下维修 →');await close();await repairOrders();}
   else if(v.kind==='seller'&&s.cash>v.quote+800&&s.stockUsage<s.capacity-5){
    await click('把来货放上台 →');if(s.hours>=.5)await click('基础检查');await click('收下选中的货 →');await close();
@@ -93,7 +96,7 @@ async function day(){
  let s=await game();if(s.phase==='closed')await click('迎接新的一天 →');
  await learn();await claims();await certificates();await repairOrders();await finalOrder();
  s=await game();if(s.chapter>=3&&!s.licenses.length){await panel('技能与资质');await click('证书与许可');await click(/申请通用交易许可/,false);await close();}
- await customers();await learn();await claims();await finalOrder();s=await game();
+ await customers();await factionAudit?.dayEnd();await learn();await claims();await finalOrder();s=await game();
  if(!chapters.has(s.chapter)){chapters.add(s.chapter);await page.locator('.journey-open').click();await shot(`chapter-${s.chapter}`);await close();await shot(`room-${s.chapter}`);}
  if(!s.victory&&s.finalComplete&&s.cash>=12000+s.debt){await panel('街区手记');await click('支付并买下店铺');}
  else {await close();if(await page.getByRole('button',{name:'全部入库 ↓',exact:true}).count())await click('全部入库 ↓');await click('关店 / 日结 →');await click('确认闭店');}
@@ -129,9 +132,10 @@ try{
  await panel('设置与存档');const [download]=await Promise.all([page.waitForEvent('download'),click('导出当前存档')]);await download.saveAs(`${out}/career-save.json`);
  const before=await game();await page.locator('input[type=file]').setInputFiles(`${out}/career-save.json`);await page.waitForFunction(()=>JSON.parse(window.render_game_to_text()).panel==='');assert.deepEqual(await game(),before);
  await page.reload();await click('继续经营 ↗',false);assert.deepEqual(await game(),before);
+ const factionResults=await factionAudit?.finish();
  await page.setViewportSize({width:844,height:390});await shot('landscape-endless');
  assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);
- await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,winDay:victory.day,repairs:victory.records.repairs,trades:victory.records.trades,purchases:[...purchases],sales:[...sales],endlessDays,challengeAwards,finalDay:(await game()).day,antiqueCertificate:(await game()).certificates.includes('antique'),displayed:(await game()).items.filter(i=>i.location==='display').length,elapsedSeconds:(Date.now()-start)/1000,errors,missing,journal},null,2));
+ await fs.writeFile(`${out}/results.json`,JSON.stringify({ok:true,factionResults,winDay:victory.day,repairs:victory.records.repairs,trades:victory.records.trades,purchases:[...purchases],sales:[...sales],endlessDays,challengeAwards,finalDay:(await game()).day,antiqueCertificate:(await game()).certificates.includes('antique'),displayed:(await game()).items.filter(i=>i.location==='display').length,elapsedSeconds:(Date.now()-start)/1000,errors,missing,journal},null,2));
  console.log('UI_CAREER_PASS');
 }catch(e){await shot('failure').catch(()=>{});await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(e),state:await snapshot().catch(()=>null),errors,missing,journal},null,2));throw e;}
 finally{await browser.close();}

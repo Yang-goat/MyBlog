@@ -1647,25 +1647,117 @@
       "sha256": "5a46c9207a30c8db97f5bb03c5f659742ce974f92f01ade1b48f9a88cde95139",
       "generationId": "exec-1e7ba284-6e39-41c3-a1f2-fc47678b63ce",
       "visualReview": "Reviewed: recognizable functional parts and natural proportions, transparent cutout; inventory display uses proportional scaling."
+    },
+    {
+      "id": "ji-yan",
+      "name": "季砚",
+      "prompt": "Use case: stylized-concept. One ORIGINAL cyberpunk shop visitor character illustration, genuine transparent background. Reference image provides only painterly realistic rendering style, warm neutral workshop light and subtle cyan rim light; invent an entirely different person, face, clothes and silhouette. Portrait from top of head to mid-thigh, both shoulders and hands fully in frame, standing naturally facing the viewer in a slight three-quarter angle as if speaking across a shop counter. Detailed believable fabric, metal and skin, grounded near-future prosthetics, expressive distinct face, no background, floor, cast shadow, lettering, logos, UI, borders or readable insignia. Not a character from any existing franchise.  A woman about 42, upper-city corporate procurement director. Immaculate angular IVORY tailored long jacket over dark navy silk, asymmetrical cobalt-blue lapel, sleek short black bob with a single silver streak, polished chrome fingertips, restrained geometric ear ornament. Carries a thin closed black folio in one hand at the waist. Composed assessing expression, excellent posture, expensive precise tailoring and clean surfaces distinguish her sharply from street workers. No armor, weapon or lab coat.",
+      "kind": "character",
+      "path": "public/art/ji-yan.webp",
+      "source": "docs/art-revisions/factions/ji-yan.png",
+      "status": "generated",
+      "tool": "image_gen",
+      "transparentRequested": true,
+      "usage": "来客立绘、街区人脉与订货联系",
+      "width": 768,
+      "height": 923,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 95768,
+      "sha256": "03a58af78aa3a85a0296dbb00be0afc9d8719b10a32ea935c51b736cfe692576",
+      "generationId": "exec-8816fbdd-78e0-491e-a530-c1a29ff1748c",
+      "visualReview": "逐项查看人物、道具和轮廓；核对图像背景 alpha 为 0，浏览器按透明立绘显示。"
+    },
+    {
+      "id": "han-qiao",
+      "name": "韩峤",
+      "prompt": "Use case: stylized-concept. One ORIGINAL cyberpunk shop visitor character illustration, genuine transparent background. Reference image provides only painterly realistic rendering style, warm neutral workshop light and subtle cyan rim light; invent an entirely different person, face, clothes and silhouette. Portrait from top of head to mid-thigh, both shoulders and hands fully in frame, standing naturally facing the viewer in a slight three-quarter angle as if speaking across a shop counter. Detailed believable fabric, metal and skin, grounded near-future prosthetics, expressive distinct face, no background, floor, cast shadow, lettering, logos, UI, borders or readable insignia. Not a character from any existing franchise.  A broad-shouldered male independent mercenary about 38, weathered tan skin, close-cropped black hair, old healed scar across one eyebrow, calm tired expression. Worn burgundy segmented shoulder armor over graphite work clothing, practical chest straps, scratched steel prosthetic left forearm with exposed orange cable, a battered protective helmet held under his right arm. Looks like a contract worker returning from a dangerous shift, not a superhero. Strong asymmetrical armor silhouette, sensible proportions, no weapon in hands, no military insignia.",
+      "kind": "character",
+      "path": "public/art/han-qiao.webp",
+      "source": "docs/art-revisions/factions/han-qiao.png",
+      "status": "generated",
+      "tool": "image_gen",
+      "transparentRequested": true,
+      "usage": "来客立绘、街区人脉与订货联系",
+      "width": 768,
+      "height": 1013,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 191216,
+      "sha256": "f12c25f82ecfa68b20bb161cc897d662d4273d7573405517a906b45fc7bd9973",
+      "generationId": "exec-13bb1c5e-176e-4dff-aa89-99b0be9fecf0",
+      "visualReview": "逐项查看人物、道具和轮廓；核对图像背景 alpha 为 0，浏览器按透明立绘显示。"
+    },
+    {
+      "id": "xu-zheng",
+      "name": "许征",
+      "prompt": "Use case: stylized-concept. One ORIGINAL cyberpunk shop visitor character illustration, genuine transparent background. Reference image provides only painterly realistic rendering style, warm neutral workshop light and subtle cyan rim light; invent an entirely different person, face, clothes and silhouette. Portrait from top of head to mid-thigh, both shoulders and hands fully in frame, standing naturally facing the viewer in a slight three-quarter angle as if speaking across a shop counter. Detailed believable fabric, metal and skin, grounded near-future prosthetics, expressive distinct face, no background, floor, cast shadow, lettering, logos, UI, borders or readable insignia. Not a character from any existing franchise.  A male district police investigator about 52, narrow face, short salt-and-pepper hair and slight stubble, observant level expression. Dark NAVY weatherproof uniform coat with pale blue reflective shoulder strips, body camera, small abstract metallic shield badge with NO text, collar radio. Holds a compact handheld serial-number scanner and a small evidence envelope. Grounded public-service officer who spends long hours on foot, slightly worn cuffs, distinct from mercenary heavy armor. No weapon in hands, no existing police logo.",
+      "kind": "character",
+      "path": "public/art/xu-zheng.webp",
+      "source": "docs/art-revisions/factions/xu-zheng.png",
+      "status": "generated",
+      "tool": "image_gen",
+      "transparentRequested": true,
+      "usage": "来客立绘、街区人脉与订货联系",
+      "width": 768,
+      "height": 923,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 136532,
+      "sha256": "8326c486462df940b68e5c3e457245fb3994c58c1f041f7c815493788cabdd45",
+      "generationId": "exec-c960f8c6-83a2-480d-82c6-db2c5e45ef0d",
+      "visualReview": "逐项查看人物、道具和轮廓；核对图像背景 alpha 为 0，浏览器按透明立绘显示。"
+    },
+    {
+      "id": "yan-que",
+      "name": "燕雀",
+      "prompt": "Use case: stylized-concept. One ORIGINAL cyberpunk shop visitor character illustration, genuine transparent background. Reference image provides only painterly realistic rendering style, warm neutral workshop light and subtle cyan rim light; invent an entirely different person, face, clothes and silhouette. Portrait from top of head to mid-thigh, both shoulders and hands fully in frame, standing naturally facing the viewer in a slight three-quarter angle as if speaking across a shop counter. Detailed believable fabric, metal and skin, grounded near-future prosthetics, expressive distinct face, no background, floor, cast shadow, lettering, logos, UI, borders or readable insignia. Not a character from any existing franchise.  A young adult woman about 27, underground resistance radio courier. Warm brown skin, short uneven teal-black hair peeking from a lowered hood, alert lively eyes, slight determined smile. Distinctive RUST ORANGE patched rain poncho over charcoal layers, a plain green cloth tied around one sleeve, improvised headset with an old antenna, compact backpack straps and a boxy portable radio held against her hip. Small repurposed electronic parts clipped to belt, weathered improvised equipment and a handmade practical aesthetic. No weapons, flags, text or recognizable political symbols.",
+      "kind": "character",
+      "path": "public/art/yan-que.webp",
+      "source": "docs/art-revisions/factions/yan-que.png",
+      "status": "generated",
+      "tool": "image_gen",
+      "transparentRequested": true,
+      "usage": "来客立绘、街区人脉与订货联系",
+      "width": 683,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 199922,
+      "sha256": "201eb8cc08df7a40ac5110e69b6a27b4155f61a0073012eadab6460375cd35a6",
+      "generationId": "exec-f172a4a4-d159-4c99-a6ec-db220b90cae5",
+      "visualReview": "逐项查看人物、道具和轮廓；核对图像背景 alpha 为 0，浏览器按透明立绘显示。"
     }
   ],
   "audit": {
-    "expected": 69,
-    "completed": 69,
-    "generated": 67,
+    "expected": 73,
+    "completed": 73,
+    "generated": 71,
     "originalDrawn": 2,
     "failed": [],
     "counts": {
       "scene": 4,
-      "character": 10,
+      "character": 14,
       "item": 39,
       "equipment": 16
     },
-    "bytes": 5113042,
-    "mib": 4.876,
+    "bytes": 5736480,
+    "mib": 5.471,
     "allPublishedFilesDecoded": true,
     "allCutoutsHaveAlpha": true,
-    "generationMethod": "67 current assets generated separately with built-in image_gen; 2 existing assets originally drawn with prior user authorization. Pillow is used only for WebP encoding and proportional publication resizing in this revision.",
+    "generationMethod": "71 current assets generated separately with built-in image_gen; 2 existing assets originally drawn with prior user authorization. Pillow is used only for WebP encoding and proportional publication resizing in this revision.",
     "sourcePolicy": "Current source paths and generation IDs are recorded per asset. New and revised PNG originals plus rejected drafts and previous published revisions are archived under docs/art-revisions. Only public/art WebP files are used at runtime."
   }
 }

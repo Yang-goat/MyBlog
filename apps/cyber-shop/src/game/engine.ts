@@ -7,6 +7,8 @@ import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayo
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
 import { allocateQuote } from './negotiation';
+import {faction,type FactionId} from '../content/factions';
+import {factionFor,buyerPreference,trusted,recordTradeRelation,factionStoragePrice,factionVisit,factionKnown,factionContacts,CONTACT_RELATION} from './factions';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
@@ -16,10 +18,11 @@ const def = (item: ItemInstance): ItemDefinition => ITEMS.find(d => d.id === ite
 const equipmentId = (effect: string) => EQUIPMENT.find(e => e.effect === effect)?.id ?? effect;
 const ownedEquipment = (s: GameState, effect: string) => s.equipment[equipmentId(effect)] ?? 0;
 export const skillEffect = (s: GameState, effect: string) => SKILLS.filter(n => s.skills.includes(n.id) && n.effect === effect).reduce((n, a) => n + a.amount, 0);
-export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)));
+export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)) * (equipment.type==='material'&&trusted(s,'union') ? .9 : 1));
 export const calibrationTolerance = (s: GameState) => 2 + skillEffect(s, 'calibration') + (ownedEquipment(s, 'calibrationTool') ? 3 : 0);
 export const repairPracticeNeeded = (s: GameState) => skillEffect(s, 'standard') > 0 ? 1 : 3;
-export const operatingFees = (s: GameState) => BALANCE.maintenance + (s.victory ? 0 : BALANCE.rent + modifierEffect(s,'rent'));
+export const operatingFees = (s: GameState) => BALANCE.maintenance - (trusted(s,'neighborhood')?10:0) + (s.victory ? 0 : BALANCE.rent + modifierEffect(s,'rent'));
+export const licensePrice=(s:GameState)=>round(BALANCE.licensePrice*(trusted(s,'watch') ? .75 : 1));
 export const debtClosingChances = (s: GameState) => s.victory ? null : Math.max(0, BALANCE.graceDays + 1 - s.grace);
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
 export const rootCapacity = (s: GameState) => BALANCE.stock + modifierEffect(s,'cells') / 4 + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
@@ -84,9 +87,10 @@ export function tradeQuote(s: GameState, visitor: Visitor, item?: ItemInstance) 
   if (visitor.kind === 'seller') return item ? visitor.priceTags?.[item.id]?.ask ?? visitor.quote : visitor.quote;
   if (!item) return visitor.quote;
   const loyalty = s.met.includes(visitor.characterId) ? skillEffect(s, 'loyalty') : 0;
-  const proposed = round(itemValue(s, item) * (BALANCE.buyerFactor + loyalty + Math.min(.18, attraction(s) / 400)));
-  return Math.min(visitor.buyerQuotes?.[item.id]??proposed, round(itemValue(s, item) * visitor.limit / 10000));
+  const proposed = round(itemValue(s, item) * (BALANCE.buyerFactor + loyalty + Math.min(.18, attraction(s) / 400))*buyerPreference(s,visitor,item));
+  return Math.min(visitor.buyerQuotes?.[item.id]??proposed, buyerCeiling(s,visitor,item));
 }
+export const buyerCeiling=(s:GameState,v:Visitor,item:ItemInstance)=>round(itemValue(s,item)*v.limit/10000*buyerPreference(s,v,item));
 function createItem(s: GameState, d: ItemDefinition, owner: ItemInstance['owner'] = 'player', forceFaults?: string[]): ItemInstance {
   const compatibleFaults = d.certificate ? FAULTS.filter(f => f.certificate === d.certificate) : [];
   const faults = forceFaults ?? (compatibleFaults.length && random(s) < .55 ? [pick(s, compatibleFaults).id] : []);
@@ -100,35 +104,41 @@ function createItem(s: GameState, d: ItemDefinition, owner: ItemInstance['owner'
   };
 }
 function customer(s: GameState, category: CategoryId, preferred?: string) {
-  const pool = CHARACTERS.filter(c => (!c.endless || s.endless) && c.preferences.includes(category));
+  const pool = CHARACTERS.filter(c => (!c.endless || s.endless) && (c.firstDay??1)<=s.day && c.preferences.includes(category));
   return CHARACTERS.find(c => c.id === preferred) ?? pick(s, pool.length ? pool : CHARACTERS.filter(c => !c.endless));
 }
 function accessibleDefinitions(s: GameState, category?: CategoryId) { return ITEMS.filter(d => d.chapter <= s.chapter && (!category || d.category === category) && (!d.regulated || s.licenses.includes('regulated-trade'))); }
-function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId): Visitor {
+function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, groupId?:FactionId): Visitor {
   // Trading authorization governs transfer of ownership, not receiving a client's device for licensed service.
   let pool = kind === 'repair'
     ? ITEMS.filter(d => d.chapter <= s.chapter && d.category === category && d.certificate && s.certificates.includes(d.certificate))
     : accessibleDefinitions(s, category);
   if (!pool.length) pool = accessibleDefinitions(s).filter(d => kind !== 'repair' || d.certificate === 'civil');
   const d = pick(s, pool);
-  const person = customer(s, d.category);
+  const person = customer(s, d.category,groupId?faction(groupId)!.contact:undefined);
+  const affiliation=factionFor(person.id);
   let item: ItemInstance | undefined;
   if (kind !== 'buyer') {
     const fs = FAULTS.filter(f => f.certificate === d.certificate);
     item = createItem(s, d, kind === 'repair' ? 'customer' : 'player', kind === 'repair' ? [pick(s, fs).id] : undefined);
     if (kind === 'repair' && s.chapter >= 3 && d.certificate !== 'civil' && fs.length > 1) item.faults.push(fs.find(f => f.id !== item!.faults[0])!.id);
   }
+  const goods = kind === 'seller' && item ? [item, ...Array.from({length:3}, () => createItem(s, pick(s, pool)))] : undefined;
+  goods?.forEach((good,index)=>{
+    if(affiliation.id==='grayline'){good.condition=Math.max(30,good.condition-12);if(index%2)good.provenance='灰线旧货，批次凭据不完整';}
+    if(affiliation.id==='uppercity'){good.condition=Math.max(85,good.condition);good.faults=[];}
+    if(affiliation.id==='watch'){good.provenance='可追溯的巡务署备案旧物';good.authentic=true;}
+  });
   const relation = clamp(s.relations[person.group] ?? 0, -10, 20);
   const value = item ? itemValue(s, item) : d.price;
   const advantage = skillEffect(s, 'bargain') + (s.met.includes(person.id) ? skillEffect(s, 'loyalty') : 0);
-  const quote = kind === 'seller' ? round(value * BALANCE.sellerFactor * (1 - Math.max(0, relation) / 150)) : round(value * BALANCE.buyerFactor);
-  const goods = kind === 'seller' && item ? [item, ...Array.from({length:3}, () => createItem(s, pick(s, pool)))] : undefined;
+  const quote = kind === 'seller' ? round(value * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0, relation) / 150)) : round(value * BALANCE.buyerFactor * affiliation.buyer);
   const priceTags = goods ? Object.fromEntries(goods.map(i => [i.id, {
-    ask: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFactor * (1 - Math.max(0,relation) / 150))),
-    minimum: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFloor * (1 - advantage))),
+    ask: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFactor * affiliation.seller * (1 - Math.max(0,relation) / 150))),
+    minimum: Math.max(1, round(itemValue(s,i) * BALANCE.sellerFloor * affiliation.seller * (1 - advantage))),
   }])) : undefined;
-  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, budget: kind === 'buyer' ? Math.max(400, quote * 4) : undefined, category: d.category, quote,
-    limit: kind === 'seller' ? round(value * BALANCE.sellerFloor * (1 - advantage)) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
+  return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote,
+    limit: kind === 'seller' ? round(value * BALANCE.sellerFloor * affiliation.seller * (1 - advantage)) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
     rounds: 0, patience: person.patience, resolved: false,
     request: kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `想找一件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
 }
@@ -140,9 +150,13 @@ function generateDay(s: GameState) {
   const rotating = categories[(s.day - 1) % categories.length]!;
   const repairCategory: CategoryId = s.endless && s.certificates.includes('antique') && s.day % 2 === 0 ? 'antique' : s.certificates.includes('neural') && s.day % 3 === 0 ? 'neural' : 'electronics';
   const supplierCategory = s.appointments && has(s, 'targetSupply') ? s.appointments : rotating;
+  const route=factionVisit(s),network=route?faction(route):undefined;
+  const preferredCategory=network?.categories[(s.day-2+network.categories.length)%network.categories.length];
+  const networkCategory=preferredCategory&&accessibleDefinitions(s,preferredCategory).length ? preferredCategory : network?.categories.find(c=>accessibleDefinitions(s,c).length)??categories[s.day%categories.length]!;
   s.visitors = [makeVisitor(s, 'repair', 'electronics'), makeVisitor(s, 'seller', supplierCategory), makeVisitor(s, 'buyer', saleCategory),
-    makeVisitor(s, 'repair', repairCategory), makeVisitor(s, 'seller', categories[s.day % categories.length]!),
-    makeVisitor(s, 'buyer', attraction(s) > 20 && has(s, 'collector') ? 'antique' : supplierCategory), makeVisitor(s, 'buyer', saleCategory)];
+    makeVisitor(s, 'repair', repairCategory,route==='contractors'?route:undefined), makeVisitor(s, 'seller',networkCategory,route),
+    makeVisitor(s, 'buyer',route?networkCategory:supplierCategory,route), makeVisitor(s, 'buyer', attraction(s)>20 && has(s,'collector') ? 'antique' : saleCategory)];
+  delete s.factionAppointment;
   if (s.endless) {
     const guests = CHARACTERS.filter(c => c.endless);
     const guest = guests.find(c => !s.met.includes(c.id)) ?? guests[(s.day - 1) % guests.length];
@@ -150,7 +164,7 @@ function generateDay(s: GameState) {
   }
   s.visitors.forEach((visitor,index)=>{if(visitor.kind==='seller'){
     const start=(s.day-1+(index===1?0:2))%STORAGE_STYLES.length;
-    visitor.storageGoods=[STORAGE_STYLES[start]!,STORAGE_STYLES[(start+1)%STORAGE_STYLES.length]!].map(d=>({id:id(s,'storage-offer'),styleId:d.id,price:d.price}));
+    visitor.storageGoods=[STORAGE_STYLES[start]!,STORAGE_STYLES[(start+1)%STORAGE_STYLES.length]!].map(d=>({id:id(s,'storage-offer'),styleId:d.id,price:factionStoragePrice(s,visitor.characterId,d.price)}));
   }});
   s.visitorIndex = 0; s.visitorArrived = false;
   s.deliveries=newDeliveryDay(s,s.deliveries);
@@ -216,7 +230,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         if(v.item&&v.priceTags?.[v.item.id])v.quote=v.priceTags[v.item.id]!.ask;
         quote=Math.round(goods.reduce((n,i)=>n+tradeQuote(s,v,i),0)*bulk);
       }else{
-        const ceilings=goods.map(i=>Math.max(1,round(itemValue(s,i)*v.limit/10000)));
+        const ceilings=goods.map(i=>Math.max(1,buyerCeiling(s,v,i)));
         const ceiling=ceilings.reduce((n,c)=>n+c,0),budget=v.budget??Math.max(400,v.quote*4),maximum=Math.min(ceiling,budget);
         if(quote>maximum){quote=maximum;reason=budget<ceiling?'budget':'price';}
         else if(offered>ceiling*1.6)reason='far';
@@ -230,13 +244,14 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     else say(`${reason==='far'?'报价相差太远，客人维持当前价':reason==='budget'?'买家按剩余预算还价':v.kind==='seller'?'卖家让价':'买家还价'}：这 ${goods.length} 件共 ₡${quote}。还可议价 ${v.patience-v.rounds} 次。`);
   };
   const tradeReceipt=(v:Visitor,goods:ItemInstance[],amount:number)=>{
+    recordTradeRelation(s,v);
     v.lastTrade={kind:v.kind==='seller'?'buy':'sell',amount,cost:v.kind==='seller'?amount:goods.reduce((n,i)=>n+i.cost,0),goods:goods.map(i=>({definitionId:i.definitionId,itemId:i.id,cost:i.cost}))};
     delete v.negotiation;
   };
   const makeOrder = (item: ItemInstance, kind: RepairOrder['kind'], characterId: string, extra: Partial<RepairOrder> = {}) => {
     const c = def(item).certificate;
     const base = c === 'antique' ? BALANCE.antiqueRepairReward : c === 'neural' ? BALANCE.neuralRepairReward : c === 'industrial' ? BALANCE.advancedRepairReward : BALANCE.basicRepairReward;
-    const reward = round(base * (1 + skillEffect(s, 'precisionMaster') + skillEffect(s, 'workshopMaster') + Math.min(.2, attraction(s) / 500)));
+    const reward = round(base * (1 + skillEffect(s, 'precisionMaster') + skillEffect(s, 'workshopMaster') + Math.min(.2, attraction(s) / 500))*(kind==='client'&&factionFor(characterId).id==='contractors'&&trusted(s,'contractors')?1.15:1));
     const preserveOriginal = def(item).category === 'antique' && (kind === 'own' || random(s) > .35);
     const order: RepairOrder = { id: id(s, 'order'), itemId: item.id, characterId, description: `${def(item).name}的${kind === 'own' ? '自有旧货翻新' : '维修委托'}；${preserveOriginal ? '保存原貌，优先修整原件。' : '以恢复功能为先，可以更换模块，完成后请复检。'}`, diagnosed: false, verified: false, delivered: false,
       escrow: kind === 'own' ? 0 : 1000, reward: kind === 'own' ? 0 : reward, completedOps: 0, kind, preserveOriginal, receivedDay: s.day, steps: [], ...extra };
@@ -251,6 +266,12 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
   }
   switch (action.type) {
+    case 'appointFaction': {
+      if(action.factionId===null){delete s.factionAppointment;say('已取消下个营业日的联络预约。');break;}
+      const group=faction(action.factionId);if(!group)return fail('没有这条联络路线。');
+      if(!factionKnown(s,group.id)||(s.relations[group.id]??0)<CONTACT_RELATION)return fail('先把关系积累到熟客，再预约来访。');
+      s.factionAppointment=group.id;say(`已约好${group.name}，下个营业日会带来一位卖家和一位买家。`);break;
+    }
     case 'acceptDelivery': {
       const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='offered'&&j.postedDay===s.day);
       if(!job)return fail('这份订货单已经接取或不再开放。');
@@ -300,7 +321,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const offered=action.amount ?? total;
       if (!Number.isSafeInteger(offered) || offered <= 0) return fail('报价必须是正整数。');
       const floor=Math.round(goods.reduce((n,i)=>n+(v.priceTags?.[i.id]?.minimum??v.limit),0)*bulk);
-      const ceiling=goods.reduce((n,i)=>n+Math.round(itemValue(s,i)*v.limit/10000),0);
+      const ceiling=goods.reduce((n,i)=>n+buyerCeiling(s,v,i),0);
       const buyerBudget=v.budget??Math.max(400,v.quote*4);
       if(v.kind==='buyer'&&(buyerBudget<goods.length||(action.amount===undefined&&offered>buyerBudget)))return fail(`买家剩余预算只有 ${buyerBudget}，请减少售出数量。`);
       if (v.kind === 'seller' ? offered < floor : offered > ceiling || offered > buyerBudget) {
@@ -350,7 +371,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if(!canReceive(s,rootCapacity(s),[box]))return fail('连箱包的外壳也放不下了，先卖出或整理库存。');
       const plan=counterLayout([...ownedObjects(s),box]);if(!plan.positions[box.id])return fail('谈判台放不下这只箱包，先把台面物品收好。');
       box.counterGrid=plan.positions[box.id];s.containers??=[];s.containers.push(box);
-      visitor.lastTrade={kind:'buy',amount:offer.price,cost:offer.price,goods:[{definitionId:d.id,itemId:box.id,cost:box.cost}]};
+      recordTradeRelation(s,visitor);visitor.lastTrade={kind:'buy',amount:offer.price,cost:offer.price,goods:[{definitionId:d.id,itemId:box.id,cost:box.cost}]};
       visitor.storageGoods=visitor.storageGoods!.filter(o=>o.id!==offer.id);pay(offer.price,'purchase',`买入${d.name}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);
       if(!visitor.goods?.length&&!visitor.item&&!visitor.storageGoods.length)finishVisitor(visitor);
       say(`买下${d.name} · ₡${offer.price}，先将箱包从谈判台收好。`,'trade');break;
@@ -360,7 +381,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if(!visitor||visitor.kind!=='buyer'||!box)return fail('当前买家或箱包不可用。');
       if(containerItems(s,box.id).length)return fail('先取出箱包里的全部物品，再出售箱包。');
       const price=round(storageStyle(box.styleId).price*.55),budget=visitor.budget??Math.max(400,visitor.quote*4);if(price>budget)return fail('买家剩余预算不足。');
-      visitor.lastTrade={kind:'sell',amount:price,cost:box.cost,goods:[{definitionId:box.styleId,itemId:box.id,cost:box.cost}]};
+      recordTradeRelation(s,visitor);visitor.lastTrade={kind:'sell',amount:price,cost:box.cost,goods:[{definitionId:box.styleId,itemId:box.id,cost:box.cost}]};
       visitor.budget=budget-price;s.containers=s.containers!.filter(c=>c.id!==box.id);earn(price,'sale',`售出${storageStyle(box.styleId).name}，累计成本 ${box.cost}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);if(!visitor.budget)finishVisitor(visitor);say(`箱包成交 · ₡${price}。`,'trade');break;
     }
     case 'moveStorage': {
@@ -404,7 +425,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (item.known.includes(method)) return fail('这项检查已经完成，结果不会重复抽取。');
       if (method === 'scan' && !ownedEquipment(s, 'scan')) return fail('需要多谱扫描仪。');
       if (method === 'serial' && !ownedEquipment(s, 'serial')) return fail('需要序列检索终端。');
-      if (!spendHours(has(s, 'catalog') && method === 'basic' ? 0 : BALANCE.inspectionHours)) return fail('工时不足，明天可以继续检查。');
+      if (!spendHours((has(s, 'catalog') && method === 'basic') || (trusted(s,'freewave') && def(item).category==='data' && method==='serial') ? 0 : BALANCE.inspectionHours)) return fail('工时不足，明天可以继续检查。');
       item.known.push(method);
       if(visitor?.item?.id===item.id)visitor.item=item;
       if (method === 'basic') { say(`${def(item).name}：成色 ${item.condition}%；${item.faults.length ? '有功能异常，进一步检测可定位' : '外观及基础功能可用'}；参考价 ${estimateValue(s, item).join('–')}。`); }
@@ -423,7 +444,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const offered = action.type === 'offer' ? action.amount : tradeQuote(s, v, item);
       if (!Number.isSafeInteger(offered) || offered <= 0) return fail('报价必须是正整数信用点。');
       // The buyer's willingness multiplier was fixed on arrival; selecting another item only changes its objective value.
-      const maxBuyer = round(itemValue(s, item) * v.limit / 10000);
+      const maxBuyer = buyerCeiling(s,v,item);
       const minimum = v.priceTags?.[item.id]?.minimum ?? v.limit;
       const buyerBudget=v.budget??Math.max(400,v.quote*4);
       if(v.kind==='buyer'&&(buyerBudget<1||(action.type==='acceptTrade'&&offered>buyerBudget)))return fail(`买家剩余预算只有 ${buyerBudget}。`);
@@ -563,7 +584,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (!s.freeRespec) pay(BALANCE.respecPrice, 'respec', '技能重配'); s.freeRespec = false; s.skills = [...action.skills]; s.points = total - SKILLS.filter(n => s.skills.includes(n.id)).reduce((n, a) => n + a.cost, 0);
       say('技能重配完成，证书、委托和收藏均保留。超过新容量的物品会保留，腾出空间后才能继续入库。'); break;
     }
-    case 'license': { if (s.licenses.includes('regulated-trade')) return fail('已取得交易许可。'); if (s.chapter < 3) return fail('第三章开放通用受管制商品交易许可。'); if (s.cash < BALANCE.licensePrice) return fail('许可费用不足。'); pay(BALANCE.licensePrice, 'license', '通用交易许可'); s.licenses.push('regulated-trade'); say('获准交易受管制的神经与医疗器件。'); break; }
+    case 'license': { if (s.licenses.includes('regulated-trade')) return fail('已取得交易许可。'); if (s.chapter < 3) return fail('第三章开放通用受管制商品交易许可。'); if (s.cash < licensePrice(s)) return fail('许可费用不足。'); pay(licensePrice(s), 'license', '通用交易许可'); s.licenses.push('regulated-trade'); say('获准交易受管制的神经与医疗器件。'); break; }
     case 'buyEquipment': {
       const e = EQUIPMENT.find(e => e.id === action.equipmentId); const count = action.count ?? 1;
       if (!e || !Number.isSafeInteger(count) || count < 1 || count > BALANCE.maximumPurchaseCount) return fail('购买数量无效。');
@@ -584,7 +605,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'liquidate': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能清理货架上的自有商品。'); if (def(item).regulated && !s.licenses.includes('regulated-trade')) return fail('受管制商品需要合法交易许可。'); const price = round(itemValue(s, item) * BALANCE.liquidateFactor); earn(price, 'clearance', `清货${def(item).name}，总成本 ${item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); s.records.trades++; gainXp(s, 2); say(`清货完成，回笼 ${price}。`, 'trade'); break; }
     case 'sort': { if (s.phase === 'open' && !spendHours(has(s, 'restock') ? 0 : .5)) return fail('整理需要半点工时，闭店后可免费整理。'); s.items.forEach(i => { if (i.location === 'stock' && !i.containerId) delete i.grid; }); s.items.sort((a, b) => (a.expiresDay ?? Infinity) - (b.expiresDay ?? Infinity) || def(a).category.localeCompare(def(b).category)); say('货架按临期优先、品类归位；持有快捷补货技能时耗材采购自动享受折扣。'); break; }
     case 'appoint': { if (action.category !== null && !CATEGORIES.some(c => c.id === action.category)) return fail('未知商品分类。'); if (action.category && !has(s, 'targetSupply')) return fail('先学习定向采购。'); s.appointments = action.category; say(action.category ? '已预约下一营业日的定向货源。' : '已恢复自然来访。'); break; }
-    case 'eventChoice': { const e = EVENTS.find(e => e.id === s.eventId); const choice = e?.choices[action.index]; if (!choice || s.eventResolved) return fail('该事件已经结算或选项无效。'); if (choice.cash < 0 && s.cash < -choice.cash) return fail('这项街区行动需要更多现金，可以选择另一方案。'); if (choice.cash < 0) pay(-choice.cash, 'event', choice.label); else if (choice.cash > 0) earn(choice.cash, 'event', choice.label); else ledger(s, 'event', 0, choice.label); s.reputation += choice.reputation; s.relations[choice.group] = (s.relations[choice.group] ?? 0) + choice.relation; s.eventResolved = true; say(choice.description); break; }
+    case 'eventChoice': { const e = EVENTS.find(e => e.id === s.eventId); const choice = e?.choices[action.index]; if (!choice || s.eventResolved) return fail('该事件已经结算或选项无效。'); if (choice.cash < 0 && s.cash < -choice.cash) return fail('这项街区行动需要更多现金，可以选择另一方案。'); if (choice.cash < 0) pay(-choice.cash, 'event', choice.label); else if (choice.cash > 0) earn(choice.cash, 'event', choice.label); else ledger(s, 'event', 0, choice.label); s.reputation += choice.reputation; s.relations[choice.group] = (s.relations[choice.group] ?? 0) + choice.relation; for(const [group,change] of Object.entries(choice.otherRelations??{}))s.relations[group]=(s.relations[group]??0)+change; s.eventResolved = true; say(choice.description); break; }
     case 'claimQuest': { const q = QUESTS.find(q => q.id === action.questId); const stageIndex = s.questStages[action.questId] ?? 0; const stage = q?.stages[stageIndex]; if (!q || !stage || !questProgress(s, q.id).ready) return fail('该阶段尚未完成，或奖励已经领取。'); s.questStages[q.id] = stageIndex + 1; earn(stage.reward, 'quest', `${q.name}第 ${stageIndex + 1} 阶段`); gainXp(s, stage.xp); say(`${q.name}：${stage.text} 已完成，获得 ${stage.reward} 信用点与 ${stage.xp} 经验。`); break; }
     case 'startFinal': {
       if (!professionVictory(s, 'restorer').mastered || !s.certificates.includes('industrial') || !s.certificates.includes('neural') || s.chapter < 4) return fail('最终委托需要维修大师能力、工业及神经证书，并到达第四章。');
@@ -595,7 +616,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         { item: 'neural-bridge', faults: ['neural-noise', 'sensor-drift', 'feedback-loop'] },
       ];
       const stage = stages[s.finalStage]!; const d = ITEMS.find(d => d.id === stage.item)!; const fs = stage.faults.map(id => FAULTS.find(f => f.id === id)!);
-      const item = createItem(s, d, 'customer', fs.map(f => f.id)); s.items.push(item); makeOrder(item, 'final', CHARACTERS.find(c => !c.endless)?.id ?? 'street', { finalStage: s.finalStage, reward: BALANCE.finalRewards[s.finalStage]!, description: ['街区联络中枢 · 机电传动恢复', '街区联络中枢 · 供能稳定', '街区联络中枢 · 神经接口联调'][s.finalStage]! }); say(`最终委托 ${s.finalStage + 1}/3 已受理。`); break;
+      const item = createItem(s, d, 'customer', fs.map(f => f.id)); s.items.push(item); makeOrder(item, 'final', 'lin-qiao', { finalStage: s.finalStage, reward: BALANCE.finalRewards[s.finalStage]!, description: ['街区联络中枢 · 机电传动恢复', '街区联络中枢 · 供能稳定', '街区联络中枢 · 神经接口联调'][s.finalStage]! }); say(`最终委托 ${s.finalStage + 1}/3 已受理。`); break;
     }
     case 'buyShop': { if (s.victory) return fail('已经拥有永久经营权。'); if (!PROFESSIONS.some(p => professionVictory(s, p.id).ready)) return fail('先取得同一已实现职业的大师能力并完成其最终委托。'); if (s.cash < BALANCE.shopPrice + s.debt) return fail(`需要 ${BALANCE.shopPrice} 收购款，并结清 ${s.debt} 欠费。`); pay(BALANCE.shopPrice + s.debt, 'ownership', '购买永久经营权并结清欠费'); s.debt = 0; s.grace = 0; s.victory = true; s.phase = 'won'; say('招牌上的名字终于属于你。职业最终委托已经完成，永久经营权正式登记。', 'success'); break; }
     case 'continueEndless': { if (!s.victory || !['won', 'ended'].includes(s.phase)) return fail('完成主线后可继续无尽经营。'); s.endless = true; s.phase = 'closed'; say('进入无尽经营：永久免租，古董科技考核和新客户开放，经验继续产生技能点。'); break; }
@@ -646,6 +667,6 @@ export function visibleState(s: GameState) {
     visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
-    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),
+    eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, factions:factionContacts(s), factionAppointment:s.factionAppointment??null, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),
     finalStage: s.finalStage, finalComplete: s.finalComplete, professionMilestones: s.professionMilestones, professions: PROFESSIONS.filter(p => p.implemented).map(p => professionVictory(s, p.id)), victory: s.victory, endless: s.endless, challenge: s.challenge, messages: s.messages.slice(-5) };
 }

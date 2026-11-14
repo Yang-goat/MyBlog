@@ -19,5 +19,5 @@ export function visitorGreeting(s:GameState,visitor?:Visitor){
  if(pending){const item=s.items.find(i=>i.id===pending.itemId),name=ITEMS.find(d=>d.id===item?.definitionId)?.name??'旧物';return pending.verified?`那件${name}已经复检通过了，方便时帮我办一下交付。`:`那件${name}还留在你的工作台上。我先看看今天的货。`;}
  const previous=[...(s.repairHistory??[])].reverse().find(r=>r.kind==='client'&&r.characterId===person.id);
  if(previous){const name=ITEMS.find(i=>i.id===previous.definitionId)?.name??'旧物';return `上回那件${name}已经取回了，工序单我也留着。今天又走到你这扇门前。`;}
- return s.met.includes(person.id)?greetings[person.id]??'又见面了，今天来看看。':person.intro;
+ return s.met.includes(person.id)?greetings[person.id]??person.returning:person.intro;
 }

@@ -56,3 +56,10 @@
 根据用户提出的俄罗斯方块参考，查阅 [Tetris 官方游戏入口](https://play.tetris.com/games/) 中的移动和旋转操作，以及 [Tetris 官方整理主题资料](https://tetris.com/products/merchandise/organizing-with-tetris) 的空间组合思路。本轮采用可旋转的离散方格轮廓和凹角互嵌，没有将其写成对原游戏仓库的实际体验。
 
 用户随后指出旧图标被强行拉伸，以及首批新图难以从外观识别名称。因此先确立真实电钻、阀门和检修灯的功能轮廓，再为完整造型确定占格；三件分别为 7、7、10 格。首批强制贴合四格几何形状的草稿归档，不发布。现有图标统一等比显示，另逐件重画五件比例不适配或小尺寸辨识较弱的旧物。
+
+
+## 2026-11-14 阶层、人群与交易关系
+
+按用户提出的《赛博朋克 2077》人群参考，阅读官方 [Hello, Night City](https://www.cyberpunk.net/en/news/20960/hello-night-city)、[Gangs](https://www.cyberpunk.net/en/news/21749/cyberpunk-2077-e3-2018-trailer-frame-by-frame-ep08-gangs) 与 [Corporations](https://www.cyberpunk.net/en/news/22070/cyberpunk-2077-e3-2018-trailer-frame-by-frame-ep11-corporations) 资料。前两页使用官方搜索正文摘录，企业篇展开阅读正文；采用上层企业、下层生活和不同组织交织的社会构成思路，未将其声称为亲自游玩的观察。
+
+本项目设计七个原创人群，以服装、随身工具、供货状态、预算和商品偏好体现区别。新增企业采购人季砚、佣兵韩峤、巡务员许征和电台联络员燕雀的独立立绘；未复制原游戏角色或标识。关系阈值、次日预约、合作待遇与事件取舍为适配本项目经营循环的设计，不主张这些数值或机制来自上述原游戏。

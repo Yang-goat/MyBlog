@@ -80,7 +80,7 @@ describe('optional neighbourhood delivery orders',()=>{
   s=act(s,{type:'openDay'});rejectUnchanged(s,{type:'deliverGoods',jobId:job.id,itemIds:[water(s).id]});expect(importSave(exportSave(s))).toEqual(s);
  });
  it('covers six categories and rejects invalid delivery save references',()=>{
-  expect(DELIVERIES.length).toBe(12);expect(new Set(DELIVERIES.map(d=>d.category)).size).toBe(6);
+  expect(DELIVERIES.length).toBe(16);expect(new Set(DELIVERIES.map(d=>d.category)).size).toBe(6);
   for(const d of DELIVERIES){expect(CHARACTERS.some(c=>c.id===d.characterId)).toBe(true);expect(d.itemIds.every(id=>ITEMS.some(i=>i.id===id&&i.category===d.category))).toBe(true);expect(d.itemIds.some(id=>ITEMS.some(i=>i.id===id&&i.chapter<=d.chapter))).toBe(true);}
   let s=createGame(42);const job=first(s),item=structuredClone(water(s));s=act(s,{type:'acceptDelivery',jobId:job.id});s=act(s,{type:'deliverGoods',jobId:job.id,itemIds:[item.id]});
   const invalid=structuredClone(s);invalid.items.push(item);expect(()=>validateState(invalid)).toThrow('仍留在库存');

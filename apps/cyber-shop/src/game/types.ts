@@ -1,3 +1,4 @@
+import type {FactionId} from '../content/factions';
 export type CategoryId = 'electronics' | 'energy' | 'food' | 'neural' | 'data' | 'antique';
 export type CertificateId = 'civil' | 'industrial' | 'neural' | 'antique';
 export type Operation = 'clean' | 'replace' | 'calibrate';
@@ -20,11 +21,11 @@ export interface ItemInstance {
   provenance: string; compatibility: string; expiresDay: number | null; faults: string[]; known: string[];
   cost: number; acquiredDay: number; preservedUntil: number;
 }
-export interface CharacterDefinition { id: string; name: string; role: string; group: string; preferences: CategoryId[]; patience: number; bargain: string; intro: string; returning: string; endless: boolean; image: string }
+export interface CharacterDefinition { id: string; name: string; role: string; group: string; preferences: CategoryId[]; patience: number; bargain: string; intro: string; returning: string; endless: boolean; firstDay?:number; image: string }
 export interface SkillDefinition { id: string; name: string; tree: 'general' | 'repair'; branch: string; tier: number; cost: number; requires: string[]; effect: string; amount: number; description: string }
 export interface EquipmentDefinition { id: string; name: string; type: 'tool' | 'material' | 'facility'; price: number; effect: string; amount: number; description: string; image: string }
 export interface CertificateDefinition { id: CertificateId; name: string; cases: number; fee: number; chapter: number; tools: string[]; examItem: string; examFaults: string[]; description: string }
-export interface EventDefinition { id: string; name: string; text: string; category: CategoryId; multiplier: number; choices: { label: string; cash: number; reputation: number; group: string; relation: number; description: string }[] }
+export interface EventDefinition { id: string; name: string; text: string; category: CategoryId; multiplier: number; choices: { label: string; cash: number; reputation: number; group: string; relation: number; otherRelations?:Record<string,number>; description: string }[] }
 export interface QuestStage { text: string; requirement: 'repairs' | 'trades' | 'display' | 'certificate' | 'master' | 'final'; count: number; reward: number; xp: number }
 export interface QuestDefinition { id: string; name: string; character: string; stages: QuestStage[] }
 export interface CollectionTheme { id: string; name: string; description: string; items: string[]; bonus: number }
@@ -32,7 +33,7 @@ export interface ProfessionDefinition { id: string; name: string; implemented: b
 export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
 export interface NegotiationReply { itemIds: string[]; offered: number; quote: number; round: number; status: 'counter' | 'closed'; reason?: 'price' | 'budget' | 'far' }
 export interface TradeReceipt { kind: 'buy' | 'sell'; amount: number; cost: number; goods: { definitionId: string; itemId: string; cost: number }[] }
-export interface Visitor { storageGoods?:StorageOffer[]; id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
+export interface Visitor { relationCredited?:boolean; storageGoods?:StorageOffer[]; id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
 export interface RepairStep { day: number; operation: Operation; module?: string; faultId?: string; result: 'fixed' | 'cleaned' | 'miss'; hours: number; preserve: boolean }
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean; receivedDay?: number; conditionBefore?: number; steps?: RepairStep[] }
 export interface RepairReceipt { orderId: string; definitionId: string; characterId: string; kind: RepairOrder['kind']; receivedDay?: number; day: number; conditionBefore?: number; conditionAfter: number; completedOps: number; steps: RepairStep[]; reward: number }
@@ -51,6 +52,7 @@ export interface DeliveryJob {
 export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:Rotation}; counterGrid?:{x:number;y:number;rotated:Rotation}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
 export interface StorageOffer { id:string; styleId:string; price:number }
 export interface GameState {
+  factionAppointment?:FactionId;
   containers?: StorageContainer[];
   modifiers?:string[];
   labeler?: boolean;
@@ -70,6 +72,7 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type:'appointFaction'; factionId:FactionId|null }
  | { type: 'acceptDelivery'; jobId: string }
  | { type: 'deliverGoods'; jobId: string; itemIds: string[] }
  | { type: 'cancelDelivery'; jobId: string }

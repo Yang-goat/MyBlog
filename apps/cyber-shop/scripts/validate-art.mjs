@@ -7,7 +7,7 @@ import ts from 'typescript';
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentRoot = path.join(appRoot, 'src/content');
 const sceneIds = ['scene-city', 'scene-shop', 'scene-workbench', 'scene-ending'];
-const EXPECTED_COUNT = 69;
+const EXPECTED_COUNT = 73;
 // User-authorized exceptions after recorded image-generation failures; all other assets stay AI-generated.
 const originalDrawingIds = new Set(['electronic-parts', 'insulation']);
 
@@ -110,7 +110,7 @@ export async function validateArt({ distRoot } = {}) {
   } catch (error) { errors.push(`Cannot read content/art registry: ${error.message}`); return report; }
 
   const expected = new Map();
-  for (const [list, kind, count] of [[content.ITEMS, 'item', 39], [content.CHARACTERS, 'character', 10], [content.EQUIPMENT, 'equipment', 16]]) {
+  for (const [list, kind, count] of [[content.ITEMS, 'item', 39], [content.CHARACTERS, 'character', 14], [content.EQUIPMENT, 'equipment', 16]]) {
     check(Array.isArray(list) && list.length === count, `Expected ${count} ${kind} definitions`);
     for (const entry of list ?? []) {
       check(!expected.has(entry.id), `Duplicate content art ID: ${entry.id}`);

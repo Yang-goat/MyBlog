@@ -32,6 +32,9 @@ const ShopCanvas = defineAsyncComponent(() => import('../scenes/ShopCanvas.vue')
 const chapters = ['重新开门', '街区口碑', '高价与代价', '自己的招牌'];
 const chapter = computed(() => state.value.endless ? '自由经营' : chapters[Math.max(0,state.value.chapter-1)]);
 const visitor = computed(() => state.value.visitors[state.value.visitorIndex]);
+import { factionFor,relationName } from '../game/factions';
+import { showFaction } from './faction-view';
+const currentFaction=computed(()=>factionFor(visitor.value?.characterId??''));
 const person = computed(() => CHARACTERS.find(p => p.id === visitor.value?.characterId));
 const canCall = computed(()=>state.value.phase==='open' && !!visitor.value && (state.value.visitorArrived===false || (visitor.value.resolved&&state.value.visitorIndex<state.value.visitors.length-1)));
 const talking = computed(() => state.value.visitorArrived !== false && !!visitor.value && !visitor.value.resolved && state.value.phase === 'open');
@@ -276,7 +279,7 @@ onUnmounted(() => { inventoryObserver?.disconnect();clearLongPress();tooltipObse
     <div class="visitor-window">
       <section v-if="touchInfo && inspectedItem && !modal" class="touch-item-info" role="dialog" aria-label="物品信息"><button class="item-info-close" @click="touchInfo = ''">关闭物品信息 ×</button><ItemInfoCard :item="inspectedItem"/></section>
       <Transition name="guest" mode="out-in"><Art v-if="talking && person" :key="visitor?.id" :id="person.id" :label="person.name" class="room-person" eager /></Transition>
-      <div v-if="talking && person" class="speech-bubble"><small>{{ person.role }}</small><h2>{{ person.name }}</h2><p>{{ dialogue }}</p><button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : visitor?.kind === 'repair' ? '看看需要修什么' : visitor?.kind === 'buyer' ? '看看有什么合适的' : '看看带来的货' }} </button><div v-else class="speech-options"><button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button><button @click="history = !history">对话记录</button><button @click="notify(person.bargain)">聊聊这笔生意</button></div><div v-if="history" class="dialogue-history"><p>{{ greeting }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></div></div>
+      <div v-if="talking && person" class="speech-bubble"><small>{{ person.role }}</small><button class="visitor-faction" @click="showFaction(currentFaction.id)">{{currentFaction.shortName}} · {{relationName(state.relations[currentFaction.id]??0)}}</button><h2>{{ person.name }}</h2><p>{{ dialogue }}</p><button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : visitor?.kind === 'repair' ? '看看需要修什么' : visitor?.kind === 'buyer' ? '看看有什么合适的' : '看看带来的货' }} </button><div v-else class="speech-options"><button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button><button @click="history = !history">对话记录</button><button @click="notify(person.bargain)">聊聊这笔生意</button></div><div v-if="history" class="dialogue-history"><p>{{ greeting }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></div></div>
 
     </div>
 

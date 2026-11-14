@@ -62,7 +62,7 @@ describe('player-facing journey and receipts',()=>{
   s.cash=0;
   for(let n=0;n<5;n++){
    s=act(s,{type:'closeDay'});expect(s.phase).toBe('closed');expect(s.victory).toBe(true);
-   expect(financialRecovery(s)).toMatchObject({fees:20,closingChances:null,deadline:null});
+   expect(financialRecovery(s)).toMatchObject({fees:10,closingChances:null,deadline:null});
    expect(journey(s).next.detail).toContain('永久经营权保留');s=act(s,{type:'openDay'});
   }
  });

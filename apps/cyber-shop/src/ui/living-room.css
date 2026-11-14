@@ -101,3 +101,6 @@
 .notebook.book-notebook{width:min(1180px,96vw);height:min(790px,calc(100svh - 34px));max-height:none;max-width:none;overflow:visible;background:none;border:0;box-shadow:none;margin:0}.book-notebook>.notebook-content{padding:0;height:100%}.book-notebook .dialog-toolbar{position:absolute;top:1%;right:1.6%;width:40px;z-index:8}.book-notebook .modal-close{top:0;right:0;background:#163332eb;width:38px;height:38px;font-size:23px;border:1px solid #82a79a}@media(max-height:550px){.notebook.book-notebook{height:calc(100svh - 16px)}.book-notebook .dialog-toolbar{right:.7%;top:.8%}.book-notebook .modal-close{width:32px;height:32px;font-size:21px}}
 
 @media(pointer:coarse){.book-notebook .modal-close{width:44px;height:44px}}
+
+/* Compact identity links keep detailed faction rules inside the journal. */
+.speech-bubble button.visitor-faction{display:inline-block;width:auto;min-height:0;padding:2px 6px;margin:0 0 0 7px;border:1px solid #6a776a;background:#243a34;color:#bac9ae;font-size:9px;letter-spacing:0}.trade-faction{padding:3px 7px;font-size:10px;margin:2px 0 0}.trade-preference{font-size:11px;color:#b4c2ad;margin:10px 0 0}

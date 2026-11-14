@@ -37,7 +37,7 @@ describe('all skill capabilities change an actionable outcome', () => {
     const cash = s.cash; s = act(s, { type: 'buyEquipment', equipmentId: 'electronic-parts', count: 2 }); expect(cash - s.cash).toBe(Math.round(64 * .85)); const hours = s.hours; s = act(s, { type: 'sort' }); expect(s.hours).toBe(hours);
   });
   it('all collection skills change display quality, themes and the actual visiting buyer', () => {
-    let s = displayTheme(createGame(31)); const normal = attraction(s); s.skills = ['collection-1']; const catalog = attraction(s); expect(catalog).toBeGreaterThan(normal); s.skills.push('collection-2'); expect(attraction(s)).toBeGreaterThan(catalog); s.skills.push('collection-3'); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); expect(s.visitors[5]!.kind).toBe('buyer'); expect(s.visitors[5]!.category).toBe('antique');
+    let s = displayTheme(createGame(31)); const normal = attraction(s); s.skills = ['collection-1']; const catalog = attraction(s); expect(catalog).toBeGreaterThan(normal); s.skills.push('collection-2'); expect(attraction(s)).toBeGreaterThan(catalog); s.skills.push('collection-3'); s = act(s, { type: 'closeDay' }); s = act(s, { type: 'openDay' }); s = act(s, { type: 'callVisitor' }); expect(s.visitors[6]!.kind).toBe('buyer'); expect(s.visitors[6]!.category).toBe('antique');
   });
   it('precision skills save diagnosis/retest work, widen calibration tolerance and raise service rewards', () => {
     const basic = withFault('clock-drift'); const skilled = withFault('clock-drift', ['precision-1', 'precision-2', 'precision-3', 'precision-4']);
@@ -114,6 +114,6 @@ describe('late-game and material accounting', () => {
       s = act(s, { type: 'acceptTrade', visitorId: visitor.id, itemId: item.id }); expect(s.challenge!.progress).toBe(n + 1); expect(applyAction(s, { type: 'acceptTrade', visitorId: visitor.id, itemId: item.id }).ok).toBe(false);
       if (n === 0) s = act(s, { type: 'nextVisitor' });
     }
-    const before = s.cash; s = act(s, { type: 'closeDay' }); expect(s.challenge).toBeNull(); expect(s.cash - before).toBe(2200 - 20); expect(applyAction(s, { type: 'closeDay' }).ok).toBe(false);
+    const before = s.cash; s = act(s, { type: 'closeDay' }); expect(s.challenge).toBeNull(); expect(s.cash - before).toBe(2200 - 10); expect(applyAction(s, { type: 'closeDay' }).ok).toBe(false);
   });
 });

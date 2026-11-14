@@ -2,6 +2,7 @@ import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUE
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
 import { MAX_CONTAINER_DEPTH, LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
 import { STORAGE_STYLES } from '../content/storage';
+import { faction } from '../content/factions';
 import { validRotation } from '../game/warehouse';
 import { validModifiers, dailyHours } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
@@ -50,6 +51,7 @@ export function validateState(value: unknown): asserts value is GameState {
   check(strings(s.discovered) && refs(s.discovered, ITEMS.map(a => a.id)), '图鉴记录无效。');
   check(strings(s.met) && refs(s.met, CHARACTERS.map(a => a.id)), '人物记录无效。');
   check(strings(s.professionMilestones) && refs(s.professionMilestones, PROFESSIONS.map(p => p.finalMilestone)), '职业里程碑记录无效。');
+  check(s.factionAppointment===undefined || typeof s.factionAppointment==='string' && !!faction(s.factionAppointment), '联络预约无效。');
   check(s.appointments === null || CATEGORIES.some(c => c.id === s.appointments), '预约分类无效。');
   check(EVENTS.some(e => e.id === s.eventId), '街区事件无效。');
   check(object(s.equipment) && Object.entries(s.equipment).every(([id, count]) => EQUIPMENT.some(e => e.id === id) && integer(count)), '道具数量无效。');
@@ -80,6 +82,7 @@ export function validateState(value: unknown): asserts value is GameState {
     if (v.item) validateItem(v.item);
     if(v.goods !== undefined) { check(Array.isArray(v.goods) && v.goods.length <= 100 && new Set(v.goods.map(i=>i.id)).size === v.goods.length,'卖家货品列表无效。');v.goods.forEach(validateItem); }
     if(v.priceTags !== undefined) check(v.kind==='seller' && object(v.priceTags) && Array.isArray(v.goods) && Object.keys(v.priceTags).length===v.goods.length && v.goods.every(i=>{const tag=v.priceTags![i.id];return object(tag)&&integer(tag.ask)&&tag.ask>0&&integer(tag.minimum)&&tag.minimum>0&&tag.minimum<=tag.ask;}),'卖家逐件价签无效。');
+    if(v.relationCredited!==undefined)check(typeof v.relationCredited==='boolean','往来记录无效。');
     if(v.budget !== undefined) check(integer(v.budget),'买家预算无效。');
     if(v.buyerQuotes!==undefined)check(v.kind==='buyer'&&object(v.buyerQuotes)&&Object.values(v.buyerQuotes).every(q=>integer(q)&&q>0),'买家逐件还价无效。');
     if(v.negotiation!==undefined){

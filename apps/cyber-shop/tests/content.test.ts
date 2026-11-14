@@ -3,7 +3,7 @@ import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES,
 
 describe('content registry integrity', () => {
   it('contains the agreed playable content counts and unique stable identifiers', () => {
-    for (const [list, count] of [[ITEMS, 39], [CATEGORIES, 6], [FAULTS, 12], [CHARACTERS, 10], [SKILLS, 24], [EQUIPMENT, 16], [CERTIFICATES, 4], [EVENTS, 16], [QUESTS, 4], [THEMES, 3], [PROFESSIONS, 6]] as const) {
+    for (const [list, count] of [[ITEMS, 39], [CATEGORIES, 6], [FAULTS, 12], [CHARACTERS, 14], [SKILLS, 24], [EQUIPMENT, 16], [CERTIFICATES, 4], [EVENTS, 16], [QUESTS, 4], [THEMES, 3], [PROFESSIONS, 6]] as const) {
       expect(list).toHaveLength(count); expect(new Set(list.map(a => a.id)).size).toBe(count);
       for (const entry of list) expect(entry.id).toMatch(/^[a-z][a-z0-9-]+$/);
     }
