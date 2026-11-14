@@ -1,5 +1,8 @@
 import { ITEMS, FAULTS, SKILLS, CERTIFICATES, EQUIPMENT, CHARACTERS, EVENTS, QUESTS, CATEGORIES, PROFESSIONS } from '../content';
 import { BALANCE, CONTENT_VERSION, SAVE_VERSION } from '../game/balance';
+import { LABEL_COLORS, validContainerLabel, containerLayout, containerTrail, ownedObjects } from '../game/containers';
+import { STORAGE_STYLES } from '../content/storage';
+import { validModifiers } from '../game/modifiers';
 import { DELIVERIES } from '../content/deliveries';
 import type { GameState, ItemInstance } from '../game/types';
 
@@ -84,7 +87,7 @@ export function validateState(value: unknown): asserts value is GameState {
     }
     if(v.lastTrade!==undefined){
       const receipt=v.lastTrade;check(object(receipt)&&receipt.kind===(v.kind==='seller'?'buy':v.kind==='buyer'?'sell':'')&&integer(receipt.amount)&&receipt.amount>0&&integer(receipt.cost),'成交回执无效。');
-      check(Array.isArray(receipt.goods)&&receipt.goods.length>0&&receipt.goods.every(g=>object(g)&&typeof g.itemId==='string'&&ITEMS.some(d=>d.id===g.definitionId)&&integer(g.cost)),'成交货品记录无效。');
+      check(Array.isArray(receipt.goods)&&receipt.goods.length>0&&receipt.goods.every(g=>object(g)&&typeof g.itemId==='string'&&(ITEMS.some(d=>d.id===g.definitionId)||STORAGE_STYLES.some(d=>d.id===g.definitionId))&&integer(g.cost)),'成交货品记录无效。');
       check(new Set(receipt.goods.map(g=>g.itemId)).size===receipt.goods.length&&receipt.goods.reduce((n,g)=>n+g.cost,0)===receipt.cost,'成交成本记录不一致。');
     }
   }
@@ -138,6 +141,34 @@ export function validateState(value: unknown): asserts value is GameState {
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');
   if(s.visitorArrived !== undefined) check(typeof s.visitorArrived === 'boolean','叫号状态无效。');
   if (s.storageUpgrades !== undefined) check(object(s.storageUpgrades) && integer(s.storageUpgrades.backpack) && s.storageUpgrades.backpack <= 1 && integer(s.storageUpgrades.crate) && s.storageUpgrades.crate <= 2, '仓库扩展记录无效。');
+  if (s.labeler !== undefined) check(typeof s.labeler === 'boolean', '标签机记录无效。');
+  if(s.modifiers!==undefined)check(validModifiers(s.modifiers),'开局词条无效或相互冲突。');
+  if(s.containers!==undefined){
+    check(Array.isArray(s.containers)&&s.containers.length<=256,'箱包记录无效。');
+    check(new Set([...s.items.map(i=>i.id),...s.containers.map(c=>c.id)]).size===s.items.length+s.containers.length,'箱包标识与已有物品重复。');
+    for(const c of s.containers){
+      check(object(c)&&typeof c.id==='string'&&/^container-\d+$/.test(c.id)&&STORAGE_STYLES.some(d=>d.id===c.styleId),'箱包款式或标识无效。');
+      check(c.owner==='player'&&['stock','counter'].includes(c.location)&&integer(c.cost)&&integer(c.acquiredDay)&&c.acquiredDay<=s.day,'箱包归属或成本无效。');
+      check(validContainerLabel(c.label)&&LABEL_COLORS.includes(c.color),'箱包标签无效。');
+      for(const at of [c.grid,c.counterGrid])if(at!==undefined)check(object(at)&&integer(at.x)&&integer(at.y)&&typeof at.rotated==='boolean','箱包坐标无效。');
+      check(c.location!=='counter'||(c.containerId===undefined&&!!c.counterGrid),'台面箱包位置无效。');
+      check(c.location!=='stock'||!!c.grid,'仓库箱包缺少坐标。');
+    }
+    for(const c of s.containers)check(containerTrail(s,c.id)!==null,'箱包嵌套循环或指向不存在的箱包。');
+  }
+  for(const item of ownedObjects(s))if(item.containerId!==undefined){
+    check(typeof item.containerId==='string'&&s.containers?.some(c=>c.id===item.containerId),'物品指向不存在的箱包。');
+    check(item.owner==='player'&&item.location==='stock'&&!!item.grid,'箱包内物品位置或归属无效。');
+  }
+  for(const c of s.containers??[]){
+    const layout=containerLayout(s,c);check(!layout.overflow.length,'箱包内部容量不足。');
+    for(const item of ownedObjects(s).filter(i=>i.containerId===c.id)){const at=layout.positions[item.id];check(at&&item.grid&&at.x===item.grid.x&&at.y===item.grid.y&&at.rotated===item.grid.rotated,'箱包内物品重叠或越界。');}
+  }
+  for(const visitor of s.visitors)if(visitor.storageGoods!==undefined){
+    check(visitor.kind==='seller'&&Array.isArray(visitor.storageGoods)&&visitor.storageGoods.length<=2,'卖家箱包库存无效。');
+    check(new Set(visitor.storageGoods.map(o=>o.id)).size===visitor.storageGoods.length,'箱包货号重复。');
+    check(visitor.storageGoods.every(o=>object(o)&&typeof o.id==='string'&&STORAGE_STYLES.some(d=>d.id===o.styleId)&&integer(o.price)&&o.price>0),'箱包价签无效。');
+  }
   if (s.tutorial !== undefined) check(object(s.tutorial) && integer(s.tutorial.step) && s.tutorial.step <= 9 && typeof s.tutorial.skipped === 'boolean', '教学进度无效。');
   if (s.conversations !== undefined) check(object(s.conversations) && Object.values(s.conversations).every(n => integer(n) && n <= 2), '对话进度无效。');
   if (s.challenge !== null) check(object(s.challenge) && ['batch-repair', 'exhibition', 'rare-trade'].includes(s.challenge.id) && ['goal', 'progress', 'deadline', 'reward'].every(k => integer((s.challenge as unknown as Record<string, unknown>)[k])), '挑战记录无效。');

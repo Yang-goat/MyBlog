@@ -65,10 +65,9 @@ try {
   await page.getByRole('button',{name:'仓库空格 55',exact:true}).click();
   assert.equal((await game()).warehouse.positions[second.id].rotated,true); results.clickRotatePlace=true;
   const baseCapacity=(await game()).capacity;
-  await click('扩容 +');await click('安装旧式收纳背包 · ₡180');assert.equal((await game()).capacity,baseCapacity+6);
-  await click('安装堆叠储藏箱 · ₡420');assert.equal((await game()).capacity,baseCapacity+18);await click('关闭扩容');
-  assert.equal(await page.locator('.warehouse-cell').count(),(baseCapacity+18)*4);results.storageExpansion=true;
-  await page.reload();await page.getByRole('button',{name:/继续经营/}).click();await page.waitForSelector('.warehouse-item');assert.equal((await game()).capacity,baseCapacity+18);
+  await click('箱包 / 扩容');assert.equal(await page.locator('.container-grid').count(),1);await click('关闭面板');
+  assert.equal(await page.locator('.warehouse-cell').count(),baseCapacity*4);results.storageEntry=true;
+  await page.reload();await page.getByRole('button',{name:/继续经营/}).click();await page.waitForSelector('.warehouse-item');assert.equal((await game()).capacity,baseCapacity);
   await page.setViewportSize({width:1920,height:1080}); await shot('09-desktop');
   assert.deepEqual(errors,[]); results.consoleErrors=errors;
   await fs.writeFile(`${out}/ui-results.json`,JSON.stringify(results,null,2));

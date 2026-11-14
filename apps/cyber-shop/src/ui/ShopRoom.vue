@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, onMounted, onUnmounted, ref, watch } from 'vue';
 import { ITEMS, CHARACTERS } from '../content';
-import { capacity, displayCapacity, stockUsage, attraction } from '../game/engine';
-import { footprint, warehouseLayout, GRID_COLUMNS, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
+import { capacity, rootCapacity, displayCapacity, stockUsage, attraction } from '../game/engine';
+import { footprint, warehouseLayout, GRID_COLUMNS, fits, occupy, counterLayout, SURFACE_COLUMNS, SURFACE_ROWS, SURFACE_CAPACITY, type Placement } from '../game/warehouse';
 import type { ItemInstance } from '../game/types';
+import { rootLayout, shopCounterLayout, ownedObjects, firstObjectPlace } from '../game/containers';
+import { storageStyle } from '../content/storage';
 import { visitorGreeting } from '../game/narrative';
-import { state, modal, selectedItem, selectedOrder, dispatch, notify, muted, fullScreen, openGuide } from './store';
+import { state, modal, selectedStorage, selectedItem, selectedOrder, dispatch, notify, muted, fullScreen, openGuide } from './store';
 import Art from './Art.vue';
+import StorageArt from '../scenes/StorageArt.vue';
 import HandbookProp from './HandbookProp.vue';
 import VisitorPanel from './VisitorPanel.vue';
 import ItemInfoCard from './ItemInfoCard.vue';
@@ -27,7 +30,7 @@ const talking = computed(() => state.value.visitorArrived !== false && !!visitor
 const speechStep = computed(() => state.value.conversations?.[visitor.value?.id ?? ''] ?? 0);
 const greeting=computed(()=>visitorGreeting(state.value,visitor.value));
 const dialogue = computed(() => speechStep.value === 0 ? greeting.value : visitor.value?.request);
-const layout = computed(() => warehouseLayout(state.value.items, capacity(state.value)));
+const layout = computed(() => rootLayout(state.value, rootCapacity(state.value)));
 const stock = computed(() => state.value.items.filter(i => layout.value.positions[i.id]));
 const waiting = computed(() => state.value.items.filter(i => i.owner === 'player' && (i.location === 'counter' || layout.value.overflow.includes(i.id))));
 const displays = computed(() => state.value.items.filter(i => i.location === 'display'));
@@ -35,13 +38,12 @@ const orders = computed(() => state.value.orders.filter(o => !o.delivered));
 const staged = computed({get:()=>tradeIds.value[0]??'',set:(value:string)=>{if(!value)clearTrade();else stageTrade(value);}});
 const stagedAt = computed(()=>tradePlaces.value[staged.value]??{x:0,y:0,rotated:false});
 const incomingAt = ref<Record<string,Placement>>({});
-const storageShop = ref(false);
-const itemArtStyle = (item: ItemInstance, rotated: boolean) => { const {width,height}=footprint(item); return rotated ? {width: `${width/height*100}%`,height: `${height/width*100}%`,transform:'translate(-50%,-50%) rotate(90deg) scale(1.45)'} : {}; };
+const itemArtStyle = (item: ItemInstance | import('../game/types').StorageContainer, rotated: boolean) => { const {width,height}=footprint(item); return rotated ? {width: `${width/height*100}%`,height: `${height/width*100}%`,transform:'translate(-50%,-50%) rotate(90deg) scale(1.45)'} : {}; };
 
-const counter = computed(() => counterLayout(state.value.items));
+const counter = computed(() => shopCounterLayout(state.value));
 const incomingGoods=computed(()=>guestGoods.value.filter(i=>!tradeIds.value.includes(i.id)));
 const incomingLayout=computed(()=>warehouseLayout(incomingGoods.value.map(i=>({...i,owner:'player',location:'stock',grid:incomingAt.value[i.id]})),GRID_COLUMNS*3/4));
-const surfaceStyle = (item: ItemInstance, at?: Placement) => at ? { gridColumn: `${at.x + 1} / span ${footprint(item, at.rotated).width}`, gridRow: `${at.y + 1} / span ${footprint(item, at.rotated).height}` } : {};
+const surfaceStyle = (item: ItemInstance | import('../game/types').StorageContainer, at?: Placement) => at ? { gridColumn: `${at.x + 1} / span ${footprint(item, at.rotated).width}`, gridRow: `${at.y + 1} / span ${footprint(item, at.rotated).height}` } : {};
 const held = ref('');
 const rotated = ref(false);
 const hoverCell = ref<{ x: number; y: number; zone: 'warehouse' | 'trade' }>();
@@ -68,7 +70,7 @@ const menuStyle = computed(()=>({left:Math.max(8,Math.min(itemMenu.value?.x??0,v
 watch(tooltipElement,el=>{tooltipObserver?.disconnect();if(el){tooltipObserver=new ResizeObserver(()=>{tooltipSize.value={width:el.offsetWidth,height:el.offsetHeight};});tooltipObserver.observe(el);}});
 watch(modal,()=>{hoveredItem.value='';pinnedInfo.value='';touchInfo.value='';itemMenu.value=undefined;});
 function itemTarget(target:EventTarget|null){return target instanceof Element?target.closest<HTMLElement>('[data-item]'):null;}
-function hoverItem(e:PointerEvent){if(e.pointerType!=='mouse'||modal.value||storageShop.value)return;touchMode.value=false;const target=itemTarget(e.target);if(target){hoveredItem.value=target.dataset.item??'';pointer.value={x:e.clientX,y:e.clientY};}}
+function hoverItem(e:PointerEvent){if(e.pointerType!=='mouse'||modal.value)return;touchMode.value=false;const target=itemTarget(e.target);if(target){hoveredItem.value=target.dataset.item??'';pointer.value={x:e.clientX,y:e.clientY};}}
 function leaveItem(e:PointerEvent){if(itemTarget(e.target)!==itemTarget(e.relatedTarget))hoveredItem.value='';}
 function openItemMenu(e:MouseEvent){const target=itemTarget(e.target);if(!target||modal.value)return;itemMenu.value={id:target.dataset.item!,x:e.clientX,y:e.clientY};hoveredItem.value='';pinnedInfo.value='';}
 function dismissItemMenu(e:PointerEvent){if(!(e.target instanceof Element)||!e.target.closest('.item-context-menu'))itemMenu.value=undefined;if(!itemTarget(e.target))pinnedInfo.value='';}
@@ -78,7 +80,7 @@ let down: { id: string; x: number; y: number } | undefined;
 const definition = (id: string) => ITEMS.find(d => d.id === id);
 const itemById = tradeItem;
 const currentItem = computed(() => itemById(held.value || selectedItem.value));
-const gridRows = computed(() => Math.ceil(capacity(state.value) * 4 / GRID_COLUMNS));
+const gridRows = computed(() => Math.ceil(rootCapacity(state.value) * 4 / GRID_COLUMNS));
 const tutorialStep = computed(() => state.value.tutorial?.skipped ? 9 : state.value.tutorial?.step ?? 9);
 const lessons = [
   ['欢迎接手第九街', '我是林桥。先熟悉你的店：上方是客人带来的货，中间谈判，下面才是自己的仓库。每天开门先按右侧绿灯叫号。我们一起做完第一单。'],
@@ -110,7 +112,7 @@ function pick(id: string) {
   held.value = id; selectedItem.value = id; rotated.value = (counter.value.positions[id] ?? layout.value.positions[id] ?? incomingLayout.value.positions[id])?.rotated ?? false;
 }
 function startPointer(e: PointerEvent, id: string) {
-  if (e.button !== 0 || modal.value || storageShop.value) return;
+  if (e.button !== 0 || modal.value) return;
   clearLongPress();longPressTriggered=false;touchMode.value=e.pointerType==='touch';pinnedInfo.value='';
   down = { id, x: e.clientX, y: e.clientY }; pointer.value = { x: e.clientX, y: e.clientY };
   if(touchMode.value)longPressTimer=setTimeout(()=>{longPressTriggered=true;down=undefined;itemMenu.value={id,x:e.clientX,y:e.clientY};touchInfo.value=id;},500);
@@ -124,12 +126,12 @@ function movePointer(e: PointerEvent) {
   pointer.value = { x: e.clientX, y: e.clientY };
   if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6 && !dragging.value) { clearLongPress();touchInfo.value='';hoveredItem.value='';pick(down.id); dragging.value = true; }
   const zone = document.elementFromPoint(e.clientX, e.clientY)?.closest<HTMLElement>('[data-zone]')?.dataset.zone;
-  const cell = held.value && !modal.value && !storageShop.value && (zone === 'warehouse' || zone === 'trade') ? cellAt(e.clientX, e.clientY, zone) : undefined;
+  const cell = held.value && !modal.value && (zone === 'warehouse' || zone === 'trade') ? cellAt(e.clientX, e.clientY, zone) : undefined;
   hoverCell.value = cell && (zone === 'warehouse' || zone === 'trade') ? { ...cell, zone } : undefined;
 }
 function counterOccupied(excludeId: string) {
   const occupied = new Set<number>();
-  for (const other of waiting.value) if (other.id !== excludeId && counter.value.positions[other.id]) occupy(other, counter.value.positions[other.id]!, occupied, SURFACE_COLUMNS);
+  for (const other of ownedObjects(state.value)) if (other.id !== excludeId && counter.value.positions[other.id]) occupy(other, counter.value.positions[other.id]!, occupied, SURFACE_COLUMNS);
   for (const id of tradeIds.value) if (id !== excludeId && itemById(id) && tradePlaces.value[id]) occupy(itemById(id)!, tradePlaces.value[id]!, occupied, SURFACE_COLUMNS);
   return occupied;
 }
@@ -143,8 +145,8 @@ const validPreview = computed(() => {
   }
   if (!own || !['stock', 'counter'].includes(item.location)) return false;
   const occupied = new Set<number>();
-  for (const other of stock.value) if (other.id !== item.id) occupy(other, layout.value.positions[other.id]!, occupied);
-  return fits(item, at, occupied, capacity(state.value));
+  for (const other of ownedObjects(state.value)) if (other.id !== item.id && layout.value.positions[other.id]) occupy(other, layout.value.positions[other.id]!, occupied);
+  return fits(item, at, occupied, rootCapacity(state.value));
 });
 const previewStyle = computed(() => {
   if (!hoverCell.value || !currentItem.value) return {};
@@ -198,7 +200,7 @@ function endPointer(e: PointerEvent) {
 }
 function cancelPointer() { clearLongPress(); down = undefined; dragging.value = false; hoverCell.value = undefined; }
 function key(e: KeyboardEvent) {
-  if ((e.target as HTMLElement)?.matches('input,select,textarea') || modal.value || storageShop.value) return;
+  if ((e.target as HTMLElement)?.matches('input,select,textarea') || modal.value) return;
   if (['q', 'e'].includes(e.key.toLowerCase()) && held.value) { e.preventDefault(); rotated.value = !rotated.value; }
   if (e.key === 'Escape') {held.value = '';touchInfo.value='';pinnedInfo.value='';itemMenu.value=undefined;}
   if (e.code === 'Space' && talking.value && speechStep.value < 2) { e.preventDefault(); speak(); }
@@ -214,9 +216,7 @@ function openTrade() {
   modal.value = 'trade';
 }
 function autoStore(item: ItemInstance) {
-  const candidate = { ...item, location: 'stock' as const, grid: undefined };
-  const planned = warehouseLayout([...state.value.items.filter(i => i.id !== item.id), candidate], capacity(state.value));
-  const at = planned.positions[item.id];
+  const at = firstObjectPlace(state.value,rootCapacity(state.value),item);
   if (at) dispatch({ type: 'moveStock', itemId: item.id, ...at }); else notify('没有合适的连续空位，请旋转或整理仓库。');
 }
 const menuItem = computed(()=>itemMenu.value?itemById(itemMenu.value.id):undefined);
@@ -261,7 +261,7 @@ onUnmounted(() => { clearLongPress();tooltipObserver?.disconnect();window.remove
 </script>
 
 <template>
-  <section class="shop-room" :aria-hidden="!!modal || storageShop || ['won','ended','failed'].includes(state.phase)" :inert="!!modal || storageShop || ['won','ended','failed'].includes(state.phase)" :class="{ 'holding-item': held, 'dragging-item': dragging }" aria-label="店铺：上方来货，中间交易，下方仓库" @pointerover="hoverItem" @pointerout="leaveItem" @contextmenu.prevent="openItemMenu">
+  <section class="shop-room" :aria-hidden="!!modal || ['won','ended','failed'].includes(state.phase)" :inert="!!modal || ['won','ended','failed'].includes(state.phase)" :class="{ 'holding-item': held, 'dragging-item': dragging }" aria-label="店铺：上方来货，中间交易，下方仓库" @pointerover="hoverItem" @pointerout="leaveItem" @contextmenu.prevent="openItemMenu">
     <ShopCanvas class="room-background" :blocked="true" :scenery-only="true" />
     <div class="room-tint"></div>
     <aside class="room-left">
@@ -282,9 +282,9 @@ onUnmounted(() => { clearLongPress();tooltipObserver?.disconnect();window.remove
 
     <div class="incoming-tray" data-zone="incoming"><header>01 / 店外来货区 <small>客人的货 · 未购买</small></header><div class="surface-grid" aria-label="来货格子区"><button v-for="n in 72" :key="n" class="surface-cell" :style="{gridColumn:(n-1)%24+1,gridRow:Math.floor((n-1)/24)+1}" :aria-label="`来货空格 ${n}`" @click="held && place('incoming',(n-1)%24,Math.floor((n-1)/24))"></button><button v-for="item in talking && speechStep >= 2 ? incomingGoods : []" :key="item.id" class="physical-item incoming-item surface-item" :style="surfaceStyle(item,incomingLayout.positions[item.id])" :data-item="item.id" @pointerdown="startPointer($event,item.id)" @keydown.enter="pick(item.id)"><Art :id="item.definitionId" eager /></button><span v-if="!talking || speechStep < 2 || !incomingGoods.length" class="zone-hint surface-hint">{{ speechStep < 2 && talking ? '先与客人交谈' : staged && talking ? '货物已移到谈判台' : visitor?.kind === 'buyer' && talking ? '从仓库选取要出售的货物' : '等待下一位来客' }}</span></div></div>
 
-    <div class="negotiation-table" data-zone="trade"><header>02 / 谈判交易区 <button v-if="waiting.length" @click="waiting.forEach(autoStore)">全部入库 ↓</button><button v-if="staged && talking" @click="modal = 'trade'">打开谈判 ↗</button></header><div class="surface-grid table-objects" aria-label="谈判台格子区"><button v-for="n in 72" :key="n" class="surface-cell" :style="{gridColumn:(n-1)%24+1,gridRow:Math.floor((n-1)/24)+1}" :aria-label="`谈判空格 ${n}`" @click="held && place('trade',(n-1)%24,Math.floor((n-1)/24))"></button><button v-for="id in talking ? tradeIds : []" :key="id" class="physical-item surface-item staged-item" :data-item="id" :style="itemById(id) ? surfaceStyle(itemById(id)!,tradePlaces[id]) : {}" @pointerdown="startPointer($event,id)" @dblclick="modal = 'trade'"><Art v-if="itemById(id)" :id="itemById(id)!.definitionId" eager /></button><button v-for="item in waiting.filter(i=>!tradeIds.includes(i.id))" :key="item.id" class="physical-item purchased-item surface-item" :style="surfaceStyle(item,counter.positions[item.id])" :data-item="item.id" @pointerdown="startPointer($event,item.id)" @keydown.enter="pick(item.id)" @dblclick="autoStore(item)"><Art :id="item.definitionId" eager /><span>自有物品 · 待入库</span></button><div v-if="held && hoverCell?.zone === 'trade' && currentItem && !modal && !storageShop" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div><span v-if="!waiting.length && !(staged && talking)" class="surface-hint zone-hint">可暂存库存整理，也可放入来货谈判</span></div></div>
+    <div class="negotiation-table" data-zone="trade"><header>02 / 谈判交易区 <button v-if="waiting.length" @click="waiting.forEach(autoStore)">全部入库 ↓</button><button v-if="staged && talking" @click="modal = 'trade'">打开谈判 ↗</button></header><div class="surface-grid table-objects" aria-label="谈判台格子区"><button v-for="n in 72" :key="n" class="surface-cell" :style="{gridColumn:(n-1)%24+1,gridRow:Math.floor((n-1)/24)+1}" :aria-label="`谈判空格 ${n}`" @click="held && place('trade',(n-1)%24,Math.floor((n-1)/24))"></button><button v-for="id in talking ? tradeIds : []" :key="id" class="physical-item surface-item staged-item" :data-item="id" :style="itemById(id) ? surfaceStyle(itemById(id)!,tradePlaces[id]) : {}" @pointerdown="startPointer($event,id)" @dblclick="modal = 'trade'"><Art v-if="itemById(id)" :id="itemById(id)!.definitionId" eager /></button><button v-for="item in waiting.filter(i=>!tradeIds.includes(i.id))" :key="item.id" class="physical-item purchased-item surface-item" :style="surfaceStyle(item,counter.positions[item.id])" :data-item="item.id" @pointerdown="startPointer($event,item.id)" @keydown.enter="pick(item.id)" @dblclick="autoStore(item)"><Art :id="item.definitionId" eager /><span>自有物品 · 待入库</span></button><button v-for="box in (state.containers??[]).filter(c=>c.location==='counter')" :key="box.id" class="surface-item purchased storage-on-counter" :data-counter-container="box.id" :aria-label="`收纳 ${box.label}`" :style="surfaceStyle(box,counter.positions[box.id])" @click="selectedStorage='';modal='storage'"><StorageArt :kind="storageStyle(box.styleId).art"/></button><div v-if="held && hoverCell?.zone === 'trade' && currentItem && !modal" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div><span v-if="!waiting.length && !(staged && talking)" class="surface-hint zone-hint">可暂存库存整理，也可放入来货谈判</span></div></div>
 
-    <section class="warehouse-section"><header><strong>03 / 仓库</strong><span>{{ stockUsage(state) * 4 }} / {{ capacity(state) * 4 }} 格</span><button :disabled="!held" @click="rotated = !rotated">旋转 Q / E</button><button @click="dispatch({ type: 'sort' })">整理</button><button @click="storageShop = true">扩容 +</button><button @click="modal = 'inventory'">详细账目 ↗</button></header><div class="warehouse-body"><div class="warehouse-scroll"><div class="warehouse-grid" data-zone="warehouse" :style="{ '--rows': gridRows }" role="group" aria-label="可整理的格子仓库"><button v-for="n in gridRows * GRID_COLUMNS" :key="n" class="warehouse-cell" :style="{ gridColumn: (n - 1) % GRID_COLUMNS + 1, gridRow: Math.floor((n - 1) / GRID_COLUMNS) + 1 }" :disabled="n > capacity(state) * 4" :aria-label="`仓库空格 ${n}`" @click="!dragging && held && place('warehouse', (n - 1) % GRID_COLUMNS, Math.floor((n - 1) / GRID_COLUMNS))"></button><button v-for="item in stock.filter(i => !(talking && tradeIds.includes(i.id)))" :key="item.id" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" :class="['warehouse-item', { selected: held === item.id }]" :style="{ gridColumn: `${layout.positions[item.id]!.x + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).width}`, gridRow: `${layout.positions[item.id]!.y + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).height}` }" @pointerdown="startPointer($event, item.id)" @keydown.enter="pick(item.id)" @dblclick="selectedItem = item.id; modal = 'inventory'"><Art :id="item.definitionId" :label="definition(item.definitionId)?.name" :style="itemArtStyle(item,layout.positions[item.id]!.rotated)" eager /><span>{{ definition(item.definitionId)?.name }}</span><small v-if="item.expiresDay !== null">{{ item.expiresDay < state.day ? '已过期' : `第${item.expiresDay}日到期` }}</small></button><div v-if="held && hoverCell?.zone === 'warehouse' && currentItem && !modal && !storageShop" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div></div></div><aside class="warehouse-tools" aria-label="仓库用具"><HandbookProp/></aside></div><p v-if="tutorialStep < 9 || held" class="warehouse-hint">{{ held ? '点空格放置 · Q/E 旋转 · Esc 放下' : '拖动整理 · 点选后点空格也能移动 · 双击查看物品' }}</p></section>
+    <section class="warehouse-section"><header><strong>03 / 仓库</strong><span>{{ stockUsage(state) * 4 }} / {{ capacity(state) * 4 }} 格</span><button :disabled="!held" @click="rotated = !rotated">旋转 Q / E</button><button @click="dispatch({ type: 'sort' })">整理</button><button @click="modal = 'storage'">箱包 / 扩容</button><button @click="modal = 'inventory'">详细账目 ↗</button></header><div class="warehouse-body"><div class="warehouse-scroll"><div class="warehouse-grid" data-zone="warehouse" :style="{ '--rows': gridRows }" role="group" aria-label="可整理的格子仓库"><button v-for="n in gridRows * GRID_COLUMNS" :key="n" class="warehouse-cell" :style="{ gridColumn: (n - 1) % GRID_COLUMNS + 1, gridRow: Math.floor((n - 1) / GRID_COLUMNS) + 1 }" :disabled="n > rootCapacity(state) * 4" :aria-label="`仓库空格 ${n}`" @click="!dragging && held && place('warehouse', (n - 1) % GRID_COLUMNS, Math.floor((n - 1) / GRID_COLUMNS))"></button><button v-for="item in stock.filter(i => !(talking && tradeIds.includes(i.id)))" :key="item.id" :data-item="item.id" :aria-label="definition(item.definitionId)?.name" :class="['warehouse-item', { selected: held === item.id }]" :style="{ gridColumn: `${layout.positions[item.id]!.x + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).width}`, gridRow: `${layout.positions[item.id]!.y + 1} / span ${footprint(item, layout.positions[item.id]!.rotated).height}` }" @pointerdown="startPointer($event, item.id)" @keydown.enter="pick(item.id)" @dblclick="selectedItem = item.id; modal = 'inventory'"><Art :id="item.definitionId" :label="definition(item.definitionId)?.name" :style="itemArtStyle(item,layout.positions[item.id]!.rotated)" eager /><span>{{ definition(item.definitionId)?.name }}</span><small v-if="item.expiresDay !== null">{{ item.expiresDay < state.day ? '已过期' : `第${item.expiresDay}日到期` }}</small></button><button v-for="box in (state.containers??[]).filter(c=>layout.positions[c.id])" :key="box.id" class="warehouse-item" :data-world-container="box.id" :aria-label="`打开 ${box.label}`" :style="surfaceStyle(box,layout.positions[box.id])" @click="selectedStorage=box.id;modal='storage'"><StorageArt :kind="storageStyle(box.styleId).art" :style="itemArtStyle(box,layout.positions[box.id]!.rotated)"/><span>{{box.label}}</span></button><div v-if="held && hoverCell?.zone === 'warehouse' && currentItem && !modal" :class="['placement-preview', { invalid: !validPreview }]" :style="previewStyle"></div></div></div><aside class="warehouse-tools" aria-label="仓库用具"><HandbookProp/><button class="storage-dock" aria-label="打开箱包收纳" @click="modal='storage'"><StorageArt kind="crate"/><span>箱包 <b>{{state.containers?.length ?? 0}}</b></span></button></aside></div><p v-if="tutorialStep < 9 || held" class="warehouse-hint">{{ held ? '点空格放置 · Q/E 旋转 · Esc 放下' : '拖动整理 · 点选后点空格也能移动 · 双击查看物品' }}</p></section>
 
     <aside class="room-right"><div class="queue-terminal"><small>柜台呼叫器</small><strong>{{ state.visitors.filter(v => !v.resolved).length }} <span>位待接待</span></strong><button v-if="talking" @click="dispatch({ type: 'reject', visitorId: visitor!.id })">结束当前接待</button><span v-else-if="canCall" class="waiting-call">等待叫号 · 按下绿灯</span><button v-else-if="state.phase === 'closed'" class="primary" @click="dispatch({ type: 'openDay' })">迎接新的一天 →</button><span v-else>今日来客已接待完毕</span></div><button class="workshop-hotspot" data-zone="workshop" @click="held ? place('workshop') : modal = 'orders'">维修工作台 <b>{{ orders.length }} 件待办 ↗</b></button><button v-for="order in orders.slice(0, 3)" :key="order.id" class="room-order" @click="showOrder(order.id)">{{ definition(state.items.find(i => i.id === order.itemId)?.definitionId ?? '')?.name }}<small>{{ order.verified ? '待交付' : order.diagnosed ? '待修复 / 复检' : '待检测' }}</small></button><button class="closing-switch" v-if="state.phase === 'open'" @click="modal = 'close-day'">关店 / 日结 →</button></aside>
     <MarketNote v-if="!orders.length" />
@@ -300,10 +300,10 @@ onUnmounted(() => { clearLongPress();tooltipObserver?.disconnect();window.remove
     </nav>
     <div v-if="dragging && currentItem" class="drag-ghost" :style="{ left: pointer.x + 'px', top: pointer.y + 'px', transform: `translate(-50%,-50%) rotate(${rotated ? 90 : 0}deg)` }"><Art :id="currentItem.definitionId" eager /></div>
     <Teleport to="body">
-      <div v-if="inspectedItem && !touchInfo && !modal && !storageShop && !dragging && !itemMenu" ref="tooltipElement" class="pointer-item-info" role="tooltip" :style="tooltipStyle"><ItemInfoCard :item="inspectedItem"/></div>
+      <div v-if="inspectedItem && !touchInfo && !modal && !dragging && !itemMenu" ref="tooltipElement" class="pointer-item-info" role="tooltip" :style="tooltipStyle"><ItemInfoCard :item="inspectedItem"/></div>
       <div v-if="itemMenu && menuItem && !modal" class="item-context-menu" role="menu" aria-label="物品操作" :style="menuStyle" @contextmenu.prevent><small>{{definition(menuItem.definitionId)?.name}}</small><button v-for="action in menuActions" :key="action.id" role="menuitem" :disabled="action.disabled" @click="runItemAction(action.id)">{{action.label}}</button><button role="menuitem" class="menu-dismiss" @click="itemMenu = undefined">取消</button></div>
     </Teleport>
-    <Teleport to="body"><div v-if="storageShop" class="modal-backdrop" @click.self="storageShop = false"><section v-dialog-focus class="trade-dialog" role="dialog" aria-modal="true" aria-label="仓库扩容" @keydown.esc.stop="storageShop = false"><button class="modal-close" aria-label="关闭扩容" @click="storageShop = false">×</button><h2>给旧物腾出地方</h2><p>扩展后增加实际格子，原有摆放保持不动。向下滚动可看到新空间。</p><div v-for="(upgrade,kind) in STORAGE_UPGRADES" :key="kind" class="storage-option"><h3>{{ upgrade.name }}</h3><p>{{ upgrade.description }}</p><span>已装 {{ state.storageUpgrades?.[kind] ?? 0 }} / {{ upgrade.limit }}</span><button :disabled="(state.storageUpgrades?.[kind] ?? 0) >= upgrade.limit" @click="dispatch({type:'buyStorage',kind})">安装{{ upgrade.name }} · ₡{{ upgrade.price }}</button></div></section></div></Teleport>
+
     <Teleport to="body"><div v-if="modal === 'trade'" class="modal-backdrop" @click.self="modal = ''"><section v-dialog-focus class="trade-dialog trade-dialog-wide" role="dialog" aria-label="谈判交易" aria-modal="true" @keydown.esc.stop="modal = ''"><button class="modal-close" aria-label="关闭谈判" @click="modal = ''">×</button><VisitorPanel /><button class="text-button" @click="modal = ''; staged = ''">关闭交易，取消本次选择</button></section></div></Teleport>
   </section>
 </template>

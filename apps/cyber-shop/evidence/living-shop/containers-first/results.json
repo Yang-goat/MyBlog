@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "purchase": true,
+  "independentGrids": true,
+  "labels": true,
+  "blockedAccess": true,
+  "threeLayers": true,
+  "temporaryBay": true,
+  "contentsPreserved": true,
+  "withdraw": true,
+  "reload": true,
+  "handbookReturn": true,
+  "touch": true,
+  "errors": [],
+  "missing": []
+}

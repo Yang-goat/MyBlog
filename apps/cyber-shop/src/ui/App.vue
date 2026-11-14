@@ -8,14 +8,18 @@ import Notebook from './Notebook.vue';
 import ShopRoom from './ShopRoom.vue';
 import JourneyBoard from './JourneyBoard.vue';
 import DayReport from './DayReport.vue';
+import StorageRoom from './StorageRoom.vue';
 import DeliveryBoard from './DeliveryBoard.vue';
 import { dayReport, financialRecovery } from '../game/journey';
 import { tradeIds } from './trade-selection';
 import { vDialogFocus } from './dialog-focus';
+import { START_MODIFIERS } from '../game/modifiers';
 import { version } from '../../package.json';
 const seed = ref(20261105);
+const startingModifiers=ref<string[]>([]),showModifiers=ref(false);
+function toggleModifier(id:string){const picked=START_MODIFIERS.find(m=>m.id===id)!;startingModifiers.value=startingModifiers.value.includes(id)?startingModifiers.value.filter(i=>i!==id):[...startingModifiers.value.filter(i=>START_MODIFIERS.find(m=>m.id===i)?.group!==picked.group),id];}
 const newConfirm = ref(false);
-const counterCount=computed(()=>new Set([...state.value.items.filter(i=>i.location==='counter').map(i=>i.id),...tradeIds.value]).size);
+const counterCount=computed(()=>new Set([...state.value.items.filter(i=>i.location==='counter').map(i=>i.id),...tradeIds.value,...(state.value.containers??[]).filter(c=>c.location==='counter').map(c=>c.id)]).size);
 const activeOrders = computed(() => state.value.orders.filter(o => !o.delivered));
 const closing = computed(() => dayReport(state.value));
 const recovery=computed(()=>financialRecovery(state.value));
@@ -45,24 +49,26 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
         <p class="title-lead">旧物有它的下一段故事。<br />这一次，从你的柜台开始。</p>
         <div class="title-actions">
           <button v-if="hasSave" class="primary" @click="resume">继续经营 <span>↗</span></button>
-          <button id="start-btn" :class="hasSave ? '' : 'primary'" @click="hasSave || saveError ? newConfirm = true : begin(seed)">推开店门 <span>→</span></button>
+          <button id="start-btn" :class="hasSave ? '' : 'primary'" @click="hasSave || saveError ? newConfirm = true : begin(seed,startingModifiers)">推开店门 <span>→</span></button>
           <label class="file-button">导入存档<input type="file" accept="application/json,.json" @change="uploadSave(($event.target as HTMLInputElement).files?.[0])" /></label>
         </div>
         <p v-if="saveError" class="warning">{{ saveError }} 原存档会保留，请先导出或备份浏览器数据。</p>
+        <button class="modifier-trigger" aria-label="选择开局词条" @click="showModifiers=true">开局词条 <span>{{startingModifiers.length?`${startingModifiers.length} 项已选择`:'标准营业'}} ↗</span></button>
         <details class="seed-option"><summary>固定种子开局</summary><label>街区种子 <input v-model.number="seed" type="number" min="1" max="4294967295" /></label></details>
         <p class="small muted">暂停式营业 · 思考不消耗时间 · 本机自动保存</p>
       </div>
       <footer class="title-footer"><span>修复 / 交易 / 收藏</span><span>修复师篇 · {{version}}</span><button @click="fullScreen">全屏 F ↗</button></footer>
-      <div v-if="newConfirm" class="modal-backdrop" @click.self="newConfirm = false"><section v-dialog-focus class="small-dialog" @keydown.esc.stop="newConfirm = false" role="dialog" aria-modal="true" aria-label="重新开局"><h2>重新开门？</h2><p>当前进度将归档后替换。想保留可迁移副本，请先继续游戏并导出存档。</p><div class="actions"><button @click="newConfirm = false">返回</button><button class="primary" @click="begin(seed); newConfirm = false">确认新开局</button></div></section></div>
+      <div v-if="showModifiers" class="modal-backdrop" @click.self="showModifiers=false"><section v-dialog-focus class="modifier-dialog" role="dialog" aria-modal="true" aria-label="开局词条" @keydown.esc.stop="showModifiers=false"><header><p class="eyebrow">NEW RUN / 自选经营条件</p><h2>开局词条</h2><p>正向帮助与负面挑战可以组合，同类词条互斥。</p></header><div class="modifier-options"><button v-for="m in START_MODIFIERS" :key="m.id" :class="{positive:m.positive,selected:startingModifiers.includes(m.id)}" :aria-pressed="startingModifiers.includes(m.id)" @click="toggleModifier(m.id)"><strong>{{m.positive?'＋':'−'}} {{m.name}}</strong><small>{{m.description}}</small></button></div><footer><button @click="startingModifiers=[]">恢复标准营业</button><button class="primary" @click="showModifiers=false">采用词条 →</button></footer></section></div>
+      <div v-if="newConfirm" class="modal-backdrop" @click.self="newConfirm = false"><section v-dialog-focus class="small-dialog" @keydown.esc.stop="newConfirm = false" role="dialog" aria-modal="true" aria-label="重新开局"><h2>重新开门？</h2><p>当前进度将归档后替换。想保留可迁移副本，请先继续游戏并导出存档。</p><div class="actions"><button @click="newConfirm = false">返回</button><button class="primary" @click="begin(seed,startingModifiers); newConfirm = false">确认新开局</button></div></section></div>
     </section>
 
     <template v-else>
       <ShopRoom />
       <p v-if="saveError" class="save-error" role="alert">自动保存失败：{{ saveError }}。可在设置中导出进度。</p>
       <div v-if="modal && modal !== 'trade'" class="modal-backdrop" @click.self="modal = ''">
-        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
+        <section v-dialog-focus :class="['notebook', { 'repair-notebook': modal === 'workbench', 'book-notebook': modal === 'help', 'storage-notebook': modal === 'storage' }]" role="dialog" aria-modal="true" :aria-label="modal" @keydown.esc.stop="modal = ''">
           <div class="dialog-toolbar"><button class="modal-close" aria-label="关闭面板" @click="modal = ''">×</button></div>
-          <Workbench v-if="modal === 'workbench'" />
+          <StorageRoom v-if="modal === 'storage'"/><Workbench v-else-if="modal === 'workbench'" />
           <JourneyBoard v-else-if="modal === 'journey'" />
           <DayReport v-else-if="modal === 'day-report'" />
           <DeliveryBoard v-else-if="modal === 'deliveries'" />

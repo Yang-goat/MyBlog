@@ -1,0 +1,430 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '关闭面板', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button aria-label=\"关闭面板\" class=\"modal-close\">×</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n",
+  "state": {
+    "version": "0.2.0",
+    "mode": "title",
+    "panel": "",
+    "selectedItem": "",
+    "selectedOrder": "",
+    "coordinates": "画布设计坐标 1440×900，原点左上，x向右、y向下；DOM响应式",
+    "game": {
+      "coordinates": "店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。",
+      "day": 1,
+      "chapter": 1,
+      "phase": "open",
+      "cash": 1200,
+      "hours": 12,
+      "debt": 0,
+      "grace": 0,
+      "xp": 0,
+      "level": 1,
+      "points": 0,
+      "skills": [],
+      "certificates": [
+        "civil"
+      ],
+      "trained": [
+        "civil"
+      ],
+      "licenses": [],
+      "equipment": {
+        "cleaner": 4,
+        "electronic-parts": 4,
+        "mechanical-parts": 4,
+        "insulation": 4,
+        "neural-supplies": 4,
+        "preserve-pack": 2,
+        "micro-solder": 1,
+        "workbench": 1
+      },
+      "stockUsage": 2,
+      "capacity": 36,
+      "rootCapacity": 36,
+      "labeler": false,
+      "containers": [],
+      "displayCapacity": 3,
+      "attraction": 0,
+      "items": [
+        {
+          "id": "item-1",
+          "definitionId": "purified-water",
+          "name": "净化饮水",
+          "category": "food",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "accessible": true,
+          "condition": 83,
+          "estimate": [
+            37,
+            85
+          ],
+          "cost": 28,
+          "expiresDay": 6
+        },
+        {
+          "id": "item-2",
+          "definitionId": "data-chip",
+          "name": "通用数据芯片",
+          "category": "data",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "accessible": true,
+          "condition": 59,
+          "estimate": [
+            64,
+            148
+          ],
+          "cost": 60
+        },
+        {
+          "id": "item-3",
+          "definitionId": "mechanical-watch",
+          "name": "机械计时器",
+          "category": "antique",
+          "owner": "player",
+          "location": "stock",
+          "known": [
+            "basic"
+          ],
+          "accessible": true,
+          "condition": 61,
+          "estimate": [
+            225,
+            525
+          ],
+          "cost": 208
+        }
+      ],
+      "visitorArrived": false,
+      "warehouse": {
+        "positions": {
+          "item-1": {
+            "x": 0,
+            "y": 0,
+            "rotated": false
+          },
+          "item-2": {
+            "x": 1,
+            "y": 0,
+            "rotated": false
+          },
+          "item-3": {
+            "x": 2,
+            "y": 0,
+            "rotated": false
+          }
+        },
+        "overflow": []
+      },
+      "visitor": {
+        "id": "visitor-5",
+        "characterId": "he-jin",
+        "kind": "repair",
+        "category": "electronics",
+        "quote": 152,
+        "rounds": 0,
+        "patience": 3,
+        "resolved": false,
+        "request": "掌上通讯器：轻压接口时能短暂通电，接点电阻偏高。请先检测。",
+        "greeting": "会换零件还不够。能把故障原因讲清楚，工坊的单子才交给你。",
+        "item": {
+          "id": "item-4",
+          "definitionId": "pocket-com",
+          "name": "掌上通讯器",
+          "category": "electronics",
+          "owner": "customer",
+          "location": "workshop",
+          "known": [],
+          "accessible": true
+        }
+      },
+      "visitorIndex": 0,
+      "visitorCount": 7,
+      "orders": [],
+      "eventId": "rain-grid",
+      "eventResolved": false,
+      "questStages": {},
+      "reputation": 0,
+      "relations": {},
+      "records": {
+        "trades": 0,
+        "repairs": 0,
+        "revenue": 0,
+        "repairIncome": 0,
+        "days": 0,
+        "faults": {}
+      },
+      "repairHistory": [],
+      "deliveries": [
+        {
+          "id": "delivery-1-doorstep-water",
+          "templateId": "doorstep-water",
+          "postedDay": 1,
+          "deadline": 3,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-1-courier-call",
+          "templateId": "courier-call",
+          "postedDay": 1,
+          "deadline": 6,
+          "status": "offered"
+        },
+        {
+          "id": "delivery-1-backup-battery",
+          "templateId": "backup-battery",
+          "postedDay": 1,
+          "deadline": 6,
+          "status": "offered"
+        }
+      ],
+      "finalStage": 0,
+      "finalComplete": false,
+      "professionMilestones": [],
+      "professions": [
+        {
+          "professionId": "restorer",
+          "implemented": true,
+          "mastered": false,
+          "milestone": "relay-restored",
+          "completed": false,
+          "ready": false
+        }
+      ],
+      "victory": false,
+      "endless": false,
+      "challenge": null,
+      "messages": [
+        "店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。"
+      ]
+    },
+    "journey": {
+      "title": "重新开门",
+      "story": "林桥把钥匙留给了你。让第一批旧物重新运转，也让这条街记住店门里的灯。",
+      "tasks": [
+        {
+          "id": "repairs",
+          "title": "让旧物重新运转",
+          "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+          "current": 0,
+          "target": 5,
+          "done": false,
+          "panel": "orders",
+          "label": "前往维修工作台"
+        }
+      ],
+      "next": {
+        "id": "repairs",
+        "title": "让旧物重新运转",
+        "detail": "完成客户维修可赚取工钱和经验。工作台也有随时可接的基础援助维修。",
+        "current": 0,
+        "target": 5,
+        "done": false,
+        "panel": "orders",
+        "label": "前往维修工作台"
+      },
+      "ready": [],
+      "activeOrders": 0,
+      "investment": 0,
+      "nextLevelXp": 180
+    },
+    "dayReport": {
+      "income": 0,
+      "expenses": 0,
+      "net": 0,
+      "openingCash": 1200,
+      "closingCash": 1200,
+      "repairs": 0,
+      "repairIncome": 0,
+      "sales": 0,
+      "saleIncome": 0,
+      "deliveries": 0,
+      "deliveryIncome": 0,
+      "fees": 0,
+      "pendingFees": 85,
+      "entries": []
+    },
+    "presentation": {
+      "reducedMotion": false,
+      "muted": false,
+      "volume": 0.25,
+      "ambience": true,
+      "audio": {
+        "state": "locked",
+        "ambienceLevel": 0
+      }
+    }
+  },
+  "errors": [],
+  "missing": [],
+  "journal": [
+    {
+      "day": 1,
+      "chapter": 1,
+      "repairs": 2,
+      "trades": 4,
+      "cash": 1879,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 2,
+      "chapter": 1,
+      "repairs": 4,
+      "trades": 9,
+      "cash": 3369,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 3,
+      "chapter": 2,
+      "repairs": 6,
+      "trades": 14,
+      "cash": 4138,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 4,
+      "chapter": 2,
+      "repairs": 8,
+      "trades": 18,
+      "cash": 5212,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 5,
+      "chapter": 2,
+      "repairs": 10,
+      "trades": 22,
+      "cash": 5661,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 6,
+      "chapter": 2,
+      "repairs": 12,
+      "trades": 26,
+      "cash": 7634,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 7,
+      "chapter": 3,
+      "repairs": 14,
+      "trades": 30,
+      "cash": 8760,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 8,
+      "chapter": 3,
+      "repairs": 16,
+      "trades": 34,
+      "cash": 9126,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 9,
+      "chapter": 3,
+      "repairs": 18,
+      "trades": 38,
+      "cash": 9927,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 10,
+      "chapter": 3,
+      "repairs": 20,
+      "trades": 42,
+      "cash": 11378,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 11,
+      "chapter": 3,
+      "repairs": 22,
+      "trades": 46,
+      "cash": 11694,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 12,
+      "chapter": 3,
+      "repairs": 24,
+      "trades": 50,
+      "cash": 14764,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 13,
+      "chapter": 3,
+      "repairs": 26,
+      "trades": 54,
+      "cash": 16458,
+      "points": 0,
+      "phase": "closed"
+    },
+    {
+      "day": 14,
+      "chapter": 4,
+      "repairs": 29,
+      "trades": 58,
+      "cash": 18143,
+      "points": 1,
+      "phase": "closed"
+    },
+    {
+      "day": 15,
+      "chapter": 4,
+      "repairs": 32,
+      "trades": 62,
+      "cash": 20508,
+      "points": 2,
+      "phase": "closed"
+    },
+    {
+      "day": 16,
+      "chapter": 4,
+      "repairs": 35,
+      "trades": 66,
+      "cash": 12422,
+      "points": 3,
+      "phase": "won"
+    },
+    {
+      "day": 17,
+      "chapter": 4,
+      "repairs": 37,
+      "trades": 70,
+      "cash": 12687,
+      "points": 3,
+      "phase": "closed"
+    },
+    {
+      "day": 18,
+      "chapter": 4,
+      "repairs": 39,
+      "trades": 74,
+      "cash": 15796,
+      "points": 4,
+      "phase": "closed"
+    }
+  ]
+}

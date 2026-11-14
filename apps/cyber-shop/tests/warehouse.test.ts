@@ -48,15 +48,11 @@ describe('physical warehouse and ownership transfer', () => {
     expect(ITEMS.find(d => d.id === 'data-chip')!.footprint).toEqual({width:1,height:1});
     expect(ITEMS.find(d => d.id === 'servo-arm')!.footprint).toEqual({width:3,height:5});
   });
-  it('expands actual grid space without moving inventory and persists installed containers', () => {
-    let s = createGame(42); const before = warehouseLayout(s.items, capacity(s)); const base = capacity(s);
-    s = act(s, {type:'buyStorage',kind:'backpack'}); expect(capacity(s)).toBe(base + 6);
-    expect(warehouseLayout(s.items,capacity(s)).positions).toEqual(before.positions);
-    expect(applyAction(s,{type:'buyStorage',kind:'backpack'}).ok).toBe(false);
-    s = act(s, {type:'buyStorage',kind:'crate'}); expect(capacity(s)).toBe(base + 18);
+  it('retains legacy installed grid expansion without migrating or moving inventory', () => {
+    let s = createGame(42); s.storageUpgrades = {backpack:1,crate:1}; const base = capacity(createGame(42));
+    expect(capacity(s)).toBe(base+18);
     const item=s.items[0]!; s=act(s,{type:'moveStock',itemId:item.id,x:0,y:6,rotated:false});
-    const saved=importSave(exportSave(s)); expect(saved.storageUpgrades).toEqual({backpack:1,crate:1}); expect(saved.items[0]!.grid?.y).toBe(6);
-    const poor={...s,cash:0}; expect(applyAction(poor,{type:'buyStorage',kind:'crate'}).state).toEqual(poor);
+    const saved=importSave(exportSave(s)); expect(saved.storageUpgrades).toEqual({backpack:1,crate:1}); expect(saved.items[0]!.grid?.y).toBe(6); expect(saved.containers).toBeUndefined();
   });
   it('snaps purchased goods on the counter and rejects collision and overflow', () => {
     let s=createGame(42); s.items=[{...s.items[0]!,id:'counter-a',location:'counter'},{...s.items[1]!,id:'counter-b',location:'counter'}];

@@ -13,14 +13,14 @@ try{
  await page.getByRole('button',{name:'只买这件',exact:true}).first().click();let partial=await g();assert.equal(partial.visitor.goods.length,3);assert.equal(partial.visitor.resolved,false);assert.equal(before.cash-partial.cash,before.visitor.quote);
  await click('整批放上谈判台');assert.equal(await page.locator('.trade-lot.chosen').count(),3);
  const total=Math.round(partial.visitor.goods.reduce((sum,item)=>sum+item.quote,0)*.9);await page.getByText('批发九折',{exact:false}).waitFor();await page.screenshot({path:`${out}/10-wholesale.png`,fullPage:true});
- await click('收下选中的货 →');const bought=await g();assert.equal(partial.cash-bought.cash,total);assert.equal(bought.visitor.resolved,true);assert.equal(bought.items.filter(i=>i.location==='counter').length,4);await click('关闭谈判');
+ await click('收下选中的货 →');const bought=await g();assert.equal(partial.cash-bought.cash,total);assert.equal(bought.visitor.resolved,false);assert.equal(bought.visitor.storageGoods.length,2);assert.equal(bought.items.filter(i=>i.location==='counter').length,4);await click('关闭谈判');
  await page.reload();await page.getByRole('button',{name:/继续经营/}).click();await page.waitForSelector('.purchased-item');assert.equal(await page.locator('.purchased-item').count(),4);
  for(let n=0;n<4;n++)await page.locator('.purchased-item').first().dblclick();assert.equal((await g()).items.filter(i=>i.location==='counter').length,0);
  const box=await page.locator('.warehouse-cell').first().boundingBox();assert(Math.abs(box.width-box.height)<1);
  const table=await page.locator('.negotiation-table .surface-cell').first().boundingBox();assert(Math.abs(table.width-table.height)<2);
  await page.screenshot({path:`${out}/11-bulk-stored.png`,fullPage:true});
  // Reach the buyer who explicitly wants this supplier's category.
- await click('绿色叫号按钮');for(let n=0;n<3;n++){await click('结束当前接待');await click('绿色叫号按钮');}
+ await click('结束当前接待');await click('绿色叫号按钮');for(let n=0;n<3;n++){await click('结束当前接待');await click('绿色叫号按钮');}
  await page.keyboard.press('Space');await page.keyboard.press('Space');let buyer=await g();assert.equal(buyer.visitor.category,before.visitor.category);
  const boughtIds=before.visitor.goods.map(i=>i.id);await page.locator(`.warehouse-item[data-item="${boughtIds[0]}"]`).click();await click('谈判空格 1');
  const budget=buyer.visitor.budget;await page.getByRole('button',{name:'只卖这件',exact:true}).first().click();buyer=await g();assert(buyer.visitor.budget<budget);assert.equal(buyer.visitor.resolved,false);

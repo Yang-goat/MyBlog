@@ -2,14 +2,16 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import { ITEMS, CHARACTERS, CATEGORIES } from '../content';
 import { state, dispatch, modal, selectedOrder, selectedItem, openGuide } from './store';
+import { itemAccessible } from '../game/containers';
 import { tradeQuote } from '../game/engine';
 import { tradeIds, tradePlaces, stageTrade, removeTrade, clearTrade, guestGoods, tradeItem } from './trade-selection';
 import Art from './Art.vue';
 import ItemKnowledge from './ItemKnowledge.vue';
+import StorageOffers from './StorageOffers.vue';
 import TradeReceipt from './TradeReceipt.vue';
 const visitor=computed(()=>state.value.visitors[state.value.visitorIndex]);
 const person=computed(()=>CHARACTERS.find(c=>c.id===visitor.value?.characterId));
-const candidates=computed(()=>visitor.value?.kind==='seller'?guestGoods.value:state.value.items.filter(i=>i.owner==='player'&&['stock','counter'].includes(i.location)&&ITEMS.find(d=>d.id===i.definitionId)?.category===visitor.value?.category));
+const candidates=computed(()=>visitor.value?.kind==='seller'?guestGoods.value:state.value.items.filter(i=>i.owner==='player'&&itemAccessible(state.value,i)&&['stock','counter'].includes(i.location)&&ITEMS.find(d=>d.id===i.definitionId)?.category===visitor.value?.category));
 const selected=computed(()=>tradeIds.value.map(tradeItem).filter(i=>!!i));
 const focused=computed(()=>tradeItem(selectedItem.value)??selected.value[0]??visitor.value?.item);
 const definition=computed(()=>ITEMS.find(d=>d.id===focused.value?.definitionId));
@@ -51,6 +53,7 @@ function acceptRepair(){if(dispatch({type:'acceptRepair',visitorId:visitor.value
    <div class="trade-lots"><div v-for="item in candidates" :key="item.id" :class="['trade-lot',{chosen:tradeIds.includes(item.id),examining:focused?.id===item.id}]"><button class="lot-select" :aria-pressed="tradeIds.includes(item.id)" :aria-label="`选择 ${item.id}`" @click="toggle(item.id)"><span class="lot-check">{{tradeIds.includes(item.id)?'✓':'＋'}}</span><Art :id="item.definitionId" eager/><span class="lot-label">{{ITEMS.find(d=>d.id===item.definitionId)?.name}}<small class="lot-price">₡{{tradeQuote(state,visitor,item)}} <i>{{ITEMS.find(d=>d.id===item.definitionId)?.footprint.width}}×{{ITEMS.find(d=>d.id===item.definitionId)?.footprint.height}} 格</i></small><small v-if="item.known.includes('basic') || item.known.includes('diagnosed')" class="lot-condition">品相 {{item.condition}}% · {{item.faults.length?'功能异常':'基础完好'}}</small><small v-else class="lot-condition">尚未检查</small></span></button><button class="lot-one" @click="one(item.id)">{{visitor.kind==='seller'?'只买这件':'只卖这件'}}</button></div></div>
    <p v-if="!candidates.length" class="empty-tray">{{visitor.lastTrade?'本批已交货':'暂无匹配货品'}}</p>
    <section v-if="visitor.kind==='seller' && focused && candidates.some(i=>i.id===focused!.id)" class="trade-inspection" aria-label="货品检查"><Art :id="focused.definitionId" eager/><div><p class="eyebrow">正在查看</p><h3>{{definition?.name}}</h3><ItemKnowledge :item="focused" compact/><div class="actions compact"><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'basic'})">基础检查</button><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'scan'})">多谱扫描</button><button @click="dispatch({type:'inspect',visitorId:visitor.id,itemId:focused.id,method:'serial'})">查序列</button></div></div></section>
+   <StorageOffers/>
   </section>
   <aside class="trade-settlement" aria-label="议价与结算">
    <div class="trade-section-title"><span>本次清单</span><small>{{visitor.kind==='buyer'?'预算':'现金'}} ₡{{budget}}</small></div>

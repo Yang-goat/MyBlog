@@ -12,7 +12,7 @@ describe('selective and wholesale trade',()=>{
   s=act(s,{type:'tradeBatch',visitorId:v.id,itemIds:[ids[0]!]});
   expect(s.cash).toBe(cash-v.quote);expect(s.visitors[1]!.resolved).toBe(false);expect(s.visitors[1]!.goods).toHaveLength(3);
   s=importSave(exportSave(s));s=act(s,{type:'tradeBatch',visitorId:v.id,itemIds:ids.slice(1)});
-  expect(s.cash).toBe(cash-v.quote-Math.round(v.goods!.slice(1).reduce((n,i)=>n+tradeQuote(s,v,i),0)*.9));expect(s.visitors[1]!.resolved).toBe(true);
+  expect(s.cash).toBe(cash-v.quote-Math.round(v.goods!.slice(1).reduce((n,i)=>n+tradeQuote(s,v,i),0)*.9));expect(s.visitors[1]!.resolved).toBe(false);expect(s.visitors[1]!.storageGoods).toHaveLength(2);
   expect(s.items.filter(i=>ids.includes(i.id)).reduce((n,i)=>n+i.cost,0)).toBe(cash-s.cash);
   expect(s.items.filter(i=>ids.includes(i.id)).every(i=>i.location==='counter')).toBe(true);
  });
@@ -31,7 +31,7 @@ describe('selective and wholesale trade',()=>{
   let s=seller();const sellerV=s.visitors[1]!;const ids=sellerV.goods!.map(i=>i.id);
   s=act(s,{type:'tradeBatch',visitorId:sellerV.id,itemIds:ids});
   for(const id of ids){const at=warehouseLayout(s.items.map(i=>i.id===id?{...i,location:'stock'}:i),capacity(s)).positions[id]!;s=act(s,{type:'moveStock',itemId:id,...at});}
-  s=act(s,{type:'nextVisitor'});let buyer=s.visitors[2]!;buyer.category=sellerV.category;buyer.budget=10000;
+  s=act(s,{type:'reject',visitorId:sellerV.id});s=act(s,{type:'nextVisitor'});let buyer=s.visitors[2]!;buyer.category=sellerV.category;buyer.budget=10000;
   const amount=ids.slice(0,2).reduce((n,id)=>n+tradeQuote(s,buyer,s.items.find(i=>i.id===id)!),0);const cash=s.cash;
   s=act(s,{type:'tradeBatch',visitorId:buyer.id,itemIds:ids.slice(0,2)});expect(s.cash).toBe(cash+amount);expect(s.visitors[2]!.budget).toBe(10000-amount);expect(s.visitors[2]!.resolved).toBe(false);
   s.visitors[2]!.budget=1;expect(applyAction(s,{type:'tradeBatch',visitorId:buyer.id,itemIds:[ids[2]!]}).state).toEqual(s);

@@ -1,10 +1,13 @@
 import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES, EVENTS, QUESTS, THEMES, PROFESSIONS } from '../content';
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
-import { warehouseLayout, fits, occupy, STORAGE_UPGRADES, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
+import { fits, occupy, footprint, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
 import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT } from './deliveries';
+import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, canNest, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
+import { STORAGE_STYLES, storageStyle } from '../content/storage';
+import { modifierEffect, validModifiers } from './modifiers';
 import { allocateQuote } from './negotiation';
-import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor } from './types';
+import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
@@ -16,12 +19,13 @@ export const skillEffect = (s: GameState, effect: string) => SKILLS.filter(n => 
 export const equipmentPrice = (s: GameState, equipment: EquipmentDefinition, count=1) => round(equipment.price * count * (1 - (equipment.type === 'material' ? skillEffect(s, 'restock') : 0)));
 export const calibrationTolerance = (s: GameState) => 2 + skillEffect(s, 'calibration') + (ownedEquipment(s, 'calibrationTool') ? 3 : 0);
 export const repairPracticeNeeded = (s: GameState) => skillEffect(s, 'standard') > 0 ? 1 : 3;
-export const operatingFees = (s: GameState) => BALANCE.maintenance + (s.victory ? 0 : BALANCE.rent);
+export const operatingFees = (s: GameState) => BALANCE.maintenance + (s.victory ? 0 : BALANCE.rent + modifierEffect(s,'rent'));
 export const debtClosingChances = (s: GameState) => s.victory ? null : Math.max(0, BALANCE.graceDays + 1 - s.grace);
 const has = (s: GameState, effect: string) => skillEffect(s, effect) > 0;
-export const capacity = (s: GameState) => BALANCE.stock + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
+export const rootCapacity = (s: GameState) => BALANCE.stock + modifierEffect(s,'cells') / 4 + ownedEquipment(s, 'storage') * 8 + skillEffect(s, 'stockCapacity') + (s.storageUpgrades?.backpack ?? 0) * 6 + (s.storageUpgrades?.crate ?? 0) * 12;
+export const capacity = (s: GameState) => rootCapacity(s) + (s.containers ?? []).reduce((sum, c) => sum + storageStyle(c.styleId).columns * storageStyle(c.styleId).rows / 4, 0);
 export const displayCapacity = (s: GameState) => Math.min(BALANCE.maxShowcase, BALANCE.showcase + ownedEquipment(s, 'showcase') * 3);
-export const stockUsage = (s: GameState) => s.items.filter(i => i.owner === 'player' && i.location !== 'display').reduce((sum, i) => sum + def(i).size, 0);
+export const stockUsage = (s: GameState) => s.items.filter(i => i.owner === 'player' && i.location !== 'display').reduce((sum, i) => sum + def(i).size, 0) + (s.containers ?? []).reduce((n,c) => { const f=footprint(c);return n+f.width*f.height/4; },0);
 export const isMaster = (s: GameState) => PROFESSIONS.some(p => p.implemented && p.masterySkills.some(id => s.skills.includes(id)));
 export const repairInvestment = (s: GameState) => SKILLS.filter(n => n.tree === 'repair' && s.skills.includes(n.id)).reduce((n, v) => n + v.cost, 0);
 /** An implemented profession must satisfy its own mastery and final milestone together. */
@@ -144,12 +148,17 @@ function generateDay(s: GameState) {
     const guest = guests.find(c => !s.met.includes(c.id)) ?? guests[(s.day - 1) % guests.length];
     if (guest) s.visitors[3]!.characterId = guest.id;
   }
+  s.visitors.forEach((visitor,index)=>{if(visitor.kind==='seller'){
+    const start=(s.day-1+(index===1?0:2))%STORAGE_STYLES.length;
+    visitor.storageGoods=[STORAGE_STYLES[start]!,STORAGE_STYLES[(start+1)%STORAGE_STYLES.length]!].map(d=>({id:id(s,'storage-offer'),styleId:d.id,price:d.price}));
+  }});
   s.visitorIndex = 0; s.visitorArrived = false;
   s.deliveries=newDeliveryDay(s,s.deliveries);
 }
-export function createGame(seed = 11052026): GameState {
-  const s: GameState = { version: SAVE_VERSION, contentVersion: CONTENT_VERSION, balanceVersion: BALANCE.version, seed: seed >>> 0, rng: seed >>> 0, serial: 0,
-    day: 1, chapter: 1, phase: 'open', cash: BALANCE.initialCash, hours: BALANCE.hours, debt: 0, grace: 0, xp: 0, level: 1, points: BALANCE.initialPoints,
+export function createGame(seed = 11052026, modifiers: string[] = []): GameState {
+  if (!validModifiers(modifiers)) throw new Error('开局词条无效或相互冲突。');
+  const s: GameState = { modifiers:[...modifiers], version: SAVE_VERSION, contentVersion: CONTENT_VERSION, balanceVersion: BALANCE.version, seed: seed >>> 0, rng: seed >>> 0, serial: 0,
+    day: 1, chapter: 1, phase: 'open', cash: BALANCE.initialCash + modifierEffect({modifiers},'cash'), hours: BALANCE.hours, debt: 0, grace: 0, xp: 0, level: 1, points: BALANCE.initialPoints,
     skills: [], certificates: ['civil'], trained: ['civil'], licenses: [], equipment: {}, equipmentCosts: {}, items: [], visitors: [], visitorIndex: 0, orders: [],
     reputation: 0, relations: {}, questStages: {}, eventId: '', eventResolved: false, discovered: [], met: [], repairHistory: [], records: { trades: 0, repairs: 0, revenue: 0, repairIncome: 0, days: 0, faults: {} },
     finalStage: 0, finalComplete: false, professionMilestones: [], victory: false, endless: false, freeRespec: true, ledger: [], messages: ['店门重新打开。先接一件民用维修，赚到今天的第一笔工钱。'], appointments: null, challenge: null };
@@ -181,8 +190,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   const s = clone(input); const events: PresentationEvent[] = [];
   s.deliveries??=newDeliveryDay(s);
   // Anchor legacy/new-game stock before removing an item so its neighbours stay put.
-  const initialLayout = warehouseLayout(s.items, capacity(s));
-  for (const item of s.items) if (initialLayout.positions[item.id]) item.grid = initialLayout.positions[item.id];
+  const initialLayout = rootLayout(s, rootCapacity(s));
+  for (const item of ownedObjects(s)) if (initialLayout.positions[item.id]) item.grid = initialLayout.positions[item.id];
   const fail = (text: string): ActionResult => ({ state: input, events: [{ type: 'error', text }], ok: false });
   const say = (text: string, type: PresentationEvent['type'] = 'success') => { events.push({ type, text }); s.messages.push(text); s.messages = s.messages.slice(-60); };
   const pay = (amount: number, kind: string, note: string, itemId?: string) => { s.cash -= amount; ledger(s, kind, -amount, note, itemId); };
@@ -231,12 +240,16 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     const preserveOriginal = def(item).category === 'antique' && (kind === 'own' || random(s) > .35);
     const order: RepairOrder = { id: id(s, 'order'), itemId: item.id, characterId, description: `${def(item).name}的${kind === 'own' ? '自有旧货翻新' : '维修委托'}；${preserveOriginal ? '保存原貌，优先修整原件。' : '以恢复功能为先，可以更换模块，完成后请复检。'}`, diagnosed: false, verified: false, delivered: false,
       escrow: kind === 'own' ? 0 : 1000, reward: kind === 'own' ? 0 : reward, completedOps: 0, kind, preserveOriginal, receivedDay: s.day, steps: [], ...extra };
-    item.location = 'workshop'; s.orders.push(order); return order;
+    item.location = 'workshop'; delete item.containerId; delete item.grid; s.orders.push(order); return order;
   };
   if (s.phase === 'failed' || (s.phase === 'ended' && action.type !== 'continueEndless')) return fail('本局已结算。可以恢复当日备份或重新开局。');
   if (s.phase === 'won' && !['continueEndless', 'endGame'].includes(action.type)) return fail('请在结局中选择结束并保存，或继续经营。');
-  const openOnly: Action['type'][] = ['acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
+  const openOnly: Action['type'][] = ['buyStorage','sellStorage','acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
   if (openOnly.includes(action.type) && s.phase !== 'open') return fail('这项操作需要开店后进行。');
+  if ('itemId' in action && action.itemId) {
+    const targeted = findItem(action.itemId);
+    if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
+  }
   switch (action.type) {
     case 'acceptDelivery': {
       const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='offered'&&j.postedDay===s.day);
@@ -278,6 +291,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const selected=action.itemIds.map(id => pool.find(i => i.id === id));
       if (selected.some(i => !i)) return fail('部分物品已经成交或不属于这笔交易。');
       const goods=selected as ItemInstance[];
+      if (v.kind === 'buyer' && goods.some(i => !itemAccessible(s, i))) return fail('货品所在箱包被压住了，先移走上层箱包。');
       if (goods.some(i => def(i).regulated) && !s.licenses.includes('regulated-trade')) return fail('这批物品需要交易许可。');
       const prices=goods.map(i => tradeQuote(s,v,i));
       if(prices.some(price=>price<=0))return fail('这批货中有已过期或没有交易价值的物品。');
@@ -294,8 +308,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       }
       if (v.kind === 'seller') {
         if (s.cash < offered) return fail('现金不足，减少本次购入数量。');
-        if (stockUsage(s)+goods.reduce((n,i)=>n+def(i).size,0)>capacity(s)) return fail('仓库总容量不足，先扩容或减少购入数量。');
-        const plan=counterLayout([...s.items,...goods.map(i=>({...i,owner:'player' as const,location:'counter' as const,counterGrid:action.placements?.[i.id]?{...action.placements[i.id]!}:i.counterGrid}))]);
+        if (!canReceive(s,rootCapacity(s),goods.map(i=>({...i,location:'counter',containerId:undefined})))) return fail('没有足够的连续收纳空间，减少进货或先腾出空位。');
+        const plan=counterLayout([...ownedObjects(s),...goods.map(i=>({...i,owner:'player' as const,location:'counter' as const,counterGrid:action.placements?.[i.id]?{...action.placements[i.id]!}:i.counterGrid}))]);
         if(goods.some(i=>!plan.positions[i.id])) return fail('谈判台放不下这批货，请先把已购商品入库。');
         if(goods.some(i=>{const requested=action.placements?.[i.id],at=plan.positions[i.id];return requested&&(!at||requested.x!==at.x||requested.y!==at.y||requested.rotated!==at.rotated);}))return fail('谈判台的位置有重叠或越界，请重新摆放。');
         let remaining=offered;
@@ -306,7 +320,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
         v.goods=pool.filter(i=>!action.itemIds.includes(i.id));v.item=v.goods[0];
         if(v.priceTags)for(const i of goods)delete v.priceTags[i.id];
         if(v.item){v.quote=tradeQuote(s,v,v.item);v.limit=v.priceTags?.[v.item.id]?.minimum??v.limit;}
-        if(!v.goods.length)finishVisitor(v);
+        if(!v.goods.length&&!v.storageGoods?.length)finishVisitor(v);
       } else {
         const budget=v.budget ?? Math.max(400,v.quote*4);if(offered>budget)return fail(`买家剩余预算只有 ${budget}，请减少售出数量。`);
         v.budget=budget-offered;let remaining=offered;
@@ -321,21 +335,51 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'moveCounter': {
       const item = findItem(action.itemId);
       if (!item || item.owner !== 'player' || !['stock','counter'].includes(item.location)) return fail('只能把自有库存或台面物品移到谈判台。');
-      const layout = counterLayout(s.items); const occupied = new Set<number>();
-      for (const other of s.items) if (other.id !== item.id && layout.positions[other.id]) occupy(other, layout.positions[other.id]!, occupied, SURFACE_COLUMNS);
+      const layout = shopCounterLayout(s); const occupied = new Set<number>();
+      for (const other of ownedObjects(s)) if (other.id !== item.id && layout.positions[other.id]) occupy(other, layout.positions[other.id]!, occupied, SURFACE_COLUMNS);
       const at = { x: action.x, y: action.y, rotated: action.rotated };
       if (!fits(item, at, occupied, SURFACE_CAPACITY, SURFACE_COLUMNS)) return fail('谈判台这里放不下，请旋转或先把已购商品收入仓库。');
-      item.location = 'counter'; item.counterGrid = at; delete item.grid; break;
+      item.location = 'counter'; item.counterGrid = at; delete item.grid; delete item.containerId; break;
     }
     case 'buyStorage': {
-      const upgrade = STORAGE_UPGRADES[action.kind];
-      if (!upgrade) return fail('没有这种收纳设备。');
-      s.storageUpgrades ??= { backpack: 0, crate: 0 };
-      if (s.storageUpgrades[action.kind] >= upgrade.limit) return fail('这种收纳设备已达到安装上限。');
-      if (s.cash < upgrade.price) return fail('信用点不足。');
-      s.cash -= upgrade.price; s.storageUpgrades[action.kind]++;
-      ledger(s, 'equipment', -upgrade.price, upgrade.name);
-      say(`已安装${upgrade.name}，新增 ${upgrade.cells} 个可摆放格子。向下滚动仓库查看。`); break;
+      const visitor=currentVisitor(action.visitorId),offer=visitor?.storageGoods?.find(o=>o.id===action.offerId);
+      if(!visitor||visitor.kind!=='seller'||!offer)return fail('这件箱包已经售出，或卖家不在接待中。');
+      if((s.containers?.length??0)>=256)return fail('箱包总数已达当前存档上限。');
+      const d=storageStyle(offer.styleId);if(s.cash<offer.price)return fail('信用点不足。');
+      const box:StorageContainer={id:id(s,'container'),styleId:d.id,owner:'player',location:'counter',cost:offer.price,acquiredDay:s.day,label:d.name,color:'ivory'};
+      if(!canReceive(s,rootCapacity(s),[box]))return fail('连箱包的外壳也放不下了，先卖出或整理库存。');
+      const plan=counterLayout([...ownedObjects(s),box]);if(!plan.positions[box.id])return fail('谈判台放不下这只箱包，先把台面物品收好。');
+      box.counterGrid=plan.positions[box.id];s.containers??=[];s.containers.push(box);
+      visitor.lastTrade={kind:'buy',amount:offer.price,cost:offer.price,goods:[{definitionId:d.id,itemId:box.id,cost:box.cost}]};
+      visitor.storageGoods=visitor.storageGoods!.filter(o=>o.id!==offer.id);pay(offer.price,'purchase',`买入${d.name}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);
+      if(!visitor.goods?.length&&!visitor.item&&!visitor.storageGoods.length)finishVisitor(visitor);
+      say(`买下${d.name} · ₡${offer.price}，先将箱包从谈判台收好。`,'trade');break;
+    }
+    case 'sellStorage': {
+      const visitor=currentVisitor(action.visitorId),box=s.containers?.find(c=>c.id===action.storageId);
+      if(!visitor||visitor.kind!=='buyer'||!box)return fail('当前买家或箱包不可用。');
+      if(containerItems(s,box.id).length)return fail('先取出箱包里的全部物品，再出售箱包。');
+      const price=round(storageStyle(box.styleId).price*.55),budget=visitor.budget??Math.max(400,visitor.quote*4);if(price>budget)return fail('买家剩余预算不足。');
+      visitor.lastTrade={kind:'sell',amount:price,cost:box.cost,goods:[{definitionId:box.styleId,itemId:box.id,cost:box.cost}]};
+      visitor.budget=budget-price;s.containers=s.containers!.filter(c=>c.id!==box.id);earn(price,'sale',`售出${storageStyle(box.styleId).name}，累计成本 ${box.cost}`,box.id);s.records.trades++;gainXp(s,BALANCE.tradeXp);if(!visitor.budget)finishVisitor(visitor);say(`箱包成交 · ₡${price}。`,'trade');break;
+    }
+    case 'moveStorage': {
+      const box=s.containers?.find(c=>c.id===action.storageId);if(!box)return fail('找不到这件箱包。');const at={x:action.x,y:action.y,rotated:action.rotated};
+      if(action.counter){const plan=shopCounterLayout(s),occupied=new Set<number>();for(const o of ownedObjects(s))if(o.id!==box.id&&plan.positions[o.id])occupy(o,plan.positions[o.id]!,occupied,SURFACE_COLUMNS);if(!fits(box,at,occupied,SURFACE_CAPACITY,SURFACE_COLUMNS))return fail('谈判台没有完整空位。');box.location='counter';box.counterGrid=at;delete box.grid;delete box.containerId;}
+      else {if(!canNest(s,box,action.containerId))return fail('箱包不能放进自己或自己的内层箱包。');if(!objectFits(s,rootCapacity(s),box,at,action.containerId))return fail('箱包外形放不下，试着旋转或腾出空格。');putObject(box,at,action.containerId);}
+      say('箱包与里面的物品已一起移动。');break;
+    }
+    case 'buyLabeler': {
+      if (s.labeler) return fail('已经拥有标签机。');
+      if (s.cash < LABELER_PRICE) return fail('信用点不足。');
+      pay(LABELER_PRICE, 'equipment', '便携标签机'); s.labeler = true; say('标签机已就位。'); break;
+    }
+    case 'labelContainer': {
+      const container = s.containers?.find(c => c.id === action.containerId);
+      if (!container) return fail('找不到这个箱包。');
+      if (!s.labeler) return fail('需要先购买标签机。');
+      if (!validContainerLabel(action.label) || !LABEL_COLORS.includes(action.color)) return fail('标签需要 1–12 个字，并选择有效颜色。');
+      container.label = action.label; container.color = action.color; say('新标签已贴好。'); break;
     }
     case 'talk': {
       const v = currentVisitor(action.visitorId); if (!v) return fail('这位客人已经结束交谈。');
@@ -348,11 +392,9 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'moveStock': {
       const item = findItem(action.itemId);
       if (!item || item.owner !== 'player' || !['stock', 'counter'].includes(item.location)) return fail('只能整理自己的库存或已经购买的柜台商品。');
-      const layout = warehouseLayout(s.items, capacity(s)); const occupied = new Set<number>();
-      for (const other of s.items) if (other.id !== item.id && layout.positions[other.id]) occupy(other, layout.positions[other.id]!, occupied);
-      const at = { x: action.x, y: action.y, rotated: action.rotated };
-      if (!fits(item, at, occupied, capacity(s))) return fail('这里放不下：需要完整空格，不能重叠或超出仓库。');
-      item.location = 'stock'; item.grid = at; say(`${def(item).name}已放入仓库。`); break;
+      const at={x:action.x,y:action.y,rotated:action.rotated};
+      if(!objectFits(s,rootCapacity(s),item,at,action.containerId))return fail('这里放不下：需要完整空格，不能重叠或超出容器。');
+      putObject(item,at,action.containerId);say(`${def(item).name}已归位。`);break;
     }
     case 'inspect': {
       const visitor = action.visitorId ? currentVisitor(action.visitorId) : undefined;
@@ -389,8 +431,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if (!accepted) {counterOffer(v,[item],offered);break;}
       if (v.kind === 'seller') {
         if (s.cash < offered) return fail('自由现金不足；客户预付款不能用于收货。');
-        if (stockUsage(s) + d.size > capacity(s)) return fail('库存容量不足，请卖出、清货或扩建库存架。');
-        const counter = counterLayout([...s.items, { ...item, owner: 'player', location: 'counter' }]);
+        if (!canReceive(s,rootCapacity(s),[{...item,location:'counter',containerId:undefined}])) return fail('没有足够的连续收纳空间，先卖出或整理库存。');
+        const counter = counterLayout([...ownedObjects(s), { ...item, owner: 'player', location: 'counter' }]);
         if (!counter.positions[item.id]) return fail('谈判台没有完整空位，请先将已购商品入库。');
         item.counterGrid = counter.positions[item.id];
         pay(offered, 'purchase', `买入${d.name}`, item.id); item.owner = 'player'; item.location = 'counter'; item.cost = offered; item.acquiredDay = s.day; s.items.push(clone(item));
@@ -535,12 +577,12 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能陈列货架上的自有物品。');
       if (!item.known.includes('serial') || !item.authentic) return fail('必须经序列核验确认为真实物品后才能陈列。');
       if (s.items.filter(i => i.location === 'display').length >= displayCapacity(s)) return fail('展示柜已满，可撤下一件或升级展示柜。');
-      item.location = 'display'; say(`${def(item).name}已入柜，普通交易不会出售它。当前吸引力 ${attraction(s)}。`, 'display'); break;
+      item.location = 'display'; delete item.containerId; delete item.grid; say(`${def(item).name}已入柜，普通交易不会出售它。当前吸引力 ${attraction(s)}。`, 'display'); break;
     }
     case 'withdraw': { const item = findItem(action.itemId); if (!item || item.location !== 'display' || item.owner !== 'player') return fail('找不到展品。'); item.location = 'stock'; say('展品已撤回货架；库存超容量时仍保留物品。', 'display'); break; }
     case 'preserve': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || def(item).category !== 'food' || item.expiresDay === null) return fail('请选择自有食品或生物制品。'); if (item.expiresDay < s.day) return fail('已经过期，不能通过保鲜恢复。'); if (item.preservedUntil > 0) return fail('这批商品已经使用过保鲜包。'); const key = equipmentId('preserveSupply'); if (!(s.equipment[key] > 0)) return fail('没有保鲜包。'); const usedCost = Math.floor((s.equipmentCosts[key] ?? 0) / s.equipment[key]!); s.equipment[key]!--; s.equipmentCosts[key] = (s.equipmentCosts[key] ?? 0) - usedCost; const days = 2 + skillEffect(s, 'preservation'); item.expiresDay += days; item.preservedUntil = item.expiresDay; item.cost += usedCost; say(`保鲜后有效期延长至第 ${item.expiresDay} 日。`); break; }
     case 'liquidate': { const item = findItem(action.itemId); if (!item || item.owner !== 'player' || item.location !== 'stock' || activeOrder(item.id)) return fail('只能清理货架上的自有商品。'); if (def(item).regulated && !s.licenses.includes('regulated-trade')) return fail('受管制商品需要合法交易许可。'); const price = round(itemValue(s, item) * BALANCE.liquidateFactor); earn(price, 'clearance', `清货${def(item).name}，总成本 ${item.cost}`, item.id); s.items = s.items.filter(i => i.id !== item.id); s.records.trades++; gainXp(s, 2); say(`清货完成，回笼 ${price}。`, 'trade'); break; }
-    case 'sort': { if (s.phase === 'open' && !spendHours(has(s, 'restock') ? 0 : .5)) return fail('整理需要半点工时，闭店后可免费整理。'); s.items.forEach(i => { if (i.location === 'stock') delete i.grid; }); s.items.sort((a, b) => (a.expiresDay ?? Infinity) - (b.expiresDay ?? Infinity) || def(a).category.localeCompare(def(b).category)); say('货架按临期优先、品类归位；持有快捷补货技能时耗材采购自动享受折扣。'); break; }
+    case 'sort': { if (s.phase === 'open' && !spendHours(has(s, 'restock') ? 0 : .5)) return fail('整理需要半点工时，闭店后可免费整理。'); s.items.forEach(i => { if (i.location === 'stock' && !i.containerId) delete i.grid; }); s.items.sort((a, b) => (a.expiresDay ?? Infinity) - (b.expiresDay ?? Infinity) || def(a).category.localeCompare(def(b).category)); say('货架按临期优先、品类归位；持有快捷补货技能时耗材采购自动享受折扣。'); break; }
     case 'appoint': { if (action.category !== null && !CATEGORIES.some(c => c.id === action.category)) return fail('未知商品分类。'); if (action.category && !has(s, 'targetSupply')) return fail('先学习定向采购。'); s.appointments = action.category; say(action.category ? '已预约下一营业日的定向货源。' : '已恢复自然来访。'); break; }
     case 'eventChoice': { const e = EVENTS.find(e => e.id === s.eventId); const choice = e?.choices[action.index]; if (!choice || s.eventResolved) return fail('该事件已经结算或选项无效。'); if (choice.cash < 0 && s.cash < -choice.cash) return fail('这项街区行动需要更多现金，可以选择另一方案。'); if (choice.cash < 0) pay(-choice.cash, 'event', choice.label); else if (choice.cash > 0) earn(choice.cash, 'event', choice.label); else ledger(s, 'event', 0, choice.label); s.reputation += choice.reputation; s.relations[choice.group] = (s.relations[choice.group] ?? 0) + choice.relation; s.eventResolved = true; say(choice.description); break; }
     case 'claimQuest': { const q = QUESTS.find(q => q.id === action.questId); const stageIndex = s.questStages[action.questId] ?? 0; const stage = q?.stages[stageIndex]; if (!q || !stage || !questProgress(s, q.id).ready) return fail('该阶段尚未完成，或奖励已经领取。'); s.questStages[q.id] = stageIndex + 1; earn(stage.reward, 'quest', `${q.name}第 ${stageIndex + 1} 阶段`); gainXp(s, stage.xp); say(`${q.name}：${stage.text} 已完成，获得 ${stage.reward} 信用点与 ${stage.xp} 经验。`); break; }
@@ -561,7 +603,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     case 'challenge': { if (!s.endless) return fail('珍品订单与批量维修在无尽模式开放。'); if (s.challenge) return fail('已有一项挑战在进行。'); const challenge = CHALLENGES.find(c => c.id === action.id); if (!challenge) return fail('未知挑战。'); if (s.cash < challenge.fee) return fail(`该订单需支付 ${challenge.fee} 登记费。`); if (challenge.fee) pay(challenge.fee, 'challenge-entry', challenge.name); s.challenge = { id: challenge.id, goal: challenge.goal, progress: 0, deadline: s.day + challenge.days, reward: challenge.reward }; say(`接受${challenge.name}：${challenge.description} 截止第 ${s.challenge.deadline} 日，奖励 ${s.challenge.reward}。失败仅失去本次奖励及已投入费用。`); break; }
     case 'closeDay': {
       if (s.phase !== 'open') return fail('已经闭店。');
-      if (s.items.some(i=>i.location==='counter')) return fail('谈判台还有物品，请全部收入仓库后再闭店。');
+      if (ownedObjects(s).some(i=>i.location==='counter')) return fail('谈判台还有物品，请全部收入仓库后再闭店。');
       const fees = operatingFees(s); const due = fees + s.debt; const paid = Math.min(s.cash, due); pay(paid, 'daily-fee', `营业维护${s.victory ? '' : '与租金'}，应付 ${due}`); s.debt = due - paid;
       if (s.debt > 0) s.grace++; else s.grace = 0;
       s.phase = !s.victory && s.grace > BALANCE.graceDays ? 'failed' : 'closed'; s.records.days++; gainXp(s, BALANCE.dayXp);
@@ -577,8 +619,9 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     }
     default: return fail('未知操作。');
   }
-  const layout = warehouseLayout(s.items, capacity(s));
-  for (const item of s.items) if (layout.positions[item.id]) item.grid = layout.positions[item.id];
+  const layout = rootLayout(s, rootCapacity(s));
+  for (const item of ownedObjects(s)) if (layout.positions[item.id]) item.grid = layout.positions[item.id];
+  for (const c of s.containers ?? []) { const inside = containerLayout(s, c); for (const item of ownedObjects(s)) if (inside.positions[item.id]) item.grid = inside.positions[item.id]; }
   milestone(s); return { state: s, events, ok: true };
 }
 
@@ -587,6 +630,7 @@ export function visibleState(s: GameState) {
   const visibleItem = (i: ItemInstance) => {
     const d = def(i); const basic = i.known.includes('basic') || i.known.includes('diagnosed'); const scan = i.known.includes('scan') || i.known.includes('batch'); const serial = i.known.includes('serial');
     return { id: i.id, definitionId: d.id, name: d.name, category: d.category, owner: i.owner, location: i.location, known: i.known,
+      containerId: i.containerId, accessible: itemAccessible(s, i),
       condition: basic ? i.condition : undefined, estimate: basic ? estimateValue(s, i) : undefined, cost: i.owner === 'player' ? i.cost : undefined,
       capacity: scan && d.category === 'energy' ? i.capacity : undefined, purity: scan && d.category === 'energy' ? i.purity : undefined,
       integrity: scan && d.category === 'data' ? i.integrity : undefined, compatibility: scan && d.category === 'neural' ? i.compatibility : undefined,
@@ -597,9 +641,9 @@ export function visibleState(s: GameState) {
   const visitor = s.visitors[s.visitorIndex];
   return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, phase: s.phase, cash: s.cash, hours: s.hours, debt: s.debt, grace: s.grace,
     xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment,
-    stockUsage: stockUsage(s), capacity: capacity(s), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
-    visitorArrived: s.visitorArrived !== false, warehouse: warehouseLayout(s.items, capacity(s)), tutorial: s.tutorial, conversations: s.conversations,
-    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
+    stockUsage: stockUsage(s), capacity: capacity(s), rootCapacity: rootCapacity(s), labeler: s.labeler ?? false, modifiers:s.modifiers??[], containers:(s.containers??[]).map(c=>({...c,name:storageStyle(c.styleId).name,layout:containerLayout(s,c),columns:storageStyle(c.styleId).columns,rows:storageStyle(c.styleId).rows,path:containerTrail(s,c.id)?.map(p=>p.id)})), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
+    visitorArrived: s.visitorArrived !== false, warehouse: rootLayout(s, rootCapacity(s)), tutorial: s.tutorial, conversations: s.conversations,
+    visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,
     upcoming: has(s, 'supplyPreview') ? s.visitors.slice(s.visitorIndex + 1).map(v => ({ kind: v.kind, category: v.category })) : undefined,
     visitorIndex: s.visitorIndex, visitorCount: s.visitors.length, orders: s.orders.filter(o => !o.delivered).map(o => ({ ...o })),
     eventId: s.eventId, eventResolved: s.eventResolved, questStages: s.questStages, reputation: s.reputation, relations: s.relations, records: s.records, repairHistory:s.repairHistory??[], deliveries:deliveryJobs(s),

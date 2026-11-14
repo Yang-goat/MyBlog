@@ -11,6 +11,7 @@ export interface ItemDefinition {
 export interface FaultDefinition { id: string; name: string; symptom: string; operation: Operation; module: string; target: number; material: string; hours: number; certificate: CertificateId }
 export interface ItemInstance {
   id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
+  containerId?: string;
   grid?: { x: number; y: number; rotated: boolean };
   counterGrid?: { x: number; y: number; rotated: boolean };
   condition: number; integrity: number; capacity: number; purity: number; authentic: boolean; originality: number;
@@ -29,7 +30,7 @@ export interface ProfessionDefinition { id: string; name: string; implemented: b
 export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
 export interface NegotiationReply { itemIds: string[]; offered: number; quote: number; round: number; status: 'counter' | 'closed'; reason?: 'price' | 'budget' | 'far' }
 export interface TradeReceipt { kind: 'buy' | 'sell'; amount: number; cost: number; goods: { definitionId: string; itemId: string; cost: number }[] }
-export interface Visitor { id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
+export interface Visitor { storageGoods?:StorageOffer[]; id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
 export interface RepairStep { day: number; operation: Operation; module?: string; faultId?: string; result: 'fixed' | 'cleaned' | 'miss'; hours: number; preserve: boolean }
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean; receivedDay?: number; conditionBefore?: number; steps?: RepairStep[] }
 export interface RepairReceipt { orderId: string; definitionId: string; characterId: string; kind: RepairOrder['kind']; receivedDay?: number; day: number; conditionBefore?: number; conditionAfter: number; completedOps: number; steps: RepairStep[]; reward: number }
@@ -45,7 +46,12 @@ export interface DeliveryJob {
   status: 'offered' | 'active' | 'completed' | 'expired' | 'cancelled'; acceptedDay?: number; closedDay?: number;
   goods?: { itemId: string; definitionId: string; cost: number }[];
 }
+export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:boolean}; counterGrid?:{x:number;y:number;rotated:boolean}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
+export interface StorageOffer { id:string; styleId:string; price:number }
 export interface GameState {
+  containers?: StorageContainer[];
+  modifiers?:string[];
+  labeler?: boolean;
   visitorArrived?: boolean;
   storageUpgrades?: { backpack: number; crate: number };
   tutorial?: { step: number; skipped: boolean };
@@ -66,10 +72,14 @@ export type Action =
  | { type: 'deliverGoods'; jobId: string; itemIds: string[] }
  | { type: 'cancelDelivery'; jobId: string }
  | { type: 'callVisitor' }
- | { type: 'buyStorage'; kind: 'backpack' | 'crate' }
+ | { type: 'buyStorage'; visitorId:string; offerId:string }
+ | { type: 'sellStorage'; visitorId:string; storageId:string }
+ | { type: 'moveStorage'; storageId:string; containerId?:string; counter?:boolean; x:number; y:number; rotated:boolean }
+ | { type: 'buyLabeler' }
+ | { type: 'labelContainer'; containerId: string; label: string; color: StorageContainer['color'] }
  | { type: 'tradeBatch'; visitorId: string; itemIds: string[]; amount?: number; placements?: Record<string, {x:number;y:number;rotated:boolean}> }
  | { type: 'moveCounter'; itemId: string; x: number; y: number; rotated: boolean }
- | { type: 'moveStock'; itemId: string; x: number; y: number; rotated: boolean }
+ | { type: 'moveStock'; itemId: string; x: number; y: number; rotated: boolean; containerId?: string }
  | { type: 'talk'; visitorId: string }
  | { type: 'tutorial'; step: number; skipped?: boolean }
  | { type: 'inspect'; itemId?: string; visitorId?: string; method?: 'basic' | 'scan' | 'serial' }

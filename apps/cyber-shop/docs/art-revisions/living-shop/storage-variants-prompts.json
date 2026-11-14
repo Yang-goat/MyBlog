@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen",
+  "transparent_background": true,
+  "date": "2026-11-14",
+  "assets": [
+    {
+      "id": "storage-pouch",
+      "generation": "exec-65b8d136-d177-4214-844a-a43384914faf",
+      "prompt": "Create ONE isolated game inventory prop on transparent background: a small compact CYBERPUNK COURIER WAIST POUCH, not a backpack. Wide low rectangular charcoal waxed textile belt bag, burgundy narrow waist strap neatly folded behind, rigid scuffed graphite corners, bright but restrained cyan zipper pull and tiny magenta status tab, blank ivory identification patch on front. Squat horizontal 2:1 object proportions, clearly smaller and simpler than a full backpack. Practical weathered industrial construction, 2.5D painterly detailed game art with crisp readable shapes, three quarter front with slight top visible. Complete object centered and no floor/shadow/background, no lettering, no logo, square canvas. Palette matches the prior graphite teal burgundy cargo storage props.",
+      "role": "Distinct NPC-traded container style with physical outer footprint and a nested interior grid."
+    },
+    {
+      "id": "storage-freight",
+      "generation": "exec-120c4ff6-6f09-42b6-91dd-3c5d9d754934",
+      "prompt": "Create ONE isolated game inventory prop on transparent background: a LARGE CYBERPUNK FREIGHT STORAGE CASE, a wide rectangular heavy cargo trunk with industrial folding handles and FOUR glowing cyan locking mechanisms, twin flat stacking rails on the lid, reinforced black graphite metal perimeter, broad scuffed burgundy panel stripes, dusty dark teal ceramic plates, tiny amber hazard diode, small magenta square status panel, BLANK ivory front label holder. Looks clearly bigger, wider and more valuable than a simple small crate, horizontal 4:3 silhouette. Three-quarter front perspective slightly seeing top, front dominant, game inventory readable chunky shapes. Detailed hand-painted 2.5D art, not glossy photorealism, weathered practical East Asian cyberpunk repair district. Complete centered object with generous transparent margin, no lettering, no logos, no floor, no background or ground shadow. Square canvas.",
+      "role": "Distinct NPC-traded container style with physical outer footprint and a nested interior grid."
+    }
+  ]
+}

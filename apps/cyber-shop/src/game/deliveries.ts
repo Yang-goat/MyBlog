@@ -1,5 +1,6 @@
 import { DELIVERIES } from '../content/deliveries';
 import { ITEMS } from '../content/items';
+import { itemAccessible } from './containers';
 import type { DeliveryDefinition, DeliveryJob, GameState, ItemInstance } from './types';
 
 export const DELIVERY_HOURS=.5;
@@ -41,6 +42,7 @@ export function deliveryItemCheck(s:GameState,d:DeliveryDefinition,item:ItemInst
  if(!d.itemIds.includes(item.definitionId))return no('型号不在这份订货单内');
  if(item.owner!=='player')return no('客户托管物品不能交货');
  if(item.location!=='stock'||s.orders.some(o=>!o.delivered&&o.itemId===item.id))return no(item.location==='display'?'请先撤展':'请先将物品收回货架');
+ if(!itemAccessible(s,item))return no('箱包被压住，先移走上层箱包');
  if(ITEMS.find(i=>i.id===item.definitionId)!.regulated&&!s.licenses.includes('regulated-trade'))return no('尚未取得交易许可');
  if(!item.known.some(k=>['basic','diagnosed'].includes(k)))return no('先检查品相与基础功能','basic');
  if(item.condition<d.condition)return no(`品相 ${item.condition}%，未达 ${d.condition}%`);

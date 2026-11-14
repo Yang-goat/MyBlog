@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen",
+  "transparent_background": true,
+  "date": "2026-11-14",
+  "assets": [
+    {
+      "id": "storage-backpack",
+      "generation": "exec-971a51f0-51e0-4742-be40-c92bc6899b6a",
+      "prompt": "Create ONE isolated game prop asset, transparent background, no scene, no text: a worn cyberpunk soft courier storage backpack. Three quarter front view, nearly orthographic game inventory sprite, centered complete silhouette with generous transparent margin, no floor shadow. Squat wide rectangular charcoal waterproof fabric, reinforced graphite polymer shell base, burgundy straps, two cyan electroluminescent seam accents, tiny amber status diode, blank ivory rectangular label sleeve across front. Practical aged craftsmanship, rain scratches, hand painted realistic 2.5D concept art with chunky crisp readable shapes. Looking slightly downward at top, designed to stack on another backpack or a cargo crate. Muted industrial charcoal and teal with restrained neon magenta, rich midtones not blacked out. Single object only, not a sheet. No logos, no typography. Approximately square composition, 1024px output. For a polished Chinese indie cyberpunk second-hand shop management game.",
+      "role": "Individual physical storage prop; rendered separately with real game contents, stacking and labels."
+    },
+    {
+      "id": "storage-crate",
+      "generation": "exec-a542014e-8a10-4d3a-88bd-ce7b3f2b15b7",
+      "prompt": "Create ONE isolated game prop asset, transparent background, no scene, no text: a stackable cyberpunk rigid cargo storage crate. Three quarter front view, almost orthographic game inventory sprite with front face dominant, centered complete silhouette and transparent margins. A squat wide heavy graphite metal trunk, flat reinforced lid with recessed rail fittings suitable for stacking, chunky corner guards, scuffed deep teal paint, two little cyan glowing locks and a tiny magenta indicator. Front has a wide BLANK ivory label plate. Hand-painted detailed 2.5D game concept art, crisp readable large shapes, industrial lived-in rainy district, restrained neon. No excessive ornaments, no logo, no words, no floor or shadow outside object. Looking slightly down at top. Single object only, not a sheet. Nearly square canvas. For a polished Chinese cyberpunk second-hand shop game. Match the backpack's material palette and light direction, but draw a NEW rigid metal crate.",
+      "role": "Individual physical storage prop; rendered separately with real game contents, stacking and labels."
+    },
+    {
+      "id": "storage-labeler",
+      "generation": "exec-dd57643e-50f2-47c4-a7a9-7d0af800c43a",
+      "prompt": "Create ONE isolated cyberpunk game prop on transparent background: a compact handheld thermal label printer, three-quarter top front view. Chunky worn graphite polymer body, dark burgundy grip, tiny cyan monochrome screen with abstract bars NOT words, a small teal keypad, magenta feed button, ivory blank adhesive paper strip curling from the top slot. Practical second-hand repair shop equipment, chipped industrial paint, subtly glowing cyan details, readable silhouette. Detailed painterly 2.5D game art, rich midtones, sharp hand-crafted objects, restrained neon. Single complete object centered with transparent margin, no scene, no person, no background or ground shadow, no logo or legible text. Match the palette and weathering of the cyberpunk storage crate reference but render only a NEW LABEL PRINTER, not a crate. Square composition.",
+      "role": "Individual physical storage prop; rendered separately with real game contents, stacking and labels."
+    }
+  ]
+}

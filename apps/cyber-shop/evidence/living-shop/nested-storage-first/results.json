@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "npcTrading": true,
+  "fourStyles": true,
+  "boxInsideBox": true,
+  "bagInsideBag": true,
+  "depth": 4,
+  "mouseDrag": true,
+  "labels": true,
+  "cycleBlocked": true,
+  "withdraw": true,
+  "outerMovePreservesContents": true,
+  "reload": true,
+  "standardWarehouseUnchanged": true,
+  "optionalSmallerWarehouse": true,
+  "touch": true,
+  "errors": [],
+  "missing": []
+}
