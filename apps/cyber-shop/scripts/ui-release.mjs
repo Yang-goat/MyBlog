@@ -19,8 +19,10 @@ try{
  const html=await context.request.get(base);assert.equal(html.status(),200);
  const source=await html.text(),localHtml=await fs.readFile(path.join(dist,'index.html'),'utf8');
  for(const match of localHtml.matchAll(/(?:src|href)="(\/cyber-shop\/assets\/[^\"]+)"/g))assert(source.includes(match[1]),`Stale entry: ${match[1]}`);
- const files=[];
- for(const dir of ['assets','art','scenery'])for(const file of await fs.readdir(path.join(dist,dir)))if(/\.(js|css|webp|png|svg)$/.test(file))files.push(`${dir}/${file}`);
+ const files=[],bundles=await fs.readdir(path.join(dist,'assets'));let references=localHtml;
+ // Follow the current entry, including lazy imports; incremental local builds may retain old chunks.
+ for(let added=true;added;){added=false;for(const name of bundles){const file=`assets/${name}`;if(!files.includes(file)&&/\.(js|css)$/.test(name)&&references.includes(name)){files.push(file);references+=await fs.readFile(path.join(dist,file),'utf8');added=true;}}}
+ for(const dir of ['art','scenery'])for(const file of await fs.readdir(path.join(dist,dir)))if(/\.(webp|png|svg)$/.test(file))files.push(`${dir}/${file}`);
  for(let offset=0;offset<files.length;offset+=6)await Promise.all(files.slice(offset,offset+6).map(async file=>{
   const response=await context.request.get(new URL(file,base).href);assert.equal(response.status(),200,file);
   const type=response.headers()['content-type']||'';
@@ -46,8 +48,6 @@ try{
   await page.locator('.cabinet-menu').getByRole('button',{name:'工具采购',exact:true})[action]();await click('四类设施');await page.locator('[data-equipment="stock-rack"]').getByRole('button')[action]();await click('关闭面板');
   assert.equal(await page.locator('.warehouse-cell:disabled').count(),16);assert.equal((await page.locator('.warehouse-cell').first().boundingBox()).width,size);
   await page.getByRole('tab',{name:'主仓 · 144 格',exact:true})[action]();
-  // Adjacent mobile tab/item taps need separate gestures; a rapid pair opens the item's double-tap ledger.
-  if(touch)await page.waitForTimeout(550);
   const item=(await read()).game.items.find(i=>i.definitionId==='data-chip');await page.locator(`.warehouse-item[data-item="${item.id}"]`)[action]();await page.getByRole('tab',{name:'扩仓1 · 80 格',exact:true})[action]();await click('仓库空格 169');
   assert.equal((await read()).game.warehouse.positions[item.id].y,7);await click('撤销摆放');assert.equal(await page.locator('.warehouse-grid').getAttribute('data-page'),'0');
   const geometry=await page.evaluate(()=>[...document.querySelectorAll('.surface-grid,.warehouse-grid')].map(g=>{const r=g.getBoundingClientRect(),p=g.parentElement.getBoundingClientRect(),c=g.querySelector('button').getBoundingClientRect();return {width:r.width,height:r.height,cell:c.width,square:Math.abs(c.width-c.height)<.1,inside:r.left>=p.left-.1&&r.right<=p.right+.1&&r.top>=p.top-.1&&r.bottom<=p.bottom+.1,scrollable:g.parentElement.scrollHeight>g.parentElement.clientHeight||g.parentElement.scrollWidth>g.parentElement.clientWidth};}));

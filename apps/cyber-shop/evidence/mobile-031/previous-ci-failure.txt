@@ -1,0 +1,17 @@
+Run: https://github.com/Yang-goat/MyBlog/actions/runs/43603728884
+2026-11-14T14:14:06.8653195Z  Test Files  4 passed (4)
+2026-11-14T14:14:06.8654220Z       Tests  16 passed (16)
+2026-11-14T14:14:09.5450491Z  Test Files  1 passed (1)
+2026-11-14T14:14:09.5451427Z       Tests  3 passed (3)
+2026-11-14T14:14:19.9422220Z      × never ejects a previously placed object in ten dense mixed-shape layouts 6310ms
+2026-11-14T14:14:22.3030004Z      × can eventually learn all 24 skills and retain them with a finite bounded economy 6411ms
+2026-11-14T14:14:22.3056209Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+2026-11-14T14:14:22.3059756Z  FAIL  tests/engine.test.ts > repair, collections and progression > can eventually learn all 24 skills and retain them with a finite bounded economy
+2026-11-14T14:14:22.3064294Z Error: Test timed out in 5000ms.
+2026-11-14T14:14:22.3156024Z  FAIL  tests/layout-history.test.ts > safe warehouse sorting and session placement undo > never ejects a previously placed object in ten dense mixed-shape layouts
+2026-11-14T14:14:22.3158017Z Error: Test timed out in 5000ms.
+2026-11-14T14:14:22.3189651Z      14|  it('never ejects a previously placed object in ten dense mixed-shape …
+2026-11-14T14:14:22.3229583Z  Test Files  2 failed | 27 passed (29)
+2026-11-14T14:14:22.3250023Z       Tests  2 failed | 198 passed (200)
+2026-11-14T14:14:22.3294913Z ##[error]Error: Test timed out in 5000ms.
+2026-11-14T14:14:22.3307120Z ##[error]Error: Test timed out in 5000ms.

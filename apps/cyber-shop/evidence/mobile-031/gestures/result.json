@@ -1,0 +1,392 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "rapid-taps-and-transfer",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [],
+        "width": 844,
+        "height": 390,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "double-tap-nested",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 417,
+            "y": 120,
+            "right": 643,
+            "bottom": 299.296875
+          },
+          {
+            "x": 518,
+            "y": 204,
+            "right": 744,
+            "bottom": 383.296875
+          }
+        ],
+        "width": 844,
+        "height": 390,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "rotated-568-320",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 10,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 10,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 10,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 10,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 10,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 334,
+            "y": 120,
+            "right": 560,
+            "bottom": 281.296875
+          },
+          {
+            "x": 334,
+            "y": 134,
+            "right": 560,
+            "bottom": 295.296875
+          }
+        ],
+        "width": 568,
+        "height": 320,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "rotated-667-300",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 9,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 9,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 9,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 9,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 9,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 334,
+            "y": 120,
+            "right": 560,
+            "bottom": 275.296875
+          },
+          {
+            "x": 334,
+            "y": 132,
+            "right": 560,
+            "bottom": 287.296875
+          }
+        ],
+        "width": 667,
+        "height": 300,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "rotated-844-390",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 156,
+            "y": 120,
+            "right": 382,
+            "bottom": 299.296875
+          },
+          {
+            "x": 156,
+            "y": 132,
+            "right": 382,
+            "bottom": 311.296875
+          }
+        ],
+        "width": 844,
+        "height": 390,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "browser-toolbar-visible",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 11,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 11,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 11,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 11,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 11,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 156,
+            "y": 120,
+            "right": 382,
+            "bottom": 287.296875
+          },
+          {
+            "x": 156,
+            "y": 132,
+            "right": 382,
+            "bottom": 299.296875
+          }
+        ],
+        "width": 844,
+        "height": 330,
+        "headerFits": true
+      }
+    },
+    {
+      "name": "browser-toolbar-hidden",
+      "geometry": {
+        "grids": [
+          {
+            "kind": "surface-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "surface-grid table-objects",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "warehouse-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          },
+          {
+            "kind": "container-grid",
+            "cell": 13,
+            "square": true,
+            "inside": true,
+            "scrollable": false
+          }
+        ],
+        "windows": [
+          {
+            "x": 156,
+            "y": 120,
+            "right": 382,
+            "bottom": 299.296875
+          },
+          {
+            "x": 156,
+            "y": 132,
+            "right": 382,
+            "bottom": 311.296875
+          }
+        ],
+        "width": 844,
+        "height": 390,
+        "headerFits": true
+      }
+    }
+  ],
+  "errors": []
+}

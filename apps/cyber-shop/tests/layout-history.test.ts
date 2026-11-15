@@ -26,7 +26,7 @@ describe('safe warehouse sorting and session placement undo',()=>{
    if(!r.ok){rejected++;expect(r.state).toEqual(before);}else{accepted++;expect(r.state.hours).toBe(s.hours-.5);}
   }
   expect(rejected).toBeGreaterThan(0);expect(accepted).toBeGreaterThan(0);
- });
+ }, 20000); // Ten dense packing simulations on shared CI runners; every assertion stays enabled.
  it('undoes moves, rotation and sorting in order without refunding time',()=>{
   const q=session(),original=structuredClone(q.state),id=q.state.items.find(i=>i.definitionId==='data-chip')!.id;
   expect(q.act({type:'moveStock',itemId:id,x:20,y:4,rotated:false}).ok).toBe(true);const moved=structuredClone(q.state);

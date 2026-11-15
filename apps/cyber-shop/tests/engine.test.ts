@@ -97,7 +97,7 @@ describe('repair, collections and progression', () => {
     let s = act(playToWin('precision', 8), { type: 'continueEndless' });
     for (let day = 0; day < 150 && s.skills.length < SKILLS.length; day++) s = normalDay(s, 'precision', true);
     expect(s.skills).toHaveLength(24); expect(s.level).toBeGreaterThan(25); expect(Number.isFinite(s.cash)).toBe(true); expect(s.debt).toBe(0); validateState(s);
-  });
+  }, 20000); // Full career plus up to 150 operating days on shared CI runners.
   it('respec refunds once atomically, preserves certificates/quests/items and blocks active orders', () => {
     let s = createGame(9); s.points = 10; s = act(s, { type: 'learn', skillId: 'business-1' }); s = act(s, { type: 'closeDay' });
     const old = structuredClone(s); s = act(s, { type: 'respec', skills: [] }); expect(s.points).toBe(10); expect(s.items).toEqual(old.items); expect(s.certificates).toEqual(old.certificates); expect(s.cash).toBe(old.cash); expect(s.freeRespec).toBe(false);

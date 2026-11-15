@@ -34,3 +34,14 @@
 
 .shop-room [data-located=true]{outline:2px solid #ffe4a3!important;outline-offset:-2px;filter:brightness(1.2)}
 .shop-room [data-located=true] .shape-outline polygon{fill:#8c805644;stroke:#ffe4a3;stroke-width:4px}
+
+/* Touch actions remain outside the grid; expanding storage never changes its unit. */
+@media(pointer:coarse){
+ .app.shop-open{inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);width:auto;height:auto}
+ .shop-open>.toast{top:max(12px,env(safe-area-inset-top));bottom:auto;max-width:60vw;padding:6px 10px;font-size:11px;line-height:1.5}
+ .shop-open .warehouse-section>header{height:32px;min-height:32px;padding:0 2px 2px;gap:3px}
+ .shop-open .warehouse-section>header button{min-height:28px;white-space:nowrap;touch-action:manipulation}
+ .shop-open .warehouse-tabs button{min-height:28px;min-width:40px}
+ .shop-open .warehouse-section>header>button[aria-label]{min-width:28px;padding:1px 3px}
+ .shop-room .surface-cell,.shop-room .warehouse-cell,.shop-room .container-cell{touch-action:manipulation}
+}
