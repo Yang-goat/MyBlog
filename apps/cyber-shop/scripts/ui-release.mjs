@@ -8,7 +8,7 @@ import {completeIntro} from './ui-onboarding.mjs';
 
 const base=process.env.CYBER_URL||'https://goatyang.com/cyber-shop/';
 const out=process.env.CYBER_EVIDENCE_DIR||'apps/cyber-shop/evidence/living-shop/release-030-live';
-const dist=path.resolve('src/.vuepress/dist/cyber-shop');
+const dist=path.resolve(process.env.CYBER_DIST||'src/.vuepress/dist/cyber-shop');
 const version=JSON.parse(await fs.readFile('apps/cyber-shop/package.json','utf8')).version;
 const sha=buffer=>createHash('sha256').update(buffer).digest('hex');
 await fs.mkdir(out,{recursive:true});
