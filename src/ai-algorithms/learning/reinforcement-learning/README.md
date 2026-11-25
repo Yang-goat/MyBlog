@@ -14,4 +14,4 @@ dir:
 
 <Catalog />
 
-基础教程之外的研究方法与实验分析见[前沿方法](./frontier-methods/)，每周阅读记录见[论文随笔](/paper-notes/)。
+基础教程之外的研究方法与实验分析见[前沿方法](./frontier-methods/)，每周阅读记录见[论文随笔](/research/paper-notes/)。

@@ -28,6 +28,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/general/inverse-transform-sampling.md",
+      "auditedCrlfRanges": [[13, 125]],
       "title": "逆变换采样",
       "beforeSha256": "dd141e750de691926f1cbaed4638dcdabe2e7feb068c1fd68ff4625d95d59f34",
       "afterSha256": "5f0c8ace291d3f72f63d08a26971d037ebedcffa5c21722d48a4bde3c8ec84e1",
@@ -52,6 +53,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/general/learning-algorithms-introduction.md",
+      "auditedCrlfRanges": [[15, 74]],
       "title": "学习类算法导论",
       "beforeSha256": "5748fd15da7dd94130d7bd596b0cc6091fe50daffb83bfe01a878957279f5821",
       "afterSha256": "f4e96c3e25d14d4b036837aae8c3ecc49290f270ab90d4deeb7dc56559def152",
@@ -163,6 +165,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/distributed-shop-scheduling.md",
+      "auditedCrlfRanges": [[13, 433]],
       "title": "分布式车间调度问题",
       "beforeSha256": "c9a7e5532b089f7d00e79f153051a9b6376fa423640129a233649b3e0e2fbf24",
       "afterSha256": "c9a7e5532b089f7d00e79f153051a9b6376fa423640129a233649b3e0e2fbf24",
@@ -187,6 +190,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evaluation-metrics.md",
+      "auditedCrlfRanges": [[1, 277]],
       "title": "算法性能指标",
       "beforeSha256": "3e122b190ab286e9af8dc664ee10db1254f5c6be3bae313471c9a04b2b042390",
       "afterSha256": "bf13ddc8a078280b18dc9bc887b7edded4218a00d701c9eb3e716e26956f0a5b",
@@ -210,6 +214,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/moea-d.md",
+      "auditedCrlfRanges": [[13, 345]],
       "title": "基于分解的多目标进化算法（MOEA/D）",
       "beforeSha256": "0767a33443dce9a7fd06e3bce98a8f752d395d00d535f75caff67e661628dff0",
       "afterSha256": "0767a33443dce9a7fd06e3bce98a8f752d395d00d535f75caff67e661628dff0",
@@ -232,6 +237,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/moga.md",
+      "auditedCrlfRanges": [[13, 747]],
       "title": "多目标遗传算法（MOGA）",
       "beforeSha256": "536111b154f4abc35b8326ea7b9e2134c286f65b42ca8f08d91d1306057676d1",
       "afterSha256": "536111b154f4abc35b8326ea7b9e2134c286f65b42ca8f08d91d1306057676d1",
@@ -254,6 +260,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/npga.md",
+      "auditedCrlfRanges": [[13, 171]],
       "title": "小生境帕累托遗传算法（NPGA）",
       "beforeSha256": "501c759d15cf4f1079d26d6bd41f8ae5fa0caae91fa3a35e4ca82d12d51150a7",
       "afterSha256": "501c759d15cf4f1079d26d6bd41f8ae5fa0caae91fa3a35e4ca82d12d51150a7",
@@ -276,6 +283,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/nsga2.md",
+      "auditedCrlfRanges": [[13, 742]],
       "title": "非支配遗传算法二代（NSGA Ⅱ）",
       "beforeSha256": "1d181166513fb67e08975d162b96fab8c18cbaa5fad31d32813ba7079445394c",
       "afterSha256": "1d181166513fb67e08975d162b96fab8c18cbaa5fad31d32813ba7079445394c",
@@ -298,6 +306,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/nsga3.md",
+      "auditedCrlfRanges": [[13, 233]],
       "title": "非支配遗传算法三代（NSGA Ⅲ）",
       "beforeSha256": "74b8e4162632a356f916f70dc8333f652e15304d14ec5bf97bc8b0ce46eb50e7",
       "afterSha256": "74b8e4162632a356f916f70dc8333f652e15304d14ec5bf97bc8b0ce46eb50e7",
@@ -320,6 +329,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/evolutionary-algorithms/spea2.md",
+      "auditedCrlfRanges": [[13, 620]],
       "title": "强化帕累托进化算法二代（SPEA2）",
       "beforeSha256": "56d4871d6b788ec03770e1947dc5ffa67fcddf2bc6792ea549caaf3e9fc9c1a9",
       "afterSha256": "56d4871d6b788ec03770e1947dc5ffa67fcddf2bc6792ea549caaf3e9fc9c1a9",
@@ -342,6 +352,7 @@
     },
     {
       "path": "src/ai-algorithms/foundations/problem-cases/multi-objective-optimization/intro.md",
+      "auditedCrlfRanges": [[15, 17], [19, 90]],
       "title": "多目标优化问题介绍",
       "beforeSha256": "d0f8b11de10cea345448106029bf49489e3d6e822ff463ce60deb19cddd52dcd",
       "afterSha256": "d0f8b11de10cea345448106029bf49489e3d6e822ff463ce60deb19cddd52dcd",
@@ -387,6 +398,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/deep-learning/essential-code.md",
+      "auditedCrlfRanges": [[14, 100]],
       "title": "必备代码",
       "beforeSha256": "e87d3a6124c2ae102df28f2498a83e134ef235689aadf2a02788103080462df1",
       "afterSha256": "3a78fe13e43e2540c8f3cc5142edc3dcc5c10d175a87c811aedb1d706c54f687",
@@ -468,6 +480,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/machine-learning/knn.md",
+      "auditedCrlfRanges": [[14, 139]],
       "title": "K近邻算法（KNN）",
       "beforeSha256": "4ff6fbfdf37f8953ec5a6758146cd06835a2427d83c76f72696237b2fc33baea",
       "afterSha256": "b7e36e3766859d79e1dc8945eab8e6badd28cc2155f2d022413191c70541094b",
@@ -576,6 +589,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/04-value-and-policy-iteration.md",
+      "auditedCrlfRanges": [[1, 67], [69, 186], [188, 258], [260, 263]],
       "title": "值迭代与策略迭代",
       "beforeSha256": "26f87e8c45d02b552ed83cf2fa760149efeb41f234a92c95ffdd018975159c98",
       "afterSha256": "c6337445249082c6378bbe50f4cf6301ddf2534fdd74c17001ba44d51983d5ab",
@@ -613,6 +627,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/05-monte-carlo-methods.md",
+      "auditedCrlfRanges": [[1, 349]],
       "title": "蒙特卡罗方法",
       "beforeSha256": "7d88ab917eb3f4b634f91c0fb68e283ab57aed343115afdc7f565ec16e88affb",
       "afterSha256": "1e0981dfcfe93722ae9bc6fd5caaeefdb95d56f21a98a3bbdd7cc906b653681b",
@@ -650,6 +665,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/06-stochastic-approximation.md",
+      "auditedCrlfRanges": [[1, 595]],
       "title": "随机近似算法",
       "beforeSha256": "b5f171d8b02c712c0b3f01c5338ae8af91502f81252c1e168602727b3ecbe7a8",
       "afterSha256": "e1982dce915cf0787896f2fbe7257e32a14b86e8416d90818d1223d1d3d7b382",
@@ -674,6 +690,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/07-temporal-difference-methods.md",
+      "auditedCrlfRanges": [[1, 644]],
       "title": "时序差分方法",
       "beforeSha256": "76fa7dc581f0320b337d40a0a89d51013b9b9243ad828af4879ae27e4fd69679",
       "afterSha256": "771fb6d688dcc2b788736d635789343dcfca8f3d7bdeb558e680979d6a26c15d",
@@ -717,6 +734,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/08-value-function-methods.md",
+      "auditedCrlfRanges": [[1, 660]],
       "title": "值函数方法",
       "beforeSha256": "620225d69678b4e98b1f5a53e6bc82cb16758f2ba2aac5f6c6aa828d305eb7bf",
       "afterSha256": "f367e9c976dbaa72f3a63fe3cd17d86aca920e9a202d0f36d1c92628d8c1cd2f",
@@ -754,6 +772,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/09-policy-gradient-methods.md",
+      "auditedCrlfRanges": [[1, 453]],
       "title": "策略梯度算法",
       "beforeSha256": "5f0bbd2a40973c5b3fef369cb722309c857b5a788f4a2d7dfe5cfe83f8a6c5d2",
       "afterSha256": "f41d1ca6f103fcc62edc13bec389cc51050ffccdcd31deca226076a7a39cf886",
@@ -791,6 +810,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/10-actor-critic-methods.md",
+      "auditedCrlfRanges": [[1, 549]],
       "title": "演员-评论家方法",
       "beforeSha256": "96caea67efe538af00bda265d8e02b88a54664a0322defd5ad0a88a9af44774f",
       "afterSha256": "a65c713cc42bda3d722386d0c6a24d61c644a02e0dc48459d16fed258a6d22b8",
@@ -829,6 +849,7 @@
     },
     {
       "path": "src/ai-algorithms/learning/reinforcement-learning/mathematical-principles/11-summary.md",
+      "auditedCrlfRanges": [[1, 587]],
       "title": "总结",
       "beforeSha256": "18ece65d571368130041dc85803cf487539686169294587798e1b1683a473abc",
       "afterSha256": "560108f6eb8a135ec8b019a55f52936bd17f79ee9946bc80f0ed2740f3c162b9",
@@ -1172,6 +1193,10 @@
     },
     {
       "path": "src/ai-algorithms/optimization/frontier-algorithms/research-directions.md",
+      "routeMigration": {
+        "before": "[论文随笔](/paper-notes/)",
+        "after": "[论文随笔](/research/paper-notes/)"
+      },
       "title": "优化研究方向思维导图",
       "beforeSha256": "41bf23a40fd5a301ed11ae3f0bc1cd60210ba4c5148611b52a9ae662e9c2df37",
       "afterSha256": "ecbb65ac1f7026864190af76a49221dbffe6f6d8fa3ccd44658aa4619cf10b6b",
@@ -2401,6 +2426,7 @@
     },
     {
       "path": "src/ai-algorithms/optimization/fundamentals/genetic-operators/tournament-selection.md",
+      "auditedCrlfRanges": [[14, 86]],
       "title": "锦标赛选择",
       "beforeSha256": "a2b586a5584b4c7b88066a8359db4fa127f3fc2b6cc2dbc35ef1a9b942727226",
       "afterSha256": "a2b586a5584b4c7b88066a8359db4fa127f3fc2b6cc2dbc35ef1a9b942727226",
@@ -3543,6 +3569,7 @@
     },
     {
       "path": "src/ai-algorithms/optimization/fundamentals/supporting-strategies/latin-hypercube-sampling.md",
+      "auditedCrlfRanges": [[11, 102]],
       "title": "LHS 采样",
       "beforeSha256": "11ab8771388bd1e20689ba78dea71002f932fee76896ec4b7d4731aaa8a1c940",
       "afterSha256": "11ab8771388bd1e20689ba78dea71002f932fee76896ec4b7d4731aaa8a1c940",
@@ -3766,6 +3793,7 @@
     },
     {
       "path": "src/ai-algorithms/optimization/fundamentals/theory/optimization-categories.md",
+      "auditedCrlfRanges": [[1, 192]],
       "title": "智能优化算法的分类",
       "beforeSha256": "2e1c35c80d6f9788708cb5d5ba5dec2efc039f927dc2dc941d1f4f85cb7eed43",
       "afterSha256": "1571c285e3f9367ccf21f5bb33c40e617595ad2f29e4bf484a40a1ff7868388b",
@@ -3789,6 +3817,7 @@
     },
     {
       "path": "src/ai-algorithms/optimization/fundamentals/theory/optimization-problem.md",
+      "auditedCrlfRanges": [[13, 40]],
       "title": "优化问题的分类",
       "beforeSha256": "32a835126316d0b8ece0ee993a748215b87e9582ec5f4117714ba1f89060a2bb",
       "afterSha256": "66eb474c12d1dc5d7b0d0083ae14e7724fefed66e7d6fa1c41e2be245bc571fb",
@@ -3814,6 +3843,13 @@
     },
     {
       "path": "src/ai-algorithms/optimization/fundamentals/theory/optimization-theory.md",
+      "reviewedRevision": {
+        "commit": "74850c01621eeea11957a17ba0f38305bb6ae26c",
+        "afterSha256": "2b33f055ae2d1e0d38c3c5ea790812ff03d1fa3ab08eb1e40cb437ac0dcb7f86",
+        "originalBodySha256": "fd804f14b8e13fa1b25737b8c5e78338640c902ce72d43afc659c60c8385f381",
+        "beforeSha256": "50e769797b3727ca2151bdfec718e1aacb4d5ecf3c744f1a856b13a61f5cc5a1"
+      },
+      "auditedCrlfRanges": [[12, 147]],
       "title": "优化理论",
       "beforeSha256": "829769efb1f21abd9afec227bbff7f106b63c6c0c8c5f4c6c74590a3fcb224de",
       "afterSha256": "b285172fd81f298eb5973b6354a9470c8b686699b9aa474399f84cbf8a5a69be",
@@ -3865,6 +3901,12 @@
     },
     {
       "path": "src/ai-applications/tools-practice/agent-clients/chatgpt-codex/codex-reconnecting.md",
+      "reviewedRevision": {
+        "commit": "b084beba63600a895b9a8c9e4020686230cd8e46",
+        "afterSha256": "af8c721e58491865aa72b7e380719936fcb57e0f761007b759726c39161b6d70",
+        "originalBodySha256": "d0487d9f3dd45001874a7a2a854e18a3b8c294fb5af85c745ee22cd114d48dd8",
+        "beforeSha256": "af8c721e58491865aa72b7e380719936fcb57e0f761007b759726c39161b6d70"
+      },
       "title": "Codex 反复 Reconnecting 的排查：代理、WebSocket 与 HTTPS/SSE",
       "beforeSha256": "5d71ecc316be5028630655df80b9b60bdf2efdc27f83268e6a6e1de54f99a9fd",
       "afterSha256": "5d71ecc316be5028630655df80b9b60bdf2efdc27f83268e6a6e1de54f99a9fd",
@@ -3889,6 +3931,7 @@
     },
     {
       "path": "src/ai-applications/tools-practice/agent-clients/tools/cc-switch.md",
+      "auditedCrlfRanges": [[1, 498]],
       "title": "使用 CC Switch 为 Codex 等 AI Agent 接入第三方模型",
       "beforeSha256": "ece46b73c9a2a459404fe76a319103338dda441b22185903d444c7d36a0f3dcc",
       "afterSha256": "ece46b73c9a2a459404fe76a319103338dda441b22185903d444c7d36a0f3dcc",
@@ -3917,6 +3960,7 @@
     },
     {
       "path": "src/ai-applications/tools-practice/agent-clients/tools/gh.md",
+      "auditedCrlfRanges": [[1, 386]],
       "title": "GitHub CLI（gh）：AI Agent 使用 GitHub 的命令行入口",
       "beforeSha256": "3f6ba0af6011cbbc375b3e0bb5aa41fb52776d12424f659d769e4346c1abbe87",
       "afterSha256": "8a92778ae4362f17a3d570e470333f236bda077f646b556000d57b39321b746a",
@@ -4005,6 +4049,7 @@
     },
     {
       "path": "src/ai-applications/tools-practice/skills-mcp/matlab-agentic-toolkit.md",
+      "auditedCrlfRanges": [[1, 5], [7, 23], [25, 94], [98, 193], [195, 198], [200, 205], [209, 241], [243, 277], [279, 292], [294, 301], [306, 310], [312, 312], [314, 326], [329, 363], [365, 370], [372, 383], [386, 410], [412, 480], [505, 511], [513, 518], [528, 531], [533, 547], [549, 565], [567, 596], [598, 611], [613, 622], [624, 624], [626, 804], [806, 887]],
       "title": "MATLAB Agentic Toolkit：让 AI Agent 直接操作 MATLAB",
       "beforeSha256": "8e52f183f64d39143172d370d0a010c462562242c4db768548e7797c231d0888",
       "afterSha256": "59df1c7cf776dc7289fa23b45d758a749edf0cc404606d8064bd1759c55ce029",
@@ -4088,6 +4133,7 @@
     },
     {
       "path": "src/notes/computing/cmd-vs-powershell.md",
+      "auditedCrlfRanges": [[13, 286]],
       "title": "CMD 与 PowerShell 的区别",
       "beforeSha256": "4aea3a52eab4969e60c20d6a2f57a59abf756c040f9447ff415750779178d3e0",
       "afterSha256": "4aea3a52eab4969e60c20d6a2f57a59abf756c040f9447ff415750779178d3e0",
@@ -4250,6 +4296,7 @@
     },
     {
       "path": "src/notes/mathematical-modeling/cumcm-problem-a-guide.md",
+      "auditedCrlfRanges": [[13, 602], [604, 666]],
       "title": "国赛A题指导",
       "beforeSha256": "4662c302d410e80bce0a5a7cf9bd0aeab48b0b09d0f30a38cdc862954f20fffc",
       "afterSha256": "4662c302d410e80bce0a5a7cf9bd0aeab48b0b09d0f30a38cdc862954f20fffc",
@@ -4270,6 +4317,7 @@
     },
     {
       "path": "src/notes/mathematical-modeling/cumcm-problems.md",
+      "auditedCrlfRanges": [[1, 58]],
       "title": "国赛赛题下载地址",
       "beforeSha256": "afd82ab4e947f663260575b91d97ee592f21ea97dbebc8a5c51f0a21b1e928da",
       "afterSha256": "afd82ab4e947f663260575b91d97ee592f21ea97dbebc8a5c51f0a21b1e928da",
@@ -4290,6 +4338,13 @@
     },
     {
       "path": "src/notes/mathematical-modeling/modeling-competitions-overview.md",
+      "reviewedRevision": {
+        "commit": "96d56877be556eafaa2b99549cb0ed8a34a03148",
+        "afterSha256": "6282fbecc85b11db456d14e604c0ab1434d8f7789ccb3d623cc0dd73892bc69f",
+        "originalBodySha256": "f9813bfa5a65571f1733a1e8e155a1829cc58429edc0620aebc74ae48f335768",
+        "beforeSha256": "6282fbecc85b11db456d14e604c0ab1434d8f7789ccb3d623cc0dd73892bc69f"
+      },
+      "auditedCrlfRanges": [[11, 263]],
       "title": "一文看懂数学建模系列比赛与备赛建议",
       "beforeSha256": "f9944034ff60281348f760a73610fe7086b030d0385650ed85d7e8eea77201ba",
       "afterSha256": "f9944034ff60281348f760a73610fe7086b030d0385650ed85d7e8eea77201ba",
@@ -4310,6 +4365,7 @@
     },
     {
       "path": "src/notes/mathematical-modeling/preparation-resources.md",
+      "auditedCrlfRanges": [[14, 171]],
       "title": "国赛备赛资源",
       "beforeSha256": "64cb28b706b251fc437c82de8f94b23f9a5ad034c63e52a872f7834c073ecc0f",
       "afterSha256": "64cb28b706b251fc437c82de8f94b23f9a5ad034c63e52a872f7834c073ecc0f",
@@ -4431,6 +4487,7 @@
     },
     {
       "path": "src/notes/mathematics/contraction-mapping.md",
+      "auditedCrlfRanges": [[12, 46]],
       "title": "压缩映射定理",
       "beforeSha256": "2c043b5805f39c1440ccd7d487ed1efd4e8bcbf1ebd1ebad8a356cdb872abcc3",
       "afterSha256": "fcdc085df27d42d1e5a485cf05bb93e92d503c3ec4b07d5234942324cc47167c",
@@ -4609,6 +4666,7 @@
     },
     {
       "path": "src/notes/mathematics/numerical-methods-notes-1.md",
+      "auditedCrlfRanges": [[12, 66], [68, 87], [89, 173], [175, 220], [222, 282], [284, 352], [354, 468], [470, 471], [473, 491]],
       "title": "计算方法随记 1",
       "beforeSha256": "1312a9646561fefacd2fbf0c367e0b321d5114a4fc6a1da8b0856a91f41a2518",
       "afterSha256": "0322ad6ad2a92496a687d9b2c9dc435f8cbcbba646fb1d7d012d9afdc3a3b244",
@@ -4632,6 +4690,7 @@
     },
     {
       "path": "src/notes/mathematics/numerical-methods-notes-2.md",
+      "auditedCrlfRanges": [[12, 137]],
       "title": "计算方法随记 2",
       "beforeSha256": "1d87ed813f651613ec76c5cfa00df864be451b9b59930eedc9979c9e505eb292",
       "afterSha256": "1bffe82d6e2eafa06d4b50449b9ea50d981e8091bc591280ac4e39a25bf875ba",
@@ -4655,6 +4714,7 @@
     },
     {
       "path": "src/notes/music/mixes.md",
+      "auditedCrlfRanges": [[15, 17], [19, 26]],
       "title": "站主的电音混音作品",
       "beforeSha256": "79354c0e9b9952adad62aeb87679d0ebaa52ef6abdb16c1bd8a65042f4d40c62",
       "afterSha256": "79354c0e9b9952adad62aeb87679d0ebaa52ef6abdb16c1bd8a65042f4d40c62",
@@ -4677,6 +4737,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/advanced-java.md",
+      "auditedCrlfRanges": [[11, 212], [214, 319]],
       "title": "Java进阶知识",
       "beforeSha256": "7f6c75f33411256b92ceff1f61b263f5d64911f3fb79d11be6248f866c9f0125",
       "afterSha256": "7f6c75f33411256b92ceff1f61b263f5d64911f3fb79d11be6248f866c9f0125",
@@ -4699,6 +4760,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/generics.md",
+      "auditedCrlfRanges": [[13, 13], [15, 258]],
       "title": "Java 泛型",
       "beforeSha256": "b73aeaa1a35280bb4004471b47bb1f48c7807edb953ac2c020bf783de3e74a69",
       "afterSha256": "b73aeaa1a35280bb4004471b47bb1f48c7807edb953ac2c020bf783de3e74a69",
@@ -4721,6 +4783,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/io.md",
+      "auditedCrlfRanges": [[12, 370]],
       "title": "输入输出",
       "beforeSha256": "4a1244c5448d19cd8b8175a3a83d77cbfb0730f034695a17d738ab4483dc9288",
       "afterSha256": "4a1244c5448d19cd8b8175a3a83d77cbfb0730f034695a17d738ab4483dc9288",
@@ -4743,6 +4806,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/javafx.md",
+      "auditedCrlfRanges": [[12, 69], [71, 224], [227, 368], [370, 713], [715, 725], [727, 852]],
       "title": "GUI框架 JavaFX",
       "beforeSha256": "4edb903d6115fd54480eaf4d11d60a2c260556ce7f3e0401933bd564cb7bb403",
       "afterSha256": "087a22238764135947e4157bc3119245d3e2bef72c7abe14dc07e4feafde5c97",
@@ -4774,6 +4838,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/maven.md",
+      "auditedCrlfRanges": [[13, 24], [26, 30], [32, 38], [40, 82]],
       "title": "maven安装教程",
       "beforeSha256": "868f2dab84eca59b275be35d1f62ba19f57c2dc93d657c3317ea1ed28aef73f8",
       "afterSha256": "88c834fc0073aca7cdb28bdef435a181d9003979620c18319ac4a17d3ed88bc4",
@@ -4800,6 +4865,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/multithreading.md",
+      "auditedCrlfRanges": [[12, 327]],
       "title": "多线程",
       "beforeSha256": "a2a3ff7eec9220615f3599ea400c86c615b7523e3e69b30d70ead547c239cd7c",
       "afterSha256": "a2a3ff7eec9220615f3599ea400c86c615b7523e3e69b30d70ead547c239cd7c",
@@ -4822,6 +4888,7 @@
     },
     {
       "path": "src/notes/programming-languages/java/network-programming.md",
+      "auditedCrlfRanges": [[12, 577]],
       "title": "网络编程",
       "beforeSha256": "ac8521280a0a34557cb079ec73e6134ac695883aa7f887568982cac0e00fde36",
       "afterSha256": "ac8521280a0a34557cb079ec73e6134ac695883aa7f887568982cac0e00fde36",
@@ -4844,6 +4911,7 @@
     },
     {
       "path": "src/notes/programming-languages/matlab/parallel.md",
+      "auditedCrlfRanges": [[15, 15], [17, 471]],
       "title": "并行计算编程",
       "beforeSha256": "c62b6aba442a6f625132995ff499d5c4d7c9e4370b15d4160f9f460a2765283b",
       "afterSha256": "c62b6aba442a6f625132995ff499d5c4d7c9e4370b15d4160f9f460a2765283b",
@@ -4866,6 +4934,7 @@
     },
     {
       "path": "src/notes/programming-languages/python/conda.md",
+      "auditedCrlfRanges": [[15, 165]],
       "title": "conda 指令速查表",
       "beforeSha256": "0d4d375de5d15b82b5c907eed0a6d795d9eeaa1f0f750b4a3b73fff0f48ed3a0",
       "afterSha256": "389de7ca4bb179d53e0112316deb62b1520a0a58e9d96eb7506b07aabe35c978",
@@ -4923,6 +4992,7 @@
     },
     {
       "path": "src/notes/programming-languages/python/jupyter-notebook.md",
+      "auditedCrlfRanges": [[13, 110]],
       "title": "Jupyter notebook",
       "beforeSha256": "ddd756de86186e4186794558706f4a7f236da0acba7157774e4e648e839e4e33",
       "afterSha256": "7a0ba4339c811800f49075f10b237ec38274bc77554f04656dab3f308e17e315",
@@ -4954,6 +5024,7 @@
     },
     {
       "path": "src/notes/programming-languages/python/pandas.md",
+      "auditedCrlfRanges": [[13, 60], [62, 333]],
       "title": "Pandas",
       "beforeSha256": "0d23a3bf03ee996cdb1f71ce57a1d58da293a481719903c4b8d3d22cf6e14aaa",
       "afterSha256": "1b2507afe2ae60f3008372c96749ab95477c491f07a76dd8edc428f11da4e69b",
@@ -4985,6 +5056,7 @@
     },
     {
       "path": "src/notes/programming-languages/python/python.md",
+      "auditedCrlfRanges": [[13, 13], [15, 1257], [1259, 1294], [1297, 1312], [1314, 1446], [1451, 1533], [1535, 2010]],
       "title": "Python 基础语法",
       "beforeSha256": "145334223040438820966fc25426aa22d349c1c6ea6ccbf55089ae1de78d1c7e",
       "afterSha256": "145334223040438820966fc25426aa22d349c1c6ea6ccbf55089ae1de78d1c7e",
@@ -5059,6 +5131,7 @@
     },
     {
       "path": "src/notes/web-development/css.md",
+      "auditedCrlfRanges": [[11, 473], [475, 534]],
       "title": "CSS",
       "beforeSha256": "d472b07464430cb58e260b3d3b455f6fcfab4ed28728266001d99471479cb876",
       "afterSha256": "d472b07464430cb58e260b3d3b455f6fcfab4ed28728266001d99471479cb876",
@@ -5079,6 +5152,7 @@
     },
     {
       "path": "src/notes/web-development/frameworks/vue.md",
+      "auditedCrlfRanges": [[12, 449]],
       "title": "Vue入门必备知识",
       "beforeSha256": "c73336bcc599f195d2efb62d64bdf1abc0c32e586a26add3299e61a4ffd53643",
       "afterSha256": "c73336bcc599f195d2efb62d64bdf1abc0c32e586a26add3299e61a4ffd53643",
@@ -5099,6 +5173,7 @@
     },
     {
       "path": "src/notes/web-development/html.md",
+      "auditedCrlfRanges": [[11, 227]],
       "title": "HTML",
       "beforeSha256": "772b406164e9ad557a46c13f05c2871a9af3db7298dbe941a46097cdcb240b19",
       "afterSha256": "772b406164e9ad557a46c13f05c2871a9af3db7298dbe941a46097cdcb240b19",
@@ -5119,6 +5194,7 @@
     },
     {
       "path": "src/notes/web-development/javascript.md",
+      "auditedCrlfRanges": [[11, 603]],
       "title": "JavaScript",
       "beforeSha256": "4506acf406d57360db5d11aba3090d2ef664bd5548772029f42f0010dc2f3629",
       "afterSha256": "4506acf406d57360db5d11aba3090d2ef664bd5548772029f42f0010dc2f3629",
@@ -5139,6 +5215,7 @@
     },
     {
       "path": "src/notes/web-development/modules/esm-specification.md",
+      "auditedCrlfRanges": [[14, 14], [16, 224]],
       "title": "ESM规范",
       "beforeSha256": "4e1a5ecb65ae160650e736aa252ea63eee8e2420c883580d320992b89cfe7e70",
       "afterSha256": "4e1a5ecb65ae160650e736aa252ea63eee8e2420c883580d320992b89cfe7e70",
@@ -5161,6 +5238,7 @@
     },
     {
       "path": "src/notes/web-development/modules/overview.md",
+      "auditedCrlfRanges": [[14, 129]],
       "title": "概述",
       "beforeSha256": "871a4c9f0bffd5eae2ada34f4a141491c48320c9ea5537c15d71f44c10607711",
       "afterSha256": "e861e18cbed7dedbad4404587cbf5cdbf36c9e28a0cdbe47ed7c5d55e0960ea8",
@@ -5198,6 +5276,7 @@
     },
     {
       "path": "src/notes/web-development/nodejs.md",
+      "auditedCrlfRanges": [[12, 12], [14, 134]],
       "title": "Node.js",
       "beforeSha256": "194ecb4c40b30d191ddba70c6d62c3ac006f340ebfcc10229bf17bed3b133e6e",
       "afterSha256": "194ecb4c40b30d191ddba70c6d62c3ac006f340ebfcc10229bf17bed3b133e6e",
@@ -5218,6 +5297,7 @@
     },
     {
       "path": "src/notes/web-development/package-managers/npm-and-pnpm-commands.md",
+      "auditedCrlfRanges": [[12, 209]],
       "title": "npm 和 pnpm 常用命令开发文档",
       "beforeSha256": "d1adda33a7410bb48a65a4d75d1880603d4e090ad14ca0cb8fa1d4e1f17144c5",
       "afterSha256": "d1adda33a7410bb48a65a4d75d1880603d4e090ad14ca0cb8fa1d4e1f17144c5",
@@ -5240,6 +5320,7 @@
     },
     {
       "path": "src/notes/web-development/package-managers/package-json-and-pnpm-lock.md",
+      "auditedCrlfRanges": [[11, 307]],
       "title": "packet.json 与 pnpm-lock.yaml 文件详解",
       "beforeSha256": "876abff1596994f6c425f422c07db1becf92c09cfad504b3f2329ea22a08585a",
       "afterSha256": "876abff1596994f6c425f422c07db1becf92c09cfad504b3f2329ea22a08585a",
@@ -5260,6 +5341,7 @@
     },
     {
       "path": "src/notes/web-development/package-managers/package-managers.md",
+      "auditedCrlfRanges": [[12, 201]],
       "title": "前端包管理",
       "beforeSha256": "09759e23c341adf0846d2f49bed0839311f7d716b8537e7066902efab20cada4",
       "afterSha256": "09759e23c341adf0846d2f49bed0839311f7d716b8537e7066902efab20cada4",
@@ -5282,6 +5364,7 @@
     },
     {
       "path": "src/notes/web-development/toolchains/build-and-bundling-tools.md",
+      "auditedCrlfRanges": [[12, 170]],
       "title": "构建与打包工具",
       "beforeSha256": "6f11c341f38d0c7d427022acfc9fc82bdef1924ba7825d64a4154aa386323de1",
       "afterSha256": "6f11c341f38d0c7d427022acfc9fc82bdef1924ba7825d64a4154aa386323de1",
@@ -5302,6 +5385,7 @@
     },
     {
       "path": "src/notes/web-development/toolchains/overview.md",
+      "auditedCrlfRanges": [[14, 29]],
       "title": "前端工具链概述",
       "beforeSha256": "f1c1ae2dc857437eb63a52e8dbba1c734655324ec3eaa0624692465bb7950f28",
       "afterSha256": "7df092b34d93db652c4a4105e663aec08343461982f3a833dec3b9153f86aed5",
@@ -5345,6 +5429,7 @@
     },
     {
       "path": "src/notes/web-development/typescript.md",
+      "auditedCrlfRanges": [[11, 22]],
       "title": "TypeScript 介绍",
       "beforeSha256": "b476e93bd43621a043e37f54311b297bb62b2569ae613eabbb388e65bdbe3393",
       "afterSha256": "b476e93bd43621a043e37f54311b297bb62b2569ae613eabbb388e65bdbe3393",
@@ -5364,7 +5449,11 @@
       "links": []
     },
     {
-      "path": "src/paper-notes/reading-workflow.md",
+      "path": "src/research/paper-notes/reading-workflow.md",
+      "routeMigration": {
+        "before": "",
+        "after": "redirectFrom:\n  - \"/paper-notes/reading-workflow.html\"\n"
+      },
       "title": "阅读笔记与专题关联",
       "beforeSha256": "34bb64d90cd41177d98da18ff508cf4c24b770cc4eec08dccc2d3ffb359cb149",
       "afterSha256": "34bb64d90cd41177d98da18ff508cf4c24b770cc4eec08dccc2d3ffb359cb149",
@@ -5386,7 +5475,11 @@
       "links": []
     },
     {
-      "path": "src/paper-notes/weekly/2026-09-14-rde-lio.md",
+      "path": "src/research/paper-notes/weekly/2026-09-14-rde-lio.md",
+      "routeMigration": {
+        "before": "",
+        "after": "redirectFrom:\n  - \"/paper-notes/weekly/2026-09-14-rde-lio.html\"\n"
+      },
       "title": "一周论文分享：RDE 与 LIO，进化算法怎样利用搜索经验",
       "beforeSha256": "ee690013eafa699c380a786e79ec7f1d66881278cff2cf5f0f4a06ce53d148cc",
       "afterSha256": "ee690013eafa699c380a786e79ec7f1d66881278cff2cf5f0f4a06ce53d148cc",
@@ -5411,6 +5504,7 @@
     },
     {
       "path": "src/software-tools/development-remote/remote-access/ssh.md",
+      "auditedCrlfRanges": [[15, 344]],
       "title": "SSH 简介",
       "beforeSha256": "c8b6045873b5f6e5064e6d8601c4a6dee1c4501b1b37fd7b0ed84e55ba8a883d",
       "afterSha256": "c8b6045873b5f6e5064e6d8601c4a6dee1c4501b1b37fd7b0ed84e55ba8a883d",
@@ -5435,6 +5529,7 @@
     },
     {
       "path": "src/software-tools/development-remote/remote-access/tailscale-windows-remote-desktop.md",
+      "auditedCrlfRanges": [[1, 574]],
       "title": "免费低延迟、只拼网速的远控方案：Tailscale + Windows 远程桌面",
       "beforeSha256": "e72f06006ffb8d6234f049948688d3d179164c498c578537089c5282919a800a",
       "afterSha256": "e72f06006ffb8d6234f049948688d3d179164c498c578537089c5282919a800a",
@@ -5461,6 +5556,7 @@
     },
     {
       "path": "src/software-tools/development-remote/vscode/latex-setup.md",
+      "auditedCrlfRanges": [[14, 27], [29, 31], [33, 44], [46, 201], [203, 207], [209, 241]],
       "title": "VSCode 中 Latex 环境配置",
       "beforeSha256": "75edc061f0e6d6c853c662f1920f3cd0fa83fcca542b5c3293298d473c959b63",
       "afterSha256": "689c178911d5db84a9679f7de14622a5a41c4deee1529fca219efee6689c386c",
@@ -5485,6 +5581,7 @@
     },
     {
       "path": "src/software-tools/development-remote/vscode/multi-language-setup.md",
+      "auditedCrlfRanges": [[13, 22], [24, 46], [48, 52], [54, 58], [60, 84]],
       "title": "VSCode多语言环境配置",
       "beforeSha256": "2acdf4361779628c366e3e6d2fa8b91e471af3a91a3e0438906caa5417443d26",
       "afterSha256": "ba7c0b5ff423babee3ca276b5bd496e6d214461dde279499e32af1fe383a0d04",
@@ -5538,6 +5635,7 @@
     },
     {
       "path": "src/software-tools/documentation-knowledge/latex/latex-basics.md",
+      "auditedCrlfRanges": [[12, 414]],
       "title": "LaTeX基础",
       "beforeSha256": "4f27912bf57bd39fb2046de686e46e9b165ee2e5b565943a2cd3ea1318481b86",
       "afterSha256": "4f27912bf57bd39fb2046de686e46e9b165ee2e5b565943a2cd3ea1318481b86",
@@ -5560,6 +5658,7 @@
     },
     {
       "path": "src/software-tools/documentation-knowledge/latex/mathematical-modeling-paper-template.md",
+      "auditedCrlfRanges": [[15, 721]],
       "title": "数学建模论文模板",
       "beforeSha256": "969ec1c9b8fe529ae1fd98769cf75cc3594d5fc9baa06578fdf0af803224756f",
       "afterSha256": "8136fcf0afababe8867cb802e322b41d0d0c69d85d608acf76a8a18530982cfb",
@@ -5584,6 +5683,7 @@
     },
     {
       "path": "src/software-tools/documentation-knowledge/latex/usts-undergraduate-thesis-template.md",
+      "auditedCrlfRanges": [[12, 18]],
       "title": "USTS本科生毕业论文模板",
       "beforeSha256": "46ca4912e6a343f3ffeb1b2e2be5cd3b128d9197b04b6cc635c86937ac7c2ede",
       "afterSha256": "4ef3953b58cb5dd113586e9ae124fb86f10933c50be78837cf5942b9160470fd",
@@ -5680,6 +5780,7 @@
     },
     {
       "path": "src/software-tools/documentation-knowledge/paper-management/zotero.md",
+      "auditedCrlfRanges": [[19, 19], [21, 23], [25, 26], [28, 80], [82, 82], [84, 89], [91, 95], [97, 107]],
       "title": "Zotero：论文管理与参考文献引用工具",
       "beforeSha256": "7ad34e57535bcd5cf0f86cdf6095435c0972c2adffe5f067018e2bec08c26933",
       "afterSha256": "4fc0f2236eca7c544f453f1053e3fb3e49576faf3199233b3835e54c49a55878",
@@ -5739,6 +5840,7 @@
     },
     {
       "path": "src/software-tools/open-source-projects/markitdown.md",
+      "auditedCrlfRanges": [[1, 324]],
       "title": "MarkItDown：把 PDF、Office 和网页转成 Markdown 的文档解析工具",
       "beforeSha256": "7053aba87f12816a3d1d26bb71b868d01eac4f761b437b3d6beb0e9d66887975",
       "afterSha256": "7053aba87f12816a3d1d26bb71b868d01eac4f761b437b3d6beb0e9d66887975",
@@ -5907,6 +6009,7 @@
     },
     {
       "path": "src/software-tools/version-control/git/git-command-reference.md",
+      "auditedCrlfRanges": [[12, 89]],
       "title": "Git 常用指令",
       "beforeSha256": "dc8f21da7aa63f00c388ef3f85a788ab1d7c28d8392c8729af3b138bed55ec6f",
       "afterSha256": "a6a293661ac02333f72890db536616c70da753088552b99691b45eaad450aebb",
@@ -5953,6 +6056,7 @@
     },
     {
       "path": "src/software-tools/version-control/git/git-installation-and-github-ssh.md",
+      "auditedCrlfRanges": [[15, 112], [114, 116], [118, 173], [175, 188]],
       "title": "Git 安装与 github ssh配置",
       "beforeSha256": "f58980dff36db699f267e8495f5ad67d0e3bb451d93ac43708458a0c5d98b871",
       "afterSha256": "a96be062fec9b72aa16aa351c96694e5da1c19115142a155d96edd53d368e5e2",

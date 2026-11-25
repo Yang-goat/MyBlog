@@ -72,9 +72,12 @@ export default navbar([
     ],
   },
   {
-    text: "论文随笔",
-    icon: "book-open",
-    link: "/paper-notes/",
+    text: "科研",
+    icon: "flask",
+    children: [
+      { text: "论文随笔", icon: "book-open", link: "/research/paper-notes/" },
+      { text: "学术论文写作指南", icon: "pen-to-square", link: "/research/academic-writing-guide/" },
+    ],
   },
   {
     text: "随笔",

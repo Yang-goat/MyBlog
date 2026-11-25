@@ -62,6 +62,9 @@ jobs:
       - name: 构建项目
         run: pnpm site:build
 
+      - name: 校验知识图谱正文保护
+        run: pnpm graph:content
+
       - name: 校验内容结构与独立应用产物
         run: |
           node scripts/validate-content-structure.mjs

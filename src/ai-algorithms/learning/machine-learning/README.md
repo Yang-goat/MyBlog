@@ -14,4 +14,4 @@ dir:
 
 <Catalog />
 
-跨领域或跨任务利用已有知识的方法见[迁移学习](../transfer-learning/)，阅读记录见[论文随笔](/paper-notes/)。
+跨领域或跨任务利用已有知识的方法见[迁移学习](../transfer-learning/)，阅读记录见[论文随笔](/research/paper-notes/)。

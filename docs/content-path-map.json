@@ -425,9 +425,12 @@
     "notes/README.md": "notes/README.md",
     "notes/signal-processing/README.md": "notes/signal-processing/README.md",
     "notes/signal-processing/小波分析基础.md": "notes/signal-processing/wavelet-analysis-basics.md",
-    "paper-notes/reading-workflow.md": "paper-notes/reading-workflow.md",
-    "paper-notes/README.md": "paper-notes/README.md",
-    "paper-notes/weekly/README.md": "paper-notes/weekly/README.md",
+    "paper-notes/reading-workflow.md": "research/paper-notes/reading-workflow.md",
+    "paper-notes/README.md": "research/paper-notes/README.md",
+    "paper-notes/weekly/2026-09-14-rde-lio.md": "research/paper-notes/weekly/2026-09-14-rde-lio.md",
+    "paper-notes/weekly/assets/2026-09-14-lio-framework.png": "research/paper-notes/weekly/assets/2026-09-14-lio-framework.png",
+    "paper-notes/weekly/assets/2026-09-14-lio-ranks.png": "research/paper-notes/weekly/assets/2026-09-14-lio-ranks.png",
+    "paper-notes/weekly/README.md": "research/paper-notes/weekly/README.md",
     "README.md": "README.md",
     "tests/icons.md": "tests/icons.md"
   }

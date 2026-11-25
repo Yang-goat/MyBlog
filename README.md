@@ -38,7 +38,7 @@ myBlog/
 │   ├── .vuepress/         # 配置、组件、样式与公共资源
 │   ├── ai-algorithms/     # AI 与算法
 │   ├── ai-applications/   # AI 应用
-│   ├── paper-notes/       # 论文随笔
+│   ├── research/          # 科研：论文随笔、学术论文写作指南
 │   ├── notes/             # 学习与日常随笔
 │   ├── software-tools/    # 软件工具
 │   ├── external-links/    # 外站

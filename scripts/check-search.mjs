@@ -51,6 +51,9 @@ try {
     ["小波", wavelet],
     ["小波分析", wavelet],
     ["小波分析 CWT", wavelet],
+    ["学术写作风格", "学术写作风格"],
+    ["研究设计的类型", "研究设计的类型"],
+    ["阅读笔记与专题关联", "阅读笔记与专题关联"],
   ]) {
     const results = await query(text);
     const match = results.find((result) => result.title === title);

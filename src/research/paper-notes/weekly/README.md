@@ -1,4 +1,6 @@
 ---
+redirectFrom:
+  - "/paper-notes/weekly/"
 title: 每周阅读总结
 icon: calendar
 index: false

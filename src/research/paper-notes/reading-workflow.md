@@ -1,4 +1,6 @@
 ---
+redirectFrom:
+  - "/paper-notes/reading-workflow.html"
 title: 阅读笔记与专题关联
 icon: link
 date: 2026-09-18

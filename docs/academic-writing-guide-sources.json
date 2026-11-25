@@ -1,0 +1,2770 @@
+{
+  "source": "Organizing Academic Research Papers",
+  "institution": "Sacred Heart University Library",
+  "verified": "2026-11-24",
+  "terminology": {
+    "research design": "研究设计",
+    "research method": "研究方法",
+    "methodology": "方法论（指论文章节时译作「研究方法」）",
+    "findings / results": "研究发现／结果",
+    "discussion": "讨论",
+    "conclusion": "结论",
+    "limitations": "研究局限",
+    "delimitations": "研究范围的主动界定",
+    "research problem": "研究问题",
+    "research question": "研究提问（与 research problem 并列时区分）",
+    "literature review": "文献综述",
+    "theoretical framework": "理论框架",
+    "executive summary": "执行摘要",
+    "citation tracking": "引文追踪",
+    "informed consent": "知情同意"
+  },
+  "pages": [
+    {
+      "id": 1,
+      "file": "README.md",
+      "title": "学术论文写作指南",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/intro",
+      "englishTitle": "Purpose of Guide",
+      "translationNote": "发布版首页按编辑调整精简了面向圣心大学学生和校外读者的两段说明，保留指南用途、来源沿革及审阅日期。",
+      "previous": null,
+      "next": "https://library.sacredheart.edu/organizing-research-papers/types_of_research_designs",
+      "sections": [
+        {
+          "id": "s-lg-box-547889",
+          "heading": "About this Guide",
+          "wrapper": "s-lg-box-wrapper-626711"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/library_essentials_tutorial",
+        "https://libguides.usc.edu/writingguide",
+        "https://libguides.usc.edu/writingguide/assignments"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "来源与译本说明",
+        "指南用途",
+        "关于本指南",
+        "阅读目录"
+      ]
+    },
+    {
+      "id": 2,
+      "file": "types-of-research-designs.md",
+      "title": "研究设计的类型",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/types_of_research_designs",
+      "englishTitle": "Types of Research Designs",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/intro",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/flaws_to_avoid",
+      "sections": [
+        {
+          "id": "s-lg-box-547892",
+          "heading": "Introduction",
+          "wrapper": "s-lg-box-wrapper-626715"
+        },
+        {
+          "id": "s-lg-box-547893",
+          "heading": "General Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626717"
+        },
+        {
+          "id": "s-lg-box-547895",
+          "heading": "Action Research Design",
+          "wrapper": "s-lg-box-wrapper-626719"
+        },
+        {
+          "id": "s-lg-box-547896",
+          "heading": "Case Study Design",
+          "wrapper": "s-lg-box-wrapper-626721"
+        },
+        {
+          "id": "s-lg-box-547897",
+          "heading": "Causal Design",
+          "wrapper": "s-lg-box-wrapper-626723"
+        },
+        {
+          "id": "s-lg-box-547899",
+          "heading": "Cohort Design",
+          "wrapper": "s-lg-box-wrapper-626725"
+        },
+        {
+          "id": "s-lg-box-547901",
+          "heading": "Cross-Sectional Design",
+          "wrapper": "s-lg-box-wrapper-626726"
+        },
+        {
+          "id": "s-lg-box-547903",
+          "heading": "Descriptive Design",
+          "wrapper": "s-lg-box-wrapper-626728"
+        },
+        {
+          "id": "s-lg-box-547904",
+          "heading": "Experimental Design",
+          "wrapper": "s-lg-box-wrapper-626730"
+        },
+        {
+          "id": "s-lg-box-547906",
+          "heading": "Exploratory Design",
+          "wrapper": "s-lg-box-wrapper-626732"
+        },
+        {
+          "id": "s-lg-box-547908",
+          "heading": "Historical Design",
+          "wrapper": "s-lg-box-wrapper-626733"
+        },
+        {
+          "id": "s-lg-box-547909",
+          "heading": "Longitudinal Design",
+          "wrapper": "s-lg-box-wrapper-626735"
+        },
+        {
+          "id": "s-lg-box-547911",
+          "heading": "Observational Design",
+          "wrapper": "s-lg-box-wrapper-626736"
+        },
+        {
+          "id": "s-lg-box-547913",
+          "heading": "Philosophical Design",
+          "wrapper": "s-lg-box-wrapper-626738"
+        },
+        {
+          "id": "s-lg-box-547914",
+          "heading": "Sequential Design",
+          "wrapper": "s-lg-box-wrapper-626739"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626717",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626719",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626721",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626723",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626725",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626726",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626728",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626730",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626732",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626733",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626735",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626736",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626738",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185902#s-lg-box-wrapper-626739",
+        "http://www.nyu.edu/classes/bkg/methods/005847ch1.pdf",
+        "http://www.socialresearchmethods.net/",
+        "http://www.slideshare.net/shwetasharma/causal-research-presentation",
+        "http://www.socialresearchmethods.net/kb/design.php",
+        "http://nurseresearcher.rcnpublishing.co.uk/archive/article-methodological-considerations-in-cohort-study-designs",
+        "http://www.nature.com/ebd/journal/v7/n2/full/6400407a.html",
+        "http://www.gwumc.edu/library/tutorials/studydesign101/cohorts.html",
+        "http://en.wikipedia.org/wiki/Cohort_study",
+        "http://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/cs-as-is/cross-sectional-studies",
+        "http://en.wikipedia.org/wiki/Cross-sectional_study",
+        "http://www.powershow.com/view/3ccf05-ZTdhM/Descriptive_Research_Methodologies_By_Connie_McNabb_What_i_powerpoint_ppt_presentation",
+        "http://explorable.com/descriptive-research-design",
+        "http://www.une.edu.au/WebStat/unit_materials/c2_research_design/design_experimental.htm",
+        "http://www.socialresearchmethods.net/kb/desexper.php",
+        "http://www.slideshare.net/uroojshafqat/experimental-research-11401013",
+        "http://en.wikipedia.org/wiki/Exploratory_research",
+        "http://www.jstor.org/stable/1251230",
+        "http://en.wikipedia.org/wiki/Longitudinal_study",
+        "http://uir.unisa.ac.za/bitstream/handle/10500/4245/05Chap%204_Research%20methodology%20and%20design.pdf",
+        "http://www.hsph.harvard.edu/betensky/bio276.html",
+        "http://en.wikipedia.org/wiki/Sequential_analysis"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "研究设计的类型",
+        "引言",
+        "一般结构与写作方式",
+        "行动研究设计",
+        "个案研究设计",
+        "因果研究设计",
+        "队列研究设计",
+        "横断面研究设计",
+        "描述性研究设计",
+        "实验研究设计",
+        "探索性研究设计",
+        "历史研究设计",
+        "纵向研究设计",
+        "观察性研究设计",
+        "哲学研究设计",
+        "序贯研究设计"
+      ],
+      "translationNote": "原页的观察者效应类比及队列设计、序贯设计的概括保留原作者表述。"
+    },
+    {
+      "id": 3,
+      "file": "design-flaws-to-avoid.md",
+      "title": "应避免的研究设计缺陷",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/flaws_to_avoid",
+      "englishTitle": "Design Flaws to Avoid",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/types_of_research_designs",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/glossary",
+      "sections": [
+        {
+          "id": "s-lg-box-547916",
+          "heading": "Design Flaws to Avoid",
+          "wrapper": "s-lg-box-wrapper-626741"
+        }
+      ],
+      "links": [],
+      "assets": [],
+      "translationHeadings": [
+        "应避免的研究设计缺陷",
+        "参考资料"
+      ]
+    },
+    {
+      "id": 4,
+      "file": "glossary.md",
+      "title": "研究术语表",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/glossary",
+      "englishTitle": "Glossary of Research Terms",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/flaws_to_avoid",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/topic",
+      "sections": [
+        {
+          "id": "s-lg-box-547917",
+          "heading": "Glossary of Research Terms",
+          "wrapper": "s-lg-box-wrapper-626743"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/organizing-research-papers/glossary#acculturation",
+        "https://library.sacredheart.edu/organizing-research-papers/glossary#data",
+        "https://library.sacredheart.edu/organizing-research-papers/glossary#hypothesis",
+        "https://library.sacredheart.edu/organizing-research-papers/glossary#panel study",
+        "http://www.coloradocollege.edu/other/irb/glossary.dot",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=90",
+        "http://www.education.com/terms/glossary/",
+        "http://www.resmind.swap.ac.uk/content/00_other/glossary.htm"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "研究术语表",
+        "从文化适应到批判理论",
+        "从数据到群体行为",
+        "从假设到本体论",
+        "从固定样本追踪研究到白皮书",
+        "参考资料"
+      ],
+      "translationNote": "原页把相关系数乘两个标准差写在 Covariate 条下，又将显著性水平 0.05 解作差异有 95% 概率为真。译文标明这两处是原页的说法。"
+    },
+    {
+      "id": 5,
+      "file": "choosing-a-topic/choosing-a-topic.md",
+      "title": "选择研究主题",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/topic",
+      "englishTitle": "1. Choosing a Topic",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/glossary",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/narrowing_topic",
+      "sections": [
+        {
+          "id": "s-lg-box-547919",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626745"
+        },
+        {
+          "id": "s-lg-box-547921",
+          "heading": "Choosing a Topic / How to Begin",
+          "wrapper": "s-lg-box-wrapper-626747"
+        },
+        {
+          "id": "s-lg-box-547922",
+          "heading": "Resources for Identifying a Topic",
+          "wrapper": "s-lg-box-wrapper-626749"
+        },
+        {
+          "id": "s-lg-box-547924",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626751"
+        },
+        {
+          "id": "s-lg-box-547925",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626753"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/organizing-research-papers/topic#given",
+        "https://library.sacredheart.edu/organizing-research-papers/topic#list",
+        "https://library.sacredheart.edu/organizing-research-papers/topic#choice",
+        "https://libcatalog.sacredheart.edu/",
+        "https://sacredheart.idm.oclc.org/login?url=https://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb=aph",
+        "https://library.sacredheart.edu/databasesBySubject",
+        "https://library.sacredheart.edu/askalibrarian",
+        "http://libguides.sacredheart.edu/aecontent.php?pid=545831&sid=4491229",
+        "http://enterprise.sacredheart.edu/search/X",
+        "http://www.cnn.com/",
+        "http://www.latimes.com/",
+        "http://www.huffingtonpost.com/",
+        "http://www.newsweek.com/",
+        "http://writingcenter.unc.edu/handouts/brainstorming/",
+        "http://owl.english.purdue.edu/owl/resource/658/03/",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/topic.html",
+        "https://students.dartmouth.edu/rwit/work-rwit/thesis-sentence",
+        "http://library.ucsc.edu/help/research/identify-your-question",
+        "https://guides.library.ucsc.edu/writing",
+        "http://www.socialresearchmethods.net/kb/probform.php",
+        "https://sacredheart.idm.oclc.org/login?url=http://infotrac.galegroup.com/itweb/24034?db=GIC",
+        "http://www.nytimes.com/pages/topics/index.html",
+        "http://www.ssrn.com/en/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "选择研究主题",
+        "定义",
+        "怎样着手选题",
+        "一、老师已给出主题",
+        "二、从老师给出的题目清单中选择",
+        "三、老师让你自主选题",
+        "帮助确定选题的资源",
+        "写作提示：选一个自己感兴趣的题目",
+        "写作提示：找不到资料时，请教图书馆员"
+      ],
+      "translationNote": "两条书目署名与链接所指机构不同，署名和地址沿用原页。"
+    },
+    {
+      "id": 6,
+      "file": "choosing-a-topic/narrowing-a-topic.md",
+      "title": "缩小选题范围",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/narrowing_topic",
+      "englishTitle": "Narrowing a Topic Idea",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/topic",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/broadening_topic",
+      "sections": [
+        {
+          "id": "s-lg-box-547926",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626755"
+        },
+        {
+          "id": "s-lg-box-547927",
+          "heading": "Strategies for Narrowing the Research Topic",
+          "wrapper": "s-lg-box-wrapper-626756"
+        }
+      ],
+      "links": [
+        "http://sacredheart.libsurveys.com/keywords",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/topic.html",
+        "http://www.trentu.ca/history/workbook/researchpaperoverview.php"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "缩小选题范围",
+        "为什么要缩小选题范围",
+        "怎样缩小研究主题",
+        "本节参考资料"
+      ]
+    },
+    {
+      "id": 7,
+      "file": "choosing-a-topic/broadening-a-topic.md",
+      "title": "扩大选题范围",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/broadening_topic",
+      "englishTitle": "Broadening a Topic Idea",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/narrowing_topic",
+      "next": "https://library.sacredheart.edu/organizing-research-papers/extending_timelines",
+      "sections": [
+        {
+          "id": "s-lg-box-547929",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626758"
+        },
+        {
+          "id": "s-lg-box-547930",
+          "heading": "Strategies for Broadening the Research Topic",
+          "wrapper": "s-lg-box-wrapper-626760"
+        }
+      ],
+      "links": [
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/topic.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "扩大选题范围",
+        "为什么要扩大选题范围",
+        "怎样扩大研究主题",
+        "参考资料"
+      ]
+    },
+    {
+      "id": 8,
+      "file": "choosing-a-topic/extending-topic-timeliness.md",
+      "title": "延展选题的时间范围",
+      "url": "https://library.sacredheart.edu/organizing-research-papers/extending_timelines",
+      "englishTitle": "Extending the Timeliness of a Topic Idea",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/broadening_topic",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185909",
+      "sections": [
+        {
+          "id": "s-lg-box-547932",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626761"
+        },
+        {
+          "id": "s-lg-box-547933",
+          "heading": "Strategies for Extending the Timeliness of the Research Topic",
+          "wrapper": "s-lg-box-wrapper-626763"
+        }
+      ],
+      "links": [
+        "http://www.gpo.gov/fdsys/browse/collection.action?collectionCode=CHRG",
+        "http://www.gpo.gov/fdsys/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "延展选题的时间范围",
+        "为什么要考虑选题的时间范围",
+        "怎样延展研究主题的时间范围"
+      ],
+      "translationNote": "“占领华尔街”示例及检索建议保留原文的时间语境。"
+    },
+    {
+      "id": 9,
+      "file": "preparing-to-write/preparing-to-write.md",
+      "title": "写作准备",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185909",
+      "englishTitle": "2. Preparing to Write",
+      "previous": "https://library.sacredheart.edu/organizing-research-papers/extending_timelines",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185910",
+      "sections": [
+        {
+          "id": "s-lg-box-547934",
+          "heading": "Things to Think About Before You Begin",
+          "wrapper": "s-lg-box-wrapper-626764"
+        },
+        {
+          "id": "s-lg-box-547935",
+          "heading": "General Information",
+          "wrapper": "s-lg-box-wrapper-626766"
+        }
+      ],
+      "links": [
+        "http://sacredheart.libsurveys.com/dissecting_assignment",
+        "http://writing.colostate.edu/guides/index.cfm?categoryid=1&title=1",
+        "http://owl.english.purdue.edu/owl/resource/587/01/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/process.html",
+        "http://grammar.ccc.commnet.edu/grammar/",
+        "http://owl.english.purdue.edu/owl/section/1/5/",
+        "https://owl.purdue.edu/owl/teacher_and_tutor_resources/writing_in_the_engineering_classroom/writing_tips_for_students.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "写作准备",
+        "动笔前要想清楚的事",
+        "制订时间表",
+        "分析作业要求",
+        "一般写作要求",
+        "让论文易于阅读",
+        "常见的排版与提交问题",
+        "行文与语法中容易忽略的细节",
+        "适用于论文各部分的要求"
+      ],
+      "translationNote": "原页误写为 New Times Roman，译文使用字体的通行名称 Times New Roman。"
+    },
+    {
+      "id": 10,
+      "file": "preparing-to-write/academic-writing-style.md",
+      "title": "学术写作风格",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185910",
+      "englishTitle": "Academic Writing Style",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185909",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185911",
+      "sections": [
+        {
+          "id": "s-lg-box-547936",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626767"
+        },
+        {
+          "id": "s-lg-box-547937",
+          "heading": "Importance of Good Academic Writing",
+          "wrapper": "s-lg-box-wrapper-626769"
+        },
+        {
+          "id": "s-lg-box-547938",
+          "heading": "Strategies for...",
+          "wrapper": "s-lg-box-wrapper-626771"
+        },
+        {
+          "id": "s-lg-box-547939",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626772"
+        },
+        {
+          "id": "s-lg-box-547940",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626774"
+        },
+        {
+          "id": "s-lg-box-547941",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626776"
+        }
+      ],
+      "links": [
+        "http://enterprise.sacredheart.edu/",
+        "http://owl.english.purdue.edu/owl/section/1/2/",
+        "http://dbem.ws/WritingArticle.pdf",
+        "http://writingcenter.unc.edu/handouts/college-writing/",
+        "http://staff.uny.ac.id/sites/default/files/penelitian/Ari%20Purnawan,S.Pd.,M.Pd.,M.A./common%20flaws%20in%20students%27%20research%20proposal.pdf",
+        "http://writingcenter.unc.edu/handouts/style/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/quality.html",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/what.html%20",
+        "http://www.sacredheart.edu/officesservices/jandrisevitslearningcenter/",
+        "http://libguides.sacredheart.edu/aecontent.php?pid=545831&sid=4491254",
+        "http://enterprise.sacredheart.edu/search~/?searchtype=i&SORT=D&searcharg=9780205632640&submit.x=52&submit.y=2",
+        "http://enterprise.sacredheart.edu/search/?searchtype=i&searcharg=9781782688778&sortdropdown=-&SORT=D&extended=1&SUBMIT=Search&searchlimits=&searchorigarg=i9781782688778",
+        "http://enterprise.sacredheart.edu/search~/?searchtype=i&SORT=D&searcharg=9781849722131&submit.x=37&submit.y=10",
+        "http://www.sacredheart.edu/officesservices/jandrisevitslearningcenter/jlcacademicsupportservices/",
+        "http://www.sacredheart.edu/officesservices/jandrisevitslearningcenter/jlcacademicsupportservices/claandtutorschedule/",
+        "http://www.sacredheart.edu/officesservices/jandrisevitslearningcenter/jlcacademicsupportservices/onlinewritinglab/",
+        "http://owl.english.purdue.edu/owl/resource/539/01/",
+        "http://www.pages.drexel.edu/~pjd37/Thesis/",
+        "http://writingcenter.unc.edu/handouts/passive-voice/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "学术写作风格",
+        "定义",
+        "良好学术写作的重要性",
+        "一、整体结构",
+        "二、语气",
+        "三、语言",
+        "四、学术规范",
+        "五、用证据论证",
+        "六、围绕中心论点展开分析",
+        "七、复杂性与高阶思维",
+        "写作策略",
+        "理解学术写作中的专业术语",
+        "两个主要问题",
+        "其他应避免的问题",
+        "结构与写作风格",
+        "一、提高学术写作水平",
+        "二、评价写作质量",
+        "写作提示",
+        "Jandrisevits 学习中心",
+        "另一则写作提示",
+        "学术写作中如何选用被动语态"
+      ],
+      "translationNote": "辅导实验室清单原文重复列出数学，译文合并重复项。"
+    },
+    {
+      "id": 11,
+      "file": "preparing-to-write/choosing-a-title.md",
+      "title": "拟定标题",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185911",
+      "englishTitle": "Choosing a Title",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185910",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185912",
+      "sections": [
+        {
+          "id": "s-lg-box-547943",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626779"
+        },
+        {
+          "id": "s-lg-box-547946",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626785"
+        }
+      ],
+      "links": [
+        "http://augmentedtrader.wordpress.com/2012/02/07/how-to-compose-a-title-for-your-research-paper/",
+        "http://aplusreports.com/paper/title-for-research-paper"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "拟定标题",
+        "定义",
+        "结构与写作方式",
+        "先拟一个暂定标题",
+        "确定最终标题",
+        "使用副标题"
+      ]
+    },
+    {
+      "id": 12,
+      "file": "preparing-to-write/making-an-outline.md",
+      "title": "编写提纲",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185912",
+      "englishTitle": "Making an Outline",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185911",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185913",
+      "sections": [
+        {
+          "id": "s-lg-box-547947",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626788"
+        },
+        {
+          "id": "s-lg-box-547948",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626791"
+        },
+        {
+          "id": "s-lg-box-547949",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626793"
+        },
+        {
+          "id": "s-lg-box-547950",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626797"
+        }
+      ],
+      "links": [
+        "http://depts.washington.edu/owrc/Handouts/How%20to%20Structure%20and%20Organize%20Your%20Paper.pdf",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/informal.html",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/standard.html",
+        "http://www.writing.utoronto.ca/advice/planning-and-organizing/organizing%20",
+        "http://writingcenter.unc.edu/handouts/reverse-outline/%20",
+        "http://writing.wisc.edu/Handbook/ReverseOutlines.html",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/write.html%20"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "编写提纲",
+        "定义",
+        "为什么要编写提纲",
+        "结构与写法",
+        "一、两种基本写法",
+        "二、编写提纲的步骤",
+        "三、编写时要考虑的问题",
+        "写作提示"
+      ]
+    },
+    {
+      "id": 13,
+      "file": "preparing-to-write/paragraph-development.md",
+      "title": "组织段落",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185913",
+      "englishTitle": "Paragraph Development",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185912",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185914",
+      "sections": [
+        {
+          "id": "s-lg-box-547952",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626799"
+        },
+        {
+          "id": "s-lg-box-547953",
+          "heading": "Importance of Constructing Good Paragraphs",
+          "wrapper": "s-lg-box-wrapper-626802"
+        },
+        {
+          "id": "s-lg-box-547954",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626805"
+        },
+        {
+          "id": "s-lg-box-547956",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626808"
+        }
+      ],
+      "links": [
+        "http://brandon99879.edublogs.org/paragraph-development/%20",
+        "http://owl.english.purdue.edu/owl/resource/606/01/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/guidepar.html%20",
+        "http://www.pasadena.edu/divisions/english/writing/documents/dbdistin_513.pdf",
+        "http://www.umuc.edu/writingcenter/writingresources/paragraph_struc.cfm",
+        "http://www.dartmouth.edu/~writing/materials/tutor/problems/paragraphs.html",
+        "http://writingcenter.unc.edu/handouts/paragraphs/",
+        "http://www.instruction.greenriver.edu/bahl/E127/paragraph_development.htm"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "组织段落",
+        "定义",
+        "写好段落的重要性",
+        "结构与写作方式",
+        "一、一般结构",
+        "二、如何展开和组织段落",
+        "写作提示"
+      ]
+    },
+    {
+      "id": 14,
+      "file": "abstract/abstract.md",
+      "title": "摘要",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185914",
+      "englishTitle": "3. The Abstract",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185913",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185915",
+      "sections": [
+        {
+          "id": "s-lg-box-547957",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626811"
+        },
+        {
+          "id": "s-lg-box-547958",
+          "heading": "Importance of a Good Abstract",
+          "wrapper": "s-lg-box-wrapper-626815"
+        },
+        {
+          "id": "s-lg-box-547959",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626819"
+        },
+        {
+          "id": "s-lg-box-547960",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626823"
+        }
+      ],
+      "links": [
+        "https://writing.ku.edu/abstracts",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#abstract",
+        "http://writingcenter.unc.edu/handouts/abstracts/",
+        "http://writing.wisc.edu/Handbook/presentations_abstracts.html",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/abstract",
+        "http://owl.english.purdue.edu/owl/resource/656/1/",
+        "https://resolver.ebscohost.com/openurl/revise?site=ftf-live",
+        "https://library.sacredheart.edu/ill"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "摘要",
+        "定义",
+        "好摘要的重要性",
+        "结构与写作风格",
+        "一、摘要的类型",
+        "二、写法",
+        "写作提示"
+      ]
+    },
+    {
+      "id": 15,
+      "file": "abstract/executive-summary.md",
+      "title": "执行摘要",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185915",
+      "englishTitle": "Executive Summary",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185914",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185916",
+      "sections": [
+        {
+          "id": "s-lg-box-547962",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626826"
+        },
+        {
+          "id": "s-lg-box-547963",
+          "heading": "Importance of a Good Executive Summary",
+          "wrapper": "s-lg-box-wrapper-626828"
+        },
+        {
+          "id": "s-lg-box-547964",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626831"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=76",
+        "http://www.inc.com/guides/2010/09/how-to-write-an-executive-summary.html",
+        "http://owl.english.purdue.edu/owl/resource/726/07/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "执行摘要",
+        "定义",
+        "一份好的执行摘要有何作用",
+        "结构与写作方式",
+        "一、怎样撰写执行摘要",
+        "二、应避免的常见问题"
+      ],
+      "translationNote": "作者名 Guy Kawaski 沿用原页拼写。"
+    },
+    {
+      "id": 16,
+      "file": "introduction/introduction.md",
+      "title": "引言",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185916",
+      "englishTitle": "4. The Introduction",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185915",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185917",
+      "sections": [
+        {
+          "id": "s-lg-box-547965",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626835"
+        },
+        {
+          "id": "s-lg-box-547966",
+          "heading": "Importance of a Good Introduction",
+          "wrapper": "s-lg-box-wrapper-626838"
+        },
+        {
+          "id": "s-lg-box-547968",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626842"
+        },
+        {
+          "id": "s-lg-box-547969",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626846"
+        },
+        {
+          "id": "s-lg-box-547970",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626849"
+        },
+        {
+          "id": "s-lg-box-547972",
+          "heading": "Yet Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626853"
+        }
+      ],
+      "links": [
+        "http://writingcenter.unc.edu/handouts/introductions/",
+        "http://www.writing.utoronto.ca/advice/planning-and-organizing/intros-and-conclusions%20",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#introduction",
+        "http://writing.wisc.edu/Handbook/Introductions.html",
+        "http://writing.mit.edu/wcc/resources/writers/introduction",
+        "http://www2.warwick.ac.uk/fac/soc/al/learning_english/leap/writing/moreinfo/",
+        "https://warwick.ac.uk/fac/soc/al/globalpad-rip/openhouse/academicenglishskills/writing/moreinfo",
+        "http://www2.fiu.edu/~sabar/enc1102/Research%20Paper%20Advice.htm"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "引言",
+        "定义",
+        "好引言的重要性",
+        "结构与写作方式",
+        "一、结构与写法",
+        "二、研究范围的主动界定",
+        "三、让叙述连贯",
+        "四、吸引读者",
+        "写作提示：避免用通用词典释义开篇",
+        "写作提示：历史背景从何时说起",
+        "写作提示：结尾要让读者知道下文如何展开"
+      ]
+    },
+    {
+      "id": 17,
+      "file": "introduction/background-information.md",
+      "title": "背景信息",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185917",
+      "englishTitle": "Background Information",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185916",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185918",
+      "sections": [
+        {
+          "id": "s-lg-box-547973",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626857"
+        },
+        {
+          "id": "s-lg-box-547975",
+          "heading": "Importance of Having Enough Background Information",
+          "wrapper": "s-lg-box-wrapper-626859"
+        },
+        {
+          "id": "s-lg-box-547976",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626862"
+        },
+        {
+          "id": "s-lg-box-547977",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626866"
+        }
+      ],
+      "links": [
+        "http://isites.harvard.edu/fs/docs/icb.topic549684.files/Additional_information_on_BACKGROUND.pdf",
+        "http://www.sportsci.org/jour/9901/wghpaper.html#background"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "背景信息",
+        "定义",
+        "为什么要提供充分的背景信息",
+        "结构与写法",
+        "写作提示"
+      ]
+    },
+    {
+      "id": 18,
+      "file": "introduction/research-problem.md",
+      "title": "研究问题",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185918",
+      "englishTitle": "The Research Problem/Question",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185917",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185919",
+      "sections": [
+        {
+          "id": "s-lg-box-547978",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626867"
+        },
+        {
+          "id": "s-lg-box-547979",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626869"
+        },
+        {
+          "id": "s-lg-box-547981",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626872"
+        }
+      ],
+      "links": [
+        "http://www.brown.edu/Student_Services/Writing_Center/resources_writers/article_castellanos.html",
+        "http://www.inform.nu/Articles/Vol11/ISJv11p017-033Ellis486.pdf",
+        "http://writing.wisc.edu/Handbook/Thesis_or_Purpose.html",
+        "http://writingcenter.unc.edu/handouts/thesis-statements/%20",
+        "http://owl.english.purdue.edu/owl/resource/545/01/",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=20",
+        "http://writingcenter.gmu.edu/?p=307%20",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/thesis.html",
+        "http://owl.english.purdue.edu/owl/resource/957/02/",
+        "http://www.writing.utoronto.ca/advice/planning-and-organizing/thesis-statements",
+        "http://www.socialresearchmethods.net/kb/probform.php"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "研究问题",
+        "定义",
+        "问题陈述的重要性",
+        "这有什么意义？",
+        "结构与写法",
+        "一、研究问题的类型与内容",
+        "二、从哪里寻找研究问题",
+        "三、怎样写好问题陈述",
+        "四、应避免的错误"
+      ],
+      "translationNote": "原页概括称有三种寻找问题的途径，实际列出五项，译文按条目保留五项。"
+    },
+    {
+      "id": 19,
+      "file": "introduction/theoretical-framework.md",
+      "title": "理论框架",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185919",
+      "englishTitle": "Theoretical Framework",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185918",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185920",
+      "sections": [
+        {
+          "id": "s-lg-box-547982",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626875"
+        },
+        {
+          "id": "s-lg-box-547983",
+          "heading": "Importance of Theory",
+          "wrapper": "s-lg-box-wrapper-626877"
+        },
+        {
+          "id": "s-lg-box-547985",
+          "heading": "Strategies for Developing the Theoretical Framework",
+          "wrapper": "s-lg-box-wrapper-626881"
+        },
+        {
+          "id": "s-lg-box-547986",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626885"
+        },
+        {
+          "id": "s-lg-box-547987",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626888"
+        },
+        {
+          "id": "s-lg-box-547988",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626890"
+        },
+        {
+          "id": "s-lg-box-547989",
+          "heading": "Still Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626892"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=56",
+        "http://www.sosyalarastirmalar.com/cilt3/sayi11pdf/tavallaei_abutalib.pdf",
+        "http://psychology.about.com/od/researchmethods/ss/expdesintro_2.htm",
+        "http://www.slideshare.net/michael_gezae/hypothesis-7600477"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "理论框架",
+        "定义",
+        "理论的重要性",
+        "怎样建立理论框架",
+        "一、构建框架",
+        "二、理论框架的用途",
+        "结构与写法",
+        "借用其他学科的理论构念",
+        "让理论贯穿论文",
+        "理论与假设有什么区别"
+      ]
+    },
+    {
+      "id": 20,
+      "file": "literature-review/literature-review.md",
+      "title": "文献综述",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185920",
+      "englishTitle": "5. The Literature Review",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185919",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185921",
+      "sections": [
+        {
+          "id": "s-lg-box-547990",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626894"
+        },
+        {
+          "id": "s-lg-box-547991",
+          "heading": "Importance of a Good Literature Review",
+          "wrapper": "s-lg-box-wrapper-626897"
+        },
+        {
+          "id": "s-lg-box-547992",
+          "heading": "Types of Literature Reviews",
+          "wrapper": "s-lg-box-wrapper-626898"
+        },
+        {
+          "id": "s-lg-box-547993",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626902"
+        },
+        {
+          "id": "s-lg-box-547994",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626904"
+        },
+        {
+          "id": "s-lg-box-547996",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626908"
+        },
+        {
+          "id": "s-lg-box-547997",
+          "heading": "Yet Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626910"
+        }
+      ],
+      "links": [
+        "https://www.liberty.edu/media/1171/Literature_Review_Handout_Final.pdf",
+        "http://writingcenter.unc.edu/handouts/literature-reviews/",
+        "https://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1219&context=pare",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/literature-review",
+        "http://scholar.google.com/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "文献综述",
+        "定义",
+        "好的文献综述为何重要",
+        "文献综述的类型",
+        "论辩性综述（Argumentative Review）",
+        "整合性综述（Integrative Review）",
+        "历史综述（Historical Review）",
+        "方法学综述（Methodological Review）",
+        "系统综述（Systematic Review）",
+        "理论综述（Theoretical Review）",
+        "结构与写作方式",
+        "一、构思文献综述",
+        "二、怎样开展文献综述",
+        "三、组织文献综述的方式",
+        "四、撰写文献综述",
+        "五、应避免的常见错误",
+        "写作提示：跨出本学科的范围",
+        "写作提示：也要考察研究是怎样做的",
+        "写作提示：什么时候可以停止检索"
+      ],
+      "translationNote": "原页“三层知识”后的星号无对应的脚注文字。"
+    },
+    {
+      "id": 21,
+      "file": "literature-review/citation-tracking.md",
+      "title": "引文追踪",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185921",
+      "englishTitle": "Citation Tracking",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185920",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185922",
+      "sections": [
+        {
+          "id": "s-lg-box-547998",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626914"
+        },
+        {
+          "id": "s-lg-box-547999",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626917"
+        },
+        {
+          "id": "s-lg-box-548001",
+          "heading": "Managing Your Citations",
+          "wrapper": "s-lg-box-wrapper-626922"
+        },
+        {
+          "id": "s-lg-box-548000",
+          "heading": "Resources for Tracking Citations",
+          "wrapper": "s-lg-box-wrapper-626919"
+        }
+      ],
+      "links": [
+        "https://www.zotero.org/",
+        "https://library.sacredheart.edu/zotero",
+        "https://library.sacredheart.edu/prf.php?id=58acb9ed-7cdb-11ed-9922-0ad758b798c3",
+        "http://scholar.google.com/",
+        "https://sacredheart.idm.oclc.org/login?url=https://www.jstor.org/search",
+        "https://sacredheart.idm.oclc.org/login?url=https://www.sciencedirect.com"
+      ],
+      "assets": [
+        "http://www.zotero.org/static/download/zotero_logo_tiny.png"
+      ],
+      "translationHeadings": [
+        "引文追踪",
+        "定义",
+        "为什么要追踪引文",
+        "管理引文",
+        "引文追踪资源"
+      ]
+    },
+    {
+      "id": 22,
+      "file": "literature-review/content-alert-services.md",
+      "title": "文献提醒服务",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185922",
+      "englishTitle": "Content Alert Services",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185921",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185923",
+      "sections": [
+        {
+          "id": "s-lg-box-548003",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626927"
+        },
+        {
+          "id": "s-lg-box-548004",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-626930"
+        },
+        {
+          "id": "s-lg-box-548005",
+          "heading": "Journal Contents Alert Services",
+          "wrapper": "s-lg-box-wrapper-626935"
+        }
+      ],
+      "links": [
+        "http://www.citeulike.org/journals/",
+        "http://www.tictocs.ac.uk/",
+        "https://sacredheart.idm.oclc.org/login?url=https://muse.jhu.edu/search/advanced"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "文献提醒服务",
+        "定义",
+        "文献提醒对综述的作用",
+        "期刊目录提醒服务"
+      ],
+      "translationNote": "数据库名称、收录规模和注册条件依该版指南记录。"
+    },
+    {
+      "id": 23,
+      "file": "literature-review/evaluating-sources.md",
+      "title": "评估资料来源",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185923",
+      "englishTitle": "Evaluating Sources",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185922",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185924",
+      "sections": [
+        {
+          "id": "s-lg-box-548006",
+          "heading": "Importance of Evaluating Sources",
+          "wrapper": "s-lg-box-wrapper-626937"
+        },
+        {
+          "id": "s-lg-box-548007",
+          "heading": "Strategies for Critically Evaluating Sources",
+          "wrapper": "s-lg-box-wrapper-626940"
+        },
+        {
+          "id": "s-lg-box-548008",
+          "heading": "Strategies for Critically Evaluating Web Content",
+          "wrapper": "s-lg-box-wrapper-626942"
+        },
+        {
+          "id": "s-lg-box-548009",
+          "heading": "Detecting Author Bias",
+          "wrapper": "s-lg-box-wrapper-626947"
+        }
+      ],
+      "links": [
+        "http://library.lakelandcc.edu/PDFs/research/evaluatingsources.pdf",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=15",
+        "http://writingcenter.unc.edu/handouts/evaluating-print-sources/",
+        "http://owl.english.purdue.edu/owl/resource/553/03/",
+        "http://www.usg.edu/galileo/skills/unit07/internet07_08.phtml",
+        "http://library.nmu.edu/guides/userguides/webeval.htm",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/evaluating-web-sources.pdf",
+        "http://owl.english.purdue.edu/owl/resource/608/05/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "评估资料来源",
+        "为什么要评估资料来源",
+        "怎样批判性地评估资料",
+        "考察出处",
+        "考察内容",
+        "怎样批判性地评估网页内容",
+        "识别作者的偏见"
+      ]
+    },
+    {
+      "id": 24,
+      "file": "literature-review/primary-sources.md",
+      "title": "一手资料",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185924",
+      "englishTitle": "Primary Sources",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185923",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185925",
+      "sections": [
+        {
+          "id": "s-lg-box-548010",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626953"
+        },
+        {
+          "id": "s-lg-box-548011",
+          "heading": "Value of Primary Sources",
+          "wrapper": "s-lg-box-wrapper-626956"
+        }
+      ],
+      "links": [],
+      "assets": [],
+      "translationHeadings": [
+        "一手资料",
+        "定义",
+        "一手资料的价值"
+      ]
+    },
+    {
+      "id": 25,
+      "file": "literature-review/secondary-sources.md",
+      "title": "二手资料",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185925",
+      "englishTitle": "Secondary Sources",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185924",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185926",
+      "sections": [
+        {
+          "id": "s-lg-box-548012",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626959"
+        },
+        {
+          "id": "s-lg-box-548013",
+          "heading": "Value of Secondary Sources",
+          "wrapper": "s-lg-box-wrapper-626963"
+        }
+      ],
+      "links": [],
+      "assets": [],
+      "translationHeadings": [
+        "二手资料",
+        "定义",
+        "二手资料的价值"
+      ],
+      "translationNote": "原页在学科语境中误写 disciple，译作“学科”。"
+    },
+    {
+      "id": 26,
+      "file": "literature-review/tertiary-sources.md",
+      "title": "三手资料",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185926",
+      "englishTitle": "Tertiary Sources",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185925",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185927",
+      "sections": [
+        {
+          "id": "s-lg-box-548015",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626966"
+        },
+        {
+          "id": "s-lg-box-548016",
+          "heading": "Value of Tertiary Sources",
+          "wrapper": "s-lg-box-wrapper-626968"
+        }
+      ],
+      "links": [],
+      "assets": [],
+      "translationHeadings": [
+        "三手资料",
+        "定义",
+        "三手资料的价值"
+      ]
+    },
+    {
+      "id": 27,
+      "file": "literature-review/scholarly-vs-popular.md",
+      "title": "学术资料与大众资料",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185927",
+      "englishTitle": "What Is Scholarly vs. Popular?",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185926",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185928",
+      "sections": [
+        {
+          "id": "s-lg-box-548017",
+          "heading": "Scholarly Journals versus Popular Publications",
+          "wrapper": "s-lg-box-wrapper-626970"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/researchprocess/readingsources"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "学术资料与大众资料",
+        "学术期刊与大众出版物"
+      ]
+    },
+    {
+      "id": 28,
+      "file": "methodology/methodology.md",
+      "title": "研究方法章节",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185928",
+      "englishTitle": "6. The Methodology",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185927",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185929",
+      "sections": [
+        {
+          "id": "s-lg-box-548018",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626974"
+        },
+        {
+          "id": "s-lg-box-548019",
+          "heading": "Importance of a Good Methodology Section",
+          "wrapper": "s-lg-box-wrapper-626976"
+        },
+        {
+          "id": "s-lg-box-548020",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-626979"
+        },
+        {
+          "id": "s-lg-box-548021",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626982"
+        },
+        {
+          "id": "s-lg-box-548022",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-626985"
+        }
+      ],
+      "links": [
+        "https://psych.uw.edu/storage/writing_center/APApaper.pdf",
+        "https://www.journalpulmonology.org/en-uma-nova-era-da-revista-articulo-resumen-S2173511510700439",
+        "http://writing.wisc.edu/Handbook/SciRep_Methods.html",
+        "https://owl.english.purdue.edu/owl/resource/670/04/",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#methods",
+        "https://textbookequity.org/Textbooks/tbq_reynolds_microeconomics_07.pdf",
+        "http://www.s-cool.co.uk/a-level/sociology/key-problems/revise-it/the-theory-method-relationship"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "研究方法章节",
+        "定义",
+        "为什么要写好研究方法章节",
+        "结构与写法",
+        "一、社会科学研究方法的两种取向",
+        "二、这一章应写些什么",
+        "三、应避免的问题",
+        "写作提示：不必畏惧统计设计和检验",
+        "写作提示：认识理论与方法的关系"
+      ]
+    },
+    {
+      "id": 29,
+      "file": "methodology/qualitative-methods.md",
+      "title": "定性方法",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185929",
+      "englishTitle": "Qualitative Methods",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185928",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185930",
+      "sections": [
+        {
+          "id": "s-lg-box-548023",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-626990"
+        },
+        {
+          "id": "s-lg-box-548024",
+          "heading": "Characteristics of Qualitative Research",
+          "wrapper": "s-lg-box-wrapper-626992"
+        },
+        {
+          "id": "s-lg-box-548025",
+          "heading": "Basic Research Design for Qualitative Studies",
+          "wrapper": "s-lg-box-wrapper-626997"
+        },
+        {
+          "id": "s-lg-box-548026",
+          "heading": "Strengths of Using Qualitative Methods",
+          "wrapper": "s-lg-box-wrapper-626999"
+        },
+        {
+          "id": "s-lg-box-548027",
+          "heading": "Limitations of Using Qualitative Methods",
+          "wrapper": "s-lg-box-wrapper-627002"
+        },
+        {
+          "id": "s-lg-box-548028",
+          "heading": "Human Subject Research and Institutional Review Boards",
+          "wrapper": "s-lg-box-wrapper-627004"
+        }
+      ],
+      "links": [
+        "http://familymed.uthscsa.edu/research08/pcrmsc/22nd_2010/presentations/24IntroQualitativeResearchDesign-Chenail.pdf",
+        "http://www.nova.edu/ssss/QR/QR3-1/heath.html",
+        "http://writing.colostate.edu/guides/index.cfm?categoryid=18&title=4",
+        "http://www.sacredheart.edu/officesservices/institutionalreviewboard/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "定性方法",
+        "定义",
+        "定性研究的特征",
+        "研究设计",
+        "资料收集",
+        "资料分析",
+        "定性研究的基本设计",
+        "研究目标",
+        "概念框架",
+        "研究提问",
+        "方法",
+        "效度",
+        "结论",
+        "定性方法的优势",
+        "定性方法的局限",
+        "涉及人类参与者的研究与机构审查委员会"
+      ]
+    },
+    {
+      "id": 30,
+      "file": "methodology/quantitative-methods.md",
+      "title": "定量方法",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185930",
+      "englishTitle": "Quantitative Methods",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185929",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185931",
+      "sections": [
+        {
+          "id": "s-lg-box-548029",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627007"
+        },
+        {
+          "id": "s-lg-box-548030",
+          "heading": "Characteristics of Quantitative Research",
+          "wrapper": "s-lg-box-wrapper-627013"
+        },
+        {
+          "id": "s-lg-box-548031",
+          "heading": "Basic Research Design for Quantitative Studies",
+          "wrapper": "s-lg-box-wrapper-627021"
+        },
+        {
+          "id": "s-lg-box-548033",
+          "heading": "Strengths of Using Quantitative Methods",
+          "wrapper": "s-lg-box-wrapper-627026"
+        },
+        {
+          "id": "s-lg-box-548034",
+          "heading": "Limitations of Using Quantiative Methods",
+          "wrapper": "s-lg-box-wrapper-627029"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/index.cfm?categoryid=19&title=4",
+        "http://virg.vanderbilt.edu/AssessmentPlans/Results/Reporting_Results_Quantitative.aspx",
+        "http://www.sportsci.org/jour/0001/wghdesign.html",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWstrategy.html#results"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "定量方法",
+        "定义",
+        "定量研究的特点",
+        "定量研究的基本设计",
+        "引言",
+        "研究方法",
+        "结果",
+        "讨论",
+        "结论",
+        "定量方法的优势",
+        "定量方法的局限"
+      ]
+    },
+    {
+      "id": 31,
+      "file": "results/results.md",
+      "title": "结果",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185931",
+      "englishTitle": "7. The Results",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185930",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185932",
+      "sections": [
+        {
+          "id": "s-lg-box-548035",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627031"
+        },
+        {
+          "id": "s-lg-box-548036",
+          "heading": "Importance of a Good Results Section",
+          "wrapper": "s-lg-box-wrapper-627033"
+        },
+        {
+          "id": "s-lg-box-548037",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627035"
+        },
+        {
+          "id": "s-lg-box-548038",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627038"
+        }
+      ],
+      "links": [
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#results",
+        "http://www.ruf.rice.edu/~bioslabs/tools/report/reportform.html#results",
+        "https://www.bates.edu/biology/files/2010/06/How-to-Write-Guide-v10-2014.pdf"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "结果",
+        "定义",
+        "结果部分的重要性",
+        "结构与写法",
+        "一、结构与组织方式",
+        "二、内容",
+        "三、应避免的问题",
+        "写作提示"
+      ],
+      "translationNote": "原页分别说明表图下置题注、上置带说明的标题，两项要求均保留。"
+    },
+    {
+      "id": 32,
+      "file": "results/using-non-textual-elements.md",
+      "title": "使用非文本元素",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185932",
+      "englishTitle": "Using Non-Textual Elements",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185931",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185933",
+      "sections": [
+        {
+          "id": "s-lg-box-548039",
+          "heading": "Definitions of Common Non-Textual Elements",
+          "wrapper": "s-lg-box-wrapper-627042"
+        },
+        {
+          "id": "s-lg-box-548040",
+          "heading": "Importance of Using Non-Textual Elements",
+          "wrapper": "s-lg-box-wrapper-627043"
+        },
+        {
+          "id": "s-lg-box-548041",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627046"
+        }
+      ],
+      "links": [
+        "http://www.businessdictionary.com/",
+        "http://www.editage.com/insights/tutorials/manuscript-preparation/present-research-findings-with-figures-and-tables"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "使用非文本元素",
+        "常见非文本元素的定义",
+        "为什么要使用非文本元素",
+        "结构与写法"
+      ],
+      "translationNote": "原页对直方图及组数的概括仍归属于原文，字体拼写采用通行名称。"
+    },
+    {
+      "id": 33,
+      "file": "discussion/discussion.md",
+      "title": "讨论",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185933",
+      "englishTitle": "8. The Discussion",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185932",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185934",
+      "sections": [
+        {
+          "id": "s-lg-box-548043",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627048"
+        },
+        {
+          "id": "s-lg-box-548044",
+          "heading": "Importance of a Good Discussion",
+          "wrapper": "s-lg-box-wrapper-627050"
+        },
+        {
+          "id": "s-lg-box-548045",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627053"
+        },
+        {
+          "id": "s-lg-box-548046",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627055"
+        },
+        {
+          "id": "s-lg-box-548047",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627059"
+        },
+        {
+          "id": "s-lg-box-548048",
+          "heading": "Yet Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627060"
+        }
+      ],
+      "links": [
+        "https://jivasquez.files.wordpress.com/2016/06/discussion.pdf",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#discussion",
+        "https://cancer.dartmouth.edu/sites/default/files/2019-05/effective-discussions.pdf",
+        "https://libguides.usc.edu/writingguide/discussion",
+        "http://www.sfedit.net/discussion.pdf",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/lab-report",
+        "http://writingcenter.unc.edu/handouts/summary-using-it-wisely/",
+        "http://users.clas.ufl.edu/msscha/psych/report_discussion.html",
+        "http://www.apa.org/gradpsych/2006/01/findings.aspx"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "讨论",
+        "定义",
+        "好的讨论为什么重要",
+        "结构与写作方式",
+        "一、一般原则",
+        "二、讨论的内容",
+        "三、组织与结构",
+        "四、讨论的总体目标",
+        "五、应避免的问题",
+        "写作提示：把解释限定在证据支持的范围内",
+        "写作提示：避免再写一遍结果",
+        "写作提示：避免缺乏依据的推测"
+      ],
+      "translationNote": "原页未给 USC 讨论页链接配文字，译文补上可识别的来源名称。"
+    },
+    {
+      "id": 34,
+      "file": "discussion/study-limitations.md",
+      "title": "研究局限",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185934",
+      "englishTitle": "Limitations of the Study",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185933",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185935",
+      "sections": [
+        {
+          "id": "s-lg-box-548049",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627063"
+        },
+        {
+          "id": "s-lg-box-548050",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-627068"
+        },
+        {
+          "id": "s-lg-box-548051",
+          "heading": "Descriptions of Possible Limitations",
+          "wrapper": "s-lg-box-wrapper-627070"
+        },
+        {
+          "id": "s-lg-box-548052",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627074"
+        },
+        {
+          "id": "s-lg-box-548053",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627083"
+        },
+        {
+          "id": "s-lg-box-548054",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627090"
+        },
+        {
+          "id": "s-lg-box-548055",
+          "heading": "Yet Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627099"
+        }
+      ],
+      "links": [
+        "http://dissertation.laerd.com/how-to-structure-the-research-limitations-section-of-your-dissertation.php",
+        "http://jom.sagepub.com/content/39/1/48.full",
+        "http://www.authorstream.com/Presentation/benjikenney-1581921-business-research-methods/",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185905",
+        "http://www.academia.edu/2719573/Writing_the_Empirical_Social_Science_Research_Paper_A_Guide_for_the_Perplexed%20",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/what.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "研究局限",
+        "定义",
+        "为什么要说明研究局限",
+        "可能遇到的研究局限",
+        "研究方法可能带来的局限",
+        "研究者自身可能面临的局限",
+        "结构与写法",
+        "写作提示：如实说明研究发现的重要性",
+        "写作提示：怎样看待阴性结果",
+        "写作提示：定性研究中的样本量局限"
+      ]
+    },
+    {
+      "id": 35,
+      "file": "conclusion/conclusion.md",
+      "title": "结论",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185935",
+      "englishTitle": "9. The Conclusion",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185934",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185936",
+      "sections": [
+        {
+          "id": "s-lg-box-548056",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627108"
+        },
+        {
+          "id": "s-lg-box-548058",
+          "heading": "Importance of a Good Conclusion",
+          "wrapper": "s-lg-box-wrapper-627113"
+        },
+        {
+          "id": "s-lg-box-548059",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627116"
+        },
+        {
+          "id": "s-lg-box-548060",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627121"
+        },
+        {
+          "id": "s-lg-box-548062",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627128"
+        }
+      ],
+      "links": [
+        "http://writingcenter.unc.edu/handouts/conclusions/",
+        "http://www.sfedit.net/wp-content/uploads/2020/09/Conclusion.pdf",
+        "https://writing.wisc.edu/wp-content/uploads/sites/535/2018/07/conclusions_uwmadison_writingcenter_aug2012.pdf",
+        "http://owl.english.purdue.edu/owl/resource/724/04/",
+        "http://www.writing.utoronto.ca/advice/planning-and-organizing/intros-and-conclusions",
+        "https://writing.wisc.edu/handbook/process/conclusions/",
+        "https://writing.colostate.edu/guides/page.cfm?pageid=1017&guideid=49",
+        "http://www.sfedit.net/conclusion.pdf",
+        "https://wts.indiana.edu/writing-guides/writing-conclusions.html",
+        "http://www.dartmouth.edu/~writing/materials/student/ac-paper/write.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "结论",
+        "定义",
+        "好结论的重要性",
+        "结构与写法",
+        "一、一般原则",
+        "二、怎样写出有说服力的结论",
+        "三、应避免的问题",
+        "写作提示：读者知道文章要结束了",
+        "写作提示：从已有材料中提出新见解"
+      ],
+      "translationNote": "对阴性结果的括注按原文翻译并标出归属。"
+    },
+    {
+      "id": 36,
+      "file": "conclusion/appendices.md",
+      "title": "附录",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185936",
+      "englishTitle": "Appendices",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185935",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185937",
+      "sections": [
+        {
+          "id": "s-lg-box-548063",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627131"
+        },
+        {
+          "id": "s-lg-box-548065",
+          "heading": "Importance of...",
+          "wrapper": "s-lg-box-wrapper-627132"
+        },
+        {
+          "id": "s-lg-box-548066",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627135"
+        }
+      ],
+      "links": [
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWsections.html#appendices",
+        "http://owl.english.purdue.edu/owl/resource/670/05/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "附录",
+        "定义",
+        "何时需要附录",
+        "结构与写法",
+        "一、决定哪些材料收入附录",
+        "二、可以收录的内容",
+        "三、附录格式"
+      ]
+    },
+    {
+      "id": 37,
+      "file": "proofreading/proofreading-your-paper.md",
+      "title": "论文校对",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185937",
+      "englishTitle": "10. Proofreading Your Paper",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185936",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185938",
+      "sections": [
+        {
+          "id": "s-lg-box-548067",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627137"
+        },
+        {
+          "id": "s-lg-box-548069",
+          "heading": "Strategies for Proofreading your Paper",
+          "wrapper": "s-lg-box-wrapper-627139"
+        }
+      ],
+      "links": [
+        "https://writing.colostate.edu/guides/guide.cfm?guideid=45",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=45",
+        "http://writing.wisc.edu/Handbook/Proofreading.html",
+        "http://www.hunter.cuny.edu/rwc/repository/files/the-writing-process/Revision/guidelines-for-revision.pdf/view?searchterm=",
+        "https://owl.purdue.edu/owl/general_writing/common_writing_assignments/research_papers/where_do_i_begin.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "论文校对",
+        "定义",
+        "校对论文的方法",
+        "开始校对之前",
+        "逐项查错",
+        "按自己的写作习惯安排校对",
+        "参考资料"
+      ],
+      "translationNote": "首项资料署名与链接所属机构不同，译文保留原信息。"
+    },
+    {
+      "id": 38,
+      "file": "proofreading/common-grammar-mistakes.md",
+      "title": "常见语法错误",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185938",
+      "englishTitle": "Common Grammar Mistakes",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185937",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185939",
+      "sections": [
+        {
+          "id": "s-lg-box-548070",
+          "heading": "Avoid These Common Grammar Mistakes!",
+          "wrapper": "s-lg-box-wrapper-627144"
+        },
+        {
+          "id": "s-lg-box-548071",
+          "heading": "Other Resources",
+          "wrapper": "s-lg-box-wrapper-627151"
+        }
+      ],
+      "links": [
+        "http://www.quotationspage.com/quotes/Doug_Larson/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line_grammar_mechanics.html",
+        "http://www.writing.utoronto.ca/advice/style-and-editing/hit-parade-of-errors",
+        "http://www.englishgrammar.org/",
+        "http://grammar.ccc.commnet.edu/grammar/index.htm",
+        "http://www.plainlanguage.gov/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "常见语法错误",
+        "校对时要留意的常见错误",
+        "其他资源"
+      ]
+    },
+    {
+      "id": 39,
+      "file": "citing-sources/citing-sources.md",
+      "title": "引用来源",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185939",
+      "englishTitle": "11. Citing Sources",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185938",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185940",
+      "sections": [
+        {
+          "id": "s-lg-box-548073",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627159"
+        },
+        {
+          "id": "s-lg-box-548074",
+          "heading": "Importance of a Citing your Sources",
+          "wrapper": "s-lg-box-wrapper-627161"
+        },
+        {
+          "id": "s-lg-box-548075",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627163"
+        },
+        {
+          "id": "s-lg-box-548077",
+          "heading": "Citation Research Guides",
+          "wrapper": "s-lg-box-wrapper-627164"
+        },
+        {
+          "id": "s-lg-box-548078",
+          "heading": "Automatic Citation Generators",
+          "wrapper": "s-lg-box-wrapper-627166"
+        }
+      ],
+      "links": [
+        "http://www.lib.unc.edu/instruct/citations/",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWcitations.html",
+        "http://owl.english.purdue.edu/owl/section/2/",
+        "https://library.sacredheart.edu/styleguides",
+        "https://writing.wisc.edu/handbook/documentation/",
+        "http://www.bibme.org/",
+        "http://www.asu.edu/lib/hayden/govdocs/docscite/docscite.htm",
+        "http://www.easybib.com/",
+        "https://www.calvin.edu/library/knightcite/",
+        "http://citationmachine.net/index2.php",
+        "https://library.sacredheart.edu/ld.php?content_id=36023512"
+      ],
+      "assets": [
+        "https://www.youtube.com/embed/JzdBHT3d6VA"
+      ],
+      "translationHeadings": [
+        "引用来源",
+        "定义",
+        "为什么要注明来源",
+        "结构与写法",
+        "常见问题",
+        "引用规范指南",
+        "自动引文生成工具"
+      ],
+      "translationNote": "引文范例中 Jones 的年份印作“19991”，译文照录并标明。"
+    },
+    {
+      "id": 40,
+      "file": "citing-sources/avoiding-plagiarism.md",
+      "title": "避免抄袭",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185940",
+      "englishTitle": "Avoiding Plagiarism",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185939",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185941",
+      "sections": [
+        {
+          "id": "s-lg-box-548080",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627168"
+        },
+        {
+          "id": "s-lg-box-548081",
+          "heading": "Strategies for Avoiding Plagiarism",
+          "wrapper": "s-lg-box-wrapper-627170"
+        }
+      ],
+      "links": [
+        "https://www.sacredheart.edu/offices--departments-directory/registrar/academic-integrity-policy/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "避免抄袭",
+        "定义",
+        "避免抄袭的方法"
+      ]
+    },
+    {
+      "id": 41,
+      "file": "citing-sources/footnotes-or-endnotes.md",
+      "title": "脚注还是尾注",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185941",
+      "englishTitle": "Footnotes or Endnotes?",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185940",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185942",
+      "sections": [
+        {
+          "id": "s-lg-box-548082",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627172"
+        },
+        {
+          "id": "s-lg-box-548083",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627174"
+        }
+      ],
+      "links": [
+        "http://history.nasa.gov/footnoteguide.html",
+        "http://www.dailywritingtips.com/should-you-use-footnotes-or-endnotes/",
+        "http://owl.english.purdue.edu/owl/resource/670/05/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "脚注还是尾注",
+        "定义",
+        "结构与写法",
+        "使用尾注的优点",
+        "使用尾注的缺点",
+        "使用脚注的优点",
+        "使用脚注的缺点",
+        "选用尾注或脚注时要考虑的问题",
+        "参考资料"
+      ]
+    },
+    {
+      "id": 42,
+      "file": "citing-sources/further-readings.md",
+      "title": "延伸阅读",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185942",
+      "englishTitle": "Further Readings",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185941",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185943",
+      "sections": [
+        {
+          "id": "s-lg-box-548085",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627176"
+        },
+        {
+          "id": "s-lg-box-548086",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627177"
+        }
+      ],
+      "links": [
+        "http://en.wikipedia.org/wiki/Wikipedia:Further_reading"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "延伸阅读",
+        "定义",
+        "结构与写法"
+      ]
+    },
+    {
+      "id": 43,
+      "file": "annotated-bibliography.md",
+      "title": "注释书目",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185943",
+      "englishTitle": "Annotated Bibliography",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185942",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185944",
+      "sections": [
+        {
+          "id": "s-lg-box-548087",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627179"
+        },
+        {
+          "id": "s-lg-box-548089",
+          "heading": "Importance of a Good Annotated Bibliography",
+          "wrapper": "s-lg-box-wrapper-627180"
+        },
+        {
+          "id": "s-lg-box-548090",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627182"
+        }
+      ],
+      "links": [
+        "http://writingcenter.unc.edu/handouts/annotated-bibliographies/",
+        "http://writingcenter.unc.edu/handouts/annotated-bibliographies/%20",
+        "http://owl.english.purdue.edu/owl/resource/614/01/",
+        "http://writing.wisc.edu/Handbook/AnnotatedBibliography.html",
+        "http://writingcenter.waldenu.edu/1226.htm",
+        "https://guides.library.cornell.edu/annotatedbibliography",
+        "https://libguides.umgc.edu/annotated-bibliography-mla",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/annotated-bibliography",
+        "http://www.hunter.cuny.edu/rwc/repository/files/the-documented-essay/guides-to-research-and-writing-from-sources/6Writing%20an%20Annotated%20Bibliography%20revised%20with%20new%20MLA.pdf/view?searchterm="
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "注释书目",
+        "定义",
+        "一份好的注释书目有什么作用",
+        "结构与写法",
+        "一、注释的类型",
+        "二、为书目选择资料",
+        "三、界定书目的范围",
+        "四、评估资料的相关性与价值",
+        "五、格式与内容"
+      ]
+    },
+    {
+      "id": 44,
+      "file": "oral-presentation/giving-an-oral-presentation.md",
+      "title": "做口头报告",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185944",
+      "englishTitle": "Giving an Oral Presentation",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185943",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185945",
+      "sections": [
+        {
+          "id": "s-lg-box-548091",
+          "heading": "Preparing for Your Oral Presentation",
+          "wrapper": "s-lg-box-wrapper-627184"
+        },
+        {
+          "id": "s-lg-box-548093",
+          "heading": "Organizing the Content",
+          "wrapper": "s-lg-box-wrapper-627186"
+        },
+        {
+          "id": "s-lg-box-548094",
+          "heading": "Delivering Your Presentation",
+          "wrapper": "s-lg-box-wrapper-627188"
+        },
+        {
+          "id": "s-lg-box-548096",
+          "heading": "Speaking Tip",
+          "wrapper": "s-lg-box-wrapper-627190"
+        },
+        {
+          "id": "s-lg-box-548097",
+          "heading": "Another Speaking Tip",
+          "wrapper": "s-lg-box-wrapper-627191"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=35",
+        "http://go.owu.edu/~dapeople/ggpresnt.html",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/oral-presentations",
+        "http://writingcenter.unc.edu/handouts/speeches/",
+        "https://e-l.unifi.it/pluginfile.php/618176/mod_resource/content/1/oral_presentation_skills%20%281%29-1.pdf",
+        "http://people.engr.ncsu.edu/txie/publications/oral_presentation_skills.pdf"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "做口头报告",
+        "准备口头报告",
+        "组织内容",
+        "报告的基本提纲",
+        "上台报告",
+        "讲究措辞",
+        "用声音把话说清楚",
+        "用肢体语言交流",
+        "与听众互动",
+        "表达提示：开场的几句话最重要",
+        "表达提示：面对听众讲，避免照稿念"
+      ]
+    },
+    {
+      "id": 45,
+      "file": "oral-presentation/dealing-with-nervousness.md",
+      "title": "应对紧张",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185945",
+      "englishTitle": "Dealing with Nervousness",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185944",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185946",
+      "sections": [
+        {
+          "id": "s-lg-box-548098",
+          "heading": "Dealing with Nervousness",
+          "wrapper": "s-lg-box-wrapper-627193"
+        },
+        {
+          "id": "s-lg-box-548099",
+          "heading": "Speaking Tip",
+          "wrapper": "s-lg-box-wrapper-627194"
+        }
+      ],
+      "links": [
+        "http://go.owu.edu/~dapeople/ggpresnt.html",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/oral-presentations%20"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "应对紧张",
+        "演讲提示"
+      ]
+    },
+    {
+      "id": 46,
+      "file": "oral-presentation/using-visual-aids.md",
+      "title": "使用视觉辅助材料",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185946",
+      "englishTitle": "Using Visual Aids",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185945",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185947",
+      "sections": [
+        {
+          "id": "s-lg-box-548100",
+          "heading": "Using Visual Aids",
+          "wrapper": "s-lg-box-wrapper-627196"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=35",
+        "http://owl.english.purdue.edu/owl/resource/686/01/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "使用视觉辅助材料",
+        "怎样有效地使用 PowerPoint",
+        "PowerPoint 幻灯片的文字排版",
+        "讲义",
+        "使用白板",
+        "熟悉场地",
+        "参考资料"
+      ]
+    },
+    {
+      "id": 47,
+      "file": "grading-someone-elses-paper.md",
+      "title": "评阅他人的论文",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185947",
+      "englishTitle": "Grading Someone Else's Paper",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185946",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185948",
+      "sections": [
+        {
+          "id": "s-lg-box-548101",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627198"
+        },
+        {
+          "id": "s-lg-box-548102",
+          "heading": "The Benefits of Peer Grading",
+          "wrapper": "s-lg-box-wrapper-627200"
+        },
+        {
+          "id": "s-lg-box-548103",
+          "heading": "How to Approach Peer Grading Assignments",
+          "wrapper": "s-lg-box-wrapper-627202"
+        }
+      ],
+      "links": [
+        "http://writingcenter.unc.edu/handouts/getting-feedback/",
+        "https://www.yumpu.com/en/document/view/37465138/peer-assessment-and-peer-evaluation-foundation-coalition",
+        "http://www.hunter.cuny.edu/rwc/repository/files/the-writing-process/Revision/guidelines-for-peer-editing.pdf",
+        "https://writing.colostate.edu/guides/guide.cfm?guideid=43"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "评阅他人的论文",
+        "定义",
+        "同伴互评的益处",
+        "如何完成同伴互评作业",
+        "一、开始前的准备",
+        "二、评阅时要考虑的事"
+      ]
+    },
+    {
+      "id": 48,
+      "file": "managing-group-projects.md",
+      "title": "管理小组项目",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185948",
+      "englishTitle": "How to Manage Group Projects",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185947",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185949",
+      "sections": [
+        {
+          "id": "s-lg-box-17404994",
+          "heading": "Surviving...",
+          "wrapper": "s-lg-box-wrapper-20476870"
+        },
+        {
+          "id": "s-lg-box-548104",
+          "heading": "The Benefits of Group Work",
+          "wrapper": "s-lg-box-wrapper-627204"
+        },
+        {
+          "id": "s-lg-box-548105",
+          "heading": "Stages of Group Work",
+          "wrapper": "s-lg-box-wrapper-627206"
+        }
+      ],
+      "links": [
+        "https://library.sacredheart.edu/c.php?g=29803&p=185948#s-lib-ctab-17404994-0",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185948#s-lib-ctab-17404994-1",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185948#s-lib-ctab-17404994-2",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185948#s-lib-ctab-17404994-3",
+        "https://library.sacredheart.edu/c.php?g=29803&p=185948#s-lib-ctab-17404994-4",
+        "http://www.dartmouth.edu/~writing/materials/faculty/methods/collaborative.html",
+        "http://chris.golde.org/filecabinet/writegroups.html",
+        "http://teachingcollegewritingfall2011.qwriting.qc.cuny.edu/files/2011/08/Moore-Howard_Collaborative-Pedagogy.pdf",
+        "https://owl.purdue.edu/owl/subject_specific_writing/writing_in_engineering/indot_workshop_resources_for_engineers/group_work_handout.html",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=42%20%20%20",
+        "http://writingcenter.unc.edu/handouts/group-writing/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "管理小组项目",
+        "遇到这些组员时怎么办",
+        "不肯出力的人",
+        "话匣子",
+        "“我实在太忙了”",
+        "凡事要说了算的人",
+        "不停唱反调的人",
+        "小组合作的益处",
+        "小组合作的各个阶段",
+        "一、开始合作",
+        "二、讨论目标与任务",
+        "三、规划与准备",
+        "四、实施",
+        "五、收尾",
+        "六、撰写项目报告"
+      ]
+    },
+    {
+      "id": 49,
+      "file": "book-review/writing-a-book-review.md",
+      "title": "撰写书评",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185949",
+      "englishTitle": "Writing a Book Review",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185948",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185950",
+      "sections": [
+        {
+          "id": "s-lg-box-548112",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627217"
+        },
+        {
+          "id": "s-lg-box-548113",
+          "heading": "How to Approach Writing Your Review",
+          "wrapper": "s-lg-box-wrapper-627219"
+        },
+        {
+          "id": "s-lg-box-548114",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627221"
+        },
+        {
+          "id": "s-lg-box-548117",
+          "heading": "Some Language for Evaluating Texts",
+          "wrapper": "s-lg-box-wrapper-627224"
+        }
+      ],
+      "links": [
+        "https://writing.colostate.edu/guides/guide.cfm?guideid=49",
+        "http://writingcenter.unc.edu/handouts/book-reviews/",
+        "http://onlinelibrary.wiley.com/doi/10.1002/asi.20399/full",
+        "https://owl.purdue.edu/owl/general_writing/common_writing_assignments/book_reviews.html",
+        "http://www.indiana.edu/~wts/pamphlets/book_reviews.shtml",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=49",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/book-review",
+        "http://writing.wisc.edu/Handbook/CriReadingBook.html",
+        "https://ag.utah.gov/documents/rangelandecology.pdf",
+        "http://owl.english.purdue.edu/owl/resource/704/01/",
+        "https://uclouvain.be/en/research-institutes/ilc/cecl/academic-keyword-list.html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "撰写书评",
+        "定义",
+        "怎样着手写书评",
+        "一、书评的共同特点",
+        "二、形成评价思路",
+        "结构与写法",
+        "一、书目信息",
+        "二、范围、目的与内容",
+        "三、指出作者所用的写法",
+        "四、批判性地评价内容",
+        "五、考察卷首与卷末材料",
+        "六、概括并给出评论",
+        "评价文本时可用的英语表达"
+      ]
+    },
+    {
+      "id": 50,
+      "file": "book-review/multiple-book-review.md",
+      "title": "多书评论文章",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185950",
+      "englishTitle": "Multiple Book Review Essay",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185949",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185951",
+      "sections": [
+        {
+          "id": "s-lg-box-548118",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627225"
+        },
+        {
+          "id": "s-lg-box-548119",
+          "heading": "How to Approach Writing Your Review",
+          "wrapper": "s-lg-box-wrapper-627227"
+        },
+        {
+          "id": "s-lg-box-548120",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627229"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/textbooks/informedwriter/chapter9.pdf",
+        "http://writingcenter.unc.edu/handouts/comparing-and-contrasting/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/comparis.html",
+        "http://www.sbcc.edu/clrc/files/wl/downloads/WritingaCompareContrastEssay.pdf%20",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/comparative-essay"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "多书评论文章",
+        "定义",
+        "怎样着手写评论",
+        "拟定评价思路",
+        "结构与写法",
+        "一、书目信息",
+        "二、提出中心论点",
+        "三、组织文章",
+        "分块法",
+        "逐点比较法",
+        "四、对内容作批判性评价",
+        "五、考察书前与书后材料",
+        "六、归纳与评论"
+      ],
+      "translationNote": "原页把两类书籍前后材料都称作 back matter，译文保留所列两组资料的内容及顺序。"
+    },
+    {
+      "id": 51,
+      "file": "book-review/reviewing-collected-essays.md",
+      "title": "评论论文合集",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185951",
+      "englishTitle": "Reviewing Collected Essays",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185950",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185952",
+      "sections": [
+        {
+          "id": "s-lg-box-548121",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627231"
+        },
+        {
+          "id": "s-lg-box-548122",
+          "heading": "How to Approach Writing Your Review",
+          "wrapper": "s-lg-box-wrapper-627233"
+        },
+        {
+          "id": "s-lg-box-548123",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627235"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/textbooks/informedwriter/chapter9.pdf",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=49",
+        "http://writingcenter.unc.edu/handouts/book-reviews/",
+        "http://owl.english.purdue.edu/owl/resource/704/01/",
+        "http://rwc.hunter.cuny.edu/reading-writing/on-line/comparis.html",
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/comparative-essay"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "评论论文合集",
+        "定义",
+        "怎样着手写评论",
+        "论文合集的类型",
+        "根据合集类型确定评价思路",
+        "结构与写法",
+        "一、书目信息",
+        "二、范围、目的与内容",
+        "三、批判性评价内容",
+        "四、考察卷首和卷末资料",
+        "五、总结并评论"
+      ],
+      "translationNote": "原页把卷首资料称作 back matter，译文按实际项目区分卷首与卷末。"
+    },
+    {
+      "id": 52,
+      "file": "field-report/writing-a-field-report.md",
+      "title": "撰写田野报告",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185952",
+      "englishTitle": "Writing a Field Report",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185951",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185953",
+      "sections": [
+        {
+          "id": "s-lg-box-548124",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627237"
+        },
+        {
+          "id": "s-lg-box-548125",
+          "heading": "How to Approach Writing a Field Report",
+          "wrapper": "s-lg-box-wrapper-627239"
+        },
+        {
+          "id": "s-lg-box-548126",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627241"
+        }
+      ],
+      "links": [
+        "https://writing.colostate.edu/guides/pdfs/guide63.pdf",
+        "http://www.scribd.com/doc/6716795/Writing-Field-Reports",
+        "https://documents.uow.edu.au/content/groups/public/@web/@stsv/@ld/documents/doc/uow195618.pdf",
+        "http://www.heacademy.ac.uk/assets/hlst/documents/heinfe_exchange/blended_learning_pdp_materials/5_reportwriting.pdf",
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=63",
+        "http://qrj.sagepub.com/content/2/1/85.full.pdf+html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "撰写田野报告",
+        "定义",
+        "怎样着手写田野报告",
+        "从哪里开始",
+        "怎样记录观察所得",
+        "观察时可以记录哪些事情",
+        "抽样方法",
+        "结构与写法",
+        "一、引言",
+        "二、活动描述",
+        "三、解释与分析",
+        "四、结论与建议",
+        "五、附录",
+        "六、参考文献"
+      ]
+    },
+    {
+      "id": 53,
+      "file": "field-report/informed-consent.md",
+      "title": "知情同意",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185953",
+      "englishTitle": "About Informed Consent",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185952",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185954",
+      "sections": [
+        {
+          "id": "s-lg-box-548127",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627243"
+        },
+        {
+          "id": "s-lg-box-548128",
+          "heading": "Obtaining Informed Consent",
+          "wrapper": "s-lg-box-wrapper-627245"
+        }
+      ],
+      "links": [
+        "http://www.hhs.gov/ohrp/",
+        "http://www.sacredheart.edu/officesservices/institutionalreviewboard/institutionalreviewboardguide/requirementofinformedconsent/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "知情同意",
+        "定义",
+        "如何取得知情同意"
+      ]
+    },
+    {
+      "id": 54,
+      "file": "field-report/writing-field-notes.md",
+      "title": "撰写田野笔记",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185954",
+      "englishTitle": "Writing Field Notes",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185953",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185955",
+      "sections": [
+        {
+          "id": "s-lg-box-548129",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627247"
+        },
+        {
+          "id": "s-lg-box-548131",
+          "heading": "How to Approach Writing Field Notes",
+          "wrapper": "s-lg-box-wrapper-627249"
+        }
+      ],
+      "links": [
+        "http://writing.colostate.edu/guides/guide.cfm?guideid=63",
+        "http://www.scribd.com/doc/6716795/Writing-Field-Reports",
+        "http://qrj.sagepub.com/content/2/1/85.full.pdf+html"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "撰写田野笔记",
+        "定义",
+        "怎样撰写田野笔记",
+        "田野笔记的写作要求",
+        "描述性记录可以写什么",
+        "反思性记录可以写什么",
+        "参考资料"
+      ]
+    },
+    {
+      "id": 55,
+      "file": "writing-a-policy-memo.md",
+      "title": "撰写政策备忘录",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185955",
+      "englishTitle": "Writing a Policy Memo",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185954",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185956",
+      "sections": [
+        {
+          "id": "s-lg-box-548132",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627251"
+        },
+        {
+          "id": "s-lg-box-548133",
+          "heading": "How to Approach Writing a Policy Memo",
+          "wrapper": "s-lg-box-wrapper-627253"
+        },
+        {
+          "id": "s-lg-box-548135",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627255"
+        },
+        {
+          "id": "s-lg-box-548136",
+          "heading": "Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627257"
+        },
+        {
+          "id": "s-lg-box-548138",
+          "heading": "Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627259"
+        },
+        {
+          "id": "s-lg-box-548139",
+          "heading": "Yet Another Writing Tip",
+          "wrapper": "s-lg-box-wrapper-627261"
+        }
+      ],
+      "links": [
+        "http://dspace.mit.edu/bitstream/handle/1721.1/36824/11-479Spring-2004/OcwWeb/Urban-Studies-and-Planning/11-479Spring-2004/Assignments/index.htm",
+        "http://shorensteincenter.org/wp-content/uploads/2012/07/HO_Herman_Policy-Memos_9_24_12.pdf",
+        "http://www.cornellcollege.edu/cornell-fellows/resources-fellows/policy-memo-guidelines.shtml",
+        "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/memos/audience_and_purpose.html",
+        "http://www.du.edu/ahss/ipps/media/documents/IPPS_Policy_Memo_instructions_2013.pdf",
+        "http://dspace.mit.edu/bitstream/handle/1721.1/36824/11-479Spring-2004/NR/rdonlyres/Urban-Studies-and-Planning/11-479Spring-2004/9CE4ACA2-EC3D-4C1D-91CC-27971E27DCF5/0/pmwriting.pdf",
+        "http://libguides.usc.edu/aecontent.php?pid=83009&sid=1481087",
+        "http://owl.english.purdue.edu/owl/resource/590/01/",
+        "http://www.fao.org/docrep/014/i2195e/i2195e03.pdf",
+        "https://twp.duke.edu/sites/twp.duke.edu/files/file-attachments/policy-memo.original.pdf"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "撰写政策备忘录",
+        "定义",
+        "怎样着手写政策备忘录",
+        "结构与写作方式",
+        "封面",
+        "引言与问题界定",
+        "方法",
+        "议题分析",
+        "备选解决方案",
+        "策略与行动建议",
+        "局限",
+        "成本效益分析",
+        "写作提示：在正文中指明来源",
+        "写作提示：使用非文本元素",
+        "写作提示：使用附录"
+      ],
+      "translationNote": "原页结构说明重复使用罗马数字 VI，译文按原次序保留八个小标题。"
+    },
+    {
+      "id": 56,
+      "file": "writing-a-research-proposal.md",
+      "title": "撰写研究计划书",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185956",
+      "englishTitle": "Writing a Research Proposal",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185955",
+      "next": "https://library.sacredheart.edu/c.php?g=29803&p=185957",
+      "sections": [
+        {
+          "id": "s-lg-box-548140",
+          "heading": "Definition",
+          "wrapper": "s-lg-box-wrapper-627264"
+        },
+        {
+          "id": "s-lg-box-548142",
+          "heading": "How to Approach Writing a Research Proposal",
+          "wrapper": "s-lg-box-wrapper-627266"
+        },
+        {
+          "id": "s-lg-box-548143",
+          "heading": "Structure and Writing Style",
+          "wrapper": "s-lg-box-wrapper-627268"
+        }
+      ],
+      "links": [
+        "http://www.writing.utoronto.ca/advice/specific-types-of-writing/academic-proposal",
+        "https://bearspace.baylor.edu/Keith_Sanford/www/students%202.htm",
+        "http://www.meaning.ca/archives/archive/art_how_to_write_P_Wong.htm",
+        "https://owl.purdue.edu/owl/graduate_writing/graduate_writing_genres/graduate_writing_genres_academic_proposals_new.html",
+        "https://guides.library.illinois.edu/research_proposal",
+        "https://www.ucl.ac.uk/ioe-writing-centre/plan-your-assignment/write-a-research-proposal",
+        "http://owl.english.purdue.edu/owl/resource/752/01/",
+        "http://www.library.illinois.edu/learn/research/proposal.html%20"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "撰写研究计划书",
+        "定义",
+        "怎样着手写研究计划书",
+        "常见错误",
+        "结构与写法",
+        "动笔之前",
+        "一、引言",
+        "二、背景与意义",
+        "三、文献综述",
+        "四、研究设计与方法",
+        "五、初步推想与可能影响",
+        "六、结论",
+        "七、引用来源"
+      ],
+      "translationNote": "一条书目署名与链接所指机构不同，两者均照原页保留。"
+    },
+    {
+      "id": 57,
+      "file": "acknowledgements.md",
+      "title": "致谢",
+      "url": "https://library.sacredheart.edu/c.php?g=29803&p=185957",
+      "englishTitle": "Acknowledgements",
+      "previous": "https://library.sacredheart.edu/c.php?g=29803&p=185956",
+      "next": null,
+      "sections": [
+        {
+          "id": "s-lg-box-548145",
+          "heading": "Sources Consulted",
+          "wrapper": "s-lg-box-wrapper-627270"
+        }
+      ],
+      "links": [
+        "https://www.canberra.edu.au/current-students/canberra-students/student-support/study-skills",
+        "http://depts.washington.edu/pswrite/forstudents.html",
+        "http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWtoc.html",
+        "http://writing-speech.dartmouth.edu/",
+        "http://owl.english.purdue.edu/owl/",
+        "http://rwc.hunter.cuny.edu/index.html",
+        "http://www.socialresearchmethods.net/",
+        "http://writing.colostate.edu/index.cfm",
+        "http://www.writing.ku.edu/",
+        "http://writingcenter.unc.edu/",
+        "http://writing.wisc.edu/index.html",
+        "http://english.gmu.edu/",
+        "http://www.writing.utoronto.ca/advice",
+        "http://www.indiana.edu/~wts/"
+      ],
+      "assets": [],
+      "translationHeadings": [
+        "致谢",
+        "编写指南时参考的资料"
+      ]
+    }
+  ]
+}

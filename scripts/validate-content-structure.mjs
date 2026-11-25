@@ -58,7 +58,7 @@ const groups = {
   "机器学习与研究": "/ai-algorithms/learning/", "智能优化": "/ai-algorithms/optimization/",
   "AI 应用": "/ai-applications/", "知识与检索": "/ai-applications/knowledge-retrieval/",
   "智能体系统": "/ai-applications/agent-systems/", "工具与实践": "/ai-applications/tools-practice/",
-  "随笔": "/notes/", "软件工具": "/software-tools/",
+  "科研": "/research/", "随笔": "/notes/", "软件工具": "/software-tools/",
   "版本控制": "/software-tools/version-control/", "系统与容器": "/software-tools/systems-containers/",
   "开发与远程工具": "/software-tools/development-remote/", "文档与知识管理": "/software-tools/documentation-knowledge/",
 };
@@ -111,6 +111,24 @@ for (const [board, items] of Object.entries(theme.sidebar)) {
   inspectSidebar(items, board, board);
 }
 report.sidebarArticles = articleLinks.size;
+const guide = JSON.parse(fs.readFileSync("docs/academic-writing-guide-sources.json", "utf8")).pages;
+const guidePrefix = "/research/academic-writing-guide/";
+const guideRoutes = guide.map(({ file }) => route(guidePrefix.slice(1) + file));
+check(guideRoutes.length === 57 && new Set(guideRoutes).size === 57, "Expected 57 distinct guide pages");
+for (const [i, page] of guide.entries()) {
+  const output = outputFile(guideRoutes[i]);
+  check(fs.existsSync(output), `Missing guide page: ${page.title}`);
+  if (!fs.existsSync(output)) continue;
+  const html = fs.readFileSync(output, "utf8");
+  const anchors = Array.from(html.matchAll(/<a\b[^>]*>/g), (match) => match[0]);
+  for (const [direction, adjacentIndex] of [["prev", i - 1], ["next", i + 1]]) {
+    const link = anchors.find((tag) => tag.match(/\bclass="([^"]+)"/)?.[1].split(/\s+/).includes(direction));
+    const target = link?.match(/\bhref="([^"]+)"/)?.[1];
+    check(target === guideRoutes[adjacentIndex], `Guide ${direction}: ${page.title} -> ${target}`);
+  }
+  check(anchors.some((tag) => tag.includes(`href="${page.url.replaceAll("&", "&amp;")}"`)),
+    `Missing original guide source: ${page.title}`);
+}
 for (const file of files.filter(file => file.endsWith(".md") && !file.endsWith("README.md"))) {
   const url = route(file);
   if (sections.some(board => url.startsWith(board))) check(articleLinks.has(url), `Article omitted from sidebar: ${file}`);

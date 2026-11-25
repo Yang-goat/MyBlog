@@ -16,6 +16,6 @@ dir:
 
 按算法机制浏览可打开[算法家族思维导图](./algorithm-family-map.md)，按问题与研究主题浏览可打开[研究方向思维导图](../frontier-algorithms/research-directions.md)。两种索引指向同一知识体系。
 
-文献中的新方法见[前沿算法与框架](../frontier-algorithms/)，CEC 题目和结果资料见[基准测试与竞赛](../benchmarks/)，阅读过程见[论文随笔](/paper-notes/)。
+文献中的新方法见[前沿算法与框架](../frontier-algorithms/)，CEC 题目和结果资料见[基准测试与竞赛](../benchmarks/)，阅读过程见[论文随笔](/research/paper-notes/)。
 
 <Catalog />

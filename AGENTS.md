@@ -11,7 +11,7 @@ src/
 ├── ai-applications/ # AI 应用：知识检索、智能体系统、工具实践
 ├── software-tools/  # 软件工具：版本控制、系统、开发、文档与知识管理
 ├── notes/           # 数学、建模、计算机、语言、前端和音乐随笔
-├── paper-notes/     # 论文随笔与每周阅读总结
+├── research/        # 科研：论文随笔、学术论文写作指南
 ├── external-links/  # 外站
 └── README.md        # 首页
 ```

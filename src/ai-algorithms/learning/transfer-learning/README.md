@@ -14,6 +14,6 @@ dir:
 
 后续笔记可按领域适应、表示迁移与任务迁移组织，重点辨明源与目标的差异、可用数据，以及负迁移的条件。迁移学习与优化问题中的迁移搜索可在[优化研究方向](/ai-algorithms/optimization/frontier-algorithms/research-directions.html)交叉关联。
 
-阅读过程链接到[论文随笔](/paper-notes/)，方法原理与实验分析保留在对应专题文章中。
+阅读过程链接到[论文随笔](/research/paper-notes/)，方法原理与实验分析保留在对应专题文章中。
 
 <Catalog />

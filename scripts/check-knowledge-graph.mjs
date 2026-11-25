@@ -12,6 +12,16 @@ assert.equal(diagnostics.fingerprint, data.fingerprint, "Graph and diagnostics a
 assert.equal(diagnostics.unresolved.length, 0, "Unresolved article links: inspect graph diagnostics");
 assert.equal(diagnostics.ambiguousAliases.length, 0, "Ambiguous graph routes");
 
+const guide = JSON.parse(readFileSync(path.join(root, "docs/academic-writing-guide-sources.json"), "utf8"));
+const guidePrefix = "/research/academic-writing-guide/";
+const researchArticles = data.nodes.filter((node) => node.type === "article" && node.group === "research");
+const expectedGuideRoutes = guide.pages.filter((page) => page.file !== "README.md")
+  .map((page) => guidePrefix + page.file.replace(/\.md$/, ".html"));
+assert.deepEqual(researchArticles.map((node) => node.path).filter((route) => route.startsWith(guidePrefix)).sort(),
+  expectedGuideRoutes.sort(), "Guide articles in the research group differ from the source manifest");
+assert.ok(researchArticles.some((node) => node.path === "/research/paper-notes/reading-workflow.html"),
+  "Migrated paper notes missing from research group");
+
 const ids = new Set(data.nodes.map(({ id }) => id));
 assert.equal(ids.size, data.nodes.length, "Duplicate node ids");
 for (const node of data.nodes) {

@@ -519,16 +519,202 @@ export default sidebar({
   ],
 
   // 论文随笔
-  "/paper-notes/": [
+  "/research/paper-notes/": [
     {
       text: "每周阅读总结",
       icon: "calendar",
-      link: "/paper-notes/weekly/",
-      prefix: "/paper-notes/weekly/",
+      link: "/research/paper-notes/weekly/",
+      prefix: "/research/paper-notes/weekly/",
       collapsible: true,
       children: ["2026-09-14-rde-lio.html"]
     },
     "reading-workflow.html"
+  ],
+
+  // 学术论文写作指南
+  "/research/academic-writing-guide/": [
+    "types-of-research-designs.html",
+    "design-flaws-to-avoid.html",
+    "glossary.html",
+    {
+      text: "01 选题",
+      icon: "bullseye",
+      link: "/research/academic-writing-guide/choosing-a-topic/",
+      prefix: "/research/academic-writing-guide/choosing-a-topic/",
+      collapsible: true,
+      children: [
+        "choosing-a-topic.html",
+        "narrowing-a-topic.html",
+        "broadening-a-topic.html",
+        "extending-topic-timeliness.html",
+      ],
+    },
+    {
+      text: "02 写作准备",
+      icon: "pen-to-square",
+      link: "/research/academic-writing-guide/preparing-to-write/",
+      prefix: "/research/academic-writing-guide/preparing-to-write/",
+      collapsible: true,
+      children: [
+        "preparing-to-write.html",
+        "academic-writing-style.html",
+        "choosing-a-title.html",
+        "making-an-outline.html",
+        "paragraph-development.html",
+      ],
+    },
+    {
+      text: "03 摘要",
+      icon: "file-lines",
+      link: "/research/academic-writing-guide/abstract/",
+      prefix: "/research/academic-writing-guide/abstract/",
+      collapsible: true,
+      children: [
+        "abstract.html",
+        "executive-summary.html",
+      ],
+    },
+    {
+      text: "04 引言",
+      icon: "lightbulb",
+      link: "/research/academic-writing-guide/introduction/",
+      prefix: "/research/academic-writing-guide/introduction/",
+      collapsible: true,
+      children: [
+        "introduction.html",
+        "background-information.html",
+        "research-problem.html",
+        "theoretical-framework.html",
+      ],
+    },
+    {
+      text: "05 文献综述",
+      icon: "book-open",
+      link: "/research/academic-writing-guide/literature-review/",
+      prefix: "/research/academic-writing-guide/literature-review/",
+      collapsible: true,
+      children: [
+        "literature-review.html",
+        "citation-tracking.html",
+        "content-alert-services.html",
+        "evaluating-sources.html",
+        "primary-sources.html",
+        "secondary-sources.html",
+        "tertiary-sources.html",
+        "scholarly-vs-popular.html",
+      ],
+    },
+    {
+      text: "06 研究方法",
+      icon: "compass-drafting",
+      link: "/research/academic-writing-guide/methodology/",
+      prefix: "/research/academic-writing-guide/methodology/",
+      collapsible: true,
+      children: [
+        "methodology.html",
+        "qualitative-methods.html",
+        "quantitative-methods.html",
+      ],
+    },
+    {
+      text: "07 结果",
+      icon: "chart-line",
+      link: "/research/academic-writing-guide/results/",
+      prefix: "/research/academic-writing-guide/results/",
+      collapsible: true,
+      children: [
+        "results.html",
+        "using-non-textual-elements.html",
+      ],
+    },
+    {
+      text: "08 讨论",
+      icon: "comment-dots",
+      link: "/research/academic-writing-guide/discussion/",
+      prefix: "/research/academic-writing-guide/discussion/",
+      collapsible: true,
+      children: [
+        "discussion.html",
+        "study-limitations.html",
+      ],
+    },
+    {
+      text: "09 结论",
+      icon: "file-lines",
+      link: "/research/academic-writing-guide/conclusion/",
+      prefix: "/research/academic-writing-guide/conclusion/",
+      collapsible: true,
+      children: [
+        "conclusion.html",
+        "appendices.html",
+      ],
+    },
+    {
+      text: "10 论文校对",
+      icon: "magnifying-glass",
+      link: "/research/academic-writing-guide/proofreading/",
+      prefix: "/research/academic-writing-guide/proofreading/",
+      collapsible: true,
+      children: [
+        "proofreading-your-paper.html",
+        "common-grammar-mistakes.html",
+      ],
+    },
+    {
+      text: "11 引用来源",
+      icon: "book-bookmark",
+      link: "/research/academic-writing-guide/citing-sources/",
+      prefix: "/research/academic-writing-guide/citing-sources/",
+      collapsible: true,
+      children: [
+        "citing-sources.html",
+        "avoiding-plagiarism.html",
+        "footnotes-or-endnotes.html",
+        "further-readings.html",
+      ],
+    },
+    "annotated-bibliography.html",
+    {
+      text: "口头报告",
+      icon: "comment-dots",
+      link: "/research/academic-writing-guide/oral-presentation/",
+      prefix: "/research/academic-writing-guide/oral-presentation/",
+      collapsible: true,
+      children: [
+        "giving-an-oral-presentation.html",
+        "dealing-with-nervousness.html",
+        "using-visual-aids.html",
+      ],
+    },
+    "grading-someone-elses-paper.html",
+    "managing-group-projects.html",
+    {
+      text: "书评",
+      icon: "book-open",
+      link: "/research/academic-writing-guide/book-review/",
+      prefix: "/research/academic-writing-guide/book-review/",
+      collapsible: true,
+      children: [
+        "writing-a-book-review.html",
+        "multiple-book-review.html",
+        "reviewing-collected-essays.html",
+      ],
+    },
+    {
+      text: "田野报告",
+      icon: "file-lines",
+      link: "/research/academic-writing-guide/field-report/",
+      prefix: "/research/academic-writing-guide/field-report/",
+      collapsible: true,
+      children: [
+        "writing-a-field-report.html",
+        "informed-consent.html",
+        "writing-field-notes.html",
+      ],
+    },
+    "writing-a-policy-memo.html",
+    "writing-a-research-proposal.html",
+    "acknowledgements.html",
   ],
 
   // 数学建模专题

@@ -65,7 +65,7 @@ markmap:
 
 算法名称不必成为新的研究方向。新论文先确定所解决的问题，再分析采用的机制；没有文章的方向暂留在导图中，避免产生大量空目录。
 
-已有的[多目标优化专题](/ai-algorithms/foundations/problem-cases/multi-objective-optimization/)保留原有链接，作为这个索引的一部分。每周阅读过程见[论文随笔](/paper-notes/)。
+已有的[多目标优化专题](/ai-algorithms/foundations/problem-cases/multi-objective-optimization/)保留原有链接，作为这个索引的一部分。每周阅读过程见[论文随笔](/research/paper-notes/)。
 
 ## 分类依据
 

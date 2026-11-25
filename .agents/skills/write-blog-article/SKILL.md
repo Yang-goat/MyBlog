@@ -19,7 +19,7 @@ Create concise, sourced Chinese articles that match the surrounding section and 
 - Match the actual folder hierarchy to the navbar section, dropdown group, board, and sidebar subgroup. Use lowercase English kebab-case for folders, article files, and images; keep `README.md` for directory pages.
 - Keep `sidebar.ts` explicit and hand-editable. List direct articles as links; create a collapsible group only for a real subdirectory with child articles. Do not replace this configuration with scanning or helper functions.
 - Keep each article in one board. Reference other boards in article text, not by inserting their articles into the current sidebar or adding categories solely to create cross-links.
-- Use `paper-notes/weekly/` for weekly reading records. Put developed explanations under the relevant topic; link the records and topic articles instead of duplicating content.
+- Use `research/paper-notes/weekly/` for weekly reading records. Put developed explanations under the relevant topic; link the records and topic articles instead of duplicating content.
 - Read [project maintenance](../../../docs/maintenance.md) for build, cleanup, and preview procedures. When moving content, preserve existing aliases, update local links and assets, and verify redirects. The migration map is persistent validation data, not a temporary file.
 
 ## Research Before Writing

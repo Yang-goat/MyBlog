@@ -4,7 +4,7 @@ export const GRAPH_GROUPS = [
   { id: "ai-applications", label: "AI 应用", color: "#26a69a" },
   { id: "software-tools", label: "软件工具", color: "#d59a35" },
   { id: "notes", label: "随笔", color: "#a780d5" },
-  { id: "paper-notes", label: "论文随笔", color: "#e2798a" },
+  { id: "research", label: "科研", color: "#e2798a" },
 ];
 
 // These labels remain valid article tags, but do not express a useful topic.

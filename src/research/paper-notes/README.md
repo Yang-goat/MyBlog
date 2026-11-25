@@ -1,4 +1,6 @@
 ---
+redirectFrom:
+  - "/paper-notes/"
 title: 论文随笔
 icon: book-open
 index: false

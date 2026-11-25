@@ -122,14 +122,14 @@ test("self, duplicate, external and attachment links do not create extra graph e
 test("only real public article files under the five sections are eligible", () => {
   const invalid = [
     page("notes/README.md"), page("notes/index.md"), page("en/notes/a.md"),
-    page("about.md"), page("external-links/a.md"), page("notes/assets/a.md"), page("notes/tests/a.md"),
+    page("about.md"), page("external-links/a.md"), page("paper-notes/a.md"), page("notes/assets/a.md"), page("notes/tests/a.md"),
     page("notes/a.md", "", { article: false }), page("notes/a.md", "", { home: true }),
     page("notes/a.md", "", { draft: true }), page("notes/a.md", "", { published: false }),
     page("ai-applications/knowledge-retrieval/knowledge-graphs/site-knowledge-graph.md"),
     { ...page("notes/a.md"), filePath: null },
   ];
   assert.ok(invalid.every((entry) => !isEligibleArticle(entry)));
-  for (const root of ["notes", "ai-algorithms", "ai-applications", "software-tools", "paper-notes"]) {
+  for (const root of ["notes", "ai-algorithms", "ai-applications", "software-tools", "research"]) {
     assert.ok(isEligibleArticle(page(`${root}/a.md`)));
   }
   assert.ok(isEligibleArticle(page("notes/a.md", "", { seo: false, feed: false })));
