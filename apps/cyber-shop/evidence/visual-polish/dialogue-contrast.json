@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "marketChoice": true,
+  "keyboardFocusLoop": true,
+  "escapeAndFocusRestore": true,
+  "distinctPrices": true,
+  "perItemInspection": true,
+  "quotesPersist": true,
+  "dialogueContrast": [
+    {
+      "text": "灰线黑市货运协调员",
+      "ratio": 7.508412862760379
+    },
+    {
+      "text": "祁岚",
+      "ratio": 11.488089988879747
+    },
+    {
+      "text": "带了一批民用与工业机电，每件成色不一样，价签都在。可以先挑、先检查。批次清楚就快谈；来路含糊的便宜货需要额外核对。",
+      "ratio": 9.670619423171772
+    }
+  ],
+  "errors": []
+}

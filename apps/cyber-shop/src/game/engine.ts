@@ -2,8 +2,11 @@ import { ITEMS, CATEGORIES, FAULTS, CHARACTERS, SKILLS, EQUIPMENT, CERTIFICATES,
 import { BALANCE, CHALLENGES, CONTENT_VERSION, SAVE_VERSION } from './balance';
 import { fits, occupy, footprint, counterLayout, SURFACE_CAPACITY, SURFACE_COLUMNS } from './warehouse';
 import { visitorGreeting } from './narrative';
-import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT, deliverySourcePlan, DELIVERY_SOURCE_PREMIUM } from './deliveries';
-import {energyPlan,energyTest,energyReturnPosition,ENERGY_LOADS,ENERGY_VERIFY_HOURS,ENERGY_XP} from './energy';
+import { deliveryJobs, newDeliveryDay, deliveryDefinition, deliveryItemCheck, DELIVERY_HOURS, DELIVERY_LIMIT, deliverySourcePlan, DELIVERY_SOURCE_PREMIUM, energyCommissionProgress, fabricationProgress } from './deliveries';
+import {energyPlan,energyTest,energyReturnPosition,energyTolerance,ENERGY_LOADS,ENERGY_VERIFY_HOURS,ENERGY_XP} from './energy';
+import { ENERGY_COMMISSIONS, GRID_MILESTONE } from '../content/deliveries';
+import { FABRICATION_COMMISSIONS, FABRICATION_MILESTONE } from '../content/fabrication';
+import { fabricationPlan } from './fabrication';
 import { containerLayout, containerItems, containerTrail, ownedObjects, rootLayout, shopCounterLayout, objectFits, putObject, nestingProblem, canReceive, itemAccessible, LABELER_PRICE, LABEL_COLORS, validContainerLabel } from './containers';
 import { STORAGE_STYLES, storageStyle } from '../content/storage';
 import { modifierEffect, validModifiers, dailyHours, wholesaleFactor, foodShelfLife } from './modifiers';
@@ -12,6 +15,7 @@ import {buyerRemaining,purchaseQuantity,fulfillDemand} from './demand';
 import {faction,type FactionId} from '../content/factions';
 import {factionFor,buyerPreference,trusted,recordTradeRelation,factionStoragePrice,factionVisit,factionKnown,factionContacts,CONTACT_RELATION} from './factions';
 import type { Action, ActionResult, CategoryId, CertificateId, EquipmentDefinition, GameState, ItemDefinition, ItemInstance, PresentationEvent, RepairOrder, Visitor, StorageContainer, DeliveryDefinition } from './types';
+import { CAREER_FOCUSES } from './types';
 
 const clone = <T>(value: T): T => structuredClone(value);
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
@@ -49,7 +53,10 @@ export const repairInvestment = (s: GameState) => SKILLS.filter(n => n.tree === 
 export function professionVictory(s: GameState, professionId: string) {
   const definition = PROFESSIONS.find(p => p.id === professionId);
   const implemented = definition?.implemented ?? false;
-  const mastered = !!definition?.masterySkills.some(id => s.skills.includes(id));
+  const mastered = professionId === 'energy-tech'
+    ? energyCommissionProgress(s) >= 2
+    : professionId === 'fabricator' ? fabricationProgress(s) >= 2
+    : !!definition?.masterySkills.some(id => s.skills.includes(id));
   const milestone = definition?.finalMilestone ?? null;
   const completed = !!milestone && s.professionMilestones.includes(milestone);
   return { professionId, implemented, mastered, milestone, completed, ready: implemented && mastered && completed };
@@ -137,7 +144,7 @@ function customer(s: GameState, category: CategoryId, preferred?: string) {
   return CHARACTERS.find(c => c.id === preferred) ?? pick(s, pool.length ? pool : CHARACTERS.filter(c => !c.endless));
 }
 function accessibleDefinitions(s: GameState, category?: CategoryId) { return ITEMS.filter(d => d.chapter <= s.chapter && (!category || d.category === category) && (!d.regulated || s.licenses.includes('regulated-trade'))); }
-function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, groupId?:FactionId,source?:{request:DeliveryDefinition;count:number}): Visitor {
+function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, groupId?:FactionId,source?:{request:DeliveryDefinition;count:number;materials?:string[]}): Visitor {
   // Trading authorization governs transfer of ownership, not receiving a client's device for licensed service.
   let pool = kind === 'repair'
     ? ITEMS.filter(d => d.chapter <= s.chapter && d.category === category && d.certificate && s.certificates.includes(d.certificate))
@@ -160,9 +167,13 @@ function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, 
   });
   if(source&&goods){
     for(let n=0;n<source.count;n++){
-      const target=ITEMS.find(d=>d.id===source.request.itemIds[n%source.request.itemIds.length])!;
+      const definitionId=source.materials?.[n]??source.request.itemIds[n%source.request.itemIds.length];
+      const target=ITEMS.find(d=>d.id===definitionId)!;
       const good=createItem(s,target),need=source.request;
-      good.condition=Math.max(good.condition,need.condition);good.capacity=Math.max(good.capacity,need.capacity??0);good.purity=Math.max(good.purity,need.purity??0);good.integrity=Math.max(good.integrity,need.integrity??0);good.originality=Math.max(good.originality,need.originality??0);
+      good.condition=Math.max(good.condition,source.materials?76:need.condition);
+      good.capacity=need.prepared?need.capacity!-15:Math.max(good.capacity,need.capacity??0);
+      good.purity=Math.max(good.purity,need.purity??0);good.integrity=Math.max(good.integrity,need.integrity??0);good.originality=Math.max(good.originality,need.originality??0);
+      if(source.materials)good.purity=Math.max(good.purity,76);
       if(need.functional)good.faults=[];if(need.freshDays)good.expiresDay=Math.max(good.expiresDay??s.day,s.day+need.freshDays);
       if(need.compatible)good.compatibility='开放标准';if(need.authentic){good.authentic=true;good.provenance='可追溯的商人核验旧物';}if(need.authorized)good.provenance='可追溯的合法授权副本';
       good.known=['basic','scan','serial'];goods[n]=good;
@@ -180,7 +191,7 @@ function makeVisitor(s: GameState, kind: Visitor['kind'], category: CategoryId, 
   return { id: id(s, 'visitor'), characterId: person.id, kind, item, goods, priceTags, demand:kind==='buyer'?{limit:purchaseQuantity(affiliation.id,d.category),fulfilled:0}:undefined, budget: kind === 'buyer' ? round(Math.max(400, quote * 4)*affiliation.budget) : undefined, category: d.category, quote:priceTags&&item?priceTags[item.id]!.ask:quote,
     limit: kind === 'seller' ? (priceTags&&item?priceTags[item.id]!.minimum:round(value * BALANCE.sellerFloor * affiliation.seller * (1 - advantage))) : round(10000 * (BALANCE.buyerCeiling + advantage + Math.min(.2, attraction(s) / 400))),
     rounds: 0, patience: person.patience, resolved: false,
-    request: source?`按「${source.request.title}」找到 ${source.count} 件货，已核对交货条件；同成色来货价加 25%，你仍可逐件决定是否收下。`:kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `这趟想收 ${purchaseQuantity(affiliation.id,d.category)} 件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
+    request: source?`按「${source.request.title}」找到 ${source.count} 件货，${source.materials?'已核对所需原料的品相和读数':source.request.prepared?'已核对品相与功能，容量留给你整备':'已核对交货条件'}。同成色来货价加 25%，可逐件挑选。`:kind === 'repair' ? `${d.name}：${(FAULTS.find(f => f.id === item!.faults[0])?.symptom ?? '工作不稳定').replace(/[。；]$/, '')}。请先检测。` : kind === 'seller' ? `带了一批${CATEGORIES.find(c=>c.id===d.category)?.name}，每件成色不一样，价签都在。可以先挑、先检查。${person.bargain}` : `这趟想收 ${purchaseQuantity(affiliation.id,d.category)} 件${CATEGORIES.find(c => c.id === d.category)?.name}。${person.bargain}` };
 }
 function generateDay(s: GameState) {
   s.eventId = EVENTS[(s.day - 1) % EVENTS.length]!.id; s.eventResolved = false;
@@ -194,10 +205,12 @@ function generateDay(s: GameState) {
   const preferredCategory=network?.categories[(s.day-2+network.categories.length)%network.categories.length];
   const networkCategory=preferredCategory&&accessibleDefinitions(s,preferredCategory).length ? preferredCategory : network?.categories.find(c=>accessibleDefinitions(s,c).length)??categories[s.day%categories.length]!;
   const sourceJob=s.deliveries?.find(j=>j.id===s.deliverySource?.jobId&&j.status==='active'&&j.deadline>=s.day);
-  const source=sourceJob&&s.deliverySource?{request:deliveryDefinition(sourceJob),count:s.deliverySource.count}:undefined;
-  s.visitors = [makeVisitor(s, 'repair', 'electronics'), makeVisitor(s, 'seller', source?.request.category??supplierCategory,undefined,source), makeVisitor(s, 'buyer', saleCategory),
+  const source=sourceJob&&s.deliverySource?{...s.deliverySource,request:deliveryDefinition(sourceJob)}:undefined;
+  const sourceCategory=ITEMS.find(item=>item.id===source?.materials?.[0])?.category??source?.request.category;
+  s.visitors = [makeVisitor(s, 'repair', 'electronics'), makeVisitor(s, 'seller', sourceCategory??supplierCategory,undefined,source), makeVisitor(s, 'buyer', saleCategory),
     makeVisitor(s, 'repair', repairCategory,route==='contractors'?route:undefined), makeVisitor(s, 'seller',networkCategory,route),
     makeVisitor(s, 'buyer',route?networkCategory:supplierCategory,route), makeVisitor(s, 'buyer', attraction(s)>20 && has(s,'collector') ? 'antique' : saleCategory)];
+  if (sourceJob) s.visitors[1]!.sourceDeliveryId = sourceJob.id;
   delete s.factionAppointment;delete s.deliverySource;
   if (s.endless) {
     const guests = CHARACTERS.filter(c => c.endless);
@@ -243,12 +256,19 @@ export function questProgress(s: GameState, questId: string) {
   return { current, target: stage.count, complete: false, ready: current >= stage.count };
 }
 export function applyAction(input: GameState, action: Action): ActionResult {
+  const fail = (text: string): ActionResult => ({ state: input, events: [{ type: 'error', text }], ok: false });
+  if (action.type === 'focusCareer') {
+    if (input.phase !== 'open' && input.phase !== 'closed') return fail('请从营业中的任务板选择跟进路线。');
+    if (!CAREER_FOCUSES.includes(action.career)) return fail('这条职业路线尚未开放。');
+    const state = clone(input);
+    state.careerFocus = action.career;
+    return { state, events: [], ok: true };
+  }
   const s = clone(input); const events: PresentationEvent[] = [];
   s.deliveries??=newDeliveryDay(s);
   // Anchor legacy/new-game stock before removing an item so its neighbours stay put.
   const initialLayout = rootLayout(s, rootCapacity(s));
   for (const item of ownedObjects(s)) if (initialLayout.positions[item.id]) item.grid = initialLayout.positions[item.id];
-  const fail = (text: string): ActionResult => ({ state: input, events: [{ type: 'error', text }], ok: false });
   const say = (text: string, type: PresentationEvent['type'] = 'success') => { events.push({ type, text }); s.messages.push(text); s.messages = s.messages.slice(-60); };
   const pay = (amount: number, kind: string, note: string, itemId?: string) => { s.cash -= amount; ledger(s, kind, -amount, note, itemId); };
   const earn = (amount: number, kind: string, note: string, itemId?: string) => { s.cash += amount; s.records.revenue += amount; ledger(s, kind, amount, note, itemId); };
@@ -301,7 +321,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
   };
   if (s.phase === 'failed' || (s.phase === 'ended' && action.type !== 'continueEndless')) return fail('本局已结算。可以恢复当日备份或重新开局。');
   if (s.phase === 'won' && !['continueEndless', 'endGame'].includes(action.type)) return fail('请在结局中选择结束并保存，或继续经营。');
-  const openOnly: Action['type'][] = ['startEnergy','verifyEnergy','buyStorage','sellStorage','acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
+  const openOnly: Action['type'][] = ['fabricate','startEnergy','verifyEnergy','buyStorage','sellStorage','acceptDelivery','deliverGoods','cancelDelivery','callVisitor', 'tradeBatch', 'offer', 'acceptTrade', 'reject', 'nextVisitor', 'acceptRepair', 'startRepair', 'diagnose', 'repair', 'verify', 'deliver', 'exam', 'startFinal', 'inspect', 'preserve', 'eventChoice'];
   if (openOnly.includes(action.type) && s.phase !== 'open') return fail('这项操作需要开店后进行。');
   if ('itemId' in action && action.itemId) {
     const targeted = findItem(action.itemId);
@@ -309,6 +329,28 @@ export function applyAction(input: GameState, action: Action): ActionResult {
     if (targeted && !itemAccessible(s, targeted)) return fail('这个箱包被压住了，先移走上层箱包。');
   }
   switch (action.type) {
+    case 'fabricate': {
+      const plan = fabricationPlan(s,action.recipeId,action.method,action.itemIds,rootCapacity(s));
+      if (!plan.ok || !('recipe' in plan) || !plan.placement) return fail(plan.reason);
+      const definition = ITEMS.find(item => item.id === plan.recipe.output)!;
+      const product = createItem(s,definition,'player',[]);
+      product.condition = plan.quality;
+      product.known = ['basic','scan','serial'];
+      product.authentic = true;
+      product.provenance = '可追溯的第九街工坊装配批次';
+      product.cost = plan.materialCost + plan.fee;
+      product.fabrication = { recipeId:plan.recipe.id,method:action.method,day:s.day,quality:plan.quality,materialCost:plan.materialCost,fee:plan.fee };
+      putObject(product,plan.placement);
+      s.items = s.items.filter(item => !action.itemIds.includes(item.id));
+      s.items.push(product);
+      if (!s.discovered.includes(definition.id)) s.discovered.push(definition.id);
+      spendHours(plan.hours);
+      pay(plan.fee,'fabrication',`装配${definition.name} · 原料成本 ₡${plan.materialCost}`,product.id);
+      s.fabricatedCount = (s.fabricatedCount ?? 0) + 1;
+      gainXp(s,20);
+      say(`${definition.name}已入主仓 · 品相 ${plan.quality}% · 累计成本 ₡${product.cost}`,'repair');
+      break;
+    }
     case 'startEnergy': {
       const item=findItem(action.itemId),plan=energyPlan(s,item,action.profileId);if(!plan.ok||!item||!plan.profile||plan.target===null)return fail(plan.reason);
       spendHours(plan.hours);pay(plan.electricity,'energy-electricity',`${def(item).name} · ${plan.profile.name}电费`,item.id);
@@ -322,7 +364,7 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if(!work||!item||!test)return fail('能源工位没有待复核货物。');if(work.verified)return fail('负载复核已经通过，可以收回货架。');
       if(!ENERGY_LOADS.some(l=>l.id===action.load)||!Number.isSafeInteger(action.value)||action.value<0||action.value>100)return fail('检测档位或参考读数无效。');
       if(!spendHours(ENERGY_VERIFY_HOURS))return fail('复核需要半个工时，可以明天继续。');work.attempts++;
-      if(action.load!==test.load||Math.abs(action.value-test.value)>2){say('负载或参考读数不匹配。已用 0.5 h，货物与材料保留；按铭牌重新设置。','error');break;}
+      if(action.load!==test.load||Math.abs(action.value-test.value)>energyTolerance(s)){say('负载或参考读数不匹配。已用 0.5 h，货物与材料保留；按铭牌重新设置。','error');break;}
       work.verified=true;item.capacity=work.target;say(`负载稳定：有效容量 ${work.before}% → ${work.target}%。收回货架后可出售或交货。`,'success');break;
     }
     case 'finishEnergy': {
@@ -335,7 +377,8 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       if(action.jobId===null){delete s.deliverySource;say('已取消明日的订货询货。');break;}
       const job=s.deliveries.find(j=>j.id===action.jobId);if(!job)return fail('没有这份订货。');
       const plan=deliverySourcePlan(s,job);if(!plan.ok)return fail(plan.reason);
-      s.deliverySource={jobId:job.id,count:plan.count};say(`已请商人寻找 ${plan.count} 件订货所需旧物，明日随首位卖家到店；报价加 25%，到店再决定购买。`);break;
+      s.deliverySource={jobId:job.id,count:plan.count,...(plan.materials?{materials:plan.materials}:{})};
+      say(`已请商人寻找 ${plan.count} 件${plan.materials?'配方原料':'订货所需旧物'}，明日随首位卖家到店。报价加 25%，到店再决定购买。`);break;
     }
     case 'reserveItem': {
       const item=findItem(action.itemId);
@@ -350,10 +393,11 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       s.factionAppointment=group.id;say(`已约好${group.name}，下个营业日会带来一位卖家和一位买家。`);break;
     }
     case 'acceptDelivery': {
-      const job=s.deliveries.find(j=>j.id===action.jobId&&j.status==='offered'&&j.postedDay===s.day);
+      const job=deliveryJobs(s).find(j=>j.id===action.jobId&&j.status==='offered'&&j.postedDay===s.day);
       if(!job)return fail('这份订货单已经接取或不再开放。');
       if(s.deliveries.filter(j=>j.status==='active').length>=DELIVERY_LIMIT)return fail('最多同时承接两份订货，先交货或取消一份。');
       job.status='active';job.acceptedDay=s.day;
+      if(!s.deliveries.includes(job))s.deliveries.push(job);
       say(`已接下「${deliveryDefinition(job).title}」，第 ${job.deadline} 日闭店前交货。款项在交货时结算。`);break;
     }
     case 'cancelDelivery': {
@@ -371,7 +415,10 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       for(const item of goods as ItemInstance[]){const check=deliveryItemCheck(s,request,item);if(!check.ready)return fail(`${def(item).name}：${check.reason}。`);}
       if(!spendHours(DELIVERY_HOURS))return fail('交货需要半个工时，今天已经来不及打包。');
       const selected=goods as ItemInstance[];
-      job.goods=selected.map(i=>({itemId:i.id,definitionId:i.definitionId,cost:i.cost}));job.status='completed';job.closedDay=s.day;if(s.deliverySource?.jobId===job.id)delete s.deliverySource;
+      job.goods=selected.map(i=>({itemId:i.id,definitionId:i.definitionId,cost:i.cost,...(request.prepared?{preparedCapacity:i.capacity}:{}),
+        ...(request.fabricated?{fabricatedQuality:i.fabrication!.quality}:{})}));job.status='completed';job.closedDay=s.day;if(s.deliverySource?.jobId===job.id)delete s.deliverySource;
+      if(request.id===ENERGY_COMMISSIONS.at(-1)!.id&&!s.professionMilestones.includes(GRID_MILESTONE))s.professionMilestones.push(GRID_MILESTONE);
+      if(request.id===FABRICATION_COMMISSIONS.at(-1)!.id&&!s.professionMilestones.includes(FABRICATION_MILESTONE))s.professionMilestones.push(FABRICATION_MILESTONE);
       s.items=s.items.filter(i=>!action.itemIds.includes(i.id));
       earn(request.reward,'delivery',`订货交付：${request.title}（${request.quantity} 件）`);
       s.records.deliveries=(s.records.deliveries??0)+1;s.records.deliveryIncome=(s.records.deliveryIncome??0)+request.reward;
@@ -703,7 +750,18 @@ export function applyAction(input: GameState, action: Action): ActionResult {
       const stage = stages[s.finalStage]!; const d = ITEMS.find(d => d.id === stage.item)!; const fs = stage.faults.map(id => FAULTS.find(f => f.id === id)!);
       const item = createItem(s, d, 'customer', fs.map(f => f.id)); s.items.push(item); makeOrder(item, 'final', 'lin-qiao', { finalStage: s.finalStage, reward: BALANCE.finalRewards[s.finalStage]!, description: ['街区联络中枢 · 机电传动恢复', '街区联络中枢 · 供能稳定', '街区联络中枢 · 神经接口联调'][s.finalStage]! }); say(`最终委托 ${s.finalStage + 1}/3 已受理。`); break;
     }
-    case 'buyShop': { if (s.victory) return fail('已经拥有永久经营权。'); if (!PROFESSIONS.some(p => professionVictory(s, p.id).ready)) return fail('先取得同一已实现职业的大师能力并完成其最终委托。'); if (s.cash < BALANCE.shopPrice + s.debt) return fail(`需要 ${BALANCE.shopPrice} 收购款，并结清 ${s.debt} 欠费。`); pay(BALANCE.shopPrice + s.debt, 'ownership', '购买永久经营权并结清欠费'); s.debt = 0; s.grace = 0; s.victory = true; s.phase = 'won'; say('招牌上的名字终于属于你。职业最终委托已经完成，永久经营权正式登记。', 'success'); break; }
+    case 'buyShop': {
+      if (s.victory) return fail('已经拥有永久经营权。');
+      const ready = PROFESSIONS.filter(profession => professionVictory(s,profession.id).ready);
+      const winner = ready.find(profession => profession.id === s.careerFocus) ?? ready[0];
+      if (!winner) return fail('完成一条职业路线的最终委托，再办理经营权。');
+      if (s.cash < BALANCE.shopPrice + s.debt) return fail(`需要 ${BALANCE.shopPrice} 收购款，并结清 ${s.debt} 欠费。`);
+      pay(BALANCE.shopPrice + s.debt, 'ownership', '购买永久经营权并结清欠费');
+      s.victoryCareer = CAREER_FOCUSES.find(id => id === winner.id);
+      s.debt = 0; s.grace = 0; s.victory = true; s.phase = 'won';
+      say('招牌上的名字终于属于你。职业最终委托已经完成，永久经营权正式登记。', 'success');
+      break;
+    }
     case 'continueEndless': { if (!s.victory || !['won', 'ended'].includes(s.phase)) return fail('完成主线后可继续无尽经营。'); s.endless = true; s.phase = 'closed'; say('进入无尽经营：永久免租，古董科技考核和新客户开放，经验继续产生技能点。'); break; }
     case 'endGame': { if (!s.victory || s.phase !== 'won') return fail('结局尚未完成。'); s.phase = 'ended'; say('结局已保存。这间店和街区会记住你的名字。'); break; }
     case 'challenge': { if (!s.endless) return fail('珍品订单与批量维修在无尽模式开放。'); if (s.challenge) return fail('已有一项挑战在进行。'); const challenge = CHALLENGES.find(c => c.id === action.id); if (!challenge) return fail('未知挑战。'); if (s.cash < challenge.fee) return fail(`该订单需支付 ${challenge.fee} 登记费。`); if (challenge.fee) pay(challenge.fee, 'challenge-entry', challenge.name); s.challenge = { id: challenge.id, goal: challenge.goal, progress: 0, deadline: s.day + challenge.days, reward: challenge.reward }; say(`接受${challenge.name}：${challenge.description} 截止第 ${s.challenge.deadline} 日，奖励 ${s.challenge.reward}。失败仅失去本次奖励及已投入费用。`); break; }
@@ -737,7 +795,7 @@ export function visibleState(s: GameState) {
   const visibleItem = (i: ItemInstance) => {
     const d = def(i); const basic = i.known.includes('basic') || i.known.includes('diagnosed'); const scan = i.known.includes('scan') || i.known.includes('batch'); const serial = i.known.includes('serial');
     return { id: i.id, definitionId: d.id, name: d.name, category: d.category, owner: i.owner, location: i.location, known: i.known,
-      containerId: i.containerId, accessible: itemAccessible(s, i), reserved: !!i.reserved, energyPreparation:i.energyPreparation,
+      containerId: i.containerId, accessible: itemAccessible(s, i), reserved: !!i.reserved, energyPreparation:i.energyPreparation, fabrication:i.fabrication,
       condition: basic ? i.condition : undefined, estimate: basic ? estimateValue(s, i) : undefined, cost: i.owner === 'player' ? i.cost : undefined,
       capacity: scan && d.category === 'energy' ? i.capacity : undefined, purity: scan && d.category === 'energy' ? i.purity : undefined,
       integrity: scan && d.category === 'data' ? i.integrity : undefined, compatibility: scan && d.category === 'neural' ? i.compatibility : undefined,
@@ -746,8 +804,8 @@ export function visibleState(s: GameState) {
       salvageEstimate: has(s, 'salvageValue') && basic && d.certificate ? [round(d.price * .7), round(d.price * 1.1)] : undefined };
   };
   const visitor = s.visitors[s.visitorIndex];
-  return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, phase: s.phase, cash: s.cash, hours: s.hours, maxHours: dailyHours(s), debt: s.debt, grace: s.grace,
-    xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment, energyWork:s.energyWork,energyPrepared:s.energyPrepared??0,
+  return { coordinates: '店铺场景原点左上，x 向右，y 向下；经营时间仅动作推进。', day: s.day, chapter: s.chapter, careerFocus: s.careerFocus ?? 'restorer', phase: s.phase, cash: s.cash, hours: s.hours, maxHours: dailyHours(s), debt: s.debt, grace: s.grace,
+    xp: s.xp, level: s.level, points: s.points, skills: s.skills, certificates: s.certificates, trained: s.trained, licenses: s.licenses, equipment: s.equipment, energyWork:s.energyWork,energyPrepared:s.energyPrepared??0, fabricatedCount:s.fabricatedCount??0, victoryCareer:s.victoryCareer,
     stockUsage: stockUsage(s), capacity: capacity(s), rootCapacity: rootCapacity(s), labeler: s.labeler ?? false, modifiers:s.modifiers??[], containers:(s.containers??[]).map(c=>({...c,name:storageStyle(c.styleId).name,layout:containerLayout(s,c),columns:storageStyle(c.styleId).columns,rows:storageStyle(c.styleId).rows,path:containerTrail(s,c.id)?.map(p=>p.id)})), displayCapacity: displayCapacity(s), attraction: attraction(s), items: s.items.map(visibleItem),
     visitorArrived: s.visitorArrived !== false, warehouse: rootLayout(s, rootCapacity(s)), tutorial: s.tutorial, conversations: s.conversations,
     visitor: visitor ? { id: visitor.id, characterId: visitor.characterId, kind: visitor.kind, category: visitor.category, quote: visitor.quote, rounds: visitor.rounds, patience: visitor.patience, resolved: visitor.resolved, request: visitor.request, greeting:visitorGreeting(s,visitor), goods: visitor.goods?.map(i=>({...visibleItem(i),quote:tradeQuote(s,visitor,i)})), storageGoods:visitor.storageGoods,demand:visitor.demand, budget: visitor.budget, negotiation:visitor.negotiation,lastTrade:visitor.lastTrade, item: visitor.item ? visibleItem(visitor.item) : undefined } : null,

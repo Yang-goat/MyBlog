@@ -18,6 +18,7 @@ export function createLayoutHistory(limit=20){
   get size(){return steps.length;},
   clear(){steps.length=0;},
   record(before:GameState,after:GameState,action:Action){
+   if(action.type==='focusCareer')return;
    if(!layoutActions.has(action.type)){steps.length=0;return;}
    const from=capture(before),to=signature(capture(after));
    if(signature(from)===to)return;

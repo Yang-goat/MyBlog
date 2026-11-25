@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "viewport": [
+    568,
+    320
+  ],
+  "twoTradeColumns": true,
+  "history": true,
+  "purchase": true,
+  "stored": true,
+  "errors": []
+}

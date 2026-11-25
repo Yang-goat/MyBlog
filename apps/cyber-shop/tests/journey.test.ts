@@ -3,8 +3,23 @@ import { createGame, applyAction } from '../src/game/engine';
 import { journey, dayReport, financialRecovery } from '../src/game/journey';
 import { act, repairActive, normalDay, playToWin } from './helpers';
 import { exportSave, importSave } from '../src/persistence/storage';
+import type { CareerFocus } from '../src/game/types';
 
 describe('player-facing journey and receipts',()=>{
+ it('persists a reversible choice without advancing the economy or either career',()=>{
+  const original=createGame(42);
+  expect(journey(importSave(exportSave(original))).focus).toBe('restorer');
+  const focused=act(original,{type:'focusCareer',career:'energy-tech'});
+  expect(focused).toEqual({...original,careerFocus:'energy-tech'});
+  expect(journey(importSave(exportSave(focused))).next).toMatchObject({id:'energy-scanner',panel:'equipment'});
+  const closed=act(focused,{type:'closeDay'});
+  expect(journey(closed).next).toMatchObject({id:'energy-open',panel:'day-report'});
+  expect(journey(act(closed,{type:'focusCareer',career:'restorer'})).next.id).toBe('repairs');
+  const invalid='gardener' as CareerFocus;
+  expect(applyAction(original,{type:'focusCareer',career:invalid})).toMatchObject({ok:false,state:original});
+  expect(()=>exportSave({...original,careerFocus:invalid})).toThrow('职业路线');
+  expect(journey({...focused,debt:100}).next.id).toBe('rescue');
+ });
  it('reconciles real cash across repair, purchase, close, restore and next day',()=>{
   let s=createGame(42); const opening=s.cash;
   s=act(s,{type:'acceptRepair'});s=repairActive(s);

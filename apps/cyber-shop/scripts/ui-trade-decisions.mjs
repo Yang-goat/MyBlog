@@ -16,6 +16,8 @@ try{for(const touch of [false,true]){
   await panel('库存');for(const id of (await game()).items.filter(i=>i.category!=='food').map(i=>i.id)){await page.locator(`.item-tile[data-item="${id}"]`)[use]();await page.getByRole('button',{name:/^折价清货 · ₡/})[use]();}await click('关闭面板');const expiredId=(await game()).items[0].id;
   for(let n=0;n<2;n++){await click('关店 / 日结 →');await click('确认闭店');await click('迎接新的一天 →');}
   assert.equal((await game()).day,3);await click('绿色叫号按钮');await click('结束当前接待');await click('绿色叫号按钮');await talk();await click('把来货放上台 →');const before=await game(),item=before.visitor.goods[0],price=item.quote+3;
+  const trade=page.getByRole('dialog',{name:'谈判交易'});
+  assert(await trade.evaluate(el=>el.closest('#shop-overlays')?.parentElement?.classList.contains('app')),'Trading must inherit the game theme and motion settings');
   assert.equal(before.visitor.category,'food');await page.getByLabel('议价金额',{exact:true}).fill('0');assert(await page.getByRole('button',{name:'报价并成交',exact:true}).isDisabled());
   await page.getByLabel('议价金额',{exact:true}).fill(String(price));const preview=page.getByLabel('当前报价预览',{exact:true});assert((await preview.innerText()).includes(`现金 ₡${before.cash-price}`));await preview.scrollIntoViewIfNeeded();await shot('custom-purchase-preview');await click('报价并成交');assert.equal((await game()).cash,before.cash-price);assert.equal((await game()).visitor.lastTrade.cost,price);
   await click('关闭谈判');await click('全部入库 ↓');await click('结束当前接待');await click('绿色叫号按钮');await talk();assert.equal((await game()).visitor.category,'food');await click('挑选出售货物 →');

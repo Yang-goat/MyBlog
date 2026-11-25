@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "mode": "desktop",
+      "winDay": 5,
+      "fabricated": 6,
+      "repairs": 0,
+      "cash": 369,
+      "errors": []
+    },
+    {
+      "mode": "touch",
+      "winDay": 5,
+      "fabricated": 6,
+      "repairs": 0,
+      "cash": 369,
+      "errors": []
+    }
+  ]
+}

@@ -1,21 +1,27 @@
 <script setup lang="ts">
-import {computed,ref,watch,onUnmounted} from 'vue';
+import {computed,nextTick,ref,watch,onUnmounted} from 'vue';
 import {state,modal,dispatch,selectedItem,selectedDelivery,deliveryReturn} from './store';
 import {CHARACTERS,ITEMS,EQUIPMENT} from '../content';
-import {deliveryJobs,deliveryDefinition,deliveryItemCheck,deliveryRequirements,deliverySourcePlan,DELIVERY_HOURS,DELIVERY_LIMIT} from '../game/deliveries';
+import {deliveryJobs,deliveryDefinition,deliveryItemCheck,deliveryRequirements,deliverySourcePlan,energyCommissionProgress,fabricationProgress,DELIVERY_HOURS,DELIVERY_LIMIT} from '../game/deliveries';
+import { fabricationRecipe } from '../game/fabrication';
 import Art from './Art.vue';
 const selectedId=selectedDelivery,chosen=ref<string[]>([]),cancelConfirm=ref(false);
-const returnLabel=computed(()=>({trade:'返回交易',inventory:'返回库存','close-day':'返回闭店确认',energy:'返回能源工位'}[deliveryReturn.value]??'返回店铺'));
+const receipt=ref<HTMLElement>();
+const returnLabel=computed(()=>({trade:'返回交易',inventory:'返回库存','close-day':'返回闭店确认',energy:'返回能源工位',fabrication:'返回合成工位',journey:'返回任务板'}[deliveryReturn.value]??'返回店铺'));
 onUnmounted(()=>{selectedDelivery.value='';deliveryReturn.value='';});
 const jobs=computed(()=>deliveryJobs(state.value));
 const active=computed(()=>jobs.value.filter(j=>j.status==='active'));
+const energyStage=computed(()=>energyCommissionProgress(state.value));
 const sections=computed(()=>[
  {title:'正在备货',jobs:active.value},
- {title:'今日来信',jobs:jobs.value.filter(j=>j.status==='offered')},
+ {title:'今日来信',jobs:jobs.value.filter(j=>j.status==='offered'&&!deliveryDefinition(j).prepared&&!deliveryDefinition(j).fabricated)},
+ {title:'能源技师 · '+energyStage.value+' / 3',jobs:jobs.value.filter(j=>j.status==='offered'&&deliveryDefinition(j).prepared)},
+ {title:'合成工匠 · '+fabricationProgress(state.value)+' / 3',jobs:jobs.value.filter(j=>j.status==='offered'&&deliveryDefinition(j).fabricated)},
  {title:'已经回信',jobs:jobs.value.filter(j=>!['active','offered'].includes(j.status)).slice().reverse()},
 ]);
 const job=computed(()=>jobs.value.find(j=>j.id===selectedId.value)??active.value[0]??jobs.value.find(j=>j.status==='offered')??jobs.value.at(-1));
 const request=computed(()=>job.value?deliveryDefinition(job.value):null);
+const recipe=computed(()=>request.value?.fabricated?fabricationRecipe(request.value.fabricated):undefined);
 const sourcePlan=computed(()=>job.value?deliverySourcePlan(state.value,job.value):null);
 const sourceJob=computed(()=>jobs.value.find(j=>j.id===state.value.deliverySource?.jobId));
 const person=computed(()=>CHARACTERS.find(c=>c.id===request.value?.characterId));
@@ -26,15 +32,28 @@ const open=computed(()=>state.value.phase==='open');
 const canDeliver=computed(()=>open.value&&job.value?.status==='active'&&state.value.day<=job.value.deadline&&chosen.value.length===request.value?.quantity&&state.value.hours>=DELIVERY_HOURS);
 const labels={offered:'可接取',active:'备货中',completed:'已交付',expired:'已过期',cancelled:'已取消'};
 const name=(id:string)=>ITEMS.find(i=>i.id===id)?.name??id;
+const sourceMaterials=computed(()=>{
+ const needed=job.value?.id===state.value.deliverySource?.jobId?state.value.deliverySource?.materials:sourcePlan.value?.materials;
+ return [...new Set(needed??[])].map(id=>`${name(id)} × ${needed!.filter(value=>value===id).length}`).join(' · ');
+});
 function missingTool(method?:string){return EQUIPMENT.find(e=>e.effect===method&&['scan','serial'].includes(method??'')&&!(state.value.equipment[e.id]>0));}
-const requiredTools=computed(()=>EQUIPMENT.filter(e=>request.value&&((e.effect==='scan'&&(request.value.capacity||request.value.purity||request.value.integrity||request.value.compatible))||(e.effect==='serial'&&(request.value.authentic||request.value.authorized||request.value.originality)))));
+const requiredTools=computed(()=>EQUIPMENT.filter(e=>request.value&&((e.effect==='scan'&&(request.value.capacity||request.value.purity||request.value.integrity||request.value.compatible||request.value.fabricated))||(e.effect==='serial'&&(request.value.authentic||request.value.authorized||request.value.originality)))));
 watch(()=>job.value?.id,()=>{chosen.value=[];cancelConfirm.value=false;});
 watch(candidates,()=>{chosen.value=chosen.value.filter(id=>ready.value.some(c=>c.item.id===id));});
 function inspectInventory(id:string){selectedItem.value=id;modal.value='inventory';}
+function prepareItem(id:string){selectedItem.value=id;modal.value='energy';}
 function selectReady(){chosen.value=ready.value.slice().sort((a,b)=>a.item.cost-b.item.cost).slice(0,request.value?.quantity??0).map(c=>c.item.id);}
 function accept(){if(job.value){selectedId.value=job.value.id;dispatch({type:'acceptDelivery',jobId:job.value.id});}}
 function cancel(){if(job.value){selectedId.value=job.value.id;dispatch({type:'cancelDelivery',jobId:job.value.id});cancelConfirm.value=false;}}
-function handover(){if(job.value&&canDeliver.value){selectedId.value=job.value.id;if(dispatch({type:'deliverGoods',jobId:job.value.id,itemIds:[...chosen.value]}))chosen.value=[];}}
+async function handover(){
+ if(!job.value||!canDeliver.value)return;
+ selectedId.value=job.value.id;
+ if(!dispatch({type:'deliverGoods',jobId:job.value.id,itemIds:[...chosen.value]}))return;
+ chosen.value=[];
+ await nextTick();
+ receipt.value?.focus({preventScroll:true});
+ receipt.value?.scrollIntoView({block:'nearest'});
+}
 </script>
 <template>
  <div class="delivery-board">
@@ -45,15 +64,16 @@ function handover(){if(job.value&&canDeliver.value){selectedId.value=job.value.i
    <article v-if="job&&request&&person" class="delivery-letter" :data-request="request.id">
     <header><Art :id="person.id" :label="person.name"/><div><p class="eyebrow">{{person.role}} · {{person.name}}</p><h3>{{request.title}}</h3><p class="delivery-status" :class="job.status">{{labels[job.status]}} <span>· 第 {{job.postedDay}} 日来信</span></p></div></header>
     <p class="delivery-story">{{request.description}}</p>
-    <template v-if="job.status==='completed'"><section class="delivery-thanks"><p class="eyebrow">第 {{job.closedDay}} 日 / 已收到</p><p>“{{request.thanks}}”</p><div v-for="goods in job.goods" :key="goods.itemId" class="delivered-good"><Art :id="goods.definitionId" :label="name(goods.definitionId)"/><span>{{name(goods.definitionId)}}</span><small>累计成本 ₡{{goods.cost}}</small></div><p class="delivery-paid">实收货款 ₡{{request.reward}}<small>本批货品成本 ₡{{job.goods?.reduce((n,g)=>n+g.cost,0)??0}}</small></p></section></template>
+    <template v-if="job.status==='completed'"><section ref="receipt" class="delivery-thanks" tabindex="-1"><p class="eyebrow">第 {{job.closedDay}} 日 / 已收到</p><p>“{{request.thanks}}”</p><div v-for="goods in job.goods" :key="goods.itemId" class="delivered-good"><Art :id="goods.definitionId" :label="name(goods.definitionId)"/><span>{{name(goods.definitionId)}}</span><small>累计成本 ₡{{goods.cost}}<template v-if="goods.preparedCapacity"> · 复核 {{goods.preparedCapacity}}%</template><template v-if="goods.fabricatedQuality"> · 装配 {{goods.fabricatedQuality}}%</template></small></div><p class="delivery-paid">实收货款 ₡{{request.reward}}<small>本批货品成本 ₡{{job.goods?.reduce((n,g)=>n+g.cost,0)??0}}</small></p></section></template>
     <template v-else-if="job.status==='expired'||job.status==='cancelled'"><p class="delivery-ended">{{job.status==='expired'?'约好的时间已经过去，订货人另作了安排。':'你已告知订货人取消这次约定。'}}库存与现金保留，可以继续挑选其他来信。</p></template>
     <template v-else>
      <div class="delivery-terms"><ul><li v-for="line in deliveryRequirements(request)" :key="line">{{line}}</li></ul><aside><span>整单货款</span><strong>₡{{request.reward}}</strong><small>第 {{job.deadline}} 日闭店前<br/>交货用时 {{DELIVERY_HOURS}} h</small></aside></div>
+     <p v-if="recipe" class="delivery-tools">加工一件需 {{recipe.inputs.map(name).join('、')}}。<button class="text-button" @click="modal='fabrication'">打开合成工位 ↗</button></p>
      <p v-if="requiredTools.length" class="delivery-tools">新到货物检查需：{{requiredTools.map(t=>`${t.name}（${state.equipment[t.id]?'已持有':'未持有'}）`).join('、')}}。<button v-if="requiredTools.some(t=>!state.equipment[t.id])" class="text-button" @click="modal='equipment'">查看工具采购 ↗</button></p>
      <div v-if="job.status==='offered'" class="delivery-accept"><button class="primary" :disabled="!open||active.length>=DELIVERY_LIMIT" @click="accept">{{!open?'开门后接单':active.length>=DELIVERY_LIMIT?'手上已有两份订货':'接下这份订货'}}</button><p>接取免费。交货才结款，物品仍可自由安排；超期或取消不罚款。</p></div>
-     <section v-if="job.status==='active'" class="delivery-sourcing" aria-label="订货询货"><template v-if="state.deliverySource?.jobId===job.id"><p>已约明日找 {{state.deliverySource.count}} 件 · 首位卖家带来</p><button @click="dispatch({type:'sourceDelivery',jobId:null})">取消询货</button></template><template v-else><button :disabled="!sourcePlan?.ok" @click="dispatch({type:'sourceDelivery',jobId:job.id})">{{sourceJob?'改约这份订货':'请商人按单找货'}}</button><small v-if="!sourcePlan?.ok">{{sourcePlan?.reason}}</small><small v-if="sourceJob">明日当前约定：{{deliveryDefinition(sourceJob).title}}</small></template><small>按交货条件核验，次日到店 · 同成色来货价加 25% · 到店再决定购买。每天只约一份，替换或取消不收费。</small></section>
+     <section v-if="job.status==='active'" class="delivery-sourcing" aria-label="订货询货"><template v-if="state.deliverySource?.jobId===job.id"><p>已约明日找 {{state.deliverySource.count}} 件 · 首位卖家带来</p><button @click="dispatch({type:'sourceDelivery',jobId:null})">取消询货</button></template><template v-else><button :disabled="!sourcePlan?.ok" @click="dispatch({type:'sourceDelivery',jobId:job.id})">{{sourceJob?'改约这份订货':'请商人按单找货'}}</button><small v-if="!sourcePlan?.ok">{{sourcePlan?.reason}}</small><small v-if="sourceJob">明日当前约定：{{deliveryDefinition(sourceJob).title}}</small></template><small v-if="sourceMaterials">{{sourceMaterials}}</small><small>{{recipe?'按缺口带来已核验原料':request.prepared?'带来品相和功能合格的待整备旧货':'按交货条件核验'}}，次日到店 · 同成色来货价加 25% · 到店再决定购买。每天只约一份，替换或取消不收费。</small></section>
      <section class="delivery-parcel"><div class="parcel-heading"><h4>从货架挑货 <small>合格 {{ready.length}} / 需要 {{request.quantity}}</small></h4><button v-if="job.status==='active'&&ready.length" class="text-button" @click="selectReady">选入合格货品</button></div><p v-if="!candidates.length" class="delivery-empty">货架暂时没有这些型号。可以向来访卖家收购，或请商人按单找货。</p>
-      <div v-for="candidate in candidates" :key="candidate.item.id" class="parcel-item" :class="{chosen:chosen.includes(candidate.item.id)}" :data-good="candidate.item.id"><label><input v-if="job.status==='active'" v-model="chosen" type="checkbox" :value="candidate.item.id" :aria-label="`装箱 ${name(candidate.item.definitionId)}`" :disabled="!open||!candidate.check.ready||(!chosen.includes(candidate.item.id)&&chosen.length>=request.quantity)"/><Art :id="candidate.item.definitionId" :label="name(candidate.item.definitionId)"/><span><b>{{name(candidate.item.definitionId)}}</b><small>累计成本 ₡{{candidate.item.cost}}</small></span></label><div><p :class="{eligible:candidate.check.ready}">{{candidate.check.reason}}</p><button v-if="candidate.item.reserved" @click="dispatch({type:'reserveItem',itemId:candidate.item.id,reserved:false})">解除留货</button><button v-else-if="missingTool(candidate.check.inspect)" @click="modal='equipment'">采购{{missingTool(candidate.check.inspect)?.name}} ↗</button><button v-else-if="candidate.check.inspect" :disabled="!open||state.hours<.5" @click="dispatch({type:'inspect',itemId:candidate.item.id,method:candidate.check.inspect})">{{candidate.check.inspect==='basic'?'检查外观':candidate.check.inspect==='scan'?'扫描读数':'查验来源'}}</button><button v-else-if="!candidate.check.ready" @click="inspectInventory(candidate.item.id)">查看与处理 →</button></div></div>
+      <div v-for="candidate in candidates" :key="candidate.item.id" class="parcel-item" :class="{chosen:chosen.includes(candidate.item.id)}" :data-good="candidate.item.id"><label><input v-if="job.status==='active'" v-model="chosen" type="checkbox" :value="candidate.item.id" :aria-label="`装箱 ${name(candidate.item.definitionId)}`" :disabled="!open||!candidate.check.ready||(!chosen.includes(candidate.item.id)&&chosen.length>=request.quantity)"/><Art :id="candidate.item.definitionId" :label="name(candidate.item.definitionId)"/><span><b>{{name(candidate.item.definitionId)}}</b><small>累计成本 ₡{{candidate.item.cost}}</small></span></label><div><p :class="{eligible:candidate.check.ready}">{{candidate.check.reason}}</p><button v-if="candidate.item.reserved" @click="dispatch({type:'reserveItem',itemId:candidate.item.id,reserved:false})">解除留货</button><button v-else-if="missingTool(candidate.check.inspect)" @click="modal='equipment'">采购{{missingTool(candidate.check.inspect)?.name}} ↗</button><button v-else-if="candidate.check.inspect" :disabled="!open||state.hours<.5" @click="dispatch({type:'inspect',itemId:candidate.item.id,method:candidate.check.inspect})">{{candidate.check.inspect==='basic'?'检查外观':candidate.check.inspect==='scan'?'扫描读数':'查验来源'}}</button><button v-else-if="request.prepared&&!candidate.check.ready&&!candidate.item.energyPreparation&&!candidate.item.faults.length&&candidate.item.location==='stock'&&candidate.item.condition>=request.condition" @click="prepareItem(candidate.item.id)">去能源工位 ↗</button><button v-else-if="!candidate.check.ready" @click="inspectInventory(candidate.item.id)">查看与处理 →</button></div></div>
       <div v-if="job.status==='active'" class="parcel-checkout"><p>装箱 {{chosen.length}} / {{request.quantity}} 件 · 本批成本 ₡{{selectedCost}}<span v-if="chosen.length===request.quantity">货款减物品成本 ₡{{request.reward-selectedCost}}<small>未扣日常经营费用</small></span></p><button class="primary" :disabled="!canDeliver" @click="handover">{{!open?'开门后交货':state.hours<DELIVERY_HOURS?'今天工时已用完':'交货并收款'}} →</button></div>
      </section>
      <footer class="delivery-footer"><button class="text-button" @click="modal='inventory'">去货架查看旧物 ↗</button><div v-if="job.status==='active'"><button v-if="!cancelConfirm" class="text-button" :disabled="!open" @click="cancelConfirm=true">取消这份订货</button><template v-else><span>告知 {{person.name}} 取消？</span><button :disabled="!open" @click="cancel">确认取消</button><button @click="cancelConfirm=false">继续备货</button></template></div></footer>

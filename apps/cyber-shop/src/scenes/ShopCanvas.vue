@@ -17,9 +17,11 @@ const street=new Image();
 const metal=new Image();
 const terminal=new Image();
 const solder=new Image();
+const cup = new Image();
+const plant = new Image();
 function render() {
   const el=canvas.value,ctx=el?.getContext('2d'); if(!el||!ctx)return;
-  drawRoom(ctx,el.width,el.height,{day:state.value.day,hours:state.value.hours,maxHours:dailyHours(state.value),closed:state.value.phase!=='open',chapter:state.value.chapter,repairs:state.value.records.repairs,equipment:state.value.equipment,motion:!reducedMotion.value,pointer,time:elapsed,owned:state.value.victory,surfaces},{street,metal,terminal,solder});
+  drawRoom(ctx,el.width,el.height,{day:state.value.day,hours:state.value.hours,maxHours:dailyHours(state.value),closed:state.value.phase!=='open',chapter:state.value.chapter,repairs:state.value.records.repairs,equipment:state.value.equipment,motion:!reducedMotion.value,pointer,time:elapsed,owned:state.value.victory,surfaces},{street,metal,terminal,solder,cup,plant});
   if(pulse>0&&!reducedMotion.value&&surfaces.trade){const r=surfaces.trade;ctx.fillStyle=`rgba(182,221,178,${pulse*.08})`;ctx.fillRect(r.x,r.y,r.width,r.height);}
 }
 function measureSurfaces(){
@@ -44,6 +46,10 @@ onMounted(()=>{
   metal.onload=render;metal.src='/cyber-shop/scenery/patina-metal.webp';
   terminal.onload=render;terminal.src='/cyber-shop/scenery/neon-terminal.webp';
   solder.onload=render;solder.src='/cyber-shop/scenery/neon-solder-station.webp';
+  cup.onload = render;
+  cup.src = '/cyber-shop/scenery/enamel-cup.webp';
+  plant.onload = render;
+  plant.src = '/cyber-shop/scenery/jade-plant.webp';
   const room=canvas.value!.closest('.shop-room');warehouseScroll=room?.querySelector<HTMLElement>('.warehouse-scroll')??undefined;
   resize();observer=new ResizeObserver(resize);observer.observe(canvas.value!);
   surfaceObserver=new ResizeObserver(scheduleMeasure);room?.querySelectorAll('.surface-grid,.warehouse-grid,.warehouse-scroll,.warehouse-section>header').forEach(el=>surfaceObserver!.observe(el));warehouseScroll?.addEventListener('scroll',scheduleMeasure,{passive:true});

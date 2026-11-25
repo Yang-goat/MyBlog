@@ -11,12 +11,14 @@
 | 经营事件 `EVENTS` | 16 | `people.ts` |
 | 人物委托 `QUESTS` | 4 条，每条 3 阶段 | `people.ts` |
 | 街坊订货 `DELIVERIES` | 16，覆盖六类货品 | `deliveries.ts` |
+| 工匠配方和委托 | 3 个配方、3 段职业委托、1 种可重复备件单 | `fabrication.ts` |
+| 能源委托 `ENERGY_COMMISSIONS` | 3 段职业委托和 1 种巡检续单 | `deliveries.ts` |
 | 收藏主题 `THEMES` | 3 | `people.ts` |
 | 故障 `FAULTS` | 12 | `progression.ts` |
 | 技能 `SKILLS` | 24，通用 12、维修 12 | `progression.ts` |
 | 工具、耗材与设施 `EQUIPMENT` | 16，分别 6、6、4 | `progression.ts` |
 | 维修证书 `CERTIFICATES` | 4 | `progression.ts` |
-| 职业 `PROFESSIONS` | 6，修复师完整实现 | `progression.ts` |
+| 职业 `PROFESSIONS` | 6，修复师、能源技师和合成工匠可达经营权 | `progression.ts` |
 | 配方 `RECIPES` | 空注册表 | `progression.ts` |
 | 储能整备 `ENERGY_PROFILES` | 3 个方案、3 种适用型号、3 种复核负载 | `../game/energy.ts` |
 

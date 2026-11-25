@@ -17,6 +17,7 @@ export interface ItemDefinition {
 }
 export interface FaultDefinition { id: string; name: string; symptom: string; operation: Operation; module: string; target: number; material: string; hours: number; certificate: CertificateId }
 export interface ItemInstance {
+  fabrication?: FabricationRecord;
   energyPreparation?:EnergyPreparation;
   reserved?: boolean;
   id: string; definitionId: string; owner: 'player' | 'customer'; location: 'stock' | 'display' | 'workshop' | 'counter';
@@ -36,10 +37,12 @@ export interface QuestStage { text: string; requirement: 'repairs' | 'trades' | 
 export interface QuestDefinition { id: string; name: string; character: string; stages: QuestStage[] }
 export interface CollectionTheme { id: string; name: string; description: string; items: string[]; bonus: number }
 export interface ProfessionDefinition { id: string; name: string; implemented: boolean; masterySkills: string[]; finalMilestone: string; description: string }
-export interface RecipeDefinition { id: string; profession: string; input: Record<string, number>; output: string; enabled: boolean }
+export type FabricationMethod = 'standard' | 'fine';
+export interface RecipeDefinition { id: string; inputs: readonly [string, string]; output: string; hours: number; fee: number }
+export interface FabricationRecord { recipeId: string; method: FabricationMethod; day: number; quality: number; materialCost: number; fee: number }
 export interface NegotiationReply { itemIds: string[]; offered: number; quote: number; round: number; status: 'counter' | 'closed'; reason?: 'price' | 'budget' | 'far' }
 export interface TradeReceipt { kind: 'buy' | 'sell'; amount: number; cost: number; goods: { definitionId: string; itemId: string; cost: number }[] }
-export interface Visitor { demand?:{limit:number;fulfilled:number}; relationCredited?:boolean; storageGoods?:StorageOffer[]; id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
+export interface Visitor { sourceDeliveryId?:string; demand?:{limit:number;fulfilled:number}; relationCredited?:boolean; storageGoods?:StorageOffer[]; id: string; characterId: string; kind: 'seller' | 'buyer' | 'repair'; item?: ItemInstance; goods?: ItemInstance[]; priceTags?: Record<string, { ask: number; minimum: number }>; buyerQuotes?: Record<string, number>; negotiation?: NegotiationReply; lastTrade?: TradeReceipt; budget?: number; category: CategoryId; quote: number; limit: number; rounds: number; patience: number; resolved: boolean; request: string }
 export interface RepairStep { day: number; operation: Operation; module?: string; faultId?: string; result: 'fixed' | 'cleaned' | 'miss'; hours: number; preserve: boolean }
 export interface RepairOrder { id: string; itemId: string; characterId: string; description: string; diagnosed: boolean; verified: boolean; delivered: boolean; escrow: number; reward: number; completedOps: number; kind: 'client' | 'exam' | 'final' | 'own'; certificate?: CertificateId; finalStage?: number; preserveOriginal: boolean; receivedDay?: number; conditionBefore?: number; steps?: RepairStep[] }
 export interface RepairReceipt { orderId: string; definitionId: string; characterId: string; kind: RepairOrder['kind']; receivedDay?: number; day: number; conditionBefore?: number; conditionAfter: number; completedOps: number; steps: RepairStep[]; reward: number }
@@ -49,18 +52,26 @@ export interface DeliveryDefinition {
   quantity: number; days: number; reward: number; xp: number; description: string; thanks: string;
   condition: number; functional?: boolean; capacity?: number; purity?: number; integrity?: number;
   freshDays?: number; authentic?: boolean; originality?: number; authorized?: boolean; compatible?: boolean;
+  prepared?: boolean;
+  fabricated?: string;
 }
 export interface DeliveryJob {
   id: string; templateId: string; postedDay: number; deadline: number;
   status: 'offered' | 'active' | 'completed' | 'expired' | 'cancelled'; acceptedDay?: number; closedDay?: number;
-  goods?: { itemId: string; definitionId: string; cost: number }[];
+  goods?: { itemId: string; definitionId: string; cost: number; preparedCapacity?: number; fabricatedQuality?: number }[];
 }
 export interface StorageContainer { id: string; styleId: string; owner:'player'; location:'stock'|'counter'; containerId?:string; grid?:{x:number;y:number;rotated:Rotation}; counterGrid?:{x:number;y:number;rotated:Rotation}; cost:number; acquiredDay:number; label: string; color: 'cyan' | 'pink' | 'amber' | 'green' | 'blue' | 'ivory' }
 export interface StorageOffer { id:string; styleId:string; price:number }
+export const CAREER_FOCUSES = ['restorer', 'energy-tech', 'fabricator'] as const;
+export type CareerFocus = typeof CAREER_FOCUSES[number];
+
 export interface GameState {
+  careerFocus?: CareerFocus;
+  victoryCareer?: CareerFocus;
+  fabricatedCount?: number;
   energyWork?:EnergyWork;
   energyPrepared?:number;
-  deliverySource?:{jobId:string;count:number};
+  deliverySource?:{jobId:string;count:number;materials?:string[]};
   factionAppointment?:FactionId;
   containers?: StorageContainer[];
   modifiers?:string[];
@@ -81,6 +92,8 @@ export interface GameState {
   ledger: LedgerEntry[]; messages: string[]; appointments: CategoryId | null; challenge: { id: string; goal: number; progress: number; deadline: number; reward: number } | null;
 }
 export type Action =
+ | { type:'focusCareer'; career:CareerFocus }
+ | { type:'fabricate'; recipeId:string; method:FabricationMethod; itemIds:string[] }
  | { type:'startEnergy'; itemId:string; profileId:EnergyProfileId }
  | { type:'verifyEnergy'; load:EnergyLoad; value:number }
  | { type:'finishEnergy' }

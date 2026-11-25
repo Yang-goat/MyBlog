@@ -49,7 +49,9 @@ describe('safe warehouse sorting and session placement undo',()=>{
  it('keeps history after rejected placements and avoids duplicate no-op entries',()=>{
   const q=session(),id=q.state.items[0]!.id,action:Action={type:'moveStock',itemId:id,x:20,y:3,rotated:false};
   expect(q.act(action).ok).toBe(true);expect(q.act(action).ok).toBe(true);expect(q.history.size).toBe(1);
-  expect(q.act({...action,x:500}).ok).toBe(false);expect(q.history.size).toBe(1);expect(q.undo()).toBeDefined();
+  expect(q.act({...action,x:500}).ok).toBe(false);expect(q.history.size).toBe(1);
+  expect(q.act({type:'focusCareer',career:'energy-tech'}).ok).toBe(true);
+  expect(q.undo()?.careerFocus).toBe('energy-tech');
  });
  it('clears placement history on sale, inspection and day transition',()=>{
   for(const action of ['liquidate','inspect','closeDay'] as const){

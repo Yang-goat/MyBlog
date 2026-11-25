@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "mode": "desktop",
+      "winDay": 7,
+      "deliveries": 6,
+      "repairs": 0,
+      "cashAfterPurchase": 311
+    },
+    {
+      "mode": "touch",
+      "winDay": 7,
+      "deliveries": 6,
+      "repairs": 0,
+      "cashAfterPurchase": 311
+    }
+  ],
+  "errors": []
+}

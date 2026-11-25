@@ -311,7 +311,21 @@ onUnmounted(() => { inventoryObserver?.disconnect();clearLongPress();tooltipObse
     <div class="visitor-window">
       <section v-if="touchInfo && inspectedItem && !modal" class="touch-item-info" role="dialog" aria-label="物品信息"><button class="item-info-close" @click="touchInfo = ''">关闭物品信息 ×</button><ItemInfoCard :item="inspectedItem"/></section>
       <Transition name="guest" mode="out-in"><Art v-if="talking && person" :key="visitor?.id" :id="person.id" :label="person.name" class="room-person" eager /></Transition>
-      <div v-if="talking && person" class="speech-bubble"><small>{{ person.role }}</small><button class="visitor-faction" @click="showFaction(currentFaction.id)">{{currentFaction.shortName}} · {{relationName(state.relations[currentFaction.id]??0)}}</button><h2>{{ person.name }}</h2><p>{{ dialogue }}</p><button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : visitor?.kind === 'repair' ? '看看需要修什么' : visitor?.kind === 'buyer' ? '看看有什么合适的' : '看看带来的货' }} </button><div v-else class="speech-options"><button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button><button @click="history = !history">对话记录</button><button @click="notify(person.bargain)">聊聊这笔生意</button></div><div v-if="history" class="dialogue-history"><p>{{ greeting }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></div></div>
+      <section v-if="talking && person" class="speech-bubble" aria-label="顾客对话">
+        <header class="speech-heading">
+          <div><small>{{ person.role }}</small><h2>{{ person.name }}</h2></div>
+          <button class="visitor-faction" @click="showFaction(currentFaction.id)">{{currentFaction.shortName}} · {{relationName(state.relations[currentFaction.id]??0)}}</button>
+        </header>
+        <div :key="history ? 'history' : speechStep" class="speech-copy" tabindex="0" role="region" aria-label="对话内容">
+          <p v-if="!history">{{ dialogue }}</p>
+          <template v-else><p>{{ greeting }}</p><p>{{ visitor?.request }}</p><p>{{ person.bargain }}</p></template>
+        </div>
+        <button v-if="speechStep < 2" @click="speak">{{ speechStep === 0 ? '继续交谈' : visitor?.kind === 'repair' ? '看看需要修什么' : visitor?.kind === 'buyer' ? '看看有什么合适的' : '看看带来的货' }}</button>
+        <div v-else class="speech-options">
+          <button class="primary" @click="openTrade">{{ visitor?.kind === 'repair' ? '查看维修委托' : visitor?.kind === 'buyer' ? '挑选出售货物' : '把来货放上台' }} →</button>
+          <button :aria-pressed="history" @click="history = !history">对话记录</button>
+        </div>
+      </section>
 
     </div>
 
@@ -334,11 +348,19 @@ onUnmounted(() => { inventoryObserver?.disconnect();clearLongPress();tooltipObse
       <button @click="modal = 'settings'">设置与存档</button>
     </nav>
     <div v-if="dragging && currentItem" class="drag-ghost" :style="{ left: pointer.x + 'px', top: pointer.y + 'px', clipPath:shapeClip(currentItem,rotated),width:footprint(currentItem,rotated).width*inventoryCell+'px',height:footprint(currentItem,rotated).height*inventoryCell+'px' }"><InventoryArt :object="currentItem" :rotated="rotated"/></div>
-    <Teleport to="body">
+    <Teleport to="#shop-overlays">
       <div v-if="inspectedItem && !touchInfo && !modal && !dragging && !itemMenu" ref="tooltipElement" class="pointer-item-info" role="tooltip" :style="tooltipStyle"><ItemInfoCard :item="inspectedItem"/></div>
       <div v-if="itemMenu && menuItem && !modal" class="item-context-menu" role="menu" aria-label="物品操作" :style="menuStyle" @contextmenu.prevent><small>{{definition(menuItem.definitionId)?.name}}</small><button v-for="action in menuActions" :key="action.id" role="menuitem" :disabled="action.disabled" @click="runItemAction(action.id)">{{action.label}}</button><button role="menuitem" class="menu-dismiss" @click="itemMenu = undefined">取消</button></div>
     </Teleport>
 
-    <Teleport to="body"><div v-if="modal === 'trade'" class="modal-backdrop" @click.self="modal = ''"><section v-dialog-focus class="trade-dialog trade-dialog-wide" role="dialog" aria-label="谈判交易" aria-modal="true" @keydown.esc.stop="modal = ''"><button class="modal-close" aria-label="关闭谈判" @click="modal = ''">×</button><VisitorPanel /><button class="text-button" @click="modal = ''; staged = ''">关闭交易，取消本次选择</button></section></div></Teleport>
+    <Teleport to="#shop-overlays">
+      <div v-if="modal === 'trade'" class="modal-backdrop" @click.self="modal = ''">
+        <section v-dialog-focus class="trade-dialog trade-dialog-wide" role="dialog" aria-label="谈判交易" aria-modal="true" @keydown.esc.stop="modal = ''">
+          <button class="modal-close" aria-label="关闭谈判" @click="modal = ''">×</button>
+          <VisitorPanel />
+          <button class="text-button" @click="modal = ''; staged = ''">关闭交易，取消本次选择</button>
+        </section>
+      </div>
+    </Teleport>
   </section>
 </template>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {computed,ref} from 'vue';
-import {state,modal,selectedItem,dispatch,openGuide} from './store';
+import {state,modal,selectedItem,dispatch,openGuide,openDelivery} from './store';
 import {ITEMS,EQUIPMENT} from '../content';
 import {rootCapacity} from '../game/engine';
-import {energyEligible,energyPlan,energyTest,energyReturnPosition,ENERGY_PROFILES,ENERGY_LOADS} from '../game/energy';
+import {energyEligible,energyPlan,energyTest,energyReturnPosition,energyTolerance,ENERGY_PROFILES,ENERGY_LOADS} from '../game/energy';
 import type {EnergyProfileId,EnergyLoad} from '../game/types';
 import Art from './Art.vue';
+import {nextEnergyCommission} from '../game/deliveries';
 import DeliveryHints from './DeliveryHints.vue';
 const profile=ref<EnergyProfileId>('economy'),load=ref<EnergyLoad>('steady'),reading=ref(0);
 const goods=computed(()=>state.value.items.filter(i=>i.owner==='player'&&energyEligible(i)));
@@ -17,6 +18,7 @@ const plan=computed(()=>plans.value.find(p=>p.profile?.id===profile.value)!);
 const test=computed(()=>item.value?energyTest(item.value):undefined);
 const known=computed(()=>item.value?.known.some(k=>['scan','batch'].includes(k)));
 const basic=computed(()=>item.value?.known.some(k=>['basic','diagnosed'].includes(k)));
+const commission=computed(()=>nextEnergyCommission(state.value));
 const returnFits=computed(()=>energyReturnPosition(state.value,rootCapacity(state.value)));
 function start(){if(item.value&&dispatch({type:'startEnergy',itemId:item.value.id,profileId:profile.value})){load.value='steady';reading.value=0;}}
 function finish(){const id=item.value?.id;if(id&&dispatch({type:'finishEnergy'}))selectedItem.value=id;}
@@ -24,7 +26,7 @@ const name=(id:string)=>ITEMS.find(d=>d.id===id)?.name??id;
 </script>
 <template>
  <div class="energy-bench">
-  <header class="energy-heading"><div><p class="eyebrow">ENERGY / 储能整备</p><h2>把余量，留给下一盏灯。</h2></div><div><button @click="modal='inventory'">返回库存 ↗</button><button @click="openGuide('repair')">工位手册 ?</button></div></header>
+  <header class="energy-heading"><div><p class="eyebrow">ENERGY / 储能整备</p><h2>把余量，留给下一盏灯。</h2></div><div><button v-if="commission" @click="openDelivery(commission.id)">能源委托 ↗</button><button @click="modal='inventory'">返回库存 ↗</button><button @click="openGuide('repair')">工位手册 ?</button></div></header>
   <div class="energy-stock" aria-label="可选储能货物"><button v-for="good in goods" :key="good.id" :data-energy-item="good.id" :class="{selected:item?.id===good.id}" :disabled="!!work&&good.id!==work.itemId" @click="selectedItem=good.id"><Art :id="good.definitionId"/><span>{{name(good.definitionId)}}<small>{{good.energyPreparation?'已整备':good.known.some(k=>['scan','batch'].includes(k))?`容量 ${good.capacity}%`:'容量待检查'}} · 成本 ₡{{good.cost}}</small></span></button></div>
   <p v-if="!item" class="energy-empty">先从卖家买入标准电池组、微型电容阵列或便携电源模块，再收进仓库。</p>
   <template v-else-if="definition">
@@ -32,7 +34,7 @@ const name=(id:string)=>ITEMS.find(d=>d.id===id)?.name??id;
     <section class="energy-rig" aria-label="储能工位"><div class="energy-rig-title"><span>{{work?work.verified?'负载稳定':'等待负载复核':item.energyPreparation?'已完成整备':'待装夹'}}</span><small>{{definition.name}}</small></div><div class="energy-object"><div class="energy-rails"></div><Art :id="item.definitionId" :label="definition.name" eager/><div class="energy-socket negative">−</div><div class="energy-socket positive">＋</div></div><div class="energy-gauge"><span>有效容量</span><strong>{{known?`${item.capacity}%`:'—'}}</strong><div class="energy-gauge-track"><i :style="{width:known?`${item.capacity}%`:'0%'}"></i><b v-if="work&&!work.verified" :style="{left:`${work.target}%`}"></b></div><small v-if="work">整备目标 {{work.target}}% · {{ENERGY_PROFILES.find(p=>p.id===work?.profileId)?.name}}</small><small v-else-if="item.energyPreparation">第 {{item.energyPreparation.day}} 日 · {{item.energyPreparation.before}}% → {{item.energyPreparation.after}}%</small><small v-else>累计成本 ₡{{item.cost}}</small></div></section>
     <section class="energy-controls" aria-label="能源操作">
      <template v-if="work&&test">
-      <p class="eyebrow">LOAD TEST / 铭牌要求</p><h3>{{ENERGY_LOADS.find(l=>l.id===test?.load)?.name}}</h3><p class="energy-reference">参考读数 <strong>{{test.value}}</strong><small>允许 ±2 · 每次复核 0.5 h</small></p>
+      <p class="eyebrow">LOAD TEST / 铭牌要求</p><h3>{{ENERGY_LOADS.find(l=>l.id===test?.load)?.name}}</h3><p class="energy-reference">参考读数 <strong>{{test.value}}</strong><small>允许 ±{{energyTolerance(state)}} · 每次复核 0.5 h</small></p>
       <template v-if="!work.verified"><div class="energy-loads" role="group" aria-label="复核负载"><button v-for="mode in ENERGY_LOADS" :key="mode.id" :aria-pressed="load===mode.id" :class="{selected:load===mode.id}" @click="load=mode.id">{{mode.name}}</button></div><label class="energy-reading">参考读数<input v-model.number="reading" type="number" min="0" max="100" step="1" aria-label="设置参考读数"/></label><input v-model.number="reading" class="energy-slider" type="range" min="0" max="100" step="1" aria-label="调整参考读数"/><p v-if="work.attempts" class="energy-retry">上次复核未通过 · 已测试 {{work.attempts}} 次</p><button class="primary energy-run" :disabled="state.phase!=='open'||state.hours<.5" @click="dispatch({type:'verifyEnergy',load,value:reading})">接入负载并复核</button><p v-if="state.phase!=='open'||state.hours<.5" class="energy-note">工单已保留，明天开店后继续。</p></template>
       <template v-else><p class="energy-passed">✓ 复核通过<br/><small>有效容量 {{work.before}}% → {{work.target}}%</small></p><button class="primary energy-run" :disabled="!returnFits" @click="finish">收回货架 →</button><p v-if="!returnFits" class="energy-note">仓库缺少连续空位。先整理，货物留在工位。</p></template>
       <p class="energy-note">本次已投入 ₡{{work.electricity+work.materialCost}} · 工时 {{work.processHours+work.attempts*.5}} h</p>

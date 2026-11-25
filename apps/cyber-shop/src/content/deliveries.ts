@@ -19,3 +19,37 @@ export const DELIVERIES: DeliveryDefinition[] = [
  {id:'industrial-spare',title:'检修柜的备件',characterId:'he-jin',category:'electronics',chapter:2,itemIds:['industrial-sensor','servo-arm'],quantity:1,days:6,reward:1080,xp:36,condition:80,functional:true,description:'联合会给备用检修柜收一件工业传感器或机械臂。故障清零，品相达到八成，才适合随时出工。',thanks:'它已经贴好编号，放在检修柜最顺手的一层。下次接到急单，能直接带走。'},
  {id:'clinic-cold-chain',title:'夜班诊所补给箱',characterId:'song-yi',category:'food',chapter:3,itemIds:['bio-gel'],quantity:1,days:4,reward:660,xp:36,condition:70,freshDays:2,authentic:true,description:'诊所需要一份可追溯的医用凝胶。交货时仍需两天保质期，并持有受管制商品交易许可。',thanks:'补给箱已经封好，日期与来源贴在外侧。今晚出诊的人不用再临时四处找货。'},
 ];
+
+/** Standalone professional commissions. The ordered steps do not use the repair chapter gate. */
+export const GRID_MILESTONE = 'microgrid-stable';
+export const ENERGY_COMMISSIONS: DeliveryDefinition[] = [
+  {
+    id: 'grid-lantern', title: '值守台留灯', characterId: 'lin-qiao', category: 'energy', chapter: 1,
+    itemIds: ['battery-pack'], quantity: 1, days: 8, reward: 360, xp: 44,
+    condition: 45, functional: true, capacity: 70, prepared: true,
+    description: '夜雨会让巷口断电。互助社需要一组复核过的电池，撑住值守灯。',
+    thanks: '值守灯一晚上没灭。贺津问我是谁整备的，我把他引到你的柜台。',
+  },
+  {
+    id: 'grid-pump', title: '雨季泵站', characterId: 'he-jin', category: 'energy', chapter: 1,
+    itemIds: ['capacitor-array'], quantity: 1, days: 9, reward: 980, xp: 84,
+    condition: 55, functional: true, capacity: 85, prepared: true,
+    description: '排水泵起动时电流猛增。送来一套已经过脉冲负载复核的电容阵列。',
+    thanks: '泵启动了三次，电网都稳住了。下次复核可以按我留下的校准表放宽到 ±4。',
+  },
+  {
+    id: 'grid-relay', title: '九街微电网', characterId: 'yan-que', category: 'energy', chapter: 1,
+    itemIds: ['power-module'], quantity: 2, days: 11, reward: 6200, xp: 180,
+    condition: 60, functional: true, capacity: 94, prepared: true,
+    description: '街坊凑好了安装款。两件精密整备的模块分别供给值守站和地下广播。',
+    thanks: '两个站都接上了。街坊已经联名出具能源技师的经营权推荐。',
+  },
+];
+
+export const GRID_MAINTENANCE: DeliveryDefinition = {
+  id: 'grid-maintenance', title: '备用支路巡检', characterId: 'he-jin', category: 'energy', chapter: 1,
+  itemIds: ['power-module'], quantity: 2, days: 9, reward: 2500, xp: 65,
+  condition: 55, functional: true, capacity: 88, prepared: true,
+  description: '联合会按轮次更换备用支路电源。备两件通过复核的模块即可交付。',
+  thanks: '备用支路已换好。这批模块的整备记录留在配电箱旁。',
+};

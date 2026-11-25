@@ -42,6 +42,14 @@ try{for(const modifier of ['', 'cramped-stock','roomy-stock']){
    await page.getByRole('tab',{name:'主仓 · 144 格',exact:true}).focus();await page.keyboard.press('ArrowRight');assert.equal(await page.locator('.warehouse-grid').getAttribute('data-page'),'1');await page.keyboard.press('Home');assert.equal(await page.locator('.warehouse-grid').getAttribute('data-page'),'0');
   }
   for(const [width,height] of [[1920,1080],[1366,768],[960,650],[844,390],[667,375],[568,320]]){await page.setViewportSize({width,height});await check(String(width));}
+  for (const [panel, button] of [['.speech-bubble', '.speech-options .primary'], ['.journey-note', '.journey-open']]) {
+    const region = page.locator(panel);
+    if (!(await region.count())) continue;
+    const bounds = await region.boundingBox();
+    const action = await region.locator(button).boundingBox();
+    assert(bounds && action && action.y >= bounds.y && action.y + action.height <= bounds.y + bounds.height,
+      `The primary action must be visible without scrolling ${panel} at 568×320`);
+  }
   const scroll=page.locator('.warehouse-scroll');await scroll.hover();await page.mouse.wheel(0,500);await check('scrolled');
   await page.locator('.cabinet-menu').getByRole('button',{name:'设置与存档',exact:true}).click();await page.getByLabel('减少动态效果',{exact:true}).check();await click('关闭面板');await page.setViewportSize({width:1440,height:960});await check('reduced-motion');
   await page.reload();await click('继续经营 ↗');await check('reloaded');

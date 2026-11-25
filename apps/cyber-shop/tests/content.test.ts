@@ -8,7 +8,7 @@ describe('content registry integrity', () => {
       for (const entry of list) expect(entry.id).toMatch(/^[a-z][a-z0-9-]+$/);
     }
     expect(CHARACTERS.filter(c => c.endless)).toHaveLength(3);
-    expect(PROFESSIONS.filter(p => p.implemented).map(p => p.id)).toEqual(['restorer']);
+    expect(PROFESSIONS.filter(p => p.implemented).map(p => p.id)).toEqual(['restorer','fabricator','energy-tech']);
   });
   it('keeps category-specific capabilities and valid referenced content', () => {
     for (const category of CATEGORIES) { expect(ITEMS.filter(d => d.category === category.id)).toHaveLength(category.id==='electronics'?8:category.id==='energy'?7:6); expect(ITEMS.some(d => d.category === category.id && d.chapter === 1)).toBe(true); }

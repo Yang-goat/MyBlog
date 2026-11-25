@@ -1,16 +1,46 @@
-import { DELIVERIES } from '../content/deliveries';
+import { DELIVERIES, ENERGY_COMMISSIONS, GRID_MAINTENANCE } from '../content/deliveries';
+import { FABRICATION_COMMISSIONS, FABRICATION_RESTOCK } from '../content/fabrication';
 import { ITEMS } from '../content/items';
 import { itemAccessible } from './containers';
+import { fabricationQuality, fabricationRecipe, materialInStock, materialReading } from './fabrication';
 import type { DeliveryDefinition, DeliveryJob, GameState, ItemInstance } from './types';
 
 export const DELIVERY_HOURS=.5;
 export const DELIVERY_LIMIT=2;
 export const DELIVERY_SOURCE_PREMIUM=1.25;
-export const deliveryDefinition=(job:DeliveryJob)=>DELIVERIES.find(d=>d.id===job.templateId)!;
+export const DELIVERY_DEFINITIONS = [...DELIVERIES, ...ENERGY_COMMISSIONS, GRID_MAINTENANCE, ...FABRICATION_COMMISSIONS, FABRICATION_RESTOCK];
+export const deliveryDefinition=(job:DeliveryJob)=>DELIVERY_DEFINITIONS.find(d=>d.id===job.templateId)!;
+export function deliveryAllModels(request:DeliveryDefinition){
+ const recipe=request.fabricated?fabricationRecipe(request.fabricated):undefined;
+ return recipe?[...request.itemIds,...recipe.inputs]:request.itemIds;
+}
+
+function commissionProgress(s: GameState, stages: DeliveryDefinition[]) {
+ const incomplete = stages.findIndex(d => !s.deliveries?.some(job => job.templateId === d.id && job.status === 'completed'));
+ return incomplete === -1 ? stages.length : incomplete;
+}
+
+function nextCommission(s: GameState, stages: DeliveryDefinition[], repeat: DeliveryDefinition): DeliveryJob | undefined {
+ const request = stages[commissionProgress(s,stages)] ?? repeat;
+ const previous = s.deliveries?.find(j => j.templateId === request.id && j.status === 'active');
+ if (previous) return previous;
+ const prefix = `delivery-${s.day}-${request.id}`;
+ if (s.deliveries?.some(j => j.id === prefix)) return undefined;
+ return { id: prefix, templateId: request.id, postedDay: s.day, deadline: s.day + request.days - 1, status: 'offered' };
+}
+
+export const energyCommissionProgress = (s: GameState) => commissionProgress(s,ENERGY_COMMISSIONS);
+export const fabricationProgress = (s: GameState) => commissionProgress(s,FABRICATION_COMMISSIONS);
+export const nextEnergyCommission = (s: GameState) => nextCommission(s,ENERGY_COMMISSIONS,GRID_MAINTENANCE);
+export const nextFabricationCommission = (s: GameState) => nextCommission(s,FABRICATION_COMMISSIONS,FABRICATION_RESTOCK);
+
 export function newDeliveryDay(s:GameState,previous:DeliveryJob[]=[]):DeliveryJob[]{
  previous=previous.map(j=>j.status==='active'&&j.deadline<s.day?{...j,status:'expired',closedDay:j.deadline}:j);
  const active=previous.filter(j=>j.status==='active');
- const history=previous.filter(j=>!['offered','active'].includes(j.status)).slice(-40);
+ const trainingIds=[...ENERGY_COMMISSIONS,...FABRICATION_COMMISSIONS].map(d=>d.id);
+ const completedTraining=(job:DeliveryJob)=>job.status==='completed'&&trainingIds.includes(job.templateId);
+ const archive=previous.filter(j=>completedTraining(j));
+ const history=previous.filter(j=>!['offered','active'].includes(j.status)&&!completedTraining(j)).slice(-40);
  const pool=DELIVERIES.filter(d=>d.chapter<=s.chapter);
  const offers:DeliveryDefinition[]=[];
  // Independent of the trading RNG: reading or accepting a notice never rerolls visitors.
@@ -18,14 +48,19 @@ export function newDeliveryDay(s:GameState,previous:DeliveryJob[]=[]):DeliveryJo
   const d=pool[((s.day-1)*2+n)%pool.length]!;
   if(!offers.some(o=>o.category===d.category)&&!active.some(j=>j.templateId===d.id))offers.push(d);
  }
- return [...history,...active,...offers.map(d=>({id:`delivery-${s.day}-${d.id}`,templateId:d.id,postedDay:s.day,deadline:s.day+d.days-1,status:'offered' as const}))];
+ return [...archive,...history,...active,...offers.map(d=>({id:`delivery-${s.day}-${d.id}`,templateId:d.id,postedDay:s.day,deadline:s.day+d.days-1,status:'offered' as const}))];
 }
 /** Optional in older saves. The first successful action persists this same daily board. */
-export const deliveryJobs=(s:GameState)=>s.deliveries??newDeliveryDay(s);
+export function deliveryJobs(s:GameState){
+ const jobs=s.deliveries??newDeliveryDay(s);
+ return [...jobs,...[nextEnergyCommission(s),nextFabricationCommission(s)].filter((job):job is DeliveryJob=>job?.status==='offered')];
+}
 export function deliveryRequirements(d:DeliveryDefinition):string[]{
  const lines=[`${d.quantity} 件：${d.itemIds.map(id=>ITEMS.find(i=>i.id===id)!.name).join(' / ')}`,`品相至少 ${d.condition}%`];
  if(d.functional)lines.push('基础功能正常，无待修故障');
  if(d.capacity)lines.push(`有效容量至少 ${d.capacity}%`);
+ if(d.prepared)lines.push('有本店整备与负载复核记录');
+ if(d.fabricated)lines.push(`本店装配批次记录 · 成品原始品相至少 ${d.condition}%`);
  if(d.purity)lines.push(`材料纯度至少 ${d.purity}%`);
  if(d.integrity)lines.push(`可读完整度至少 ${d.integrity}%`);
  if(d.freshDays)lines.push(`交货时保质期至少还剩 ${d.freshDays} 天`);
@@ -45,7 +80,10 @@ export function deliveryItemCheck(s:GameState,d:DeliveryDefinition,item:ItemInst
  if(item.reserved)return no('已留货，请先解除留货');
  if(item.location!=='stock'||s.orders.some(o=>!o.delivered&&o.itemId===item.id))return no(item.location==='display'?'请先撤展':'请先将物品收回货架');
  if(!itemAccessible(s,item))return no('箱包被压住，先移走上层箱包');
- return deliveryQualityCheck(s,d,item);
+ const quality=deliveryQualityCheck(s,d,item);
+ if(quality.ready&&d.prepared&&!item.energyPreparation)return no('送到能源工位整备并通过复核');
+ if(quality.ready&&d.fabricated&&(item.fabrication?.recipeId!==d.fabricated||item.fabrication.quality<d.condition))return no('需要符合品相要求的本店装配成品');
+ return quality;
 }
 /** Shared by owned-stock acceptance and inspected supplier previews; no ownership is implied. */
 export function deliveryQualityCheck(s:GameState,d:DeliveryDefinition,item:ItemInstance):DeliveryCheck{
@@ -70,10 +108,39 @@ export function deliveryQualityCheck(s:GameState,d:DeliveryDefinition,item:ItemI
 
 export const activeDeliveries=(s:GameState)=>deliveryJobs(s).filter(j=>j.status==='active'&&j.deadline>=s.day);
 export const deliveryReadyCount=(s:GameState,job:DeliveryJob)=>s.items.filter(i=>deliveryItemCheck(s,deliveryDefinition(job),i).ready).length;
+
+export function canPrepareForCommission(s: GameState, request: DeliveryDefinition, item: ItemInstance) {
+ if (item.owner !== 'player' || item.reserved || item.energyPreparation || !request.itemIds.includes(item.definitionId)) return false;
+ if (item.faults.length || !item.known.some(k => k === 'basic' || k === 'diagnosed') || item.condition < request.condition) return false;
+ const required = request.capacity ?? 100;
+ if (s.energyWork?.itemId === item.id) return s.energyWork.target >= required;
+ if (item.location !== 'stock' || !itemAccessible(s, item) || !item.known.some(k => k === 'scan' || k === 'batch')) return false;
+ // Compare with the highest attainable profile. Unscanned attributes never affect the sourcing preview.
+ return item.capacity < 98 && Math.min(98, item.capacity + 45) >= required;
+}
+
 export function deliverySourcePlan(s:GameState,job:DeliveryJob){
- const request=deliveryDefinition(job),count=Math.max(0,request.quantity-deliveryReadyCount(s,job));
+ const request=deliveryDefinition(job);
+ const recipe=request.fabricated?fabricationRecipe(request.fabricated):undefined;
+ if(recipe){
+  const needed=Math.max(0,request.quantity-deliveryReadyCount(s,job));
+  const materials=recipe.inputs.flatMap(definitionId=>{
+   const available=s.items.filter(item=>{
+    if(item.definitionId!==definitionId||!materialInStock(s,item))return false;
+    const reading=materialReading(item);
+    return reading!==null&&fabricationQuality(reading,'fine')>=request.condition;
+   }).length;
+   return Array<string>(Math.max(0,needed-available)).fill(definitionId);
+  });
+  const reason=job.status!=='active'?'先接下订货':job.deadline<=s.day?'来不及在交期前到货':!materials.length?'仓库已有足量可用原料或成品':'';
+  return {ok:!reason,reason,count:materials.length,materials};
+ }
+ const usable=request.prepared
+  ?s.items.filter(item=>deliveryItemCheck(s,request,item).ready||canPrepareForCommission(s,request,item)).length
+  :deliveryReadyCount(s,job);
+ const count=Math.max(0,request.quantity-usable);
  const reason=job.status!=='active'?'先接下订货':job.deadline<=s.day?'来不及在交期前到货':!count?'货架已有足量合格货物':request.itemIds.every(id=>ITEMS.find(d=>d.id===id)!.regulated)&&!s.licenses.includes('regulated-trade')?'先取得交易许可':'';
- return {ok:!reason,reason,count};
+ return {ok:!reason,reason,count,materials:undefined};
 }
 /** Only active, accepted requests and current visible goods are used as purchasing clues. */
 export function itemDeliveryHints(s:GameState,item:ItemInstance){
@@ -81,8 +148,19 @@ export function itemDeliveryHints(s:GameState,item:ItemInstance){
  const visitor=s.visitors[s.visitorIndex];
  const incoming=!own&&s.visitorArrived!==false&&visitor?.kind==='seller'&&!visitor.resolved&&(visitor.goods??(visitor.item?[visitor.item]:[])).some(i=>i.id===item.id);
  if(!own&&!incoming)return [];
- return activeDeliveries(s).filter(job=>deliveryDefinition(job).itemIds.includes(item.definitionId)).map(job=>({
-  job,request:deliveryDefinition(job),incoming,readyCount:deliveryReadyCount(s,job),
-  check:incoming?deliveryQualityCheck(s,deliveryDefinition(job),item):deliveryItemCheck(s,deliveryDefinition(job),item),
- }));
+ return activeDeliveries(s).filter(job=>deliveryAllModels(deliveryDefinition(job)).includes(item.definitionId)).map(job=>{
+  const request=deliveryDefinition(job);
+  const reading=materialReading(item);
+  let check:DeliveryCheck;
+  const material=!request.itemIds.includes(item.definitionId);
+  if (material) {
+   const canUse=reading!==null&&fabricationQuality(reading,'fine')>=request.condition;
+   check={ready:canUse,reason:reading===null?'原料待读数':canUse?'可作为这份订单的配方原料':'原料读数太低'};
+  } else if(incoming&&request.fabricated) {
+   check={ready:false,reason:'委托验收本店装配成品'};
+  } else {
+   check=incoming?deliveryQualityCheck(s,request,item):deliveryItemCheck(s,request,item);
+  }
+  return {job,request,incoming,material,readyCount:deliveryReadyCount(s,job),check};
+ });
 }

@@ -5,9 +5,13 @@ import { STORAGE_STYLES } from '../content/storage';
 import { faction } from '../content/factions';
 import { validRotation } from '../game/warehouse';
 import { validModifiers, dailyHours } from '../game/modifiers';
-import { DELIVERIES } from '../content/deliveries';
+import { ENERGY_COMMISSIONS, GRID_MAINTENANCE, GRID_MILESTONE } from '../content/deliveries';
+import { FABRICATION_COMMISSIONS, FABRICATION_MILESTONE, FABRICATION_RESTOCK } from '../content/fabrication';
+import { DELIVERY_DEFINITIONS } from '../game/deliveries';
 import {ENERGY_PROFILES,energyEligible} from '../game/energy';
+import { FABRICATION_METHODS, fabricationRecipe, isFabricationMethod } from '../game/fabrication';
 import type { GameState, ItemInstance } from '../game/types';
+import { CAREER_FOCUSES } from '../game/types';
 
 export const SAVE_KEY = 'cyber-shop:save:v1';
 export const DAY_BACKUP_KEY = 'cyber-shop:day-start:v1';
@@ -43,6 +47,8 @@ export function validateState(value: unknown): asserts value is GameState {
   check(number(s.hours) && s.hours <= dailyHours(s) && s.hours * 2 % 1 === 0, '工时无效。');
   check(s.day >= 1 && s.chapter >= 1 && s.chapter <= 4 && s.level >= 1 && s.finalStage <= 3 && s.rng <= 0xffffffff && s.seed <= 0xffffffff, '进度字段超出范围。');
   check(['open', 'closed', 'won', 'ended', 'failed'].includes(s.phase), '营业阶段无效。');
+  check(s.careerFocus === undefined || CAREER_FOCUSES.includes(s.careerFocus), '跟进的职业路线无效。');
+  check(s.fabricatedCount === undefined || integer(s.fabricatedCount), '装配数量无效。');
   for (const key of ['eventResolved', 'finalComplete', 'victory', 'endless', 'freeRespec'] as const) check(typeof s[key] === 'boolean', `存档字段 ${key} 无效。`);
   check(Number.isFinite(s.reputation), '声望无效。');
   check(strings(s.skills) && refs(s.skills, SKILLS.map(a => a.id)), '技能记录无效。');
@@ -73,6 +79,14 @@ export function validateState(value: unknown): asserts value is GameState {
     check((i.expiresDay === null || integer(i.expiresDay)) && integer(i.cost) && integer(i.acquiredDay) && integer(i.preservedUntil), '物品成本或保质期无效。');
     check(strings(i.faults) && refs(i.faults, FAULTS.map(a => a.id)) && strings(i.known) && refs(i.known, ['basic', 'scan', 'serial', 'batch', 'diagnosed', 'restored']), '物品检测记录无效。');
     const d = ITEMS.find(d => d.id === i.definitionId)!;
+    if(i.fabrication!==undefined){
+      const record=i.fabrication,recipe=fabricationRecipe(record?.recipeId);
+      check(object(record)&&recipe?.output===i.definitionId&&i.owner==='player'&&isFabricationMethod(record.method),'装配批次无效。');
+      const method=FABRICATION_METHODS[record.method];
+      check(integer(record.day)&&record.day===i.acquiredDay&&record.day>=1&&record.day<=s.day,'装配日期无效。');
+      check(integer(record.quality)&&record.quality>=method.base&&record.quality<=method.limit,'装配品相无效。');
+      check(recipe&&record.fee===recipe.fee+method.extraFee&&integer(record.materialCost)&&i.cost>=record.fee+record.materialCost,'装配成本无效。');
+    }
     if(i.energyPreparation!==undefined){
       const p=i.energyPreparation,profile=ENERGY_PROFILES.find(v=>v.id===p?.profileId);
       check(object(p)&&energyEligible(i)&&profile&&integer(p.day)&&p.day>=1&&p.day<=s.day,'能源整备记录无效。');
@@ -144,7 +158,7 @@ export function validateState(value: unknown): asserts value is GameState {
     check(new Set(s.deliveries.map(j=>j.id)).size===s.deliveries.length&&s.deliveries.filter(j=>j.status==='active').length<=2,'订货单重复或超过承接上限。');
     for(const job of s.deliveries){
       check(object(job)&&typeof job.id==='string'&&['offered','active','completed','expired','cancelled'].includes(job.status),'订货单内容无效。');
-      const request=DELIVERIES.find(d=>d.id===job.templateId);check(request,'订货模板不存在。');
+      const request=DELIVERY_DEFINITIONS.find(d=>d.id===job.templateId);check(request,'订货模板不存在。');
       check(integer(job.postedDay)&&job.postedDay>=1&&job.postedDay<=s.day&&job.id===`delivery-${job.postedDay}-${job.templateId}`,'订货发布日期无效。');
       check(integer(job.deadline)&&job.deadline===job.postedDay+request.days-1,'订货交期无效。');
       if(job.status==='offered')check(job.acceptedDay===undefined&&job.closedDay===undefined&&job.postedDay===s.day,'待接订货记录无效。');
@@ -157,13 +171,39 @@ export function validateState(value: unknown): asserts value is GameState {
         check(Array.isArray(job.goods)&&job.goods.length===request.quantity&&new Set(job.goods.map(g=>g.itemId)).size===job.goods.length,'订货交货清单无效。');
         check(job.goods.every(g=>object(g)&&typeof g.itemId==='string'&&request.itemIds.includes(g.definitionId)&&integer(g.cost)),'订货货品记录无效。');
         check(job.goods.every(g=>!s.items.some(i=>i.id===g.itemId)),'已交货物仍留在库存。');
+        if(request.prepared)check(job.goods.every(g=>integer(g.preparedCapacity)&&(g.preparedCapacity??0)>=(request.capacity??100)&&(g.preparedCapacity??100)<=98),'能源委托复核记录不符合要求。');
+        if(request.fabricated)check(job.goods.every(g=>integer(g.fabricatedQuality)&&g.fabricatedQuality!>=request.condition&&g.fabricatedQuality!<=98),'合成工匠交付记录不符合要求。');
       }else check(job.goods===undefined,'未完成订货含交货清单。');
     }
   }
+  for (const track of [
+    {stages:ENERGY_COMMISSIONS,repeat:GRID_MAINTENANCE.id,milestone:GRID_MILESTONE},
+    {stages:FABRICATION_COMMISSIONS,repeat:FABRICATION_RESTOCK.id,milestone:FABRICATION_MILESTONE},
+  ]){
+    let priorCompletion: number | undefined;
+    for (const [step, request] of track.stages.entries()) {
+      const jobs = s.deliveries?.filter(j => j.templateId === request.id) ?? [];
+      const completed = jobs.filter(j => j.status === 'completed');
+      check(completed.length <= 1 && jobs.filter(j => j.status === 'active').length <= 1,'职业委托重复。');
+      check(step === 0 || jobs.every(j => priorCompletion !== undefined && j.postedDay >= priorCompletion),'职业委托顺序无效。');
+      priorCompletion = completed[0]?.closedDay;
+    }
+    check(s.professionMilestones.includes(track.milestone) === (priorCompletion !== undefined),'职业里程碑与交付记录冲突。');
+    check((s.deliveries??[]).every(j => j.templateId !== track.repeat || (priorCompletion !== undefined && j.postedDay >= priorCompletion)),'职业续单开放日期无效。');
+  }
+  for (const visitor of s.visitors) if (visitor.sourceDeliveryId !== undefined) {
+    check(visitor.kind === 'seller' && s.deliveries?.some(job => job.id === visitor.sourceDeliveryId && job.postedDay < s.day && job.deadline >= s.day), '到店供货记录无效。');
+  }
   if(s.deliverySource!==undefined){
     check(object(s.deliverySource)&&typeof s.deliverySource.jobId==='string'&&integer(s.deliverySource.count)&&s.deliverySource.count>=1,'订货询货记录无效。');
-    const job=s.deliveries?.find(j=>j.id===s.deliverySource!.jobId),request=DELIVERIES.find(d=>d.id===job?.templateId);
-    check(job?.status==='active'&&job.deadline>s.day&&request&&s.deliverySource.count<=request.quantity,'订货询货超出交期或数量。');
+    const job=s.deliveries?.find(j=>j.id===s.deliverySource!.jobId),request=DELIVERY_DEFINITIONS.find(d=>d.id===job?.templateId);
+    check(job?.status==='active'&&job.deadline>s.day&&request,'订货询货超出交期。');
+    const recipe=request.fabricated?fabricationRecipe(request.fabricated):undefined;
+    const {materials,count}=s.deliverySource;
+    check(recipe
+      ? Array.isArray(materials)&&materials.length===count&&count<=request.quantity*recipe.inputs.length
+        && materials.every(id=>recipe.inputs.includes(id))&&recipe.inputs.every(id=>materials.filter(value=>value===id).length<=request.quantity)
+      : materials===undefined&&count<=request.quantity,'订货询货数量或型号无效。');
   }
   check(Array.isArray(s.ledger) && s.ledger.every(e => object(e) && integer(e.id) && integer(e.day) && typeof e.kind === 'string' && Number.isFinite(e.amount) && typeof e.note === 'string'), '账本无效。');
   check(Array.isArray(s.messages) && s.messages.every(m => typeof m === 'string'), '消息记录无效。');
@@ -202,6 +242,8 @@ export function validateState(value: unknown): asserts value is GameState {
   check(!s.endless || s.victory, '无尽模式缺少已完成的经营权结局。');
   check(!s.finalComplete || s.finalStage === 3, '最终委托阶段冲突。');
   check(s.finalComplete === s.professionMilestones.includes(PROFESSIONS.find(p => p.id === 'restorer')!.finalMilestone), '修复师最终委托与职业里程碑记录冲突。');
+  check(s.victoryCareer === undefined || s.victory && CAREER_FOCUSES.includes(s.victoryCareer)
+    && PROFESSIONS.some(p=>p.id===s.victoryCareer&&s.professionMilestones.includes(p.finalMilestone)), '结局所属职业与里程碑记录冲突。');
 }
 /** Pre-interface demo-2 saves only had the restorer's finalComplete flag. No other profession is inferred. */
 export function migrateState(value: unknown): unknown {

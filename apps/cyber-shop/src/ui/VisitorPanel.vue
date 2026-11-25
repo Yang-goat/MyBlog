@@ -8,7 +8,7 @@ import { showFaction } from './faction-view';
 import {buyerRemaining} from '../game/demand';
 import { tradeQuote,operatingFees,tradeItemProblem } from '../game/engine';
 import {tradePaymentPreview} from '../game/trade-preview';
-import {activeDeliveries,deliveryDefinition} from '../game/deliveries';
+import {activeDeliveries,deliveryAllModels,deliveryDefinition} from '../game/deliveries';
 import DeliveryHints from './DeliveryHints.vue';
 import {foodFreshness} from '../game/freshness';
 import type {ItemInstance} from '../game/types';
@@ -22,7 +22,7 @@ const visitor=computed(()=>state.value.visitors[state.value.visitorIndex]);
 const affiliation=computed(()=>factionFor(visitor.value?.characterId??''));
 const person=computed(()=>CHARACTERS.find(c=>c.id===visitor.value?.characterId));
 const candidates=computed(()=>visitor.value?.kind==='seller'?guestGoods.value:state.value.items.filter(i=>i.owner==='player'&&itemAccessible(state.value,i)&&['stock','counter'].includes(i.location)&&ITEMS.find(d=>d.id===i.definitionId)?.category===visitor.value?.category));
-const deliveryModels=computed(()=>new Set(activeDeliveries(state.value).flatMap(j=>deliveryDefinition(j).itemIds)));
+const deliveryModels=computed(()=>new Set(activeDeliveries(state.value).flatMap(j=>deliveryAllModels(deliveryDefinition(j)))));
 const selected=computed(()=>tradeIds.value.map(tradeItem).filter(i=>!!i));
 const focused=computed(()=>tradeItem(selectedItem.value)??selected.value[0]??visitor.value?.item);
 const definition=computed(()=>ITEMS.find(d=>d.id===focused.value?.definitionId));
@@ -64,8 +64,18 @@ function acceptRepair(){if(dispatch({type:'acceptRepair',visitorId:visitor.value
 </script>
 <template>
 <div v-if="visitor && !visitor.resolved" class="visitor-panel">
- <header class="visitor-heading trade-heading"><Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/><div><p class="eyebrow">{{person?.role}}</p><h2>{{person?.name}}</h2><button class="trade-faction" :title="affiliation.tradeNote" @click="showFaction(affiliation.id)">{{affiliation.shortName}} · {{relationName(state.relations[affiliation.id]??0)}}</button></div><span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span></header>
- <button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
+ <header class="visitor-heading trade-heading">
+  <Art v-if="person" class="trade-portrait" :id="person.id" :label="person.name" eager/>
+  <div>
+   <p class="eyebrow">{{person?.role}}</p>
+   <h2>{{person?.name}}</h2>
+   <button class="trade-faction" :title="affiliation.tradeNote" @click="showFaction(affiliation.id)">{{affiliation.shortName}} · {{relationName(state.relations[affiliation.id]??0)}}</button>
+  </div>
+  <div class="trade-header-actions">
+   <span class="visit-type">{{visitor.kind==='seller'?'带货来访':visitor.kind==='buyer'?'寻找旧物':'送修委托'}}</span>
+   <button class="trade-help" @click="openGuide('trade')">交易教程 ?</button>
+  </div>
+ </header>
  <template v-if="visitor.kind==='repair'"><div v-if="focused" class="counter-item"><Art :id="focused.definitionId" eager/><h3>{{definition?.name}}</h3></div><p>接单后检测、维修、复检并交付；客户物品单独保管。</p><button class="primary wide" @click="acceptRepair">接下维修 →</button><button class="text-button" @click="dispatch({type:'reject',visitorId:visitor.id});clearTrade()">结束接待</button></template>
  <div v-else class="trade-workspace">
   <section class="trade-merchandise" aria-label="挑选与检查货品">

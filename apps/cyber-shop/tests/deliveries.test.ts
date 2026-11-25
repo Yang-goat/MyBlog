@@ -16,8 +16,9 @@ function rejectUnchanged(s:GameState,action:Parameters<typeof applyAction>[1]){
 describe('optional neighbourhood delivery orders',()=>{
  it('publishes three different categories without changing RNG or rerolling legacy saves',()=>{
   const s=createGame(42),before=structuredClone(s),rng=s.rng;
-  const board=deliveryJobs(s);expect(new Set(board.map(j=>deliveryDefinition(j).category)).size).toBe(3);
-  expect(newDeliveryDay(s)).toEqual(board);expect(s).toEqual(before);
+  const board=deliveryJobs(s),daily=board.filter(j=>!deliveryDefinition(j).prepared&&!deliveryDefinition(j).fabricated);
+  expect(daily).toHaveLength(3);expect(new Set(daily.map(j=>deliveryDefinition(j).category)).size).toBe(3);
+  expect(newDeliveryDay(s)).toEqual(daily);expect(s).toEqual(before);
   const legacy=structuredClone(s);delete legacy.deliveries;const loaded=importSave(exportSave(legacy));
   expect(visibleState(loaded).deliveries).toEqual(board);
   const accepted=act(loaded,{type:'acceptDelivery',jobId:board[0]!.id});expect(accepted.rng).toBe(rng);expect(accepted.hours).toBe(s.hours);expect(accepted.cash).toBe(s.cash);

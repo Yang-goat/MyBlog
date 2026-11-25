@@ -1,5 +1,6 @@
 import {ITEMS,EQUIPMENT} from '../content';
 import {itemAccessible,rootLayout} from './containers';
+import {energyCommissionProgress} from './deliveries';
 import type {EnergyLoad,EnergyProfileId,GameState,ItemInstance} from './types';
 
 export const ENERGY_PROFILES:{id:EnergyProfileId;name:string;target:number;gain:number;hours:number;rate:number;minimum:number;material?:string;tool?:string;description:string}[]=[
@@ -15,6 +16,7 @@ const tests:Record<string,{load:EnergyLoad;value:number}>={
 };
 export const energyTest=(item:ItemInstance)=>tests[item.definitionId];
 export const energyEligible=(item:ItemInstance)=>!!tests[item.definitionId];
+export const energyTolerance = (s: GameState) => energyCommissionProgress(s) >= 2 ? 4 : 2;
 /** All attribute-dependent estimates follow inspection; preview never spends or rolls. */
 export function energyPlan(s:GameState,item:ItemInstance|undefined,profileId:EnergyProfileId){
  const profile=ENERGY_PROFILES.find(p=>p.id===profileId);
