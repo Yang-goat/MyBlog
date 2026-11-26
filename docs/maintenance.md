@@ -41,18 +41,21 @@ pnpm.cmd hex:typecheck
 pnpm.cmd cyber:validate
 pnpm.cmd cyber:test
 pnpm.cmd cyber:typecheck
+pnpm.cmd color:test
+pnpm.cmd color:typecheck
+pnpm.cmd color:validate
 pnpm.cmd site:build
 node scripts/validate-content-structure.mjs
 node scripts/check-independent-apps.mjs
 ```
 
-`site:build` 按博客、海克斯麻将、赛博杂货铺的顺序构建，两款应用分别输出到 `dist/hex-mahjong/` 和 `dist/cyber-shop/`。之后再次单独构建博客可能清掉应用产物，完整发布以 `site:build` 的结果为准。独立应用的 Vite 构建不得清空整个 `dist/`。
+`site:build` 按博客、海克斯麻将、赛博杂货铺、涂色数独的顺序构建，三款应用分别输出到 `dist/hex-mahjong/`、`dist/cyber-shop/` 和 `dist/color-sudoku/`。之后再次单独构建博客可能清掉应用产物，完整发布以 `site:build` 的结果为准。独立应用的 Vite 构建不得清空整个 `dist/`。
 
 `cyber:validate` 包含 73 项美术硬门禁：从真实内容注册表与场景引用确定预期 ID。71 项要求登记为 `generated`；经用户授权，仅 `electronic-parts` 和 `insulation` 允许 `original-drawn`，并要求项目内独立绘制源文件、明确来源说明及保留生成失败历史。全部素材检查唯一 ID/路径、精确大小写、文件数量、重复图片、WebP 容器、帧头、尺寸、透明通道及哈希；缺失或待完成素材会直接使校验失败。
 
 旧整张店铺图 `scene-shop` 和维修台图 `scene-workbench` 已明确归档，门禁检查归档素材及各自的替代场景入口。场景、手册和收纳道具的 16 项图片由 `apps/cyber-shop/scenery-manifest.json` 独立登记；`validate-scenery.mjs` 按真实代码引用检查精确路径、WebP、尺寸、透明通道、原始 PNG 与发布文件哈希。霓虹街景与设备替换的三张旧图保存在 `archivedAssets`，同时核对归档哈希及旧文件没有继续出现在发布目录。
 
-`check-independent-apps.mjs` 检查博客首页到 AI 作品集、作品集到两款应用的链接，并核对各应用的构建脚本、样式资源、精确大小写和资源前缀；它复用 73 项基础资源与 16 项场景、手册和收纳道具门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
+`check-independent-apps.mjs` 检查博客首页到 AI 作品集、作品集到三款应用的链接，并核对各应用的构建脚本、样式资源、精确大小写和资源前缀；它复用 73 项基础资源与 16 项场景、手册和收纳道具门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
 
 GitHub Actions 在 `main`、`codex/**` 推送及面向 `main` 的拉取请求上执行验证。Pages 配置、发布产物上传和部署均限制为 `main`，手动从功能分支触发同样只验证。正式发布后仍需检查 `https://goatyang.com/cyber-shop/` 的实际页面、资源响应与版本。
 
@@ -79,6 +82,8 @@ pnpm.cmd cyber:preview
 两个命令都启用严格端口检查，分别在独立终端运行，需要停止时在对应终端按 `Ctrl+C`。启动后检查监听端口与真实 HTTP 响应。游戏存档的命名空间为 `cyber-shop:save:v1`，海克斯麻将继续使用独立的 `hex-mahjong` 数据库；本机与正式域名之间通过游戏内导出、导入迁移进度。
 
 导出文件只包含当前进度，不携带原站点的当日开门副本。导入后以导入点建立本地恢复备份，从下一营业日起再按开门状态备份。游戏开发、玩家操作和扩展入口见[赛博杂货铺交接说明](../apps/cyber-shop/README.md)。
+
+涂色数独可用 `pnpm.cmd color:dev` 启动在 `http://127.0.0.1:4177/color-sudoku/`。`color:validate` 核对两套种子的逐步证明；更换首发种子时，从 `apps/color-sudoku/` 运行 `node scripts/verify-edition.ts --record`，审阅依据与黑白轮廓后重新测试。Vite 只把通过门禁的题面打进浏览器，正式对局不访问出题器或数据库。存档键为 `color-sudoku:save:v1`，丢弃浏览器站点数据会一并清掉贴纸册。
 
 ## 临时文件与清理
 

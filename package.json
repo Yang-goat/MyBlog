@@ -23,8 +23,13 @@
     "cyber:test": "pnpm --dir apps/cyber-shop test",
     "cyber:typecheck": "pnpm --dir apps/cyber-shop typecheck",
     "cyber:build": "pnpm --dir apps/cyber-shop build",
+    "color:dev": "pnpm --dir apps/color-sudoku dev",
+    "color:test": "pnpm --dir apps/color-sudoku test",
+    "color:validate": "pnpm --dir apps/color-sudoku validate",
+    "color:typecheck": "pnpm --dir apps/color-sudoku typecheck",
+    "color:build": "pnpm --dir apps/color-sudoku build",
     "site:check-apps": "node scripts/check-independent-apps.mjs",
-    "site:build": "pnpm docs:build && pnpm hex:build && pnpm cyber:build"
+    "site:build": "pnpm docs:build && pnpm hex:build && pnpm cyber:build && pnpm color:build"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.2.0",

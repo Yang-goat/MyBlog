@@ -155,7 +155,7 @@ function inspectHtml(dir) {
       const local = target.startsWith("/") ? target : path.posix.join(path.posix.dirname(url), target);
       // Only these exact application entry routes are emitted after docs:build.
       // Internal assets and arbitrary child paths still undergo normal checks.
-      if (local === "/hex-mahjong/" || local === "/cyber-shop/") continue;
+      if (["/hex-mahjong/", "/cyber-shop/", "/color-sudoku/"].includes(local)) continue;
       const disk = outputFile(local);
       check(fs.existsSync(disk) || fs.existsSync(disk + ".html"), `Broken local reference: ${url} -> ${local}`);
       report.localReferences++;

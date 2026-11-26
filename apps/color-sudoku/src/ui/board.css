@@ -1,0 +1,106 @@
+.puzzle-board {
+  --cell: 50px; --clue-digit: 15px; --rail: max(46px,calc(var(--clue-x) * var(--clue-digit) + 9px)); --head: max(43px,calc(var(--clue-y) * (var(--clue-digit) + 1px) + 10px));
+  --grid-stroke: #a29074; --heavy: #806b55; --grid-bg: #fffdf3; min-width: 0; max-width: 100%; margin: 0 auto;
+}
+.puzzle-board[data-size='7'] { --cell: 41px; --clue-digit: 14px; }
+.puzzle-board[data-size='10'] { --cell: 34px; --clue-digit: 13px; }
+.puzzle-board.is-zoomed { --cell: 56px; }
+.puzzle-board[data-size='10'].is-zoomed { --cell: 48px; }
+.puzzle-scroll { min-width: 0; max-width: 100%; max-height: min(62svh,560px); overflow: auto; overscroll-behavior: contain; scrollbar-color: #b8a483 #eee6ce; scrollbar-width: thin; padding: 2px 4px 5px 2px; }
+.clue-matrix { position: relative; isolation: isolate; width: max-content; border: 1.7px solid var(--heavy); border-radius: 6px 7px 5px 4px; box-shadow: 2px 2px 0 #90745335; background: var(--grid-bg); }
+.clue-line { display: grid; grid-template-columns: var(--rail) repeat(var(--n),var(--cell)); }
+.clue-top { position: sticky; top: 0; z-index: 4; }
+.clue-line > * { border-inline-end: 1px solid var(--grid-stroke); border-bottom: 1px solid var(--grid-stroke); }
+.clue-line > :last-child { border-inline-end: none; }
+.clue-line:nth-child(n+2):last-of-type > * { border-bottom-color: transparent; }
+.clue-line .fifth { border-inline-end: 2px solid var(--heavy); }
+.clue-line.fifth-row > * { border-bottom: 2px solid var(--heavy); }
+.corner-clue, .col-clue, .row-clue { display: flex; font: 700 18px/1 'Trebuchet MS', system-ui, sans-serif; color: #584534; font-variant-numeric: tabular-nums; }
+.corner-clue, .col-clue { min-height: var(--head); border-bottom: 2px solid var(--heavy); }
+.corner-clue, .row-clue { position: sticky; left: 0; border-inline-end: 2px solid var(--heavy); }
+.corner-clue { z-index: 5; align-items: center; justify-content: center; color: #867257; background: #e7d7b8; border-top-left-radius: 4px; }
+.corner-clue svg { width: 27px; height: 27px; }
+.col-clue { flex-direction: column; align-items: center; justify-content: flex-end; padding: 4px 0; gap: 1px; background: #efdfc2; }
+.col-clue:last-child { border-top-right-radius: 5px; }
+.row-clue { z-index: 3; justify-content: flex-end; align-items: center; padding: 0 5px 0 1px; gap: 4px; height: var(--cell); background: #efdfc2; }
+.clue-top { height: var(--head); }
+.corner-clue, .col-clue { height: var(--head); }
+.col-clue b,.row-clue b { display: inline-block; line-height: var(--clue-digit); min-width: calc(var(--clue-digit) - 2px); text-align: center; font-weight: 760; }
+.puzzle-board[data-size='10'] .row-clue, .puzzle-board[data-size='10'] .col-clue { font-size: 15px; }
+.puzzle-board[data-size='7'] .row-clue, .puzzle-board[data-size='7'] .col-clue { font-size: 16px; }
+.puzzle-board[data-size='10'] .row-clue { gap: 2px; }
+.col-clue.aim, .row-clue.aim { background: #e7c096; color: #453529; }
+.paper-game .grid-cell { position: relative; width: var(--cell); height: var(--cell); padding: 0; background-color: var(--grid-bg,#fffdf3); border-radius: 0; border-inline-end: 1px solid var(--grid-stroke,#a29074); border-bottom: 1px solid var(--grid-stroke,#a29074); appearance: none; }
+.paper-game .clue-line > .grid-cell:last-child { border-inline-end: none; }
+.paper-game .grid-cell.fifth { border-inline-end: 2px solid var(--heavy); }
+.paper-game .fifth-row .grid-cell { border-bottom: 2px solid var(--heavy); }
+.paper-game .grid-cell[aria-disabled='true'] { cursor: default; }
+.paper-game .grid-cell.unknown:hover, .paper-game .grid-cell.pinpoint { background-color: #f7e8c9; }
+.paper-game .grid-cell.crosshair:not(.pinpoint) { background-color: #faf2df; }
+.paper-game .grid-cell:focus-visible { z-index: 3; outline: 2.5px solid #34645b; outline-offset: -3px; }
+.paper-game .grid-cell:active:not([aria-disabled='true']) { transform: none; box-shadow: inset 0 0 0 2px #8c735c; }
+.crayon-fill { position: absolute; inset: 7%; border-radius: 10% 7% 8% 6%; border: 1px solid #675144; background: repeating-linear-gradient(130deg,transparent 0 2.2px,#aa8c722b 2.5px 3.4px,transparent 4px 6px),#7b6051; box-shadow: inset 1px .5px 0 #9b806c; }
+.cross-mark { position: absolute; inset: 28%; color: #897963; }
+.cross-mark::before, .cross-mark::after { content: ''; position: absolute; top: calc(50% - 1px); left: 0; right: 0; height: 2px; background: currentColor; border-radius: 2px; transform: rotate(44deg); }
+.cross-mark::after { transform: rotate(-45deg); }
+.grid-cell .cell-lock { position: absolute; right: 8%; bottom: 8%; width: 22%; height: 22%; max-width: 11px; max-height: 11px; stroke-width: 2.1; color: #8a7a65; }
+.grid-cell.filled .cell-lock { right: 12%; bottom: 12%; color: #f9ead6; }
+.fix-mark { position: absolute; top: 8%; right: 7%; display: grid; place-items: center; font: bold 10px/.85 ui-monospace, monospace; color: #fff9ea; border-radius: 50%; width: 12px; height: 12px; background: #9c624c; border: 1px solid #f9ead8; }
+.board-readout { display: flex; align-items: center; gap: 7px; min-height: 36px; padding-left: 3px; margin: 5px 2px 0; color: #766957; font-size: 12px; font-variant-numeric: tabular-nums; }
+.board-readout .ink-icon { width: 15px; height: 15px; }
+.coord { display: inline-flex; align-items: center; gap: 5px; }
+.coord em { font-style: normal; color: #a08f76; }
+.board-readout label { display: inline-flex; align-items: center; gap: 2px; }
+.board-readout select { min-height: 29px; border: 1px solid #b8a98d; border-radius: 4px; padding: 1px 0 1px 3px; background: #fff9e8; font-variant-numeric: tabular-nums; }
+.paper-game .zoom-button { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; min-height: 34px; padding: 4px; color: #74614e; }
+.paper-game .zoom-button:hover { text-decoration: underline; }
+.mark-body { position: relative; }
+.is-solved .puzzle-scroll { max-height: none; overflow: visible; }
+.sticker-overlay { pointer-events: none; position: absolute; top: 0; left: var(--rail); width: calc(var(--n) * var(--cell)); height: calc(var(--n) * var(--cell)); z-index: 2; }
+.sticker-print { display: block; width: 100%; height: 100%; }
+.sticker-overlay .sticker-print { filter: drop-shadow(.75px 2px 1.5px #6f56484a); }
+.is-solved .clue-matrix { border-color: #b9aa8c; }
+.is-solved .clue-line > .grid-cell { background-color: #f4edda; border-color: #dacfba; }
+.is-solved .clue-line .crayon-fill, .is-solved .clue-line .cross-mark, .is-solved .clue-line .fix-mark, .is-solved .clue-line .cell-lock { visibility: hidden; }
+.is-solved :is(.corner-clue,.col-clue,.row-clue) { background: #e9e0cd; color: #8c806a; border-color: #bdaf95; }
+.print-caption { display: block; min-height: 36px; padding-top: 9px; text-align: center; color: var(--dark-sage); font-size: 10px; font-weight: 650; letter-spacing: .15em; }
+.ink-to-color .sticker-underprint { animation: lay-color .95s ease-out both; }
+.ink-to-color .sticker-edge { animation: cut-edge .85s ease both; }
+.pressing-hoof { position: absolute; z-index: 2; width: clamp(66px,42%,126px); transform: translate(-27%,-87%); pointer-events: none; }
+.pressing-hoof .naituan { display: block; width: 100%; height: auto; transform-origin: 28% 84%; animation: press-once 1.6s ease both; filter: drop-shadow(.5px 2px 1px #55483933); }
+.pressed-proof { position: absolute; z-index: 0; left: 16%; bottom: -1%; width: 28%; height: 33%; transform: rotate(-9deg) skewX(-8deg); filter: drop-shadow(.5px 1px .6px #81694a55); }
+.mascot-plane .absent-stamp { width: 44px; height: 44px; color: #8b9372; opacity: .55; transform: rotate(-9deg); }
+@keyframes lay-color { 0%,19% { opacity: 1; } 87%,100% { opacity: 0; } }
+@keyframes cut-edge { 0%,38% { opacity: 0; } 88%,100% { opacity: 1; } }
+@keyframes press-once { 0%,36% { opacity: 0; transform: translate(14px,-10px) rotate(3deg); } 48% { opacity: 1; transform: translate(1px,-2px); } 68% { opacity: 1; transform: translateY(3px) rotate(-3deg) scaleY(.94); } 83% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate(9px,-6px); } }
+.win-side { gap: 14px; }
+.win-side .mascot-plane { height: 121px; }
+.outcome-panel .leaf-label.green { color: var(--dark-sage); }
+.outcome-panel .leaf-label .ink-icon { width: 15px; height: 15px; }
+.outcome-panel h3 { font-size: clamp(21px,2vw,27px); font-weight: 800; line-height: 1.4; margin: 5px 0 4px; }
+.outcome-panel p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.reward-line { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 11px; min-height: 18px; margin: 8px 0 12px; }
+.paw-mark, .first-mark { display: inline-flex; align-items: center; gap: 4px; color: var(--dark-sage); font-size: 12px; font-weight: 650; }
+.paw-mark { border: 1px dashed #97a383; border-radius: 4px; padding: 2px 6px; background: #eceddc; transform: rotate(-2deg); }
+.paw-mark .ink-icon, .first-mark .ink-icon { width: 16px; height: 16px; }
+.first-mark { color: #78593d; }
+.outcome-panel > .paper-btn { margin-top: 9px; }
+.reward-line + .paper-btn { margin-top: 0; }
+/* A short, editable row, never part of the player's live round. */
+.practice-stamp { border: 1px dashed #91a080; color: var(--dark-sage); background: #edf0dc; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600; transform: rotate(2deg); }
+.practice-stage { flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 25px 0 17px; width: min(100%, 410px); margin: 0 auto; }
+.practice-lead { font-size: 22px; font-weight: 740; line-height: 1.4; }
+.practice-lead b { display: inline-block; padding: 1px 5px; font: 750 24px/1 'Trebuchet MS',system-ui,sans-serif; letter-spacing: -.08em; background: linear-gradient(transparent 58%,#efcc9c 58%); }
+.practice-explain { color: #6a594b; font-size: 14px; line-height: 1.7; margin-top: 8px !important; }
+.practice-strip { display: flex; width: 100%; max-width: 375px; margin: 25px 0 4px; height: 51px; --cell: 100%; }
+.practice-clue { display: grid; place-items: center; flex: 0 0 49px; background: #efdfc2; font: 700 20px/1 'Trebuchet MS',system-ui,sans-serif; border: 1.5px solid #806b55; border-radius: 5px 0 0 5px; }
+.practice-grid { flex: 1; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); border: 1.5px solid #806b55; border-left: 0; border-radius: 0 5px 5px 0; overflow: hidden; }
+.practice-grid .grid-cell { width: 100%; height: 100%; border-bottom: 0; }
+.practice-grid .grid-cell:last-child { border-inline-end: 0; }
+.practice-counter { width: 100%; max-width: 375px; text-align: right; color: #83705d; font-size: 12px; }
+.paper-game .skip-practice { background: transparent; box-shadow: none; border-color: transparent; padding-left: 0; min-height: 34px; font-size: 13px; color: #6b5948; text-decoration: underline; text-underline-offset: 4px; }
+.outcome-panel h3:focus { outline: none; }
+.practice-response { color: #6d604c; margin: 12px 0 14px !important; font-size: 14px; min-height: 24px; }
+.pointed-clue { position: absolute; left: 2.5%; top: 53%; width: 22%; min-height: 18%; display: grid; place-items: center; border: 1px solid #a48c69; border-radius: 3px; background: #f0d8b2; color: #5b4734; font: 700 clamp(10px,1.6vw,19px)/1 'Trebuchet MS',system-ui,sans-serif; }
+.tutorial-folio .mascot-plane .naituan { animation: tutor-point .85s 240ms ease-out 1; transform-origin: 57% 90%; }
+@keyframes tutor-point { 0%,100% { transform: none; } 45% { transform: translateX(-3px) rotate(-3deg); } }

@@ -111,6 +111,9 @@
 .works-heading h2 { font-size: clamp(28px, 2.6vw, 39px); line-height: 1.2; font-weight: 690; letter-spacing: -.055em; }
 .works-count { color: var(--muted); font: 13px/1.5 var(--mono); }
 .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2.55vw, 38px); }
+@media (min-width: 1060px) {
+  .work-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 .project-card { display: block; min-width: 0; border-radius: 13px; }
 .card-art {
   position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 16/9; border-radius: 13px;

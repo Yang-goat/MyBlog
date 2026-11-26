@@ -12,6 +12,7 @@ const checked = new Set();
 const apps = [
   { id: "hex-mahjong", title: "海克斯麻将主持台", namespace: "hex-mahjong" },
   { id: "cyber-shop", title: "赛博杂货铺", namespace: "cyber-shop:save:v1" },
+  { id: "color-sudoku", title: "涂色数独", namespace: "color-sudoku:save:v1" },
 ];
 const check = (condition, message) => { if (!condition) errors.push(message); };
 
@@ -67,6 +68,19 @@ for (const app of apps) {
   const bundles = fs.existsSync(assetDir) ? fs.readdirSync(assetDir).filter(file => file.endsWith(".js")).map(file => fs.readFileSync(path.join(assetDir, file), "utf8")).join("\n") : "";
   check(bundles.includes(app.namespace), `Save namespace missing from emitted ${app.id} JavaScript`);
   check(portfolio.includes(`href="/${app.id}/"`), `Missing AI portfolio link to ${app.id}`);
+}
+
+// The portfolio must ship the actual 16:9 screenshot, not a missing/renamed placeholder.
+const cover = 'assets/ai-portfolio/color-sudoku.webp';
+check(exactFile(cover) && portfolio.includes('/' + cover), 'Missing color-sudoku screenshot cover');
+if (exactFile(cover)) {
+  const bytes = fs.readFileSync(path.join(dist, cover));
+  const source = fs.readFileSync(path.join(root, 'src/.vuepress/public', cover));
+  const tag = bytes.toString('ascii', 12, 16);
+  const size = tag === 'VP8 ' ? [bytes.readUInt16LE(26) & 0x3fff, bytes.readUInt16LE(28) & 0x3fff]
+    : tag === 'VP8X' ? [1 + bytes.readUIntLE(24, 3), 1 + bytes.readUIntLE(27, 3)]
+    : tag === 'VP8L' ? [1 + (bytes.readUInt32LE(21) & 0x3fff), 1 + ((bytes.readUInt32LE(21) >>> 14) & 0x3fff)] : [];
+  check(bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WEBP' && size[0] === 1200 && size[1] === 675 && bytes.equals(source), 'Invalid or stale 1200×675 color-sudoku WebP');
 }
 
 const art = await validateArt({ distRoot: dist });

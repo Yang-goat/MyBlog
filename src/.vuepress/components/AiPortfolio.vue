@@ -20,6 +20,14 @@ const projects = [
     alt: "雨夜的港口街道上，杂货铺亮着暖黄色的灯",
     intro: "在雨夜街角接手一间小店。和街坊议价、翻新旧设备，选一门手艺做下去，攒够钱买下自己的铺面。",
   },
+  {
+    slug: "color-sudoku",
+    title: "涂色数独",
+    type: "逻辑解谜 · 数织",
+    action: "翻开贴纸册",
+    alt: "《涂色数独》实机画面：奶团坐在方格纸边，玩家正在按行列线索涂格",
+    intro: "看数字，涂一格，留一格。和小山羊奶团一起解开十二道数织，把在小院里遇见的朋友贴进册子。",
+  },
 ];
 
 const knot = ref<InstanceType<typeof KineticKnot> | null>(null);

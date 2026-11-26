@@ -1,0 +1,21 @@
+{
+  "name": "@goatyang/color-sudoku",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4177 --strictPort",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "node --test --test-isolation=none tests/*.test.ts",
+    "validate": "node scripts/verify-edition.ts",
+    "build": "vue-tsc --noEmit && node scripts/verify-edition.ts && vite build"
+  },
+  "dependencies": { "vue": "3.5.35" },
+  "devDependencies": {
+    "@types/node": "24.13.1",
+    "@vitejs/plugin-vue": "6.0.7",
+    "typescript": "5.9.3",
+    "vite": "8.0.16",
+    "vue-tsc": "3.3.9"
+  }
+}
