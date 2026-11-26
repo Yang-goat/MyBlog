@@ -88,7 +88,8 @@ function leaveCard() {
 </script>
 
 <template>
-  <div id="studio-top" class="portfolio-shell">
+  <div id="studio-top" class="portfolio-shell"
+    @pointermove="knot?.movePointer($event)" @pointerleave="knot?.centerPointer()">
     <a class="studio-skip" href="#works">跳到作品索引</a>
     <header class="studio-header studio-width">
       <div class="studio-brand" aria-label="Goat_Yang Studio">
@@ -106,8 +107,7 @@ function leaveCard() {
           <p>我和 AI 一起，把日常的想法做成可以亲手体验的作品。</p>
           <a class="browse-link" href="#works">浏览作品 <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="knot-stage" :class="{ 'is-active': knotActive }"
-          @pointermove="knot?.movePointer($event)" @pointerleave="knot?.centerPointer()">
+        <div class="knot-stage" :class="{ 'is-active': knotActive }">
           <div class="stage-grid" aria-hidden="true"></div>
           <div class="stage-orbit" aria-hidden="true"></div>
           <div class="stage-object" aria-hidden="true">

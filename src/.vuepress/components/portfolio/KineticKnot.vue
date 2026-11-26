@@ -15,27 +15,19 @@ let resize: ResizeObserver | undefined;
 let visible = false, unavailable = false, sizeDirty = true;
 let frame = 0, previous = 0, seconds = 0;
 let x = 0, y = 0, targetX = 0, targetY = 0;
-let bounds: DOMRect | null = null;
 let width = 0, height = 0;
 let quality = 1, sampleMs = 0, samples = 0;
 let pointerDirty = false;
 
-function invalidateBounds() {
-  bounds = null;
-}
-
 function movePointer(event: PointerEvent) {
   if (!active.value || event.pointerType === "touch") return;
-  bounds ??= (event.currentTarget as HTMLElement).getBoundingClientRect();
-  if (!bounds.width || !bounds.height) return;
-  targetX = Math.max(-1, Math.min(1, 2 * (event.clientX - bounds.left) / bounds.width - 1));
-  targetY = Math.max(-1, Math.min(1, 2 * (event.clientY - bounds.top) / bounds.height - 1));
+  targetX = Math.max(-1, Math.min(1, 2 * event.clientX / window.innerWidth - 1));
+  targetY = Math.max(-1, Math.min(1, 2 * event.clientY / window.innerHeight - 1));
   pointerDirty = true;
   schedule();
 }
 
 function centerPointer() {
-  invalidateBounds();
   targetX = 0;
   targetY = 0;
   pointerDirty = true;
@@ -64,7 +56,6 @@ function syncActivity() {
     frame = previous = sampleMs = samples = 0;
     x = y = targetX = targetY = 0;
     pointerDirty = false;
-    invalidateBounds();
     if (fallback.value) fallback.value.style.removeProperty("transform");
   }
 }
@@ -139,11 +130,9 @@ onMounted(() => {
   target.addEventListener("webglcontextlost", contextLost);
   target.addEventListener("webglcontextrestored", contextRestored);
   document.addEventListener("visibilitychange", syncActivity);
-  window.addEventListener("scroll", invalidateBounds, { capture: true, passive: true });
   resize = new ResizeObserver(([entry]) => {
     width = entry.contentRect.width;
     height = entry.contentRect.height;
-    invalidateBounds();
     sizeDirty = true;
     quality = 1;
     sampleMs = samples = 0;
@@ -161,7 +150,6 @@ onBeforeUnmount(() => {
   intersection?.disconnect();
   resize?.disconnect();
   document.removeEventListener("visibilitychange", syncActivity);
-  window.removeEventListener("scroll", invalidateBounds, true);
   canvas.value?.removeEventListener("webglcontextlost", contextLost);
   canvas.value?.removeEventListener("webglcontextrestored", contextRestored);
   renderer?.dispose();
