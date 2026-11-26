@@ -81,12 +81,8 @@ function submit() {
       </form>
     </section>
 
-    <nav class="setup-links" aria-label="海克斯麻将资料">
-      <a href="/notes/hex-mahjong/rules-v1.2.html">完整规则</a>
-      <span aria-hidden="true">◆</span>
-      <a href="/notes/hex-mahjong/card-library.html">卡牌文字库</a>
-      <span aria-hidden="true">◆</span>
-      <a href="/notes/hex-mahjong/">返回博客栏目</a>
+    <nav class="setup-links" aria-label="作品集导航">
+      <a href="/ai-portfolio/">返回 Goat_Yang AI 作品集</a>
     </nav>
   </main>
 </template>
@@ -238,7 +234,6 @@ legend { margin-bottom: 1rem; color: var(--gold-200); font-weight: 700; letter-s
 }
 .setup-links a { text-decoration: none; }
 .setup-links a:hover { color: var(--gold-200); }
-.setup-links span { color: var(--gold-500); font-size: 0.6rem; }
 
 @media (max-width: 760px) {
   .setup-screen { align-items: start; }

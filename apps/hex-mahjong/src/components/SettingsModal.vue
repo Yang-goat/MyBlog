@@ -9,13 +9,9 @@ const emit = defineEmits<{ close: []; abandon: []; newMatch: [] }>();
 <template>
   <GameModal title="主持台设置" description="比赛状态会在每次操作后自动保存到本设备。" confirm-label="返回牌桌" :show-cancel="false" @confirm="emit('close')">
     <div class="settings-list">
-      <a href="/notes/hex-mahjong/rules-v1.2.html">
+      <a href="/ai-portfolio/">
         <UiIcon name="book" />
-        <span><strong>完整规则 V1.2</strong><small>在博客中查看正式规则与计分说明</small></span>
-      </a>
-      <a href="/notes/hex-mahjong/card-library.html">
-        <UiIcon name="cards" />
-        <span><strong>192 张卡牌文字库</strong><small>按类别查阅全部卡牌正文</small></span>
+        <span><strong>返回 Goat_Yang AI 作品集</strong><small>查看作品简介与其他作品</small></span>
       </a>
       <div class="settings-status">
         <UiIcon name="spark" />

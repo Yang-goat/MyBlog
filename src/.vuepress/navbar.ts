@@ -114,16 +114,6 @@ export default navbar([
         link: "/notes/web-development/",
       },
       {
-        text: "海克斯麻将",
-        icon: "dice",
-        link: "/notes/hex-mahjong/",
-      },
-      {
-        text: "赛博杂货铺",
-        icon: "screwdriver-wrench",
-        link: "/notes/cyber-shop/",
-      },
-      {
         text: "音乐",
         icon: "music",
         link: "/notes/music/",

@@ -22,7 +22,7 @@ const emit = defineEmits<{ newMatch: []; undo: [] }>();
       </ol>
       <p class="final-note">结果已经保存在本设备。只有确认开始新一场，当前积分与强化才会清空。</p>
       <div class="final-actions">
-        <a href="/notes/hex-mahjong/">查看海克斯麻将栏目</a>
+        <a href="/ai-portfolio/">返回 Goat_Yang AI 作品集</a>
         <div>
           <UiButton v-if="canUndo" label="撤销第 8 局结算" icon="undo" variant="quiet" @click="emit('undo')" />
           <UiButton label="开始新一场" icon="play" variant="gold" @click="emit('newMatch')" />

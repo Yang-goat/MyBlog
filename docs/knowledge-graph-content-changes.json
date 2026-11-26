@@ -4207,94 +4207,6 @@
       "links": []
     },
     {
-      "path": "src/notes/hex-mahjong/card-library.md",
-      "title": "海克斯麻将卡牌文字库 v0.2",
-      "beforeSha256": "2256dfd545d7d01b5ed3400f3bbf5efccd433243bcef17275e280888eeccf8ec",
-      "afterSha256": "2256dfd545d7d01b5ed3400f3bbf5efccd433243bcef17275e280888eeccf8ec",
-      "originalBodySha256": "6d235262f8bb575efd8ff0635b9e793ac725bd1644036364ddd110c6181aa184",
-      "protectedFrontmatterSha256": "2c3a67a0fdf65158029a80c7c73ae2d018ed9bc619428eca424f41b6bf8da748",
-      "tags": {
-        "before": [
-          "海克斯麻将",
-          "卡牌资料"
-        ],
-        "after": [
-          "海克斯麻将",
-          "卡牌资料"
-        ],
-        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n",
-        "afterBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n"
-      },
-      "evidence": [],
-      "links": []
-    },
-    {
-      "path": "src/notes/hex-mahjong/card-pools.md",
-      "title": "海克斯麻将 192 张卡牌与模式组池",
-      "beforeSha256": "c2136ca058ae8b08678eeed8903daf733f0dba5803e2359cf211355129cad723",
-      "afterSha256": "c2136ca058ae8b08678eeed8903daf733f0dba5803e2359cf211355129cad723",
-      "originalBodySha256": "4543f08fef6e7332cba5ab262ac0d365386f33ca6443db070daa8f9ccf73a09e",
-      "protectedFrontmatterSha256": "d05017f62da74ce007a13b2c226c59f472192c07f525cb2e64a09c393ae81685",
-      "tags": {
-        "before": [
-          "海克斯麻将",
-          "卡牌资料"
-        ],
-        "after": [
-          "海克斯麻将",
-          "卡牌资料"
-        ],
-        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n",
-        "afterBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n"
-      },
-      "evidence": [],
-      "links": []
-    },
-    {
-      "path": "src/notes/hex-mahjong/quick-start.md",
-      "title": "海克斯麻将快速开始",
-      "beforeSha256": "d192739222e1b04f062891baac02940e6f09f962a43247b092c088ef10c8eb58",
-      "afterSha256": "d192739222e1b04f062891baac02940e6f09f962a43247b092c088ef10c8eb58",
-      "originalBodySha256": "779ab849a7739132ff43c5ac3245a970117fcd0e848632fc60b7d1c883ba65c9",
-      "protectedFrontmatterSha256": "8882c608abb92af3a504da839aced97553e8b515d8f3c03fb2865abc2543af1d",
-      "tags": {
-        "before": [
-          "海克斯麻将",
-          "桌游规则"
-        ],
-        "after": [
-          "海克斯麻将",
-          "桌游规则"
-        ],
-        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n",
-        "afterBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n"
-      },
-      "evidence": [],
-      "links": []
-    },
-    {
-      "path": "src/notes/hex-mahjong/rules-v1-2.md",
-      "title": "海克斯麻将规则 V1.2（网站主持台版）",
-      "beforeSha256": "a1a5363777bcd0daf6a782316660d3c2b528bb99ad9d5fbf3036029473b72d69",
-      "afterSha256": "a1a5363777bcd0daf6a782316660d3c2b528bb99ad9d5fbf3036029473b72d69",
-      "originalBodySha256": "4ccb4af4bbac462c8232647328eda56edf6d047da86b714e16c75be5c3851e34",
-      "protectedFrontmatterSha256": "2fd075949d495934a2fa638a41ab88d16b9323ed6f9e11647dc5b50d59936c88",
-      "tags": {
-        "before": [
-          "海克斯麻将",
-          "桌游规则"
-        ],
-        "after": [
-          "海克斯麻将",
-          "桌游规则"
-        ],
-        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n",
-        "afterBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n"
-      },
-      "evidence": [],
-      "links": []
-    },
-    {
       "path": "src/notes/mathematical-modeling/cumcm-problem-a-guide.md",
       "auditedCrlfRanges": [[13, 602], [604, 666]],
       "title": "国赛A题指导",
@@ -6078,6 +5990,96 @@
       "evidence": [
         "依据本文主标题、导语或代码所用工具补足具体主题；未改变原有体裁标签。"
       ],
+      "links": []
+    }
+  ],
+  "retiredArticles": [
+    {
+      "path": "src/notes/hex-mahjong/card-library.md",
+      "title": "海克斯麻将卡牌文字库 v0.2",
+      "beforeSha256": "2256dfd545d7d01b5ed3400f3bbf5efccd433243bcef17275e280888eeccf8ec",
+      "afterSha256": "2256dfd545d7d01b5ed3400f3bbf5efccd433243bcef17275e280888eeccf8ec",
+      "originalBodySha256": "6d235262f8bb575efd8ff0635b9e793ac725bd1644036364ddd110c6181aa184",
+      "protectedFrontmatterSha256": "2c3a67a0fdf65158029a80c7c73ae2d018ed9bc619428eca424f41b6bf8da748",
+      "tags": {
+        "before": [
+          "海克斯麻将",
+          "卡牌资料"
+        ],
+        "after": [
+          "海克斯麻将",
+          "卡牌资料"
+        ],
+        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n",
+        "afterBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n"
+      },
+      "evidence": [],
+      "links": []
+    },
+    {
+      "path": "src/notes/hex-mahjong/card-pools.md",
+      "title": "海克斯麻将 192 张卡牌与模式组池",
+      "beforeSha256": "c2136ca058ae8b08678eeed8903daf733f0dba5803e2359cf211355129cad723",
+      "afterSha256": "c2136ca058ae8b08678eeed8903daf733f0dba5803e2359cf211355129cad723",
+      "originalBodySha256": "4543f08fef6e7332cba5ab262ac0d365386f33ca6443db070daa8f9ccf73a09e",
+      "protectedFrontmatterSha256": "d05017f62da74ce007a13b2c226c59f472192c07f525cb2e64a09c393ae81685",
+      "tags": {
+        "before": [
+          "海克斯麻将",
+          "卡牌资料"
+        ],
+        "after": [
+          "海克斯麻将",
+          "卡牌资料"
+        ],
+        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n",
+        "afterBlock": "tag:\n  - 海克斯麻将\n  - 卡牌资料\n"
+      },
+      "evidence": [],
+      "links": []
+    },
+    {
+      "path": "src/notes/hex-mahjong/quick-start.md",
+      "title": "海克斯麻将快速开始",
+      "beforeSha256": "d192739222e1b04f062891baac02940e6f09f962a43247b092c088ef10c8eb58",
+      "afterSha256": "d192739222e1b04f062891baac02940e6f09f962a43247b092c088ef10c8eb58",
+      "originalBodySha256": "779ab849a7739132ff43c5ac3245a970117fcd0e848632fc60b7d1c883ba65c9",
+      "protectedFrontmatterSha256": "8882c608abb92af3a504da839aced97553e8b515d8f3c03fb2865abc2543af1d",
+      "tags": {
+        "before": [
+          "海克斯麻将",
+          "桌游规则"
+        ],
+        "after": [
+          "海克斯麻将",
+          "桌游规则"
+        ],
+        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n",
+        "afterBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n"
+      },
+      "evidence": [],
+      "links": []
+    },
+    {
+      "path": "src/notes/hex-mahjong/rules-v1-2.md",
+      "title": "海克斯麻将规则 V1.2（网站主持台版）",
+      "beforeSha256": "a1a5363777bcd0daf6a782316660d3c2b528bb99ad9d5fbf3036029473b72d69",
+      "afterSha256": "a1a5363777bcd0daf6a782316660d3c2b528bb99ad9d5fbf3036029473b72d69",
+      "originalBodySha256": "4ccb4af4bbac462c8232647328eda56edf6d047da86b714e16c75be5c3851e34",
+      "protectedFrontmatterSha256": "2fd075949d495934a2fa638a41ab88d16b9323ed6f9e11647dc5b50d59936c88",
+      "tags": {
+        "before": [
+          "海克斯麻将",
+          "桌游规则"
+        ],
+        "after": [
+          "海克斯麻将",
+          "桌游规则"
+        ],
+        "beforeBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n",
+        "afterBlock": "tag:\n  - 海克斯麻将\n  - 桌游规则\n"
+      },
+      "evidence": [],
       "links": []
     }
   ],

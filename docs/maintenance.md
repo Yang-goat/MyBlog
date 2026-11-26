@@ -52,7 +52,7 @@ node scripts/check-independent-apps.mjs
 
 旧整张店铺图 `scene-shop` 和维修台图 `scene-workbench` 已明确归档，门禁检查归档素材及各自的替代场景入口。场景、手册和收纳道具的 16 项图片由 `apps/cyber-shop/scenery-manifest.json` 独立登记；`validate-scenery.mjs` 按真实代码引用检查精确路径、WebP、尺寸、透明通道、原始 PNG 与发布文件哈希。霓虹街景与设备替换的三张旧图保存在 `archivedAssets`，同时核对归档哈希及旧文件没有继续出现在发布目录。
 
-`check-independent-apps.mjs` 检查两款应用入口、构建脚本与样式资源、精确大小写、应用资源前缀，以及与博客首页同时存在；它复用 73 项基础资源与 16 项场景、手册和收纳道具门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
+`check-independent-apps.mjs` 检查博客首页到 AI 作品集、作品集到两款应用的链接，并核对各应用的构建脚本、样式资源、精确大小写和资源前缀；它复用 73 项基础资源与 16 项场景、手册和收纳道具门禁，并要求发布图片与源文件逐字节一致。资源检查不能代替浏览器中的实际图片解码、视觉、交互、音频、触控与存档恢复测试。
 
 GitHub Actions 在 `main`、`codex/**` 推送及面向 `main` 的拉取请求上执行验证。Pages 配置、发布产物上传和部署均限制为 `main`，手动从功能分支触发同样只验证。正式发布后仍需检查 `https://goatyang.com/cyber-shop/` 的实际页面、资源响应与版本。
 

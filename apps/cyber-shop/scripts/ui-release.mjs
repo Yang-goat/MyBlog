@@ -58,9 +58,15 @@ try{
   }
   checks.push({touch,version,capacity:(await read()).game.rootCapacity*4,geometry});await page.close();if(touch)await ctx.close();
  }
- if(process.env.CYBER_CHECK_ARTICLE!=='0'){
-  const page=await context.newPage();await page.goto(new URL('/notes/cyber-shop/',base).href);await page.getByRole('heading',{name:'赛博杂货铺',exact:true}).first().waitFor();
-  assert((await page.locator('body').innerText()).includes(`${version} 版`));await page.screenshot({path:`${out}/article.png`});checks.push({article:true});await page.close();
+ if (process.env.CYBER_CHECK_PORTFOLIO !== '0') {
+  const page = await context.newPage();
+  await page.goto(new URL('/ai-portfolio/', base).href);
+  const entry = page.locator('a[href="/cyber-shop/"]').first();
+  await entry.waitFor({ state: 'visible' });
+  await entry.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: `${out}/portfolio.png` });
+  checks.push({ portfolio: true });
+  await page.close();
  }
  assert.deepEqual(errors,[]);await fs.writeFile(`${out}/result.json`,JSON.stringify({ok:true,base,version,checkedAt:new Date().toISOString(),assets:assets.sort((a,b)=>a.file.localeCompare(b.file)),checks,errors},null,2));console.log(JSON.stringify({ok:true,base,version,assets:assets.length,checks}));
 }catch(error){await activePage?.screenshot({path:`${out}/failure.png`}).catch(()=>{});const state=await activePage?.evaluate(()=>JSON.parse(window.render_game_to_text())).catch(()=>null);await fs.writeFile(`${out}/failure.json`,JSON.stringify({error:String(error),base,assets,checks,errors,state},null,2));throw error;}finally{await browser.close();}

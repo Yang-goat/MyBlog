@@ -44,7 +44,15 @@ function checkResource(url, from, appId) {
   }
 }
 
-check(exactFile("index.html"), "Missing blog index.html; build the complete site, not an application alone.");
+function readEntry(relative) {
+  if (exactFile(relative)) return fs.readFileSync(path.join(dist, relative), "utf8");
+  errors.push(`Missing site entry: ${relative}`);
+  return "";
+}
+
+const home = readEntry("index.html");
+const portfolio = readEntry("ai-portfolio/index.html");
+check(home.includes('href="/ai-portfolio/"'), "Missing homepage link to the AI portfolio");
 for (const app of apps) {
   const entry = `${app.id}/index.html`;
   if (!exactFile(entry)) { errors.push(`Missing application entry: ${entry}`); continue; }
@@ -58,7 +66,7 @@ for (const app of apps) {
   const assetDir = path.join(dist, app.id, "assets");
   const bundles = fs.existsSync(assetDir) ? fs.readdirSync(assetDir).filter(file => file.endsWith(".js")).map(file => fs.readFileSync(path.join(assetDir, file), "utf8")).join("\n") : "";
   check(bundles.includes(app.namespace), `Save namespace missing from emitted ${app.id} JavaScript`);
-  check(exactFile(`notes/${app.id}/index.html`), `Missing blog introduction: notes/${app.id}/`);
+  check(portfolio.includes(`href="/${app.id}/"`), `Missing AI portfolio link to ${app.id}`);
 }
 
 const art = await validateArt({ distRoot: dist });

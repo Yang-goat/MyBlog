@@ -870,19 +870,6 @@ export default sidebar({
     "typescript.html"
   ],
 
-  // 海克斯麻将
-  "/notes/hex-mahjong/": [
-    "quick-start.html",
-    "rules-v1-2.html",
-    "card-library.html",
-    "card-pools.html"
-  ],
-
-  // 赛博杂货铺
-  "/notes/cyber-shop/": [
-    { text: "游戏介绍与操作", link: "/notes/cyber-shop/" }
-  ],
-
   // 音乐
   "/notes/music/": [
     "mixes.html"

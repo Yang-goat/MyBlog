@@ -11,10 +11,10 @@ heroText: Goat_Yang
 heroFullScreen: true
 tagline: 个人博客·知识库
 projects:
-  - icon: folder-open
-    name: GoatYang Academic
-    desc: 中文学术汇报 Beamer 模板，适用于组会、论文精读与实验展示
-    link: https://github.com/Yang-goat/goatyang-academic-beamer
+  - icon: layer-group
+    name: Goat_Yang AI 作品集
+    desc: 浏览我用 AI 创作的项目，查看简介或直接体验
+    link: /ai-portfolio/
 
   - icon: book
     name: USTSthesis
@@ -30,17 +30,6 @@ projects:
     name: Codex 用量监控
     desc: Codex 与 ChatGPT Work 的 Token、上下文和账号额度监控
     link: https://github.com/Yang-goat/codex-usage-monitor
-
-  # 测试版本暂不展示
-  # - icon: screwdriver-wrench
-  #   name: 赛博杂货铺
-  #   desc: 在赛博朋克街区经营小店，交易旧货、修复设备与收藏生活记忆
-  #   link: /notes/cyber-shop/
-
-  # - icon: dice
-  #   name: 海克斯麻将主持台
-  #   desc: 配合实体四人麻将使用的电子卡牌主持台
-  #   link: https://goatyang.com/hex-mahjong/
 
   # - icon: newspaper
   #   name: 文章名称

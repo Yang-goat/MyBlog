@@ -1,5 +1,5 @@
 import { defineClientConfig } from "vuepress/client";
-import { markRaw } from "vue";
+import { defineAsyncComponent, markRaw } from "vue";
 import { defineSearchConfig } from "@vuepress/plugin-slimsearch/client";
 import Blog from "./layouts/Main.vue";
 import TreasureSites from "./layouts/TreasureSites.vue";
@@ -131,6 +131,7 @@ const scheduleMindMapSync = (retry = 0): void => {
 
 export default defineClientConfig({
   layouts: {
+    AiPortfolio: defineAsyncComponent(() => import("./components/AiPortfolio.vue")),
     Blog,
     TreasureSites,
   },

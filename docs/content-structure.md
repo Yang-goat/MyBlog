@@ -6,6 +6,7 @@
 
 ```text
 src/
+├── ai-portfolio/                          # Goat_Yang AI 作品集（首页独立入口）
 ├── ai-algorithms/                         # AI 与算法
 │   ├── foundations/                       # 基础与方法
 │   │   ├── general/                       # 通识基础
@@ -52,8 +53,6 @@ src/
 │   ├── computing/                         # 计算机随记
 │   ├── programming-languages/             # 程序设计语言随笔
 │   ├── web-development/                   # 前端随笔
-│   ├── hex-mahjong/                       # 海克斯麻将
-│   ├── cyber-shop/                        # 赛博杂货铺
 │   └── music/                             # 音乐
 ├── software-tools/                        # 软件工具
 │   ├── version-control/                   # 版本控制

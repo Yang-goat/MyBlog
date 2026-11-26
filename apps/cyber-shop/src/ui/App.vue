@@ -67,7 +67,7 @@ watch(() => state.value.phase, phase => { if (phase === 'won' || phase === 'fail
     <section v-if="!started" class="title-screen">
       <ShopfrontArt class="title-art" />
       <div class="title-shade"></div>
-      <a class="back-link" href="/notes/cyber-shop/">← 游戏手记</a>
+      <a class="back-link" href="/ai-portfolio/">← Goat_Yang AI 作品集</a>
       <div class="title-copy">
         <p class="eyebrow">雾港 · 第九街</p>
         <h1>赛博<br /><span>杂货铺</span></h1>
