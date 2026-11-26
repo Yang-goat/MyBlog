@@ -118,7 +118,7 @@ function lightProfiles() {
 // A closed tube swept around the (2,3) torus knot. Estimate contact shadows
 // against non-adjacent arcs so that crossings retain their depth as the view turns.
 function knotGeometry() {
-  const rings = 144, sides = 28;
+  const rings = 288, sides = 48;
   const vertices = new Float32Array((rings + 1) * (sides + 1) * 11);
   const indices = new Uint16Array(rings * sides * 6);
   const arcCenters = Array.from({ length: 72 }, (_, i) => center(TAU * i / 72));
