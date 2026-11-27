@@ -4,14 +4,19 @@ import { publishEdition, shapeKey } from '../scripts/edition.ts';
 import { generatePuzzle, seeds } from '../src/patterns/index.ts';
 import { replayProof } from '../src/solver/index.ts';
 import { newGame, play } from '../src/core/game.ts';
+import { stages } from '../src/core/progression.ts';
 
 const edition = publishEdition();
-test('first edition: 12 distinct silhouettes, no reflected copies and a distinct same-band reserve per page', () => {
-  assert.equal(edition.length, 12);
+test('expanded edition: six sizes, six distinct silhouettes per size and a distinct reserve per page', () => {
+  assert.equal(edition.length, 36);
+  for (const stage of stages) {
+    assert.equal(edition.filter(e => e.puzzle.size === stage.size).length, 6);
+    assert.deepEqual(edition.filter(e => e.puzzle.size === stage.size).map(e => e.puzzle.id), stage.ids);
+  }
   const outlines = new Set<string>();
   for (const [i, e] of edition.entries()) {
     const { puzzle, proof, fallback } = e;
-    assert.equal(puzzle.id, i + 1); assert.equal(puzzle.size, [5,7,10][Math.floor(i / 4)]);
+    assert.equal(puzzle.id, i + 1);
     assert.equal(puzzle.book, fallback.puzzle.book); assert.equal(puzzle.size, fallback.puzzle.size);
     assert.equal(e.source, 'primary', `Review page ${puzzle.id}: primary used its backup (${e.reason})`);
     assert.notEqual(shapeKey(puzzle), shapeKey(fallback.puzzle));

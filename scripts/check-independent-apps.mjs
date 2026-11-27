@@ -12,7 +12,7 @@ const checked = new Set();
 const apps = [
   { id: "hex-mahjong", title: "海克斯麻将主持台", namespace: "hex-mahjong" },
   { id: "cyber-shop", title: "赛博杂货铺", namespace: "cyber-shop:save:v1" },
-  { id: "color-sudoku", title: "涂色数独", namespace: "color-sudoku:save:v1" },
+  { id: "color-sudoku", title: "涂色数独", namespace: "color-sudoku:save:v2" },
 ];
 const check = (condition, message) => { if (!condition) errors.push(message); };
 

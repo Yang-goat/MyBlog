@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { generatePuzzle, seeds } from '../src/patterns/index.ts';
+import { stages } from '../src/core/progression.ts';
 import { Sheet, silhouetteKey } from '../src/patterns/paper.ts';
 import type { Bit, Puzzle, Size } from '../src/contracts.ts';
 
@@ -43,13 +44,13 @@ function audit(p: Puzzle): void {
   assert.equal(seen.size, occupancy, `Floating part in ${p.id}:${p.seed}\n${art(p)}`);
 }
 
-test('twelve different titles, stories and native-size pairs across the three books', () => {
-  assert.deepEqual(seeds.map(s => s.id), Array.from({ length: 12 }, (_, i) => i + 1));
-  assert.equal(new Set(pairs.map(([p]) => p.sticker.name)).size, 12);
-  assert.equal(new Set(pairs.map(([p]) => p.sticker.story)).size, 12);
+test('distinct titles, stories and native-size pairs across the six books', () => {
+  assert.deepEqual(seeds.map(s => s.id), Array.from({ length: 36 }, (_, i) => i + 1));
+  assert.equal(new Set(pairs.map(([p]) => p.sticker.name)).size, 36);
+  assert.equal(new Set(pairs.map(([p]) => p.sticker.story)).size, 36);
   for (const [p, q] of pairs) {
-    const book = Math.floor((p.id - 1) / 4);
-    assert.equal(p.book, books[book]); assert.equal(p.size, [5, 7, 10][book]);
+    const stage = stages.find(stage => (stage.ids as readonly number[]).includes(p.id))!;
+    assert.equal(p.book, stage.book); assert.equal(p.size, stage.size);
     assert.equal(q.book, p.book); assert.equal(q.size, p.size);
     assert.equal(q.sticker.name, p.sticker.name); assert.equal(q.sticker.story, p.sticker.story);
     assert.match(p.sticker.story, /[。！？]$/u);
@@ -65,7 +66,7 @@ test('regenerates the same collectible after other calls; exported puzzle arrays
   for (const { id, fallback } of seeds.slice().reverse()) generatePuzzle(id, fallback);
   assert.deepEqual(generatePuzzle(1, 0), before);
   for (const [p, q] of pairs) for (const ticket of [p, q]) assert.deepEqual(generatePuzzle(ticket.id, ticket.seed), ticket);
-  for (const id of [-1, 0, 13, 3.1, NaN]) assert.throws(() => generatePuzzle(id, 0), RangeError);
+  for (const id of [-1, 0, 37, 3.1, NaN]) assert.throws(() => generatePuzzle(id, 0), RangeError);
   for (const seed of [-1, 3.1, Infinity, NaN, 2 ** 32]) assert.throws(() => generatePuzzle(3, seed), RangeError);
   audit(generatePuzzle(12, 0xffffffff));
 });
@@ -104,7 +105,7 @@ test('shape fingerprints ignore translations, both reflections and quarter turns
   const enlarged = cells.flatMap(([x, y]): [number, number][] => [[x * 2, y * 2], [x * 2 + 1, y * 2], [x * 2, y * 2 + 1], [x * 2 + 1, y * 2 + 1]]);
   assert.equal(silhouetteKey(mask(10, enlarged), 10), key);
   assert.notEqual(silhouetteKey(mask(5, [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [0, 1]]), 5), key);
-  assert.equal(new Set(pairs.flatMap(pair => pair.map(p => silhouetteKey(p.solution, p.size)))).size, 24);
+  assert.equal(new Set(pairs.flatMap(pair => pair.map(p => silhouetteKey(p.solution, p.size)))).size, 72);
 });
 
 // Compare after BEST alignment, not just at fixed coordinates. An off-centre duplicate must
@@ -131,8 +132,8 @@ test('the backup costs real silhouette cells even after translation, mirrors and
   }
 });
 
-test('named black-and-white shapes keep the landmarks from the contact-sheet review, without using sticker colours', () => {
-  for (const pair of pairs) for (const p of pair) {
+test('original black-and-white shapes preserve their reviewed landmarks', () => {
+  for (const pair of pairs.slice(0, 12)) for (const p of pair) {
     const n = p.size, grid = rows(p);
     const at = (x: number, y: number) => p.solution[y * n + x];
     const must = (value: Bit, ...xy: [number, number][]) => {

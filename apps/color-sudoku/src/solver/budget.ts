@@ -29,7 +29,7 @@ export class Budget {
 
 /** Do not spread a Puzzle here: neither search may even read a private field. */
 export function copyClues({ size, rowClues, columnClues }: Clues): Clues {
-  if (!Number.isInteger(size) || size < 1 || size > 10) throw new Rejected('invalid-clues');
+  if (!Number.isInteger(size) || size < 1 || size > 20) throw new Rejected('invalid-clues');
   function copyAxis(lines: number[][]): number[][] {
     if (!Array.isArray(lines) || lines.length !== size) throw new Rejected('invalid-clues');
     return Array.from(lines, runs => {

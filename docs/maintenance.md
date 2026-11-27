@@ -83,7 +83,7 @@ pnpm.cmd cyber:preview
 
 导出文件只包含当前进度，不携带原站点的当日开门副本。导入后以导入点建立本地恢复备份，从下一营业日起再按开门状态备份。游戏开发、玩家操作和扩展入口见[赛博杂货铺交接说明](../apps/cyber-shop/README.md)。
 
-涂色数独可用 `pnpm.cmd color:dev` 启动在 `http://127.0.0.1:4177/color-sudoku/`。`color:validate` 核对两套种子的逐步证明；更换首发种子时，从 `apps/color-sudoku/` 运行 `node scripts/verify-edition.ts --record`，审阅依据与黑白轮廓后重新测试。Vite 只把通过门禁的题面打进浏览器，正式对局不访问出题器或数据库。存档键为 `color-sudoku:save:v1`，丢弃浏览器站点数据会一并清掉贴纸册。
+涂色数独可用 `pnpm.cmd color:dev` 启动在 `http://127.0.0.1:4177/color-sudoku/`。`color:validate` 核对 36 关及其备用题目的逐步证明；更换题面种子时，从 `apps/color-sudoku/` 运行 `node scripts/verify-edition.ts --record`，审阅依据与黑白轮廓后重新测试。Vite 按静态资源发布通过门禁的题面与工坊插画。当前存档键为 `color-sudoku:save:v2`，首次读取时可迁移旧版 `color-sudoku:save:v1`。
 
 ## 临时文件与清理
 

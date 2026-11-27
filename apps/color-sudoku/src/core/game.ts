@@ -1,4 +1,4 @@
-import type { Cell, Clues, Puzzle, Round, Tool } from '../contracts.ts';
+import type { Cell, Clues, GameEffect, Puzzle, Round, Tool } from '../contracts.ts';
 
 export const isInk = (cell: Cell): boolean => cell === 'filled' || cell === 'miss-filled';
 export function newGame(puzzle: Puzzle): Round {
@@ -20,11 +20,12 @@ function sealCompletedLines({ size, rowClues, columnClues }: Clues, cells: Cell[
   }
 }
 
-export function play(puzzle: Puzzle, round: Round, at: number, tool: Tool): Round {
+export function play(puzzle: Puzzle, round: Round, at: number, tool: Tool, item?: 'chalk' | 'ink'): Round {
   if (round.status !== 'playing' || puzzle.id !== round.levelId || puzzle.seed !== round.seed || !Number.isInteger(at)
     || (tool !== 'fill' && tool !== 'empty') || round.cells[at] !== 'unknown') return round;
   const ink = puzzle.solution[at] === 1;
   const correct = ink === (tool === 'fill');
+  if (item && (!correct || tool !== (item === 'ink' ? 'fill' : 'empty'))) return round;
   const cells = round.cells.slice();
   cells[at] = ink ? (correct ? 'filled' : 'miss-filled') : (correct ? 'empty' : 'miss-empty');
   const lives = round.lives - (correct ? 0 : 1);
@@ -33,5 +34,20 @@ export function play(puzzle: Puzzle, round: Round, at: number, tool: Tool): Roun
   const status = lives === 0 ? 'lost' : cells.includes('unknown') ? 'playing' : 'won';
   const explanation = ink ? '这格要涂色，已经帮你涂好了。' : '这格要留白，已经帮你标好了。';
   const remaining = lives === 0 ? '这次的三次机会用完了。' : `还剩${lives === 2 ? '两' : '一'}次机会。`;
-  return { ...round, cells, lives, status, moves: [...round.moves, { at, tool }], message: correct ? '' : explanation + remaining };
+  return { ...round, cells, lives, status, moves: [...round.moves, item ? { at, tool, item } : { at, tool }], message: correct ? '' : explanation + remaining };
+}
+
+export function heal(round: Round): Round {
+  if (round.status !== 'playing' || round.lives >= 3) return round;
+  return { ...round, lives: round.lives + 1, moves: [...round.moves, { item: 'heart' }], message: '' };
+}
+
+export function perfect(round: Round): boolean {
+  return round.lives === 3 && !round.moves.some(move => move.item);
+}
+
+export function moveEffect(before: Round, next: Round): Omit<GameEffect, 'serial'> {
+  const move = next.moves.at(-1)!;
+  if (move.item === 'heart') return { kind: 'heal' };
+  return { at: move.at, kind: next.lives < before.lives ? 'miss' : move.tool };
 }

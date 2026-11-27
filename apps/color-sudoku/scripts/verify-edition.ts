@@ -16,7 +16,7 @@ if (process.argv.includes('--record')) {
   writeFileSync(file, '[\n' + pages.join(',\n') + '\n]\n');
 }
 const saved = JSON.parse(readFileSync(file, 'utf8')) as typeof record;
-assert.equal(saved.length, 12);
+assert.equal(saved.length, pages.length);
 for (const [i, { puzzle: p, proof, source, fallback }] of pages.entries()) {
   const s = saved[i];
   assert.equal(s.id, p.id); assert.equal(s.size, p.size); assert.equal(s.reserve.seed, fallback.puzzle.seed);
@@ -26,4 +26,4 @@ for (const [i, { puzzle: p, proof, source, fallback }] of pages.entries()) {
   assert.ok(replayProof(p, archived), `Page ${p.id} no longer replays`);
   console.log(`${String(p.id).padStart(2, '0')}  ${p.size}×${p.size}  ${p.sticker.name}  seed=${p.seed} (${source})  unique / ${proof.route} / ${proof.openings} openings / ${proof.steps.length} steps / won 3:3`);
 }
-console.log('12 published + 12 reserve witnesses verified with official moves.');
+console.log(`${pages.length} published + ${pages.length} reserve witnesses verified with official moves.`);
