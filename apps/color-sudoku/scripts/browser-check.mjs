@@ -5,6 +5,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { publishEdition } from './edition.ts';
+import { stages } from '../src/core/progression.ts';
+import { goods } from '../src/core/shop.ts';
 import { watchHomeRequests, separateHomeWarnings } from './home-requests.mjs';
 
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
@@ -41,12 +43,13 @@ function monitor(page) {
 }
 async function mark(page, at, value, keyboard = false) {
   const tool = value ? 'fill' : 'empty';
-  if ((await state(page)).tool !== tool) await page.locator(`[data-tool="${tool}"]`).click();
-  if (keyboard) { await cell(page, at).focus(); await page.keyboard.press('Enter'); }
-  else if (page.viewportSize()?.width <= 475 && (await state(page)).size === 10) {
+  const { tool: activeTool, size: n } = await state(page);
+  if (activeTool !== tool) await page.locator(`[data-tool="${tool}"]`).click();
+  if (keyboard || (n >= 12 && page.viewportSize()?.width > 475)) { await cell(page, at).focus(); await page.keyboard.press('Enter'); }
+  else if (page.viewportSize()?.width <= 475 && n >= 10) {
     // Use the same two position controls a child can use, not coordinate injection into a scrolled grid.
-    await page.locator('[data-locate="row"]').selectOption(String(Math.floor(at / 10)));
-    await page.locator('[data-locate="column"]').selectOption(String(at % 10));
+    await page.locator('[data-locate="row"]').selectOption({ value: String(Math.floor(at / n)) });
+    await page.locator('[data-locate="column"]').selectOption({ value: String(at % n) });
     await cell(page, at).tap();
   } else await cell(page, at).click();
 }
@@ -71,9 +74,21 @@ async function replay(page, index, { mistakes = 0, afterBatch } = {}) {
 }
 async function pick(page, id) {
   await action(page, 'index').click();
-  await page.locator(`[data-index-book="${Math.floor((id - 1) / 4)}"]`).click();
+  await page.locator(`[data-index-book="${stages.findIndex(stage => stage.ids.includes(id))}"]`).click();
   await page.locator(`[data-level="${id}"]`).click();
   assert.equal((await state(page)).id, id);
+}
+async function drag(page, from, to) {
+  await cell(page, from).scrollIntoViewIfNeeded();
+  const a = await cell(page, from).boundingBox(), b = await cell(page, to).boundingBox();
+  await page.mouse.move(a.x + a.width / 2, a.y + a.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
+  await page.mouse.up();
+}
+async function reset(page) {
+  await action(page, 'restart').click();
+  if (await action(page, 'confirmRestart').isVisible()) await action(page, 'confirmRestart').click();
 }
 async function assertStickerFits(page, mustFitViewport = false) {
   const positions = await page.locator('.puzzle-board').evaluate(board => {
@@ -91,7 +106,7 @@ try {
   const p = await context.newPage(); monitor(p);
   if (full) {
     await watchHomeRequests(p,base.href,homeFailures);
-    await p.goto(base.href, { waitUntil: 'networkidle' });
+    await p.goto(base.href, { waitUntil: 'domcontentloaded' });
     // A real reply, rather than leaving the homepage during its first six-megabyte worker fetch.
     const builtWorker = await p.evaluate(() => performance.getEntriesByType('resource').map(e => e.name).find(n => /\/slimsearch\.worker\.[^/]+\.js$/.test(n)));
     const searchFound = await p.evaluate(url => new Promise((resolve, reject) => {
@@ -102,15 +117,15 @@ try {
     }), builtWorker || new URL('slimsearch.worker.local.js',base).href);
     assert.equal(searchFound,true);
     await p.locator('a[href="/ai-portfolio/"]:visible').first().click();
-    await p.waitForURL('**/ai-portfolio/');
+    await p.waitForURL('**/ai-portfolio/', { waitUntil: 'commit' });
     // VuePress updates history before its async page component mounts on in-site navigation.
-    await p.locator('#works-title').waitFor({ state: 'visible' }); await p.waitForLoadState('networkidle');
+    await p.locator('#works-title').waitFor({ state: 'visible' });
     assert.equal(await p.locator('.project-card').count(), 3);
     const card = p.locator('.project-card[href="/color-sudoku/"]');
     const cover = card.locator('img'); await card.scrollIntoViewIfNeeded();
     await cover.evaluate(img => img.decode());
     assert.deepEqual(await cover.evaluate(img => [img.naturalWidth, img.naturalHeight]), [1200,675]);
-    await image(p, 'portfolio'); await card.click(); await p.waitForURL('**/color-sudoku/');
+    await image(p, 'portfolio'); await card.click(); await p.waitForURL('**/color-sudoku/', { waitUntil: 'commit' });
     check('首页 → AI 作品集（三张卡、1200×675 封面成功解码）→ 涂色数独');
   } else await p.goto(new URL('/color-sudoku/', base).href);
   await p.waitForFunction(() => typeof window.render_game_to_text === 'function');
@@ -149,7 +164,8 @@ try {
       restored = true;
     }
   } });
-  assert.ok(captured && restored); assert.equal(s.status, 'won'); assert.equal(s.chances, 3); assert.equal(s.level, 2); assert.equal(s.coins, 100);
+  assert.ok(captured && restored); assert.equal(s.status, 'won'); assert.equal(s.chances, 3); assert.equal(s.level, 1);
+  assert.equal(s.progress.cleared, 1); assert.equal(s.coins, 100);
   const earned = edition[0].puzzle.sticker;
   if (await action(p, 'skipReveal').isVisible()) await action(p,'skipReveal').click();
   const pixels = await p.locator('.sticker-overlay > [data-sticker] [data-pixel]').evaluateAll(nodes => nodes.map(n => [Number(n.dataset.pixel), n.getAttribute('fill')]));
@@ -161,12 +177,14 @@ try {
   const contained = await p.locator('[data-entry="1"] .slot-image').evaluate(el => { const a=el.getBoundingClientRect(), b=el.querySelector('svg').getBoundingClientRect(); return b.top>=a.top && b.bottom<=a.bottom && b.left>=a.left && b.right<=a.right; });
   assert.ok(contained, 'Album image overlaps the story label'); await image(p, 'album');
   if (full) {
-    await p.getByRole('link', { name: '返回 AI 作品集' }).click(); await p.waitForURL('**/ai-portfolio/'); await p.waitForLoadState('networkidle');
+    await p.getByRole('link', { name: '返回 AI 作品集' }).click();
+    await p.waitForURL('**/ai-portfolio/', { waitUntil: 'commit' });
     for (const [slug, text] of [['hex-mahjong','海克斯麻将'], ['cyber-shop','赛博杂货铺']]) {
-      await p.locator(`.project-card[href="/${slug}/"]`).click(); await p.waitForURL(`**/${slug}/`);
+      await p.locator(`.project-card[href="/${slug}/"]`).click(); await p.waitForURL(`**/${slug}/`, { waitUntil: 'commit' });
       await p.waitForFunction(() => (document.querySelector('#app')?.children.length ?? 0) > 0);
-      assert.ok((await p.title()).includes(text)); await p.waitForLoadState('networkidle');
-      await p.goBack({ waitUntil: 'networkidle' }); await p.waitForURL('**/ai-portfolio/');
+      assert.ok((await p.title()).includes(text));
+      await p.goBack({ waitUntil: 'commit' });
+      await p.waitForURL('**/ai-portfolio/', { waitUntil: 'commit' });
     }
     await p.locator('.project-card[href="/color-sudoku/"]').click(); await p.waitForFunction(() => typeof window.render_game_to_text === 'function');
     check('解出贴纸 → 图鉴故事 → 返回作品集；两张旧卡可点击，旧游戏能挂载，再进入新游戏恢复收藏');
@@ -180,17 +198,89 @@ try {
   await pick(p, 2); s = await replay(p, 1, { mistakes: 1 }); assert.equal(s.status,'won'); assert.equal(s.coins,200); assert.equal(s.collected[1].paw,false);
   await action(p,'winAlbum').click(); await p.locator('[data-entry="2"]').click();
   assert.ok((await p.locator('dialog[open]').innerText()).includes(edition[1].puzzle.sticker.story)); await action(p,'entryPlay').click();
-  s = await replay(p,1); assert.equal(s.coins,200); assert.equal(s.level,3); assert.equal(s.collected[1].paw,true);
+  s = await replay(p,1); assert.equal(s.coins,200); assert.equal(s.progress.cleared,2); assert.equal(s.collected[1].paw,true);
   check('普通通关已得完整贴纸和故事；无伤重玩补爪印，不重复发金币或升级');
+  await action(p, 'index').click();
+  await p.locator('[data-index-book="5"]').click();
+  assert.equal(await p.locator('[data-level="31"]').isDisabled(), true);
+  await p.keyboard.press('Escape');
+  await pick(p, 3);
+  const third = edition[2].puzzle;
+  const span = value => third.solution.findIndex((bit, at) => at % 5 <= 3 && bit === value && third.solution[at + 1] === value);
+  for (const [tool, value, label] of [['fill', 1, 'filled'], ['empty', 0, 'empty']]) {
+    await p.locator(`[data-tool="${tool}"]`).click();
+    const from = span(value);
+    assert.ok(from >= 0);
+    await drag(p, from, from + 1);
+    const marked = await state(p);
+    assert.deepEqual(marked.marks.slice(from, from + 2), [label, label]);
+    assert.equal(marked.chances, 3);
+    assert.equal(await cell(p, from).locator(`.stroke-print.${tool}`).evaluate(el => getComputedStyle(el).animationName), 'crayon-stamp');
+    await reset(p);
+  }
+  await action(p, 'shop').click();
+  for (const item of ['chalk', 'ink', 'heart']) await p.locator(`[data-buy="${item}"]`).click();
+  assert.equal((await state(p)).coins, 200 - goods.chalk.price - goods.ink.price - goods.heart.price);
+  assert.equal(await p.locator('[data-buy="heart"]').isDisabled(), true);
+  await image(p, 'shop');
+  await p.keyboard.press('Escape');
+  assert.equal(await p.locator('[data-use="heart"]').isDisabled(), true);
+  const start = span(0);
+  await drag(p, start, start + 1);
+  s = await state(p);
+  assert.equal(s.chances, 2);
+  assert.equal(s.marks[start + 1], 'unknown');
+  assert.equal(await p.locator('.heart-pulse.miss').evaluate(el => getComputedStyle(el).animationName), 'heart-float');
+  await p.locator('[data-use="heart"]').click();
+  assert.equal((await state(p)).chances, 3);
+  for (const [item, label] of [['chalk', 'empty'], ['ink', 'filled']]) {
+    const before = await state(p);
+    await p.locator(`[data-use="${item}"]`).click();
+    s = await state(p);
+    assert.ok(s.marks.some((cell, at) => cell === label && before.marks[at] === 'unknown'));
+    assert.equal(s.bag[item], 0);
+    assert.equal(s.chances, 3);
+  }
+  await p.reload(); await p.waitForFunction(() => !!window.render_game_to_text);
+  assert.deepEqual(await state(p), s);
+  await reset(p);
+  check('鼠标连续涂色与标空，错格暂停本次拖动并扣一心；购买三种道具、回血与补格，刷新恢复道具、余额和棋盘');
   if (full) {
-    for (let id = 3; id <= 12; id++) { await pick(p,id); const complete = await replay(p,id-1); assert.equal(complete.status,'won'); assert.equal(complete.chances,3); assert.equal(complete.coins,id*100); await assertStickerFits(p); }
-    assert.equal((await state(p)).level,13); await action(p,'next').click(); assert.equal((await state(p)).page,'album');
-    check('12 关首发证明逐关在 Chromium 以真实工具/按钮完成，最后一关也领奖并能打开图鉴');
+    let wins = 2;
+    for (const [i, stage] of stages.entries()) {
+      for (const id of stage.ids.filter(id => id > 2)) {
+        await pick(p, id);
+        if (id === 31) await image(p, 'desktop-20x20');
+        const complete = await replay(p, id - 1);
+        assert.equal(complete.status, 'won');
+        assert.equal(complete.chances, 3);
+        assert.equal(complete.coins, ++wins * 100 - 160);
+        await assertStickerFits(p);
+      }
+      const complete = await state(p);
+      assert.equal(complete.level, Math.min(i + 2, 6));
+      assert.deepEqual(await p.locator('progress').evaluate(el => [el.value, el.max]), [complete.progress.cleared, 6]);
+      if (i < stages.length - 1) {
+        assert.equal(complete.unlocked, stages[i + 1].size);
+        assert.equal(complete.progress.cleared, 0);
+        assert.equal(await p.locator('[data-unlock]').evaluate(el => getComputedStyle(el).animationName), 'rank-glow');
+        await action(p, 'next').click();
+        assert.equal((await state(p)).size, stages[i + 1].size);
+        assert.equal(await p.locator('.unfold-board').evaluate(el => getComputedStyle(el).animationName), 'board-unfold');
+      } else assert.equal(complete.progress.cleared, 6);
+      check(`真实落笔通关 ${stage.size}×${stage.size} 六关并检查对应等级与解锁动画`);
+    }
+    await action(p,'next').click(); assert.equal((await state(p)).page,'album');
   }
   await context.close();
   const mobile = await browser.newContext({ viewport:{width:375,height:812}, deviceScaleFactor:1, hasTouch:true, isMobile:true, reducedMotion:'reduce' });
   const m = await mobile.newPage(); monitor(m); await m.goto(new URL('/color-sudoku/',base).href);
-  await action(m,'skipPractice').tap(); await pick(m,12); assert.equal((await state(m)).reducedMotion,true);
+  await m.evaluate(ids => {
+    const wins = Object.fromEntries(ids.map(id => [id, {perfect:true}]));
+    localStorage.setItem('color-sudoku:save:v1', JSON.stringify({version:1,edition:'courtyard-01',current:12,practiceDone:true,wins}));
+  }, stages.slice(0, 2).flatMap(stage => stage.ids));
+  await m.reload(); await m.waitForFunction(() => !!window.render_game_to_text);
+  assert.equal((await state(m)).size, 10); assert.equal((await state(m)).reducedMotion,true);
   const geometry = () => m.locator('[data-board-scroll]').evaluate(el => ({client:el.clientWidth,scroll:el.scrollWidth,cell:el.querySelector('[data-cell]').getBoundingClientRect().width,
     pageWidth:document.documentElement.scrollWidth,windowWidth:innerWidth}));
   const compact = await geometry(); assert.ok(compact.pageWidth <= compact.windowWidth + 1);
@@ -208,7 +298,30 @@ try {
     check('从已滚动放大的 10×10 直接无伤通关：减少动态即刻揭晓，整张贴纸不裁切，准确叠回原格位');
   }
   await m.setViewportSize({width:812,height:375}); assert.ok((await geometry()).pageWidth <= 813);
-  await mobile.close(); check(`375px 触屏 10×10：不撑破页面，放大 ${compact.cell} → ${zoomed.cell}px，粘性线索/行列定位直达右下角，触摸后保持放大；横屏及减少动态`);
+  check(`375px 触屏 10×10：不撑破页面，放大 ${compact.cell} → ${zoomed.cell}px，粘性线索/行列定位直达右下角，触摸后保持放大；横屏及减少动态`);
+  await m.setViewportSize({width:375,height:812});
+  await m.evaluate(ids => {
+    localStorage.removeItem('color-sudoku:save:v2');
+    const wins = Object.fromEntries(ids.map(id => [id, {perfect:true}]));
+    localStorage.setItem('color-sudoku:save:v1', JSON.stringify({version:1,edition:'courtyard-01',current:31,practiceDone:true,wins}));
+  }, stages.slice(0, 5).flatMap(stage => stage.ids));
+  await m.reload(); await m.waitForFunction(() => !!window.render_game_to_text);
+  const large = await state(m);
+  assert.equal(large.level, 6);
+  assert.equal(large.marks.length, 400);
+  assert.ok((await geometry()).pageWidth <= 376);
+  await action(m,'zoom').tap();
+  await m.locator('[data-locate="row"]').selectOption({ label: '20' });
+  await m.locator('[data-locate="column"]').selectOption({ label: '20' });
+  assert.equal(await m.evaluate(() => document.activeElement.dataset.cell), '399');
+  await mark(m,399,edition[30].puzzle.solution[399]);
+  assert.equal((await state(m)).chances, 3);
+  assert.notEqual((await state(m)).marks[399], 'unknown');
+  assert.equal(await cell(m,399).locator('.stroke-print').evaluate(el => getComputedStyle(el).animationName), 'none');
+  await m.locator('[data-board-scroll]').evaluate(board => board.scrollIntoView({ block: 'center' }));
+  await image(m,'mobile-20x20');
+  await mobile.close();
+  check('375px 触屏 20×20：400 格、放大、行列定位并落笔到最右下角，页面未横向溢出');
   await Promise.all(inspecting);
   const {local,external} = separateHomeWarnings(consoleIssues, homeFailures); errors.push(...local);
   const report = {mode: full?'full-site':'app',browser:browser.version(),checks,localErrors:errors,externalHomeRequests:homeFailures,externalHomeConsole:external,nonlocalConsoleSources:[...outside]};

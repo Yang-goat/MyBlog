@@ -5,8 +5,8 @@ import InkIcon from './InkIcon.vue';
 import StickerPrint from './StickerPrint.vue';
 import Naituan from './Naituan.vue';
 
-const props = defineProps<{ view: GameView; revealing: boolean }>();
-const emit = defineEmits<{ mark: [at: number] }>();
+const props = defineProps<{ view: GameView; revealing: boolean; growing: boolean }>();
+const emit = defineEmits<{ mark: [at: number]; stroke: [at: number[], start: boolean] }>();
 const size = computed(() => props.view.puzzle.size);
 const zoom = ref(false);
 const active = ref(0);
@@ -49,8 +49,9 @@ function fitSticker() {
   if (!stage || !corner) return;
   const style = getComputedStyle(stage);
   const width = stage.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-  const cap = size.value === 5 ? 50 : size.value === 7 ? 41 : 34;
-  fitCell.value = Math.max(1, Math.min(cap, Math.floor((width - corner.offsetWidth - 12) / size.value)));
+  const cap = {5: 60, 7: 47, 10: 42, 12: 38, 15: 34, 20: 32}[size.value];
+  const height = Math.max(240, window.innerHeight * .78 - corner.offsetHeight);
+  fitCell.value = Math.max(1, Math.min(cap, Math.floor((width - corner.offsetWidth - 12) / size.value), Math.floor(height / size.value)));
   viewport.scrollLeft = 0; viewport.scrollTop = 0;
 }
 watch(solved, won => {
@@ -83,6 +84,59 @@ function choose(at: number) {
   active.value = at; tracking.value = true;
   if (props.view.round.status === 'playing' && props.view.round.cells[at] === 'unknown') emit('mark', at);
 }
+let pointer: number | null = null;
+let previous: number | null = null;
+function underPointer(event: PointerEvent): HTMLButtonElement | null {
+  const cell = document.elementFromPoint(event.clientX, event.clientY)?.closest<HTMLButtonElement>('button[data-cell]');
+  return cell && scroller.value?.contains(cell) ? cell : null;
+}
+function beginStroke(event: PointerEvent) {
+  if (event.pointerType !== 'mouse' || event.button !== 0 || props.view.round.status !== 'playing') return;
+  const cell = underPointer(event);
+  if (!cell || !scroller.value) return;
+  event.preventDefault();
+  pointer = event.pointerId;
+  previous = Number(cell.dataset.cell);
+  active.value = previous;
+  tracking.value = true;
+  cell.focus({ preventScroll: true });
+  scroller.value.setPointerCapture(event.pointerId);
+  emit('stroke', [previous], true);
+}
+function along(from: number, to: number): number[] {
+  const n = size.value;
+  let x = from % n, y = Math.floor(from / n);
+  const targetX = to % n, targetY = Math.floor(to / n);
+  const dx = Math.abs(targetX - x), dy = -Math.abs(targetY - y);
+  const sx = Math.sign(targetX - x), sy = Math.sign(targetY - y);
+  let error = dx + dy;
+  const path: number[] = [];
+  while (x !== targetX || y !== targetY) {
+    const twice = 2 * error;
+    if (twice >= dy) { error += dy; x += sx; }
+    if (twice <= dx) { error += dx; y += sy; }
+    path.push(y * n + x);
+  }
+  return path;
+}
+function moveStroke(event: PointerEvent) {
+  if (event.pointerId !== pointer || !(event.buttons & 1)) return;
+  const cell = underPointer(event);
+  if (!cell) { previous = null; hover.value = null; return; }
+  const at = Number(cell.dataset.cell);
+  hover.value = at;
+  if (at === previous) return;
+  const path = previous === null ? [at] : along(previous, at);
+  previous = at;
+  emit('stroke', path, false);
+}
+function endStroke(event: PointerEvent) {
+  if (event.pointerId === pointer) { pointer = null; previous = null; }
+}
+function clickCell(event: PointerEvent, at: number) {
+  if (event.detail === 0 || event.pointerType !== 'mouse') choose(at);
+}
+const fifth = (index: number) => size.value >= 10 && (index + 1) % 5 === 0 && index + 1 < size.value;
 function keyCell(event: KeyboardEvent, at: number) {
   if (event.altKey || event.metaKey || event.shiftKey) return;
   const n = size.value, r = Math.floor(at / n), c = at % n;
@@ -99,17 +153,20 @@ watch([() => props.view.puzzle.id, () => props.view.round.seed], () => { active.
 
 <template>
   <div class="puzzle-board" :data-size="size" :class="{ 'is-zoomed': zoom, 'is-solved': solved }" :style="vars">
-    <div ref="scroller" class="puzzle-scroll" data-board-scroll @pointerleave="hover = null">
-      <div class="clue-matrix" role="grid" :aria-label="`${size} 行 ${size} 列数织棋盘，左上角起，方向键移动，回车或空格标记`" :aria-rowcount="size + 1" :aria-colcount="size + 1" data-board>
+    <div ref="scroller" class="puzzle-scroll" data-board-scroll @pointerleave="hover = null"
+      @pointerdown="beginStroke" @pointermove="moveStroke" @pointerup="endStroke" @pointercancel="endStroke" @lostpointercapture="endStroke">
+      <div :key="size" class="clue-matrix" :class="{ 'unfold-board': growing }" role="grid" :aria-label="`${size} 行 ${size} 列数织棋盘，左上角起，方向键移动，回车或空格标记`" :aria-rowcount="size + 1" :aria-colcount="size + 1" data-board>
         <div class="clue-line clue-top" role="row">
           <div class="corner-clue" role="columnheader" aria-label="行、列线索"><svg viewBox="0 0 34 34" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 29 29 5m-24.5 9h11m-4-4 4 4-4 4m8.7 3.6V10.5m-4.1 7.2 4.1 4.2 4.1-4.2"/></svg></div>
-          <div v-for="(clue, col) in view.puzzle.columnClues" :key="col" class="col-clue" :class="{ aim: tracking && targetCol === col, fifth: col === 4 && size === 10 }" role="columnheader" :data-col-clue="col" :aria-label="`第 ${col + 1} 列线索 ${clueText(clue).join('，')}`"><b v-for="(run,j) in clueText(clue)" :key="j">{{ run }}</b></div>
+          <div v-for="(clue, col) in view.puzzle.columnClues" :key="col" class="col-clue" :class="{ aim: tracking && targetCol === col, fifth: fifth(col) }" role="columnheader" :data-col-clue="col" :aria-label="`第 ${col + 1} 列线索 ${clueText(clue).join('，')}`"><b v-for="(run,j) in clueText(clue)" :key="j">{{ run }}</b></div>
         </div>
         <div class="mark-body" role="rowgroup">
-        <div v-for="(clue, r) in view.puzzle.rowClues" :key="r" class="clue-line" :class="{ 'fifth-row': r === 4 && size === 10 }" role="row">
+        <div v-for="(clue, r) in view.puzzle.rowClues" :key="r" class="clue-line" :class="{ 'fifth-row': fifth(r) }" role="row">
           <div class="row-clue" :class="{ aim: tracking && targetRow === r }" role="rowheader" :data-row-clue="r" :aria-label="`第 ${r + 1} 行线索 ${clueText(clue).join('，')}`"><b v-for="(run,j) in clueText(clue)" :key="j">{{ run }}</b></div>
-          <button v-for="(cell, c) in view.round.cells.slice(r * size, (r + 1) * size)" :key="c" type="button" role="gridcell" class="grid-cell" :class="[cell, { 'crosshair': tracking && (r === targetRow || c === targetCol), pinpoint: tracking && r === targetRow && c === targetCol, fifth: c === 4 && size === 10 }]" :aria-label="`第 ${r + 1} 行第 ${c + 1} 列，${labels[cell]}`" :aria-disabled="cell !== 'unknown' || view.round.status !== 'playing'" :data-cell="r * size + c" :data-state="cell" :tabindex="active === r * size + c && !solved ? 0 : -1" @pointerenter="($event.pointerType === 'mouse') && (hover = r * size + c, tracking = true)" @focus="active = r * size + c; tracking = true" @keydown="keyCell($event, r * size + c)" @click="choose(r * size + c)">
+          <button v-for="(cell, c) in view.round.cells.slice(r * size, (r + 1) * size)" :key="c" type="button" role="gridcell" class="grid-cell" :class="[cell, { 'crosshair': tracking && (r === targetRow || c === targetCol), pinpoint: tracking && r === targetRow && c === targetCol, fifth: fifth(c) }]" :aria-label="`第 ${r + 1} 行第 ${c + 1} 列，${labels[cell]}`" :aria-disabled="cell !== 'unknown' || view.round.status !== 'playing'" :data-cell="r * size + c" :data-state="cell" :tabindex="active === r * size + c && !solved ? 0 : -1" @pointerenter="($event.pointerType === 'mouse') && (hover = r * size + c, tracking = true)" @focus="active = r * size + c; tracking = true" @keydown="keyCell($event, r * size + c)" @click="clickCell($event, r * size + c)">
             <template v-if="cell !== 'unknown'"><i v-if="isInk(cell)" class="crayon-fill"/><i v-else class="cross-mark"/><span v-if="isMiss(cell)" class="fix-mark" title="已纠正">!</span><InkIcon v-else name="lock" class="cell-lock"/></template>
+            <span v-if="view.marks[r * size + c]" :key="view.marks[r * size + c].serial" class="stroke-print"
+              :class="view.marks[r * size + c].kind" aria-hidden="true"/>
           </button>
         </div>
         <div v-if="solved && view.revealed" class="sticker-overlay"><StickerPrint :sticker="view.revealed" :animate="revealing" :inset="false"/><div v-if="revealing" class="pressing-hoof" :style="pressAt" aria-hidden="true"><Naituan pose="press"/></div></div>
@@ -117,7 +174,7 @@ watch([() => props.view.puzzle.id, () => props.view.round.seed], () => { active.
       </div>
     </div>
     <div v-if="!solved" class="board-readout">
-      <template v-if="size === 10"><InkIcon name="locate"/><label>行 <select :value="targetRow" aria-label="定位行" data-locate="row" @change="position($event, 'row')"><option v-for="i in size" :key="i" :value="i-1">{{ pad(i) }}</option></select></label><label>列 <select :value="targetCol" aria-label="定位列" data-locate="column" @change="position($event, 'column')"><option v-for="i in size" :key="i" :value="i-1">{{ pad(i) }}</option></select></label></template>
+      <template v-if="size >= 10"><InkIcon name="locate"/><label>行 <select :value="targetRow" aria-label="定位行" data-locate="row" @change="position($event, 'row')"><option v-for="i in size" :key="i" :value="i-1">{{ pad(i) }}</option></select></label><label>列 <select :value="targetCol" aria-label="定位列" data-locate="column" @change="position($event, 'column')"><option v-for="i in size" :key="i" :value="i-1">{{ pad(i) }}</option></select></label></template>
       <span v-else class="coord"><InkIcon name="locate"/> 行 {{ pad(targetRow + 1) }}<em>·</em>列 {{ pad(targetCol + 1) }}</span>
       <button class="zoom-button" type="button" data-action="zoom" :aria-pressed="zoom" @click="changeZoom"><InkIcon :name="zoom ? 'unzoom' : 'zoom'"/>{{ zoom ? '还原' : '放大' }}</button>
     </div>

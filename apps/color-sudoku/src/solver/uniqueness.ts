@@ -3,24 +3,29 @@ import type { Budget } from './budget.ts';
 
 /** Exact solution counter, saturated at two. Nothing from the deduction search is used here. */
 export function countSolutions({ size, rowClues, columnClues }: Clues, budget: Budget): 0 | 1 | 2 {
-  // Exhaustively index binary words by their literal integer run sequence (10 is one run).
-  const words = new Map<string, number[]>();
+  // Generate only the literal run sequences used by this puzzle, from right to left.
+  // The memoized prefix must finish before a separating zero and the rightmost run.
   const full = (1 << size) - 1;
-  for (let word = 0; word <= full; word++) {
-    if ((word & 63) === 0) budget.checkTime();
-    const runs: number[] = [];
-    let run = 0;
-    for (let i = 0; i <= size; i++) {
-      if (word & (1 << i)) run++;
-      else if (run) { runs.push(run); run = 0; }
+  const words = new Map<string, number[]>();
+  function domain(width: number, runs: number[]): number[] {
+    if (!runs.length) return [0];
+    const key = width + ':' + runs.join(',');
+    const cached = words.get(key);
+    if (cached) return cached;
+    const result: number[] = [];
+    const run = runs.at(-1)!;
+    const prefix = runs.slice(0, -1);
+    const minimum = prefix.reduce((length, value) => length + value + 1, 0);
+    for (let start = minimum; start + run <= width; start++) {
+      budget.checkTime();
+      const right = ((1 << run) - 1) << start;
+      for (const left of domain(start - 1, prefix)) result.push(left | right);
     }
-    const key = runs.join(',');
-    const list = words.get(key);
-    if (list) list.push(word);
-    else words.set(key, [word]);
+    words.set(key, result);
+    return result;
   }
-  const rows = rowClues.map(clue => words.get(clue.join(',')) ?? []);
-  const columns = columnClues.map(clue => words.get(clue.join(',')) ?? []);
+  const rows = rowClues.map(clue => domain(size, clue));
+  const columns = columnClues.map(clue => domain(size, clue));
 
   function search(unassigned: number, domains: number[][]): 0 | 1 | 2 {
     budget.visit();

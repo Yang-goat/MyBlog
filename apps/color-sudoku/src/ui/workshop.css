@@ -1,0 +1,150 @@
+/* The workshop leaves the desk's widest panel to the puzzle. */
+.paper-game {
+  background-color: #e9e8d9;
+  background-image: radial-gradient(#878a7138 1px, transparent 1px), linear-gradient(155deg,#f2eee0,#e9eadf 68%,#e3e8da);
+  background-size: 19px 19px, auto;
+}
+.paper-game .frame { width: min(1440px, calc(100% - 64px)); }
+.mast-inner { min-height: 64px; }
+.main-area { padding-top: 18px; }
+.workshop-heading {
+  background: linear-gradient(90deg,#f7e6c8 0%,#f7e6c8 20%,#f7e6c83b 57%,transparent 78%),
+    url('../art/sticker-workshop.webp') right 51% / auto 172% no-repeat, #f7e6c8;
+  border: 1px solid #b5a182;
+  border-radius: 13px 13px 12px 12px;
+  box-shadow: inset 0 0 0 3px #fff7e54f, 0 3px 0 #b4a68d44;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 0 0 19px;
+  padding: 16px clamp(20px, 3.4vw, 51px) 17px;
+  min-height: 174px;
+}
+.workshop-title { width: min(100%, 310px); }
+.workshop-heading h1 { margin-top: 2px; font-size: clamp(27px, 3.15vw, 43px); letter-spacing: .02em; }
+.workshop-heading .eyebrow { font-size: 12px; color: #675447; }
+.workshop-heading .desk-actions { gap: 9px; margin: 0; }
+.workshop-heading .coin-count { border: 1px solid #b89258; background: #fff6dc; padding: 6px 10px; border-radius: 6px; min-height: 38px; }
+.rank { margin-top: 8px; color: #45523a; }
+.rank-copy { display: flex; gap: 4px 12px; flex-wrap: wrap; justify-content: space-between; align-items: baseline; }
+.rank-copy strong { font-size: 13px; }
+.rank-copy small { font-size: 11px; color: #5d5848; }
+.rank progress { display: block; appearance: none; width: 100%; height: 8px; margin-top: 5px; border: 0; border-radius: 8px; color: #6a8753; background: #d9ccad; }
+.rank progress::-webkit-progress-bar { background: #d9ccad; border-radius: inherit; }
+.rank progress::-webkit-progress-value { background: #607a4b; border-radius: inherit; }
+.rank progress::-moz-progress-bar { background: #607a4b; border-radius: inherit; }
+.paper-game .notebook:not(.archive) { grid-template-columns: minmax(0,1fr) clamp(255px,25vw,325px); }
+.paper-game .left-leaf { padding-inline: clamp(19px,3vw,47px) clamp(16px,2.5vw,35px); }
+.paper-game .right-leaf { justify-content: flex-start; padding-inline: clamp(16px,2vw,28px); gap: 15px; }
+.right-leaf .mascot-print { max-width: 205px; margin-block: 3px; }
+.right-leaf .mascot-plane { height: 112px; }
+.game-stage { align-items: flex-start; padding-top: 17px; }
+.puzzle-scroll { max-height: min(73svh, 740px); }
+.puzzle-board { --cell: 60px; user-select: none; }
+.puzzle-board[data-size='7'] { --cell: 47px; }
+.puzzle-board[data-size='10'] { --cell: 42px; }
+.puzzle-board[data-size='12'] { --cell: 38px; }
+.puzzle-board[data-size='15'] { --cell: 34px; }
+.puzzle-board[data-size='20'] { --cell: clamp(24px, 3.05svh, 32px); }
+.puzzle-board:is([data-size='12'],[data-size='15'],[data-size='20']) {
+  --clue-digit: 13px;
+  --rail: max(44px, calc(var(--clue-x) * 22px + 8px));
+}
+.puzzle-board:is([data-size='12'],[data-size='15'],[data-size='20']) :is(.row-clue,.col-clue) { font-size: 13px; }
+.puzzle-board:is([data-size='12'],[data-size='15'],[data-size='20']) .row-clue { gap: 3px; }
+.puzzle-board:is([data-size='10'],[data-size='12'],[data-size='15'],[data-size='20']).is-zoomed { --cell: 48px; }
+.unfold-board { transform-origin: top left; animation: board-unfold 520ms cubic-bezier(.22,.7,.27,1) both; }
+@keyframes board-unfold {
+  from { transform: scale(.86); opacity: .25; box-shadow: 0 0 0 12px #a7ad6666; }
+  to { transform: none; opacity: 1; }
+}
+.stroke-print { position: absolute; pointer-events: none; inset: 2px; z-index: 1; border-radius: 15%; opacity: 0; }
+.stroke-print.fill { animation: crayon-stamp 330ms ease-out; color: #f4bf67; }
+.stroke-print.empty { animation: crayon-stamp 260ms ease-out; color: #9caa7d; }
+.stroke-print.miss { animation: wrong-stamp 370ms ease-out; color: #ce684f; }
+@keyframes crayon-stamp {
+  0% { opacity: .9; transform: scale(.45); background: currentColor; box-shadow: 0 0 0 1px currentColor; }
+  65% { opacity: .6; background: transparent; box-shadow: 0 0 0 2px currentColor; }
+  100% { transform: scale(1.06); box-shadow: 0 0 0 3px currentColor; }
+}
+@keyframes wrong-stamp {
+  12%,50% { opacity: .85; background-color: #ce684f4d; box-shadow: inset 0 0 0 2px currentColor; }
+  25% { transform: translateX(-2px); }
+  45% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+.lives { position: relative; }
+.heart-pulse { position: absolute; z-index: 5; right: 0; bottom: 100%; color: #9d412d !important; opacity: 0; font-size: 16px !important; font-weight: 800; pointer-events: none; animation: heart-float 750ms ease-out; }
+.heart-pulse.heal { color: #42633c !important; }
+@keyframes heart-float { 10%,42% { opacity: 1; } to { transform: translateY(-16px) scale(1.2); } }
+.rank-up { animation: rank-glow 900ms ease-out; }
+.unlock-note { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; background: #ecedcf; border: 1px dashed #8f9e67; border-radius: 6px; padding: 8px; margin-top: 10px; color: #434d34; animation: rank-glow 900ms ease-out; }
+.unlock-note strong { font-size: 13px; }
+.unlock-note span { font-size: 12px; }
+@keyframes rank-glow {
+  0% { transform: scale(.94); }
+  42% { transform: scale(1.025); box-shadow: 0 0 0 7px #e3a84d55; }
+  100% { transform: scale(1); box-shadow: 0 0 0 11px #e3a84d00; }
+}
+.paper-game .tool-bag { border-top: 1px dashed #c8b89a; padding-top: 12px; }
+.bag-items { display: grid; gap: 5px; margin-top: 7px; }
+.paper-game .bag-items button { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; background: #fffaf0; border: 1px solid #b8a98b; border-radius: 5px; padding: 5px 8px; min-height: 34px; text-align: left; font-size: 13px; }
+.paper-game .bag-items button:not(:disabled):hover { background: #e7ead9; }
+.bag-items button b { padding-inline: 4px; color: #445942; }
+.paper-game :is(.bag-items button, .shop-product button, .index-list button, .archive-slot):disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
+.bag-note { font-size: 12px; color: #466748; margin-top: 6px !important; }
+.shop-stalls { display: grid; gap: 9px; margin-top: 16px; }
+.shop-product { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 11px; border: 1px solid #ccb795; border-radius: 7px; background: #fff8e8; }
+.product-stamp { display: grid; place-items: center; width: 43px; height: 43px; background: #e5e9cb; color: #53674c; border-radius: 7px; transform: rotate(-4deg); }
+.product-stamp .ink-icon { width: 22px; height: 22px; }
+.shop-product.ink .product-stamp { background: #f0ddaf; color: #785c39; }
+.shop-product.heart .product-stamp { background: #f5d7c7; color: #8f5146; }
+.shop-product h3 { font-size: 15px; }
+.shop-product p, .shop-product small { font-size: 12px; }
+.shop-product .paper-btn { min-width: 62px; }
+.shop-feedback { min-height: 1.5em; margin-top: 9px !important; }
+.book-tabs { flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .paper-game .frame { width: calc(100% - 44px); }
+  .paper-game .notebook:not(.archive) { grid-template-columns: minmax(0,1fr) minmax(224px,29%); }
+  .workshop-heading { background-size: auto, auto 145%, auto; }
+}
+@media (max-width: 720px) {
+  .paper-game .frame { width: calc(100% - 28px); }
+  .paper-game .notebook:not(.archive) { grid-template-columns: minmax(0,1fr); }
+  .paper-game .left-leaf { padding-inline: 10px; }
+  .workshop-heading { background-size: auto, auto 122%, auto; }
+  .right-leaf .mascot-plane { width: 100%; height: auto; }
+  .board-tool-dock:not(:empty) { padding-top: 4px; }
+  .board-tool-dock .tool-tray { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .paper-game .board-tool-dock .tool-btn { min-height: 38px; }
+  [data-page='play'] .tool-panel > .section-line { display: none; }
+  .paper-game .tool-bag { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+  .puzzle-scroll { max-height: min(62svh, 525px); }
+  .puzzle-board { --cell: clamp(36px,11vw,52px); }
+  .puzzle-board[data-size='7'] { --cell: 37px; }
+  .puzzle-board[data-size='10'] { --cell: 35px; }
+  .puzzle-board:is([data-size='12'],[data-size='15'],[data-size='20']) { --cell: 29px; }
+  .bag-items { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .paper-game .bag-items button { grid-template-columns: 1fr auto; padding: 5px; gap: 2px 5px; font-size: 12px; }
+  .bag-items .ink-icon { display: none; }
+}
+@media (max-width: 475px) {
+  .workshop-heading {
+    background: linear-gradient(90deg,#f7e6c8 0%,#f7e6c8ef 29%,#f7e6c870 61%,transparent 92%),
+      url('../art/sticker-workshop.webp') 83% 51% / auto 112% no-repeat, #f7e6c8;
+    padding: 13px 11px 14px;
+  }
+  .workshop-title { width: min(245px,100%); }
+  .rank-copy { justify-content: flex-start; }
+  .workshop-heading .desk-actions { gap: 5px; }
+  .workshop-heading .coin-count { padding-inline: 6px; gap: 3px; }
+  .right-leaf .portrait-caption { flex-direction: column; gap: 0; white-space: nowrap; }
+  .right-leaf .portrait-caption i { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-game :is(.unfold-board, .rank-up, .unlock-note, .stroke-print, .heart-pulse) { animation: none; }
+}
+.still-paper :is(.unfold-board, .rank-up, .unlock-note, .stroke-print, .heart-pulse) { animation: none; }

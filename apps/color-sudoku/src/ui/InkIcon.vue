@@ -10,6 +10,7 @@ defineProps<{ name: string }>();
     <template v-else-if="name === 'desk'"><rect x="3.5" y="3.5" width="16.9" height="16.9" rx="3"/><path d="M9.2 3.7v16.5M14.9 9.2v11M4 9.2h16M4 14.8h16"/><path d="M10 4.3h9.5V9H10z" stroke="none" fill="currentColor" opacity=".24"/></template>
     <template v-else-if="name === 'book'"><path d="M2.8 5.8c3.1-1.7 5.9-1.6 9.2.2 3.1-1.8 5.9-1.9 9.2-.2v13c-3.2-1.2-6.2-1.2-9.2.6-3-1.8-6-1.8-9.2-.6zM12 6.2v13"/></template>
     <template v-else-if="name === 'arrow'"><path d="M4.5 12.2h14m-5.4-5.7 5.7 5.7-5.7 5.5"/></template>
+    <template v-else-if="name === 'shop'"><path d="M4 10v10h16V10M3 10l2-6h14l2 6M3 10c1 2.5 3.7 2.5 4.5 0 1 2.5 3.7 2.5 4.5 0 1 2.5 3.7 2.5 4.5 0 1 2.5 3.7 2.5 4.5 0M9 20v-5h6v5"/></template>
     <template v-else-if="name === 'external'"><path d="M5.5 18.5 18.2 5.8M8.5 5.5h10v10"/></template>
     <template v-else-if="name === 'down'"><path d="m6 9 6 6 6-6"/></template>
     <template v-else-if="name === 'heart'"><path d="M12 20s-8.4-5.3-8.4-11C3.6 3.6 9.5 3 12 7c2.6-4 8.5-3.4 8.5 2 0 5.4-8.5 11-8.5 11z"/></template>
